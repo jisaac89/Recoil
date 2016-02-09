@@ -1,0 +1,33 @@
+@import '../Global';
+
+.r-Align,
+.r-align > .r-Align__column{
+  box-sizing:border-box;
+}
+
+.r-Align:before,
+.r-Align:after {
+    content: " ";
+    display: table;
+}
+
+.r-Align:after {
+    clear: both;
+}
+
+.r-Align > .r-Align__column{
+    position: relative;
+}
+
+.r-Align > .r-Align__column:nth-child(1),
+.r-Align__column > .r-Align__column:nth-child(1){
+  margin-left:0 !important;
+}
+
+.r-align > .r-Emerge{
+  width:100%;
+}
+
+.r-align > .r-Emerge > .r-Align__column:nth-child(1){
+  margin-left:0 !important;
+}

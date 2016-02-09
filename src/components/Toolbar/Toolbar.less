@@ -1,0 +1,88 @@
+@import '../Global';
+
+.r-Toolbar{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.r-Toolbar.no-radius .r-Button{
+  border-radius:0;
+  border-left-width: 1px;
+  border-right-width: 1px;
+}
+
+.r-Toolbar.no-radius .r-Button:first-child{
+  border-top-left-radius:0px;
+  border-bottom-left-radius:0px;
+  border-left-width: 1px;
+}
+
+.r-Toolbar.no-radius .r-Button:last-child{
+  border-top-right-radius:0px;
+  border-bottom-right-radius:0px;
+  border-right-width: 1px;
+}
+
+.r-Toolbar > .r-Button:last-child{
+  margin-right:0;
+}
+
+.r-Toolbar.border > .r-Button:first-child{
+  border:1px solid @standard-border;
+}
+.r-Toolbar.border > .r-Button:last-child{
+
+}
+.r-Toolbar.border > .r-Button{
+  border-top: 1px solid @standard-border;
+  border-bottom:1px solid @standard-border;
+  border-right:1px solid @standard-border;
+}
+
+.r-Toolbar .selectable-border-gray{
+  border:1px solid transparent !important;
+}
+
+.r-Toolbar.no-radius > .r-Input,
+.r-Toolbar.no-radius .r-Input{
+    border-radius: 0px;
+}
+
+.r-Toolbar.border > .r-Input,
+.r-Toolbar.border .r-Input{
+    border:1px solid @standard-border;
+}
+
+.r-Toolbar.border > .r-Dropdown .r-DropdownSelection{
+  border: 1px solid @standard-border;
+    vertical-align: middle;
+}
+.r-Toolbar.border.no-radius > .r-Dropdown .r-DropdownSelection{
+  border-radius: 0 !important;
+}
+.r-Toolbar.vertical.border .r-Button {
+    border: 1px solid @standard-border !important;
+    display: table-cell;
+    border-radius: 0 !important;
+    line-height: 19px;
+}
+
+.r-Toolbar.vertical .r-Button{
+  display: block;
+}
+
+.r-Toolbar.vertical.spacing .r-Button{
+  margin-bottom:10px;
+}
+
+.r-Toolbar.vertical.spacing .r-Button:last-child{
+  margin-bottom:0px;
+}
+
+.r-Toolbar.vertical.spacing .r-Input{
+  margin-bottom:10px;
+}
+
+.r-Toolbar.vertical.spacing .r-Input:last-child{
+  margin-bottom:0px;
+}

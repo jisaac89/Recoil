@@ -1,0 +1,204 @@
+@import '../Global';
+
+.r-Input {
+  vertical-align: middle;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.r-Input *{
+  .transition(all 200ms ease-in);
+}
+
+textarea {
+  height: 22px;
+  outline: 0;
+  border: 0;
+  width: 100%;
+  font: inherit;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  overflow: hidden;
+  background: #fff;
+  cursor: pointer !important;
+  border-radius: @input-border-radius;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 0 0 #1995ff;
+  position: relative;
+  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;
+  transition: transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;
+}
+
+.r-Input__container{
+  position:relative;
+}
+
+.r-Input__container input[type='text'],
+.r-Input__container input[type='password'] {
+  border: 1px solid @default-border;
+  position:absolute;
+  height: 100%;
+  width:100%;
+  left:0;
+  right:0;
+}
+
+.r-Input__container {
+  position: relative;
+  overflow: hidden;
+  border-radius:@input-border-radius;
+  height: @input-height;
+  color: @input-color;
+  background-color:@input-background;
+}
+.r-Input__container > small {
+  position: absolute;
+  top: 7px;
+  left: 5px;
+  z-index: 2;
+  line-height: 18px;
+  color: @default-color;
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.r-Input.checked .r-Input__container > small i.fa {
+  opacity: 0;
+}
+
+.r-Input.checked .r-Input__container > small {
+  top: -1px;
+  font-size: 60%;
+}
+.r-Input__container > input {
+  z-index: 1;
+  padding-left: 5px;
+  padding-top: 10px;
+  color:@input-color;
+  border-radius:@input-border-radius;
+  opacity: 0;
+  font-size: 16px;
+  border: 0;
+  background-color: @input-background;
+  outline: 0;
+  -webkit-transition-duration: 0.6s;
+}
+.no-title.r-Input__container > input {
+  opacity: 1;
+  color:@default-color;
+  padding-top: 0;
+}
+.r-Input.checked .r-Input__container > input {
+  opacity: 1;
+}
+
+.r-Input__container .r-Selectable__border-gray {
+  border: 1px solid transparent;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.r-Input__container > small + small {
+  left: 25px;
+  pointer-events: none;
+}
+
+.r-Input.checked .r-Input__container > small + small {
+  left: 5px;
+}
+
+@keyframes writing {
+  0% {
+    transform: translate(0px, 1px);
+  }
+  10% {
+    transform: translate(2px, 1px);
+  }
+  20% {
+    transform: translate(4px, -1px);
+  }
+  30% {
+    transform: translate(6px, -1px);
+  }
+  40% {
+    transform: translate(8px, 1px);
+  }
+  50% {
+    transform: translate(10px, 1px);
+  }
+  60% {
+    transform: translate(12px, -1px);
+  }
+  70% {
+    transform: translate(14px, -1px);
+  }
+  80% {
+    transform: translate(16px, 1px);
+  }
+  90% {
+    transform: translate(18px, 1px);
+  }
+  100% {
+    transform: translate(20px, -1px);
+  }
+}
+@-webkit-keyframes writing {
+  0% {
+    transform: translate(0px, 1px);
+  }
+  10% {
+    transform: translate(2px, 1px);
+  }
+  20% {
+    transform: translate(4px, -1px);
+  }
+  30% {
+    transform: translate(6px, -1px);
+  }
+  40% {
+    transform: translate(8px, 1px);
+  }
+  50% {
+    transform: translate(10px, 1px);
+  }
+  60% {
+    transform: translate(12px, -1px);
+  }
+  70% {
+    transform: translate(14px, -1px);
+  }
+  80% {
+    transform: translate(16px, 1px);
+  }
+  90% {
+    transform: translate(18px, 1px);
+  }
+  100% {
+    transform: translate(20px, -1px);
+  }
+}
+.writing {
+  position: absolute;
+  z-index: 3;
+  opacity: 0;
+  position: absolute;
+  top: 16px;
+  left: 5px;
+  font-size: 12px !important;
+}
+.r-Input.checked .writing {
+  animation: writing 0.8s infinite;
+  -webkit-animation: writing 0.8s infinite;
+  z-index: 3;
+  opacity: 1;
+}
+textarea,
+input {
+  font-size: 13px;
+}

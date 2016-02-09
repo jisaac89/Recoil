@@ -1,0 +1,33 @@
+@import "../Global";
+
+.r-Layer{
+  .clearfix;
+  .transition(all 350ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
+  width:100%;
+  position: relative;
+}
+
+.r-Layer.light{
+  background: @light-background;
+}
+
+.clearfix {
+	zoom: 1;
+	&:before, &:after {
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear:both;
+		}
+}
+
+.r-Layer.e-scroll-y{
+    -webkit-overflow-scrolling: touch;
+  overflow-y:scroll;
+}
+
+.r-Layer.e-scroll-x{
+    -webkit-overflow-scrolling: touch;
+  overflow-x:scroll;
+}

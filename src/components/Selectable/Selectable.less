@@ -1,0 +1,56 @@
+@import "../Global";
+
+.r-Selectable{
+  background: @input-background;
+
+  width:100%;
+
+  input{
+   width:100%;
+  }
+
+  .r-Selectable__border.primary{
+    -webkit-transform: scaleX(0);
+    opacity: 0;
+    border:1px solid transparent;
+    width:0%;
+    position: absolute ;
+    bottom: 0 ;
+    left: 0 ;
+    right: 0 ;
+    margin: auto ;
+    -webkit-transition: all 600ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
+       -moz-transition: all 600ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
+         -o-transition: all 600ms cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition: all 600ms cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
+    -webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+       -moz-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+         -o-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
+  }
+
+  .r-Selectable__border.error {
+    -webkit-transform: scaleX(0);
+    opacity: 0;
+    border:1px solid transparent;
+    width:0%;
+    position: absolute ;
+    bottom: 0 ;
+    left: 0 ;
+    right: 0 ;
+    margin: auto ;
+  }
+}
+
+.r-Selectable.checked .r-Selectable__border{
+  -webkit-transform: scaleX(498) !important;
+  opacity: 1;
+}
+
+.r-Selectable.checked .r-Selectable__border.primary{
+  border-color:@selectable-primary-background !important;
+}
+
+.r-Selectable.checked .r-Selectable__border.error{
+  border-color: @selectable-error-background !important;
+}

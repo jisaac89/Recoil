@@ -1,0 +1,207 @@
+@import "../Global";
+
+.r-Button{
+  color: @default-color;
+  background: @default-background;
+  border:1px solid @default-border;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: inline-block;
+  padding: 6px 15px;
+  border-radius: @default-border-radius;
+  text-decoration: none;
+  vertical-align: middle;
+  margin: 0;
+  line-height: 18px;
+  font-size:18px !important;
+  position:relative;
+  .transition(all 200ms ease-in);
+}
+
+.r-Button:focus{
+  transform:scale(.95);
+}
+
+.r-Button.link{
+  border:1px solid @default-border;
+  background:transparent;
+}
+
+.r-Button:hover,
+.r-Button:focus{
+  background:  @default--hover-background;
+}
+
+.r-Button.primary:hover,
+.r-Button.primary:focus{
+  background: @primary--hover-background !important;
+  color: @primary--hover-color !important;
+  border: 1px solid  @primary--hover-border !important;
+}
+.r-Button.error:hover,
+.r-Button.error:focus{
+  background: @error--hover-background;
+}
+.r-Button.link:hover,
+.r-Button.link:focus{
+  color:@link--hover-color;
+  background: @link-background;
+}
+
+.r-Button.large{
+  padding: 10px 2pc;
+  height: auto;
+  font-size:18px;
+}
+
+.r-Button.small{
+  padding: 3px 1pc;
+  height: auto;
+  font-size:12px !important;
+  font-weight: normal;
+}
+
+.r-Button.large{
+  padding: 10px 2pc;
+  height: auto;
+}
+
+.r-Button.xlarge{
+  padding: 20px 2pc;
+  font-size:30px;
+  height: auto;
+}
+
+
+.r-Button.block{
+  width:100%;
+  text-align:inherit;
+}
+
+.r-Button.disabled, .r-Button[disabled], fieldset[disabled] .r-Button {
+    cursor: not-allowed;
+    opacity: .50;
+    filter: alpha(opacity=65);
+    .box-shadow(0)
+}
+
+.r-Button:active {
+  .scale(0.92);
+  outline:0;
+}
+
+.r-Button:focus{
+  outline:0;
+}
+
+.spacing .r-Button {
+  margin-right: 5px;
+}
+
+.spacing .r-Button:last-child {
+  margin-right: 0px;
+}
+
+.text-center .r-Button span,
+.text-center .r-Button {
+  align-items: center;
+}
+
+/* --ghost button */
+
+.r-Button.ghost{
+  color: @default-color;
+  background: transparent;
+  border-color: transparent !important;
+}
+
+.r-Button.ghost:hover{
+  color:@default--hover-color !important;
+  background: transparent !important;
+}
+
+/*Pointers*/
+
+.r-Button.pointer:before {
+    top: 50%;
+    left: -1px;
+}
+
+.r-Button.pointer:before {
+    border-color: inherit;
+}
+
+.r-Button.pointer:hover:before {
+    color: rgba(0,0,0,.8);
+}
+
+.r-Button.pointer:before {
+    border-width: 1px 0 0 1px;
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    top: 0;
+    left: 50%;
+}
+
+.r-Button.pointer:before {
+    background-color: inherit;
+    border-style: solid;
+    border-color: inherit;
+    position: absolute;
+    content: '';
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background-image: none;
+    z-index: 2;
+    width: .6666em;
+    height: .6666em;
+    -webkit-transition: background .1s ease;
+    transition: background .1s ease;
+}
+
+.r-Button.pointer.left:before {
+    border-width: 0 0 1px 1px;
+    -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    transform: translateX(-50%) translateY(-50%) rotate(45deg);
+    bottom: auto;
+    right: auto;
+    top: 50%;
+    left: 0;
+}
+
+.r-Button.pointer.right:before {
+    top: 50%;
+    right: -1px;
+}
+
+.r-Button.pointer.right:before {
+    border-width: 1px 1px 0 0;
+    -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
+    -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);
+    transform: translateX(50%) translateY(-50%) rotate(45deg);
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    left: auto;
+}
+
+.r-Button{
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.r-Button.pointer{
+  overflow: visible;
+}
+
+.button-overlay{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height: 100%;
+}

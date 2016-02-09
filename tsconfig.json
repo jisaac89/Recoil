@@ -1,0 +1,42 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "preserve",
+        "experimentalDecorators": true
+    },
+    "filesGlob": [
+        "*/**/*.{ts,tsx}"
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "compileOnSave": false,
+    "files": [
+        "src/components/Align/Align.tsx",
+        "src/components/Button/Button.tsx",
+        "src/components/Card/Card.tsx",
+        "src/components/Door/Door.tsx",
+        "src/components/Emerge/Emerge.tsx",
+        "src/components/Grid/Grid.tsx",
+        "src/components/Input/Input.tsx",
+        "src/components/Layer/Layer.tsx",
+        "src/components/Loading/Loading.tsx",
+        "src/components/Pane/Pane.tsx",
+        "src/components/Selectable/Selectable.tsx",
+        "src/components/Shrink/Shrink.tsx",
+        "src/components/Toolbar/Toolbar.tsx",
+        "src/components/Transform/Transform.tsx",
+        "src/constants/constants.ts",
+        "src/interfaces/interfaces.d.ts",
+        "src/utils/utils.ts",
+        "typings/classnames/classnames.d.ts",
+        "typings/react/react-dom.d.ts",
+        "typings/react/react.d.ts",
+        "typings/tsd.d.ts"
+    ]
+}
