@@ -161,7 +161,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let showTooltip = () => {
       if (this.state.showShortcut) {
         return (
-          <small className="shortcut animated fadeInUp">{this.props.shortcut}</small>
+          <span className="shortcut animated fadeInUp">{this.props.shortcut}</span>
         )
       }
     }
