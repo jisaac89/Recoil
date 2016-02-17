@@ -4,7 +4,6 @@ import './Layer.less';
 
 interface ILayerProps {
   border? : boolean;
-  flex? : boolean;
   overflow? : boolean;
   left? : boolean;
   right? : boolean;
@@ -26,7 +25,6 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
   public static defaultProps = {
     overflow: false,
     type: '',
-    flex: false,
     left: false,
     right: false,
     border: ''
@@ -47,7 +45,6 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
 
     let layerClass = classNames(
       'r-Layer',
-      {'flexit' :(props.flex)},
       {'flohide' : (props.overflow)},
       {'pull-left': (props.left)},
       {'pull-right': (props.right)},

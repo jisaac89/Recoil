@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDOM from 'react-dom';
+import {findDOMNode} from 'react-dom';
 import classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
@@ -14,7 +14,6 @@ interface IButtonProps {
   href?: string;
   target?: string;
   ghost? : boolean;
-  flex? : boolean;
   strech? : boolean;
   children? : boolean;
   pointer? : any;
@@ -28,7 +27,6 @@ interface IButtonProps {
   tabIndex? : any;
   progressiveClick? : any;
   shortcut? : any;
-
 }
 
 interface IButtonState {
@@ -75,7 +73,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     const props = context.props;
     let state = context.state;
 
-    context.refButton = ReactDOM.findDOMNode<HTMLElement>(context.refs["button"]);
+    const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
 
     context.setState({
       showShortcut : e.shiftKey ? true : false
@@ -85,7 +83,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     })
 
     if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
-      context.refButton.click();
+      refButton.click();
       context.setState({
         clickCounter: 1
       })
@@ -136,7 +134,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       'r-Button',
       {'ghost' : (props.ghost)},
       {'block' : (props.block)},
-      {'flex' : (props.flex)},
       {'column' : (props.strech)},
       {'icon' : (!props.children)},
       {'pointer' : (props.pointer)},
@@ -167,7 +164,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
 
     return (
-      <button ref="button" tabIndex={props.tabIndex} progressiveClick={props.progressiveClick} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
+      <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
         {iconPartial}
         {(()=>{
           if (!this.state.showShortcut) {

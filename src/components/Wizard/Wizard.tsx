@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import './Wizard.less';
 // stateless functional comp =D
@@ -8,9 +8,12 @@ const WizardSlide = (props) => {
       {props.children}
     </div>
   );
-};
+}
 
-export default class Wizard extends Component {
+export default class Wizard extends React.Component<any, any>{
+  public static defaultProps = {
+    slideIndex: 0
+  }
   constructor(props) {
     super(props);
   }
@@ -54,11 +57,3 @@ export default class Wizard extends Component {
     }
   }
 }
-
-Wizard.propTypes = {
-  slideIndex : React.PropTypes.number
-};
-
-Wizard.defaultProps = {
-  slideIndex: 0
-};

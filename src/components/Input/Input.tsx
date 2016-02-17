@@ -23,7 +23,6 @@ interface IInputProps {
   rows? : any;
   cols? : any;
   block? : any;
-  flex? : any;
   autoExpand? : any;
   onChange? : any;
   scrollHeight?: any;
@@ -174,7 +173,6 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     let inputWrapperClass = classNames(
       'r-Input',
       {'w100' : (props.block)},
-      {'flex' : (props.flex)},
       {'checked' : (this.state.checked)},
       props.className
     );

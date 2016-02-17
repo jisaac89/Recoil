@@ -29,8 +29,6 @@ export default class Loading extends React.Component<ILoadingProps, ILoadingStat
       'animated',
       'fadeInUp',
       'text-center',
-      'mt15',
-      'ml5',
       props.className
     )
 

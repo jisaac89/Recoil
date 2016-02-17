@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import './Card.less';
 
 interface ICardProps {
-  flex? : any;
   resize? : any;
   hover? : any;
   scale? : any;
@@ -48,7 +47,6 @@ export default class Card extends React.Component<ICardProps, ICardState> {
     let headerPartial;
     let cardClass = classNames(
       'r-Card',
-      {'flexit' : (props.flex)},
       {'resize' : (props.resize)},
       {'e-hover' : (props.hover)},
       {'e-scale' : (props.scale)},

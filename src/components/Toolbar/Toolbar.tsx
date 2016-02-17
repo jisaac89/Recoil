@@ -7,7 +7,6 @@ interface IToolbarProps {
   vertical?: boolean;
   textCenter?: boolean;
   noRadius?: boolean;
-  flex?: boolean;
   spacing?: boolean;
   block?: boolean;
   left?: boolean;
@@ -32,7 +31,6 @@ export default class Toolbar extends React.Component<IToolbarProps, IToolbarStat
       {'vertical' : (props.vertical)},
       {'text-center' : (props.textCenter)},
       {'no-radius' : (props.noRadius)},
-      {'flexit' : (props.flex)},
       {'spacing' : (props.spacing)},
       {'w100' : (props.block)},
       {'pull-left' : (props.left)},
