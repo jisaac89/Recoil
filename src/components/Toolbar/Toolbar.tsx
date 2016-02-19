@@ -15,6 +15,10 @@ interface IToolbarProps {
   className?: any;
   style?: any;
   children?: any;
+  flex? : any;
+  flow? : any;
+  justify? : any;
+  align ? : any;
 }
 
 interface IToolbarState {}
@@ -24,6 +28,21 @@ export default class Toolbar extends React.Component<IToolbarProps, IToolbarStat
 
     const self = this;
     const props = self.props;
+
+    // FLEX ===============================
+
+    let flexFlow;
+    let flexStyle;
+
+    if (props.flex) {
+      flexStyle = {
+        'flex-flow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+        'justify-content' : props.justify ? props.justify : 'flex-start',
+        'align-items' : props.align ? props.align : 'stretch'
+      }
+    }
+
+    // ====================================
 
     let toolbarClass = classNames(
       'r-Toolbar',
@@ -37,11 +56,12 @@ export default class Toolbar extends React.Component<IToolbarProps, IToolbarStat
       {'pull-right' : (props.right)},
       {'w100': (props.fill)},
       {'wh100': (props.fill)},
+      {'flex': (props.flex)},
       props.className
     );
 
     return (
-      <div style={props.style} className={toolbarClass}>
+      <div ref="toolbar" style={flexStyle} className={toolbarClass}>
         {props.children}
       </div>
     );

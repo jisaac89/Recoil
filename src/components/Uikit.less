@@ -1629,53 +1629,6 @@ a {
 .l0 {
   left: 0;
 }
-.flex {
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-  -ms-flex: 1 1 0.000000001px;
-  -webkit-flex: 1;
-  flex: 1;
-  -webkit-flex-basis: 0.000000001px;
-  flex-basis: 0.000000001px;
-}
-.flexit {
-  -ms-flex-direction: row;
-  -webkit-flex-direction: row;
-  flex-direction: row;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  -ms-flex-direction: row;
-  -webkit-flex-direction: row;
-  -webkit-justify-content: center;
-  flex-direction: row;
-  -webkit-align-items: center;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  margin: 0;
-  -webkit-align-items: inherit;
-}
-.flex.column {
-  -ms-flex-direction: column;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-
-.flexit.column {
-  -ms-flex-direction: column;
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
 
 .black{
   background-color: #111;
@@ -1739,15 +1692,6 @@ form{
   -webkit-animation-play-state: running;
 }
 
-.r-UserGames-Background{
-  position: relative;
-  -webkit-transform: scale(1) translateY(0px) rotate3d(0, 0, 0, 0deg);
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: ease-in-out;
-  -webkit-animation-direction: alternate;
-  -webkit-animation-play-state: running;
-}
-
 .e-float {
   position: relative;
   -webkit-animation-duration: 1s;
@@ -1756,46 +1700,6 @@ form{
   -webkit-animation-timing-function: ease-in-out;
   -webkit-animation-direction: alternate;
   -webkit-animation-play-state: running;
-}
-
-.flex-center {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: flex-start;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-align-content: flex-end;
-    align-content: flex-end;
-}
-
-.chat-right > .r-Card.gameInfo {
-    float: left;
-}
-
-.chat-right > .r-Card.gameInfo:before {
-    border-right-color: #1995FF;
-    border-left-color: transparent;
-    left:-12px;
-    right:auto;
-}
-
-.chat-right .chatter_avatar{
-  left:10px;
-  right:auto;
-}
-
-.r-UserGames-Game:nth-child(even){
-  background: #E2E3E4;
-}
-
-.create-game-pane{
-  z-index: 20 !important;
-  height: 100% !important;
 }
 
 .selected-header-wrapper{
@@ -1819,4 +1723,15 @@ form{
 	&:after {
 		clear:both;
 		}
+}
+
+
+// ==================== Flex ====================
+
+.flex{
+  display:flex !important;
+}
+
+.flex-coloumn{
+
 }

@@ -21,7 +21,7 @@ export default class Emerge extends React.Component<IEmergeProps, IEmergeState> 
 
     public static defaultProps = {
       if: true,
-      enter : 'fadeInUpBig',
+      enter : 'fadeInUp',
       exit : 'fadeOutDownBig',
       delay: 300,
       overflow: false
