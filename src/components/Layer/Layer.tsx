@@ -17,6 +17,10 @@ interface ILayerProps {
   onClick?: () => void;
   block? : any;
   key? : any;
+  align? : any;
+  flex? : any;
+  flow? : any;
+  justify? : any;
 }
 
 interface ILayerState {}
@@ -43,6 +47,22 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
       borderClass = null;
     }
 
+    // FLEX ===============================
+
+    let flexFlow;
+    let flexStyle;
+
+    if (props.flex) {
+      flexStyle = {
+        '-webkit-flex-flow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+        'justify-content' : props.justify ? props.justify : 'flex-start',
+        'align-items' : props.align ? props.align : 'stretch',
+        '-webkit-flex' : props.flex !== '' ? props.flex : null,
+      }
+    }
+
+    // ====================================
+
     let layerClass = classNames(
       'r-Layer',
       {'flohide' : (props.overflow)},
@@ -52,12 +72,14 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
       {'e-scroll-x': (props.scrollX)},
       {'h100': (props.fill)},
       {'w100': (props.fill)},
+      {'flex': (props.flex)},
       borderClass,
       props.type,
       props.className
     );
+
     return(
-      <div onClick={props.onClick} className={layerClass} style={props.style}>
+      <div onClick={props.onClick} className={layerClass} style={flexStyle}>
         {props.children}
       </div>
     );
