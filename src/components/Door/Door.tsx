@@ -32,7 +32,8 @@ class Door extends React.Component<IDoorProps, IDoorState>{
      };
 
      let doorClass = classNames(
-       'r-Door'
+       'r-Door',
+       props.className
      );
 
      let doorStyle = {
@@ -41,8 +42,7 @@ class Door extends React.Component<IDoorProps, IDoorState>{
      };
 
      let doorContainerClass = classNames(
-       'r-Door__container',
-       props.className
+       'r-Door__container'
      );
 
      return(

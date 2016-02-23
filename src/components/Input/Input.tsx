@@ -27,6 +27,7 @@ interface IInputProps {
   onChange? : any;
   scrollHeight?: any;
   focusOnMount? : any;
+  focusDelay? : any;
 }
 
 interface IInputState {
@@ -64,13 +65,26 @@ export default class Input extends React.Component<IInputProps, IInputState>{
         self.setState({
           checked: true
         });
+      } else if (nextProps.focusOnMount != this.props.focusOnMount) {
+        this.focusOnMount();
       }
+  }
+  public componentWillUnmount() {
+    let inputDOM = ReactDOM.findDOMNode<HTMLInputElement>(this.refs['refInput']);
+    inputDOM.blur();
   }
   public focusOnMount() {
     let inputDOM = ReactDOM.findDOMNode<HTMLInputElement>(this.refs['refInput']);
+
+    let focusDelay;
+
+
+    focusDelay = this.props.focusDelay || 550;
+
+
     window.setTimeout(function() {
       inputDOM.focus();
-    }, 350);
+    }, focusDelay);
   }
   public focus(e){
     this.setState({

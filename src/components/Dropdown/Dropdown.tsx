@@ -4,6 +4,7 @@ import Selectable from '../Selectable/Selectable';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import classNames from 'classnames';
+import Layer from '../Layer/Layer';
 import './Dropdown.less';
 
 const DropdownHeader = (props) => {
@@ -52,10 +53,10 @@ const DropdownButton = (props) => {
 
 const DropdownSelection = (props) => {
   return (
-    <div className={props.className}>
+    <Layer overflow className={props.className}>
       <DropdownHeader deselectItem={props.deselectItem} selectedItem={props.selectedItem} from={props.from} onClick={props.onClick} icon={props.icon} title={props.title}></DropdownHeader>
       <Selectable checked={props.checked} />
-    </div>
+    </Layer>
   );
 };
 
