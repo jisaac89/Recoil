@@ -3,7 +3,7 @@ import DropdownWrapper from './DropdownWrapper';
 import Selectable from '../Selectable/Selectable';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import Layer from '../Layer/Layer';
 import './Dropdown.less';
 

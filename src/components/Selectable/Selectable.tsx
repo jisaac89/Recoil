@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import './Selectable.less';
 
 class Selectable extends React.Component<ISelectableProps, ISelectableState> {
