@@ -173,10 +173,10 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     // switch input type depending on propType
     switch (props.type) {
       case 'password':
-        inputPartial = <input value={props.value} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.placeholder} type='password' />;
+        inputPartial = <input defaultValue={props.value} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.placeholder} type='password' />;
         break;
       case 'text':
-        inputPartial = <input value={props.value} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.placeholder} type='text' />;
+        inputPartial = <input defaultValue={props.value} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.placeholder} type='text' />;
         break;
       case 'textarea':
         inputPartial = <textarea rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;
