@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import './Layer.less';
 
 interface ILayerProps {
@@ -61,7 +61,7 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
       }
     }
 
-    // ====================================
+    // ===================================
 
     let layerClass = classNames(
       'r-Layer',
