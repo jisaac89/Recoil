@@ -6,11 +6,19 @@ export default class GridHeader extends React.Component<any, any>{
   render() {
 
     let createColumns = (item, index) => {
-      return (
-        <Layer key={index} className="p5 w100">
-          <a>{item.name}</a>
-        </Layer>
-      )
+      if (item.titleTemplate) {
+        return (
+          <Layer style={{width : item.width}} key={index} className="p5 w100">
+            {item.titleTemplate}
+          </Layer>
+        )
+      } else {
+        return (
+          <Layer style={{width : item.width}} key={index} className="p5 w100">
+            <a>{item.name}</a>
+          </Layer>
+        )
+      }
     }
 
     return(

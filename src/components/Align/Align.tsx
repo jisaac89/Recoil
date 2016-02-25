@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import './Align.less';
 
 export default class Align extends React.Component<any, any>{

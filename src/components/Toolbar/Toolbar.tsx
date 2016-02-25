@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import './Toolbar.less';
 
 interface IToolbarProps {
@@ -62,7 +62,7 @@ export default class Toolbar extends React.Component<IToolbarProps, IToolbarStat
     );
 
     return (
-      <div ref="toolbar" style={flexStyle} className={toolbarClass}>
+      <div ref="toolbar" style={Object.assign({}, flexStyle, props.style)} className={toolbarClass}>
         {props.children}
       </div>
     );

@@ -21,7 +21,7 @@ export default class GridBody extends React.Component<any, any>{
       let columnArray = [];
       for (let x = 0; x < columns.length; x++) {
         columnArray.push(
-          <Layer key={key+x} className="p5 w100">
+          <Layer style={{width: columns[x].width}} key={key+x} className="p5 w100">
             {(()=>{
               if (columns[x].tabbable) {
                 return (
@@ -29,7 +29,13 @@ export default class GridBody extends React.Component<any, any>{
                     {self.props.dataSource[key][columns[x].name]}
                   </Button>
                 )
-              } else {
+              } else if (columns[x].titleTemplate) {
+                  return (
+                    <Layer>
+                      {columns[x].titleTemplate}
+                    </Layer>
+                  )
+                } else {
                 return (
                   <Layer>
                     {self.props.dataSource[key][columns[x].name]}

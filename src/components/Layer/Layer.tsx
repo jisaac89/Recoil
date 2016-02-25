@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import './Layer.less';
 
 interface ILayerProps {
@@ -79,7 +79,7 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
     );
 
     return(
-      <div onClick={props.onClick} className={layerClass} style={flexStyle}>
+      <div onClick={props.onClick} className={layerClass} style={Object.assign({}, flexStyle, props.style)}>
         {props.children}
       </div>
     );

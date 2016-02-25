@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import './Door.less';
 
 interface IDoorProps {
