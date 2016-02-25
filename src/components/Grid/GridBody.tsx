@@ -25,7 +25,7 @@ export default class GridBody extends React.Component<any, any>{
             {(()=>{
               if (columns[x].tabbable) {
                 return (
-                  <Button ghost>
+                  <Button size="small" ghost>
                     {self.props.dataSource[key][columns[x].name]}
                   </Button>
                 )

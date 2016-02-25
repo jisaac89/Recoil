@@ -5,6 +5,9 @@ import Layer from '../Layer/Layer';
 export default class GridHeader extends React.Component<any, any>{
   render() {
 
+    const self = this;
+    const props = self.props;
+
     let createColumns = (item, index) => {
       if (item.titleTemplate) {
         return (
@@ -21,10 +24,14 @@ export default class GridHeader extends React.Component<any, any>{
       }
     }
 
-    return(
-      <Layer flex flow="row nowrap">
-        {this.props.columns.map(createColumns)}
-      </Layer>
-    )
+    if (props.hideHeader) {
+      return null;
+    } else {
+      return(
+        <Layer flex flow="row nowrap">
+          {this.props.columns.map(createColumns)}
+        </Layer>
+      )
+    }
   }
 }

@@ -21,6 +21,7 @@ export default class Grid extends React.Component<any, any>{
     return (
       <Layer className={'w100'}>
         <GridHeader
+          hideHeader={props.hideHeader}
           columns={columns}
           dataSource={dataSource}
         />
