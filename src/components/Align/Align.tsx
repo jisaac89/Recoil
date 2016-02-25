@@ -17,6 +17,8 @@ export default class Align extends React.Component<any, any>{
     const margin = props.margin;
     const data = props.data;
 
+    let child;
+
     let maxCol, colwidth, singleColWidth, columnStyle;
     let index = 0;
 
@@ -28,7 +30,7 @@ export default class Align extends React.Component<any, any>{
 
     singleColWidth = (100 - (margin * (maxCol - 1))) / maxCol;
 
-    return React.Children.map(children, (child, i) => {
+    return React.Children.map(children, (child : any, i) => {
       if( (!React.isValidElement(child)) ){
           return child;
       }
@@ -47,10 +49,10 @@ export default class Align extends React.Component<any, any>{
       }
 
       let childProps = {
-        className: 'r-Align__column ' + child.props.className,
+        className: 'r-Align__column ' + child[props].className,
         style : columnStyle
       };
-      childProps.children = this.recursiveCloneChildren(child.props.children);
+      childProps[children] = this.recursiveCloneChildren(child[props].children);
       return React.cloneElement(child, childProps);
     });
   }

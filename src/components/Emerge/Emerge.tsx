@@ -53,7 +53,7 @@ export default class Emerge extends React.Component<IEmergeProps, IEmergeState> 
         );
       };
 
-      let newChildren = React.Children.map<any>(this.props.children, (child) => {
+      let newChildren = React.Children.map(this.props.children, (child : any) => {
         let exit, enter;
 
         if (props.if === true) {

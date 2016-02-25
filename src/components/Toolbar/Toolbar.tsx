@@ -36,9 +36,10 @@ export default class Toolbar extends React.Component<IToolbarProps, IToolbarStat
 
     if (props.flex) {
       flexStyle = {
-        'flex-flow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
-        'justify-content' : props.justify ? props.justify : 'flex-start',
-        'align-items' : props.align ? props.align : 'stretch'
+        'WebkitFlexFlow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+        'justifyContent' : props.justify ? props.justify : 'flex-start',
+        'alignItems' : props.align ? props.align : 'stretch',
+        'WebkitFlex' : props.flex !== '' ? props.flex : null
       }
     }
 

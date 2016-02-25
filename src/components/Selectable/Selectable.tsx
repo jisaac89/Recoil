@@ -2,6 +2,17 @@ import * as React from 'react';
 import classNames from 'classnames';
 import './Selectable.less';
 
+interface ISelectableProps {
+  checked? : boolean;
+  classNames? : any;
+  ghost? : boolean;
+  children ? : any;
+  type? : string;
+}
+interface ISelectableState {
+
+}
+
 class Selectable extends React.Component<ISelectableProps, ISelectableState> {
 
   public static defaultProps = {

@@ -54,10 +54,10 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
 
     if (props.flex) {
       flexStyle = {
-        '-webkit-flex-flow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
-        'justify-content' : props.justify ? props.justify : 'flex-start',
-        'align-items' : props.align ? props.align : 'stretch',
-        '-webkit-flex' : props.flex !== '' ? props.flex : null,
+        'WebkitFlexFlow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+        'justifyContent' : props.justify ? props.justify : 'flex-start',
+        'alignItems' : props.align ? props.align : 'stretch',
+        'WebkitFlex' : props.flex !== '' ? props.flex : null,
       }
     }
 
