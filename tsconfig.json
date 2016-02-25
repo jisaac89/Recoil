@@ -20,6 +20,7 @@
         "src/components/Align/Align.tsx",
         "src/components/Button/Button.tsx",
         "src/components/Card/Card.tsx",
+        "src/components/Checkbox/Checkbox.tsx",
         "src/components/Door/Door.tsx",
         "src/components/Dropdown/Dropdown.tsx",
         "src/components/Dropdown/DropdownWrapper.tsx",

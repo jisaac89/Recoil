@@ -10,6 +10,11 @@ import GridHeader from './GridHeader';
 import GridBody from './GridBody';
 
 export default class Grid extends React.Component<any, any>{
+
+  public columns(uid) {
+    this.props.columns(uid);
+  }
+
   render() {
 
     const self = this;
@@ -22,14 +27,16 @@ export default class Grid extends React.Component<any, any>{
       <Layer className={'w100'}>
         <GridHeader
           hideHeader={props.hideHeader}
-          columns={columns}
+          columns={this.props.columns}
           dataSource={dataSource}
+          selectedKey={props.selectedKey}
         />
         <GridBody
-          addItemToCart={this.props.addItemToCart}
-          cart={props.cart}
-          columns={columns}
+          onSelect={this.props.onSelect}
+          selected={props.selected}
+          columns={this.props.columns}
           dataSource={dataSource}
+          selectedKey={props.selectedKey}
         />
       </Layer>
     )
