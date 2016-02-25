@@ -4,8 +4,8 @@ import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 
 export default class GridBody extends React.Component<any, any>{
-  public addItemToCart(uid) {
-    this.props.addItemToCart(uid);
+  public onSelect(key) {
+    this.props.onSelect(key);
   }
   render(){
 
@@ -25,20 +25,20 @@ export default class GridBody extends React.Component<any, any>{
             {(()=>{
               if (columns[x].tabbable) {
                 return (
-                  <Button size="small" ghost>
+                  <Button ghost>
                     {self.props.dataSource[key][columns[x].name]}
                   </Button>
                 )
               } else if (columns[x].titleTemplate) {
                   return (
                     <Layer>
-                      {columns[x].titleTemplate}
+                      <small>{columns[x].titleTemplate}</small>
                     </Layer>
                   )
                 } else {
                 return (
                   <Layer>
-                    {self.props.dataSource[key][columns[x].name]}
+                    <small>{self.props.dataSource[key][columns[x].name]}</small>
                   </Layer>
                 )
               }
@@ -49,10 +49,10 @@ export default class GridBody extends React.Component<any, any>{
 
       rowArray.push(
         <Layer block>
-          <Layer flex flow="row nowrap" justify="flex-start" className="posrel w100" onClick={this.addItemToCart.bind(this, self.props.dataSource[key].uid)}  key={key}>
+          <Layer flex flow="row nowrap" justify="flex-start" className="posrel w100" onClick={this.onSelect.bind(this, self.props.dataSource[key][self.props.selectedKey])}  key={key}>
             {columnArray}
           </Layer>
-          <Selectable checked={props.cart.has(self.props.dataSource[key].uid)} />
+          <Selectable checked={props.selected ? props.selected.has(self.props.dataSource[key][self.props.selectedKey]) : false} />
         </Layer>
       )
     }

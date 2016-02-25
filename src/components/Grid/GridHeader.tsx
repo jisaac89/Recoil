@@ -29,7 +29,7 @@ export default class GridHeader extends React.Component<any, any>{
     } else {
       return(
         <Layer flex flow="row nowrap">
-          {this.props.columns.map(createColumns)}
+          {this.props.columns().map(createColumns)}
         </Layer>
       )
     }
