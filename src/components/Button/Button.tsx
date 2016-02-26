@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {findDOMNode} from 'react-dom';
 import * as classNames from 'classnames';
+import {findDOMNode} from 'react-dom';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
 
@@ -82,24 +82,24 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
 
-    // context.setState({
-    //   showShortcut : e.shiftKey ? true : false
-    // })
-    // context.setState({
-    //   shiftCounter: 1
-    // })
-    //
-    // if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
-    //   refButton.click();
-    //   context.setState({
-    //     clickCounter: 1
-    //   })
-    //   setTimeout(() => {
-    //     context.setState({
-    //       clickCounter: 0
-    //     })
-    //   }, 300);
-    // }
+    context.setState({
+      showShortcut : e.shiftKey ? true : false
+    })
+    context.setState({
+      shiftCounter: 1
+    })
+
+    if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
+      refButton.click();
+      context.setState({
+        clickCounter: 1
+      })
+      setTimeout(() => {
+        context.setState({
+          clickCounter: 0
+        })
+      }, 300);
+    }
   }
 
   public onClick() {

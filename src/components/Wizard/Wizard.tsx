@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Wizard.less';
 // stateless functional comp =D
-const WizardSlide = (props) => {
+const WizardSlide : any = (props : any) => {
   return (
     <div className={props.className} key={props.key}>
       {props.children}

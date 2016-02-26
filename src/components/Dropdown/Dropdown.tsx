@@ -1,13 +1,13 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 import DropdownWrapper from './DropdownWrapper';
 import Selectable from '../Selectable/Selectable';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import * as classNames from 'classnames';
 import Layer from '../Layer/Layer';
 import './Dropdown.less';
 
-const DropdownHeader = (props) => {
+const DropdownHeader : any = (props) => {
   return (
     <div className="r-DropdownHeader" onClick={props.onClick}>
 
@@ -34,7 +34,7 @@ const DropdownHeader = (props) => {
   );
 };
 
-const DropdownButton = (props) => {
+const DropdownButton : any = (props) => {
   return (
       <div className="r-DropdownButton">
         <Button
@@ -51,7 +51,7 @@ const DropdownButton = (props) => {
   );
 };
 
-const DropdownSelection = (props) => {
+const DropdownSelection : any = (props) => {
   return (
     <Layer overflow className={props.className}>
       <DropdownHeader deselectItem={props.deselectItem} selectedItem={props.selectedItem} from={props.from} onClick={props.onClick} icon={props.icon} title={props.title}></DropdownHeader>
@@ -60,7 +60,7 @@ const DropdownSelection = (props) => {
   );
 };
 
-const DropdownSearch = (props) => {
+const DropdownSearch : any = (props) => {
   return (
     <div>
       <Input className="w100" icon={props.icon} value={props.inputValue} type="text" onChange={props.onChange} title={props.title}></Input>

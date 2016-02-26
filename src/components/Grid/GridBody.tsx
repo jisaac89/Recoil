@@ -2,6 +2,7 @@ import * as React from 'react';
 import Selectable from '../Selectable/Selectable';
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
+import Emerge from '../Emerge/Emerge';
 
 export default class GridBody extends React.Component<any, any>{
   public onSelect(key) {
@@ -58,9 +59,11 @@ export default class GridBody extends React.Component<any, any>{
     }
 
     return (
-      <div>
-        {rowArray}
-      </div>
+      <Layer className="r-GridBody">
+        <Emerge delay={40}>
+          {rowArray}
+        </Emerge>
+      </Layer>
     )
   }
 }
