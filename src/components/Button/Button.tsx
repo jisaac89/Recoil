@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {findDOMNode} from 'react-dom';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
 

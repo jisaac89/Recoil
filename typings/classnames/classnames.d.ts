@@ -15,8 +15,9 @@ interface ClassNamesFn {
 	(...classes: ClassValue[]): string;
 }
 
-declare var classNames: ClassNamesFn;
+// declare var classNames: ClassNamesFn;
 
 declare module "classnames" {
+	function classNames(...classes: any[]): string;
 	export default classNames
 }
