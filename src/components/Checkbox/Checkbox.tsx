@@ -9,6 +9,14 @@ export default class Checkbox extends React.Component<any,any>{
     }
   }
 
+  public componentDidMount() {
+    if (this.props.checked) {
+      this.setState({
+        checked: true
+      })
+    }
+  }
+
   public toggleChecked() {
     this.setState({
       checked : this.state.checked ? false : true
@@ -16,9 +24,11 @@ export default class Checkbox extends React.Component<any,any>{
   }
 
   public componentWillReceiveProps(nextProps) {
-    this.setState({
-      checked : nextProps.checked !== this.props.checked
-    })
+    if (nextProps.checked !== this.props.checked) {
+      this.setState({
+        checked : true
+      })
+    }
   }
 
   render() {

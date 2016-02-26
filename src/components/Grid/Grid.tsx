@@ -24,19 +24,17 @@ export default class Grid extends React.Component<any, any>{
 
     console.log(this.props.dataSource);
     return (
-      <Layer className={'w100'}>
+      <Layer overflow className={'w100'}>
         <GridHeader
           hideHeader={props.hideHeader}
           columns={this.props.columns}
           dataSource={dataSource}
-          selectedKey={props.selectedKey}
         />
         <GridBody
           onSelect={this.props.onSelect}
           selected={props.selected}
           columns={this.props.columns}
           dataSource={dataSource}
-          selectedKey={props.selectedKey}
         />
       </Layer>
     )
