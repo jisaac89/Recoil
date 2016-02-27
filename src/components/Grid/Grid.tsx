@@ -22,6 +22,15 @@ export default class Grid extends React.Component<any, any>{
     this.loadCollection();
   }
 
+  public componentWillReceiveProps(nextProps) {
+    const self = this;
+    if (nextProps.dataSource !== self.props.dataSource) {
+      self.setState({
+        collection: nextProps.dataSource
+      });
+    }
+  }
+
   public loadCollection() {
     let collection = [];
     for (let key in this.props.dataSource) {
@@ -72,19 +81,17 @@ export default class Grid extends React.Component<any, any>{
 
   }
 
-  public columns(uid) {
-    this.props.columns(uid);
+  public columns(id) {
+    this.props.columns(id);
   }
 
   render() {
-
     const self = this;
     const props = self.props;
     let state = self.state;
 
     let {columns, dataSource} = props;
 
-    console.log(state.collection);
     return (
       <Layer overflow className='r-Grid w100'>
         <GridHeader

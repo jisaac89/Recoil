@@ -19,6 +19,7 @@ class Door extends React.Component<IDoorProps, IDoorState>{
   public componentDidMount() {
     this.refDoor = ReactDOM.findDOMNode<HTMLInputElement>(this.refs["door"]);
   }
+
   render(){
      const self = this;
      const props = self.props;
