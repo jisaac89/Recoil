@@ -3,6 +3,36 @@ import Selectable from '../Selectable/Selectable';
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 
+class GridHeaderSortable extends React.Component<any,any>{
+
+  constructor() {
+    super();
+    this.state = {
+      sortType: 'none'
+    }
+  }
+
+  public toggleSorting(columnName) {
+    this.props.toggleSorting(columnName)
+  }
+
+  render() {
+
+    const self = this;
+    const props = self.props;
+
+    let {item} = props;
+
+    return (
+      <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} className="ptb5 w100">
+        {this.props.children}
+        <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost size="small" icon={this.props.sortType === 'none' ? 'minus' : this.props.sortType === 'desc' ? 'chevron-down' : 'chevron-up' } />
+      </Layer>
+    );
+  }
+}
+
+
 export default class GridHeader extends React.Component<any, any>{
   public toggleSorting(key) {
     this.props.toggleSorting(key);
@@ -23,17 +53,23 @@ export default class GridHeader extends React.Component<any, any>{
       else if (props.sortable) {
         if (item.headerTemplate) {
           return (
-            <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} key={index} className="ptb5 w100">
+            <GridHeaderSortable
+              key={index}
+              item={item}
+              toggleSorting={this.toggleSorting.bind(this)}
+            >
               {item.headerTemplate()}
-              <Button icon='chevron-down' />
-            </Layer>
+            </GridHeaderSortable>
           )
         } else {
           return (
-            <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} key={index} className="ptb5 w100">
+            <GridHeaderSortable
+              key={index}
+              item={item}
+              toggleSorting={this.toggleSorting.bind(this)}
+            >
               <a>{item.name}</a>
-              <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost size="small" icon={this.props.sortType === 'none' ? 'minus' : this.props.sortType === 'desc' ? 'chevron-down' : 'chevron-up' } />
-            </Layer>
+            </GridHeaderSortable>
           )
         }
       }

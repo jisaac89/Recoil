@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import Button from '../Button/Button';
 
 export default class Checkbox extends React.Component<any,any>{
   constructor() {

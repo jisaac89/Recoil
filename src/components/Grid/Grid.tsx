@@ -13,8 +13,7 @@ export default class Grid extends React.Component<any, any>{
   constructor() {
     super();
     this.state = {
-      collection: [],
-      sortType: 'none'
+      collection: []
     }
   }
 
