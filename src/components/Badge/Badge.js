@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import './Badge.less';
 
 export default class Badge extends Component {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import Card from '../Card/Card';
 import Button from '../Button/Button';
 import Layer from '../Layer/Layer';

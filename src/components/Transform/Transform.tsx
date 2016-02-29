@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import './Transform.less';
 
 export default class Transform extends React.Component<any, any> {
