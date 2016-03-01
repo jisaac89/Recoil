@@ -13,7 +13,14 @@ class GridHeaderSortable extends React.Component<any,any>{
   }
 
   public toggleSorting(columnName) {
-    this.props.toggleSorting(columnName)
+
+    const self = this;
+
+    this.setState({
+      sortType: this.state.sortType === 'none' ? 'desc' : this.state.sortType === 'desc' ? 'asc' : 'none'
+    })
+
+    this.props.toggleSorting(columnName, self.state.sortType);
   }
 
   render() {
@@ -26,7 +33,7 @@ class GridHeaderSortable extends React.Component<any,any>{
     return (
       <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} className="ptb5 w100">
         {this.props.children}
-        <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost size="small" icon={this.props.sortType === 'none' ? 'minus' : this.props.sortType === 'desc' ? 'chevron-down' : 'chevron-up' } />
+        <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost size="small" icon={this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'chevron-down' : 'chevron-up' } />
       </Layer>
     );
   }
@@ -34,8 +41,8 @@ class GridHeaderSortable extends React.Component<any,any>{
 
 
 export default class GridHeader extends React.Component<any, any>{
-  public toggleSorting(key) {
-    this.props.toggleSorting(key);
+  public toggleSorting(key, sortType) {
+    this.props.toggleSorting(key, sortType);
   }
   render() {
 

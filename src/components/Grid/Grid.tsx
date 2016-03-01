@@ -7,13 +7,18 @@ import Button from '../Button/Button';
 
 import GridHeader from './GridHeader';
 import GridBody from './GridBody';
+import GridFooter from './GridFooter';
 
 export default class Grid extends React.Component<any, any>{
 
   constructor() {
     super();
     this.state = {
-      collection: []
+      collection: [],
+      pageList: [],
+      currentPage : 1,
+      numberPerPage: 10,
+      numberOfPages: 0
     }
   }
 
@@ -28,20 +33,50 @@ export default class Grid extends React.Component<any, any>{
         collection: nextProps.dataSource
       });
     }
+
+    this.loadList(this.state.collection);
   }
 
   public loadCollection() {
+
+    const self = this;
+    const props = self.props;
+    let state = self.state;
+
     let collection = [];
-    for (let key in this.props.dataSource) {
-      collection.push(this.props.dataSource[key])
+    for (let key in props.dataSource) {
+      collection.push(props.dataSource[key])
     }
 
-    this.setState({
-      collection: collection
-    })
+    if (props.numberPerPage) {
+      self.setState({
+        numberPerPage: props.numberPerPage
+      })
+    }
+
+    self.setState({
+      collection: collection,
+      numberOfPages : Math.ceil(collection.length / this.state.numberPerPage)
+    });
+
+    this.loadList(this.state.collection);
   }
 
-  public toggleSorting(key) {
+  public loadList(collection) {
+    const state = this.state;
+    let begin = ((state.currentPage - 1) * state.numberPerPage);
+    let end = begin + state.numberPerPage;
+
+    let pageList = collection.slice(begin, end);
+
+    if (pageList.length > 0) {
+      this.setState({
+        pageList: pageList
+      })
+    }
+  }
+
+  public toggleSorting(key, sortType) {
     let updatedCollection = [];
 
     for (let key in this.props.dataSource) {
@@ -67,21 +102,58 @@ export default class Grid extends React.Component<any, any>{
       return updatedCollection;
     }
 
-    if (this.state.sortType === 'none') {
+    if (sortType === 'none') {
       sortCollection();
-    } else if (this.state.sortType === 'desc') {
+    } else if (sortType === 'desc') {
       sortCollection().reverse();
     }
 
     this.setState({
       collection: updatedCollection,
-      sortType : this.state.sortType === 'none' ? 'desc' : this.state.sortType === 'desc' ? 'asc' : 'none'
+      currentPage : 1
     })
+
+    this.loadList(this.state.collection);
 
   }
 
   public columns(id) {
     this.props.columns(id);
+  }
+
+  public firstPage() {
+    this.setState({
+      currentPage : 1
+    })
+    this.loadList(this.state.collection);
+  }
+
+  public previousPage() {
+    this.setState({
+      currentPage :  this.state.currentPage -= 1
+    })
+    this.loadList(this.state.collection);
+  }
+
+  public nextPage() {
+    this.setState({
+      currentPage : this.state.currentPage += 1
+    })
+    this.loadList(this.state.collection);
+  }
+
+  public lastPage() {
+    this.setState({
+      currentPage : this.state.numberOfPages
+    })
+    this.loadList(this.state.collection);
+  }
+
+  public gotoPage(i) {
+    this.setState({
+      currentPage : i + 1
+    })
+    this.loadList(this.state.collection);
   }
 
   render() {
@@ -95,18 +167,26 @@ export default class Grid extends React.Component<any, any>{
       <Layer overflow className='r-Grid w100'>
         <GridHeader
           hideHeader={props.hideHeader}
-          columns={this.props.columns}
-          dataSource={this.state.collection}
+          columns={props.columns}
+          dataSource={state.pageList}
           sortable={props.sortable}
           toggleSorting={this.toggleSorting.bind(this)}
-          sortType={this.state.sortType}
+          sortType={state.sortType}
         />
         <GridBody
-          onSelect={this.props.onSelect}
+          onSelect={props.onSelect}
           selected={props.selected}
-          columns={this.props.columns}
-          dataSource={this.state.collection}
+          columns={props.columns}
+          dataSource={state.pageList}
         />
+        <GridFooter
+          gotoPage={this.gotoPage.bind(this)}
+          previousPage={this.previousPage.bind(this)}
+          nextPage={this.nextPage.bind(this)}
+          lastPage={this.lastPage.bind(this)}
+          firstPage={this.firstPage.bind(this)}
+          {...state}
+          {...props} />
       </Layer>
     )
   }
