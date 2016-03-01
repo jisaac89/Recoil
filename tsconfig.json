@@ -27,6 +27,7 @@
         "src/components/Emerge/Emerge.tsx",
         "src/components/Grid/Grid.tsx",
         "src/components/Grid/GridBody.tsx",
+        "src/components/Grid/GridFooter.tsx",
         "src/components/Grid/GridHeader.tsx",
         "src/components/Input/Input.tsx",
         "src/components/Layer/Layer.tsx",

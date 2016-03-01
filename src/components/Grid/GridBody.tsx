@@ -8,6 +8,7 @@ export default class GridBody extends React.Component<any, any>{
   public onSelect(key) {
     this.props.onSelect(key);
   }
+
   render(){
 
     const self = this;
@@ -49,7 +50,7 @@ export default class GridBody extends React.Component<any, any>{
       }
 
       rowArray.push(
-        <div className="posrel w100 flohide" key={key}>
+        <div className={"posrel w100 flohide " + (props.selected.has(dataSource[key].id) ? 'selected' : null)} key={key}>
           <Layer flex flow="row nowrap" justify="flex-start" className="posrel w100" onClick={this.onSelect.bind(this, self.props.dataSource[key])}>
           {columnArray}
           </Layer>
