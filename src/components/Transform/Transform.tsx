@@ -1,5 +1,7 @@
+/// <reference path="../../recoil.d.ts" />
+
 import * as React from 'react';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import './Transform.less';
 
 export default class Transform extends React.Component<any, any> {
