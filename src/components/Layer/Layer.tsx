@@ -2,8 +2,6 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Layer.less';
 
-console.log(classNames);
-
 interface ILayerProps {
   border? : boolean;
   overflow? : boolean;
