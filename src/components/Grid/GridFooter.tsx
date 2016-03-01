@@ -23,11 +23,11 @@ export default class GridFooter extends React.Component<any,any>{
 
     return (
       <Toolbar spacing className="mt10">
-        <Button tabIndex={-1} onClick={this.props.firstPage} size="small" icon="fast-backward"></Button>
-        <Button tabIndex={-1} onClick={this.props.previousPage} size="small" icon="step-backward"></Button>
+        <Button disabled={this.props.currentPage === 1} tabIndex={-1} onClick={this.props.firstPage} size="small" icon="fast-backward"></Button>
+        <Button disabled={this.props.currentPage === 1} tabIndex={-1} onClick={this.props.previousPage} size="small" icon="step-backward"></Button>
         {paginationPartial}
-        <Button tabIndex={-1} onClick={this.props.nextPage} size="small" icon="step-forward"></Button>
-        <Button tabIndex={-1} onClick={this.props.lastPage} size="small" icon="fast-forward"></Button>
+        <Button disabled={this.props.currentPage === this.props.numberOfPages} tabIndex={-1} onClick={this.props.nextPage} size="small" icon="step-forward"></Button>
+        <Button disabled={this.props.currentPage === this.props.numberOfPages} tabIndex={-1} onClick={this.props.lastPage} size="small" icon="fast-forward"></Button>
       </Toolbar>
     )
 
