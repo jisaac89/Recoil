@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 import Pane from '../Pane/Pane';
 import './Input.less';

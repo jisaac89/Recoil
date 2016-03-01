@@ -1,5 +1,7 @@
+/// <reference path="../../recoil.d.ts" />
+
 import * as React from 'react';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import './Wizard.less';
 // stateless functional comp =D
 const WizardSlide : any = (props : any) => {

@@ -41,10 +41,7 @@
         "src/components/Wizard/Wizard.tsx",
         "src/constants/constants.ts",
         "src/interfaces/interfaces.d.ts",
-        "src/utils/utils.ts",
-        "typings/classnames/classnames.d.ts",
-        "typings/react/react-dom.d.ts",
-        "typings/react/react.d.ts",
-        "typings/tsd.d.ts"
+        "src/recoil.d.ts",
+        "src/utils/utils.ts"
     ]
 }

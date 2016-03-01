@@ -1,5 +1,7 @@
+/// <reference path="../../recoil.d.ts" />
+
 import * as React from 'react';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import './Shrink.less';
 
 export default class Shrink extends React.Component<any, any>{

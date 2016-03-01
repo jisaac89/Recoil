@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import * as classNames from 'classnames';
 import Button from '../Button/Button';
 import './Modal.less';
 export default class Modal extends React.Component {
