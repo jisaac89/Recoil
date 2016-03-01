@@ -34,7 +34,7 @@ export default class Grid extends React.Component<any, any>{
       });
     }
 
-    this.loadList(this.state.collection);
+    this.loadList(this.state.collection, 1);
   }
 
   public loadCollection() {
@@ -59,12 +59,12 @@ export default class Grid extends React.Component<any, any>{
       numberOfPages : Math.ceil(collection.length / this.state.numberPerPage)
     });
 
-    this.loadList(this.state.collection);
+    this.loadList(collection, 1);
   }
 
-  public loadList(collection) {
+  public loadList(collection, currentPage) {
     const state = this.state;
-    let begin = ((state.currentPage - 1) * state.numberPerPage);
+    let begin = ((currentPage - 1) * state.numberPerPage);
     let end = begin + state.numberPerPage;
 
     let pageList = collection.slice(begin, end);
@@ -113,7 +113,7 @@ export default class Grid extends React.Component<any, any>{
       currentPage : 1
     })
 
-    this.loadList(this.state.collection);
+    this.loadList(this.state.collection, 1);
 
   }
 
@@ -125,35 +125,35 @@ export default class Grid extends React.Component<any, any>{
     this.setState({
       currentPage : 1
     })
-    this.loadList(this.state.collection);
+    this.loadList(this.state.collection, this.state.currentPage -= 1);
   }
 
   public previousPage() {
     this.setState({
       currentPage :  this.state.currentPage -= 1
     })
-    this.loadList(this.state.collection);
+    this.loadList(this.state.collection, this.state.currentPage -= 1);
   }
 
   public nextPage() {
     this.setState({
       currentPage : this.state.currentPage += 1
     })
-    this.loadList(this.state.collection);
+    this.loadList(this.state.collection, this.state.currentPage += 1);
   }
 
   public lastPage() {
     this.setState({
       currentPage : this.state.numberOfPages
     })
-    this.loadList(this.state.collection);
+    this.loadList(this.state.collection, this.state.numberOfPages);
   }
 
   public gotoPage(i) {
     this.setState({
       currentPage : i + 1
     })
-    this.loadList(this.state.collection);
+    this.loadList(this.state.collection, i + 1);
   }
 
   render() {
