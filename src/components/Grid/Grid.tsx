@@ -17,8 +17,9 @@ export default class Grid extends React.Component<any, any>{
       collection: [],
       pageList: [],
       currentPage : 1,
-      numberPerPage: 10,
-      numberOfPages: 0
+      numberPerPage: 20,
+      numberOfPages: 0,
+      dataType: null
     }
   }
 
@@ -39,13 +40,34 @@ export default class Grid extends React.Component<any, any>{
 
   public loadCollection() {
 
+    let isArray = function(a) {
+      return (!!a) && (a.constructor === Array);
+    };
+
+    let isObject = function(a) {
+        return (!!a) && (a.constructor === Object);
+    };
+
     const self = this;
     const props = self.props;
     let state = self.state;
 
     let collection = [];
-    for (let key in props.dataSource) {
-      collection.push(props.dataSource[key])
+
+    if (isArray(props.dataSource)) {
+        for (let i = 0; i < props.dataSource.length; i++) {
+          collection.push(props.dataSource[i]);
+        }
+        self.setState({
+          dataType: 'Array'
+        })
+    } else if (isObject(props.dataSource)) {
+        for (let key in props.dataSource) {
+          collection.push(props.dataSource[key])
+        }
+        self.setState({
+          dataType: 'Object'
+        })
     }
 
     if (props.numberPerPage) {
@@ -56,7 +78,7 @@ export default class Grid extends React.Component<any, any>{
 
     self.setState({
       collection: collection,
-      numberOfPages : Math.ceil(collection.length / this.state.numberPerPage)
+      numberOfPages : Math.ceil(collection.length / props.numberPerPage)
     });
 
     this.loadList(collection, 1);
@@ -165,28 +187,41 @@ export default class Grid extends React.Component<any, any>{
 
     return (
       <Layer overflow className='r-Grid w100'>
-        <GridHeader
-          hideHeader={props.hideHeader}
-          columns={props.columns}
-          dataSource={state.pageList}
-          sortable={props.sortable}
-          toggleSorting={this.toggleSorting.bind(this)}
-          sortType={state.sortType}
-        />
+        {(()=>{
+          if (state.dataType === 'Array') {
+            return (
+              <GridHeader
+                hideHeader={props.hideHeader}
+                columns={props.columns}
+                dataSource={state.pageList}
+                sortable={props.sortable}
+                toggleSorting={this.toggleSorting.bind(this)}
+                sortType={state.sortType}
+              />
+            )
+          }
+        })()}
         <GridBody
           onSelect={props.onSelect}
           selected={props.selected}
           columns={props.columns}
           dataSource={state.pageList}
+          dataType={state.dataType}
         />
-        <GridFooter
-          gotoPage={this.gotoPage.bind(this)}
-          previousPage={this.previousPage.bind(this)}
-          nextPage={this.nextPage.bind(this)}
-          lastPage={this.lastPage.bind(this)}
-          firstPage={this.firstPage.bind(this)}
-          {...state}
-          {...props} />
+        {(()=>{
+          if (state.dataType === 'Array') {
+            return (
+              <GridFooter
+                gotoPage={this.gotoPage.bind(this)}
+                previousPage={this.previousPage.bind(this)}
+                nextPage={this.nextPage.bind(this)}
+                lastPage={this.lastPage.bind(this)}
+                firstPage={this.firstPage.bind(this)}
+                {...state}
+                {...props} />
+            )
+          }
+        })()}
       </Layer>
     )
   }
