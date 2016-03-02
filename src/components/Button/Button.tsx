@@ -16,7 +16,7 @@ interface IButtonProps {
   ghost? : boolean;
   strech? : boolean;
   children? : boolean;
-  pointer? : any;
+  pointer? : boolean;
   right? : boolean;
   left? : boolean;
   size? : string;
@@ -24,8 +24,8 @@ interface IButtonProps {
   style? : any;
   checked? : boolean;
   onClick?: () => void;
-  tabIndex? : any;
-  progressiveClick? : any;
+  tabIndex? : number;
+  progressiveClick? : Array<() => string>;
   shortcut? : any;
 }
 

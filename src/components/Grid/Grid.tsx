@@ -17,7 +17,7 @@ export default class Grid extends React.Component<any, any>{
       collection: [],
       pageList: [],
       currentPage : 1,
-      numberPerPage: 20,
+      numberPerPage: 10,
       numberOfPages: 0,
       dataType: null
     }
@@ -70,15 +70,19 @@ export default class Grid extends React.Component<any, any>{
         })
     }
 
-    if (props.numberPerPage) {
+    if (props.numberPerPage > 0) {
       self.setState({
         numberPerPage: props.numberPerPage
+      })
+    } else {
+      self.setState({
+        numberPerPage: 10
       })
     }
 
     self.setState({
       collection: collection,
-      numberOfPages : Math.ceil(collection.length / props.numberPerPage)
+      numberOfPages : Math.ceil(collection.length / this.state.numberPerPage)
     });
 
     this.loadList(collection, 1);
@@ -185,22 +189,18 @@ export default class Grid extends React.Component<any, any>{
 
     let {columns, dataSource} = props;
 
+    console.log(state);
+
     return (
       <Layer overflow className='r-Grid w100'>
-        {(()=>{
-          if (state.dataType === 'Array') {
-            return (
-              <GridHeader
-                hideHeader={props.hideHeader}
-                columns={props.columns}
-                dataSource={state.pageList}
-                sortable={props.sortable}
-                toggleSorting={this.toggleSorting.bind(this)}
-                sortType={state.sortType}
-              />
-            )
-          }
-        })()}
+        <GridHeader
+          hideHeader={props.hideHeader}
+          columns={props.columns}
+          dataSource={state.pageList}
+          sortable={props.sortable}
+          toggleSorting={this.toggleSorting.bind(this)}
+          sortType={state.sortType}
+        />
         <GridBody
           onSelect={props.onSelect}
           selected={props.selected}
@@ -208,20 +208,14 @@ export default class Grid extends React.Component<any, any>{
           dataSource={state.pageList}
           dataType={state.dataType}
         />
-        {(()=>{
-          if (state.dataType === 'Array') {
-            return (
-              <GridFooter
-                gotoPage={this.gotoPage.bind(this)}
-                previousPage={this.previousPage.bind(this)}
-                nextPage={this.nextPage.bind(this)}
-                lastPage={this.lastPage.bind(this)}
-                firstPage={this.firstPage.bind(this)}
-                {...state}
-                {...props} />
-            )
-          }
-        })()}
+        <GridFooter
+          gotoPage={this.gotoPage.bind(this)}
+          previousPage={this.previousPage.bind(this)}
+          nextPage={this.nextPage.bind(this)}
+          lastPage={this.lastPage.bind(this)}
+          firstPage={this.firstPage.bind(this)}
+          {...state}
+          {...props} />
       </Layer>
     )
   }
