@@ -105,6 +105,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     });
   }
   public onChange(value) {
+
+    console.log('onChange')
     if (this.props.onChange) {
       this.props.onChange(value.target.value);
     } else {

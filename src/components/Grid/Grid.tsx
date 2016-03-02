@@ -17,7 +17,7 @@ export default class Grid extends React.Component<any, any>{
       collection: [],
       pageList: [],
       currentPage : 1,
-      numberPerPage: 20,
+      numberPerPage: 10,
       numberOfPages: 0,
       dataType: null
     }
@@ -70,15 +70,19 @@ export default class Grid extends React.Component<any, any>{
         })
     }
 
-    if (props.numberPerPage) {
+    if (props.numberPerPage > 0) {
       self.setState({
         numberPerPage: props.numberPerPage
+      })
+    } else {
+      self.setState({
+        numberPerPage: 10
       })
     }
 
     self.setState({
       collection: collection,
-      numberOfPages : Math.ceil(collection.length / props.numberPerPage)
+      numberOfPages : Math.ceil(collection.length / this.state.numberPerPage)
     });
 
     this.loadList(collection, 1);
@@ -184,6 +188,8 @@ export default class Grid extends React.Component<any, any>{
     let state = self.state;
 
     let {columns, dataSource} = props;
+
+    console.log(state);
 
     return (
       <Layer overflow className='r-Grid w100'>

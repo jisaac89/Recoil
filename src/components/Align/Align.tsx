@@ -2,7 +2,18 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Align.less';
 
-export default class Align extends React.Component<any, any>{
+interface IAlignProps {
+  margin?: number;
+  data?: string[];
+  maxCol? : number;
+  children? : any;
+  vertical? : boolean;
+  className? : string;
+}
+
+interface IAlignState {}
+
+export default class Align extends React.Component<IAlignProps, IAlignState>{
 
   public static defaultProps = {
     margin: 0,
@@ -86,7 +97,7 @@ export default class Align extends React.Component<any, any>{
     let createList = (item, index) => {
 
       if (props.maxCol) {
-          let dataIdx = props.data[index];
+          let dataIdx = props.data[index] ;
           colwidth = (singleColWidth * dataIdx) + (margin * (dataIdx - 1));
       }
 
