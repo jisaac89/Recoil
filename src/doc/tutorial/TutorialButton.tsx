@@ -101,7 +101,7 @@ const ButtonProperties = [
     description: 'Sets wether the button is checked.'
   },
   {
-    name :'onClick'
+    name :'onClick',
     type: '()',
     description: 'Set an onClick function to the element.'
   },
