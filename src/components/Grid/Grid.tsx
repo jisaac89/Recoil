@@ -187,20 +187,14 @@ export default class Grid extends React.Component<any, any>{
 
     return (
       <Layer overflow className='r-Grid w100'>
-        {(()=>{
-          if (state.dataType === 'Array') {
-            return (
-              <GridHeader
-                hideHeader={props.hideHeader}
-                columns={props.columns}
-                dataSource={state.pageList}
-                sortable={props.sortable}
-                toggleSorting={this.toggleSorting.bind(this)}
-                sortType={state.sortType}
-              />
-            )
-          }
-        })()}
+        <GridHeader
+          hideHeader={props.hideHeader}
+          columns={props.columns}
+          dataSource={state.pageList}
+          sortable={props.sortable}
+          toggleSorting={this.toggleSorting.bind(this)}
+          sortType={state.sortType}
+        />
         <GridBody
           onSelect={props.onSelect}
           selected={props.selected}
@@ -208,20 +202,14 @@ export default class Grid extends React.Component<any, any>{
           dataSource={state.pageList}
           dataType={state.dataType}
         />
-        {(()=>{
-          if (state.dataType === 'Array') {
-            return (
-              <GridFooter
-                gotoPage={this.gotoPage.bind(this)}
-                previousPage={this.previousPage.bind(this)}
-                nextPage={this.nextPage.bind(this)}
-                lastPage={this.lastPage.bind(this)}
-                firstPage={this.firstPage.bind(this)}
-                {...state}
-                {...props} />
-            )
-          }
-        })()}
+        <GridFooter
+          gotoPage={this.gotoPage.bind(this)}
+          previousPage={this.previousPage.bind(this)}
+          nextPage={this.nextPage.bind(this)}
+          lastPage={this.lastPage.bind(this)}
+          firstPage={this.firstPage.bind(this)}
+          {...state}
+          {...props} />
       </Layer>
     )
   }

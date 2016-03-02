@@ -52,7 +52,7 @@ export default class GridHeader extends React.Component<any, any>{
     let createColumns = (item, index) => {
       if (item.headerTemplate) {
         return (
-          <Layer style={{width : item.width}} key={index} className="ptb5 w100">
+          <Layer style={{width : item.width}} key={index} className="p5 w100">
             {item.headerTemplate()}
           </Layer>
         )
