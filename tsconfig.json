@@ -40,8 +40,15 @@
         "src/components/Transform/Transform.tsx",
         "src/components/Wizard/Wizard.tsx",
         "src/constants/constants.ts",
+        "src/doc/App.tsx",
+        "src/doc/index.tsx",
+        "src/doc/tutorial/TutorialButton.tsx",
         "src/interfaces/interfaces.d.ts",
         "src/recoil.d.ts",
-        "src/utils/utils.ts"
+        "src/utils/utils.ts",
+        "typings/classnames/classnames.d.ts",
+        "typings/react/react-dom.d.ts",
+        "typings/react/react.d.ts",
+        "typings/tsd.d.ts"
     ]
 }

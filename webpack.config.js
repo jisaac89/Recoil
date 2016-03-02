@@ -6,7 +6,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/dev-server',
-    './src/index.tsx'
+    './src/doc/index.tsx'
   ],
   output: {
     path: path.join(__dirname, 'static'),
