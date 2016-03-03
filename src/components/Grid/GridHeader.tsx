@@ -31,7 +31,7 @@ class GridHeaderSortable extends React.Component<any,any>{
     let {item} = props;
 
     return (
-      <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} className="ptb5 w100">
+      <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} className="p5 w100">
         {this.props.children}
         <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost size="small" icon={this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'chevron-down' : 'chevron-up' } />
       </Layer>
@@ -82,7 +82,7 @@ export default class GridHeader extends React.Component<any, any>{
       }
       else {
         return (
-          <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} key={index} className="ptb5 w100">
+          <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} key={index} className="p5 w100">
             <a>{item.name}</a>
           </Layer>
         )

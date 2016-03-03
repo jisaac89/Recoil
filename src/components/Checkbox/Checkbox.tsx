@@ -38,7 +38,7 @@ export default class Checkbox extends React.Component<any,any>{
     let {checked} = props;
 
     return (
-      <Button onClick={this.toggleChecked.bind(this)} tabIndex={-1} ghost right icon={this.state.checked ? 'check floatL' : "circle"}>
+      <Button onClick={this.toggleChecked.bind(this)} tabIndex={-1} ghost right icon={this.state.checked ? 'check floatL' : "circle-o"}>
         <input className="hide" type="checkbox" checked={this.state.checked} />
       </Button>
     )
