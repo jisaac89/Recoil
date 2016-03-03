@@ -35,7 +35,7 @@ class GridRow extends React.Component<any,any>{
     let columnArray = [];
     for (let x = 0; x < columns.length; x++) {
       columnArray.push(
-        <Layer flex flow="column nowrap" justify="center" align="flex-start" style={{width: columns[x].width}} key={i+x} className="ptb5 w100">
+        <Layer flex flow="column nowrap" justify="center" align="flex-start" style={{width: columns[x].width}} key={i+x} className="p5 w100">
           {(()=>{
             if (columns[x].tabbable) {
               return (

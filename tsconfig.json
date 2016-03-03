@@ -45,7 +45,6 @@
         "src/doc/tutorial/TutorialAlign.tsx",
         "src/doc/tutorial/TutorialButton.tsx",
         "src/interfaces/interfaces.d.ts",
-        "src/recoil.d.ts",
         "src/utils/utils.ts"
     ]
 }
