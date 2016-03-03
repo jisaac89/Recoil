@@ -174,7 +174,7 @@ export default class App extends React.Component<any, any> {
           </Dropdown>
         </Toolbar>
 
-        <Wizard slideIndex={this.state.slideIndex}>
+        <Wizard vertical slideIndex={this.state.slideIndex}>
           <TutorialAlign {...state}/>
           <TutorialButton {...state}/>
         </Wizard>
