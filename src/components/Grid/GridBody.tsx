@@ -4,21 +4,8 @@ import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
 
-
 class GridRow extends React.Component<any,any>{
 
-  constructor() {
-    super();
-    this.state = {
-      selected: false
-    }
-  }
-
-  public componentWillReceiveProps(nextProps) {
-    this.setState({
-      selected: nextProps.selected
-    })
-  }
 
   public onSelect(item) {
     this.props.onSelect(item);
@@ -61,12 +48,14 @@ class GridRow extends React.Component<any,any>{
       )
     }
 
+    let selectedItem = this.props.selected(self.props.dataSource[i]);
+
     return (
-      <div className={"re-GridRow posrel w100 flohide " + (this.state.selected ? 'selected' : null)}>
+      <div className={"re-GridRow posrel w100 flohide " + (selectedItem ? 'selected' : null)}>
         <Layer flex flow="row nowrap" justify="flex-start" className="posrel w100" onClick={this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null}>
           {columnArray}
         </Layer>
-        <Selectable checked={this.state.selected ? true : false} />
+        <Selectable checked={selectedItem} />
       </div>
     )
   }
