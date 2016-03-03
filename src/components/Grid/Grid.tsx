@@ -202,6 +202,7 @@ export default class Grid extends React.Component<any, any>{
           sortType={state.sortType}
         />
         <GridBody
+          open={props.open}
           onSelect={props.onSelect}
           selected={props.selected}
           columns={props.columns}

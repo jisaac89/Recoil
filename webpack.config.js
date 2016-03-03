@@ -5,7 +5,8 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/dev-server'
+    'webpack/hot/dev-server',
+    './src/doc/index.tsx'
   ],
   output: {
     path: path.join(__dirname, 'static'),

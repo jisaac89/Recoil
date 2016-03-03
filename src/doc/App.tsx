@@ -20,6 +20,7 @@ import Transform from '../components/Transform/Transform';
 import Wizard from '../components/Wizard/Wizard';
 
 import TutorialButton from './tutorial/TutorialButton';
+import TutorialAlign from './tutorial/TutorialAlign';
 
 const components = [
   {
@@ -96,8 +97,63 @@ const components = [
   },
 ]
 
+let componentsArray = [
+  'Align',
+  'Button',
+  'Card',
+  'Checkbox',
+  'Door',
+  'Dropdown',
+  'Emerge',
+  'Grid',
+  'Input',
+  'Layer',
+  'Loading',
+  'Modal',
+  'Pane',
+  'Selectable',
+  'Shrink',
+  'Toolbar',
+  'Transform',
+  'Wizard'
+]
+
 export default class App extends React.Component<any, any> {
+  constructor() {
+    super();
+    this.state = {
+      selectedItem: '',
+      slideIndex:0
+    }
+  }
+
+  onSelected(item) {
+
+    const self = this;
+
+    if (item == 'Align') {
+      self.setState({
+        selectedItem: item,
+        slideIndex:0
+      })
+    } else if (item == 'Button') {
+      self.setState({
+        selectedItem: item,
+        slideIndex:1
+      })
+    }
+
+      console.log(this.state.selectedItem)
+  }
+
   render() {
+
+    const self = this;
+    const props = self.props;
+    let state = self.state;
+
+    console.log(this.state.selectedItem)
+
     return (
       <Layer className="h100">
         <Layer type="light" className="p10 border-bottom">
@@ -105,14 +161,23 @@ export default class App extends React.Component<any, any> {
           <Button size="xlarge" right type="primary">Download Latest Version</Button>
         </Layer>
         <hr className="rainbow-line" />
-        <Toolbar block noRadius className="border-bottom">
-          <Button size="small" ghost>Home</Button>
-          <Button size="small" ghost>Get Started</Button>
-          <Button size="small" ghost>Components</Button>
+        <Toolbar block noRadius className="ptb10 border-bottom pr10">
+          <Button ghost>Home</Button>
+          <Button ghost>Get Started</Button>
+          <Dropdown
+            right
+            onSelected={this.onSelected.bind(this)}
+            title="Components"
+            type="selection"
+            data={componentsArray}
+          >
+          </Dropdown>
         </Toolbar>
 
-        <TutorialButton />
-
+        <Wizard slideIndex={this.state.slideIndex}>
+          <TutorialAlign {...state}/>
+          <TutorialButton {...state}/>
+        </Wizard>
 
       </Layer>
     )

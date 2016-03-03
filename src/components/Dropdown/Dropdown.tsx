@@ -122,6 +122,8 @@ export default class Dropdown extends React.Component<any, any>{
       'r-Dropdown',
       {'e-open' : (state.open)},
       {'dblock w100' : (props.block)},
+      {'pull-right' : (props.right)},
+      {'pull-left' : (props.left)},
       props.className
     );
 

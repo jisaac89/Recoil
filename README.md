@@ -3,8 +3,8 @@
 Recoil is a front-end react powered framework.
 
   - Built for rapid development.
-  - Smart versions of default control.
-  - Typescript version included!
+  - Advanced versions of default controls, e.g Button, Input
+  - Typescript included.
 
 > The main goal of Recoil was to build a front end framework that allows developers to rapidly create mobile
 > first web applications
@@ -14,15 +14,16 @@ Recoil is a front-end react powered framework.
 
 ### Tech
 
-Recoil uses a number of open source projects to work properly:
+Recoil uses a number of awesome open source projects to work properly:
 
-* [Font Awesome] - Icons ftw
-* [Typescript] - Type support for JS
-* [classNames] - Made my class life easier
-* [Animate.css] - Awesome animation CSS boilerplace
-* [Normalize.css] - The best CSS Reset
+* [React] - Recoil wouldn't exist without it.
+* [Typescript] - Type support for JS.
+* [classNames] - Made my class life easier.
+* [Font Awesome] - Icons ftw.
+* [Animate.css] - Awesome animation CSS boilerplate.
+* [Normalize.css] - CSS Reset.
 
-And of course big thanks to Bootsrap, Semantics UI, Googles Material UI for design enspirations!
+And of course big thanks to Bootstrap, Semantics UI, Googles Material UI for design inspirations!
 
 ### Installation
 
@@ -36,7 +37,7 @@ $ npm start
 
 ### Videos
 
-Help Videos on how to use each component can be found here:
+Helpful videos on how to use each component can be found here:
 
 * [Align]
 * [Button]
@@ -44,7 +45,6 @@ Help Videos on how to use each component can be found here:
 * [Checkbox]
 * [Door]
 * [Dropdown]
-* [DropdownWrapper]
 * [Emerge]
 * [Grid]
 * [Input]
