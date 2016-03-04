@@ -19,40 +19,52 @@ import Toolbar from '../../components/Toolbar/Toolbar';
 import Transform from '../../components/Transform/Transform';
 import Wizard from '../../components/Wizard/Wizard';
 
-const AlignProperties = [
+const EmergeProperties = [
   {
-    name :'margin',
-    type: 'number',
-    options: '',
-    description: 'Defines the margin between the aligned components.'
+    name :'if',
+    type: 'boolean',
+    options: 'true, false. True by default.',
+    description: 'Defines if the element should emerge and stagger its children.'
   },
   {
-    name :'data',
-    type: 'array of numbers',
+    name :'enter',
+    type: 'string',
+    options: 'Uses animate.css',
+    description: 'Add the type of animations the staggered children will display as on enter.'
+  },
+  {
+    name :'exit',
+    type: 'string',
+    options: 'Uses animate.css',
+    description: 'Add the type of animations the staggered children will display as on exit.'
+  },
+  {
+    name :'delay',
+    type: 'number',
     options: '',
-    description: 'Defines how columns are layed out.'
+    description: 'Set the delay in milliseconds for each staggered child to appears.'
+  },
+  {
+    name :'overflow',
+    type: 'string',
+    options: 'true, false',
+    description: 'Defines if the elements overflow is visible.'
   },
   {
     name :'className',
     type: 'string',
     options: '',
-    description: 'Add a list of class names.'
+    description: 'Defines a list of class names for the element.'
   },
   {
-    name :'maxCol',
-    type: 'number',
+    name :'style',
+    type: 'string',
     options: '',
-    description: 'Defines the maximum amount of columns.'
-  },
-  {
-    name :'vertical',
-    type: 'boolean',
-    options: 'true, false',
-    description: 'Defines if the components are aligned vertically.'
+    description: 'Add inline styles to the element.'
   }
 ]
 
-export default class TutorialAlign extends React.Component<any,any>{
+export default class TutorialEmerge extends React.Component<any,any>{
   constructor() {
     super();
 
@@ -85,28 +97,38 @@ export default class TutorialAlign extends React.Component<any,any>{
     const columns = [
       {name: 'name', width:200},
       {name: 'type', width:110},
-      {name: 'options', width:150},
+      {name: 'options', width:250},
       {name: 'description', width:1300}
     ]
 
     return (
       <Layer className="p50">
 
-        <h1>Align</h1>
+        <h1>Emerge</h1>
 
         <Layer className="ptb10">
           <h2 className="pb10">Description</h2>
-          <p>The Align component is a flex alternative, it aligns components either horizontally or vertically with a option margin set.</p>
+          <p>The Emerge component staggers children into view if a certain event happens.</p>
         </Layer>
 
         <Layer className="ptb10">
           <h2 className="pb10">Examples</h2>
           <Layer className="ptb10">
-            <Layer className="p10 dark">
-              <Align margin={1}>
-                <Layer type="light" className="p20">Aligned Element 1</Layer>
-                <Layer type="light" className="p20">Aligned Element 2</Layer>
-              </Align>
+            <Layer className="p10 light">
+              <Emerge delay={300} if={this.props.slideIndex === 6}>
+                <Button className="p10 mr10">
+                  A
+                </Button>
+                <Button className="p10 mr10">
+                  B
+                </Button>
+                <Button className="p10 mr10">
+                  C
+                </Button>
+                <Button className="p10">
+                  D
+                </Button>
+              </Emerge>
             </Layer>
           </Layer>
         </Layer>
@@ -116,7 +138,7 @@ export default class TutorialAlign extends React.Component<any,any>{
           <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
           <Door open={this.state.showProps}>
             <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={EmergeProperties} />
             </Layer>
           </Door>
         </Layer>

@@ -19,52 +19,50 @@ import Toolbar from '../../components/Toolbar/Toolbar';
 import Transform from '../../components/Transform/Transform';
 import Wizard from '../../components/Wizard/Wizard';
 
-const AlignProperties = [
+interface IDoorProps {
+  open? : boolean;
+  className? : any;
+  children? : any;
+  overflow? : boolean;
+}
+
+const DoorProperties = [
   {
-    name :'margin',
-    type: 'number',
-    options: '',
-    description: 'Defines the margin between the aligned components.'
+    name :'open',
+    type: 'boolean',
+    options: 'true, false, false by default',
+    description: 'Defines if the element is open or closed.'
   },
   {
-    name :'data',
-    type: 'array of numbers',
-    options: '',
-    description: 'Defines how columns are layed out.'
+    name :'overflow',
+    type: 'boolean',
+    options: 'true, false',
+    description: 'Defines if the element is overflow is visible.'
   },
   {
     name :'className',
-    type: 'string',
-    options: '',
-    description: 'Add a list of class names.'
-  },
-  {
-    name :'maxCol',
-    type: 'number',
-    options: '',
-    description: 'Defines the maximum amount of columns.'
-  },
-  {
-    name :'vertical',
     type: 'boolean',
     options: 'true, false',
-    description: 'Defines if the components are aligned vertically.'
+    description: 'Defines a set of class names for the element.'
   }
 ]
 
-export default class TutorialAlign extends React.Component<any,any>{
+export default class TutorialDoor extends React.Component<any,any>{
   constructor() {
     super();
 
     this.state = {
       showProps : true,
-      showVideo: false
+      showVideo: false,
+
+      doorIsOpen : false
     }
   }
 
   toggleShowProps() {
     this.setState({
       showVideo: false,
+      doorIsOpen: false,
       showProps: this.state.showProps ? false : true
     })
   }
@@ -72,7 +70,16 @@ export default class TutorialAlign extends React.Component<any,any>{
   toggleShowVideo() {
     this.setState({
       showProps: false,
+      doorIsOpen: false,
       showVideo: this.state.showVideo ? false : true
+    })
+  }
+
+  toggleDoorIsOpen() {
+    this.setState({
+      showProps: false,
+      showVideo: false,
+      doorIsOpen: this.state.doorIsOpen ? false : true
     })
   }
 
@@ -92,21 +99,23 @@ export default class TutorialAlign extends React.Component<any,any>{
     return (
       <Layer className="p50">
 
-        <h1>Align</h1>
+        <h1>Door</h1>
 
         <Layer className="ptb10">
           <h2 className="pb10">Description</h2>
-          <p>The Align component is a flex alternative, it aligns components either horizontally or vertically with a option margin set.</p>
+          <p>The Door component opens or closes its children depending on an if statement. By default door are always closed.</p>
         </Layer>
 
         <Layer className="ptb10">
           <h2 className="pb10">Examples</h2>
           <Layer className="ptb10">
-            <Layer className="p10 dark">
-              <Align margin={1}>
-                <Layer type="light" className="p20">Aligned Element 1</Layer>
-                <Layer type="light" className="p20">Aligned Element 2</Layer>
-              </Align>
+            <Layer>
+              <Button className="mb10" checked={this.state.doorIsOpen} onClick={this.toggleDoorIsOpen.bind(this)}>Toggle Door Open</Button>
+              <Door open={this.state.doorIsOpen}>
+                <Layer type="light" className="p10">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </Layer>
+              </Door>
             </Layer>
           </Layer>
         </Layer>
@@ -116,7 +125,7 @@ export default class TutorialAlign extends React.Component<any,any>{
           <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
           <Door open={this.state.showProps}>
             <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={DoorProperties} />
             </Layer>
           </Door>
         </Layer>

@@ -19,40 +19,16 @@ import Toolbar from '../../components/Toolbar/Toolbar';
 import Transform from '../../components/Transform/Transform';
 import Wizard from '../../components/Wizard/Wizard';
 
-const AlignProperties = [
+const ChecboxProperties = [
   {
-    name :'margin',
-    type: 'number',
-    options: '',
-    description: 'Defines the margin between the aligned components.'
-  },
-  {
-    name :'data',
-    type: 'array of numbers',
-    options: '',
-    description: 'Defines how columns are layed out.'
-  },
-  {
-    name :'className',
-    type: 'string',
-    options: '',
-    description: 'Add a list of class names.'
-  },
-  {
-    name :'maxCol',
-    type: 'number',
-    options: '',
-    description: 'Defines the maximum amount of columns.'
-  },
-  {
-    name :'vertical',
+    name :'checked',
     type: 'boolean',
     options: 'true, false',
-    description: 'Defines if the components are aligned vertically.'
+    description: 'Defines if the element is checked.'
   }
 ]
 
-export default class TutorialAlign extends React.Component<any,any>{
+export default class TutorialCheckbox extends React.Component<any,any>{
   constructor() {
     super();
 
@@ -92,21 +68,18 @@ export default class TutorialAlign extends React.Component<any,any>{
     return (
       <Layer className="p50">
 
-        <h1>Align</h1>
+        <h1>Checkbox</h1>
 
         <Layer className="ptb10">
           <h2 className="pb10">Description</h2>
-          <p>The Align component is a flex alternative, it aligns components either horizontally or vertically with a option margin set.</p>
+          <p>The Checkbox component is an advanced version of the standard input type='checkbox' control.</p>
         </Layer>
 
         <Layer className="ptb10">
           <h2 className="pb10">Examples</h2>
           <Layer className="ptb10">
-            <Layer className="p10 dark">
-              <Align margin={1}>
-                <Layer type="light" className="p20">Aligned Element 1</Layer>
-                <Layer type="light" className="p20">Aligned Element 2</Layer>
-              </Align>
+            <Layer className="p10 light">
+              <Checkbox />
             </Layer>
           </Layer>
         </Layer>
@@ -116,7 +89,7 @@ export default class TutorialAlign extends React.Component<any,any>{
           <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
           <Door open={this.state.showProps}>
             <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={ChecboxProperties} />
             </Layer>
           </Door>
         </Layer>

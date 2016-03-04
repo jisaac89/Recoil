@@ -21,6 +21,23 @@ import Wizard from '../components/Wizard/Wizard';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
+import TutorialCard from './tutorial/TutorialCard';
+import TutorialCheckbox from './tutorial/TutorialCheckbox';
+import TutorialDoor from './tutorial/TutorialDoor';
+
+import TutorialDropdown from './tutorial/TutorialDropdown';
+import TutorialEmerge from './tutorial/TutorialEmerge';
+// import TutorialGrid from './tutorial/TutorialGrid';
+// import TutorialInput from './tutorial/TutorialInput';
+// import TutorialLayer from './tutorial/TutorialLayer';
+// import TutorialLoading from './tutorial/TutorialLoading';
+// import TutorialModal from './tutorial/TutorialModal';
+// import TutorialPane from './tutorial/TutorialPane';
+// import TutorialSelectable from './tutorial/TutorialSelectable';
+// import TutorialShrink from './tutorial/TutorialShrink';
+// import TutorialToolbar from './tutorial/TutorialToolbar';
+// import TutorialTransform from './tutorial/TutorialTransform';
+// import TutorialWizard from './tutorial/TutorialWizard';
 
 const components = [
   {
@@ -141,9 +158,33 @@ export default class App extends React.Component<any, any> {
         selectedItem: item,
         slideIndex:1
       })
+    } else if (item === 'Card') {
+      self.setState({
+        selectedItem: item,
+        slideIndex:2
+      })
+    } else if (item === 'Checkbox') {
+      self.setState({
+        selectedItem: item,
+        slideIndex:3
+      })
+    } else if (item === 'Door') {
+      self.setState({
+        selectedItem: item,
+        slideIndex:4
+      })
+    } else if (item === 'Dropdown') {
+      self.setState({
+        selectedItem: item,
+        slideIndex:5
+      })
+    } else if (item === 'Emerge') {
+      self.setState({
+        selectedItem: item,
+        slideIndex:6
+      })
     }
 
-      console.log(this.state.selectedItem)
   }
 
   render() {
@@ -151,8 +192,6 @@ export default class App extends React.Component<any, any> {
     const self = this;
     const props = self.props;
     let state = self.state;
-
-    console.log(this.state.selectedItem)
 
     return (
       <Layer className="h100">
@@ -175,11 +214,30 @@ export default class App extends React.Component<any, any> {
         </Toolbar>
 
         <Wizard vertical slideIndex={this.state.slideIndex}>
-          <TutorialAlign {...state}/>
-          <TutorialButton {...state}/>
+
+          <TutorialAlign {...state} />
+          <TutorialButton {...state} />
+          <TutorialCard {...state} />
+          <TutorialCheckbox {...state} />
+          <TutorialDoor {...state} />
+          <TutorialDropdown {...state} />
+          <TutorialEmerge {...state} />
+
         </Wizard>
 
       </Layer>
     )
   }
 }
+//
+// <TutorialGrid {...state} />,
+// <TutorialInput {...state} />,
+// <TutorialLayer {...state} />,
+// <TutorialLoading {...state} />,
+// <TutorialModal {...state} />,
+// <TutorialPane {...state} />,
+// <TutorialSelectable {...state} />,
+// <TutorialShrink {...state} />,
+// <TutorialToolbar {...state} />,
+// <TutorialTransform {...state} />,
+// <TutorialWizard {...state} />

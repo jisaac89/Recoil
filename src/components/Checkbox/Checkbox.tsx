@@ -1,7 +1,11 @@
 import * as React from 'react';
 import Button from '../Button/Button';
 
-export default class Checkbox extends React.Component<any,any>{
+interface ICheckboxProps {
+  checked? : boolean;
+}
+
+export default class Checkbox extends React.Component<ICheckboxProps,any>{
   constructor() {
     super();
     this.state = {
@@ -38,7 +42,7 @@ export default class Checkbox extends React.Component<any,any>{
     let {checked} = props;
 
     return (
-      <Button onClick={this.toggleChecked.bind(this)} tabIndex={-1} ghost right icon={this.state.checked ? 'check floatL' : "circle-o"}>
+      <Button onClick={this.toggleChecked.bind(this)} tabIndex={-1} ghost icon={this.state.checked ? 'check floatL' : "circle-o"}>
         <input className="hide" type="checkbox" checked={this.state.checked} />
       </Button>
     )

@@ -19,130 +19,70 @@ import Toolbar from '../../components/Toolbar/Toolbar';
 import Transform from '../../components/Transform/Transform';
 import Wizard from '../../components/Wizard/Wizard';
 
-const ButtonProperties = [
+const CardProperties = [
   {
-    name :'disabled',
+    name :'resize',
     type: 'boolean',
     options: 'true, false',
-    description: 'Toggle if the button is disabled or not.'
+    description: 'Defines if the element can be resized.'
+  },
+  {
+    name :'hover',
+    type: 'boolean',
+    options: 'true, false',
+    description: 'Sets if the element has an hover action.'
+  },
+  {
+    name :'float',
+    type: 'boolean',
+    options: 'true, false',
+    description: 'Defines if the element will float on screen.'
   },
   {
     name :'block',
     type: 'boolean',
     options: 'true, false',
-    description: 'Block converts the button element to a block element which gives it full width.'
+    description: 'Sets the element to have a block display.'
   },
   {
-    name :'className',
-    type: 'string',
+    name :'fill',
+    type: 'number',
     options: '',
-    description: 'Add a list of class names.'
-  },
-  {
-    name :'type',
-    type: 'string',
-    options: 'primary, secondary',
-    description: 'Template type for the button.'
-  },
-  {
-    name :'icon',
-    type: 'string',
-    options: 'Omit the fa fa-',
-    description: 'Include a font-awesome icon.'
-  },
-  {
-    name :'href',
-    type: 'string',
-    options: '',
-    description: 'Add a link to the button.'
-  },
-  {
-    name :'target',
-    type: 'string',
-    options: '',
-    description: 'Add a target attribute to the button.'
-  },
-  {
-    name :'ghost',
-    type: 'boolean',
-    options: 'true, false',
-    description: 'Switch to the ghost template mode.'
-  },
-  {
-    name :'strech',
-    type: 'boolean',
-    options: 'true, false',
-    description: 'Add a width of 100% to the button.'
-  },
-  {
-    name :'pointer',
-    type: 'any',
-    options: 'true, false',
-    description: 'Add a mouse pointer on hover.'
-  },
-  {
-    name :'right',
-    type: 'boolean',
-    options: 'true, false',
-    description: 'Float the button right.'
-  },
-  {
-    name :'left',
-    type: 'boolean',
-    options: 'true, false',
-    description: 'Float the button left.'
-  },
-  {
-    name :'size',
-    type: 'string',
-    options: 'small, large, xlarge',
-    description: 'Set the size of the button by class name.'
-  },
-  {
-    name :'submit',
-    type: 'boolean',
-    options: 'true, false',
-    description: 'Set whether the button is of submit type.'
-  },
-  {
-    name :'style',
-    type: 'any',
-    options: '',
-    description: 'Add custom inline styles.'
-  },
-  {
-    name :'checked',
-    type: 'boolean',
-    options: 'true, false',
-    description: 'Sets wether the button is checked.'
+    description: 'Sets the element to have a height and width of 100% relative to its parent.'
   },
   {
     name :'onClick',
-    type: '()',
+    type: 'number',
     options: '',
-    description: 'Set an onClick function to the element.'
+    description: 'Defines a onClick function for the element.'
   },
   {
-    name :'tabIndex',
-    type: 'any',
+    name :'style',
+    type: 'number',
     options: '',
-    description: 'Set a tabIndex to the button.'
+    description: 'Defines the styles for the element.'
   },
   {
-    name :'progressiveClick',
-    type: 'any',
+    name :'className',
+    type: 'number',
     options: '',
-    description: 'An array of functions that will repeat starting from the firts index.'
+    description: 'Defines a list of class names for the element.'
   },
   {
-    name :'shortcut',
-    type: 'any',
+    name :'onMouseEnter',
+    type: 'number',
     options: '',
-    description: 'Set a shortcut key to the button that will trigger the click event.'
-  }
+    description: 'Defines a onMouseEnter function for the element.'
+  },
+  {
+    name :'onMouseLeave',
+    type: 'number',
+    options: '',
+    description: 'Defines a onMouseLeave function for the element.'
+  },
 ]
 
-export default class TutorialButton extends React.Component<any,any>{
+export default class TutorialCard extends React.Component<any,any>{
   constructor() {
     super();
 
@@ -172,8 +112,8 @@ export default class TutorialButton extends React.Component<any,any>{
     const props = self.props;
     let state = self.state;
 
-    const ButtonColumns = [
-      {name: 'name', width:150},
+    const columns = [
+      {name: 'name', width:200},
       {name: 'type', width:110},
       {name: 'options', width:150},
       {name: 'description', width:1300}
@@ -182,20 +122,21 @@ export default class TutorialButton extends React.Component<any,any>{
     return (
       <Layer className="p50">
 
-        <h1>Button</h1>
+        <h1>Card</h1>
 
         <Layer className="ptb10">
           <h2 className="pb10">Description</h2>
-          <p>The Button component is an advanced version of the standard default button control.</p>
+          <p>The material component is a google material enspired div, it has advanced feautures.</p>
         </Layer>
 
         <Layer className="ptb10">
           <h2 className="pb10">Examples</h2>
           <Layer className="ptb10">
-            <Toolbar spacing>
-              <Button>Default Button</Button>
-              <Button type="primary">Primary Button</Button>
-            </Toolbar>
+            <Layer className="p10 dark">
+              <Card>
+                This is an exampe of a Card.
+              </Card>
+            </Layer>
           </Layer>
         </Layer>
 
@@ -204,7 +145,7 @@ export default class TutorialButton extends React.Component<any,any>{
           <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
           <Door open={this.state.showProps}>
             <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties} />
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties} />
             </Layer>
           </Door>
         </Layer>

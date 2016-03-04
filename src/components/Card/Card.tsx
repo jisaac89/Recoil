@@ -5,10 +5,10 @@ import * as classNames from 'classnames';
 import './Card.less';
 
 interface ICardProps {
-  resize? : any;
-  hover? : any;
+  resize? : boolean;
+  hover? : boolean;
   scale? : any;
-  float? : any;
+  float? : boolean;
   fill? : any;
   subTitle? : any;
   title? : any;

@@ -39,7 +39,7 @@ class GridRow extends React.Component<any,any>{
               } else {
               return (
                 <Layer>
-                  <small>{dataSource[i][columns[x].name]}</small>
+                  {dataSource[i][columns[x].name]}
                 </Layer>
               )
             }
