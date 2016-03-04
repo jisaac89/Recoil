@@ -28,7 +28,7 @@ import TutorialDoor from './tutorial/TutorialDoor';
 import TutorialDropdown from './tutorial/TutorialDropdown';
 import TutorialEmerge from './tutorial/TutorialEmerge';
 import TutorialGrid from './tutorial/TutorialGrid';
-// import TutorialInput from './tutorial/TutorialInput';
+import TutorialInput from './tutorial/TutorialInput';
 // import TutorialLayer from './tutorial/TutorialLayer';
 // import TutorialLoading from './tutorial/TutorialLoading';
 // import TutorialModal from './tutorial/TutorialModal';
@@ -188,6 +188,11 @@ export default class App extends React.Component<any, any> {
         selectedItem: item,
         slideIndex: 7
       })
+    } else if (item === 'Input') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 8
+      })
     }
 
   }
@@ -208,27 +213,23 @@ export default class App extends React.Component<any, any> {
         <Toolbar block noRadius className="ptb10 border-bottom pr10">
           <Button ghost>Home</Button>
           <Button ghost>Get Started</Button>
-          <Dropdown
-            right
-            onSelected={this.onSelected.bind(this)}
-            title="Components"
-            type="selection"
-            data={componentsArray}
-          >
-          </Dropdown>
+          <Dropdown right onSelected={this.onSelected.bind(this)} title="Components" type="selection" data={componentsArray} />
         </Toolbar>
 
-        <Wizard vertical slideIndex={this.state.slideIndex}>
 
-          <TutorialAlign {...state} />
-          <TutorialButton {...state} />
-          <TutorialCard {...state} />
-          <TutorialCheckbox {...state} />
-          <TutorialDoor {...state} />
-          <TutorialDropdown {...state} />
-          <TutorialEmerge {...state} />
-          <TutorialGrid {...state} />,
-        </Wizard>
+        <Layer className="mw1000 posrel center-width">
+          <Wizard vertical slideIndex={this.state.slideIndex}>
+            <TutorialAlign {...state} />
+            <TutorialButton {...state} />
+            <TutorialCard {...state} />
+            <TutorialCheckbox {...state} />
+            <TutorialDoor {...state} />
+            <TutorialDropdown {...state} />
+            <TutorialEmerge {...state} />
+            <TutorialGrid {...state} />
+            <TutorialInput {...state} />
+          </Wizard>
+        </Layer>
 
       </Layer>
     )

@@ -173,10 +173,10 @@ export default class TutorialButton extends React.Component<any,any>{
     let state = self.state;
 
     const ButtonColumns = [
-      {name: 'name', width:150},
-      {name: 'type', width:110},
-      {name: 'options', width:150},
-      {name: 'description', width:1300}
+      {name: 'name', width:250},
+      {name: 'type', width:300},
+      {name: 'options', width:250},
+      {name: 'description'}
     ]
 
     return (

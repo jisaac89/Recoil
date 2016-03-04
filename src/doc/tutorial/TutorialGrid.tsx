@@ -89,10 +89,10 @@ export default class TutorialGrid extends React.Component<any,any>{
     let state = self.state;
 
     const columns = [
-      {name: 'name', width:200},
-      {name: 'type', width:110},
-      {name: 'options', width:150},
-      {name: 'description', width:1300}
+      {name: 'name', width:250},
+      {name: 'type', width:300},
+      {name: 'options', width:250},
+      {name: 'description'}
     ]
 
     return (
@@ -102,7 +102,7 @@ export default class TutorialGrid extends React.Component<any,any>{
 
         <Layer className="ptb10">
           <h2 className="pb10">Description</h2>
-          <p>The Checkbox component is an advanced version of the standard input type='checkbox' control.</p>
+          <p>The Grid component is a simple data-grid that currently takes in a object.</p>
         </Layer>
 
         <Layer className="ptb10">
