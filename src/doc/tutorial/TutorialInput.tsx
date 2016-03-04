@@ -172,7 +172,7 @@ export default class TutorialInput extends React.Component<any,any>{
         <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
         <Door open={this.state.showProps}>
           <Layer className="ptb10">
-            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={InputProperties} />
+            <Grid open={this.state.showProps} numberPerPage={5} sortable columns={columns} dataSource={InputProperties} />
           </Layer>
         </Door>
       </Layer>

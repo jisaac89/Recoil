@@ -18,8 +18,7 @@ export default class Grid extends React.Component<any, any>{
       pageList: [],
       currentPage : 1,
       numberPerPage: 10,
-      numberOfPages: 0,
-      dataType: null
+      numberOfPages: 0
     }
   }
 
@@ -27,79 +26,20 @@ export default class Grid extends React.Component<any, any>{
     this.loadCollection();
   }
 
-  public componentWillReceiveProps(nextProps) {
-    const self = this;
-    if (nextProps.dataSource !== self.props.dataSource) {
-      self.setState({
-        collection: nextProps.dataSource
-      });
-    }
-
-    this.loadList(this.state.collection, 1);
-  }
-
   public loadCollection() {
-
-    let isArray = function(a) {
-      return (!!a) && (a.constructor === Array);
-    };
-
-    let isObject = function(a) {
-        return (!!a) && (a.constructor === Object);
-    };
 
     const self = this;
     const props = self.props;
     let state = self.state;
 
-    let collection = [];
-
-    if (isArray(props.dataSource)) {
-        for (let i = 0; i < props.dataSource.length; i++) {
-          collection.push(props.dataSource[i]);
-        }
-        self.setState({
-          dataType: 'Array'
-        })
-    } else if (isObject(props.dataSource)) {
-        for (let key in props.dataSource) {
-          collection.push(props.dataSource[key])
-        }
-        self.setState({
-          dataType: 'Object'
-        })
-    }
-
-    if (props.numberPerPage > 0) {
-      self.setState({
-        numberPerPage: props.numberPerPage
-      })
-    } else {
-      self.setState({
-        numberPerPage: 10
-      })
-    }
+    let collection = props.dataSource;
+    let numberOfPages;
 
     self.setState({
-      collection: collection,
-      numberOfPages : Math.ceil(collection.length / this.state.numberPerPage)
+      collection: props.dataSource,
+      numberOfPages : Math.ceil(props.dataSource.length / (this.props.numberPerPage ? this.props.numberPerPage : this.state.numberPerPage))
     });
 
-    this.loadList(collection, 1);
-  }
-
-  public loadList(collection, currentPage) {
-    const state = this.state;
-    let begin = ((currentPage - 1) * state.numberPerPage);
-    let end = begin + state.numberPerPage;
-
-    let pageList = collection.slice(begin, end);
-
-    if (pageList.length > 0) {
-      this.setState({
-        pageList: pageList
-      })
-    }
   }
 
   public toggleSorting(key, sortType) {
@@ -139,8 +79,6 @@ export default class Grid extends React.Component<any, any>{
       currentPage : 1
     })
 
-    this.loadList(this.state.collection, 1);
-
   }
 
   public columns(id) {
@@ -151,35 +89,30 @@ export default class Grid extends React.Component<any, any>{
     this.setState({
       currentPage : 1
     })
-    this.loadList(this.state.collection, this.state.currentPage -= 1);
   }
 
   public previousPage() {
     this.setState({
       currentPage :  this.state.currentPage -= 1
     })
-    this.loadList(this.state.collection, this.state.currentPage -= 1);
   }
 
   public nextPage() {
     this.setState({
       currentPage : this.state.currentPage += 1
     })
-    this.loadList(this.state.collection, this.state.currentPage += 1);
   }
 
   public lastPage() {
     this.setState({
       currentPage : this.state.numberOfPages
     })
-    this.loadList(this.state.collection, this.state.numberOfPages);
   }
 
   public gotoPage(i) {
     this.setState({
       currentPage : i + 1
     })
-    this.loadList(this.state.collection, i + 1);
   }
 
   render() {
@@ -189,14 +122,35 @@ export default class Grid extends React.Component<any, any>{
 
     let {columns, dataSource} = props;
 
-    console.log(state);
+    let numberPerPage;
+
+    if (props.numberPerPage) {
+      numberPerPage = props.numberPerPage;
+    } else {
+      numberPerPage = state.numberPerPage;
+    }
+
+    let begin = ((state.currentPage - 1) * numberPerPage);
+    let end = begin + numberPerPage;
+
+    let pageList = this.state.collection.slice(begin, end);
+    console.log(pageList);
+
+    let renderedPage = [];
+
+    for (let i = 0; i < pageList.length; i++) {
+        renderedPage.push(pageList[i]);
+    }
+
+    console.log(this.state);
+    console.log(renderedPage);
 
     return (
       <Layer overflow className='r-Grid w100'>
         <GridHeader
           hideHeader={props.hideHeader}
           columns={props.columns}
-          dataSource={state.pageList}
+          dataSource={renderedPage}
           sortable={props.sortable}
           toggleSorting={this.toggleSorting.bind(this)}
           sortType={state.sortType}
@@ -206,17 +160,24 @@ export default class Grid extends React.Component<any, any>{
           onSelect={props.onSelect}
           selected={props.selected}
           columns={props.columns}
-          dataSource={state.pageList}
+          dataSource={renderedPage}
           dataType={state.dataType}
         />
-        <GridFooter
-          gotoPage={this.gotoPage.bind(this)}
-          previousPage={this.previousPage.bind(this)}
-          nextPage={this.nextPage.bind(this)}
-          lastPage={this.lastPage.bind(this)}
-          firstPage={this.firstPage.bind(this)}
-          {...state}
-          {...props} />
+        {(()=>{
+          if (state.numberOfPages !== 1) {
+            return (
+              <GridFooter
+                gotoPage={this.gotoPage.bind(this)}
+                previousPage={this.previousPage.bind(this)}
+                nextPage={this.nextPage.bind(this)}
+                lastPage={this.lastPage.bind(this)}
+                firstPage={this.firstPage.bind(this)}
+                numberOfPages={state.numberOfPages}
+                currentPage={state.currentPage}
+                />
+            )
+          }
+        })()}
       </Layer>
     )
   }

@@ -7,6 +7,7 @@ export default class GridFooter extends React.Component<any,any>{
   public gotoPage(i) {
     this.props.gotoPage(i);
   }
+  
   render() {
 
     const self = this;
@@ -16,7 +17,7 @@ export default class GridFooter extends React.Component<any,any>{
     for (let i = 0; i < self.props.numberOfPages; i++) {
       paginationPartial.push(
         <Button tabIndex={-1} type={this.props.currentPage - 1  === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} size="small" key={i}>
-          {i}
+          {i + 1}
         </Button>
       )
     }
