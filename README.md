@@ -1,5 +1,7 @@
 # Recoil
 
+NOT PRODUCTION READY
+
 Recoil is a front-end react powered framework.
 
   - Built for rapid development.
@@ -12,18 +14,20 @@ Recoil is a front-end react powered framework.
 ### Version
 0.1.0
 
+A lot of the components are still at the early stages of development.
+
 ### Tech
 
 Recoil uses a number of awesome open source projects to work properly:
 
-* [React] - Recoil wouldn't exist without it.
-* [Typescript] - Type support for JS.
-* [classNames] - Made my class life easier.
-* [Font Awesome] - Icons ftw.
-* [Animate.css] - Awesome animation CSS boilerplate.
-* [Normalize.css] - CSS Reset.
+* [React]
+* [Typescript]
+* [classNames]
+* [Font Awesome]
+* [Animate.css]
+* [Normalize.css]
 
-And of course big thanks to Bootstrap, Semantics UI, Googles Material UI for design inspirations!
+And of course big thanks to Twitter Bootstrap, Semantics UI, Apple and Google Material UI for design inspirations!
 
 ### Installation
 
@@ -66,6 +70,8 @@ Helpful videos on how to use each component can be found here:
  - Write Tests
  - Rethink Github Save
  - Add Code Comments
+ - Rename Door to Open
+ - Rename Pane to SlideIn
 
 License
 ----

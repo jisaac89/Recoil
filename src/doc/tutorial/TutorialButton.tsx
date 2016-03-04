@@ -173,58 +173,55 @@ export default class TutorialButton extends React.Component<any,any>{
     let state = self.state;
 
     const ButtonColumns = [
-      {name: 'name', width:150},
-      {name: 'type', width:110},
-      {name: 'options', width:150},
-      {name: 'description', width:1300}
+      {name: 'name', width:250},
+      {name: 'type', width:300},
+      {name: 'options', width:250},
+      {name: 'description'}
     ]
 
     return (
-      <Layer className="p50">
+      <Emerge>
+        <Layer>
 
-        <h1>Button</h1>
+          <h1>Button</h1>
 
-        <Layer className="ptb10">
-          <h2 className="pb10">Description</h2>
-          <p>The Button component is an advanced version of the standard default button control.</p>
-        </Layer>
-
-        <Layer className="ptb10">
-          <h2 className="pb10">Options</h2>
-          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-          <Door open={this.state.showProps}>
-            <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties} />
-            </Layer>
-          </Door>
-        </Layer>
-
-        <Layer className="ptb10">
-          <h2 className="pb10">Examples</h2>
           <Layer className="ptb10">
-            <Toolbar spacing>
-              <Button>Default Button</Button>
-              <Button type="primary">Primary Button</Button>
-            </Toolbar>
+            <h2 className="pb10">Description</h2>
+            <p>The Button component is an advanced version of the standard default button control.</p>
           </Layer>
-        </Layer>
 
-        <Layer className="ptb10">
-          <h2 className="pb10">Usage</h2>
-          <p>The Button component is an advanced version of the standard default button control.</p>
-        </Layer>
-
-        <Layer className="ptb10">
-          <h2 className="pb10">Video</h2>
-          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-          <Door open={this.state.showVideo}>
+          <Layer className="ptb10">
+            <h2 className="pb10">Examples</h2>
             <Layer className="ptb10">
-              VIDEO
+              <Toolbar spacing>
+                <Button>Default Button</Button>
+                <Button type="primary">Primary Button</Button>
+              </Toolbar>
             </Layer>
-          </Door>
-        </Layer>
+          </Layer>
 
-      </Layer>
+          <Layer className="ptb10">
+            <h2 className="pb10">Options</h2>
+            <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
+            <Door open={this.state.showProps}>
+              <Layer className="ptb10">
+                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties} />
+              </Layer>
+            </Door>
+          </Layer>
+
+          <Layer className="ptb10">
+            <h2 className="pb10">Video</h2>
+            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+            <Door open={this.state.showVideo}>
+              <Layer className="ptb10">
+                VIDEO
+              </Layer>
+            </Door>
+          </Layer>
+
+        </Layer>
+      </Emerge>
     )
   }
 }

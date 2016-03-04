@@ -19,40 +19,70 @@ import Toolbar from '../../components/Toolbar/Toolbar';
 import Transform from '../../components/Transform/Transform';
 import Wizard from '../../components/Wizard/Wizard';
 
-const AlignProperties = [
+const CardProperties = [
   {
-    name :'margin',
-    type: 'number',
-    options: '',
-    description: 'Defines the margin between the aligned components.'
+    name :'resize',
+    type: 'boolean',
+    options: 'true, false',
+    description: 'Defines if the element can be resized.'
   },
   {
-    name :'data',
-    type: 'array of numbers',
+    name :'hover',
+    type: 'boolean',
+    options: 'true, false',
+    description: 'Sets if the element has an hover action.'
+  },
+  {
+    name :'float',
+    type: 'boolean',
+    options: 'true, false',
+    description: 'Defines if the element will float on screen.'
+  },
+  {
+    name :'block',
+    type: 'boolean',
+    options: 'true, false',
+    description: 'Sets the element to have a block display.'
+  },
+  {
+    name :'fill',
+    type: 'number',
     options: '',
-    description: 'Defines how columns are layed out.'
+    description: 'Sets the element to have a height and width of 100% relative to its parent.'
+  },
+  {
+    name :'onClick',
+    type: 'number',
+    options: '',
+    description: 'Defines a onClick function for the element.'
+  },
+  {
+    name :'style',
+    type: 'number',
+    options: '',
+    description: 'Defines the styles for the element.'
   },
   {
     name :'className',
-    type: 'string',
-    options: '',
-    description: 'Add a list of class names.'
-  },
-  {
-    name :'maxCol',
     type: 'number',
     options: '',
-    description: 'Defines the maximum amount of columns.'
+    description: 'Defines a list of class names for the element.'
   },
   {
-    name :'vertical',
-    type: 'boolean',
-    options: 'true, false',
-    description: 'Defines if the components are aligned vertically.'
-  }
+    name :'onMouseEnter',
+    type: 'number',
+    options: '',
+    description: 'Defines a onMouseEnter function for the element.'
+  },
+  {
+    name :'onMouseLeave',
+    type: 'number',
+    options: '',
+    description: 'Defines a onMouseLeave function for the element.'
+  },
 ]
 
-export default class TutorialAlign extends React.Component<any,any>{
+export default class TutorialCard extends React.Component<any,any>{
   constructor() {
     super();
 
@@ -84,7 +114,7 @@ export default class TutorialAlign extends React.Component<any,any>{
 
     const columns = [
       {name: 'name', width:250},
-      {name: 'type', width:400},
+      {name: 'type', width:300},
       {name: 'options', width:250},
       {name: 'description'}
     ]
@@ -93,21 +123,20 @@ export default class TutorialAlign extends React.Component<any,any>{
       <Emerge>
         <Layer>
 
-          <h1>Align</h1>
+          <h1>Card</h1>
 
           <Layer className="ptb10">
             <h2 className="pb10">Description</h2>
-            <p>The Align component is a flex alternative, it aligns components either horizontally or vertically with a option margin set.</p>
+            <p>The material component is a google material enspired div, it has advanced feautures.</p>
           </Layer>
 
           <Layer className="ptb10">
             <h2 className="pb10">Examples</h2>
             <Layer className="ptb10">
               <Layer className="p10 dark">
-                <Align margin={1}>
-                  <Layer type="light" className="p20">Aligned Element 1</Layer>
-                  <Layer type="light" className="p20">Aligned Element 2</Layer>
-                </Align>
+                <Card>
+                  This is an exampe of a Card.
+                </Card>
               </Layer>
             </Layer>
           </Layer>
@@ -117,7 +146,7 @@ export default class TutorialAlign extends React.Component<any,any>{
             <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
             <Door open={this.state.showProps}>
               <Layer className="ptb10">
-                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
+                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties} />
               </Layer>
             </Door>
           </Layer>
