@@ -21,10 +21,40 @@ import Wizard from '../../components/Wizard/Wizard';
 
 const GridProperties = [
   {
-    name :'checked',
+    name :'columns',
+    type: '',
+    options: '',
+    description: 'Defines the columns object.'
+  },
+  {
+    name :'sortable',
     type: 'boolean',
     options: 'true, false',
-    description: 'Defines if the element is checked.'
+    description: 'Defines if the grid is sortable.'
+  },
+  {
+    name :'hideHeader',
+    type: 'boolean',
+    options: 'true, false',
+    description: 'Defines if the grid header is visible.'
+  },
+  {
+    name :'selected',
+    type: '',
+    options: '',
+    description: 'Return item, so user can filter it.'
+  },
+  {
+    name :'onSelect',
+    type: '',
+    options: '',
+    description: 'Define a function of what happens when a user selected a row.'
+  },
+  {
+    name :'dataSource',
+    type: '',
+    options: '',
+    description: 'Define the grids actual data object.'
   }
 ]
 
@@ -68,7 +98,7 @@ export default class TutorialGrid extends React.Component<any,any>{
     return (
       <Layer className="p50">
 
-        <h1>Checkbox</h1>
+        <h1>Grid</h1>
 
         <Layer className="ptb10">
           <h2 className="pb10">Description</h2>
@@ -79,7 +109,7 @@ export default class TutorialGrid extends React.Component<any,any>{
           <h2 className="pb10">Examples</h2>
           <Layer className="ptb10">
             <Layer className="p10 light">
-              <Checkbox />
+              <Grid open={true} numberPerPage={20} hideHeader={true} columns={columns} dataSource={GridProperties} />
             </Layer>
           </Layer>
         </Layer>

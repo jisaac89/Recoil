@@ -27,7 +27,7 @@ import TutorialDoor from './tutorial/TutorialDoor';
 
 import TutorialDropdown from './tutorial/TutorialDropdown';
 import TutorialEmerge from './tutorial/TutorialEmerge';
-// import TutorialGrid from './tutorial/TutorialGrid';
+import TutorialGrid from './tutorial/TutorialGrid';
 // import TutorialInput from './tutorial/TutorialInput';
 // import TutorialLayer from './tutorial/TutorialLayer';
 // import TutorialLoading from './tutorial/TutorialLoading';
@@ -183,6 +183,11 @@ export default class App extends React.Component<any, any> {
         selectedItem: item,
         slideIndex:6
       })
+    } else if (item === 'Grid') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 7
+      })
     }
 
   }
@@ -222,7 +227,7 @@ export default class App extends React.Component<any, any> {
           <TutorialDoor {...state} />
           <TutorialDropdown {...state} />
           <TutorialEmerge {...state} />
-
+          <TutorialGrid {...state} />,
         </Wizard>
 
       </Layer>
@@ -230,7 +235,7 @@ export default class App extends React.Component<any, any> {
   }
 }
 //
-// <TutorialGrid {...state} />,
+
 // <TutorialInput {...state} />,
 // <TutorialLayer {...state} />,
 // <TutorialLoading {...state} />,
