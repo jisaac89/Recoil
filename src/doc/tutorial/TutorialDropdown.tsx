@@ -92,6 +92,7 @@ export default class TutorialDropdown extends React.Component<any,any>{
     ]
 
     return (
+      <Emerge>
       <Layer>
 
         <h1>Dropdown</h1>
@@ -131,6 +132,7 @@ export default class TutorialDropdown extends React.Component<any,any>{
         </Layer>
 
       </Layer>
+      </Emerge>
     )
   }
 }

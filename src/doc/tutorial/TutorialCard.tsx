@@ -120,47 +120,49 @@ export default class TutorialCard extends React.Component<any,any>{
     ]
 
     return (
-      <Layer>
+      <Emerge>
+        <Layer>
 
-        <h1>Card</h1>
+          <h1>Card</h1>
 
-        <Layer className="ptb10">
-          <h2 className="pb10">Description</h2>
-          <p>The material component is a google material enspired div, it has advanced feautures.</p>
-        </Layer>
-
-        <Layer className="ptb10">
-          <h2 className="pb10">Examples</h2>
           <Layer className="ptb10">
-            <Layer className="p10 dark">
-              <Card>
-                This is an exampe of a Card.
-              </Card>
+            <h2 className="pb10">Description</h2>
+            <p>The material component is a google material enspired div, it has advanced feautures.</p>
+          </Layer>
+
+          <Layer className="ptb10">
+            <h2 className="pb10">Examples</h2>
+            <Layer className="ptb10">
+              <Layer className="p10 dark">
+                <Card>
+                  This is an exampe of a Card.
+                </Card>
+              </Layer>
             </Layer>
           </Layer>
-        </Layer>
 
-        <Layer className="ptb10">
-          <h2 className="pb10">Options</h2>
-          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-          <Door open={this.state.showProps}>
-            <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties} />
-            </Layer>
-          </Door>
-        </Layer>
+          <Layer className="ptb10">
+            <h2 className="pb10">Options</h2>
+            <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
+            <Door open={this.state.showProps}>
+              <Layer className="ptb10">
+                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties} />
+              </Layer>
+            </Door>
+          </Layer>
 
-        <Layer className="ptb10">
-          <h2 className="pb10">Video</h2>
-          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-          <Door open={this.state.showVideo}>
-            <Layer className="ptb10">
-              VIDEO
-            </Layer>
-          </Door>
-        </Layer>
+          <Layer className="ptb10">
+            <h2 className="pb10">Video</h2>
+            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+            <Door open={this.state.showVideo}>
+              <Layer className="ptb10">
+                VIDEO
+              </Layer>
+            </Door>
+          </Layer>
 
-      </Layer>
+        </Layer>
+      </Emerge>
     )
   }
 }

@@ -97,6 +97,7 @@ export default class TutorialDoor extends React.Component<any,any>{
     ]
 
     return (
+      <Emerge>
       <Layer>
 
         <h1>Door</h1>
@@ -141,6 +142,7 @@ export default class TutorialDoor extends React.Component<any,any>{
         </Layer>
 
       </Layer>
+      </Emerge>
     )
   }
 }

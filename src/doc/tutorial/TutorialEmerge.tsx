@@ -102,6 +102,7 @@ export default class TutorialEmerge extends React.Component<any,any>{
     ]
 
     return (
+      <Emerge>
       <Layer>
 
         <h1>Emerge</h1>
@@ -154,6 +155,7 @@ export default class TutorialEmerge extends React.Component<any,any>{
         </Layer>
 
       </Layer>
+      </Emerge>
     )
   }
 }

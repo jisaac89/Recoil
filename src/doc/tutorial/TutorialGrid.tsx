@@ -96,6 +96,7 @@ export default class TutorialGrid extends React.Component<any,any>{
     ]
 
     return (
+      <Emerge>
       <Layer>
 
         <h1>Grid</h1>
@@ -135,6 +136,7 @@ export default class TutorialGrid extends React.Component<any,any>{
         </Layer>
 
       </Layer>
+      </Emerge>
     )
   }
 }

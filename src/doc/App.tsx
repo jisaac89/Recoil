@@ -209,6 +209,8 @@ export default class App extends React.Component<any, any> {
     const props = self.props;
     let state = self.state;
 
+    let item = state.selectedItem;
+
     return (
       <Layer className="h100">
         <Layer type="light" className="p10 border-bottom">
@@ -224,18 +226,51 @@ export default class App extends React.Component<any, any> {
 
 
         <Layer className="mw1000 posrel center-width pt50">
-          <Wizard vertical slideIndex={this.state.slideIndex}>
-            <TutorialAlign {...state} />
-            <TutorialButton {...state} />
-            <TutorialCard {...state} />
-            <TutorialCheckbox {...state} />
-            <TutorialDoor {...state} />
-            <TutorialDropdown {...state} />
-            <TutorialEmerge {...state} />
-            <TutorialGrid {...state} />
-            <TutorialInput {...state} />
-            <TutorialLayer {...state} />
-          </Wizard>
+
+          {(()=>{
+            if (item == 'Align') {
+                return(
+                  <TutorialAlign {...state} />
+                )
+            } else if (item == 'Button') {
+                return(
+                  <TutorialButton {...state} />
+                )
+            } else if (item === 'Card') {
+                return(
+                  <TutorialCard {...state} />
+                )
+            } else if (item === 'Checkbox') {
+                return(
+                  <TutorialCheckbox {...state} />
+                )
+            } else if (item === 'Door') {
+                return(
+                  <TutorialDoor {...state} />
+                )
+            } else if (item === 'Dropdown') {
+                return(
+                  <TutorialDropdown {...state} />
+                )
+            } else if (item === 'Emerge') {
+                return(
+                  <TutorialEmerge {...state} />
+                )
+            } else if (item === 'Grid') {
+                return(
+                  <TutorialGrid {...state} />
+                )
+            } else if (item === 'Input') {
+                return(
+                  <TutorialInput {...state} />
+                )
+            } else if (item === 'Layer') {
+                return(
+                  <TutorialLayer {...state} />
+                )
+            }
+          })()}
+
         </Layer>
 
       </Layer>

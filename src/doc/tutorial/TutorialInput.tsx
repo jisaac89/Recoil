@@ -148,45 +148,48 @@ export default class TutorialInput extends React.Component<any,any>{
     ]
 
     return (
-      <Layer>
+    <Emerge>
+    <Layer>
 
-        <h1>Input</h1>
+      <h1>Input</h1>
 
+      <Layer className="ptb10">
+        <h2 className="pb10">Description</h2>
+        <p>The Input component is an advanced version of the standard input type='text' control.</p>
+      </Layer>
+
+      <Layer className="ptb10">
+        <h2 className="pb10">Examples</h2>
         <Layer className="ptb10">
-          <h2 className="pb10">Description</h2>
-          <p>The Input component is an advanced version of the standard input type='text' control.</p>
-        </Layer>
-
-        <Layer className="ptb10">
-          <h2 className="pb10">Examples</h2>
-          <Layer className="ptb10">
-            <Layer className="p10 light">
-              <Input type="text" icon="search" title="Search Users" onChange={this.setonChange.bind(this)} block />
-            </Layer>
+          <Layer className="p10 light">
+            <Input type="text" icon="search" title="Search Users" onChange={this.setonChange.bind(this)} block />
           </Layer>
         </Layer>
-
-        <Layer className="ptb10">
-          <h2 className="pb10">Options</h2>
-          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-          <Door open={this.state.showProps}>
-            <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={InputProperties} />
-            </Layer>
-          </Door>
-        </Layer>
-
-        <Layer className="ptb10">
-          <h2 className="pb10">Video</h2>
-          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-          <Door open={this.state.showVideo}>
-            <Layer className="ptb10">
-              VIDEO
-            </Layer>
-          </Door>
-        </Layer>
-
       </Layer>
+
+      <Layer className="ptb10">
+        <h2 className="pb10">Options</h2>
+        <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
+        <Door open={this.state.showProps}>
+          <Layer className="ptb10">
+            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={InputProperties} />
+          </Layer>
+        </Door>
+      </Layer>
+
+      <Layer className="ptb10">
+        <h2 className="pb10">Video</h2>
+        <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+        <Door open={this.state.showVideo}>
+          <Layer className="ptb10">
+            VIDEO
+          </Layer>
+        </Door>
+      </Layer>
+
+    </Layer>
+
+    </Emerge>
     )
   }
 }
