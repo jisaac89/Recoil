@@ -27,7 +27,7 @@ Recoil uses a number of awesome open source projects to work properly:
 * [Animate.css]
 * [Normalize.css]
 
-And of course big thanks to Bootstrap, Semantics UI, Googles Material UI for design inspirations!
+And of course big thanks to Twitter Bootstrap, Semantics UI, Apple and Google Material UI for design inspirations!
 
 ### Installation
 

@@ -145,7 +145,7 @@ export default class App extends React.Component<any, any> {
     }
   }
 
-  onSelected(item) {
+  setSelectedItem(item) {
 
     const self = this;
 
@@ -209,7 +209,7 @@ export default class App extends React.Component<any, any> {
     const props = self.props;
     let state = self.state;
 
-    let item = state.selectedItem;
+    let selectedItem = state.selectedItem;
 
     return (
       <Layer className="h100">
@@ -217,67 +217,87 @@ export default class App extends React.Component<any, any> {
           <h1 className="super dinblock">Recoil</h1>
           <Button size="xlarge" right type="primary">Download Latest Version</Button>
         </Layer>
+
         <hr className="rainbow-line" />
-        <Toolbar block noRadius className="ptb10 border-bottom pr10">
+
+        <Toolbar textCenter block noRadius className="ptb10 border-bottom pr10">
           <Button ghost>Home</Button>
           <Button ghost>Get Started</Button>
-          <Dropdown right onSelected={this.onSelected.bind(this)} title="Components" type="selection" data={componentsArray} />
+        </Toolbar>
+
+        <Toolbar flex flow="row wrap" justify="center" align="center" noRadius>
+          <Button checked={selectedItem === 'Align'} onClick={this.setSelectedItem.bind(this, 'Align')}>Align</Button>
+          <Button checked={selectedItem === 'Button'} onClick={this.setSelectedItem.bind(this, 'Button')}>Button</Button>
+          <Button checked={selectedItem === 'Card'} onClick={this.setSelectedItem.bind(this, 'Card')}>Card</Button>
+          <Button checked={selectedItem === 'Checkbox'} onClick={this.setSelectedItem.bind(this, 'Checkbox')}>Checkbox</Button>
+          <Button checked={selectedItem === 'Door'} onClick={this.setSelectedItem.bind(this, 'Door')}>Door</Button>
+          <Button checked={selectedItem === 'Dropdown'} onClick={this.setSelectedItem.bind(this, 'Dropdown')}>Dropdown</Button>
+          <Button checked={selectedItem === 'Emerge'} onClick={this.setSelectedItem.bind(this, 'Emerge')}>Emerge</Button>
+          <Button checked={selectedItem === 'Grid'} onClick={this.setSelectedItem.bind(this, 'Grid')}>Grid</Button>
+          <Button checked={selectedItem === 'Input'} onClick={this.setSelectedItem.bind(this, 'Input')}>Input</Button>
+          <Button checked={selectedItem === 'Layer'} onClick={this.setSelectedItem.bind(this, 'Layer')}>Layer</Button>
+          <Button checked={selectedItem === 'Loading'} onClick={this.setSelectedItem.bind(this, 'Loading')}>Loading</Button>
+          <Button checked={selectedItem === 'Modal'} onClick={this.setSelectedItem.bind(this, 'Modal')}>Modal</Button>
+          <Button checked={selectedItem === 'Pane'} onClick={this.setSelectedItem.bind(this, 'Pane')}>Pane</Button>
+          <Button checked={selectedItem === 'Selectable'} onClick={this.setSelectedItem.bind(this, 'Selectable')}>Selectable</Button>
+          <Button checked={selectedItem === 'Shrink'} onClick={this.setSelectedItem.bind(this, 'Shrink')}>Shrink</Button>
+          <Button checked={selectedItem === 'Toolbar'} onClick={this.setSelectedItem.bind(this, 'Toolbar')}>Toolbar</Button>
+          <Button checked={selectedItem === 'Transform'} onClick={this.setSelectedItem.bind(this, 'Transform')}>Transform</Button>
+          <Button checked={selectedItem === 'Wizard'} onClick={this.setSelectedItem.bind(this, 'Wizard')}>Wizard</Button>
         </Toolbar>
 
 
-        <Layer className="mw1000 posrel center-width pt50">
-
+        <Layer className="mw1000 posrel center-width pt50 ps50">
           {(()=>{
-            if (item == 'Align') {
+            if (selectedItem == 'Align') {
                 return(
                   <TutorialAlign {...state} />
                 )
-            } else if (item == 'Button') {
+            } else if (selectedItem == 'Button') {
                 return(
                   <TutorialButton {...state} />
                 )
-            } else if (item === 'Card') {
+            } else if (selectedItem === 'Card') {
                 return(
                   <TutorialCard {...state} />
                 )
-            } else if (item === 'Checkbox') {
+            } else if (selectedItem === 'Checkbox') {
                 return(
                   <TutorialCheckbox {...state} />
                 )
-            } else if (item === 'Door') {
+            } else if (selectedItem === 'Door') {
                 return(
                   <TutorialDoor {...state} />
                 )
-            } else if (item === 'Dropdown') {
+            } else if (selectedItem === 'Dropdown') {
                 return(
                   <TutorialDropdown {...state} />
                 )
-            } else if (item === 'Emerge') {
+            } else if (selectedItem === 'Emerge') {
                 return(
                   <TutorialEmerge {...state} />
                 )
-            } else if (item === 'Grid') {
+            } else if (selectedItem === 'Grid') {
                 return(
                   <TutorialGrid {...state} />
                 )
-            } else if (item === 'Input') {
+            } else if (selectedItem === 'Input') {
                 return(
                   <TutorialInput {...state} />
                 )
-            } else if (item === 'Layer') {
+            } else if (selectedItem === 'Layer') {
                 return(
                   <TutorialLayer {...state} />
                 )
             }
           })()}
-
         </Layer>
 
       </Layer>
     )
   }
 }
-//
+
 
 // <TutorialInput {...state} />,
 // <TutorialLayer {...state} />,
