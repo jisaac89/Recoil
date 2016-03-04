@@ -120,7 +120,7 @@ export default class TutorialCard extends React.Component<any,any>{
     ]
 
     return (
-      <Layer className="p50">
+      <Layer>
 
         <h1>Card</h1>
 

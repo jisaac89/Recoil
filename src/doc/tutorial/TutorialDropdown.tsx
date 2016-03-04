@@ -92,7 +92,7 @@ export default class TutorialDropdown extends React.Component<any,any>{
     ]
 
     return (
-      <Layer className="p50">
+      <Layer>
 
         <h1>Dropdown</h1>
 

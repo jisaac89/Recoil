@@ -148,7 +148,7 @@ export default class TutorialInput extends React.Component<any,any>{
     ]
 
     return (
-      <Layer className="p50">
+      <Layer>
 
         <h1>Input</h1>
 

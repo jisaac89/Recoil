@@ -29,7 +29,8 @@ import TutorialDropdown from './tutorial/TutorialDropdown';
 import TutorialEmerge from './tutorial/TutorialEmerge';
 import TutorialGrid from './tutorial/TutorialGrid';
 import TutorialInput from './tutorial/TutorialInput';
-// import TutorialLayer from './tutorial/TutorialLayer';
+import TutorialLayer from './tutorial/TutorialLayer';
+//
 // import TutorialLoading from './tutorial/TutorialLoading';
 // import TutorialModal from './tutorial/TutorialModal';
 // import TutorialPane from './tutorial/TutorialPane';
@@ -193,6 +194,11 @@ export default class App extends React.Component<any, any> {
         selectedItem: item,
         slideIndex: 8
       })
+    } else if (item === 'Layer') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 9
+      })
     }
 
   }
@@ -217,7 +223,7 @@ export default class App extends React.Component<any, any> {
         </Toolbar>
 
 
-        <Layer className="mw1000 posrel center-width">
+        <Layer className="mw1000 posrel center-width pt50">
           <Wizard vertical slideIndex={this.state.slideIndex}>
             <TutorialAlign {...state} />
             <TutorialButton {...state} />
@@ -228,6 +234,7 @@ export default class App extends React.Component<any, any> {
             <TutorialEmerge {...state} />
             <TutorialGrid {...state} />
             <TutorialInput {...state} />
+            <TutorialLayer {...state} />
           </Wizard>
         </Layer>
 

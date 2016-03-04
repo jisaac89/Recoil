@@ -180,7 +180,7 @@ export default class TutorialButton extends React.Component<any,any>{
     ]
 
     return (
-      <Layer className="p50">
+      <Layer>
 
         <h1>Button</h1>
 

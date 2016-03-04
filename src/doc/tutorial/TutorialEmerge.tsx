@@ -102,7 +102,7 @@ export default class TutorialEmerge extends React.Component<any,any>{
     ]
 
     return (
-      <Layer className="p50">
+      <Layer>
 
         <h1>Emerge</h1>
 

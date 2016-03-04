@@ -97,7 +97,7 @@ export default class TutorialDoor extends React.Component<any,any>{
     ]
 
     return (
-      <Layer className="p50">
+      <Layer>
 
         <h1>Door</h1>
 
