@@ -31,14 +31,14 @@ import TutorialGrid from './tutorial/TutorialGrid';
 import TutorialInput from './tutorial/TutorialInput';
 import TutorialLayer from './tutorial/TutorialLayer';
 //
-// import TutorialLoading from './tutorial/TutorialLoading';
-// import TutorialModal from './tutorial/TutorialModal';
-// import TutorialPane from './tutorial/TutorialPane';
-// import TutorialSelectable from './tutorial/TutorialSelectable';
-// import TutorialShrink from './tutorial/TutorialShrink';
-// import TutorialToolbar from './tutorial/TutorialToolbar';
-// import TutorialTransform from './tutorial/TutorialTransform';
-// import TutorialWizard from './tutorial/TutorialWizard';
+import TutorialLoading from './tutorial/TutorialLoading';
+import TutorialModal from './tutorial/TutorialModal';
+import TutorialPane from './tutorial/TutorialPane';
+import TutorialSelectable from './tutorial/TutorialSelectable';
+import TutorialShrink from './tutorial/TutorialShrink';
+import TutorialToolbar from './tutorial/TutorialToolbar';
+import TutorialTransform from './tutorial/TutorialTransform';
+import TutorialWizard from './tutorial/TutorialWizard';
 
 const components = [
   {
@@ -199,6 +199,46 @@ export default class App extends React.Component<any, any> {
         selectedItem: item,
         slideIndex: 9
       })
+    } else if (item === 'Loading') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 10
+      })
+    } else if (item === 'Modal') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 11
+      })
+    } else if (item === 'Pane') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 12
+      })
+    } else if (item === 'Selectable') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 13
+      })
+    } else if (item === 'Shrink') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 14
+      })
+    } else if (item === 'Toolbar') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 15
+      })
+    } else if (item === 'Transform') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 16
+      })
+    } else if (item === 'Wizard') {
+      self.setState({
+        selectedItem: item,
+        slideIndex: 17
+      })
     }
 
   }
@@ -289,6 +329,38 @@ export default class App extends React.Component<any, any> {
                 return(
                   <TutorialLayer {...state} />
                 )
+            } else if (selectedItem === 'Loading') {
+                return(
+                  <TutorialLoading {...state} />
+                )
+            } else if (selectedItem === 'Modal') {
+                return(
+                  <TutorialModal {...state} />
+                )
+            } else if (selectedItem === 'Pane') {
+                return(
+                  <TutorialPane {...state} />
+                )
+            } else if (selectedItem === 'Selectable') {
+                return(
+                  <TutorialSelectable {...state} />
+                )
+            } else if (selectedItem === 'Shrink') {
+                return(
+                  <TutorialShrink {...state} />
+                )
+            } else if (selectedItem === 'Toolbar') {
+                return(
+                  <TutorialToolbar {...state} />
+                )
+            } else if (selectedItem === 'Transform') {
+                return(
+                  <TutorialTransform {...state} />
+                )
+            } else if (selectedItem === 'Wizard') {
+                return(
+                  <TutorialWizard {...state} />
+                )
             }
           })()}
         </Layer>
@@ -297,15 +369,3 @@ export default class App extends React.Component<any, any> {
     )
   }
 }
-
-
-// <TutorialInput {...state} />,
-// <TutorialLayer {...state} />,
-// <TutorialLoading {...state} />,
-// <TutorialModal {...state} />,
-// <TutorialPane {...state} />,
-// <TutorialSelectable {...state} />,
-// <TutorialShrink {...state} />,
-// <TutorialToolbar {...state} />,
-// <TutorialTransform {...state} />,
-// <TutorialWizard {...state} />
