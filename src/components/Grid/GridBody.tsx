@@ -6,7 +6,6 @@ import Emerge from '../Emerge/Emerge';
 
 class GridRow extends React.Component<any,any>{
 
-
   public onSelect(item) {
     this.props.onSelect(item);
     this.props.selected(item);
@@ -86,12 +85,16 @@ export default class GridBody extends React.Component<any, any>{
       )
     }
 
-    return (
-      <Layer className="r-GridBody">
-        <Emerge if={true} exit="fadeOut" delay={40}>
-          {rowArray}
-        </Emerge>
-      </Layer>
-    )
+    if (props.columns) {
+      return (
+        <Layer className="r-GridBody">
+          <Emerge if={true} exit="fadeOut" delay={40}>
+            {rowArray}
+          </Emerge>
+        </Layer>
+      )
+    } else {
+      return null;
+    }
   }
 }

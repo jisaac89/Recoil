@@ -8,7 +8,8 @@ class GridHeaderSortable extends React.Component<any,any>{
   constructor() {
     super();
     this.state = {
-      sortType: 'none'
+      sortType: 'none',
+      columns: []
     }
   }
 
@@ -89,14 +90,14 @@ export default class GridHeader extends React.Component<any, any>{
       }
     }
 
-    if (props.hideHeader) {
-      return null;
-    } else {
+    if (!props.hideHeader && props.columns) {
       return(
         <Layer className="r-GridHeader" flex flow="row nowrap">
           {this.props.columns.map(createColumns)}
         </Layer>
       )
+    } else {
+      return null;
     }
   }
 }
