@@ -31,6 +31,12 @@ const ShrinkProperties = [
     type: 'boolean',
     options: 'true, false',
     description: 'Set the element to have a 100% height and width.'
+  },
+  {
+    name :'className',
+    type: 'string',
+    options: '',
+    description: 'Add a list of class names to the element.'
   }
 ]
 

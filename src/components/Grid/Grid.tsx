@@ -22,6 +22,14 @@ export default class Grid extends React.Component<any, any>{
     }
   }
 
+  public componentWillReceiveProps(nextProps) {
+    if (nextProps.dataSource !== this.props.dataSource) {
+      this.setState({
+        collection : nextProps.dataSource
+      })
+    }
+  }
+
   public componentDidMount() {
     this.loadCollection();
   }
@@ -141,9 +149,6 @@ export default class Grid extends React.Component<any, any>{
     for (let i = 0; i < pageList.length; i++) {
         renderedPage.push(pageList[i]);
     }
-
-    console.log(this.state);
-    console.log(renderedPage);
 
     return (
       <Layer overflow className='r-Grid w100'>

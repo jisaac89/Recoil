@@ -116,14 +116,16 @@ export default class TutorialPane extends React.Component<any,any>{
           <Layer className="ptb10">
             <h2 className="pb10">Examples</h2>
             <Layer className="ptb10">
-              <Layer className="p10 dark text-center w100 h200px">
+              <Layer overflow className="p10 dark text-center w100 h200px">
                 <Button onClick={this.togglePane.bind(this)}>Toggle Pane</Button>
                 <Pane direction='bottom' open={this.state.paneOpen}>
                   <Layer type="light text-center p10">
                     <Toolbar spacing>
-                        <Button onClick={this.togglePane.bind(this)} icon="user"></Button>
-                        <Button onClick={this.togglePane.bind(this)} icon="search"></Button>
-                        <Button onClick={this.togglePane.bind(this)} icon="plus"></Button>
+                      <Emerge if={this.state.paneOpen}>
+                          <Button onClick={this.togglePane.bind(this)} icon="user"></Button>
+                          <Button onClick={this.togglePane.bind(this)} icon="search"></Button>
+                          <Button onClick={this.togglePane.bind(this)} icon="plus"></Button>
+                      </Emerge>
                     </Toolbar>
                   </Layer>
                 </Pane>

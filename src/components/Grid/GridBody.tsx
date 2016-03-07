@@ -26,7 +26,7 @@ class GridRow extends React.Component<any,any>{
           {(()=>{
             if (columns[x].tabbable) {
               return (
-                <Button ghost>
+                <Button>
                   {dataSource[i][columns[x].name]}
                 </Button>
               )

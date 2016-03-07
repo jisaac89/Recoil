@@ -35,6 +35,7 @@
         "src/components/Modal/Modal.tsx",
         "src/components/Pane/Pane.tsx",
         "src/components/Selectable/Selectable.tsx",
+        "src/components/Shortcut/Shortcut.tsx",
         "src/components/Shrink/Shrink.tsx",
         "src/components/Toolbar/Toolbar.tsx",
         "src/components/Transform/Transform.tsx",

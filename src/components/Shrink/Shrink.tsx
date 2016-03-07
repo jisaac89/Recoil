@@ -13,7 +13,8 @@ export default class Shrink extends React.Component<any, any>{
       'r-Shrink',
       {'e-shrink': (props.if)},
       {'h100': (props.fill)},
-      {'w100': (props.fill)}
+      {'w100': (props.fill)},
+      props.className
     );
 
     return (

@@ -78,9 +78,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
 
     let focusDelay;
 
-
     focusDelay = this.props.focusDelay || 550;
-
 
     window.setTimeout(function() {
       inputDOM.focus();

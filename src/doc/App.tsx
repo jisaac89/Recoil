@@ -18,6 +18,7 @@ import Shrink from '../components/Shrink/Shrink';
 import Toolbar from '../components/Toolbar/Toolbar';
 import Transform from '../components/Transform/Transform';
 import Wizard from '../components/Wizard/Wizard';
+import Shortcut from '../components/Shortcut/Shortcut';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
@@ -149,94 +150,102 @@ export default class App extends React.Component<any, any> {
 
     const self = this;
 
-    if (item == 'Align') {
+    let itemLowercase;
+
+    if (typeof item === "string") {
+      itemLowercase = item.toLowerCase();
+    } else {
+      itemLowercase = item.name.toLowerCase();
+    }
+
+    if (itemLowercase == 'align') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex:0
       })
-    } else if (item == 'Button') {
+    } else if (itemLowercase == 'button') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex:1
       })
-    } else if (item === 'Card') {
+    } else if (itemLowercase === 'card') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex:2
       })
-    } else if (item === 'Checkbox') {
+    } else if (itemLowercase === 'checkbox') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex:3
       })
-    } else if (item === 'Door') {
+    } else if (itemLowercase === 'door') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex:4
       })
-    } else if (item === 'Dropdown') {
+    } else if (itemLowercase === 'dropdown') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex:5
       })
-    } else if (item === 'Emerge') {
+    } else if (itemLowercase === 'emerge') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex:6
       })
-    } else if (item === 'Grid') {
+    } else if (itemLowercase === 'grid') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 7
       })
-    } else if (item === 'Input') {
+    } else if (itemLowercase === 'input') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 8
       })
-    } else if (item === 'Layer') {
+    } else if (itemLowercase === 'layer') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 9
       })
-    } else if (item === 'Loading') {
+    } else if (itemLowercase === 'loading') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 10
       })
-    } else if (item === 'Modal') {
+    } else if (itemLowercase === 'modal') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 11
       })
-    } else if (item === 'Pane') {
+    } else if (itemLowercase === 'pane') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 12
       })
-    } else if (item === 'Selectable') {
+    } else if (itemLowercase === 'selectable') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 13
       })
-    } else if (item === 'Shrink') {
+    } else if (itemLowercase === 'shrink') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 14
       })
-    } else if (item === 'Toolbar') {
+    } else if (itemLowercase === 'toolbar') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 15
       })
-    } else if (item === 'Transform') {
+    } else if (itemLowercase === 'transform') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 16
       })
-    } else if (item === 'Wizard') {
+    } else if (itemLowercase === 'wizard') {
       self.setState({
-        selectedItem: item,
+        selectedItem: itemLowercase,
         slideIndex: 17
       })
     }
@@ -252,120 +261,122 @@ export default class App extends React.Component<any, any> {
     let selectedItem = state.selectedItem;
 
     return (
-      <Layer className="h100">
-        <Layer type="light" className="p10 border-bottom">
-          <h1 className="super dinblock">Recoil</h1>
-          <Button size="xlarge" right type="primary">Download Latest Version</Button>
+      <Shortcut dataSource={components} onChange={this.setSelectedItem.bind(this)}>
+        <Layer className="h100">
+          <Layer type="light" className="p10 border-bottom">
+            <h1 className="super dinblock">Recoil</h1>
+            <Button size="xlarge" right type="primary">Download Latest Version</Button>
+          </Layer>
+
+          <hr className="rainbow-line" />
+
+          <Toolbar textCenter block noRadius className="ptb10 border-bottom pr10">
+            <Button ghost>Home</Button>
+            <Button ghost>Get Started</Button>
+          </Toolbar>
+
+          <Toolbar flex flow="row wrap" justify="center" align="center" noRadius>
+            <Button checked={selectedItem === 'align'} onClick={this.setSelectedItem.bind(this, 'Align')}>Align</Button>
+            <Button checked={selectedItem === 'button'} onClick={this.setSelectedItem.bind(this, 'Button')}>Button</Button>
+            <Button checked={selectedItem === 'card'} onClick={this.setSelectedItem.bind(this, 'Card')}>Card</Button>
+            <Button checked={selectedItem === 'checkbox'} onClick={this.setSelectedItem.bind(this, 'Checkbox')}>Checkbox</Button>
+            <Button checked={selectedItem === 'door'} onClick={this.setSelectedItem.bind(this, 'Door')}>Door</Button>
+            <Button checked={selectedItem === 'dropdown'} onClick={this.setSelectedItem.bind(this, 'Dropdown')}>Dropdown</Button>
+            <Button checked={selectedItem === 'emerge'} onClick={this.setSelectedItem.bind(this, 'Emerge')}>Emerge</Button>
+            <Button checked={selectedItem === 'grid'} onClick={this.setSelectedItem.bind(this, 'Grid')}>Grid</Button>
+            <Button checked={selectedItem === 'input'} onClick={this.setSelectedItem.bind(this, 'Input')}>Input</Button>
+            <Button checked={selectedItem === 'layer'} onClick={this.setSelectedItem.bind(this, 'Layer')}>Layer</Button>
+            <Button checked={selectedItem === 'loading'} onClick={this.setSelectedItem.bind(this, 'Loading')}>Loading</Button>
+            <Button checked={selectedItem === 'modal'} onClick={this.setSelectedItem.bind(this, 'Modal')}>Modal</Button>
+            <Button checked={selectedItem === 'pane'} onClick={this.setSelectedItem.bind(this, 'Pane')}>Pane</Button>
+            <Button checked={selectedItem === 'selectable'} onClick={this.setSelectedItem.bind(this, 'Selectable')}>Selectable</Button>
+            <Button checked={selectedItem === 'shrink'} onClick={this.setSelectedItem.bind(this, 'Shrink')}>Shrink</Button>
+            <Button checked={selectedItem === 'toolbar'} onClick={this.setSelectedItem.bind(this, 'Toolbar')}>Toolbar</Button>
+            <Button checked={selectedItem === 'transform'} onClick={this.setSelectedItem.bind(this, 'Transform')}>Transform</Button>
+            <Button checked={selectedItem === 'wizard'} onClick={this.setSelectedItem.bind(this, 'Wizard')}>Wizard</Button>
+          </Toolbar>
+
+
+          <Layer className="mw1000 posrel center-width pt50 ps50">
+            {(()=>{
+              if (selectedItem == 'align') {
+                  return(
+                    <TutorialAlign {...state} />
+                  )
+              } else if (selectedItem == 'button') {
+                  return(
+                    <TutorialButton {...state} />
+                  )
+              } else if (selectedItem === 'card') {
+                  return(
+                    <TutorialCard {...state} />
+                  )
+              } else if (selectedItem === 'checkbox') {
+                  return(
+                    <TutorialCheckbox {...state} />
+                  )
+              } else if (selectedItem === 'door') {
+                  return(
+                    <TutorialDoor {...state} />
+                  )
+              } else if (selectedItem === 'dropdown') {
+                  return(
+                    <TutorialDropdown {...state} />
+                  )
+              } else if (selectedItem === 'emerge') {
+                  return(
+                    <TutorialEmerge {...state} />
+                  )
+              } else if (selectedItem === 'grid') {
+                  return(
+                    <TutorialGrid {...state} />
+                  )
+              } else if (selectedItem === 'input') {
+                  return(
+                    <TutorialInput {...state} />
+                  )
+              } else if (selectedItem === 'layer') {
+                  return(
+                    <TutorialLayer {...state} />
+                  )
+              } else if (selectedItem === 'loading') {
+                  return(
+                    <TutorialLoading {...state} />
+                  )
+              } else if (selectedItem === 'modal') {
+                  return(
+                    <TutorialModal {...state} />
+                  )
+              } else if (selectedItem === 'pane') {
+                  return(
+                    <TutorialPane {...state} />
+                  )
+              } else if (selectedItem === 'selectable') {
+                  return(
+                    <TutorialSelectable {...state} />
+                  )
+              } else if (selectedItem === 'shrink') {
+                  return(
+                    <TutorialShrink {...state} />
+                  )
+              } else if (selectedItem === 'toolbar') {
+                  return(
+                    <TutorialToolbar {...state} />
+                  )
+              } else if (selectedItem === 'transform') {
+                  return(
+                    <TutorialTransform {...state} />
+                  )
+              } else if (selectedItem === 'wizard') {
+                  return(
+                    <TutorialWizard {...state} />
+                  )
+              }
+            })()}
+          </Layer>
+
         </Layer>
-
-        <hr className="rainbow-line" />
-
-        <Toolbar textCenter block noRadius className="ptb10 border-bottom pr10">
-          <Button ghost>Home</Button>
-          <Button ghost>Get Started</Button>
-        </Toolbar>
-
-        <Toolbar flex flow="row wrap" justify="center" align="center" noRadius>
-          <Button checked={selectedItem === 'Align'} onClick={this.setSelectedItem.bind(this, 'Align')}>Align</Button>
-          <Button checked={selectedItem === 'Button'} onClick={this.setSelectedItem.bind(this, 'Button')}>Button</Button>
-          <Button checked={selectedItem === 'Card'} onClick={this.setSelectedItem.bind(this, 'Card')}>Card</Button>
-          <Button checked={selectedItem === 'Checkbox'} onClick={this.setSelectedItem.bind(this, 'Checkbox')}>Checkbox</Button>
-          <Button checked={selectedItem === 'Door'} onClick={this.setSelectedItem.bind(this, 'Door')}>Door</Button>
-          <Button checked={selectedItem === 'Dropdown'} onClick={this.setSelectedItem.bind(this, 'Dropdown')}>Dropdown</Button>
-          <Button checked={selectedItem === 'Emerge'} onClick={this.setSelectedItem.bind(this, 'Emerge')}>Emerge</Button>
-          <Button checked={selectedItem === 'Grid'} onClick={this.setSelectedItem.bind(this, 'Grid')}>Grid</Button>
-          <Button checked={selectedItem === 'Input'} onClick={this.setSelectedItem.bind(this, 'Input')}>Input</Button>
-          <Button checked={selectedItem === 'Layer'} onClick={this.setSelectedItem.bind(this, 'Layer')}>Layer</Button>
-          <Button checked={selectedItem === 'Loading'} onClick={this.setSelectedItem.bind(this, 'Loading')}>Loading</Button>
-          <Button checked={selectedItem === 'Modal'} onClick={this.setSelectedItem.bind(this, 'Modal')}>Modal</Button>
-          <Button checked={selectedItem === 'Pane'} onClick={this.setSelectedItem.bind(this, 'Pane')}>Pane</Button>
-          <Button checked={selectedItem === 'Selectable'} onClick={this.setSelectedItem.bind(this, 'Selectable')}>Selectable</Button>
-          <Button checked={selectedItem === 'Shrink'} onClick={this.setSelectedItem.bind(this, 'Shrink')}>Shrink</Button>
-          <Button checked={selectedItem === 'Toolbar'} onClick={this.setSelectedItem.bind(this, 'Toolbar')}>Toolbar</Button>
-          <Button checked={selectedItem === 'Transform'} onClick={this.setSelectedItem.bind(this, 'Transform')}>Transform</Button>
-          <Button checked={selectedItem === 'Wizard'} onClick={this.setSelectedItem.bind(this, 'Wizard')}>Wizard</Button>
-        </Toolbar>
-
-
-        <Layer className="mw1000 posrel center-width pt50 ps50">
-          {(()=>{
-            if (selectedItem == 'Align') {
-                return(
-                  <TutorialAlign {...state} />
-                )
-            } else if (selectedItem == 'Button') {
-                return(
-                  <TutorialButton {...state} />
-                )
-            } else if (selectedItem === 'Card') {
-                return(
-                  <TutorialCard {...state} />
-                )
-            } else if (selectedItem === 'Checkbox') {
-                return(
-                  <TutorialCheckbox {...state} />
-                )
-            } else if (selectedItem === 'Door') {
-                return(
-                  <TutorialDoor {...state} />
-                )
-            } else if (selectedItem === 'Dropdown') {
-                return(
-                  <TutorialDropdown {...state} />
-                )
-            } else if (selectedItem === 'Emerge') {
-                return(
-                  <TutorialEmerge {...state} />
-                )
-            } else if (selectedItem === 'Grid') {
-                return(
-                  <TutorialGrid {...state} />
-                )
-            } else if (selectedItem === 'Input') {
-                return(
-                  <TutorialInput {...state} />
-                )
-            } else if (selectedItem === 'Layer') {
-                return(
-                  <TutorialLayer {...state} />
-                )
-            } else if (selectedItem === 'Loading') {
-                return(
-                  <TutorialLoading {...state} />
-                )
-            } else if (selectedItem === 'Modal') {
-                return(
-                  <TutorialModal {...state} />
-                )
-            } else if (selectedItem === 'Pane') {
-                return(
-                  <TutorialPane {...state} />
-                )
-            } else if (selectedItem === 'Selectable') {
-                return(
-                  <TutorialSelectable {...state} />
-                )
-            } else if (selectedItem === 'Shrink') {
-                return(
-                  <TutorialShrink {...state} />
-                )
-            } else if (selectedItem === 'Toolbar') {
-                return(
-                  <TutorialToolbar {...state} />
-                )
-            } else if (selectedItem === 'Transform') {
-                return(
-                  <TutorialTransform {...state} />
-                )
-            } else if (selectedItem === 'Wizard') {
-                return(
-                  <TutorialWizard {...state} />
-                )
-            }
-          })()}
-        </Layer>
-
-      </Layer>
+      </Shortcut>
     )
   }
 }
