@@ -27,7 +27,7 @@ export default class GridBody extends React.Component<any, any>{
 
     if (props.columns) {
       return (
-        <div className="r-GridBody">
+        <div className="r-GridBody" style={{height : this.props.height}}>
           <Emerge delay={80}>
             {rowArray}
           </Emerge>

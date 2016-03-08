@@ -49,7 +49,7 @@ export default class GridRow extends React.Component<any,any>{
     // }
 
     return (
-      <div className={"re-GridRow" + (selectedItem ? ' selected' : '')}>
+      <div className={"r-GridRow" + (selectedItem ? ' selected' : '')}>
         <Layer flex flow="row nowrap" justify="flex-start" className="posrel w100" onClick={this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null}>
           {columnArray}
         </Layer>
