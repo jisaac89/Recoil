@@ -60,10 +60,10 @@ export default class Align extends React.Component<IAlignProps, IAlignState>{
       }
 
       let childProps = {
-        className: 'r-Align__column ' + child[props].className,
+        className: 'r-Align__column ' + child.props.className,
         style : columnStyle
       };
-      childProps[children] = this.recursiveCloneChildren(child[props].children);
+      childProps[children] = this.recursiveCloneChildren(child.props.children);
       return React.cloneElement(child, childProps);
     });
   }
@@ -97,7 +97,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState>{
     let createList = (item, index) => {
 
       if (props.maxCol) {
-          let dataIdx = props.data[index] ;
+          let dataIdx : any = props.data[index] ;
           colwidth = (singleColWidth * dataIdx) + (margin * (dataIdx - 1));
       }
 

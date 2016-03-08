@@ -40,7 +40,6 @@ class GridHeaderSortable extends React.Component<any,any>{
   }
 }
 
-
 export default class GridHeader extends React.Component<any, any>{
   public toggleSorting(key, sortType) {
     this.props.toggleSorting(key, sortType);
@@ -51,10 +50,6 @@ export default class GridHeader extends React.Component<any, any>{
     const props = self.props;
 
     let headerTitle;
-
-    if (this.props) {
-
-    }
 
     let createColumns = (item, index) => {
       if (item.headerTemplate) {
