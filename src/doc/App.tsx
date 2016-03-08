@@ -142,7 +142,8 @@ export default class App extends React.Component<any, any> {
     super();
     this.state = {
       selectedItem: '',
-      slideIndex:0
+      slideIndex:0,
+      selected: []
     }
   }
 
@@ -252,6 +253,22 @@ export default class App extends React.Component<any, any> {
 
   }
 
+  public onSelect(item) {
+    this.state.selected.push(item.name)
+  }
+
+  public selected(item) {
+
+    let checked;
+
+    if (this.state.selected.length > 0) {
+      console.log(this.state.selected);
+      checked = this.state.selected.includes(item.name);
+    }
+    return checked;
+
+  }
+
   render() {
 
     let columns = [{name:'name'}];
@@ -262,32 +279,20 @@ export default class App extends React.Component<any, any> {
 
     let selectedItem = state.selectedItem;
 
+    let columnsI = [
+      {name: 'name', tabbable: true}
+    ]
+
     return (
       <Shortcut dataSource={components} onChange={this.setSelectedItem.bind(this)}>
-        <Layer fill>
-          <Grid numberPerPage={5} sortable dataSource={components}>
-
-          </Grid>
+        <Layer className="p20 w90 center-width posrel">
+          <Grid onSelect={this.onSelect.bind(this)} selected={this.selected.bind(this)} sortable dataSource={components} />
         </Layer>
       </Shortcut>
     )
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-//
-//
-//
-//
 // <Layer type="light" className="p10 border-bottom">
 //   <h1 className="super dinblock">Recoil</h1>
 //   <Button size="xlarge" right type="primary">Download Latest Version</Button>

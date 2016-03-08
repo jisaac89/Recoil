@@ -24,11 +24,9 @@ export default class Grid extends React.Component<any, any>{
   }
 
   public componentWillReceiveProps(nextProps) {
-    if (nextProps.dataSource !== this.props.dataSource) {
-      this.setState({
-        collection : nextProps.dataSource
-      })
-    }
+    this.setState({
+      collection : nextProps.dataSource !== this.props.dataSource ? nextProps.dataSource : this.props.dataSource
+    })
   }
 
   public componentDidMount() {
@@ -41,9 +39,6 @@ export default class Grid extends React.Component<any, any>{
   }
 
   public automaticallyCreateColumns() {
-    console.log('automaticallyCreateColumns');
-    console.log(this.props.dataSource);
-
     let columnsArray = [];
     let columns = [];
 
@@ -61,8 +56,6 @@ export default class Grid extends React.Component<any, any>{
     this.setState({
       columns: columns
     })
-
-    console.log(columns);
   }
 
   public loadCollection() {
@@ -160,6 +153,8 @@ export default class Grid extends React.Component<any, any>{
     let renderedPage = [];
     let renderedColumns;
 
+    console.log('updated');
+
     let {columns, dataSource} = props;
     let {collection} = state;
 
@@ -178,7 +173,7 @@ export default class Grid extends React.Component<any, any>{
     let pageList = collection.slice(begin, end);
 
     for (let i = 0; i < pageList.length; i++) {
-        renderedPage.push(pageList[i]);
+      renderedPage.push(pageList[i]);
     }
 
     if (this.props.columns) {

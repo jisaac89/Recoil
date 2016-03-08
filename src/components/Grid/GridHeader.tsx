@@ -50,6 +50,12 @@ export default class GridHeader extends React.Component<any, any>{
     const self = this;
     const props = self.props;
 
+    let headerTitle;
+
+    if (this.props) {
+
+    }
+
     let createColumns = (item, index) => {
       if (item.headerTemplate) {
         return (
