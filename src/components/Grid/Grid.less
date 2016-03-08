@@ -1,10 +1,10 @@
 @import "../Global";
 
-.r-Layer:nth-child(odd) > .r-GridRow {
+.r-Grid__Row:nth-child(odd) {
   background: #F8F8F8;
 }
 
-.e-NightMode .r-Layer:nth-child(odd) > .r-GridRow {
+.e-NightMode .r-Grid__Row:nth-child(odd) {
     background: #212121;
 }
 
@@ -35,7 +35,9 @@ caption, th, td {
     font-weight: normal;
 }
 
-tr, th, td{
+.r-Grid tr,
+.r-Grid th,
+.r-Grid td{
     margin: 0;
     padding: 0;
     border: 0;
@@ -43,5 +45,5 @@ tr, th, td{
     font-style: inherit;
     font-size: 100%;
     font-family: inherit;
-    vertical-align: baseline;
+    vertical-align: middle;
 }

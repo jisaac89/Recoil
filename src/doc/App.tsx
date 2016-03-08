@@ -269,9 +269,15 @@ export default class App extends React.Component<any, any> {
 
   }
 
-  render() {
+  template() {
+    return (
+      <Toolbar block textCenter>
+        <Checkbox />
+      </Toolbar>
+    )
+  }
 
-    let columns = [{name:'name'}];
+  render() {
 
     const self = this;
     const props = self.props;
@@ -279,8 +285,10 @@ export default class App extends React.Component<any, any> {
 
     let selectedItem = state.selectedItem;
 
-    let columnsI = [
-      {name: 'name', tabbable: true}
+    let columns = [
+      {name: 'name', width: 100, tabbable: true},
+      {name: 'description'},
+      {name: '', template : this.template.bind(this)}
     ]
 
     return (
