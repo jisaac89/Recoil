@@ -19,7 +19,7 @@ export default class GridBody extends React.Component<any, any>{
 
     for (let key in self.props.dataSource) {
       rowArray.push(
-        <Layer  key={key}>
+        <Layer key={key}>
           <GridRow i={key} {...props} />
         </Layer>
       )
@@ -28,7 +28,7 @@ export default class GridBody extends React.Component<any, any>{
     if (props.columns) {
       return (
         <div className="r-GridBody">
-          <Emerge if={true} exit="fadeOut" delay={40}>
+          <Emerge delay={80}>
             {rowArray}
           </Emerge>
         </div>

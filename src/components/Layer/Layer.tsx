@@ -64,6 +64,7 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
     // ===================================
 
     let layerClass = classNames(
+      props.className,
       'r-Layer',
       {'flohide' : (props.overflow)},
       {'pull-left': (props.left)},
@@ -74,8 +75,7 @@ export default class Layer extends React.Component<ILayerProps, ILayerState> {
       {'w100': (props.fill)},
       {'flex': (props.flex)},
       borderClass,
-      props.type,
-      props.className
+      props.type
     );
 
     return(

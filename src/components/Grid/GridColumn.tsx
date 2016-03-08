@@ -36,7 +36,7 @@ export default class GridColumn extends React.Component<any,any>{
     }
 
     return (
-      <Layer flex flow="column nowrap" justify="center" align="flex-start" style={{width: columns[x].width}} key={i+x} className="p5 w100">
+      <Layer style={{width: columns[x].width}} key={i+x} className="animated fadeInUp p5 w100">
         {columnPartial()}
       </Layer>
     )
