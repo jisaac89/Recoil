@@ -146,6 +146,12 @@ export default class Grid extends React.Component<any, any>{
     })
   }
 
+  public changePageSize(pageSize) {
+    this.setState({
+      numberPerPage : pageSize
+    })
+  }
+
   render() {
     const self = this;
     const props = self.props;
@@ -213,6 +219,7 @@ export default class Grid extends React.Component<any, any>{
                   firstPage={this.firstPage.bind(this)}
                   numberOfPages={numberOfPages}
                   currentPage={state.currentPage}
+                  changePageSize={this.changePageSize.bind(this)}
                   />
               )
             }
