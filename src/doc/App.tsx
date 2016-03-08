@@ -284,7 +284,7 @@ export default class App extends React.Component<any, any> {
     ]
 
     return (
-      <Grid options={this.props.options} height='400px' onSelect={this.onSelect.bind(this)} selected={this.selected.bind(this)} sortable dataSource={components} />
+      <Grid dataSource={components} />
     )
   }
 }

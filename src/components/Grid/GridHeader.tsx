@@ -32,10 +32,10 @@ class GridHeaderSortable extends React.Component<any,any>{
     let {item} = props;
 
     return (
-      <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} className="p5 w100">
+      <th style={{width : item.width}}>
         {this.props.children}
         <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost size="small" icon={this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'chevron-down' : 'chevron-up' } />
-      </Layer>
+      </th>
     );
   }
 }
@@ -54,9 +54,9 @@ export default class GridHeader extends React.Component<any, any>{
     let createColumns = (item, index) => {
       if (item.headerTemplate) {
         return (
-          <Layer style={{width : item.width}} key={index} className="p5 w100">
+          <th style={{width : item.width}} key={index}>
             {item.headerTemplate()}
-          </Layer>
+          </th>
         )
       }
       else if (props.sortable) {
@@ -84,18 +84,20 @@ export default class GridHeader extends React.Component<any, any>{
       }
       else {
         return (
-          <Layer flex flow="wrap nowrap" justify="flex-start" align="center" style={{width : item.width}} key={index} className="p5 w100">
+          <th style={{width : item.width}} key={index}>
             <a>{item.name}</a>
-          </Layer>
+          </th>
         )
       }
     }
 
     if (!props.hideHeader && props.columns) {
       return(
-        <Layer className="r-GridHeader" flex flow="row nowrap">
-          {this.props.columns.map(createColumns)}
-        </Layer>
+        <thead className="r-Grid__Header">
+          <tr>
+            {this.props.columns.map(createColumns)}
+          </tr>
+        </thead>
       )
     } else {
       return null;

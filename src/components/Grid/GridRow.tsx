@@ -36,25 +36,10 @@ export default class GridRow extends React.Component<any,any>{
 
     let selectedItem;
 
-    // if (this.props.selected) {
-    //   selectedItem = this.props.selected();
-    // } else {
-    //   selectedItem = false;
-    // }
-    //
-    // if (selectedItem) {
-    //   selectedItem = self.props.selected(self.props.dataSource[i]);
-    // } else {
-    //   selectedItem = false
-    // }
-
     return (
-      <div className={"r-GridRow" + (selectedItem ? ' selected' : '')}>
-        <Layer flex flow="row nowrap" justify="flex-start" className="posrel w100" onClick={this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null}>
-          {columnArray}
-        </Layer>
-        <Selectable checked={false} />
-      </div>
+      <tr onClick={this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+        {columnArray}
+      </tr>
     )
   }
 }

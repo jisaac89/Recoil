@@ -181,40 +181,43 @@ export default class Grid extends React.Component<any, any>{
     }
 
     return (
-      <Layer overflow className='r-Grid w100'>
-        <GridHeader
-          hideHeader={props.hideHeader}
-          columns={renderedColumns}
-          dataSource={renderedPage}
-          sortable={props.sortable}
-          toggleSorting={this.toggleSorting.bind(this)}
-          sortType={state.sortType}
-        />
-        <GridBody
-          height={props.height}
-          open={props.open}
-          onSelect={props.onSelect}
-          selected={props.selected}
-          columns={renderedColumns}
-          dataSource={renderedPage}
-          dataType={state.dataType}
-        />
-        {(()=>{
-          if (state.numberOfPages !== 1) {
-            return (
-              <GridFooter
-                gotoPage={this.gotoPage.bind(this)}
-                previousPage={this.previousPage.bind(this)}
-                nextPage={this.nextPage.bind(this)}
-                lastPage={this.lastPage.bind(this)}
-                firstPage={this.firstPage.bind(this)}
-                numberOfPages={numberOfPages}
-                currentPage={state.currentPage}
-                />
-            )
-          }
-        })()}
-      </Layer>
+      <div className="r-Grid">
+        <table className='r-Grid__Table w100'>
+          <GridHeader
+            hideHeader={props.hideHeader}
+            columns={renderedColumns}
+            dataSource={renderedPage}
+            sortable={props.sortable}
+            toggleSorting={this.toggleSorting.bind(this)}
+            sortType={state.sortType}
+          />
+          <GridBody
+            height={props.height}
+            open={props.open}
+            onSelect={props.onSelect}
+            selected={props.selected}
+            columns={renderedColumns}
+            dataSource={renderedPage}
+            dataType={state.dataType}
+            numberOfPages={numberOfPages}
+          />
+        </table>
+          {(()=>{
+            if (state.numberOfPages !== 1) {
+              return (
+                <GridFooter
+                  gotoPage={this.gotoPage.bind(this)}
+                  previousPage={this.previousPage.bind(this)}
+                  nextPage={this.nextPage.bind(this)}
+                  lastPage={this.lastPage.bind(this)}
+                  firstPage={this.firstPage.bind(this)}
+                  numberOfPages={numberOfPages}
+                  currentPage={state.currentPage}
+                  />
+              )
+            }
+          })()}
+        </div>
     )
   }
 }

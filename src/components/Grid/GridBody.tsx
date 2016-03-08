@@ -19,19 +19,15 @@ export default class GridBody extends React.Component<any, any>{
 
     for (let key in self.props.dataSource) {
       rowArray.push(
-        <Layer key={key}>
-          <GridRow i={key} {...props} />
-        </Layer>
+        <GridRow key={key} i={key} {...props} />
       )
     }
 
     if (props.columns) {
       return (
-        <div className="r-GridBody" style={{height : this.props.height}}>
-          <Emerge delay={80}>
-            {rowArray}
-          </Emerge>
-        </div>
+        <tbody className="r-Grid__Body" style={{height : this.props.height}}>
+          {rowArray}
+        </tbody>
       )
     } else {
       return null;

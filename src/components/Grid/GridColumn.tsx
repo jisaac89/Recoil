@@ -36,9 +36,9 @@ export default class GridColumn extends React.Component<any,any>{
     }
 
     return (
-      <Layer style={{width: columns[x].width}} key={i+x} className="animated fadeInUp p5 w100">
+      <td className="r-Grid__Row__Column" style={{width: columns[x].width}} key={i+x}>
         {columnPartial()}
-      </Layer>
+      </td>
     )
   }
 }
