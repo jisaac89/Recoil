@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import * as classNames from 'classnames';
 import './Badge.less';
 
-export default class Badge extends Component {
+export default class Badge extends React.Component<any,any> {
   render() {
 
     const self = this;

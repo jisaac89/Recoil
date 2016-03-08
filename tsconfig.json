@@ -18,6 +18,7 @@
     "compileOnSave": false,
     "files": [
         "src/components/Align/Align.tsx",
+        "src/components/Badge/Badge.tsx",
         "src/components/Button/Button.tsx",
         "src/components/Card/Card.tsx",
         "src/components/Checkbox/Checkbox.tsx",

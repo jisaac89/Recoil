@@ -285,9 +285,7 @@ export default class App extends React.Component<any, any> {
 
     return (
       <Shortcut dataSource={components} onChange={this.setSelectedItem.bind(this)}>
-        <Layer className="p20 w90 center-width posrel">
           <Grid onSelect={this.onSelect.bind(this)} selected={this.selected.bind(this)} sortable dataSource={components} />
-        </Layer>
       </Shortcut>
     )
   }
