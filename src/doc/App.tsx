@@ -41,79 +41,113 @@ import TutorialToolbar from './tutorial/TutorialToolbar';
 import TutorialTransform from './tutorial/TutorialTransform';
 import TutorialWizard from './tutorial/TutorialWizard';
 
+const comp = [{
+  "key1": {
+    "name": "33"
+  },
+  "key2": {
+    "name": "36 "
+  },
+  "key3": {
+    "name": "38"
+  },
+  "key4": {
+    "name": "41"
+  }
+}]
+
+
 const components = [
   {
     name: 'Align',
-    description: 'Aligns other components either horizontally or vertically.'
+    description: 'Aligns other components either horizontally or vertically.',
+    slideIndex: 0
   },
   {
     name: 'Button',
-    description: 'Advanced version of the standard html button control.'
+    description: 'Advanced version of the standard html button control.',
+    slideIndex: 1
   },
   {
     name: 'Card',
-    description: 'Material inspired Card'
+    description: 'Material inspired Card',
+    slideIndex: 2
   },
   {
     name: 'Checkbox',
-    description: 'Advanced version of the standard html checkbox control.'
+    description: 'Advanced version of the standard html checkbox control.',
+    slideIndex: 3
   },
   {
     name: 'Door',
-    description: 'Opens or shuts a component vertically.'
+    description: 'Opens or shuts a component vertically.',
+    slideIndex: 4
   },
   {
     name: 'Dropdown',
-    description: 'Advanced version of the standard html option control.'
+    description: 'Advanced version of the standard html option control.',
+    slideIndex: 5
   },
   {
     name: 'Emerge',
-    description: 'Emerge components into view if a certain event happens.'
+    description: 'Emerge components into view if a certain event happens.',
+    slideIndex: 6
   },
   {
     name: 'Grid',
-    description: 'Simple data grid.'
+    description: 'Simple data grid.',
+    slideIndex: 7
   },
   {
     name: 'Input',
-    description: 'Advanced version of the standard html Input control.'
+    description: 'Advanced version of the standard html Input control.',
+    slideIndex: 8
   },
   {
     name: 'Layer',
-    description: 'Advanced version of the standard html Div control.'
+    description: 'Advanced version of the standard html Div control.',
+    slideIndex: 9
   },
   {
     name: 'Loading',
-    description: 'Loading component.'
+    description: 'Loading component.',
+    slideIndex: 10
   },
   {
     name: 'Modal',
-    description: 'Modal component.'
+    description: 'Modal component.',
+    slideIndex: 11
   },
   {
     name: 'Pane',
-    description: 'Slide in Components if a certain event happens.'
+    description: 'Slide in Components if a certain event happens.',
+    slideIndex: 12
   },
   {
     name: 'Selectable',
-    description: 'Allows an component to have a selectable feature.'
+    description: 'Allows an component to have a selectable feature.',
+    slideIndex: 13
   },
   {
     name: 'Shrink',
-    description: 'Shrinks components if a certain event happens.'
+    description: 'Shrinks components if a certain event happens.',
+    slideIndex: 14
   },
   {
     name: 'Toolbar',
-    description: 'Combine with Button and Input components for powerful options.'
+    description: 'Combine with Button and Input components for powerful options.',
+    slideIndex: 15
   },
   {
     name: 'Transform',
-    description: 'CSS Transform a component.'
+    description: 'CSS Transform a component.',
+    slideIndex: 16
   },
   {
     name: 'Wizard',
-    description: 'Simple Wizard component.'
-  },
+    description: 'Simple Wizard component.',
+    slideIndex: 17
+  }
 ]
 
 let componentsArray = [
@@ -159,98 +193,9 @@ export default class App extends React.Component<any, any> {
       itemLowercase = item.name.toLowerCase();
     }
 
-    if (itemLowercase == 'align') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex:0
-      })
-    } else if (itemLowercase == 'button') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex:1
-      })
-    } else if (itemLowercase === 'card') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex:2
-      })
-    } else if (itemLowercase === 'checkbox') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex:3
-      })
-    } else if (itemLowercase === 'door') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex:4
-      })
-    } else if (itemLowercase === 'dropdown') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex:5
-      })
-    } else if (itemLowercase === 'emerge') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex:6
-      })
-    } else if (itemLowercase === 'grid') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 7
-      })
-    } else if (itemLowercase === 'input') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 8
-      })
-    } else if (itemLowercase === 'layer') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 9
-      })
-    } else if (itemLowercase === 'loading') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 10
-      })
-    } else if (itemLowercase === 'modal') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 11
-      })
-    } else if (itemLowercase === 'pane') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 12
-      })
-    } else if (itemLowercase === 'selectable') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 13
-      })
-    } else if (itemLowercase === 'shrink') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 14
-      })
-    } else if (itemLowercase === 'toolbar') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 15
-      })
-    } else if (itemLowercase === 'transform') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 16
-      })
-    } else if (itemLowercase === 'wizard') {
-      self.setState({
-        selectedItem: itemLowercase,
-        slideIndex: 17
-      })
-    }
-
+    self.setState({
+      selectedItem: itemLowercase
+    })
   }
 
   public onSelect(item) {
@@ -285,14 +230,37 @@ export default class App extends React.Component<any, any> {
 
     let selectedItem = state.selectedItem;
 
+    let slides = [
+      {
+        name: ''
+      }
+    ]
+
     let columns = [
       {name: 'name', width: 100, tabbable: true},
       {name: 'description'},
       {name: '', template : this.template.bind(this)}
     ]
 
+    let col = [
+      {name: 'name'}
+    ]
+
     return (
-      <Grid dataSource={components} />
+      <Wizard >
+        <Layer>
+          <Grid dataSource={components} />
+        </Layer>
+        <Layer>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </Layer>
+        <Layer>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </Layer>
+        <Layer>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </Layer>
+      </Wizard>
     )
   }
 }

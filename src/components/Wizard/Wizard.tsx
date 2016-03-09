@@ -6,7 +6,7 @@ import './Wizard.less';
 // stateless functional comp =D
 const WizardSlide : any = (props : any) => {
   return (
-    <div className={props.className} key={props.key}>
+    <div className={props.className}>
       {props.children}
     </div>
   );
