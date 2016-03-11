@@ -33,6 +33,7 @@
         "src/components/Grid/GridFooter.tsx",
         "src/components/Grid/GridHeader.tsx",
         "src/components/Grid/GridRow.tsx",
+        "src/components/index.ts",
         "src/components/Input/Input.tsx",
         "src/components/Layer/Layer.tsx",
         "src/components/Loading/Loading.tsx",
