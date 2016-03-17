@@ -7,11 +7,12 @@
         "experimentalDecorators": true
     },
     "filesGlob": [
-        "*/**/*.{ts,tsx}"
+        "*/**/*.{ts,tsx}",
         "../typings/browser.d.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "doc"
     ],
     "atom": {
         "rewriteTsconfig": true
@@ -33,7 +34,6 @@
         "src/components/Grid/GridFooter.tsx",
         "src/components/Grid/GridHeader.tsx",
         "src/components/Grid/GridRow.tsx",
-        "src/components/index.ts",
         "src/components/Input/Input.tsx",
         "src/components/Layer/Layer.tsx",
         "src/components/Loading/Loading.tsx",
@@ -45,30 +45,7 @@
         "src/components/Toolbar/Toolbar.tsx",
         "src/components/Transform/Transform.tsx",
         "src/components/Wizard/Wizard.tsx",
-        "src/constants/constants.ts",
-        "src/doc/App.tsx",
-        "src/doc/index.tsx",
-        "src/doc/tutorial/TutorialAlign.tsx",
-        "src/doc/tutorial/TutorialButton.tsx",
-        "src/doc/tutorial/TutorialCard.tsx",
-        "src/doc/tutorial/TutorialCheckbox.tsx",
-        "src/doc/tutorial/TutorialDoor.tsx",
-        "src/doc/tutorial/TutorialDropdown.tsx",
-        "src/doc/tutorial/TutorialEmerge.tsx",
-        "src/doc/tutorial/TutorialGrid.tsx",
-        "src/doc/tutorial/TutorialInput.tsx",
-        "src/doc/tutorial/TutorialLayer.tsx",
-        "src/doc/tutorial/TutorialLoading.tsx",
-        "src/doc/tutorial/TutorialModal.tsx",
-        "src/doc/tutorial/TutorialPane.tsx",
-        "src/doc/tutorial/TutorialSelectable.tsx",
-        "src/doc/tutorial/TutorialShrink.tsx",
-        "src/doc/tutorial/TutorialToolbar.tsx",
-        "src/doc/tutorial/TutorialTransform.tsx",
-        "src/doc/tutorial/TutorialWizard.tsx",
-        "src/interfaces/interfaces.d.ts",
-        "src/recoil.d.ts",
-        "src/utils/utils.ts",
+        "src/index.ts",
         "typings/classnames/classnames.d.ts",
         "typings/react/react-dom.d.ts",
         "typings/react/react.d.ts",

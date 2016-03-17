@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "preserve",
+        "experimentalDecorators": true
+    },
+    "filesGlob": [
+        "*/**/*.{ts,tsx}",
+        "../typings/browser.d.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "doc"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "compileOnSave": false
+}

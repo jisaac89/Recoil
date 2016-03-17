@@ -3,14 +3,14 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/dev-server',
-    './src/doc/index.tsx'
-  ],
+  entry: {
+    'react-recoil': './src/index.ts'
+  },
   output: {
+    library: 'ReactRecoil',
+    libraryTarget: 'umd',
     path: path.join(__dirname, 'static'),
-    filename: 'bundle.js',
+    filename: 'index.js',
     publicPath: '/static/'
   },
   plugins: [
@@ -29,5 +29,8 @@ module.exports = {
   },
     resolve: {
       extensions: ["", ".webpack.js", ".web.js", ".js", ".ts", ".tsx"]
-    }
+    },
+    node: {
+  fs: "empty"
+}
 };
