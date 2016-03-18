@@ -11,7 +11,7 @@ module.exports = {
     libraryTarget: 'umd',
     path: path.join(__dirname, 'static'),
     filename: 'index.js',
-    publicPath: '/static/'
+    publicPath: 'static'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

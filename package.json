@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "webpack webpack.config.js",
+    "build": "webpack --config webpack.config.js",
     "lint": "eslint src"
   },
   "main": "src/index.js",

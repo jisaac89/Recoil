@@ -15,12 +15,12 @@ export default class GridRow extends React.Component<any,any>{
     }
   }
 
-  public onSelect(item) {
+  onSelect(item) {
     this.props.onSelect(item);
     this.props.selected(item);
   }
 
-  public render(){
+  render(){
 
     const self = this;
     const props = self.props;

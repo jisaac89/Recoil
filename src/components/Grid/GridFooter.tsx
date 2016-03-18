@@ -5,11 +5,11 @@ import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 
 export default class GridFooter extends React.Component<any,any>{
-  public gotoPage(i) {
+  gotoPage(i) {
     this.props.gotoPage(i);
   }
 
-  public onSelected(item) {
+  onSelected(item) {
     this.props.changePageSize(item);
   }
 

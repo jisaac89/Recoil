@@ -8,7 +8,7 @@
     },
     "filesGlob": [
         "*/**/*.{ts,tsx}",
-        "../typings/browser.d.ts"
+        "typings/browser.d.ts"
     ],
     "exclude": [
         "node_modules",

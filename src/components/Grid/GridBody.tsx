@@ -6,7 +6,7 @@ import Emerge from '../Emerge/Emerge';
 
 import GridRow from './GridRow';
 
-export default class GridBody extends React.Component<any, any>{
+export default class GridBody extends React.Component<any,any>{
 
   render(){
 
@@ -23,14 +23,12 @@ export default class GridBody extends React.Component<any, any>{
       )
     }
 
-    if (props.columns) {
-      return (
-        <tbody className="r-Grid__Body" style={{height : this.props.height}}>
-          {rowArray}
-        </tbody>
-      )
-    } else {
-      return null;
-    }
+    console.log(rowArray);
+
+    return (
+      <tbody className="r-Grid__Body" style={{height : this.props.height}}>
+        {rowArray}
+      </tbody>
+    )
   }
 }

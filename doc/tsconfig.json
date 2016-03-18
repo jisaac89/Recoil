@@ -11,11 +11,10 @@
         "../typings/browser.d.ts"
     ],
     "exclude": [
-        "node_modules",
-        "doc"
+        "node_modules"
     ],
     "atom": {
         "rewriteTsconfig": true
     },
     "compileOnSave": false
-}
+  }

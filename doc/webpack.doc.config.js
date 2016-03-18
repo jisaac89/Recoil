@@ -9,7 +9,7 @@ module.exports = {
     './index.tsx'
   ],
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, './static'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
@@ -21,7 +21,10 @@ module.exports = {
 			{
 			    test: /\.ts(x?)$/,
 			    loader: 'babel-loader?presets[]=es2015&presets[]=react!ts-loader',
-          include: path.join(__dirname)
+          include: [
+            path.join(__dirname),
+            path.join(__dirname, '../src')
+          ]
 			},
 			{ test: /\.less$/,  loader: 'style!css!less'},
       { test: /\.json$/, loader: 'json-loader' }

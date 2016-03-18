@@ -1,6 +1,23 @@
 import * as React from 'react';
 
-import { Align, Button, Card, Checkbox, Door, Dropdown, Emerge, Grid, Input, Layer, Loading, Modal, Pane, Selectable, Shrink, Toolbar, Transform, Wizard } from 'react-recoil';
+import Align from '../../src/components/Align/Align';
+import Button from '../../src/components/Button/Button';
+import Card from '../../src/components/Card/Card';
+import Checkbox from '../../src/components/Checkbox/Checkbox';
+import Door from '../../src/components/Door/Door';
+import Dropdown from '../../src/components/Dropdown/Dropdown';
+import Emerge from '../../src/components/Emerge/Emerge';
+import Grid from '../../src/components/Grid/Grid';
+import Input from '../../src/components/Input/Input';
+import Layer from '../../src/components/Layer/Layer';
+import Loading from '../../src/components/Loading/Loading';
+import Modal from '../../src/components/Modal/Modal';
+import Pane from '../../src/components/Pane/Pane';
+import Selectable from '../../src/components/Selectable/Selectable';
+import Shrink from '../../src/components/Shrink/Shrink';
+import Toolbar from '../../src/components/Toolbar/Toolbar';
+import Transform from '../../src/components/Transform/Transform';
+import Wizard from '../../src/components/Wizard/Wizard';
 
 const dropData = ['from', 'block', 'contentClass', 'onSelected', 'type', 'data'];
 

@@ -4,7 +4,6 @@
   "description": "Documentation",
   "main": "index.js",
   "scripts": {
-    "buid": "webpack --config webpack.config.js",
     "start": "node server.js",
     "lint": "eslint src"
   },
