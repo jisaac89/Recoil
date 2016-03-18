@@ -28,6 +28,7 @@ export default class GridRow extends React.Component<any,any>{
     let {columns, dataSource, i} = props;
 
     let columnArray = [];
+
     for (let x = 0; x < columns.length; x++) {
       columnArray.push(
         <GridColumn key={x} dataSource={dataSource} i={i} x={x} columns={columns} />
@@ -36,10 +37,20 @@ export default class GridRow extends React.Component<any,any>{
 
     let selectedItem;
 
-    return (
-      <tr onClick={this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
-        {columnArray}
-      </tr>
-    )
+    if (props.detailTemplate) {
+      return (
+        <tr onClick={this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+          <td width={30}><Button tabIndex={-1} icon="caret-right"></Button></td>
+          {columnArray}
+        </tr>
+      )
+    } else {
+      return (
+        <tr onClick={this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+          {columnArray}
+        </tr>
+      )
+    }
+
   }
 }

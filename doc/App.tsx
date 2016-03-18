@@ -6,6 +6,7 @@ import Button from '../src/components/Button/Button';
 import Toolbar from '../src/components/Toolbar/Toolbar';
 import Checkbox from '../src/components/Checkbox/Checkbox';
 import Grid from '../src/components/Grid/Grid';
+import Layer from '../src/components/Layer/Layer';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
@@ -208,32 +209,30 @@ export default class App extends React.Component<any, any> {
     )
   }
 
+  detailTemplate(key, item) {
+    return (
+      <Layer block>
+        <p>{item.description}</p>
+      </Layer>
+    )
+  }
+
   render() {
 
     const self = this;
     const props = self.props;
     let state = self.state;
 
-    let selectedItem = state.selectedItem;
-
-    let slides = [
-      {
-        name: ''
-      }
-    ]
-
     let columns = [
-      {name: 'name', width: 100, tabbable: true},
-      {name: 'description'},
-      {name: '', template : this.template.bind(this)}
-    ]
-
-    let col = [
-      {name: 'name'}
+      {name: 'name', tabbable: true},
+      {name: '', template : this.template.bind(this), width: 30 }
     ]
 
     return (
-      <Grid dataSource={components} columns={columns}/>
+      <Layer block>
+        <Grid dataSource={components} />
+        <Grid dataSource={components} columns={columns} detailTemplate={this.detailTemplate.bind(this)}/>
+      </Layer>
     )
   }
 }

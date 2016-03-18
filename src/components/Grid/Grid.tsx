@@ -196,6 +196,7 @@ export default class Grid extends React.Component<any,any>{
             sortable={props.sortable}
             toggleSorting={this.toggleSorting.bind(this)}
             sortType={state.sortType}
+            detailTemplate={this.props.detailTemplate}
           />
           <GridBody
             height={props.height}
@@ -206,7 +207,8 @@ export default class Grid extends React.Component<any,any>{
             dataSource={renderedPage}
             dataType={state.dataType}
             numberOfPages={numberOfPages}
-          />
+            detailTemplate={this.props.detailTemplate}
+            />
         </table>
           {(()=>{
             if (state.numberOfPages !== 1) {

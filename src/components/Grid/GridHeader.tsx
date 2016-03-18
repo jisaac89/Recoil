@@ -51,6 +51,7 @@ export default class GridHeader extends React.Component<any,any>{
 
     let headerTitle;
 
+
     let createColumns = (item, index) => {
       if (item.headerTemplate) {
         return (
@@ -95,6 +96,15 @@ export default class GridHeader extends React.Component<any,any>{
       return(
         <thead className="r-Grid__Header">
           <tr>
+            {(()=>{
+              if (this.props.detailTemplate) {
+                return (
+                  <th width={30}>
+                    <Button icon="caret-right"></Button>
+                  </th>
+                )
+              }
+            })()}
             {this.props.columns.map(createColumns)}
           </tr>
         </thead>
