@@ -51,7 +51,18 @@ import 'react-recoil/less/Recoil.less';
 Now, on your project you can destructure the components you want.
 
 ```sh
-import {Toolbar, Button, Input, Dropdown, Emerge} from 'react-recoil';
+import {Toolbar, Button} from 'react-recoil';
+```
+
+An example of how to use them in your app.
+
+```sh
+<Toolbar spacing block>
+  <Button icon="home" />
+  <Button icon="user">
+    Users
+  </Button>
+</Toolbar>
 ```
 
 ### Documentation

@@ -7,6 +7,7 @@ import Toolbar from '../src/components/Toolbar/Toolbar';
 import Checkbox from '../src/components/Checkbox/Checkbox';
 import Grid from '../src/components/Grid/Grid';
 import Layer from '../src/components/Layer/Layer';
+import Dropdown from '../src/components/Dropdown/Dropdown';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
@@ -229,9 +230,8 @@ export default class App extends React.Component<any, any> {
     ]
 
     return (
-      <Layer block>
-        <Grid dataSource={components} />
-        <Grid dataSource={components} columns={columns} detailTemplate={this.detailTemplate.bind(this)}/>
+      <Layer>
+        <Grid dataSource={components} columns={columns} detailTemplate={this.detailTemplate.bind(this)} />
       </Layer>
     )
   }

@@ -100,7 +100,7 @@ export default class GridHeader extends React.Component<any,any>{
               if (this.props.detailTemplate) {
                 return (
                   <th width={30}>
-                    <Button icon="caret-right"></Button>
+                    <Button tabIndex={-1} icon="caret-right"></Button>
                   </th>
                 )
               }

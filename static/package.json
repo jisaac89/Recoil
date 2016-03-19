@@ -1,6 +1,6 @@
 {
   "name": "react-recoil",
-  "version": "0.2.023",
+  "version": "0.2.03",
   "description": "react-recoil-npm",
   "main": "recoil.js",
   "scripts": {

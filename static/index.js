@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "29cb5e1a5334f0b88114"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "06aaa30f40879b6de8fc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -23053,8 +23053,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                React.createElement(
 	                    'table',
 	                    { className: 'r-Grid__Table w100' },
-	                    React.createElement(GridHeader_1.default, { hideHeader: props.hideHeader, columns: renderedColumns, dataSource: renderedPage, sortable: props.sortable, toggleSorting: this.toggleSorting.bind(this), sortType: state.sortType }),
-	                    React.createElement(GridBody_1.default, { height: props.height, open: props.open, onSelect: props.onSelect, selected: props.selected, columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages })
+	                    React.createElement(GridHeader_1.default, { hideHeader: props.hideHeader, columns: renderedColumns, dataSource: renderedPage, sortable: props.sortable, toggleSorting: this.toggleSorting.bind(this), sortType: state.sortType, detailTemplate: this.props.detailTemplate }),
+	                    React.createElement(GridBody_1.default, { height: props.height, open: props.open, onSelect: props.onSelect, selected: props.selected, columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, detailTemplate: this.props.detailTemplate })
 	                ),
 	                function () {
 	                    if (state.numberOfPages !== 1) {
@@ -23236,6 +23236,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    React.createElement(
 	                        'tr',
 	                        null,
+	                        function () {
+	                            if (_this3.props.detailTemplate) {
+	                                return React.createElement(
+	                                    'th',
+	                                    { width: 30 },
+	                                    React.createElement(Button_1.default, { icon: 'caret-right' })
+	                                );
+	                            }
+	                        }(),
 	                        this.props.columns.map(createColumns)
 	                    )
 	                );
@@ -23267,6 +23276,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
+	var Door_1 = __webpack_require__(190);
 	var GridRow_1 = __webpack_require__(214);
 	
 	var GridBody = function (_React$Component) {
@@ -23275,7 +23285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function GridBody() {
 	        _classCallCheck(this, GridBody);
 	
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(GridBody).apply(this, arguments));
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(GridBody).call(this));
 	    }
 	
 	    _createClass(GridBody, [{
@@ -23288,9 +23298,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	            var rowArray = [];
 	            for (var key in self.props.dataSource) {
-	                rowArray.push(React.createElement(GridRow_1.default, _extends({ key: key, i: key }, props)));
+	                if (props.detailTemplate) {
+	                    rowArray.push([React.createElement(GridRow_1.default, _extends({ key: key, i: key }, props))], [React.createElement(
+	                        'tr',
+	                        null,
+	                        React.createElement(
+	                            'td',
+	                            { className: 'p0', colSpan: this.props.columns.length + 1 },
+	                            React.createElement(
+	                                Door_1.default,
+	                                { open: false },
+	                                self.props.detailTemplate(key, self.props.dataSource[key])
+	                            )
+	                        )
+	                    )]);
+	                } else {
+	                    rowArray.push(React.createElement(GridRow_1.default, _extends({ detailTemplate: props.detailTemplate, key: key, i: key }, props)));
+	                }
 	            }
-	            console.log(rowArray);
 	            return React.createElement(
 	                'tbody',
 	                { className: 'r-Grid__Body', style: { height: this.props.height } },
@@ -23319,6 +23344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
+	var Button_1 = __webpack_require__(179);
 	var GridColumn_1 = __webpack_require__(215);
 	
 	var GridRow = function (_React$Component) {
@@ -23355,11 +23381,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	                columnArray.push(React.createElement(GridColumn_1.default, { key: x, dataSource: dataSource, i: i, x: x, columns: columns }));
 	            }
 	            var selectedItem = void 0;
-	            return React.createElement(
-	                'tr',
-	                { onClick: this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
-	                columnArray
-	            );
+	            if (props.detailTemplate) {
+	                return React.createElement(
+	                    'tr',
+	                    { onClick: this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
+	                    React.createElement(
+	                        'td',
+	                        { width: 30 },
+	                        React.createElement(Button_1.default, { tabIndex: -1, icon: 'caret-right' })
+	                    ),
+	                    columnArray
+	                );
+	            } else {
+	                return React.createElement(
+	                    'tr',
+	                    { onClick: this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
+	                    columnArray
+	                );
+	            }
 	        }
 	    }]);
 	
