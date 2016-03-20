@@ -29,7 +29,7 @@ class GridRowTemplate extends React.Component<any,any>{
     return (
       <tr>
         <td className="p0" colSpan={this.props.columns.length + 1}>
-          <Door open={this.props.expanded.includes(key)}>
+          <Door open={props.expanded}>
             {self.props.detailTemplate(key, self.props.dataSource[key])}
           </Door>
         </td>
@@ -69,8 +69,8 @@ export default class GridBody extends React.Component<any,any>{
     for (let key in self.props.dataSource) {
       if (props.detailTemplate) {
         rowArray.push(
-          [<GridRow toggleDetailTemplate={this.toggleDetailTemplate.bind(this)} key={key} i={key} {...props} />],
-          [<GridRowTemplate expanded={this.state.expandedRows} i={key} {...props} />]
+          [<GridRow expanded={this.state.expandedRows.includes(key)} toggleDetailTemplate={this.toggleDetailTemplate.bind(this)} key={key} i={key} {...props} />],
+          [<GridRowTemplate expanded={this.state.expandedRows.includes(key)} i={key} {...props} />]
         )
       } else {
         rowArray.push(
