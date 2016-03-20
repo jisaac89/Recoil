@@ -212,7 +212,7 @@ export default class App extends React.Component<any, any> {
 
   detailTemplate(key, item) {
     return (
-      <Layer block>
+      <Layer block className="p10">
         <p>{item.description}</p>
       </Layer>
     )
