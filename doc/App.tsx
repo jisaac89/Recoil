@@ -231,7 +231,7 @@ export default class App extends React.Component<any, any> {
 
     return (
       <Layer>
-        <Grid dataSource={components} columns={columns} detailTemplate={this.detailTemplate.bind(this)} />
+        <Grid dataSource={components} detailTemplate={this.detailTemplate.bind(this)} />
       </Layer>
     )
   }

@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "06aaa30f40879b6de8fc"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "74438b9a4292534b4d51"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -23241,7 +23241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                                return React.createElement(
 	                                    'th',
 	                                    { width: 30 },
-	                                    React.createElement(Button_1.default, { icon: 'caret-right' })
+	                                    React.createElement(Button_1.default, { tabIndex: -1, icon: 'caret-right' })
 	                                );
 	                            }
 	                        }(),
