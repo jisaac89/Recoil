@@ -3,23 +3,28 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "node server.js",
+    "build": "webpack --config webpack.config.js",
     "lint": "eslint src"
   },
-  "repository": {
-    "type": "git"
-  },
+  "main": "src/index.js",
+   "directories": {
+     "lib": "src/"
+   },
   "keywords": [
     "react",
     "reactjs",
-    "boilerplate",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
+    "react ui kit",
+    "react ui framework",
+    "react ui library",
+    "ui kit",
+    "ui framework",
+    "ui library"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jisaac89/recoil.git"
+  },
+  "license": "MIT",
   "author": "Joe",
   "homepage": "",
   "devDependencies": {

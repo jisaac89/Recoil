@@ -13,7 +13,7 @@ class GridHeaderSortable extends React.Component<any,any>{
     }
   }
 
-  public toggleSorting(columnName) {
+  toggleSorting(columnName) {
 
     const self = this;
 
@@ -34,14 +34,14 @@ class GridHeaderSortable extends React.Component<any,any>{
     return (
       <th style={{width : item.width}}>
         {this.props.children}
-        <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost size="small" icon={this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'chevron-down' : 'chevron-up' } />
+        <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost icon={this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up' } />
       </th>
     );
   }
 }
 
-export default class GridHeader extends React.Component<any, any>{
-  public toggleSorting(key, sortType) {
+export default class GridHeader extends React.Component<any,any>{
+  toggleSorting(key, sortType) {
     this.props.toggleSorting(key, sortType);
   }
   render() {
@@ -95,6 +95,15 @@ export default class GridHeader extends React.Component<any, any>{
       return(
         <thead className="r-Grid__Header">
           <tr>
+            {(()=>{
+              if (this.props.detailTemplate) {
+                return (
+                  <th className="p0" width={5}>
+                    <Button ghost className="p5 ps10" tabIndex={-1} icon="caret-right"></Button>
+                  </th>
+                )
+              }
+            })()}
             {this.props.columns.map(createColumns)}
           </tr>
         </thead>

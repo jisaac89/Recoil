@@ -15,12 +15,16 @@ export default class GridRow extends React.Component<any,any>{
     }
   }
 
-  public onSelect(item) {
-    this.props.onSelect(item);
-    this.props.selected(item);
+  onSelect(key, item) {
+    this.props.onSelect(key, item);
+    // this.props.selected(key, item);
   }
 
-  public render(){
+  toggleDetailTemplate(i) {
+    this.props.toggleDetailTemplate(i);
+  }
+
+  render(){
 
     const self = this;
     const props = self.props;
@@ -28,6 +32,7 @@ export default class GridRow extends React.Component<any,any>{
     let {columns, dataSource, i} = props;
 
     let columnArray = [];
+
     for (let x = 0; x < columns.length; x++) {
       columnArray.push(
         <GridColumn key={x} dataSource={dataSource} i={i} x={x} columns={columns} />
@@ -35,11 +40,36 @@ export default class GridRow extends React.Component<any,any>{
     }
 
     let selectedItem;
+    let selectEvent;
 
-    return (
-      <tr onClick={this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
-        {columnArray}
-      </tr>
-    )
+    if (props.onSelect) {
+        selectedItem = props.selected.includes(i);
+        if (props.openOnSelect === true) {
+          selectEvent = this.toggleDetailTemplate.bind(this, i);
+        } else {
+          selectEvent = this.onSelect.bind(this, i, self.props.dataSource[i]);
+        }
+    } else {
+      selectEvent = null;
+    }
+
+    if (props.detailTemplate) {
+      return (
+        <tr onClick={selectEvent} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+          <td className="p0" width={5}>
+            <Button className="p5 ps10" ghost onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={this.props.expanded ? "caret-down" : "caret-right"}>
+            </Button>
+          </td>
+          {columnArray}
+        </tr>
+      )
+    } else {
+      return (
+        <tr onClick={this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+          {columnArray}
+        </tr>
+      )
+    }
+
   }
 }

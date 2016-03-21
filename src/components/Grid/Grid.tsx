@@ -9,7 +9,7 @@ import GridHeader from './GridHeader';
 import GridBody from './GridBody';
 import GridFooter from './GridFooter';
 
-export default class Grid extends React.Component<any, any>{
+export default class Grid extends React.Component<any,any>{
 
   constructor() {
     super();
@@ -23,13 +23,13 @@ export default class Grid extends React.Component<any, any>{
     }
   }
 
-  public componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.setState({
       collection : nextProps.dataSource !== this.props.dataSource ? nextProps.dataSource : this.props.dataSource
     })
   }
 
-  public componentDidMount() {
+  componentDidMount() {
     if (!this.props.columns) {
       this.automaticallyCreateColumns();
       this.loadCollection();
@@ -38,7 +38,7 @@ export default class Grid extends React.Component<any, any>{
     }
   }
 
-  public automaticallyCreateColumns() {
+  automaticallyCreateColumns() {
     let columnsArray = [];
     let columns = [];
 
@@ -58,7 +58,7 @@ export default class Grid extends React.Component<any, any>{
     })
   }
 
-  public loadCollection() {
+  loadCollection() {
 
     const self = this;
     const props = self.props;
@@ -73,7 +73,7 @@ export default class Grid extends React.Component<any, any>{
 
   }
 
-  public toggleSorting(key, sortType) {
+  toggleSorting(key, sortType) {
     let updatedCollection = [];
 
     for (let key in this.props.dataSource) {
@@ -112,41 +112,41 @@ export default class Grid extends React.Component<any, any>{
 
   }
 
-  public columns(id) {
+  columns(id) {
     this.props.columns(id);
   }
 
-  public firstPage() {
+  firstPage() {
     this.setState({
       currentPage : 1
     })
   }
 
-  public previousPage() {
+  previousPage() {
     this.setState({
       currentPage :  this.state.currentPage -= 1
     })
   }
 
-  public nextPage() {
+  nextPage() {
     this.setState({
       currentPage : this.state.currentPage += 1
     })
   }
 
-  public lastPage() {
+  lastPage() {
     this.setState({
       currentPage : this.state.numberOfPages
     })
   }
 
-  public gotoPage(i) {
+  gotoPage(i) {
     this.setState({
       currentPage : i + 1
     })
   }
 
-  public changePageSize(pageSize) {
+  changePageSize(pageSize) {
     this.setState({
       numberPerPage : pageSize
     })
@@ -196,6 +196,7 @@ export default class Grid extends React.Component<any, any>{
             sortable={props.sortable}
             toggleSorting={this.toggleSorting.bind(this)}
             sortType={state.sortType}
+            detailTemplate={this.props.detailTemplate}
           />
           <GridBody
             height={props.height}
@@ -206,7 +207,9 @@ export default class Grid extends React.Component<any, any>{
             dataSource={renderedPage}
             dataType={state.dataType}
             numberOfPages={numberOfPages}
-          />
+            detailTemplate={this.props.detailTemplate}
+            openOnSelect={this.props.openOnSelect}
+            />
         </table>
           {(()=>{
             if (state.numberOfPages !== 1) {

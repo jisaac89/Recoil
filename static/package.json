@@ -1,0 +1,15 @@
+{
+  "name": "react-recoil",
+  "version": "0.2.04",
+  "description": "react-recoil-npm",
+  "main": "recoil.js",
+  "scripts": {
+    "build": "webpack webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Joseph Isaac",
+  "license": "ISC"
+}
