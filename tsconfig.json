@@ -65,7 +65,6 @@
         "src/doc/tutorial/TutorialTransform.tsx",
         "src/doc/tutorial/TutorialWizard.tsx",
         "src/interfaces/interfaces.d.ts",
-        "src/recoil.d.ts",
         "src/utils/utils.ts",
         "typings/classnames/classnames.d.ts",
         "typings/react/react-dom.d.ts",
