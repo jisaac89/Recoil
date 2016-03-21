@@ -208,6 +208,7 @@ export default class Grid extends React.Component<any,any>{
             dataType={state.dataType}
             numberOfPages={numberOfPages}
             detailTemplate={this.props.detailTemplate}
+            openOnSelect={this.props.openOnSelect}
             />
         </table>
           {(()=>{

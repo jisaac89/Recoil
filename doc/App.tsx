@@ -242,21 +242,17 @@ export default class App extends React.Component<any, any> {
       {name: '', template : this.template.bind(this), width: 30 }
     ]
 
-    console.log(this.state.selected);
-
     return (
-      <Toolbar noRadius spacing>
-        <Button checked={checked}>Hello World</Button>
-        <Button onClick={this.toggleChecked.bind(this)} icon="star" />
-      </Toolbar>
+      <Layer>
+        <Grid
+          dataSource={components}
+          onSelect={this.selected.bind(this)}
+          selected={this.state.selected}
+          openOnSelect={true}
+          columns={columns}
+          detailTemplate={this.detailTemplate.bind(this)}
+          />
+      </Layer>
     )
   }
 }
-//
-// <Grid
-//   dataSource={components}
-//   onSelect={this.selected.bind(this)}
-//   selected={this.state.selected}
-//   detailTemplate={this.detailTemplate.bind(this)}
-//   openOnSelect={true}
-//   />

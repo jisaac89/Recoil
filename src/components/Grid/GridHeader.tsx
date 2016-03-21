@@ -34,7 +34,7 @@ class GridHeaderSortable extends React.Component<any,any>{
     return (
       <th style={{width : item.width}}>
         {this.props.children}
-        <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost size="small" icon={this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'chevron-down' : 'chevron-up' } />
+        <Button onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost icon={this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up' } />
       </th>
     );
   }
@@ -50,7 +50,6 @@ export default class GridHeader extends React.Component<any,any>{
     const props = self.props;
 
     let headerTitle;
-
 
     let createColumns = (item, index) => {
       if (item.headerTemplate) {
@@ -99,8 +98,8 @@ export default class GridHeader extends React.Component<any,any>{
             {(()=>{
               if (this.props.detailTemplate) {
                 return (
-                  <th width={30}>
-                    <Button tabIndex={-1} icon="caret-right"></Button>
+                  <th className="p0" width={5}>
+                    <Button ghost className="p5 ps10" tabIndex={-1} icon="caret-right"></Button>
                   </th>
                 )
               }

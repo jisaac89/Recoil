@@ -49,7 +49,6 @@ export default class GridBody extends React.Component<any,any>{
 
   toggleDetailTemplate(i) {
     let expanded = [];
-    console.log(i);
     expanded.push(i);
 
     this.setState({

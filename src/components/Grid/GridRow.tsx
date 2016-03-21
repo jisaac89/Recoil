@@ -56,7 +56,10 @@ export default class GridRow extends React.Component<any,any>{
     if (props.detailTemplate) {
       return (
         <tr onClick={selectEvent} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
-          <td width={30}><Button onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={this.props.expanded ? "caret-down" : "caret-right"}></Button></td>
+          <td className="p0" width={5}>
+            <Button className="p5 ps10" ghost onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={this.props.expanded ? "caret-down" : "caret-right"}>
+            </Button>
+          </td>
           {columnArray}
         </tr>
       )
