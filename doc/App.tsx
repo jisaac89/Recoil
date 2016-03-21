@@ -168,7 +168,8 @@ export default class App extends React.Component<any, any> {
       selectedItem: '',
       slideIndex:0,
       selected: [],
-      checked: false
+      checked: false,
+      keyword: ''
     }
   }
 
@@ -233,6 +234,10 @@ export default class App extends React.Component<any, any> {
   //   this.state.selected.push(key);
   // }
 
+  changeKeyword(term) {
+    this.setState({keyword: term});
+  }
+
   render() {
 
     const self = this;
@@ -245,9 +250,19 @@ export default class App extends React.Component<any, any> {
       {name: 'name', tabbable: true}
     ]
 
+    let newComponentArray = [];
+
+    var keys = components;
+    for (let k in keys) {
+     let thisKey = keys[k];
+      if (thisKey.name.toLowerCase().indexOf(self.state.keyword.toLowerCase()) > -1) {
+        newComponentArray.push(thisKey)
+      }
+    }
+
     return (
       <Layer overflow flex flow="row wrap" className="h100 w100">
-        <div className="w100">
+        <div className="w100 h50px">
             <Layer className="p10">
               <h1>Recoil</h1>
             </Layer>
@@ -256,13 +271,13 @@ export default class App extends React.Component<any, any> {
         <div className="h100 w100">
           <Layer className="h100" flex flow="row nowrap">
             <Layer className="h100 w400px border-right" flex flow="column nowrap">
-                <Toolbar block className="p10 border-bottom">
-                  <Input block type="search" title="Find Components" icon="search" />
+                <Toolbar className="p10 border-bottom h50px">
+                  <Input focusOnMount onChange={this.changeKeyword.bind(this)} block type="text" title="Find Components" icon="search" />
                 </Toolbar>
                 <Layer scrollY className="h100 pb100">
                   <Grid
                     hideHeader={true}
-                    dataSource={components}
+                    dataSource={newComponentArray}
                     onSelect={this.select.bind(this)}
                     selected={this.state.selected}
                     columns={columns}
@@ -272,29 +287,64 @@ export default class App extends React.Component<any, any> {
                     />
                 </Layer>
             </Layer>
-
-            <Layer scrollY className="h100 p10 pb100">
+            <div className="h100 w100 p10">
               <Wizard slideIndex={this.state.slideIndex}>
-                <TutorialButton {...state} />
-                <TutorialAlign {...state} />
-                <TutorialCard {...state} />
-                <TutorialCheckbox {...state} />
-                <TutorialDoor {...state} />
-                <TutorialDropdown {...state} />
-                <TutorialEmerge {...state} />
-                <TutorialGrid {...state} />
-                <TutorialInput {...state} />
-                <TutorialLayer {...state} />
-                <TutorialLoading {...state} />
-                <TutorialModal {...state} />
-                <TutorialPane {...state} />
-                <TutorialSelectable {...state} />
-                <TutorialShrink {...state} />
-                <TutorialToolbar {...state} />
-                <TutorialTransform {...state} />
-                <TutorialWizard {...state} />
+                <Layer scrollY fill>
+                  <TutorialAlign {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialButton {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialCard {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialCheckbox {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialDoor {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialDropdown {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialEmerge {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialGrid {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialInput {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialLayer {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialLoading {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialModal {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialPane {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialSelectable {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialShrink {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialToolbar {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialTransform {...state} />
+                </Layer>
+                <Layer scrollY fill>
+                  <TutorialWizard {...state} />
+                </Layer>
               </Wizard>
-            </Layer>
+            </div>
           </Layer>
         </div>
       </Layer>
