@@ -159,7 +159,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       buttonType = 'button';
     }
 
-    let selectablePartial = (props.onClick ? <Selectable checked={props.checked ? true : false}></Selectable> : null );
+    let selectablePartial = <Selectable checked={props.checked ? true : false}></Selectable>;
     let iconPartial = (props.icon ? <i className={(this.state.showShortcut ? 'shadow ' : '') + 'fa fa-'+props.icon+(props.children ? ' mr5' : '')}></i> : null );
 
     let showTooltip = () => {

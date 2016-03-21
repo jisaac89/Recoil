@@ -70,11 +70,25 @@ export default class GridBody extends React.Component<any,any>{
       if (props.detailTemplate) {
         rowArray.push(
           [<GridRow expanded={this.state.expandedRows.includes(key)} toggleDetailTemplate={this.toggleDetailTemplate.bind(this)} key={key} i={key} {...props} />],
+          [<tr>
+            <td className="p0" colSpan={this.props.columns.length + 1}>
+              <Layer>
+                <Selectable checked={this.state.expandedRows.includes(key)} />
+              </Layer>
+            </td>
+          </tr>],
           [<GridRowTemplate expanded={this.state.expandedRows.includes(key)} i={key} {...props} />]
         )
       } else {
         rowArray.push(
-          <GridRow detailTemplate={props.detailTemplate} key={key} i={key} {...props} />
+          [<GridRow detailTemplate={props.detailTemplate} key={key} i={key} {...props} />],
+          [<tr>
+            <td className="p0" colSpan={this.props.columns.length + 1}>
+              <Layer>
+                <Selectable checked={this.state.expandedRows.includes(key)} />
+              </Layer>
+            </td>
+          </tr>]
         )
       }
     }

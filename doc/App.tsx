@@ -165,8 +165,15 @@ export default class App extends React.Component<any, any> {
     this.state = {
       selectedItem: '',
       slideIndex:0,
-      selected: []
+      selected: [],
+      checked: false
     }
+  }
+
+  toggleChecked(){
+    this.setState({
+      checked : this.state.checked ? false : true
+    })
   }
 
   setSelectedItem(item) {
@@ -186,21 +193,21 @@ export default class App extends React.Component<any, any> {
     })
   }
 
-  public onSelect(item) {
-    this.state.selected.push(item.name)
-  }
-
-  public selected(item) {
-
-    let checked;
-
-    if (this.state.selected.length > 0) {
-      console.log(this.state.selected);
-      checked = this.state.selected.includes(item.name);
-    }
-    return checked;
-
-  }
+  // public onSelect(item) {
+  //   this.state.selected.push(item.name)
+  // }
+  //
+  // public selected(item) {
+  //
+  //   let checked;
+  //
+  //   if (this.state.selected.length > 0) {
+  //     console.log(this.state.selected);
+  //     checked = this.state.selected.includes(item.name);
+  //   }
+  //   return checked;
+  //
+  // }
 
   template() {
     return (
@@ -212,10 +219,14 @@ export default class App extends React.Component<any, any> {
 
   detailTemplate(key, item) {
     return (
-      <Layer block className="p10">
+      <Layer className="p10 light">
         <p>{item.description}</p>
       </Layer>
     )
+  }
+
+  selected(key, items) {
+    this.state.selected.push(key);
   }
 
   render() {
@@ -224,15 +235,28 @@ export default class App extends React.Component<any, any> {
     const props = self.props;
     let state = self.state;
 
+    let {checked} = state;
+
     let columns = [
       {name: 'name', tabbable: true},
       {name: '', template : this.template.bind(this), width: 30 }
     ]
 
+    console.log(this.state.selected);
+
     return (
-      <Layer>
-        <Grid dataSource={components} detailTemplate={this.detailTemplate.bind(this)} />
-      </Layer>
+      <Toolbar noRadius spacing>
+        <Button checked={checked}>Hello World</Button>
+        <Button onClick={this.toggleChecked.bind(this)} icon="star" />
+      </Toolbar>
     )
   }
 }
+//
+// <Grid
+//   dataSource={components}
+//   onSelect={this.selected.bind(this)}
+//   selected={this.state.selected}
+//   detailTemplate={this.detailTemplate.bind(this)}
+//   openOnSelect={true}
+//   />

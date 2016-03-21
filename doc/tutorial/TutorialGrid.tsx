@@ -56,6 +56,12 @@ const GridProperties = [
     type: '',
     options: '',
     description: 'Define the grids actual data object.'
+  },
+  {
+    name :'detailTemplate',
+    type: '',
+    options: 'key, item',
+    description: 'Returns a custom row template.'
   }
 ]
 
