@@ -37,11 +37,20 @@ export default class Wizard extends React.Component<any, any>{
         props.className
       );
 
-      return(
-        <WizardSlide className={wizardSlideClass} key={index}>
-          {item}
-        </WizardSlide>
-      );
+      if (props.slideIndex === index ||
+          index === props.slideIndex - 1 ||
+          index === props.slideIndex + 1 ||
+          index === props.slideIndex - 2 ||
+          index === props.slideIndex + 2
+          ) {
+        return(
+          <WizardSlide className={wizardSlideClass} key={index}>
+            {item}
+          </WizardSlide>
+        )
+      } else {
+        return null;
+      }
     };
 
     if (props.children) {

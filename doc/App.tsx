@@ -8,6 +8,8 @@ import Checkbox from '../src/components/Checkbox/Checkbox';
 import Grid from '../src/components/Grid/Grid';
 import Layer from '../src/components/Layer/Layer';
 import Dropdown from '../src/components/Dropdown/Dropdown';
+import Input from '../src/components/Input/Input';
+import Wizard from '../src/components/Wizard/Wizard';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
@@ -193,21 +195,23 @@ export default class App extends React.Component<any, any> {
     })
   }
 
-  // public onSelect(item) {
-  //   this.state.selected.push(item.name)
-  // }
-  //
-  // public selected(item) {
-  //
-  //   let checked;
-  //
-  //   if (this.state.selected.length > 0) {
-  //     console.log(this.state.selected);
-  //     checked = this.state.selected.includes(item.name);
-  //   }
-  //   return checked;
-  //
-  // }
+  select(key, item) {
+    this.setState({
+      slideIndex: item.slideIndex
+    })
+  }
+
+  public selected(item) {
+
+    let checked;
+
+    if (this.state.selected.length > 0) {
+      console.log(this.state.selected);
+      checked = this.state.selected.includes(item.name);
+    }
+    return checked;
+
+  }
 
   template() {
     return (
@@ -224,10 +228,10 @@ export default class App extends React.Component<any, any> {
       </Layer>
     )
   }
-
-  selected(key, items) {
-    this.state.selected.push(key);
-  }
+  //
+  // selected(key, items) {
+  //   this.state.selected.push(key);
+  // }
 
   render() {
 
@@ -238,20 +242,61 @@ export default class App extends React.Component<any, any> {
     let {checked} = state;
 
     let columns = [
-      {name: 'name', tabbable: true},
-      {name: '', template : this.template.bind(this), width: 30 }
+      {name: 'name', tabbable: true}
     ]
 
     return (
-      <Layer>
-        <Grid
-          dataSource={components}
-          onSelect={this.selected.bind(this)}
-          selected={this.state.selected}
-          openOnSelect={true}
-          columns={columns}
-          detailTemplate={this.detailTemplate.bind(this)}
-          />
+      <Layer overflow flex flow="row wrap" className="h100 w100">
+        <div className="w100">
+            <Layer className="p10">
+              <h1>Recoil</h1>
+            </Layer>
+           <hr className="rainbow-line" />
+        </div>
+        <div className="h100 w100">
+          <Layer className="h100" flex flow="row nowrap">
+            <Layer className="h100 w400px border-right" flex flow="column nowrap">
+                <Toolbar block className="p10 border-bottom">
+                  <Input block type="search" title="Find Components" icon="search" />
+                </Toolbar>
+                <Layer scrollY className="h100 pb100">
+                  <Grid
+                    hideHeader={true}
+                    dataSource={components}
+                    onSelect={this.select.bind(this)}
+                    selected={this.state.selected}
+                    columns={columns}
+                    numberPerPage={18}
+                    openOnSelect={true}
+                    detailTemplate={this.detailTemplate.bind(this)}
+                    />
+                </Layer>
+            </Layer>
+
+            <Layer scrollY className="h100 p10 pb100">
+              <Wizard slideIndex={this.state.slideIndex}>
+                <TutorialButton {...state} />
+                <TutorialAlign {...state} />
+                <TutorialCard {...state} />
+                <TutorialCheckbox {...state} />
+                <TutorialDoor {...state} />
+                <TutorialDropdown {...state} />
+                <TutorialEmerge {...state} />
+                <TutorialGrid {...state} />
+                <TutorialInput {...state} />
+                <TutorialLayer {...state} />
+                <TutorialLoading {...state} />
+                <TutorialModal {...state} />
+                <TutorialPane {...state} />
+                <TutorialSelectable {...state} />
+                <TutorialShrink {...state} />
+                <TutorialToolbar {...state} />
+                <TutorialTransform {...state} />
+                <TutorialWizard {...state} />
+              </Wizard>
+            </Layer>
+          </Layer>
+        </div>
       </Layer>
     )
   }

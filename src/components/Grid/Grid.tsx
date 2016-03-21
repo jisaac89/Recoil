@@ -212,7 +212,7 @@ export default class Grid extends React.Component<any,any>{
             />
         </table>
           {(()=>{
-            if (state.numberOfPages !== 1) {
+            if (state.numberOfPages === 1) {
               return (
                 <GridFooter
                   gotoPage={this.gotoPage.bind(this)}

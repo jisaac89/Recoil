@@ -90,50 +90,49 @@ export default class TutorialAlign extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
-        <Layer>
+      <Layer>
 
-          <h1>Align</h1>
+        <h1>Align</h1>
 
+        <Layer className="ptb10">
+          <h2 className="pb10">Description</h2>
+          <p>The Align component is a flex alternative, it aligns components either horizontally or vertically with a option margin set.</p>
+        </Layer>
+
+        <Layer className="ptb10">
+          <h2 className="pb10">Examples</h2>
           <Layer className="ptb10">
-            <h2 className="pb10">Description</h2>
-            <p>The Align component is a flex alternative, it aligns components either horizontally or vertically with a option margin set.</p>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
-              <Layer className="p10 dark">
-                <Align margin={1}>
-                  <Layer type="light" className="p20">Aligned Element 1</Layer>
-                  <Layer type="light" className="p20">Aligned Element 2</Layer>
-                </Align>
-              </Layer>
+            <Layer className="p10 dark">
+              <Align margin={1}>
+                <Layer type="light" className="p20">Aligned Element 1</Layer>
+                <Layer type="light" className="p20">Aligned Element 2</Layer>
+              </Align>
             </Layer>
           </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-            <Door open={this.state.showProps}>
-              <Layer className="ptb10">
-                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
-              </Layer>
-            </Door>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Video</h2>
-            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-            <Door open={this.state.showVideo}>
-              <Layer className="ptb10">
-                VIDEO
-              </Layer>
-            </Door>
-          </Layer>
-
         </Layer>
-      </Emerge>
+
+        <Layer className="ptb10">
+          <h2 className="pb10">Options</h2>
+          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
+          <Door open={this.state.showProps}>
+            <Layer className="ptb10">
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
+            </Layer>
+          </Door>
+        </Layer>
+
+        <Layer className="ptb10">
+          <h2 className="pb10">Video</h2>
+          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+          <Door open={this.state.showVideo}>
+            <Layer className="ptb10">
+              VIDEO
+            </Layer>
+          </Door>
+        </Layer>
+
+      </Layer>
+
     )
   }
 }

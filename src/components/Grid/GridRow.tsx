@@ -16,8 +16,12 @@ export default class GridRow extends React.Component<any,any>{
   }
 
   onSelect(key, item) {
-    this.props.onSelect(key, item);
+    const self = this;
+    self.props.onSelect(key, item);
     // this.props.selected(key, item);
+    if (self.props.openOnSelect) {
+        self.toggleDetailTemplate(key);
+    }
   }
 
   toggleDetailTemplate(i) {
@@ -44,18 +48,11 @@ export default class GridRow extends React.Component<any,any>{
 
     if (props.onSelect) {
         selectedItem = props.selected.includes(i);
-        if (props.openOnSelect === true) {
-          selectEvent = this.toggleDetailTemplate.bind(this, i);
-        } else {
-          selectEvent = this.onSelect.bind(this, i, self.props.dataSource[i]);
-        }
-    } else {
-      selectEvent = null;
     }
 
     if (props.detailTemplate) {
       return (
-        <tr onClick={selectEvent} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+        <tr onClick={this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
           <td className="p0" width={5}>
             <Button className="p5 ps10" ghost onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={this.props.expanded ? "caret-down" : "caret-right"}>
             </Button>

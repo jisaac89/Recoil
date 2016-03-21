@@ -17,10 +17,6 @@ class GridRowTemplate extends React.Component<any,any>{
     }
   }
 
-  detailTemplateOpen() {
-    ;
-  }
-
   render() {
     const self = this;
     const props = self.props;
