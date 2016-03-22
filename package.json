@@ -1,15 +1,15 @@
 {
-  "name": "TypeUI",
-  "version": "1.0.0",
+  "name": "Recoil",
+  "version": "0.2.05",
   "description": "",
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "lint": "eslint src"
   },
   "main": "src/index.js",
-   "directories": {
-     "lib": "src/"
-   },
+  "directories": {
+    "lib": "src/"
+  },
   "keywords": [
     "react",
     "reactjs",
@@ -50,6 +50,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "extract-text-webpack-plugin": "^1.0.1",
     "react": "^15.0.0-rc.1",
     "react-dom": "^15.0.0-rc.1",
     "react-highlight": "^0.7.0",

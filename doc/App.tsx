@@ -379,12 +379,10 @@ export default class App extends React.Component<any, any> {
                     </div>
                   </Layer>
                 </div>
-
               )
             }
           })()}
         </Layer>
-
       </Layer>
     )
   }

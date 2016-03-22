@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "74438b9a4292534b4d51"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "1e5f6145d086c238beaa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21371,7 +21371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            } else {
 	                buttonType = 'button';
 	            }
-	            var selectablePartial = props.onClick ? React.createElement(Selectable_1.default, { checked: props.checked ? true : false }) : null;
+	            var selectablePartial = React.createElement(Selectable_1.default, { checked: props.checked ? true : false });
 	            var iconPartial = props.icon ? React.createElement('i', { className: (this.state.showShortcut ? 'shadow ' : '') + 'fa fa-' + props.icon + (props.children ? ' mr5' : '') }) : null;
 	            var showTooltip = function showTooltip() {
 	                if (_this2.state.showShortcut) {
@@ -21382,24 +21382,45 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    );
 	                }
 	            };
-	            return React.createElement(
-	                'button',
-	                { ref: 'button', tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, target: props.target, className: buttonClass, style: props.style },
-	                iconPartial,
-	                function () {
-	                    if (!_this2.state.showShortcut) {
-	                        return React.createElement(
-	                            'span',
-	                            null,
-	                            props.children
-	                        );
-	                    } else {
-	                        return null;
-	                    }
-	                }(),
-	                selectablePartial,
-	                showTooltip()
-	            );
+	            if (props.href) {
+	                return React.createElement(
+	                    'a',
+	                    { href: props.href, target: props.target, ref: 'button', tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, className: buttonClass, style: props.style },
+	                    iconPartial,
+	                    function () {
+	                        if (!_this2.state.showShortcut) {
+	                            return React.createElement(
+	                                'span',
+	                                null,
+	                                props.children
+	                            );
+	                        } else {
+	                            return null;
+	                        }
+	                    }(),
+	                    selectablePartial,
+	                    showTooltip()
+	                );
+	            } else {
+	                return React.createElement(
+	                    'button',
+	                    { ref: 'button', tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, target: props.target, className: buttonClass, style: props.style },
+	                    iconPartial,
+	                    function () {
+	                        if (!_this2.state.showShortcut) {
+	                            return React.createElement(
+	                                'span',
+	                                null,
+	                                props.children
+	                            );
+	                        } else {
+	                            return null;
+	                        }
+	                    }(),
+	                    selectablePartial,
+	                    showTooltip()
+	                );
+	            }
 	        }
 	    }]);
 	
@@ -21793,6 +21814,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            this.refDoor = ReactDOM.findDOMNode(this.refs["door"]);
+	            var getAbsoluteHeight = function getAbsoluteHeight(el) {
+	                var styles = window.getComputedStyle(el);
+	                var margin = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
+	                return Math.ceil(el.offsetHeight + margin);
+	            };
+	            if (this.props.open) {
+	                this.refDoor.style.maxHeight = getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px';
+	            }
 	        }
 	    }, {
 	        key: 'render',
@@ -23054,10 +23083,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    'table',
 	                    { className: 'r-Grid__Table w100' },
 	                    React.createElement(GridHeader_1.default, { hideHeader: props.hideHeader, columns: renderedColumns, dataSource: renderedPage, sortable: props.sortable, toggleSorting: this.toggleSorting.bind(this), sortType: state.sortType, detailTemplate: this.props.detailTemplate }),
-	                    React.createElement(GridBody_1.default, { height: props.height, open: props.open, onSelect: props.onSelect, selected: props.selected, columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, detailTemplate: this.props.detailTemplate })
+	                    React.createElement(GridBody_1.default, { height: props.height, open: props.open, onSelect: props.onSelect, selected: props.selected, columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, detailTemplate: this.props.detailTemplate, openOnSelect: this.props.openOnSelect })
 	                ),
 	                function () {
-	                    if (state.numberOfPages !== 1) {
+	                    if (state.numberOfPages === 1) {
 	                        return React.createElement(GridFooter_1.default, { gotoPage: _this2.gotoPage.bind(_this2), previousPage: _this2.previousPage.bind(_this2), nextPage: _this2.nextPage.bind(_this2), lastPage: _this2.lastPage.bind(_this2), firstPage: _this2.firstPage.bind(_this2), numberOfPages: numberOfPages, currentPage: state.currentPage, changePageSize: _this2.changePageSize.bind(_this2) });
 	                    }
 	                }()
@@ -23105,7 +23134,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Grid__Row:nth-child(odd) {\n  background: #F8F8F8;\n}\n.e-NightMode .r-Grid__Row:nth-child(odd) {\n  background: #212121;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\nth,\ntd {\n  border-bottom: 1px solid #ccc !important;\n  padding-bottom: 0.25em;\n  padding-top: 0.25em;\n}\nth,\ntd {\n  text-align: left;\n  vertical-align: top;\n  padding: 10px !important;\n}\ntable,\ntd,\nth {\n  vertical-align: middle;\n}\ncaption,\nth,\ntd {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n", ""]);
+	exports.push([module.id, ".r-Grid__Row:nth-child(odd) {\n  background: #F8F8F8;\n}\n.e-NightMode .r-Grid__Row:nth-child(odd) {\n  background: #212121;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\nth,\ntd {\n  border-bottom: 1px solid #ccc !important;\n  padding-bottom: 0.25em;\n  padding-top: 0.25em;\n}\nth,\ntd {\n  text-align: left;\n  vertical-align: top;\n  padding: 10px !important;\n}\ntable,\ntd,\nth {\n  vertical-align: middle;\n}\ncaption,\nth,\ntd {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n  border-color: transparent !important;\n}\ntr.r-Grid__Row:hover {\n  cursor: pointer;\n}\n", ""]);
 	
 	// exports
 
@@ -23162,7 +23191,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                'th',
 	                { style: { width: item.width } },
 	                this.props.children,
-	                React.createElement(Button_1.default, { onClick: self.toggleSorting.bind(self, item.name), tabIndex: -1, className: 'w50px', ghost: true, size: 'small', icon: this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'chevron-down' : 'chevron-up' })
+	                React.createElement(Button_1.default, { onClick: self.toggleSorting.bind(self, item.name), tabIndex: -1, className: 'w50px', ghost: true, icon: this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up' })
 	            );
 	        }
 	    }]);
@@ -23240,8 +23269,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            if (_this3.props.detailTemplate) {
 	                                return React.createElement(
 	                                    'th',
-	                                    { width: 30 },
-	                                    React.createElement(Button_1.default, { tabIndex: -1, icon: 'caret-right' })
+	                                    { className: 'p0', width: 5 },
+	                                    React.createElement(Button_1.default, { ghost: true, className: 'p5 ps10', tabIndex: -1, icon: 'caret-right' })
 	                                );
 	                            }
 	                        }(),
@@ -23276,19 +23305,74 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
+	var Selectable_1 = __webpack_require__(181);
+	var Layer_1 = __webpack_require__(201);
 	var Door_1 = __webpack_require__(190);
 	var GridRow_1 = __webpack_require__(214);
 	
-	var GridBody = function (_React$Component) {
-	    _inherits(GridBody, _React$Component);
+	var GridRowTemplate = function (_React$Component) {
+	    _inherits(GridRowTemplate, _React$Component);
+	
+	    function GridRowTemplate() {
+	        _classCallCheck(this, GridRowTemplate);
+	
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GridRowTemplate).call(this));
+	
+	        _this.state = {
+	            open: false
+	        };
+	        return _this;
+	    }
+	
+	    _createClass(GridRowTemplate, [{
+	        key: 'render',
+	        value: function render() {
+	            var self = this;
+	            var props = self.props;
+	            var key = props.i;
+	            return React.createElement(
+	                'tr',
+	                null,
+	                React.createElement(
+	                    'td',
+	                    { className: 'p0', colSpan: this.props.columns.length + 1 },
+	                    React.createElement(
+	                        Door_1.default,
+	                        { open: props.expanded },
+	                        self.props.detailTemplate(key, self.props.dataSource[key])
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+	
+	    return GridRowTemplate;
+	}(React.Component);
+	
+	var GridBody = function (_React$Component2) {
+	    _inherits(GridBody, _React$Component2);
 	
 	    function GridBody() {
 	        _classCallCheck(this, GridBody);
 	
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(GridBody).call(this));
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GridBody).call(this));
+	
+	        _this2.state = {
+	            expandedRows: []
+	        };
+	        return _this2;
 	    }
 	
 	    _createClass(GridBody, [{
+	        key: 'toggleDetailTemplate',
+	        value: function toggleDetailTemplate(i) {
+	            var expanded = [];
+	            expanded.push(i);
+	            this.setState({
+	                expandedRows: expanded
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var self = this;
@@ -23299,21 +23383,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var rowArray = [];
 	            for (var key in self.props.dataSource) {
 	                if (props.detailTemplate) {
-	                    rowArray.push([React.createElement(GridRow_1.default, _extends({ key: key, i: key }, props))], [React.createElement(
+	                    rowArray.push([React.createElement(GridRow_1.default, _extends({ expanded: this.state.expandedRows.includes(key), toggleDetailTemplate: this.toggleDetailTemplate.bind(this), key: key, i: key }, props))], [React.createElement(
 	                        'tr',
 	                        null,
 	                        React.createElement(
 	                            'td',
 	                            { className: 'p0', colSpan: this.props.columns.length + 1 },
 	                            React.createElement(
-	                                Door_1.default,
-	                                { open: false },
-	                                self.props.detailTemplate(key, self.props.dataSource[key])
+	                                Layer_1.default,
+	                                null,
+	                                React.createElement(Selectable_1.default, { checked: this.state.expandedRows.includes(key) })
+	                            )
+	                        )
+	                    )], [React.createElement(GridRowTemplate, _extends({ expanded: this.state.expandedRows.includes(key), i: key }, props))]);
+	                } else {
+	                    rowArray.push([React.createElement(GridRow_1.default, _extends({ detailTemplate: props.detailTemplate, key: key, i: key }, props))], [React.createElement(
+	                        'tr',
+	                        null,
+	                        React.createElement(
+	                            'td',
+	                            { className: 'p0', colSpan: this.props.columns.length + 1 },
+	                            React.createElement(
+	                                Layer_1.default,
+	                                null,
+	                                React.createElement(Selectable_1.default, { checked: this.state.expandedRows.includes(key) })
 	                            )
 	                        )
 	                    )]);
-	                } else {
-	                    rowArray.push(React.createElement(GridRow_1.default, _extends({ detailTemplate: props.detailTemplate, key: key, i: key }, props)));
 	                }
 	            }
 	            return React.createElement(
@@ -23363,9 +23459,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    _createClass(GridRow, [{
 	        key: 'onSelect',
-	        value: function onSelect(item) {
-	            this.props.onSelect(item);
-	            this.props.selected(item);
+	        value: function onSelect(key, item) {
+	            var self = this;
+	            self.props.onSelect(key, item);
+	            // this.props.selected(key, item);
+	            if (self.props.openOnSelect) {
+	                self.toggleDetailTemplate(key);
+	            }
+	        }
+	    }, {
+	        key: 'toggleDetailTemplate',
+	        value: function toggleDetailTemplate(i) {
+	            this.props.toggleDetailTemplate(i);
 	        }
 	    }, {
 	        key: 'render',
@@ -23381,21 +23486,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	                columnArray.push(React.createElement(GridColumn_1.default, { key: x, dataSource: dataSource, i: i, x: x, columns: columns }));
 	            }
 	            var selectedItem = void 0;
+	            var selectEvent = void 0;
+	            if (props.onSelect) {
+	                selectedItem = props.selected.includes(i);
+	            }
 	            if (props.detailTemplate) {
 	                return React.createElement(
 	                    'tr',
-	                    { onClick: this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
+	                    { onClick: this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
 	                    React.createElement(
 	                        'td',
-	                        { width: 30 },
-	                        React.createElement(Button_1.default, { tabIndex: -1, icon: 'caret-right' })
+	                        { className: 'p0', width: 5 },
+	                        React.createElement(Button_1.default, { className: 'p5 ps10', ghost: true, onClick: this.toggleDetailTemplate.bind(this, i), tabIndex: -1, icon: this.props.expanded ? "caret-down" : "caret-right" })
 	                    ),
 	                    columnArray
 	                );
 	            } else {
 	                return React.createElement(
 	                    'tr',
-	                    { onClick: this.props.onSelect ? this.onSelect.bind(this, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
+	                    { onClick: this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
 	                    columnArray
 	                );
 	            }
@@ -24103,11 +24212,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var wizardClass = classNames('r-Wizard');
 	            var createSlidesPartial = function createSlidesPartial(item, index) {
 	                var wizardSlideClass = classNames('r-WizardSlide', { 'e-selected': props.slideIndex === index }, { 'e-backward': props.slideIndex > index }, { 'e-forward': props.slideIndex < index }, { 'e-vertical': props.vertical }, props.className);
-	                return React.createElement(
-	                    WizardSlide,
-	                    { className: wizardSlideClass, key: index },
-	                    item
-	                );
+	                if (props.slideIndex === index || index === props.slideIndex - 1 || index === props.slideIndex + 1) {
+	                    return React.createElement(
+	                        WizardSlide,
+	                        { className: wizardSlideClass, key: index },
+	                        item
+	                    );
+	                } else {
+	                    return null;
+	                }
 	            };
 	            if (props.children) {
 	                return React.createElement(

@@ -4,11 +4,11 @@
         "moduleResolution": "node",
         "isolatedModules": false,
         "jsx": "preserve",
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "outDir": "build"
     },
     "filesGlob": [
-        "*/**/*.{ts,tsx}",
-        "../typings/browser.d.ts"
+        "**/**/*.{ts,tsx}"
     ],
     "exclude": [
         "node_modules"
@@ -18,6 +18,8 @@
     },
     "compileOnSave": false,
     "files": [
+        "App.tsx",
+        "index.tsx",
         "tutorial/TutorialAlign.tsx",
         "tutorial/TutorialButton.tsx",
         "tutorial/TutorialCard.tsx",
