@@ -18,6 +18,18 @@ class Door extends React.Component<IDoorProps, IDoorState>{
 
   public componentDidMount() {
     this.refDoor = ReactDOM.findDOMNode<HTMLInputElement>(this.refs["door"]);
+
+    const getAbsoluteHeight = (el) => {
+      let styles = window.getComputedStyle(el);
+      let margin = parseFloat(styles.marginTop) +
+                   parseFloat(styles.marginBottom);
+
+      return Math.ceil(el.offsetHeight + margin);
+    };
+
+    if (this.props.open) {
+      this.refDoor.style.maxHeight = getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px';
+    }
   }
 
   render(){
