@@ -6,13 +6,13 @@ Recoil is a front-end react powered framework.
 
   - Built for rapid development.
   - Advanced versions of default controls, e.g Button, Input
-  - Typescript included.
+  - Developed with Typescript.
 
 > The main goal of Recoil was to build a front end framework that allows developers to rapidly create mobile
 > first web applications
 
 ### Version
-0.1.0
+0.2.06
 
 A lot of the components are still at the early stages of development.
 
@@ -29,20 +29,51 @@ Recoil uses a number of awesome open source projects to work properly:
 
 And of course big thanks to Twitter Bootstrap, Semantics UI, Apple and Google Material UI for design inspirations!
 
-### Installation
+### NPM Module
+
+```sh
+$ npm install react-recoil
+```
+
+Then include the following CSS files in your HTML:
+
+```sh
+$ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
+$ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
+```
+
+Then include the relevant LESS file (webpack less-loader required.)
+
+```sh
+import 'react-recoil/less/Recoil.less';
+```
+
+Now, on your project you can destructure the components you want.
+
+```sh
+import {Toolbar, Button} from 'react-recoil';
+```
+
+An example of how to use them in your app.
+
+```sh
+<Toolbar spacing block>
+  <Button icon="home" />
+  <Button icon="user">
+    Users
+  </Button>
+</Toolbar>
+```
+
+### Documentation
 
 ```sh
 $ git clone https://github.com/jisaac89/recoil.git
 $ cd recoil
 $ npm install
 $ tsd install
+$ cd doc
 $ npm start
-```
-
-
-```sh
-$ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
-$ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
 ```
 
 ### Videos
@@ -67,9 +98,6 @@ Helpful videos on how to use each component can be found here:
 * [Toolbar]
 * [Transform]
 * [Wizard]
-
-### Development
-
 
 ### Todos
 

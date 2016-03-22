@@ -1,6 +1,6 @@
 {
   "name": "react-recoil",
-  "version": "0.2.05",
+  "version": "0.2.06",
   "description": "react-recoil-npm",
   "main": "recoil.js",
   "scripts": {
@@ -8,7 +8,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "react"
+    "react",
+    "react ui",
+    "ui kit",
+    "ui framework",
+    "react ui kit",
+    "react ui framework",
+    "typescript react",
+    "react front end"
   ],
   "author": "Joseph Isaac",
   "license": "ISC"

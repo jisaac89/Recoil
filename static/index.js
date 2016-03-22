@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "1e5f6145d086c238beaa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "487b7ea25e8b20f13698"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22444,7 +22444,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var React = __webpack_require__(5);
 	var classNames = __webpack_require__(174);
 	__webpack_require__(197);
-	;
 	
 	var Pane = function (_React$Component) {
 	    _inherits(Pane, _React$Component);
@@ -22759,7 +22758,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var React = __webpack_require__(5);
 	var classNames = __webpack_require__(174);
 	__webpack_require__(207);
-	;
 	
 	var Emerge = function (_React$Component) {
 	    _inherits(Emerge, _React$Component);
@@ -24186,7 +24184,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var React = __webpack_require__(5);
 	var classNames = __webpack_require__(174);
 	__webpack_require__(233);
-	// stateless functional comp =D
 	var WizardSlide = function WizardSlide(props) {
 	    return React.createElement(
 	        'div',
