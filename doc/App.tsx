@@ -10,6 +10,9 @@ import Layer from '../src/components/Layer/Layer';
 import Dropdown from '../src/components/Dropdown/Dropdown';
 import Input from '../src/components/Input/Input';
 import Wizard from '../src/components/Wizard/Wizard';
+import Modal from '../src/components/Modal/Modal';
+import Door from '../src/components/Door/Door';
+import Emerge from '../src/components/Emerge/Emerge';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
@@ -169,7 +172,8 @@ export default class App extends React.Component<any, any> {
       slideIndex:0,
       selected: [],
       checked: false,
-      keyword: ''
+      keyword: '',
+      template: ''
     }
   }
 
@@ -238,6 +242,12 @@ export default class App extends React.Component<any, any> {
     this.setState({keyword: term});
   }
 
+  setTemplate(temp) {
+    this.setState({
+      template: temp
+    })
+  }
+
   render() {
 
     const self = this;
@@ -261,92 +271,117 @@ export default class App extends React.Component<any, any> {
     }
 
     return (
-      <Layer overflow flex flow="row wrap" className="h100 w100">
-        <div className="w100 h50px">
-            <Layer className="p10">
-              <h1>Recoil</h1>
-            </Layer>
-           <hr className="rainbow-line" />
-        </div>
-        <div className="h100 w100">
-          <Layer className="h100" flex flow="row nowrap">
-            <Layer className="h100 w400px border-right" flex flow="column nowrap">
-                <Toolbar className="p10 border-bottom h50px">
-                  <Input focusOnMount onChange={this.changeKeyword.bind(this)} block type="text" title="Find Components" icon="search" />
-                </Toolbar>
-                <Layer scrollY className="h100 pb100">
-                  <Grid
-                    hideHeader={true}
-                    dataSource={newComponentArray}
-                    onSelect={this.select.bind(this)}
-                    selected={this.state.selected}
-                    columns={columns}
-                    numberPerPage={18}
-                    openOnSelect={true}
-                    detailTemplate={this.detailTemplate.bind(this)}
-                    />
-                </Layer>
-            </Layer>
-            <div className="h100 w100 p10">
-              <Wizard slideIndex={this.state.slideIndex}>
-                <Layer scrollY fill>
-                  <TutorialAlign {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialButton {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialCard {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialCheckbox {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialDoor {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialDropdown {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialEmerge {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialGrid {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialInput {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialLayer {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialLoading {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialModal {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialPane {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialSelectable {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialShrink {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialToolbar {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialTransform {...state} />
-                </Layer>
-                <Layer scrollY fill>
-                  <TutorialWizard {...state} />
-                </Layer>
-              </Wizard>
-            </div>
+      <Layer fill>
+        <Layer overflow flex flow="row wrap" className="h100 w100">
+          <Layer className="p10 text-center">
+            <Door open={!state.template}>
+              <div>
+                <img className="w300px e-float" src={'./img/Recoil.png'} />
+                <h1 className="super mtb20">
+                  React <strong>Recoil</strong>
+                </h1>
+              </div>
+            </Door>
+            <Toolbar spacing>
+              <Emerge>
+              <Button onClick={this.setTemplate.bind(this, 'start')} size="large">Getting Started</Button>
+              <Button onClick={this.setTemplate.bind(this, 'start')} size="large">Components</Button>
+              <Button onClick={this.setTemplate.bind(this, 'start')} size="large">Layout</Button>
+              <Button size="large" href="http://www.github.com/jisaac89/recoil" right type="primary" target="_blank" icon="github">Grab Latest Version</Button>
+              </Emerge>
+            </Toolbar>
+            <hr className="rainbow-line mt10" />
           </Layer>
-        </div>
+          {(()=>{
+            if (state.template === 'start') {
+              return (
+                <Emerge>
+                <div className="h100 w100">
+                  <Layer className="h100" flex flow="row nowrap">
+                    <Layer className="h100 w400px border-right" flex flow="column nowrap">
+                        <Toolbar className="p10 border-bottom h50px">
+                          <Input focusOnMount onChange={this.changeKeyword.bind(this)} block type="text" title="Find Components" icon="search" />
+                        </Toolbar>
+                        <Layer scrollY className="h100 pb100">
+                          <Grid
+                            hideHeader={true}
+                            dataSource={newComponentArray}
+                            onSelect={this.select.bind(this)}
+                            selected={this.state.selected}
+                            columns={columns}
+                            numberPerPage={18}
+                            openOnSelect={true}
+                            detailTemplate={this.detailTemplate.bind(this)}
+                            />
+                        </Layer>
+                    </Layer>
+                    <div className="h100 w100 p10">
+                      <Wizard slideIndex={this.state.slideIndex}>
+                        <Layer scrollY fill>
+                          <TutorialAlign {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialButton {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialCard {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialCheckbox {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialDoor {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialDropdown {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialEmerge {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialGrid {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialInput {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialLayer {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialLoading {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialModal {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialPane {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialSelectable {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialShrink {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialToolbar {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialTransform {...state} />
+                        </Layer>
+                        <Layer scrollY fill>
+                          <TutorialWizard {...state} />
+                        </Layer>
+                      </Wizard>
+                    </div>
+                  </Layer>
+                </div>
+                </Emerge>
+
+              )
+            }
+          })()}
+        </Layer>
+
       </Layer>
     )
   }
