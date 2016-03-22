@@ -9,11 +9,8 @@ interface ISelectableProps {
   children ? : any;
   type? : string;
 }
-interface ISelectableState {
 
-}
-
-class Selectable extends React.Component<ISelectableProps, ISelectableState> {
+class Selectable extends React.Component<ISelectableProps, {}> {
 
   public static defaultProps = {
     type: 'primary'

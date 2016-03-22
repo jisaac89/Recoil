@@ -6,7 +6,23 @@ import Emerge from '../Emerge/Emerge';
 
 import GridColumn from './GridColumn';
 
-export default class GridRow extends React.Component<any,any>{
+interface IGridRowProps {
+  onSelect ? : any;
+  openOnSelect ? : any;
+  toggleDetailTemplate ? : any;
+  columns ? : any;
+  dataSource ? : any;
+  i ? : any;
+  selected ? : any;
+  detailTemplate ? : any;
+  expanded ? : boolean;
+}
+
+interface IGridRowState {
+  selected ? : boolean;
+}
+
+export default class GridRow extends React.Component<IGridRowProps,IGridRowState>{
 
   constructor() {
     super();

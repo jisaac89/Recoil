@@ -1,7 +1,15 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import './Wizard.less';
-// stateless functional comp =D
+
+interface IWizardProps {
+  slideIndex ? : number;
+  vertical ? : boolean;
+  className ? : any;
+  children ? : any;
+  style ? : any;
+}
+
 const WizardSlide : any = (props : any) => {
   return (
     <div className={props.className}>
@@ -10,7 +18,7 @@ const WizardSlide : any = (props : any) => {
   );
 }
 
-export default class Wizard extends React.Component<any, any>{
+export default class Wizard extends React.Component<IWizardProps, {}>{
   public static defaultProps = {
     slideIndex: 0
   }

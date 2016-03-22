@@ -3,7 +3,25 @@ import Selectable from '../Selectable/Selectable';
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 
-class GridHeaderSortable extends React.Component<any,any>{
+interface IGridHeaderProps {
+  toggleSorting ? : any;
+  sortable ? : boolean;
+  hideHeader ? : boolean;
+  columns? : any;
+  detailTemplate ? : () => void;
+  item ?: any;
+  children ? : any;
+  dataSource ? : any;
+  sortType ? : any;
+  dataType ? : any;
+}
+
+interface IGridHeaderSortableState {
+  columns ? : any;
+  sortType ? : string;
+}
+
+class GridHeaderSortable extends React.Component<IGridHeaderProps,IGridHeaderSortableState>{
 
   constructor() {
     super();
@@ -40,7 +58,7 @@ class GridHeaderSortable extends React.Component<any,any>{
   }
 }
 
-export default class GridHeader extends React.Component<any,any>{
+export default class GridHeader extends React.Component<IGridHeaderProps,{}>{
   toggleSorting(key, sortType) {
     this.props.toggleSorting(key, sortType);
   }

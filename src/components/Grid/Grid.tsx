@@ -9,7 +9,32 @@ import GridHeader from './GridHeader';
 import GridBody from './GridBody';
 import GridFooter from './GridFooter';
 
-export default class Grid extends React.Component<any,any>{
+interface IGridProps {
+  dataSource ? : any;
+  numberPerPage ? : number;
+  columns ? : any;
+  open ? : boolean;
+  hideHeader ? : boolean;
+  sortable ? : boolean;
+  openOnSelect? : any;
+  detailTemplate? : any;
+  height ? : string;
+  onSelect ? : any;
+  selected ? : any;
+}
+
+interface IGridState {
+  currentPage ? : number;
+  columns ? : any;
+  collection ? : any;
+  numberOfPages ? : number;
+  numberPerPage ? : number;
+  sortType ? : any;
+  dataType ? : any;
+  pageList ? : any;
+}
+
+export default class Grid extends React.Component<IGridProps,IGridState>{
 
   constructor() {
     super();

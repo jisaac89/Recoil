@@ -2,7 +2,19 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Transform.less';
 
-export default class Transform extends React.Component<any, any> {
+interface ITransformProps {
+  type? : string;
+  className ? : any;
+  if ? : boolean;
+  push ? : string;
+  amount ? : string;
+  delay ? : number;
+  fill ? : boolean;
+  axis ? : string;
+  children ? : any;
+}
+
+export default class Transform extends React.Component<ITransformProps, {}> {
   public render() {
     const self = this;
     const props = self.props;

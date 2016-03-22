@@ -7,6 +7,27 @@ import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import './Dropdown.less';
 
+interface IDropdownProps {
+  from ? : string;
+  block ? : boolean;
+  right? : boolean;
+  left ? : boolean;
+  className? : any;
+  contentClass? : string;
+  buttonClass? : string;
+  selectionClass? : string;
+  data? : any;
+  children ? : any;
+  type ? : string;
+  icon ? : string;
+  title ? : string;
+  ghost ? : boolean;
+  theme ? : string;
+  value ? : any;
+  onSelected ? : any;
+  checked ? : boolean;
+}
+
 const DropdownHeader : any = (props) => {
   return (
     <div className="r-DropdownHeader" onClick={props.onClick}>
@@ -68,7 +89,7 @@ const DropdownSearch : any = (props) => {
   );
 };
 
-export default class Dropdown extends React.Component<any, any>{
+export default class Dropdown extends React.Component<IDropdownProps, any>{
   constructor(props) {
     super(props);
     this.state = {

@@ -13,9 +13,7 @@ interface IPaneProps {
   children? : any;
 }
 
-interface IPaneState {};
-
-export default class Pane extends React.Component<IPaneProps, IPaneState>{
+export default class Pane extends React.Component<IPaneProps, {}>{
 
   public static defaultProps = {
     className : 'w100'

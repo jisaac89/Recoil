@@ -10,9 +10,7 @@ interface IDoorProps {
   overflow? : boolean;
 }
 
-interface IDoorState {}
-
-class Door extends React.Component<IDoorProps, IDoorState>{
+class Door extends React.Component<IDoorProps, {}>{
 
   public refDoor : any;
 

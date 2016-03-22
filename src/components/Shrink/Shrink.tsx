@@ -2,7 +2,14 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Shrink.less';
 
-export default class Shrink extends React.Component<any, any>{
+interface IShrinkProps {
+  if ? : boolean;
+  fill ?  : boolean;
+  className ? : any;
+  children ? : any;
+}
+
+export default class Shrink extends React.Component<IShrinkProps, {}>{
   public render() {
     const self = this;
     const props = self.props;

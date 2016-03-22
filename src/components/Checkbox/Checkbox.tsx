@@ -5,7 +5,11 @@ interface ICheckboxProps {
   checked? : boolean;
 }
 
-export default class Checkbox extends React.Component<ICheckboxProps,any>{
+interface ICheckboxState {
+  checked? : boolean;
+}
+
+export default class Checkbox extends React.Component<ICheckboxProps,ICheckboxState>{
   constructor() {
     super();
     this.state = {

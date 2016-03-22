@@ -23,9 +23,7 @@ interface ILayerProps {
   justify? : any;
 }
 
-interface ILayerState {}
-
-export default class Layer extends React.Component<ILayerProps, ILayerState> {
+export default class Layer extends React.Component<ILayerProps, {}> {
   public static defaultProps = {
     overflow: false,
     type: '',

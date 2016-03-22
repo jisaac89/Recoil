@@ -4,7 +4,14 @@ import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
 
-export default class GridColumn extends React.Component<any,any>{
+interface IGridColumnProps {
+  dataSource ? : any;
+  columns ? : any;
+  i ? : any;
+  x ? : any;
+}
+
+export default class GridColumn extends React.Component<IGridColumnProps,{}>{
   render() {
 
     const self = this;

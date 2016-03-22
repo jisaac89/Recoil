@@ -5,7 +5,25 @@ import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import './Modal.less';
 
-export default class Modal extends React.Component<any,any>{
+interface IModalProps {
+  ghost ? : boolean;
+  open ? : boolean;
+  float ? : boolean;
+  effect ? : any;
+  className ? : any;
+  icon ? : string;
+  fullScreen ? : boolean;
+  style ? : any;
+  title ? : string;
+  onClose ? : any;
+  children ? : any;
+}
+
+interface IModalState {
+  min ? : boolean;
+}
+
+export default class Modal extends React.Component<IModalProps,IModalState>{
   constructor(){
     super();
     this.state = {

@@ -11,9 +11,7 @@ interface IAlignProps {
   className? : string;
 }
 
-interface IAlignState {}
-
-export default class Align extends React.Component<IAlignProps, IAlignState>{
+export default class Align extends React.Component<IAlignProps, {}>{
 
   public static defaultProps = {
     margin: 0,

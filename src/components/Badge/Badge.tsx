@@ -2,7 +2,17 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Badge.less';
 
-export default class Badge extends React.Component<any,any> {
+interface IBadgeProps {
+  opacity ?: any;
+  background ?: string;
+  border ?: string;
+  type?: string;
+  title? : string;
+  children? : any;
+  ghost ? : boolean;
+}
+
+export default class Badge extends React.Component<IBadgeProps,any> {
   render() {
 
     const self = this;

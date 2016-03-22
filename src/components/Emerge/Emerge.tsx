@@ -13,11 +13,7 @@ interface IEmergeProps {
   style? : any;
 }
 
-interface IEmergeState {};
-
-export default class Emerge extends React.Component<IEmergeProps, IEmergeState> {
-
-    public state : IEmergeState;
+export default class Emerge extends React.Component<IEmergeProps, {}> {
 
     public static defaultProps = {
       if: true,

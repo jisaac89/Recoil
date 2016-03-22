@@ -5,23 +5,21 @@ import './Card.less';
 interface ICardProps {
   resize? : boolean;
   hover? : boolean;
-  scale? : any;
+  scale? : boolean;
   float? : boolean;
-  fill? : any;
-  subTitle? : any;
-  title? : any;
-  onClick? : any;
+  fill? : boolean;
+  subTitle? : string;
+  title? : string;
+  onClick? :  () => void;
   style? : any;
   className? : any;
   children? : any;
-  onMouseEnter? : any;
-  onMouseLeave? : any;
-  block? : any;
+  onMouseEnter? :  () => void;
+  onMouseLeave? :  () => void;
+  block? : boolean;
 }
 
-interface ICardState {}
-
-class CardHeader extends React.Component<ICardProps, ICardState>{
+class CardHeader extends React.Component<ICardProps, {}>{
   render() {
     const self = this;
     const props = self.props;
@@ -35,7 +33,7 @@ class CardHeader extends React.Component<ICardProps, ICardState>{
   }
 }
 
-export default class Card extends React.Component<ICardProps, ICardState> {
+export default class Card extends React.Component<ICardProps, {}> {
   constructor(props) {
     super(props);
   }

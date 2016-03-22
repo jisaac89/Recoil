@@ -21,9 +21,7 @@ interface IToolbarProps {
   align ? : any;
 }
 
-interface IToolbarState {}
-
-export default class Toolbar extends React.Component<IToolbarProps, IToolbarState>{
+export default class Toolbar extends React.Component<IToolbarProps, {}>{
   render() {
 
     const self = this;

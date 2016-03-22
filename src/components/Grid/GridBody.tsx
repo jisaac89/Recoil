@@ -7,8 +7,39 @@ import Door from '../Door/Door';
 
 import GridRow from './GridRow';
 
+interface IGridProps {
+  dataSource : any;
+  numberPerPage ? : number;
+  columns ? : any;
+  open ? : boolean;
+  hideHeader ? : boolean;
+  sortable ? : boolean;
+  openOnSelect? : () => void;
+  detailTemplate? : () => void;
+  height ? : string;
+  onSelect ? : () => void;
+  selected ? : any;
+  dataType ? : any;
+  numberOfPages ? : number;
+}
 
-class GridRowTemplate extends React.Component<any,any>{
+interface IGridBodyState {
+  expandedRows ? : any;
+}
+
+interface IGridRowTemplateProps {
+  columns ? : any;
+  detailTemplate ? : any;
+  dataSource ? : any;
+  i ? : any;
+  expanded ? : boolean;
+}
+
+interface IGridRowTemplateState {
+  open ? : boolean;
+}
+
+class GridRowTemplate extends React.Component<IGridRowTemplateProps,IGridRowTemplateState>{
 
   constructor() {
     super();
@@ -34,7 +65,7 @@ class GridRowTemplate extends React.Component<any,any>{
   }
 }
 
-export default class GridBody extends React.Component<any,any>{
+export default class GridBody extends React.Component<IGridProps,IGridBodyState>{
 
   constructor() {
     super();
