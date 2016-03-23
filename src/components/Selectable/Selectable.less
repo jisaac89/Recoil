@@ -52,3 +52,43 @@
 .r-Selectable.checked .r-Selectable__border.error{
   border-color: @selectable-error-background;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// test
+
+@media screen and (max-width:800px) {
+
+
+  .r-Selectable{
+    width:100%;
+    .r-Selectable__border.primary{
+      -webkit-transform:scaleX(0);
+    }
+
+    .r-Selectable__border.error {
+      -webkit-transform:scaleX(0);
+    }
+  }
+
+  .r-Selectable.checked .r-Selectable__border{
+    -webkit-transform:scaleX(1);
+  }
+
+}

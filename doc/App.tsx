@@ -173,7 +173,8 @@ export default class App extends React.Component<any, any> {
       selected: [],
       checked: false,
       keyword: '',
-      template: 'start'
+      template: 'start',
+      mobile: false
     }
   }
 
@@ -248,6 +249,15 @@ export default class App extends React.Component<any, any> {
     })
   }
 
+  componentWillMount() {
+    const self = this;
+    if (window.outerWidth < 800) {
+      self.setState({mobile: true});
+    } else {
+      self.setState({mobile: false});
+    }
+  }
+
   render() {
 
     const self = this;
@@ -276,23 +286,51 @@ export default class App extends React.Component<any, any> {
           <Layer className="text-center light">
             <Door open={state.template === 'start'}>
               <Emerge if={state.template === 'start'}>
-                <div>
-                  <img width={400} height={260} className="e-float mt20" src={'./img/Recoil.png'} />
+                <div className="">
+                  <img width={300} height={197} className="e-float mt20" src={'./img/recoil.png'} />
                   <h1 className="super mt20">
                     REACT <strong>RECOIL</strong>
                   </h1>
-                  <h1 >Front-end Framework built for rapid development.</h1>
+                  <p>Front-end Framework built for rapid development.</p>
                 </div>
               </Emerge>
             </Door>
-            <Toolbar spacing className="p10">
-              <Emerge delay={120}>
-                <Button shortcut={"g"} checked={state.template === 'start'} onClick={this.setTemplate.bind(this, 'start')} size="large">Getting Started</Button>
-                <Button shortcut={"c"} checked={state.template === 'comp'} onClick={this.setTemplate.bind(this, 'comp')} size="large">Components</Button>
-                <Button onClick={this.setTemplate.bind(this, 'start')} size="large">Layout</Button>
-                <Button size="large" href="http://www.github.com/jisaac89/recoil" right type="primary" target="_blank" icon="github">Grab Latest Version</Button>
-              </Emerge>
-            </Toolbar>
+            {(()=>{
+              if (state.mobile) {
+                  return (
+                    <Layer>
+                      <Door open={state.template === 'start'}>
+                        <Toolbar vertical block spacing className="p10">
+                          <Emerge delay={120}>
+                            <Button block shortcut={"g"} checked={state.template === 'start'} onClick={this.setTemplate.bind(this, 'start')} size="large">Getting Started</Button>
+                            <Button block shortcut={"c"} checked={state.template === 'comp'} onClick={this.setTemplate.bind(this, 'comp')} size="large">Components</Button>
+                            <Button block onClick={this.setTemplate.bind(this, 'start')} size="large">Layout</Button>
+                            <Button block size="large" href="http://www.github.com/jisaac89/recoil" right type="primary" target="_blank" icon="github">Grab Latest Version</Button>
+                          </Emerge>
+                        </Toolbar>
+                      </Door>
+                      <Door open={state.template === 'comp'}>
+                        <Toolbar vertical block spacing className="p10">
+                          <Emerge delay={120}>
+                            <Button right shortcut={"g"} checked={state.template === 'start'} icon="bars" onClick={this.setTemplate.bind(this, 'start')} size="large" />
+                          </Emerge>
+                        </Toolbar>
+                      </Door>
+                    </Layer>
+                  )
+              } else {
+                return (
+                  <Toolbar spacing className="p10">
+                    <Emerge delay={120}>
+                      <Button shortcut={"g"} checked={state.template === 'start'} onClick={this.setTemplate.bind(this, 'start')} size="large">Getting Started</Button>
+                      <Button shortcut={"c"} checked={state.template === 'comp'} onClick={this.setTemplate.bind(this, 'comp')} size="large">Components</Button>
+                      <Button onClick={this.setTemplate.bind(this, 'start')} size="large">Layout</Button>
+                      <Button size="large" href="http://www.github.com/jisaac89/recoil" right type="primary" target="_blank" icon="github">Grab Latest Version</Button>
+                    </Emerge>
+                  </Toolbar>
+                )
+              }
+            })()}
             <hr className="rainbow-line" />
           </Layer>
           {(()=>{
@@ -302,7 +340,7 @@ export default class App extends React.Component<any, any> {
               return (
                 <div className="h100 w100">
                   <Layer className="h100 w100" flex flow="row nowrap">
-                    <Layer className="h100 w400px border-right" flex flow="column nowrap">
+                    <Layer className={state.mobile ? 'h100 w100' : 'h100 w400px border-right'} flex flow="column nowrap">
                         <Toolbar className="p10 border-bottom h50px">
                           <Input focusOnMount onChange={this.changeKeyword.bind(this)} block type="text" title="Find Components" icon="search" />
                         </Toolbar>
@@ -319,64 +357,72 @@ export default class App extends React.Component<any, any> {
                             />
                         </Layer>
                     </Layer>
-                    <div className="h100 w100 p10">
-                      <Wizard slideIndex={this.state.slideIndex}>
-                        <Layer scrollY fill>
-                          <TutorialAlign {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialButton {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialCard {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialCheckbox {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialDoor {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialDropdown {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialEmerge {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialGrid {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialInput {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialLayer {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialLoading {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialModal {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialPane {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialSelectable {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialShrink {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialToolbar {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialTransform {...state} />
-                        </Layer>
-                        <Layer scrollY fill>
-                          <TutorialWizard {...state} />
-                        </Layer>
-                      </Wizard>
-                    </div>
+                    {(()=>{
+                      if (!state.mobile) {
+                          return (
+                            <div className="h100 w100 p10">
+                              <Wizard slideIndex={this.state.slideIndex}>
+                                <Layer scrollY fill>
+                                  <TutorialAlign {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialButton {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialCard {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialCheckbox {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialDoor {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialDropdown {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialEmerge {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialGrid {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialInput {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialLayer {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialLoading {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialModal {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialPane {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialSelectable {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialShrink {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialToolbar {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialTransform {...state} />
+                                </Layer>
+                                <Layer scrollY fill>
+                                  <TutorialWizard {...state} />
+                                </Layer>
+                              </Wizard>
+                            </div>
+                          )
+                      } else {
+                        return null
+                      }
+                    })()}
                   </Layer>
                 </div>
               )

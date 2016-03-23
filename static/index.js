@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "487b7ea25e8b20f13698"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a76bd6a097135e9c3c3f"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21534,7 +21534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Selectable {\n  background: #fff;\n  width: 100%;\n}\n.r-Selectable input {\n  width: 100%;\n}\n.r-Selectable .r-Selectable__border.primary {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n  -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n}\n.r-Selectable .r-Selectable__border.error {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n}\n.r-Selectable.checked .r-Selectable__border {\n  opacity: 1;\n  width: 100%;\n}\n.r-Selectable.checked .r-Selectable__border.primary {\n  border-color: #1995FF;\n}\n.r-Selectable.checked .r-Selectable__border.error {\n  border-color: #FF592F;\n}\n", ""]);
+	exports.push([module.id, ".r-Selectable {\n  background: #fff;\n  width: 100%;\n}\n.r-Selectable input {\n  width: 100%;\n}\n.r-Selectable .r-Selectable__border.primary {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n  -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n}\n.r-Selectable .r-Selectable__border.error {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n}\n.r-Selectable.checked .r-Selectable__border {\n  opacity: 1;\n  width: 100%;\n}\n.r-Selectable.checked .r-Selectable__border.primary {\n  border-color: #1995FF;\n}\n.r-Selectable.checked .r-Selectable__border.error {\n  border-color: #FF592F;\n}\n@media screen and (max-width: 800px) {\n  .r-Selectable {\n    width: 100%;\n  }\n  .r-Selectable .r-Selectable__border.primary {\n    -webkit-transform: scaleX(0);\n  }\n  .r-Selectable .r-Selectable__border.error {\n    -webkit-transform: scaleX(0);\n  }\n  .r-Selectable.checked .r-Selectable__border {\n    -webkit-transform: scaleX(1);\n  }\n}\n", ""]);
 	
 	// exports
 
@@ -21835,6 +21835,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            };
 	            var doorClass = classNames('r-Door', props.className);
 	            var doorStyle = {
+	                WebkitTransform: props.open ? "scaleY(1)" : "scaleY(0)",
 	                maxHeight: props.open ? this.refDoor ? getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px' : 'auto' : '0px',
 	                overflow: 'hidden'
 	            };

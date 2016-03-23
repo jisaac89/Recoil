@@ -48,6 +48,7 @@ class Door extends React.Component<IDoorProps, {}>{
      );
 
      let doorStyle = {
+       WebkitTransform : (props.open ? "scaleY(1)" : "scaleY(0)"),
        maxHeight: (props.open ? ( this.refDoor ? getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px' : 'auto') : '0px'),
        overflow: 'hidden'
      };
