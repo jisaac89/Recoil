@@ -1,7 +1,7 @@
 {
   "name": "react-recoil",
   "url" : "http://reactrecoil.com/",
-  "version": "0.2.08",
+  "version": "0.2.09",
   "description": "react-recoil-npm",
   "main": "recoil.js",
   "scripts": {
@@ -10,14 +10,36 @@
   },
   "keywords": [
     "react",
-    "react ui",
-    "ui kit",
-    "ui framework",
+    "reactjs",
     "react ui kit",
     "react ui framework",
-    "typescript react",
-    "react front end"
+    "react ui library",
+    "ui kit",
+    "ui framework",
+    "ui library",
+    "react uikit",
+    "react button",
+    "react input",
+    "react grid",
+    "react table",
+    "react components",
+    "react component library",
+    "react component kit",
+    "react dropdown",
+    "react mobile",
+    "react ui",
+    "react ui components",
+    "recoil",
+    "facebook",
+    "reactjs",
+    "typescript ui",
+    "typescript ui kit",
+    "typescript framework"
   ],
-  "author": "Joseph Isaac",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jisaac89/recoil.git"
+  },
+  "license": "MIT",
+  "author": "Joseph Isaac"
 }

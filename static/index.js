@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "763a0fd9478305b61840"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9ddcf1f2bb330c9e00d5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22953,7 +22953,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                });
 	            }
 	            this.setState({
-	                columns: columns
+	                columns: columns.reverse()
 	            });
 	        }
 	    }, {
@@ -23094,8 +23094,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                React.createElement(
 	                    'table',
 	                    { className: 'r-Grid__Table w100' },
-	                    React.createElement(GridHeader_1.default, { hideHeader: props.hideHeader, columns: renderedColumns, dataSource: renderedPage, sortable: props.sortable, toggleSorting: this.toggleSorting.bind(this), sortType: state.sortType, detailTemplate: this.props.detailTemplate }),
-	                    React.createElement(GridBody_1.default, { height: props.height, open: props.open, onSelect: props.onSelect, selected: props.selected, columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, detailTemplate: this.props.detailTemplate, openOnSelect: this.props.openOnSelect })
+	                    React.createElement(GridHeader_1.default, { hideHeader: props.hideHeader, columns: renderedColumns, dataSource: renderedPage, sortable: props.sortable, toggleSorting: this.toggleSorting.bind(this), sortType: state.sortType, detailTemplate: this.props.detailTemplate, hideColumns: props.hideColumns }),
+	                    React.createElement(GridBody_1.default, { height: props.height, open: props.open, onSelect: props.onSelect, selected: props.selected, columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, detailTemplate: this.props.detailTemplate, openOnSelect: this.props.openOnSelect, hideColumns: props.hideColumns })
 	                ),
 	                function () {
 	                    if (state.numberOfPages === 1) {
@@ -23234,23 +23234,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var props = self.props;
 	            var headerTitle = void 0;
 	            var createColumns = function createColumns(item, index) {
-	                if (item.headerTemplate) {
-	                    return React.createElement(
-	                        'th',
-	                        { style: { width: item.width }, key: index },
-	                        item.headerTemplate()
-	                    );
-	                } else if (props.sortable) {
+	                if (props.hideColumns && props.hideColumns.includes(item.name)) {
+	                    return null;
+	                } else {
 	                    if (item.headerTemplate) {
 	                        return React.createElement(
-	                            GridHeaderSortable,
-	                            { key: index, item: item, toggleSorting: _this3.toggleSorting.bind(_this3) },
+	                            'th',
+	                            { style: { width: item.width }, key: index },
 	                            item.headerTemplate()
 	                        );
+	                    } else if (props.sortable) {
+	                        if (item.headerTemplate) {
+	                            return React.createElement(
+	                                GridHeaderSortable,
+	                                { key: index, item: item, toggleSorting: _this3.toggleSorting.bind(_this3) },
+	                                item.headerTemplate()
+	                            );
+	                        } else {
+	                            return React.createElement(
+	                                GridHeaderSortable,
+	                                { key: index, item: item, toggleSorting: _this3.toggleSorting.bind(_this3) },
+	                                React.createElement(
+	                                    'a',
+	                                    null,
+	                                    item.name
+	                                )
+	                            );
+	                        }
 	                    } else {
 	                        return React.createElement(
-	                            GridHeaderSortable,
-	                            { key: index, item: item, toggleSorting: _this3.toggleSorting.bind(_this3) },
+	                            'th',
+	                            { style: { width: item.width }, key: index },
 	                            React.createElement(
 	                                'a',
 	                                null,
@@ -23258,16 +23272,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            )
 	                        );
 	                    }
-	                } else {
-	                    return React.createElement(
-	                        'th',
-	                        { style: { width: item.width }, key: index },
-	                        React.createElement(
-	                            'a',
-	                            null,
-	                            item.name
-	                        )
-	                    );
 	                }
 	            };
 	            if (!props.hideHeader && props.columns) {
@@ -23495,7 +23499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	            var columnArray = [];
 	            for (var x = 0; x < columns.length; x++) {
-	                columnArray.push(React.createElement(GridColumn_1.default, { key: x, dataSource: dataSource, i: i, x: x, columns: columns }));
+	                columnArray.push(React.createElement(GridColumn_1.default, { key: x, dataSource: dataSource, i: i, x: x, columns: columns, hideColumns: props.hideColumns }));
 	            }
 	            var selectedItem = void 0;
 	            var selectEvent = void 0;
@@ -23593,13 +23597,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    return React.createElement(
 	                        Layer_1.default,
 	                        null,
-	                        'Contains ',
 	                        React.createElement(
 	                            'strong',
 	                            null,
-	                            'Object'
-	                        ),
-	                        ', use a column template.'
+	                            'hasObject'
+	                        )
 	                    );
 	                } else {
 	                    return React.createElement(
@@ -23609,11 +23611,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    );
 	                }
 	            };
-	            return React.createElement(
-	                'td',
-	                { className: 'r-Grid__Row__Column', style: { width: columns[x].width }, key: i + x },
-	                columnPartial()
-	            );
+	            if (props.hideColumns && props.hideColumns.includes(columns[x].name)) {
+	                return null;
+	            } else {
+	                return React.createElement(
+	                    'td',
+	                    { className: 'r-Grid__Row__Column', style: { width: columns[x].width }, key: i + x },
+	                    columnPartial()
+	                );
+	            }
 	        }
 	    }]);
 	

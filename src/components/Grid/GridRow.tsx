@@ -16,6 +16,7 @@ interface IGridRowProps {
   selected ? : any;
   detailTemplate ? : any;
   expanded ? : boolean;
+  hideColumns? : any;
 }
 
 interface IGridRowState {
@@ -55,7 +56,7 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
 
     for (let x = 0; x < columns.length; x++) {
       columnArray.push(
-        <GridColumn key={x} dataSource={dataSource} i={i} x={x} columns={columns} />
+        <GridColumn key={x} dataSource={dataSource} i={i} x={x} columns={columns} hideColumns={props.hideColumns} />
       )
     }
 

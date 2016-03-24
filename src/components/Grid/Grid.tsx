@@ -21,6 +21,7 @@ interface IGridProps {
   height ? : string;
   onSelect ? : any;
   selected ? : any;
+  hideColumns ? : any;
 }
 
 interface IGridState {
@@ -86,7 +87,7 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
     }
 
     this.setState({
-      columns: columns
+      columns: columns.reverse()
     })
   }
 
@@ -235,6 +236,7 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
             toggleSorting={this.toggleSorting.bind(this)}
             sortType={state.sortType}
             detailTemplate={this.props.detailTemplate}
+            hideColumns={props.hideColumns}
           />
           <GridBody
             height={props.height}
@@ -247,6 +249,7 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
             numberOfPages={numberOfPages}
             detailTemplate={this.props.detailTemplate}
             openOnSelect={this.props.openOnSelect}
+            hideColumns={props.hideColumns}
             />
         </table>
           {(()=>{

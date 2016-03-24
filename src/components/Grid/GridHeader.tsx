@@ -14,6 +14,7 @@ interface IGridHeaderProps {
   dataSource ? : any;
   sortType ? : any;
   dataType ? : any;
+  hideColumns ? : any;
 }
 
 interface IGridHeaderSortableState {
@@ -70,42 +71,46 @@ export default class GridHeader extends React.Component<IGridHeaderProps,{}>{
     let headerTitle;
 
     let createColumns = (item, index) => {
-      if (item.headerTemplate) {
-        return (
-          <th style={{width : item.width}} key={index}>
-            {item.headerTemplate()}
-          </th>
-        )
-      }
-      else if (props.sortable) {
+      if (props.hideColumns && props.hideColumns.includes(item.name) ) {
+        return null
+      } else{
         if (item.headerTemplate) {
           return (
-            <GridHeaderSortable
-              key={index}
-              item={item}
-              toggleSorting={this.toggleSorting.bind(this)}
-            >
+            <th style={{width : item.width}} key={index}>
               {item.headerTemplate()}
-            </GridHeaderSortable>
-          )
-        } else {
-          return (
-            <GridHeaderSortable
-              key={index}
-              item={item}
-              toggleSorting={this.toggleSorting.bind(this)}
-            >
-              <a>{item.name}</a>
-            </GridHeaderSortable>
+            </th>
           )
         }
-      }
-      else {
-        return (
-          <th style={{width : item.width}} key={index}>
-            <a>{item.name}</a>
-          </th>
-        )
+        else if (props.sortable) {
+          if (item.headerTemplate) {
+            return (
+              <GridHeaderSortable
+                key={index}
+                item={item}
+                toggleSorting={this.toggleSorting.bind(this)}
+              >
+                {item.headerTemplate()}
+              </GridHeaderSortable>
+            )
+          } else {
+            return (
+              <GridHeaderSortable
+                key={index}
+                item={item}
+                toggleSorting={this.toggleSorting.bind(this)}
+              >
+                <a>{item.name}</a>
+              </GridHeaderSortable>
+            )
+          }
+        }
+        else {
+          return (
+            <th style={{width : item.width}} key={index}>
+              <a>{item.name}</a>
+            </th>
+          )
+        }
       }
     }
 

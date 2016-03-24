@@ -21,6 +21,7 @@ interface IGridProps {
   selected ? : any;
   dataType ? : any;
   numberOfPages ? : number;
+  hideColumns ? : any;
 }
 
 interface IGridBodyState {

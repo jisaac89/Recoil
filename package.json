@@ -1,7 +1,7 @@
 {
   "name": "Recoil",
   "url" : "http://reactrecoil.com/",
-  "version": "0.2.08",
+  "version": "0.2.09",
   "description": "",
   "scripts": {
     "build": "webpack --config webpack.config.js",
@@ -19,7 +19,25 @@
     "react ui library",
     "ui kit",
     "ui framework",
-    "ui library"
+    "ui library",
+    "react uikit",
+    "react button",
+    "react input",
+    "react grid",
+    "react table",
+    "react components",
+    "react component library",
+    "react component kit",
+    "react dropdown",
+    "react mobile",
+    "react ui",
+    "react ui components",
+    "recoil",
+    "facebook",
+    "reactjs",
+    "typescript ui",
+    "typescript ui kit",
+    "typescript framework"
   ],
   "repository": {
     "type": "git",

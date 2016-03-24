@@ -20,6 +20,7 @@
     "files": [
         "App.tsx",
         "index.tsx",
+        "tutorial/SampleData.ts",
         "tutorial/TutorialAlign.tsx",
         "tutorial/TutorialButton.tsx",
         "tutorial/TutorialCard.tsx",

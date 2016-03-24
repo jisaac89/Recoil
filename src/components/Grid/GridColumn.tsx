@@ -9,6 +9,7 @@ interface IGridColumnProps {
   columns ? : any;
   i ? : any;
   x ? : any;
+  hideColumns ? : any;
 }
 
 export default class GridColumn extends React.Component<IGridColumnProps,{}>{
@@ -21,42 +22,46 @@ export default class GridColumn extends React.Component<IGridColumnProps,{}>{
     let {dataSource, columns, i, x} = props;
 
     let columnPartial = () => {
-      if (columns[x].tabbable) {
-        return (
-          <Button>
-            {dataSource[i][columns[x].name]}
-          </Button>
-        )
-      }
-      else if (columns[x].template) {
-        return (
-          <Layer>
-            {columns[x].template(dataSource[i])}
-          </Layer>
-        )
-      }
-      else if (typeof dataSource[i][columns[x].name] === 'object') {
-        let arr = [];
-        for (let key in dataSource[i][columns[x].name]) {
-          arr.push(
-            <span>{dataSource[i][columns[x].name][key]}</span>
+        if (columns[x].tabbable) {
+          return (
+            <Button>
+              {dataSource[i][columns[x].name]}
+            </Button>
           )
         }
-        return (
-          <Layer>Contains <strong>Object</strong>, use a column template.</Layer>
-        )
-      }
-      else {
-        return (
-          <Layer>{dataSource[i][columns[x].name]}</Layer>
-        )
-      }
+        else if (columns[x].template) {
+          return (
+            <Layer>
+              {columns[x].template(dataSource[i])}
+            </Layer>
+          )
+        }
+        else if (typeof dataSource[i][columns[x].name] === 'object') {
+          let arr = [];
+          for (let key in dataSource[i][columns[x].name]) {
+            arr.push(
+              <span>{dataSource[i][columns[x].name][key]}</span>
+            )
+          }
+          return (
+            <Layer><strong>hasObject</strong></Layer>
+          )
+        }
+        else {
+          return (
+            <Layer>{dataSource[i][columns[x].name]}</Layer>
+          )
+        }
     }
 
-    return (
-      <td className="r-Grid__Row__Column" style={{width: columns[x].width}} key={i+x}>
-        {columnPartial()}
-      </td>
-    )
+    if (props.hideColumns && props.hideColumns.includes(columns[x].name)) {
+        return null;
+    } else {
+      return (
+        <td className="r-Grid__Row__Column" style={{width: columns[x].width}} key={i+x}>
+          {columnPartial()}
+        </td>
+      )
+    }
   }
 }
