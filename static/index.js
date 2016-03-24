@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a76bd6a097135e9c3c3f"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "763a0fd9478305b61840"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21534,7 +21534,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Selectable {\n  background: #fff;\n  width: 100%;\n}\n.r-Selectable input {\n  width: 100%;\n}\n.r-Selectable .r-Selectable__border.primary {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n  -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n}\n.r-Selectable .r-Selectable__border.error {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n}\n.r-Selectable.checked .r-Selectable__border {\n  opacity: 1;\n  width: 100%;\n}\n.r-Selectable.checked .r-Selectable__border.primary {\n  border-color: #1995FF;\n}\n.r-Selectable.checked .r-Selectable__border.error {\n  border-color: #FF592F;\n}\n@media screen and (max-width: 800px) {\n  .r-Selectable {\n    width: 100%;\n  }\n  .r-Selectable .r-Selectable__border.primary {\n    -webkit-transform: scaleX(0);\n  }\n  .r-Selectable .r-Selectable__border.error {\n    -webkit-transform: scaleX(0);\n  }\n  .r-Selectable.checked .r-Selectable__border {\n    -webkit-transform: scaleX(1);\n  }\n}\n", ""]);
+	exports.push([module.id, ".r-Selectable {\n  background: #fff;\n  width: 100%;\n}\n.r-Selectable input {\n  width: 100%;\n}\n.r-Selectable .r-Selectable__border.primary {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n}\n.r-Selectable .r-Selectable__border.error {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n}\n.r-Selectable.checked .r-Selectable__border {\n  opacity: 1;\n  width: 100%;\n}\n.r-Selectable.checked .r-Selectable__border.primary {\n  border-color: #1995FF;\n}\n.r-Selectable.checked .r-Selectable__border.error {\n  border-color: #FF592F;\n}\n@media screen and (max-width: 800px) {\n  .r-Selectable {\n    width: 100%;\n  }\n  .r-Selectable .r-Selectable__border.primary {\n    -webkit-transform: scaleX(0);\n  }\n  .r-Selectable .r-Selectable__border.error {\n    -webkit-transform: scaleX(0);\n  }\n  .r-Selectable.checked .r-Selectable__border {\n    -webkit-transform: scaleX(1);\n  }\n}\n", ""]);
 	
 	// exports
 
@@ -21833,9 +21833,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var margin = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
 	                return Math.ceil(el.offsetHeight + margin);
 	            };
-	            var doorClass = classNames('r-Door', props.className);
+	            var doorClass = classNames('r-Door',
+	            //  {'hide': (!props.open)},
+	            { 'e-open': props.open }, props.className);
 	            var doorStyle = {
-	                WebkitTransform: props.open ? "scaleY(1)" : "scaleY(0)",
 	                maxHeight: props.open ? this.refDoor ? getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px' : 'auto' : '0px',
 	                overflow: 'hidden'
 	            };
@@ -22936,13 +22937,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function automaticallyCreateColumns() {
 	            var columnsArray = [];
 	            var columns = [];
-	            for (var i = 0; i < Object.keys(this.props.dataSource[0]).length; i++) {
-	                columnsArray.push(Object.keys(this.props.dataSource[0])[i]);
+	            if (this.props.dataSource[0] === undefined) {
+	                for (var i = 0; i < Object.keys(this.props.dataSource).length; i++) {
+	                    columnsArray.push(Object.keys(this.props.dataSource)[i]);
+	                }
+	            } else {
+	                for (var _i = 0; _i < Object.keys(this.props.dataSource[0]).length; _i++) {
+	                    columnsArray.push(Object.keys(this.props.dataSource[0])[_i]);
+	                }
 	            }
 	            var len = columnsArray.length;
-	            for (var _i = 0; _i < len; _i++) {
+	            for (var _i2 = 0; _i2 < len; _i2++) {
 	                columns.push({
-	                    name: columnsArray[_i]
+	                    name: columnsArray[_i2]
 	                });
 	            }
 	            this.setState({
@@ -22957,9 +22964,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var state = self.state;
 	            var collection = props.dataSource;
 	            var numberOfPages = void 0;
-	            self.setState({
-	                collection: props.dataSource
-	            });
+	            if (this.props.dataSource[0] === undefined) {
+	                self.setState({
+	                    collection: [props.dataSource]
+	                });
+	            } else {
+	                self.setState({
+	                    collection: props.dataSource
+	                });
+	            }
 	        }
 	    }, {
 	        key: 'toggleSorting',
@@ -23521,6 +23534,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23565,6 +23580,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        Layer_1.default,
 	                        null,
 	                        columns[x].template(dataSource[i])
+	                    );
+	                } else if (_typeof(dataSource[i][columns[x].name]) === 'object') {
+	                    var arr = [];
+	                    for (var key in dataSource[i][columns[x].name]) {
+	                        arr.push(React.createElement(
+	                            'span',
+	                            null,
+	                            dataSource[i][columns[x].name][key]
+	                        ));
+	                    }
+	                    return React.createElement(
+	                        Layer_1.default,
+	                        null,
+	                        'Contains ',
+	                        React.createElement(
+	                            'strong',
+	                            null,
+	                            'Object'
+	                        ),
+	                        ', use a column template.'
 	                    );
 	                } else {
 	                    return React.createElement(
