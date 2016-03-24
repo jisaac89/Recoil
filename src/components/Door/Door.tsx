@@ -44,13 +44,14 @@ class Door extends React.Component<IDoorProps, {}>{
 
      let doorClass = classNames(
        'r-Door',
+      //  {'hide': (!props.open)},
+       {'e-open': (props.open)},
        props.className
      );
 
      let doorStyle = {
-       WebkitTransform : (props.open ? "scaleY(1)" : "scaleY(0)"),
        maxHeight: (props.open ? ( this.refDoor ? getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px' : 'auto') : '0px'),
-       overflow: 'hidden'
+      overflow: 'hidden'
      };
 
      let doorContainerClass = classNames(

@@ -35,6 +35,207 @@ import TutorialToolbar from './tutorial/TutorialToolbar';
 import TutorialTransform from './tutorial/TutorialTransform';
 import TutorialWizard from './tutorial/TutorialWizard';
 
+var componentArray = [
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Holloway",
+      "name": "Susanne"
+    },
+    "balance": "$1,970.31",
+    "index": 0,
+    "_id": "56f2fe3fa86a21c82318885e"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Wyatt",
+      "name": "Ida"
+    },
+    "balance": "$3,256.62",
+    "index": 1,
+    "_id": "56f2fe3f22cb3c018164a302"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Fry",
+      "name": "Miller"
+    },
+    "balance": "$1,988.52",
+    "index": 2,
+    "_id": "56f2fe3fc73a300738f0f82d"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Dodson",
+      "name": "Walker"
+    },
+    "balance": "$2,070.70",
+    "index": 3,
+    "_id": "56f2fe3fd38b27c43c670ad8"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Poole",
+      "name": "Green"
+    },
+    "balance": "$3,483.05",
+    "index": 4,
+    "_id": "56f2fe3fca18cb96deb44f54"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Bowman",
+      "name": "Lambert"
+    },
+    "balance": "$3,274.99",
+    "index": 5,
+    "_id": "56f2fe3f2b47cc1366ed6591"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Mcneil",
+      "name": "Cox"
+    },
+    "balance": "$2,904.45",
+    "index": 6,
+    "_id": "56f2fe3f7b1e59e32373584f"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Garrett",
+      "name": "Love"
+    },
+    "balance": "$3,442.03",
+    "index": 7,
+    "_id": "56f2fe3fd0cc60d1883ec7ca"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Joseph",
+      "name": "Rodgers"
+    },
+    "balance": "$2,207.74",
+    "index": 8,
+    "_id": "56f2fe3f88f28421a8c40cf2"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Jenkins",
+      "name": "Kelly"
+    },
+    "balance": "$3,657.64",
+    "index": 9,
+    "_id": "56f2fe3f8a95ff90a1624009"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Moody",
+      "name": "Eliza"
+    },
+    "balance": "$1,866.68",
+    "index": 10,
+    "_id": "56f2fe3f2343e9fd8a2d5f77"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Page",
+      "name": "William"
+    },
+    "balance": "$2,691.58",
+    "index": 11,
+    "_id": "56f2fe3f04670e8b347af14f"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Carey",
+      "name": "Kelli"
+    },
+    "balance": "$3,788.62",
+    "index": 12,
+    "_id": "56f2fe3fa510e34677557394"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Crosby",
+      "name": "Cochran"
+    },
+    "balance": "$3,565.56",
+    "index": 13,
+    "_id": "56f2fe3fe03405617c316100"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Porter",
+      "name": "Waters"
+    },
+    "balance": "$2,892.88",
+    "index": 14,
+    "_id": "56f2fe3f3e9ff6e8db1303ba"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Burks",
+      "name": "Jocelyn"
+    },
+    "balance": "$1,609.34",
+    "index": 15,
+    "_id": "56f2fe3fc87c70a248515969"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Sweet",
+      "name": "Hammond"
+    },
+    "balance": "$3,248.98",
+    "index": 16,
+    "_id": "56f2fe3fab298da61a4d6428"
+  },
+  {
+    "component": {
+      "options": "",
+      "type": "",
+      "description": "Miranda",
+      "name": "Merrill"
+    },
+    "balance": "$3,510.96",
+    "index": 17,
+    "_id": "56f2fe3ffec2a1eec31b81da"
+  }
+]
+
 const comp = [{
   "key1": {
     "name": "33"
@@ -228,6 +429,7 @@ export default class App extends React.Component<any, any> {
   }
 
   detailTemplate(key, item) {
+    const state = this.state;
     return (
       <Layer className="p10 light">
         <p>{item.description}</p>
@@ -258,6 +460,24 @@ export default class App extends React.Component<any, any> {
     }
   }
 
+  colTemplate(item) {
+    return (
+      <a>
+        {item.component.name}
+      </a>
+    )
+  }
+
+  detailTemplatea(index, item) {
+
+    let columns = [
+      {name : 'name'}
+    ]
+    return (
+      <Grid dataSource={item.component}></Grid>
+    )
+  }
+
   render() {
 
     const self = this;
@@ -267,7 +487,7 @@ export default class App extends React.Component<any, any> {
     let {checked} = state;
 
     let columns = [
-      {name: 'name', tabbable: true}
+      {name: 'name'}
     ]
 
     let newComponentArray = [];
@@ -281,154 +501,88 @@ export default class App extends React.Component<any, any> {
     }
 
     return (
+      <Layer>
+
+
+
+
+
+
+
+
       <Layer fill>
-        <Layer fill>
-          <Layer className="text-center light">
-            <Door open={state.template === 'start'}>
-              <Emerge if={state.template === 'start'}>
-                <div className="">
-                  <img width={300} height={197} className="e-float mt20" src={'./img/recoil.png'} />
-                  <h1 className="super mt20">
-                    REACT <strong>RECOIL</strong>
-                  </h1>
-                  <p>Front-end Framework built for rapid development.</p>
-                </div>
-              </Emerge>
-            </Door>
-            {(()=>{
-              if (state.mobile) {
-                  return (
-                    <Layer>
-                      <Door open={state.template === 'start'}>
-                        <Toolbar vertical block spacing className="p10">
-                          <Emerge delay={120}>
-                            <Button block shortcut={"g"} checked={state.template === 'start'} onClick={this.setTemplate.bind(this, 'start')} size="large">Getting Started</Button>
-                            <Button block shortcut={"c"} checked={state.template === 'comp'} onClick={this.setTemplate.bind(this, 'comp')} size="large">Components</Button>
-                            <Button block onClick={this.setTemplate.bind(this, 'start')} size="large">Layout</Button>
-                            <Button block size="large" href="http://www.github.com/jisaac89/recoil" right type="primary" target="_blank" icon="github">Grab Latest Version</Button>
-                          </Emerge>
-                        </Toolbar>
-                      </Door>
-                      <Door open={state.template === 'comp'}>
-                        <Toolbar vertical block spacing className="p10">
-                          <Emerge delay={120}>
-                            <Button right shortcut={"g"} checked={state.template === 'start'} icon="bars" onClick={this.setTemplate.bind(this, 'start')} size="large" />
-                          </Emerge>
-                        </Toolbar>
-                      </Door>
-                    </Layer>
-                  )
-              } else {
-                return (
-                  <Toolbar spacing className="p10">
-                    <Emerge delay={120}>
-                      <Button shortcut={"g"} checked={state.template === 'start'} onClick={this.setTemplate.bind(this, 'start')} size="large">Getting Started</Button>
-                      <Button shortcut={"c"} checked={state.template === 'comp'} onClick={this.setTemplate.bind(this, 'comp')} size="large">Components</Button>
-                      <Button onClick={this.setTemplate.bind(this, 'start')} size="large">Layout</Button>
-                      <Button size="large" href="http://www.github.com/jisaac89/recoil" right type="primary" target="_blank" icon="github">Grab Latest Version</Button>
-                    </Emerge>
-                  </Toolbar>
-                )
-              }
-            })()}
-            <hr className="rainbow-line" />
-          </Layer>
+        <Layer className="text-center light">
+          <Door open={state.template === 'start'}>
+            <Emerge if={state.template === 'start'}>
+              <div className="">
+                <img width={300} height={197} className="e-float mt20" src={'./img/recoil.png'} />
+                <h1 className="super mt20">
+                  REACT <strong>RECOIL</strong>
+                </h1>
+                <p>Front-end Framework built for rapid development.</p>
+              </div>
+            </Emerge>
+          </Door>
           {(()=>{
-            if (state.template === 'start') {
-              return null;
-            } else if (state.template === 'comp') {
-              return (
-                <div className="h100 w100">
-                  <Layer className="h100 w100" flex flow="row nowrap">
-                    <Layer className={state.mobile ? 'h100 w100' : 'h100 w400px border-right'} flex flow="column nowrap">
-                        <Toolbar className="p10 border-bottom h50px">
-                          <Input focusOnMount onChange={this.changeKeyword.bind(this)} block type="text" title="Find Components" icon="search" />
-                        </Toolbar>
-                        <Layer scrollY className="h100 pb100">
-                          <Grid
-                            hideHeader={true}
-                            dataSource={newComponentArray}
-                            onSelect={this.select.bind(this)}
-                            selected={this.state.selected}
-                            columns={columns}
-                            numberPerPage={18}
-                            openOnSelect={true}
-                            detailTemplate={this.detailTemplate.bind(this)}
-                            />
-                        </Layer>
-                    </Layer>
-                    {(()=>{
-                      if (!state.mobile) {
-                          return (
-                            <div className="h100 w100 p10">
-                              <Wizard slideIndex={this.state.slideIndex}>
-                                <Layer scrollY fill>
-                                  <TutorialAlign {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialButton {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialCard {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialCheckbox {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialDoor {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialDropdown {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialEmerge {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialGrid {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialInput {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialLayer {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialLoading {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialModal {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialPane {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialSelectable {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialShrink {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialToolbar {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialTransform {...state} />
-                                </Layer>
-                                <Layer scrollY fill>
-                                  <TutorialWizard {...state} />
-                                </Layer>
-                              </Wizard>
-                            </div>
-                          )
-                      } else {
-                        return null
-                      }
-                    })()}
+            if (state.mobile) {
+                return (
+                  <Layer>
+                    <Door open={state.template === 'start'}>
+                      <Toolbar vertical block spacing className="p10">
+                        <Emerge delay={120}>
+                          <Button block shortcut={"g"} checked={state.template === 'start'} onClick={this.setTemplate.bind(this, 'start')} size="large">Getting Started</Button>
+                          <Button block shortcut={"c"} checked={state.template === 'comp'} onClick={this.setTemplate.bind(this, 'comp')} size="large">Components</Button>
+                          <Button block onClick={this.setTemplate.bind(this, 'start')} size="large">Layout</Button>
+                          <Button block size="large" href="http://www.github.com/jisaac89/recoil" right type="primary" target="_blank" icon="github">Grab Latest Version</Button>
+                        </Emerge>
+                      </Toolbar>
+                    </Door>
+                    <Door open={state.template === 'comp'}>
+                      <Toolbar vertical block spacing className="p10">
+                        <Emerge delay={120}>
+                          <Button right ghost shortcut={"g"} checked={state.template === 'start'} icon="bars" onClick={this.setTemplate.bind(this, 'start')} size="large" />
+                        </Emerge>
+                      </Toolbar>
+                    </Door>
                   </Layer>
-                </div>
+                )
+            } else {
+              return (
+                <Toolbar spacing className="p10">
+                  <Emerge delay={120}>
+                    <Button shortcut={"g"} checked={state.template === 'start'} onClick={this.setTemplate.bind(this, 'start')} size="large">Getting Started</Button>
+                    <Button shortcut={"c"} checked={state.template === 'comp'} onClick={this.setTemplate.bind(this, 'comp')} size="large">Components</Button>
+                    <Button onClick={this.setTemplate.bind(this, 'start')} size="large">Layout</Button>
+                    <Button size="large" href="http://www.github.com/jisaac89/recoil" right type="primary" target="_blank" icon="github">Grab Latest Version</Button>
+                  </Emerge>
+                </Toolbar>
               )
             }
           })()}
+          <hr className="rainbow-line" />
         </Layer>
+        {(()=>{
+          if (state.template === 'start') {
+            return null;
+          } else if (state.template === 'comp') {
+            return (
+              <div className="h100 w100">
+                <Layer className="h100 w100" flex flow="row nowrap">
+                  <Layer className={'h100 w100'} flex flow="column nowrap">
+                      <Toolbar className="p10 border-bottom h50px">
+                        <Input focusOnMount={!state.mobile} onChange={this.changeKeyword.bind(this)} block type="text" title="Find Components" icon="search" />
+                      </Toolbar>
+                      <Layer scrollY className="h100 pb100 pt20 text-center">
+                        COMING SOON
+                      </Layer>
+                  </Layer>
+                </Layer>
+              </div>
+            )
+          }
+        })()}
+      </Layer>
+
       </Layer>
     )
   }

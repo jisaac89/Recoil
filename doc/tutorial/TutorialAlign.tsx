@@ -81,7 +81,6 @@ export default class TutorialAlign extends React.Component<any,any>{
     const self = this;
     const props = self.props;
     let state = self.state;
-
     const columns = [
       {name: 'name', width:250},
       {name: 'type', width:400},

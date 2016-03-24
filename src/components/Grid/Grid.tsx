@@ -67,11 +67,18 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
     let columnsArray = [];
     let columns = [];
 
-    for (let i = 0; i < Object.keys(this.props.dataSource[0]).length; i++) {
-      columnsArray.push(Object.keys(this.props.dataSource[0])[i]);
+    if (this.props.dataSource[0] === undefined) {
+      for (let i = 0; i < Object.keys(this.props.dataSource).length; i++) {
+        columnsArray.push(Object.keys(this.props.dataSource)[i]);
+      }
+    } else {
+      for (let i = 0; i < Object.keys(this.props.dataSource[0]).length; i++) {
+        columnsArray.push(Object.keys(this.props.dataSource[0])[i]);
+      }
     }
 
     let len = columnsArray.length;
+
     for (let i = 0; i < len; i++) {
       columns.push({
           name: columnsArray[i]
@@ -92,9 +99,15 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
     let collection = props.dataSource;
     let numberOfPages;
 
-    self.setState({
-      collection: props.dataSource
-    });
+    if (this.props.dataSource[0] === undefined) {
+      self.setState({
+        collection: [props.dataSource]
+      });
+    } else {
+      self.setState({
+        collection: props.dataSource
+      });
+    }
 
   }
 

@@ -27,17 +27,28 @@ export default class GridColumn extends React.Component<IGridColumnProps,{}>{
             {dataSource[i][columns[x].name]}
           </Button>
         )
-      } else if (columns[x].template) {
-          return (
-            <Layer>
-              {columns[x].template(dataSource[i])}
-            </Layer>
-          )
-        } else {
+      }
+      else if (columns[x].template) {
         return (
           <Layer>
-            {dataSource[i][columns[x].name]}
+            {columns[x].template(dataSource[i])}
           </Layer>
+        )
+      }
+      else if (typeof dataSource[i][columns[x].name] === 'object') {
+        let arr = [];
+        for (let key in dataSource[i][columns[x].name]) {
+          arr.push(
+            <span>{dataSource[i][columns[x].name][key]}</span>
+          )
+        }
+        return (
+          <Layer>Contains <strong>Object</strong>, use a column template.</Layer>
+        )
+      }
+      else {
+        return (
+          <Layer>{dataSource[i][columns[x].name]}</Layer>
         )
       }
     }
