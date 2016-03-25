@@ -1,12 +1,12 @@
 @import '../../less/Global';
-
-.r-Grid__Row:nth-child(odd) {
-  background: #F8F8F8;
-}
-
-.e-NightMode .r-Grid__Row:nth-child(odd) {
-    background: #212121;
-}
+//
+// .r-Grid__Row:nth-child(odd) {
+//   background: #F8F8F8;
+// }
+//
+// .e-NightMode .r-Grid__Row:nth-child(odd) {
+//     background: #212121;
+// }
 
 .r-Grid__Footer{
   margin-top:10px;
@@ -16,21 +16,15 @@
   text-align: left;
 }
 
-th, td {
-    border-bottom: 1px solid #ccc !important;
-    padding-bottom: 0.25em;
-    padding-top: 0.25em;
-}
-
-th, td {
-    text-align: left;
-    vertical-align: top;
-    padding: 10px !important;
-}
-table, td, th {
+.r-Grid table,
+.r-Grid td,
+.r-Grid th {
     vertical-align: middle;
 }
-caption, th, td {
+
+.r-Grid caption,
+.r-Grid th,
+.r-Grid td {
     text-align: left;
     font-weight: normal;
 }
@@ -46,10 +40,20 @@ caption, th, td {
     font-size: 100%;
     font-family: inherit;
     vertical-align: middle;
-    border-color:transparent !important;
 }
 
 tr.r-Grid__Row:hover {
     // background: #fff;
-    cursor: pointer;
+    // cursor: pointer;
+}
+
+.r-Grid td.r-Grid__Row__Column{
+  padding:@grid-cell-padding;
+  border-bottom: @grid-border-size solid @grid-border-color !important;
+  // border-right: @grid-border-size solid @grid-border-color !important;
+}
+
+.r-Grid__Header > tr > th {
+  border-bottom: @grid-header-border-size solid @grid-header-border-color !important;
+  padding:@grid-cell-padding;
 }

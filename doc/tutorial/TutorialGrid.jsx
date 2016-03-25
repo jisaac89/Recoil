@@ -47,6 +47,12 @@ const GridProperties = [
         type: '',
         options: 'key, item',
         description: 'Returns a custom row template.'
+    },
+    {
+        name: 'detailTemplateOpenOnHover',
+        type: 'boolean',
+        options: 'true, false',
+        description: 'Determines whether the detail template opens on row hover.'
     }
 ];
 class TutorialGrid extends React.Component {

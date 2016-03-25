@@ -1,6 +1,8 @@
 import * as React from 'react';
 import './Grid.less';
 
+import * as classNames from 'classnames';
+
 import Selectable from '../Selectable/Selectable';
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
@@ -16,12 +18,14 @@ interface IGridProps {
   open ? : boolean;
   hideHeader ? : boolean;
   sortable ? : boolean;
-  openOnSelect? : any;
   detailTemplate? : any;
   height ? : string;
   onSelect ? : any;
   selected ? : any;
   hideColumns ? : any;
+  columnTemplate ?: any;
+  detailTemplateOpenOnHover? : boolean;
+  detailTemplateOpenOnSelect? : boolean;
 }
 
 interface IGridState {
@@ -239,21 +243,23 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
             hideColumns={props.hideColumns}
           />
           <GridBody
-            height={props.height}
-            open={props.open}
-            onSelect={props.onSelect}
-            selected={props.selected}
             columns={renderedColumns}
             dataSource={renderedPage}
             dataType={state.dataType}
             numberOfPages={numberOfPages}
+            height={props.height}
+            open={props.open}
+            onSelect={props.onSelect}
+            selected={props.selected}
             detailTemplate={this.props.detailTemplate}
-            openOnSelect={this.props.openOnSelect}
             hideColumns={props.hideColumns}
+            columnTemplate={props.columnTemplate}
+            detailTemplateOpenOnHover={props.detailTemplateOpenOnHover}
+            detailTemplateOpenOnSelect={this.props.detailTemplateOpenOnSelect}
             />
         </table>
           {(()=>{
-            if (state.numberOfPages === 1) {
+            if (true) {
               return (
                 <GridFooter
                   gotoPage={this.gotoPage.bind(this)}

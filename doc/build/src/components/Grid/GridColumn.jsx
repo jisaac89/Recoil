@@ -1,6 +1,5 @@
 "use strict";
 var React = require('react');
-var Layer_1 = require('../Layer/Layer');
 var Button_1 = require('../Button/Button');
 class GridColumn extends React.Component {
     render() {
@@ -11,23 +10,27 @@ class GridColumn extends React.Component {
         let columnPartial = () => {
             if (columns[x].tabbable) {
                 return (<Button_1.default>
-            {dataSource[i][columns[x].name]}
-          </Button_1.default>);
+              {dataSource[i][columns[x].name]}
+            </Button_1.default>);
             }
             else if (columns[x].template) {
-                return (<Layer_1.default>
-              {columns[x].template(dataSource[i])}
-            </Layer_1.default>);
+                return columns[x].template(dataSource[i]);
+            }
+            else if (typeof dataSource[i][columns[x].name] === 'object') {
+                return (<span><strong>hasObject</strong></span>);
             }
             else {
-                return (<Layer_1.default>
-            {dataSource[i][columns[x].name]}
-          </Layer_1.default>);
+                return dataSource[i][columns[x].name];
             }
         };
-        return (<td className="r-Grid__Row__Column" style={{ width: columns[x].width }} key={i + x}>
-        {columnPartial()}
-      </td>);
+        if (props.hideColumns && props.hideColumns.includes(columns[x].name)) {
+            return null;
+        }
+        else {
+            return (<td className="r-Grid__Row__Column" style={{ width: columns[x].width }} key={i + x}>
+          {columnPartial()}
+        </td>);
+        }
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });

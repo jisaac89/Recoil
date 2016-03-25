@@ -14,7 +14,7 @@ interface IGridProps {
   open ? : boolean;
   hideHeader ? : boolean;
   sortable ? : boolean;
-  openOnSelect? : () => void;
+  detailTemplateOpenOnSelect? : boolean;
   detailTemplate? : () => void;
   height ? : string;
   onSelect ? : () => void;
@@ -22,6 +22,8 @@ interface IGridProps {
   dataType ? : any;
   numberOfPages ? : number;
   hideColumns ? : any;
+  columnTemplate? : any;
+  detailTemplateOpenOnHover? : boolean;
 }
 
 interface IGridBodyState {
@@ -99,9 +101,9 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
           [<GridRow expanded={this.state.expandedRows.includes(key)} toggleDetailTemplate={this.toggleDetailTemplate.bind(this)} key={key} i={key} {...props} />],
           [<tr>
             <td className="p0" colSpan={this.props.columns.length + 1}>
-              <Layer>
+              <div className="w100 posrel">
                 <Selectable checked={this.state.expandedRows.includes(key)} />
-              </Layer>
+              </div>
             </td>
           </tr>],
           [<GridRowTemplate expanded={this.state.expandedRows.includes(key)} i={key} {...props} />]

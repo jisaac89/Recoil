@@ -47,9 +47,9 @@ class GridBody extends React.Component {
             if (props.detailTemplate) {
                 rowArray.push([<GridRow_1.default expanded={this.state.expandedRows.includes(key)} toggleDetailTemplate={this.toggleDetailTemplate.bind(this)} key={key} i={key} {...props}/>], [<tr>
             <td className="p0" colSpan={this.props.columns.length + 1}>
-              <Layer_1.default>
+              <div className="w100 posrel">
                 <Selectable_1.default checked={this.state.expandedRows.includes(key)}/>
-              </Layer_1.default>
+              </div>
             </td>
           </tr>], [<GridRowTemplate expanded={this.state.expandedRows.includes(key)} i={key} {...props}/>]);
             }

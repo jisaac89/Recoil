@@ -8,7 +8,7 @@ import GridColumn from './GridColumn';
 
 interface IGridRowProps {
   onSelect ? : any;
-  openOnSelect ? : any;
+  detailTemplateOpenOnSelect ? : boolean;
   toggleDetailTemplate ? : any;
   columns ? : any;
   dataSource ? : any;
@@ -17,6 +17,8 @@ interface IGridRowProps {
   detailTemplate ? : any;
   expanded ? : boolean;
   hideColumns? : any;
+  columnTemplate? : any;
+  detailTemplateOpenOnHover? : boolean;
 }
 
 interface IGridRowState {
@@ -36,7 +38,7 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
     const self = this;
     self.props.onSelect(key, item);
     // this.props.selected(key, item);
-    if (self.props.openOnSelect) {
+    if (self.props.detailTemplateOpenOnSelect) {
         self.toggleDetailTemplate(key);
     }
   }
@@ -56,7 +58,7 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
 
     for (let x = 0; x < columns.length; x++) {
       columnArray.push(
-        <GridColumn key={x} dataSource={dataSource} i={i} x={x} columns={columns} hideColumns={props.hideColumns} />
+        <GridColumn key={x} dataSource={dataSource} i={i} x={x} columns={columns} hideColumns={props.hideColumns} columnTemplate={props.columnTemplate} />
       )
     }
 
@@ -69,7 +71,7 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
 
     if (props.detailTemplate) {
       return (
-        <tr onClick={this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+        <tr onMouseEnter={props.detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null} onClick={!this.props.detailTemplateOpenOnHover && this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
           <td className="p0" width={5}>
             <Button className="p5 ps10" ghost onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={this.props.expanded ? "caret-down" : "caret-right"}>
             </Button>

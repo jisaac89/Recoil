@@ -1,7 +1,10 @@
 @import './Global';
 
+html {
+  font-family: @font-family !important;
+}
+
 * {
-  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -1615,7 +1618,7 @@ h3 {
   }
 }
 a {
-  color: #1995FF;
+  color: @link-color;
   text-decoration: none;
   cursor: pointer;
 }
@@ -1766,4 +1769,117 @@ form{
   background-size:50% auto;
   height:3px;
   border: 0;
+}
+
+
+
+.e-NightMode{
+  background: #111;
+
+  .r-Layer.light{
+    background:#222;
+  }
+
+  .r-Button{
+    background:#333;
+    border-color:#222;
+  }
+
+  h2, h1, h3{
+    color:#999;
+  }
+
+  .border-top,
+  .border-bottom,
+  .border-left,
+  .border-right{
+    border-color:#334;
+  }
+
+  .r-Pane__container{
+    background: #000;
+  }
+
+  .r-Button:hover, .r-Button:focus {
+    background: #1995FF !important;
+    color:white;
+  }
+
+  small {
+    color: #888;
+  }
+
+  p{
+    color:#888;
+  }
+
+  .r-Input__container {
+    position: relative;
+    overflow: hidden;
+    border-color:#111 !important;
+    height: #999;
+    color: #333;
+    background-color:#222;
+  }
+
+  .r-Input__container > input{
+    position: relative;
+    overflow: hidden;
+    border-color:#111 !important;
+    height: #333;
+    color: #999;
+    background-color:#333;
+  }
+
+  .r-Toolbar.border > .r-Input, .r-Toolbar.border .r-Input{
+    border: 1px solid #555;
+  }
+
+
+  .r-Input.checked .r-Input__container {
+    position: relative;
+    overflow: hidden;
+    border-color:#111 !important;
+    height: #333;
+    color: #333;
+    background-color:#333;
+  }
+
+  .r-GridBody .selected{
+      background: rgba(255,255,255, 0.15);
+  }
+
+  .r-GridBody > .r-Emerge > .r-Emerge:hover{
+      background: rgba(255,255,255, 0.1);
+  }
+
+}
+
+.gray{
+  background: #EEEEEE;
+  z-index: 10;
+  height: 100%;
+}
+
+.Cart{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #FCFCFC;
+  height: 1000px;
+  width: 100%;
+}
+
+.r-GridBody .selected{
+    background: rgba(0,0,0,0.08) !important;
+}
+
+.r-GridBody > .r-Emerge > .r-Emerge:hover{
+    background: rgba(255,255,255, 1);
+}
+
+#root{
+  height:100%;
+  width:100%;
 }

@@ -10,6 +10,7 @@ interface IGridColumnProps {
   i ? : any;
   x ? : any;
   hideColumns ? : any;
+  columnTemplate? : any;
 }
 
 export default class GridColumn extends React.Component<IGridColumnProps,{}>{
@@ -29,34 +30,30 @@ export default class GridColumn extends React.Component<IGridColumnProps,{}>{
             </Button>
           )
         }
+        // else if (columns[x].name === props.columnTemplate[x].name) {
+        //   return (
+        //     <Layer>
+        //       {props.columnTemplate[x].template(dataSource[i])}
+        //     </Layer>
+        //   )
+        // }
         else if (columns[x].template) {
-          return (
-            <Layer>
-              {columns[x].template(dataSource[i])}
-            </Layer>
-          )
+          return columns[x].template(dataSource[i]);
         }
         else if (typeof dataSource[i][columns[x].name] === 'object') {
-          let arr = [];
-          for (let key in dataSource[i][columns[x].name]) {
-            arr.push(
-              <span>{dataSource[i][columns[x].name][key]}</span>
-            )
-          }
           return (
-            <Layer><strong>hasObject</strong></Layer>
+            <span><strong>hasObject</strong></span>
           )
         }
         else {
-          return (
-            <Layer>{dataSource[i][columns[x].name]}</Layer>
-          )
+          return dataSource[i][columns[x].name];
         }
     }
 
     if (props.hideColumns && props.hideColumns.includes(columns[x].name)) {
         return null;
-    } else {
+    }
+    else {
       return (
         <td className="r-Grid__Row__Column" style={{width: columns[x].width}} key={i+x}>
           {columnPartial()}

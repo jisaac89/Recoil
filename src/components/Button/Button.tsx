@@ -160,12 +160,12 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
 
     let selectablePartial = <Selectable checked={props.checked ? true : false}></Selectable>;
-    let iconPartial = (props.icon ? <i className={(this.state.showShortcut ? 'shadow ' : '') + 'fa fa-'+props.icon+(props.children ? ' mr5' : '')}></i> : null );
+    let iconPartial = (props.icon ? <i className={(this.state.showShortcut ? 'e-invisible ' : '') + 'fa fa-'+props.icon+(props.children ? ' mr5' : '')}></i> : null );
 
     let showTooltip = () => {
       if (this.state.showShortcut) {
         return (
-          <span className="shortcut animated fadeInUp">{this.props.shortcut}</span>
+          <span className="e-shortcut animated fadeInUp">{this.props.shortcut}</span>
         )
       }
     }
@@ -183,25 +183,17 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
               return null;
             }
           })()}
-          {selectablePartial}
           {showTooltip()}
+          {selectablePartial}
         </a>
       );
     } else {
       return (
         <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
           {iconPartial}
-          {(()=>{
-            if (!this.state.showShortcut) {
-              return (
-                <span>{props.children}</span>
-              )
-            } else {
-              return null;
-            }
-          })()}
-          {selectablePartial}
+          <span className={this.state.showShortcut ? "e-invisible" : ''}>{props.children}</span>
           {showTooltip()}
+          {selectablePartial}
         </button>
       );
     }
