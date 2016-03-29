@@ -5,7 +5,7 @@ var GridHeader_1 = require('./GridHeader');
 var GridBody_1 = require('./GridBody');
 var GridFooter_1 = require('./GridFooter');
 class Grid extends React.Component {
-    constructor() {
+    constructor(props) {
         super();
         this.state = {
             columns: [],
@@ -22,7 +22,8 @@ class Grid extends React.Component {
         });
     }
     componentDidMount() {
-        if (!this.props.columns) {
+        let columns = this.props.columns;
+        if (!columns) {
             this.automaticallyCreateColumns();
             this.loadCollection();
         }
@@ -137,6 +138,11 @@ class Grid extends React.Component {
             numberPerPage: pageSize
         });
     }
+    onRowSelect(item) {
+        if (this.props.onRowSelect) {
+            this.props.onRowSelect(item);
+        }
+    }
     render() {
         const self = this;
         const props = self.props;
@@ -169,10 +175,10 @@ class Grid extends React.Component {
         return (<div className="r-Grid">
         <table className='r-Grid__Table w100'>
           <GridHeader_1.default hideHeader={props.hideHeader} columns={renderedColumns} dataSource={renderedPage} sortable={props.sortable} toggleSorting={this.toggleSorting.bind(this)} sortType={state.sortType} detailTemplate={this.props.detailTemplate} hideColumns={props.hideColumns}/>
-          <GridBody_1.default columns={renderedColumns} dataSource={renderedPage} dataType={state.dataType} numberOfPages={numberOfPages} height={props.height} open={props.open} onSelect={props.onSelect} selected={props.selected} detailTemplate={this.props.detailTemplate} hideColumns={props.hideColumns} columnTemplate={props.columnTemplate} detailTemplateOpenOnHover={props.detailTemplateOpenOnHover} detailTemplateOpenOnSelect={this.props.detailTemplateOpenOnSelect}/>
+          <GridBody_1.default columns={renderedColumns} dataSource={renderedPage} dataType={state.dataType} numberOfPages={numberOfPages} height={props.height} open={props.open} detailTemplate={this.props.detailTemplate} hideColumns={props.hideColumns} columnTemplate={props.columnTemplate} detailTemplateOpenOnHover={props.detailTemplateOpenOnHover} detailTemplateOpenOnSelect={this.props.detailTemplateOpenOnSelect} rowIsSelectable={this.props.rowIsSelectable} onRowSelect={this.onRowSelect.bind(this)} selected={this.props.selected} selectedKey={this.props.selectedKey} rowIsSelectableType={this.props.rowIsSelectableType}/>
         </table>
           {(() => {
-            if (true) {
+            if (numberOfPages !== 1) {
                 return (<GridFooter_1.default gotoPage={this.gotoPage.bind(this)} previousPage={this.previousPage.bind(this)} nextPage={this.nextPage.bind(this)} lastPage={this.lastPage.bind(this)} firstPage={this.firstPage.bind(this)} numberOfPages={numberOfPages} currentPage={state.currentPage} changePageSize={this.changePageSize.bind(this)}/>);
             }
         })()}

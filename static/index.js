@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "16bef3a5cc0509d61b8a"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ef5e860373d898cf3467"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -22725,7 +22725,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Layer {\n  zoom: 1;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  width: 100%;\n  position: relative;\n  color: #333;\n}\n.r-Layer:before,\n.r-Layer:after {\n  content: \"\";\n  display: table;\n}\n.r-Layer:after {\n  clear: both;\n}\n.r-Layer.light {\n  background: #fff;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.r-Layer.e-scroll-y {\n  -webkit-overflow-scrolling: touch;\n  overflow-y: scroll;\n}\n.r-Layer.e-scroll-x {\n  -webkit-overflow-scrolling: touch;\n  overflow-x: scroll;\n}\n", ""]);
+	exports.push([module.id, ".r-Layer {\n  zoom: 1;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  width: 100%;\n  position: relative;\n  color: #333;\n}\n.r-Layer:before,\n.r-Layer:after {\n  content: \"\";\n  display: table;\n}\n.r-Layer:after {\n  clear: both;\n}\n.r-Layer.light {\n  background: #fff;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.r-Layer.e-scroll-y {\n  -webkit-overflow-scrolling: touch;\n  overflow-y: scroll;\n}\n.r-Layer.e-scroll-x {\n  -webkit-overflow-scrolling: touch;\n  overflow-x: scroll;\n}\n.e-NightMode .r-Layer.light {\n  color: #888;\n}\n", ""]);
 	
 	// exports
 
@@ -22926,7 +22926,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Grid = function (_React$Component) {
 	    _inherits(Grid, _React$Component);
 	
-	    function Grid() {
+	    function Grid(props) {
 	        _classCallCheck(this, Grid);
 	
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Grid).call(this));
@@ -22952,7 +22952,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
-	            if (!this.props.columns) {
+	            // the array of column object settings;
+	            var columns = this.props.columns;
+	            if (!columns) {
 	                this.automaticallyCreateColumns();
 	                this.loadCollection();
 	            } else {
@@ -23082,6 +23084,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	        }
 	    }, {
+	        key: 'onRowSelect',
+	        value: function onRowSelect(item) {
+	            if (this.props.onRowSelect) {
+	                this.props.onRowSelect(item);
+	            }
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var _this2 = this;
@@ -23122,10 +23131,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    'table',
 	                    { className: 'r-Grid__Table w100' },
 	                    React.createElement(GridHeader_1.default, { hideHeader: props.hideHeader, columns: renderedColumns, dataSource: renderedPage, sortable: props.sortable, toggleSorting: this.toggleSorting.bind(this), sortType: state.sortType, detailTemplate: this.props.detailTemplate, hideColumns: props.hideColumns }),
-	                    React.createElement(GridBody_1.default, { columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, height: props.height, open: props.open, onSelect: props.onSelect, selected: props.selected, detailTemplate: this.props.detailTemplate, hideColumns: props.hideColumns, columnTemplate: props.columnTemplate, detailTemplateOpenOnHover: props.detailTemplateOpenOnHover, detailTemplateOpenOnSelect: this.props.detailTemplateOpenOnSelect })
+	                    React.createElement(GridBody_1.default, { columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, height: props.height, open: props.open, detailTemplate: this.props.detailTemplate, hideColumns: props.hideColumns, columnTemplate: props.columnTemplate, detailTemplateOpenOnHover: props.detailTemplateOpenOnHover, detailTemplateOpenOnSelect: this.props.detailTemplateOpenOnSelect, rowIsSelectable: this.props.rowIsSelectable, onRowSelect: this.onRowSelect.bind(this), selected: this.props.selected, selectedKey: this.props.selectedKey, rowIsSelectableType: this.props.rowIsSelectableType })
 	                ),
 	                function () {
-	                    if (true) {
+	                    if (numberOfPages !== 1) {
 	                        return React.createElement(GridFooter_1.default, { gotoPage: _this2.gotoPage.bind(_this2), previousPage: _this2.previousPage.bind(_this2), nextPage: _this2.nextPage.bind(_this2), lastPage: _this2.lastPage.bind(_this2), firstPage: _this2.firstPage.bind(_this2), numberOfPages: numberOfPages, currentPage: state.currentPage, changePageSize: _this2.changePageSize.bind(_this2) });
 	                    }
 	                }()
@@ -23173,7 +23182,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\n.r-Grid table,\n.r-Grid td,\n.r-Grid th {\n  vertical-align: middle;\n}\n.r-Grid caption,\n.r-Grid th,\n.r-Grid td {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n.r-Grid td.r-Grid__Row__Column {\n  padding: 10px;\n  border-bottom: 1px solid #ccc !important;\n}\n.r-Grid__Header > tr > th {\n  border-bottom: 1px solid #ccc !important;\n  padding: 10px;\n}\n", ""]);
+	exports.push([module.id, ".r-Grid {\n  width: 100%;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\n.r-Grid table,\n.r-Grid td,\n.r-Grid th {\n  vertical-align: middle;\n}\n.r-Grid caption,\n.r-Grid th,\n.r-Grid td {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n.r-Grid td.r-Grid__Row__Column {\n  padding: 10px;\n  color: #333;\n}\n.r-Grid__Header > tr > th {\n  border-bottom: 1px solid #ccc !important;\n  padding: 10px;\n}\n.e-NightMode .r-Grid__Row__Column {\n  color: #888 !important;\n}\n", ""]);
 	
 	// exports
 
@@ -23349,22 +23358,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var React = __webpack_require__(5);
 	var Selectable_1 = __webpack_require__(181);
-	var Layer_1 = __webpack_require__(201);
 	var Door_1 = __webpack_require__(190);
 	var GridRow_1 = __webpack_require__(214);
 	
-	var GridRowTemplate = function (_React$Component) {
-	    _inherits(GridRowTemplate, _React$Component);
+	var SelectableGridRow = function (_React$Component) {
+	    _inherits(SelectableGridRow, _React$Component);
+	
+	    function SelectableGridRow() {
+	        _classCallCheck(this, SelectableGridRow);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SelectableGridRow).apply(this, arguments));
+	    }
+	
+	    _createClass(SelectableGridRow, [{
+	        key: 'render',
+	        value: function render() {
+	            return React.createElement(
+	                'div',
+	                { className: 'w100 posrel' },
+	                React.createElement(Selectable_1.default, { checked: this.props.selectedItem })
+	            );
+	        }
+	    }]);
+	
+	    return SelectableGridRow;
+	}(React.Component);
+	
+	var GridRowTemplate = function (_React$Component2) {
+	    _inherits(GridRowTemplate, _React$Component2);
 	
 	    function GridRowTemplate() {
 	        _classCallCheck(this, GridRowTemplate);
 	
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GridRowTemplate).call(this));
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GridRowTemplate).call(this));
 	
-	        _this.state = {
+	        _this2.state = {
 	            open: false
 	        };
-	        return _this;
+	        return _this2;
 	    }
 	
 	    _createClass(GridRowTemplate, [{
@@ -23392,18 +23423,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return GridRowTemplate;
 	}(React.Component);
 	
-	var GridBody = function (_React$Component2) {
-	    _inherits(GridBody, _React$Component2);
+	var GridBody = function (_React$Component3) {
+	    _inherits(GridBody, _React$Component3);
 	
-	    function GridBody() {
+	    function GridBody(props) {
 	        _classCallCheck(this, GridBody);
 	
-	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GridBody).call(this));
+	        var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(GridBody).call(this, props));
 	
-	        _this2.state = {
-	            expandedRows: []
+	        _this3.state = {
+	            expandedRows: [],
+	            selected: props.selected || []
 	        };
-	        return _this2;
+	        return _this3;
 	    }
 	
 	    _createClass(GridBody, [{
@@ -23416,6 +23448,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	        }
 	    }, {
+	        key: 'onRowSelect',
+	        value: function onRowSelect(item) {
+	            // key of the object key;
+	            if (this.props.rowIsSelectable) {
+	                var selected = void 0;
+	                if (this.props.rowIsSelectableType === 'single') {
+	                    selected = [];
+	                } else {
+	                    selected = this.state.selected;
+	                }
+	                selected.push(item);
+	                this.setState({
+	                    selected: selected
+	                });
+	            } else if (this.props.onRowSelect) {
+	                this.props.onRowSelect(item);
+	            }
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var self = this;
@@ -23423,41 +23474,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var columns = props.columns;
 	            var dataSource = props.dataSource;
 	
+	            var selectedItem = void 0;
 	            var rowArray = [];
 	            for (var key in self.props.dataSource) {
-	                if (props.detailTemplate) {
-	                    rowArray.push([React.createElement(GridRow_1.default, _extends({ expanded: this.state.expandedRows.includes(key), toggleDetailTemplate: this.toggleDetailTemplate.bind(this), key: key, i: key }, props))], [React.createElement(
-	                        'tr',
-	                        null,
-	                        React.createElement(
-	                            'td',
-	                            { className: 'p0', colSpan: this.props.columns.length + 1 },
-	                            React.createElement(
-	                                'div',
-	                                { className: 'w100 posrel' },
-	                                React.createElement(Selectable_1.default, { checked: this.state.expandedRows.includes(key) })
-	                            )
-	                        )
-	                    )], [React.createElement(GridRowTemplate, _extends({ expanded: this.state.expandedRows.includes(key), i: key }, props))]);
-	                } else {
-	                    rowArray.push([React.createElement(GridRow_1.default, _extends({ detailTemplate: props.detailTemplate, key: key, i: key }, props))], [React.createElement(
-	                        'tr',
-	                        null,
-	                        React.createElement(
-	                            'td',
-	                            { className: 'p0', colSpan: this.props.columns.length + 1 },
-	                            React.createElement(
-	                                Layer_1.default,
-	                                null,
-	                                React.createElement(Selectable_1.default, { checked: this.state.expandedRows.includes(key) })
-	                            )
-	                        )
-	                    )]);
+	                var item = self.props.dataSource[key];
+	                var _selectedItem = void 0;
+	                if (this.state.selected) {
+	                    if (props.selectedKey) {
+	                        _selectedItem = this.props.selected.includes(item[this.props.selectedKey]);
+	                    } else {
+	                        _selectedItem = this.state.selected.includes(item);
+	                    }
 	                }
+	                rowArray.push([React.createElement(GridRow_1.default, { expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.includes(key), toggleDetailTemplate: this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null, key: key, i: key, selected: this.state.selected, item: item, selectedKey: this.props.selectedKey, dataSource: this.props.dataSource, columns: this.props.columns, onRowSelect: this.onRowSelect.bind(this), detailTemplate: this.props.detailTemplate, selectedItem: _selectedItem, hideColumns: this.props.hideColumns })], [React.createElement(
+	                    'tr',
+	                    null,
+	                    React.createElement(
+	                        'td',
+	                        { className: 'p0', colSpan: this.props.columns.length + 1 },
+	                        React.createElement(SelectableGridRow, { onRowSelect: this.props.onRowSelect, item: item, selected: this.state.selected, selectedItem: _selectedItem, selectedKey: this.props.selectedKey })
+	                    )
+	                )], [this.props.detailTemplate ? React.createElement(GridRowTemplate, _extends({ expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.includes(key), i: key }, props)) : null]);
 	            }
 	            return React.createElement(
 	                'tbody',
-	                { className: 'r-Grid__Body', style: { height: this.props.height } },
+	                { className: 'r-Grid__Body w100', style: { height: this.props.height } },
 	                rowArray
 	            );
 	        }
@@ -23467,6 +23508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(React.Component);
 	
 	exports.default = GridBody;
+	// this.state.expandedRows.includes(key)
 
 /***/ },
 /* 214 */
@@ -23492,23 +23534,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    function GridRow() {
 	        _classCallCheck(this, GridRow);
 	
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GridRow).call(this));
-	
-	        _this.state = {
-	            selected: false
-	        };
-	        return _this;
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(GridRow).apply(this, arguments));
 	    }
 	
 	    _createClass(GridRow, [{
-	        key: 'onSelect',
-	        value: function onSelect(key, item) {
-	            var self = this;
-	            self.props.onSelect(key, item);
-	            // this.props.selected(key, item);
-	            if (self.props.detailTemplateOpenOnSelect) {
-	                self.toggleDetailTemplate(key);
-	            }
+	        key: 'onRowSelect',
+	        value: function onRowSelect(item) {
+	            this.props.onRowSelect(item);
 	        }
 	    }, {
 	        key: 'toggleDetailTemplate',
@@ -23523,31 +23555,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var columns = props.columns;
 	            var dataSource = props.dataSource;
 	            var i = props.i;
+	            var onRowSelect = props.onRowSelect;
+	            var detailTemplateOpenOnHover = props.detailTemplateOpenOnHover;
+	            var expanded = props.expanded;
 	
+	            var item = self.props.dataSource[i];
 	            var columnArray = [];
 	            for (var x = 0; x < columns.length; x++) {
 	                columnArray.push(React.createElement(GridColumn_1.default, { key: x, dataSource: dataSource, i: i, x: x, columns: columns, hideColumns: props.hideColumns, columnTemplate: props.columnTemplate }));
 	            }
-	            var selectedItem = void 0;
 	            var selectEvent = void 0;
-	            if (props.onSelect) {
-	                selectedItem = props.selected.includes(i);
-	            }
 	            if (props.detailTemplate) {
 	                return React.createElement(
 	                    'tr',
-	                    { onMouseEnter: props.detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null, onClick: !this.props.detailTemplateOpenOnHover && this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
+	                    { onMouseEnter: detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null, onClick: this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null, className: "r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '') },
 	                    React.createElement(
 	                        'td',
 	                        { className: 'p0', width: 5 },
-	                        React.createElement(Button_1.default, { className: 'p5 ps10', ghost: true, onClick: this.toggleDetailTemplate.bind(this, i), tabIndex: -1, icon: this.props.expanded ? "caret-down" : "caret-right" })
+	                        React.createElement(Button_1.default, { className: 'p5 ps10', ghost: true, onClick: this.toggleDetailTemplate.bind(this, i), tabIndex: -1, icon: expanded ? "caret-down" : "caret-right" })
 	                    ),
 	                    columnArray
 	                );
 	            } else {
 	                return React.createElement(
 	                    'tr',
-	                    { onClick: this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null, className: "r-Grid__Row" + (selectedItem ? ' selected' : '') },
+	                    { onClick: this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null, className: "r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '') },
 	                    columnArray
 	                );
 	            }

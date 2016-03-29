@@ -119,7 +119,7 @@ export default class App extends React.Component<any, any> {
       }
 
     return (
-      <Layer overflow fill flex flow="column nowrap" className={state.nightMode ? 'e-NightMode' : ''}>
+      <Layer fill flex flow="row wrap" className={state.nightMode ? 'e-NightMode' : ''}>
         <Door className="w100" open={state.viewDocumentation}>
           <Layer block>
             <div className="p10 w100 clearfix">
@@ -161,48 +161,46 @@ export default class App extends React.Component<any, any> {
             <hr className="rainbow-line" />
           </div>
         </Door>
-        <Layer>
-          <Door className="w100" open={state.viewDocumentation}>
-            <Layer>
-              <div className="w30 p10 pr20 pull-left">
-                <Input icon="th" block focusOnMount={state.viewDocumentation} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
-                <Grid
-                  hideHeader
-                  dataSource={newComponentArray}
-                  columns={columns}
-                  numberPerPage={17}
-                  onRowSelect={this.gotoTutorial.bind(this)}
-                  detailTemplateOpenOnSelect
-                  detailTemplate={this.detailTemplate.bind(this)}
-                  selected={[this.state.slideIndex]}
-                  selectedKey={'index'}
-                />
-              </div>
-              <div className="p10 w70 pull-left">
-                <Wizard slideIndex={state.slideIndex}>
-                  <TutorialAlign {...state}  />
-                  <TutorialButton {...state} />
-                  <TutorialCard {...state} />
-                  <TutorialCheckbox {...state} />
-                  <TutorialDoor {...state} />
-                  <TutorialDropdown {...state} />
-                  <TutorialEmerge {...state} />
-                  <TutorialGrid {...state} />
-                  <TutorialInput {...state} />
-                  <TutorialLayer {...state} />
-                  <TutorialLoading {...state} />
-                  <TutorialModal {...state} />
-                  <TutorialPane {...state} />
-                  <TutorialSelectable {...state} />
-                  <TutorialShrink {...state} />
-                  <TutorialToolbar {...state} />
-                  <TutorialTransform {...state} />
-                  <TutorialWizard {...state} />
-                </Wizard>
-              </div>
-            </Layer>
-          </Door>
-        </Layer>
+        <Door className="w100" open={state.viewDocumentation}>
+          <Layer >
+            <div className="w30 p10 pr20 pull-left">
+              <Input icon="th" block focusOnMount={state.viewDocumentation} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
+              <Grid
+                hideHeader
+                dataSource={newComponentArray}
+                columns={columns}
+                numberPerPage={17}
+                onRowSelect={this.gotoTutorial.bind(this)}
+                detailTemplateOpenOnSelect
+                detailTemplate={this.detailTemplate.bind(this)}
+                selected={[this.state.slideIndex]}
+                selectedKey={'index'}
+              />
+            </div>
+            <div className="p10 w70 pull-left">
+              <Wizard slideIndex={state.slideIndex}>
+                <TutorialAlign {...state}  />
+                <TutorialButton {...state} />
+                <TutorialCard {...state} />
+                <TutorialCheckbox {...state} />
+                <TutorialDoor {...state} />
+                <TutorialDropdown {...state} />
+                <TutorialEmerge {...state} />
+                <TutorialGrid {...state} />
+                <TutorialInput {...state} />
+                <TutorialLayer {...state} />
+                <TutorialLoading {...state} />
+                <TutorialModal {...state} />
+                <TutorialPane {...state} />
+                <TutorialSelectable {...state} />
+                <TutorialShrink {...state} />
+                <TutorialToolbar {...state} />
+                <TutorialTransform {...state} />
+                <TutorialWizard {...state} />
+              </Wizard>
+            </div>
+          </Layer>
+        </Door>
       </Layer>
     )
   }

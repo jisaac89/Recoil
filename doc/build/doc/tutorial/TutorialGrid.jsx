@@ -47,6 +47,24 @@ const GridProperties = [
         type: '',
         options: 'key, item',
         description: 'Returns a custom row template.'
+    },
+    {
+        name: 'selectedKey',
+        type: '',
+        options: 'key, item',
+        description: 'Returns a custom row template.'
+    },
+    {
+        name: 'selected',
+        type: '',
+        options: 'key, item',
+        description: 'Returns a custom row template.'
+    },
+    {
+        name: 'onRowSelect',
+        type: '',
+        options: 'key, item',
+        description: 'Returns a custom row template.'
     }
 ];
 class TutorialGrid extends React.Component {
