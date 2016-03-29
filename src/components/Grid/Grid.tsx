@@ -20,28 +20,33 @@ interface IGridProps {
   sortable ? : boolean;
   detailTemplate? : any;
   height ? : string;
-  onSelect ? : any;
+  onRowSelect ? : any;
   selected ? : any;
   hideColumns ? : any;
   columnTemplate ?: any;
   detailTemplateOpenOnHover? : boolean;
   detailTemplateOpenOnSelect? : boolean;
+  isSelected ?: any;
+  dataKey ? : any;
+  rowIsSelectable ? : boolean;
+  selectedKey ? : string;
+  rowIsSelectableType? : string;
 }
 
 interface IGridState {
-  currentPage ? : number;
-  columns ? : any;
-  collection ? : any;
-  numberOfPages ? : number;
-  numberPerPage ? : number;
-  sortType ? : any;
+  columns ?: any;
+  collection ?: any;
+  pageList ?: any;
+  currentPage  ?: number;
+  numberPerPage ?: number;
+  numberOfPages ?: number;
   dataType ? : any;
-  pageList ? : any;
+  sortType ? : any;
 }
 
 export default class Grid extends React.Component<IGridProps,IGridState>{
 
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       columns: [],
@@ -60,7 +65,11 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
   }
 
   componentDidMount() {
-    if (!this.props.columns) {
+
+    // the array of column object settings;
+    let columns = this.props.columns;
+
+    if (!columns) {
       this.automaticallyCreateColumns();
       this.loadCollection();
     } else {
@@ -195,6 +204,13 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
     })
   }
 
+  onRowSelect(item) {
+    if (this.props.onRowSelect) {
+      this.props.onRowSelect(item);
+    }
+  }
+
+
   render() {
     const self = this;
     const props = self.props;
@@ -249,17 +265,20 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
             numberOfPages={numberOfPages}
             height={props.height}
             open={props.open}
-            onSelect={props.onSelect}
-            selected={props.selected}
             detailTemplate={this.props.detailTemplate}
             hideColumns={props.hideColumns}
             columnTemplate={props.columnTemplate}
             detailTemplateOpenOnHover={props.detailTemplateOpenOnHover}
             detailTemplateOpenOnSelect={this.props.detailTemplateOpenOnSelect}
+            rowIsSelectable={this.props.rowIsSelectable}
+            onRowSelect={this.onRowSelect.bind(this)}
+            selected={this.props.selected}
+            selectedKey={this.props.selectedKey}
+            rowIsSelectableType={this.props.rowIsSelectableType}
             />
         </table>
           {(()=>{
-            if (true) {
+            if (numberOfPages !== 1) {
               return (
                 <GridFooter
                   gotoPage={this.gotoPage.bind(this)}

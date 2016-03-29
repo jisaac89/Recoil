@@ -1,12 +1,16 @@
 @import '../../less/Global';
 //
-// .r-Grid__Row:nth-child(odd) {
+// .r-Grid__Row.e-selected {
 //   background: #F8F8F8;
 // }
 //
 // .e-NightMode .r-Grid__Row:nth-child(odd) {
 //     background: #212121;
 // }
+
+.r-Grid{
+  width:100%;
+}
 
 .r-Grid__Footer{
   margin-top:10px;
@@ -49,11 +53,16 @@ tr.r-Grid__Row:hover {
 
 .r-Grid td.r-Grid__Row__Column{
   padding:@grid-cell-padding;
-  border-bottom: @grid-border-size solid @grid-border-color !important;
+  color: @font-color;
+  // border-bottom: @grid-border-size solid @grid-border-color !important;
   // border-right: @grid-border-size solid @grid-border-color !important;
 }
 
 .r-Grid__Header > tr > th {
   border-bottom: @grid-header-border-size solid @grid-header-border-color !important;
   padding:@grid-cell-padding;
+}
+
+.e-NightMode .r-Grid__Row__Column, {
+    color: #888 !important;
 }

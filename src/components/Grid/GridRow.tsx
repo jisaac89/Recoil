@@ -7,7 +7,7 @@ import Emerge from '../Emerge/Emerge';
 import GridColumn from './GridColumn';
 
 interface IGridRowProps {
-  onSelect ? : any;
+  onRowSelect ? : any;
   detailTemplateOpenOnSelect ? : boolean;
   toggleDetailTemplate ? : any;
   columns ? : any;
@@ -19,6 +19,10 @@ interface IGridRowProps {
   hideColumns? : any;
   columnTemplate? : any;
   detailTemplateOpenOnHover? : boolean;
+  item? : any;
+  includes ? : any;
+  selectedKey? : string;
+  selectedItem? : any;
 }
 
 interface IGridRowState {
@@ -27,20 +31,8 @@ interface IGridRowState {
 
 export default class GridRow extends React.Component<IGridRowProps,IGridRowState>{
 
-  constructor() {
-    super();
-    this.state = {
-      selected: false
-    }
-  }
-
-  onSelect(key, item) {
-    const self = this;
-    self.props.onSelect(key, item);
-    // this.props.selected(key, item);
-    if (self.props.detailTemplateOpenOnSelect) {
-        self.toggleDetailTemplate(key);
-    }
+  onRowSelect(item) {
+    this.props.onRowSelect(item);
   }
 
   toggleDetailTemplate(i) {
@@ -52,8 +44,9 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
     const self = this;
     const props = self.props;
 
-    let {columns, dataSource, i} = props;
+    let {columns, dataSource, i, onRowSelect, detailTemplateOpenOnHover, expanded} = props;
 
+    let item = self.props.dataSource[i];
     let columnArray = [];
 
     for (let x = 0; x < columns.length; x++) {
@@ -62,18 +55,17 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
       )
     }
 
-    let selectedItem;
     let selectEvent;
-
-    if (props.onSelect) {
-        selectedItem = props.selected.includes(i);
-    }
 
     if (props.detailTemplate) {
       return (
-        <tr onMouseEnter={props.detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null} onClick={!this.props.detailTemplateOpenOnHover && this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+        <tr
+          onMouseEnter={detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null}
+          onClick={this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null}
+          className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}
+        >
           <td className="p0" width={5}>
-            <Button className="p5 ps10" ghost onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={this.props.expanded ? "caret-down" : "caret-right"}>
+            <Button className="p5 ps10" ghost onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={expanded ? "caret-down" : "caret-right"}>
             </Button>
           </td>
           {columnArray}
@@ -81,11 +73,13 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
       )
     } else {
       return (
-        <tr onClick={this.props.onSelect ? this.onSelect.bind(this, i, self.props.dataSource[i]) : null} className={"r-Grid__Row" + (selectedItem ? ' selected' : '')}>
+        <tr
+          onClick={this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null}
+          className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}
+        >
           {columnArray}
         </tr>
       )
     }
-
   }
 }
