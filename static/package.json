@@ -1,7 +1,7 @@
 {
   "name": "react-recoil",
   "url" : "http://reactrecoil.com/",
-  "version": "0.3.21",
+  "version": "0.3.22",
   "description": "react-recoil-npm",
   "main": "recoil.js",
   "scripts": {
@@ -34,7 +34,8 @@
     "reactjs",
     "typescript ui",
     "typescript ui kit",
-    "typescript framework"
+    "typescript framework",
+    "react-component"
   ],
   "repository": {
     "type": "git",

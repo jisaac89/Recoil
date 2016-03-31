@@ -1,7 +1,7 @@
 {
   "name": "Recoil",
   "url" : "http://reactrecoil.com/",
-  "version": "0.3.21",
+  "version": "0.3.22",
   "description": "",
   "scripts": {
     "build": "webpack --config webpack.config.js",
@@ -37,7 +37,8 @@
     "reactjs",
     "typescript ui",
     "typescript ui kit",
-    "typescript framework"
+    "typescript framework",
+    "react-component"
   ],
   "repository": {
     "type": "git",
