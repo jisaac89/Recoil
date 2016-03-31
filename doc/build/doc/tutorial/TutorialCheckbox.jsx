@@ -12,6 +12,18 @@ const ChecboxProperties = [
         type: 'boolean',
         options: 'true, false',
         description: 'Defines if the element is checked.'
+    },
+    {
+        name: 'tristate',
+        type: 'boolean',
+        options: 'true, false',
+        description: 'Defines if the checkbox has a indeterminate state.'
+    },
+    {
+        name: 'disabled',
+        type: 'boolean',
+        options: 'true, false',
+        description: 'Defines if the checkbox has a disabled state.'
     }
 ];
 class TutorialCheckbox extends React.Component {
@@ -49,31 +61,43 @@ class TutorialCheckbox extends React.Component {
 
           <h1>Checkbox</h1>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The Checkbox component is an advanced version of the standard input type='checkbox' control.</p>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Examples</h2>
-            <Layer_1.default className="ptb10">
+            <h3>Default</h3>
+            <Layer_1.default className="ptb20">
               <Layer_1.default className="p10 light">
                 <Checkbox_1.default />
               </Layer_1.default>
             </Layer_1.default>
-          </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Button_1.default checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button_1.default>
-            <Door_1.default open={this.state.showProps}>
-              <Layer_1.default className="ptb10">
-                <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={ChecboxProperties}/>
+            <h3>Checked</h3>
+            <Layer_1.default className="ptb20">
+              <Layer_1.default className="p10 light">
+                <Checkbox_1.default checked/>
               </Layer_1.default>
-            </Door_1.default>
+            </Layer_1.default>
+
+            <h3>TriState</h3>
+            <Layer_1.default className="ptb20">
+              <Layer_1.default className="p10 light">
+                <Checkbox_1.default tristate/>
+              </Layer_1.default>
+            </Layer_1.default>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
+            <h2 className="pb10">Props</h2>
+            <Layer_1.default className="ptb10">
+              <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={ChecboxProperties}/>
+            </Layer_1.default>
+          </Layer_1.default>
+
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Video</h2>
             <Button_1.default checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button_1.default>
             <Door_1.default open={this.state.showVideo}>
