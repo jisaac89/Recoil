@@ -103,14 +103,15 @@ class TutorialCard extends React.Component {
 
           <h1>Card</h1>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The material component is a google material enspired div, it has advanced feautures.</p>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Examples</h2>
-            <Layer_1.default className="ptb10">
+            <h3>Default</h3>
+            <Layer_1.default className="ptb20">
               <Layer_1.default className="p10 dark">
                 <Card_1.default>
                   This is an exampe of a Card.
@@ -119,7 +120,7 @@ class TutorialCard extends React.Component {
             </Layer_1.default>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Options</h2>
             <Button_1.default checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button_1.default>
             <Door_1.default open={this.state.showProps}>
@@ -129,7 +130,7 @@ class TutorialCard extends React.Component {
             </Door_1.default>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Video</h2>
             <Button_1.default checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button_1.default>
             <Door_1.default open={this.state.showVideo}>

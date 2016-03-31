@@ -125,14 +125,15 @@ export default class TutorialCard extends React.Component<any,any>{
 
           <h1>Card</h1>
 
-          <Layer className="ptb10">
+          <Layer className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The material component is a google material enspired div, it has advanced feautures.</p>
           </Layer>
 
-          <Layer className="ptb10">
+          <Layer className="pb20">
             <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
+            <h3>Default</h3>
+            <Layer className="ptb20">
               <Layer className="p10 dark">
                 <Card>
                   This is an exampe of a Card.
@@ -141,7 +142,7 @@ export default class TutorialCard extends React.Component<any,any>{
             </Layer>
           </Layer>
 
-          <Layer className="ptb10">
+          <Layer className="pb20">
             <h2 className="pb10">Options</h2>
             <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
             <Door open={this.state.showProps}>
@@ -151,7 +152,7 @@ export default class TutorialCard extends React.Component<any,any>{
             </Door>
           </Layer>
 
-          <Layer className="ptb10">
+          <Layer className="pb20">
             <h2 className="pb10">Video</h2>
             <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
             <Door open={this.state.showVideo}>

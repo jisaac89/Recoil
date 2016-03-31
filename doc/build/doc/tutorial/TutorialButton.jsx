@@ -163,24 +163,71 @@ class TutorialButton extends React.Component {
 
           <h1>Button</h1>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The Button component is an advanced version of the standard default button control.</p>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Examples</h2>
-            <Layer_1.default className="ptb10">
+            <h3>Default</h3>
+            <Layer_1.default className="ptb20">
               <Toolbar_1.default spacing>
                 <Button_1.default>Default Button</Button_1.default>
                 <Button_1.default type="primary">Primary Button</Button_1.default>
+                <Button_1.default type="error">Error Button</Button_1.default>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <h3>Adding Icons</h3>
+            <p>To add an icon to a button, just add an icon prop to it. Icon's are taken from font-awesome, you can omit the fa fa-, for example below it would be a Button compoent with a icon prop of "star"</p>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Button_1.default icon="star">Button with an icon</Button_1.default>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <h3>Sizes</h3>
+            <p>Buttons come in a few sizes, small, default, large and xlarge.</p>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Button_1.default size="small">Small Button</Button_1.default>
+                <Button_1.default>Default</Button_1.default>
+                <Button_1.default size="large">Large Button</Button_1.default>
+                <Button_1.default size="xlarge">Extra Large Button</Button_1.default>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <h3>States</h3>
+            <p>Buttons can have different states. You can pass a <strong>disbaled</strong>,<strong>ghost</strong> or <strong>checked</strong> props to a Button.</p>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Button_1.default checked>Checked Button</Button_1.default>
+                <Button_1.default disabled>Disabled Button</Button_1.default>
+                <Button_1.default ghost>Ghost Button</Button_1.default>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <h3>Pointer</h3>
+            <p>The <strong>pointer</strong> prop accepts a direction either <strong>left</strong> or <strong>right</strong>.</p>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Button_1.default pointer="right" className="mr20">Pointer Right</Button_1.default>
+                <Button_1.default type="primary" pointer="left">Pointer Left</Button_1.default>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <h3>Links</h3>
+            <p>You can convert any Button component to a Link by adding the <strong>href</strong> prop to it.</p>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Button_1.default icon="github" href='https//www.github.com/jisaac89/recoil'>Recoil Github</Button_1.default>
               </Toolbar_1.default>
             </Layer_1.default>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Button_1.default checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button_1.default>
+          <Layer_1.default className="pb20">
+            <h2 className="pb10">Props</h2>
             <Door_1.default open={this.state.showProps}>
               <Layer_1.default className="ptb10">
                 <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties}/>
@@ -188,7 +235,7 @@ class TutorialButton extends React.Component {
             </Door_1.default>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Video</h2>
             <Button_1.default checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button_1.default>
             <Door_1.default open={this.state.showVideo}>

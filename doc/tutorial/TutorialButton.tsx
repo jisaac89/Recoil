@@ -185,24 +185,71 @@ export default class TutorialButton extends React.Component<any,any>{
 
           <h1>Button</h1>
 
-          <Layer className="ptb10">
+          <Layer className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The Button component is an advanced version of the standard default button control.</p>
           </Layer>
 
-          <Layer className="ptb10">
+          <Layer className="pb20">
             <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
+            <h3>Default</h3>
+            <Layer className="ptb20">
               <Toolbar spacing>
                 <Button>Default Button</Button>
                 <Button type="primary">Primary Button</Button>
+                <Button type="error">Error Button</Button>
+              </Toolbar>
+            </Layer>
+
+            <h3>Adding Icons</h3>
+            <p>To add an icon to a button, just add an icon prop to it. Icon's are taken from font-awesome, you can omit the fa fa-, for example below it would be a Button compoent with a icon prop of "star"</p>
+            <Layer className="ptb20">
+              <Toolbar spacing>
+                <Button icon="star">Button with an icon</Button>
+              </Toolbar>
+            </Layer>
+
+            <h3>Sizes</h3>
+            <p>Buttons come in a few sizes, small, default, large and xlarge.</p>
+            <Layer className="ptb20">
+              <Toolbar spacing>
+                <Button size="small">Small Button</Button>
+                <Button>Default</Button>
+                <Button size="large">Large Button</Button>
+                <Button size="xlarge">Extra Large Button</Button>
+              </Toolbar>
+            </Layer>
+
+            <h3>States</h3>
+            <p>Buttons can have different states. You can pass a <strong>disbaled</strong>,<strong>ghost</strong> or <strong>checked</strong> props to a Button.</p>
+            <Layer className="ptb20">
+              <Toolbar spacing>
+                <Button checked>Checked Button</Button>
+                <Button disabled>Disabled Button</Button>
+                <Button ghost>Ghost Button</Button>
+              </Toolbar>
+            </Layer>
+
+            <h3>Pointer</h3>
+            <p>The <strong>pointer</strong> prop accepts a direction either <strong>left</strong> or <strong>right</strong>.</p>
+            <Layer className="ptb20">
+              <Toolbar spacing>
+                <Button pointer="right" className="mr20">Pointer Right</Button>
+                <Button type="primary" pointer="left">Pointer Left</Button>
+              </Toolbar>
+            </Layer>
+
+            <h3>Links</h3>
+            <p>You can convert any Button component to a Link by adding the <strong>href</strong> prop to it.</p>
+            <Layer className="ptb20">
+              <Toolbar spacing>
+                <Button icon="github" href='https//www.github.com/jisaac89/recoil'>Recoil Github</Button>
               </Toolbar>
             </Layer>
           </Layer>
 
-          <Layer className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
+          <Layer className="pb20">
+            <h2 className="pb10">Props</h2>
             <Door open={this.state.showProps}>
               <Layer className="ptb10">
                 <Grid open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties} />
@@ -210,7 +257,7 @@ export default class TutorialButton extends React.Component<any,any>{
             </Door>
           </Layer>
 
-          <Layer className="ptb10">
+          <Layer className="pb20">
             <h2 className="pb10">Video</h2>
             <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
             <Door open={this.state.showVideo}>
