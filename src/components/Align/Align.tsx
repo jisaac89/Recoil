@@ -46,12 +46,12 @@ export default class Align extends React.Component<IAlignProps, {}>{
 
       if (props.vertical) {
         columnStyle = {
-          marginTop : margin+'%',
+          marginTop : i === 0 ? 0 : margin+'%',
           height: (colwidth ? colwidth : singleColWidth)+'%'
         };
       } else {
         columnStyle = {
-          marginLeft : margin+'%',
+          marginLeft : i === 0 ? 0 : margin+'%',
           width: (colwidth ? colwidth : singleColWidth)+'%',
           float: 'left'
         };
@@ -95,28 +95,39 @@ export default class Align extends React.Component<IAlignProps, {}>{
     let createList = (item, index) => {
 
       if (props.maxCol) {
-          let dataIdx : any = props.data[index] ;
-          colwidth = (singleColWidth * dataIdx) + (margin * (dataIdx - 1));
+        let dataIdx : any = props.data[index] ;
+        colwidth = (singleColWidth * dataIdx) + (margin * (dataIdx - 1));
       }
 
       if (props.vertical) {
         columnStyle = {
-          marginTop : margin+'%',
+          marginTop : 0,
           height: (colwidth ? colwidth : singleColWidth)+'%'
         };
       } else {
         columnStyle = {
-          marginLeft : margin+'%',
+          marginLeft : index === 0 ? 0 : margin+'%',
           width: (colwidth ? colwidth : singleColWidth)+'%',
           float: 'left'
         };
       }
 
-      return(
-        <div className={columnClass} style={columnStyle} key={index}>
-          {item}
-        </div>
-      );
+      if (props.vertical && index !== 0) {
+        return(
+          <span>
+            <div style={{height: margin+'%'}} className="w100"></div>
+            <div className={columnClass} style={columnStyle} key={index}>
+              {item}
+            </div>
+          </span>
+        )
+      } else {
+        return(
+          <div className={columnClass} style={columnStyle} key={index}>
+            {item}
+          </div>
+        )
+      }
     };
 
     if (props.children.length > 1) {
@@ -126,9 +137,7 @@ export default class Align extends React.Component<IAlignProps, {}>{
         </div>
       );
     } else if (props.children) {
-
       var element = React.cloneElement(props.children, {className: 'primary'});
-
       return (
         <div className={alignClass}>
           {this.recursiveCloneChildren(this.props.children)}

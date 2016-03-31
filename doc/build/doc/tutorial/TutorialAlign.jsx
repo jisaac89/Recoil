@@ -73,14 +73,16 @@ class TutorialAlign extends React.Component {
 
           <h1>Align</h1>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The Align component is a flex alternative, it aligns components either horizontally or vertically with a option margin set.</p>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Examples</h2>
-            <Layer_1.default className="ptb10">
+            <h3>Default</h3>
+            <p>By default, the Align component aligns elements horizontally</p>
+            <Layer_1.default className="ptb20">
               <Layer_1.default className="p10 dark">
                 <Align_1.default margin={1}>
                   <Layer_1.default type="light" className="p20">Aligned Element 1</Layer_1.default>
@@ -88,19 +90,49 @@ class TutorialAlign extends React.Component {
                 </Align_1.default>
               </Layer_1.default>
             </Layer_1.default>
-          </Layer_1.default>
-
-          <Layer_1.default className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Button_1.default checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button_1.default>
-            <Door_1.default open={this.state.showProps}>
-              <Layer_1.default className="ptb10">
-                <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties}/>
+            <h3>Vertical</h3>
+            <p>To align elements vertically, pass the <strong>vertical</strong> prop.</p>
+            <Layer_1.default className="ptb20">
+              <Layer_1.default className="p10 dark h200px">
+                <Align_1.default vertical margin={5}>
+                  <Layer_1.default fill type="light" className="p20">Aligned Element 1</Layer_1.default>
+                  <Layer_1.default fill type="light" className="p20">Aligned Element 2</Layer_1.default>
+                  <Layer_1.default fill type="light" className="p20">Aligned Element 3</Layer_1.default>
+                </Align_1.default>
               </Layer_1.default>
-            </Door_1.default>
+            </Layer_1.default>
+            <h3>Another Example</h3>
+            <p>Below shows an example using multiple Align components to achieve the desired effect.</p>
+            <Layer_1.default className="ptb20">
+              <Layer_1.default className="p10 dark h200px">
+                <Align_1.default margin={2}>
+                  <Layer_1.default fill>
+                    <Align_1.default margin={5} vertical>
+                      <Layer_1.default type="light" className="p10" fill>A</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>B</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>C</Layer_1.default>
+                    </Align_1.default>
+                  </Layer_1.default>
+                  <Layer_1.default fill>
+                    <Align_1.default margin={5} vertical>
+                      <Layer_1.default type="light" className="p10" fill>A</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>B</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>C</Layer_1.default>
+                    </Align_1.default>
+                  </Layer_1.default>
+                </Align_1.default>
+              </Layer_1.default>
+            </Layer_1.default>
           </Layer_1.default>
 
-          <Layer_1.default className="ptb10">
+          <Layer_1.default className="pb20">
+            <h2 className="pb10">Props</h2>
+            <Layer_1.default className="ptb10">
+              <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties}/>
+            </Layer_1.default>
+          </Layer_1.default>
+
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Video</h2>
             <Button_1.default checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button_1.default>
             <Door_1.default open={this.state.showVideo}>

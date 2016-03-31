@@ -112,7 +112,7 @@ class App extends React.Component {
         </Door_1.default>
         <Door_1.default className="w100" open={!state.viewDocumentation}>
           <div className="w100">
-            <Layer_1.default scrollY className="text-center w100 pt50 pb50 light">
+            <Layer_1.default className="text-center w100 pt50 pb50 light">
               <Emerge_1.default>
                 <div>
                   <img width={300} height={193} className="floatL" src={'./img/Recoil.png'}/>
@@ -137,7 +137,7 @@ class App extends React.Component {
           <Layer_1.default>
             <div className="w30 p10 pr20 pull-left">
               <Input_1.default icon="th" block focusOnMount={state.viewDocumentation} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
-              <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={17} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
+              <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={18} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
             </div>
             <div className="p10 w70 pull-left">
               <Wizard_1.default slideIndex={state.slideIndex}>

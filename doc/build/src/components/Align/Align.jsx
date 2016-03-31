@@ -24,13 +24,13 @@ class Align extends React.Component {
             }
             if (props.vertical) {
                 columnStyle = {
-                    marginTop: margin + '%',
+                    marginTop: i === 0 ? 0 : margin + '%',
                     height: (colwidth ? colwidth : singleColWidth) + '%'
                 };
             }
             else {
                 columnStyle = {
-                    marginLeft: margin + '%',
+                    marginLeft: i === 0 ? 0 : margin + '%',
                     width: (colwidth ? colwidth : singleColWidth) + '%',
                     float: 'left'
                 };
@@ -65,20 +65,30 @@ class Align extends React.Component {
             }
             if (props.vertical) {
                 columnStyle = {
-                    marginTop: margin + '%',
+                    marginTop: 0,
                     height: (colwidth ? colwidth : singleColWidth) + '%'
                 };
             }
             else {
                 columnStyle = {
-                    marginLeft: margin + '%',
+                    marginLeft: index === 0 ? 0 : margin + '%',
                     width: (colwidth ? colwidth : singleColWidth) + '%',
                     float: 'left'
                 };
             }
-            return (<div className={columnClass} style={columnStyle} key={index}>
-          {item}
-        </div>);
+            if (props.vertical && index !== 0) {
+                return (<span>
+            <div style={{ height: margin + '%' }} className="w100"></div>
+            <div className={columnClass} style={columnStyle} key={index}>
+              {item}
+            </div>
+          </span>);
+            }
+            else {
+                return (<div className={columnClass} style={columnStyle} key={index}>
+            {item}
+          </div>);
+            }
         };
         if (props.children.length > 1) {
             return (<div className={alignClass}>

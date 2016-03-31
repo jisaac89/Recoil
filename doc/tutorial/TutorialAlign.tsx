@@ -94,14 +94,16 @@ export default class TutorialAlign extends React.Component<any,any>{
 
           <h1>Align</h1>
 
-          <Layer className="ptb10">
+          <Layer className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The Align component is a flex alternative, it aligns components either horizontally or vertically with a option margin set.</p>
           </Layer>
 
-          <Layer className="ptb10">
+          <Layer className="pb20">
             <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
+            <h3>Default</h3>
+            <p>By default, the Align component aligns elements horizontally</p>
+            <Layer className="ptb20">
               <Layer className="p10 dark">
                 <Align margin={1}>
                   <Layer type="light" className="p20">Aligned Element 1</Layer>
@@ -109,19 +111,49 @@ export default class TutorialAlign extends React.Component<any,any>{
                 </Align>
               </Layer>
             </Layer>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-            <Door open={this.state.showProps}>
-              <Layer className="ptb10">
-                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
+            <h3>Vertical</h3>
+            <p>To align elements vertically, pass the <strong>vertical</strong> prop.</p>
+            <Layer className="ptb20">
+              <Layer className="p10 dark h200px">
+                <Align vertical margin={5}>
+                  <Layer fill type="light" className="p20">Aligned Element 1</Layer>
+                  <Layer fill type="light" className="p20">Aligned Element 2</Layer>
+                  <Layer fill type="light" className="p20">Aligned Element 3</Layer>
+                </Align>
               </Layer>
-            </Door>
+            </Layer>
+            <h3>Another Example</h3>
+            <p>Below shows an example using multiple Align components to achieve the desired effect.</p>
+            <Layer className="ptb20">
+              <Layer className="p10 dark h200px">
+                <Align margin={2}>
+                  <Layer fill>
+                    <Align margin={5} vertical>
+                      <Layer type="light" className="p10" fill>A</Layer>
+                      <Layer type="light" className="p10" fill>B</Layer>
+                      <Layer type="light" className="p10" fill>C</Layer>
+                    </Align>
+                  </Layer>
+                  <Layer fill>
+                    <Align margin={5} vertical>
+                      <Layer type="light" className="p10" fill>A</Layer>
+                      <Layer type="light" className="p10" fill>B</Layer>
+                      <Layer type="light" className="p10" fill>C</Layer>
+                    </Align>
+                  </Layer>
+                </Align>
+              </Layer>
+            </Layer>
           </Layer>
 
-          <Layer className="ptb10">
+          <Layer className="pb20">
+            <h2 className="pb10">Props</h2>
+            <Layer className="ptb10">
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
+            </Layer>
+          </Layer>
+
+          <Layer className="pb20">
             <h2 className="pb10">Video</h2>
             <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
             <Door open={this.state.showVideo}>

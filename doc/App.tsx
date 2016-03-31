@@ -140,7 +140,7 @@ export default class App extends React.Component<any, any> {
         </Door>
         <Door className="w100" open={!state.viewDocumentation}>
           <div className="w100">
-            <Layer scrollY className="text-center w100 pt50 pb50 light">
+            <Layer className="text-center w100 pt50 pb50 light">
               <Emerge>
                 <div>
                   <img width={300} height={193} className="floatL" src={'./img/Recoil.png'} />
@@ -169,7 +169,7 @@ export default class App extends React.Component<any, any> {
                 hideHeader
                 dataSource={newComponentArray}
                 columns={columns}
-                numberPerPage={17}
+                numberPerPage={18}
                 onRowSelect={this.gotoTutorial.bind(this)}
                 detailTemplateOpenOnSelect
                 detailTemplate={this.detailTemplate.bind(this)}

@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "ef5e860373d898cf3467"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "442014e1fce879650abc"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -683,12 +683,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	                if (props.vertical) {
 	                    columnStyle = {
-	                        marginTop: margin + '%',
+	                        marginTop: i === 0 ? 0 : margin + '%',
 	                        height: (colwidth ? colwidth : singleColWidth) + '%'
 	                    };
 	                } else {
 	                    columnStyle = {
-	                        marginLeft: margin + '%',
+	                        marginLeft: i === 0 ? 0 : margin + '%',
 	                        width: (colwidth ? colwidth : singleColWidth) + '%',
 	                        float: 'left'
 	                    };
@@ -726,21 +726,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	                if (props.vertical) {
 	                    columnStyle = {
-	                        marginTop: margin + '%',
+	                        marginTop: 0,
 	                        height: (colwidth ? colwidth : singleColWidth) + '%'
 	                    };
 	                } else {
 	                    columnStyle = {
-	                        marginLeft: margin + '%',
+	                        marginLeft: index === 0 ? 0 : margin + '%',
 	                        width: (colwidth ? colwidth : singleColWidth) + '%',
 	                        float: 'left'
 	                    };
 	                }
-	                return React.createElement(
-	                    'div',
-	                    { className: columnClass, style: columnStyle, key: index },
-	                    item
-	                );
+	                if (props.vertical && index !== 0) {
+	                    return React.createElement(
+	                        'span',
+	                        null,
+	                        React.createElement('div', { style: { height: margin + '%' }, className: 'w100' }),
+	                        React.createElement(
+	                            'div',
+	                            { className: columnClass, style: columnStyle, key: index },
+	                            item
+	                        )
+	                    );
+	                } else {
+	                    return React.createElement(
+	                        'div',
+	                        { className: columnClass, style: columnStyle, key: index },
+	                        item
+	                    );
+	                }
 	            };
 	            if (props.children.length > 1) {
 	                return React.createElement(
