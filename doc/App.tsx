@@ -141,7 +141,7 @@ export default class App extends React.Component<any, any> {
             <Layer className="text-center w100 pt50 pb50 light">
               <Emerge>
                 <div>
-                  <img width={300} height={193} className="floatL" src={'./img/Recoil.png'} />
+                  <img width={300} height={193} className="floatL" src={'./img/recoil.png'} />
                 </div>
                 <div>
                   <h1 className='super mt50'>REACT <strong>RECOIL</strong></h1>
