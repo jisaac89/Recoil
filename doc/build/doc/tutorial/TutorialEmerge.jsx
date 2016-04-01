@@ -84,12 +84,12 @@ class TutorialEmerge extends React.Component {
 
         <h1>Emerge</h1>
 
-        <Layer_1.default className="ptb10">
+        <Layer_1.default className="ptb20">
           <h2 className="pb10">Description</h2>
           <p>The Emerge component staggers children into view if a certain event happens.</p>
         </Layer_1.default>
 
-        <Layer_1.default className="ptb10">
+        <Layer_1.default className="pb20">
           <h2 className="pb10">Examples</h2>
           <Layer_1.default className="ptb10">
             <Layer_1.default className="p10 light">
@@ -111,7 +111,7 @@ class TutorialEmerge extends React.Component {
           </Layer_1.default>
         </Layer_1.default>
 
-        <Layer_1.default className="ptb10">
+        <Layer_1.default className="pb20">
           <h2 className="pb10">Options</h2>
           <Button_1.default checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button_1.default>
           <Door_1.default open={this.state.showProps}>
@@ -121,7 +121,7 @@ class TutorialEmerge extends React.Component {
           </Door_1.default>
         </Layer_1.default>
 
-        <Layer_1.default className="ptb10">
+        <Layer_1.default className="pb20">
           <h2 className="pb10">Video</h2>
           <Button_1.default checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button_1.default>
           <Door_1.default open={this.state.showVideo}>

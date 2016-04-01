@@ -66,7 +66,6 @@ class App extends React.Component {
         this.setState({
             selected: selected
         });
-        console.log(this.state.selected);
     }
     filterComponentMenu(value) {
         this.setState({

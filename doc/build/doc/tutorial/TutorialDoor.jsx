@@ -70,14 +70,15 @@ class TutorialDoor extends React.Component {
 
         <h1>Door</h1>
 
-        <Layer_1.default className="ptb10">
+        <Layer_1.default className="ptb20">
           <h2 className="pb10">Description</h2>
           <p>The Door component opens or closes its children depending on an if statement. By default door are always closed.</p>
         </Layer_1.default>
 
-        <Layer_1.default className="ptb10">
+        <Layer_1.default className="pb20">
           <h2 className="pb10">Examples</h2>
-          <Layer_1.default className="ptb10">
+          <h3>Default</h3>
+          <Layer_1.default className="ptb20">
             <Layer_1.default>
               <Button_1.default className="mb10" checked={this.state.doorIsOpen} onClick={this.toggleDoorIsOpen.bind(this)}>Toggle Door Open</Button_1.default>
               <Door_1.default open={this.state.doorIsOpen}>
@@ -89,17 +90,14 @@ class TutorialDoor extends React.Component {
           </Layer_1.default>
         </Layer_1.default>
 
-        <Layer_1.default className="ptb10">
-          <h2 className="pb10">Options</h2>
-          <Button_1.default checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button_1.default>
-          <Door_1.default open={this.state.showProps}>
-            <Layer_1.default className="ptb10">
-              <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={DoorProperties}/>
-            </Layer_1.default>
-          </Door_1.default>
+        <Layer_1.default className="pb20">
+          <h2 className="pb10">Props</h2>
+          <Layer_1.default className="ptb10">
+            <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={DoorProperties}/>
+          </Layer_1.default>
         </Layer_1.default>
 
-        <Layer_1.default className="ptb10">
+        <Layer_1.default className="pb20">
           <h2 className="pb10">Video</h2>
           <Button_1.default checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button_1.default>
           <Door_1.default open={this.state.showVideo}>

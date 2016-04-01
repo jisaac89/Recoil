@@ -102,14 +102,15 @@ export default class TutorialDoor extends React.Component<any,any>{
 
         <h1>Door</h1>
 
-        <Layer className="ptb10">
+        <Layer className="ptb20">
           <h2 className="pb10">Description</h2>
           <p>The Door component opens or closes its children depending on an if statement. By default door are always closed.</p>
         </Layer>
 
-        <Layer className="ptb10">
+        <Layer className="pb20">
           <h2 className="pb10">Examples</h2>
-          <Layer className="ptb10">
+          <h3>Default</h3>
+          <Layer className="ptb20">
             <Layer>
               <Button className="mb10" checked={this.state.doorIsOpen} onClick={this.toggleDoorIsOpen.bind(this)}>Toggle Door Open</Button>
               <Door open={this.state.doorIsOpen}>
@@ -121,17 +122,14 @@ export default class TutorialDoor extends React.Component<any,any>{
           </Layer>
         </Layer>
 
-        <Layer className="ptb10">
-          <h2 className="pb10">Options</h2>
-          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-          <Door open={this.state.showProps}>
-            <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={DoorProperties} />
-            </Layer>
-          </Door>
+        <Layer className="pb20">
+          <h2 className="pb10">Props</h2>
+          <Layer className="ptb10">
+            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={DoorProperties} />
+          </Layer>
         </Layer>
 
-        <Layer className="ptb10">
+        <Layer className="pb20">
           <h2 className="pb10">Video</h2>
           <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
           <Door open={this.state.showVideo}>

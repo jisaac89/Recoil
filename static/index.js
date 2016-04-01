@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8655de503fc65133d9b6"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a75b2c2b18422add3da5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21871,8 +21871,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
+	var ReactDOM = __webpack_require__(180);
 	var classNames = __webpack_require__(174);
 	__webpack_require__(193);
+	var getAbsoluteHeight = function getAbsoluteHeight(el) {
+	    var styles = window.getComputedStyle(el);
+	    var margin = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
+	    return Math.ceil(el.offsetHeight + margin);
+	};
 	
 	var Door = function (_React$Component) {
 	    _inherits(Door, _React$Component);
@@ -21883,37 +21889,66 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Door).call(this));
 	
 	        _this.state = {
-	            autoheight: false,
+	            autoHeight: false,
 	            maxHeight: 100
 	        };
 	        return _this;
 	    }
 	
 	    _createClass(Door, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.refDoor = ReactDOM.findDOMNode(this.refs["door"]);
+	            if (this.props.open) {
+	                this.refDoor.style.maxHeight = getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px';
+	            }
+	        }
+	    }, {
+	        key: 'componentWillReceiveProps',
+	        value: function componentWillReceiveProps(nextProps) {
+	            var self = this;
+	            var refDoor = ReactDOM.findDOMNode(this.refs["door"]);
+	            if (nextProps.open) {
+	                self.setState({
+	                    maxHeight: getAbsoluteHeight(refDoor.childNodes[0])
+	                });
+	                {
+	                    (function () {
+	                        window.setTimeout(function () {
+	                            self.setAutoHeight();
+	                        }, 600);
+	                    })();
+	                }
+	            } else {
+	                self.setState({
+	                    autoHeight: false
+	                });
+	            }
+	        }
+	    }, {
+	        key: 'setAutoHeight',
+	        value: function setAutoHeight() {
+	            this.setState({
+	                autoHeight: true
+	            });
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var self = this;
 	            var props = self.props;
 	            var state = self.state;
-	            var doorClass = classNames('r-Door', props.className);
+	            var doorClass = classNames('r-Door', { 'e-open': props.open }, { 'e-autoHeight': state.autoHeight }, props.className);
 	            var doorContainerClass = classNames('r-Door__container');
-	            if (props.open) {
-	                return React.createElement(
+	            return React.createElement(
+	                'div',
+	                { ref: 'door', className: doorClass, style: { maxHeight: props.open ? this.state.maxHeight + 'px' : '0px' } },
+	                React.createElement(
 	                    'div',
-	                    { ref: 'door', className: doorClass },
-	                    React.createElement(
-	                        'div',
-	                        { className: doorContainerClass },
-	                        props.children
-	                    )
-	                );
-	            } else {
-	                return React.createElement(
-	                    'div',
-	                    { ref: 'door', className: doorClass },
-	                    React.createElement('div', { className: doorContainerClass })
-	                );
-	            }
+	                    { className: doorContainerClass },
+	                    props.children
+	                )
+	            );
 	        }
 	    }]);
 	
@@ -22802,7 +22837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Dropdown {\n  position: relative;\n  display: inline-block;\n  z-index: 10;\n}\n.r-Dropdown .r-Card {\n  background: white;\n  overflow: hidden;\n}\n.r-Dropdown .r-DropdownWrapperBottom {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperBottom .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperTop {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  top: -100%;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n  top: auto;\n  bottom: 100%;\n  display: inline-table;\n  z-index: 10;\n}\n.r-Dropdown .r-DropdownWrapperTop .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-bl {\n  transform-origin: left bottom !important;\n}\n.r-Dropdown .e-resize-br {\n  transform-origin: right bottom !important;\n}\n.r-Dropdown .e-resize-tl {\n  transform-origin: left top !important;\n}\n.r-Dropdown .e-resize-tr {\n  transform-origin: top right !important;\n  right: 0 !important;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-t {\n  transform-origin: center top !important;\n}\n.r-Dropdown .e-resize-b {\n  transform-origin: center bottom !important;\n}\n.r-Dropdown .r-DropdownHeader {\n  display: inline-block;\n}\n.r-Dropdown .r-DropdownContent__item {\n  cursor: pointer;\n  position: relative;\n  padding: 5px;\n}\n.r-Dropdown .r-DropdownSelection {\n  color: #888;\n  background: #fff;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 6px 15px;\n  border-radius: 4px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  height: 32px;\n  position: relative;\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Dropdown.e-open .r-DropdownWrapperTop,\n.r-Dropdown.e-open .r-DropdownWrapperBottom {\n  overflow: visible;\n  max-height: 100%;\n  -webkit-transform: scale(1);\n  -moz-transform: scale(1);\n  -ms-transform: scale(1);\n  -o-transform: scale(1);\n}\n.r-Dropdown .r-DropdownHeader {\n  width: 100%;\n}\n.r-Dropdown.dblock .r-DropdownHeader {\n  width: 100%;\n}\n.r-DropdownHeader__trigger {\n  margin-left: 5px;\n  float: right;\n}\n.r-DropdownSelection + r-DropdownWrapperBottom .r-DropdownContent {\n  max-height: 300px;\n  overflow: hidden;\n  overflow-y: scroll;\n}\n", ""]);
+	exports.push([module.id, ".r-Dropdown {\n  position: relative;\n  display: inline-block;\n  z-index: 10;\n}\n.r-Dropdown .r-Card {\n  background: white;\n  overflow: hidden;\n}\n.r-Dropdown .r-DropdownWrapperBottom {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperBottom .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperTop {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  top: -100%;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n  top: auto;\n  bottom: 100%;\n  display: inline-table;\n  z-index: 10;\n}\n.r-Dropdown .r-DropdownWrapperTop .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-bl {\n  transform-origin: left bottom !important;\n}\n.r-Dropdown .e-resize-br {\n  transform-origin: right bottom !important;\n}\n.r-Dropdown .e-resize-tl {\n  transform-origin: left top !important;\n}\n.r-Dropdown .e-resize-tr {\n  transform-origin: top right !important;\n  right: 0 !important;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-t {\n  transform-origin: center top !important;\n}\n.r-Dropdown .e-resize-b {\n  transform-origin: center bottom !important;\n}\n.r-Dropdown .r-DropdownHeader {\n  display: inline-block;\n}\n.r-Dropdown .r-DropdownContent__item {\n  cursor: pointer;\n  position: relative;\n  padding: 5px;\n}\n.r-Dropdown .r-DropdownSelection {\n  color: #888;\n  background: #fff;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 0;\n  border-radius: 4px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  height: 32px;\n  position: relative;\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Dropdown.e-open .r-DropdownWrapperTop,\n.r-Dropdown.e-open .r-DropdownWrapperBottom {\n  overflow: visible;\n  max-height: 100%;\n  -webkit-transform: scale(1);\n  -moz-transform: scale(1);\n  -ms-transform: scale(1);\n  -o-transform: scale(1);\n}\n.r-Dropdown .r-DropdownHeader {\n  width: 100%;\n}\n.r-Dropdown.dblock .r-DropdownHeader {\n  width: 100%;\n}\n.r-DropdownHeader__trigger {\n  margin-left: 5px;\n  float: right;\n}\n.r-Dropdown .r-DropdownHeader {\n  padding: 6px 15px;\n}\n", ""]);
 	
 	// exports
 

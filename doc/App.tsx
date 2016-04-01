@@ -81,8 +81,6 @@ export default class App extends React.Component<any, any> {
     this.setState({
       selected: selected
     })
-
-    console.log(this.state.selected)
   }
 
   filterComponentMenu(value) {
