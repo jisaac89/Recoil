@@ -26,43 +26,8 @@ class Door extends React.Component<IDoorProps, any>{
     super();
     this.state = {
       autoHeight: false,
-      maxHeight: 100
+      height: 0
     }
-  }
-
-  public componentDidMount() {
-    this.refDoor = ReactDOM.findDOMNode<HTMLInputElement>(this.refs["door"]);
-
-    if (this.props.open) {
-      this.refDoor.style.maxHeight = getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px';
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-
-    const self = this;
-    var refDoor = ReactDOM.findDOMNode<HTMLInputElement>(this.refs["door"]);
-
-     if (nextProps.open) {
-       self.setState({
-         maxHeight : getAbsoluteHeight(refDoor.childNodes[0])
-       })
-       {(()=>{
-         window.setTimeout(()=> {
-           self.setAutoHeight()
-         },600)
-       })()}
-     } else {
-       self.setState({
-         autoHeight: false
-       })
-     }
-  }
-
-  public setAutoHeight() {
-    this.setState({
-      autoHeight: true
-    })
   }
 
   render(){
@@ -73,6 +38,7 @@ class Door extends React.Component<IDoorProps, any>{
      let doorClass = classNames(
        'r-Door',
        {'e-open': (props.open)},
+       {'e-close': (!props.open)},
        {'e-autoHeight': (state.autoHeight)},
        props.className
      );
@@ -82,9 +48,9 @@ class Door extends React.Component<IDoorProps, any>{
      );
 
      return(
-       <div ref="door" className={doorClass} style={{maxHeight: (props.open ? this.state.maxHeight + 'px' : '0px')}}>
+       <div ref="door" className={doorClass} style={{height: this.state.maxHeight}}>
          <div className={doorContainerClass}>
-           {props.children}
+           {props.open ? props.children : null}
          </div>
        </div>
      )

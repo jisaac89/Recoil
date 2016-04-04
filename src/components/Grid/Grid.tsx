@@ -278,7 +278,9 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
             />
         </table>
           {(()=>{
-            if (numberOfPages !== 1) {
+            if (numberOfPages <= 1) {
+              return null
+            } else {
               return (
                 <GridFooter
                   gotoPage={this.gotoPage.bind(this)}

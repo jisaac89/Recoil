@@ -80,6 +80,7 @@ class TutorialAlign extends React.Component {
 
           <Layer_1.default className="pb20">
             <h2 className="pb10">Examples</h2>
+
             <h3>Default</h3>
             <p>By default, the Align component aligns elements horizontally</p>
             <Layer_1.default className="ptb20">
@@ -90,6 +91,7 @@ class TutorialAlign extends React.Component {
                 </Align_1.default>
               </Layer_1.default>
             </Layer_1.default>
+
             <h3>Vertical</h3>
             <p>To align elements vertically, pass the <strong>vertical</strong> prop.</p>
             <Layer_1.default className="ptb20">
@@ -101,23 +103,31 @@ class TutorialAlign extends React.Component {
                 </Align_1.default>
               </Layer_1.default>
             </Layer_1.default>
-            <h3>Another Example</h3>
+
+            <h3>Multiple Aligns</h3>
             <p>Below shows an example using multiple Align components to achieve the desired effect.</p>
             <Layer_1.default className="ptb20">
               <Layer_1.default className="p10 dark h200px">
-                <Align_1.default margin={2}>
+                <Align_1.default margin={1}>
                   <Layer_1.default fill>
                     <Align_1.default margin={5} vertical>
-                      <Layer_1.default type="light" className="p10" fill>A</Layer_1.default>
-                      <Layer_1.default type="light" className="p10" fill>B</Layer_1.default>
-                      <Layer_1.default type="light" className="p10" fill>C</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>1</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>2</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>3</Layer_1.default>
                     </Align_1.default>
                   </Layer_1.default>
                   <Layer_1.default fill>
                     <Align_1.default margin={5} vertical>
-                      <Layer_1.default type="light" className="p10" fill>A</Layer_1.default>
-                      <Layer_1.default type="light" className="p10" fill>B</Layer_1.default>
-                      <Layer_1.default type="light" className="p10" fill>C</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>4</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>5</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>6</Layer_1.default>
+                    </Align_1.default>
+                  </Layer_1.default>
+                  <Layer_1.default fill>
+                    <Align_1.default margin={5} vertical>
+                      <Layer_1.default type="light" className="p10" fill>7</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>8</Layer_1.default>
+                      <Layer_1.default type="light" className="p10" fill>9</Layer_1.default>
                     </Align_1.default>
                   </Layer_1.default>
                 </Align_1.default>

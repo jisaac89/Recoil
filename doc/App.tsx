@@ -44,9 +44,19 @@ export default class App extends React.Component<any, any> {
       viewDocumentation: false,
       slideIndex:0,
       selected: [],
-      keyword: ''
+      keyword: '',
+      toggleMobileTutorial: 0
     }
   }
+
+  componentWillMount() {
+     const self = this;
+     if (window.outerWidth < 800) {
+       self.setState({mobile: true});
+     } else {
+       self.setState({mobile: false});
+     }
+   }
 
   toggleDocumentation(){
     this.setState({
@@ -62,8 +72,17 @@ export default class App extends React.Component<any, any> {
 
   detailTemplate(index, item) {
     return (
-      <div className="p10 pl50">
+      <div key={index} className="p10 pl50">
         <small>{item.component.description}</small>
+        {(()=>{
+          if (this.state.mobile) {
+              return (
+                <div className="mtb10">
+                  <small><a onClick={this.toggleMobileTutorial.bind(this)}>View Documentation</a></small>
+                </div>
+              )
+          }
+        })()}
       </div>
     )
   }
@@ -90,6 +109,13 @@ export default class App extends React.Component<any, any> {
   }
 
 
+    toggleMobileTutorial(){
+      this.setState({
+        toggleMobileTutorial: this.state.toggleMobileTutorial === 0 ? 1 : 0
+      })
+    }
+
+
   render() {
 
     const self = this;
@@ -98,7 +124,7 @@ export default class App extends React.Component<any, any> {
 
     let template = (item, index) => {
       return (
-        <Button>{item.component.name}</Button>
+        <Button key={index}>{item.component.name}</Button>
       )
     }
 
@@ -106,99 +132,181 @@ export default class App extends React.Component<any, any> {
       {name: 'component', template : template}
     ]
 
-
     var newComponentArray = [];
   	var keys = SampleData;
+
     for (var k in keys) {
-        var thisKey = keys[k];
-        if (thisKey.component.name.toLowerCase().indexOf(self.state.keyword.toLowerCase()) > -1) {
-            newComponentArray.push(thisKey);
-        }
+      var thisKey = keys[k];
+      if (thisKey.component.name.toLowerCase().indexOf(self.state.keyword.toLowerCase()) > -1) {
+          newComponentArray.push(thisKey);
       }
+    }
 
     return (
       <Layer fill flex flow="row wrap" className={state.nightMode ? 'e-NightMode' : ''}>
-        <Door className="w100" open={state.viewDocumentation}>
-          <Layer block>
-            <div className="p10 w100 clearfix">
-              <Emerge if={state.viewDocumentation}>
-              <h1 className="pull-left">React <strong>Recoil</strong></h1>
-                <Toolbar spacing right>
-                  <Button shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
-                    Get Started
-                  </Button>
-                  <Button icon="star" type="primary">
-                    Git Latest Version
-                  </Button>
-                </Toolbar>
-              </Emerge>
-            </div>
-          <hr className="rainbow-line" />
-          </Layer>
-        </Door>
-        <Door className="w100" open={!state.viewDocumentation}>
-          <div className="w100">
-            <Layer className="text-center w100 pt50 pb50 light">
-              <Emerge>
-                <div>
-                  <img width={300} height={193} className="floatL" src={'./img/recoil.png'} />
-                </div>
-                <div>
-                  <h1 className='super mt50'>REACT <strong>RECOIL</strong></h1>
-                  <p>
-                    A <a target="_blank" href="https://facebook.github.io/react/" title="React JS">React</a> powered front-end framework written in <a target="_blank" href="http://www.typescriptlang.org/" title="TypeScript"> TypeScript</a>
-                  </p>
-                </div>
-                <Toolbar className="mt50" spacing>
-                  <Button shortcut="n" size="large" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button>
-                  <Button shortcut="d" onClick={this.toggleDocumentation.bind(this)} size="large">Documentation</Button>
-                  <Button href={'https://www.github.com/jisaac89/recoil'} icon="github" type="primary" size="large">Grab Latest Version</Button>
-                </Toolbar>
-              </Emerge>
-            </Layer>
-            <hr className="rainbow-line" />
+      <Door className="w100" open={state.viewDocumentation}>
+        <Layer block>
+          <div className="p10 w100 clearfix">
+            <Emerge if={state.viewDocumentation}>
+            <h1 className="pull-left">React <strong>Recoil</strong></h1>
+
+              {(()=>{
+                if (this.state.mobile) {
+                    return (
+                      <Toolbar spacing right>
+                        <Button shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
+                          Get Started
+                        </Button>
+                      </Toolbar>
+                    )
+                } else {
+                  return (
+                    <Toolbar spacing right>
+                      <Button shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
+                        Get Started
+                      </Button>
+                      <Button icon="star" type="primary">
+                        Git Latest Version
+                      </Button>
+                    </Toolbar>
+                  )
+                }
+              })()}
+            </Emerge>
           </div>
-        </Door>
-        <Door className="w100" open={state.viewDocumentation}>
-          <Layer >
-            <div className="w30 p10 pr20 pull-left">
-              <Input icon="th" block focusOnMount={state.viewDocumentation} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
-              <Grid
-                hideHeader
-                dataSource={newComponentArray}
-                columns={columns}
-                numberPerPage={18}
-                onRowSelect={this.gotoTutorial.bind(this)}
-                detailTemplateOpenOnSelect
-                detailTemplate={this.detailTemplate.bind(this)}
-                selected={[this.state.slideIndex]}
-                selectedKey={'index'}
-              />
-            </div>
-            <div className="p10 w70 pull-left">
-              <Wizard slideIndex={state.slideIndex}>
-                <TutorialAlign {...state}  />
-                <TutorialButton {...state} />
-                <TutorialCard {...state} />
-                <TutorialCheckbox {...state} />
-                <TutorialDoor {...state} />
-                <TutorialDropdown {...state} />
-                <TutorialEmerge {...state} />
-                <TutorialGrid {...state} />
-                <TutorialInput {...state} />
-                <TutorialLayer {...state} />
-                <TutorialLoading {...state} />
-                <TutorialModal {...state} />
-                <TutorialPane {...state} />
-                <TutorialSelectable {...state} />
-                <TutorialShrink {...state} />
-                <TutorialToolbar {...state} />
-                <TutorialTransform {...state} />
-                <TutorialWizard {...state} />
-              </Wizard>
-            </div>
+        <hr className="rainbow-line" />
+        </Layer>
+      </Door>
+      <Door className="w100" open={!state.viewDocumentation}>
+        <div className="w100">
+          <Layer className="text-center w100 pt50 pb50 light">
+            <Emerge>
+              <div>
+                <img width={300} height={193} className="floatL" src={'./img/recoil.png'} />
+              </div>
+              <div>
+                <h1 className='super mt50'>REACT <strong>RECOIL</strong></h1>
+                <p>
+                  A <a target="_blank" href="https://facebook.github.io/react/" title="React JS">React</a> powered front-end framework written in <a target="_blank" href="http://www.typescriptlang.org/" title="TypeScript"> TypeScript</a>
+                </p>
+              </div>
+              {(()=>{
+                if (this.state.mobile) {
+                    return (
+                      <Toolbar spacing vertical className="mt50">
+                        <Button block shortcut="n" size="large" onClick={this.toggleNightMode.bind(this)} icon="moon-o">Night Mode</Button>
+                        <Button block shortcut="d" onClick={this.toggleDocumentation.bind(this)} size="large">Documentation</Button>
+                        <Button block href={'https://www.github.com/jisaac89/recoil'} icon="github" type="primary" size="large">Grab Latest Version</Button>
+                      </Toolbar>
+                    )
+                } else {
+                  return (
+                    <Toolbar className="mt50" spacing>
+                      <Button shortcut="n" size="large" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button>
+                      <Button shortcut="d" onClick={this.toggleDocumentation.bind(this)} size="large">Documentation</Button>
+                      <Button href={'https://www.github.com/jisaac89/recoil'} icon="github" type="primary" size="large">Grab Latest Version</Button>
+                    </Toolbar>
+                  )
+                }
+              })()}
+            </Emerge>
           </Layer>
-        </Door>
+          <hr className="rainbow-line" />
+        </div>
+      </Door>
+      <Door className="w100" open={state.viewDocumentation}>
+        <Layer>
+          {(()=>{
+            if (this.state.mobile) {
+              return (
+                <Wizard slideIndex={this.state.toggleMobileTutorial}>
+                  <div className="p10">
+                    <Input icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
+                    <Grid
+                      hideHeader
+                      dataSource={newComponentArray}
+                      columns={columns}
+                      numberPerPage={18}
+                      onRowSelect={this.gotoTutorial.bind(this)}
+                      detailTemplateOpenOnSelect
+                      detailTemplate={this.detailTemplate.bind(this)}
+                      selected={[this.state.slideIndex]}
+                      selectedKey={'index'}
+                    />
+                  </div>
+                  <div className="p10">
+                    <div className="mtb10">
+                      <small><a onClick={this.toggleMobileTutorial.bind(this)}>Back to components</a></small>
+                    </div>
+                    <Wizard slideIndex={state.slideIndex}>
+                      <TutorialAlign {...state}  />
+                      <TutorialButton {...state} />
+                      <TutorialCard {...state} />
+                      <TutorialCheckbox {...state} />
+                      <TutorialDoor {...state} />
+                      <TutorialDropdown {...state} />
+                      <TutorialEmerge {...state} />
+                      <TutorialGrid {...state} />
+                      <TutorialInput {...state} />
+                      <TutorialLayer {...state} />
+                      <TutorialLoading {...state} />
+                      <TutorialModal {...state} />
+                      <TutorialPane {...state} />
+                      <TutorialSelectable {...state} />
+                      <TutorialShrink {...state} />
+                      <TutorialToolbar {...state} />
+                      <TutorialTransform {...state} />
+                      <TutorialWizard {...state} />
+                    </Wizard>
+                  </div>
+                </Wizard>
+              )
+            } else {
+              return (
+                  <div>
+                  <div className="w30 p10 pr20 pull-left">
+                    <Input icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
+                    <Grid
+                      hideHeader
+                      dataSource={newComponentArray}
+                      columns={columns}
+                      numberPerPage={18}
+                      onRowSelect={this.gotoTutorial.bind(this)}
+                      detailTemplateOpenOnSelect
+                      detailTemplate={this.detailTemplate.bind(this)}
+                      selected={[this.state.slideIndex]}
+                      selectedKey={'index'}
+                    />
+                  </div>
+                  <div className="p10 w70 pull-left">
+                    <Wizard slideIndex={state.slideIndex}>
+                      <TutorialAlign {...state}  />
+                      <TutorialButton {...state} />
+                      <TutorialCard {...state} />
+                      <TutorialCheckbox {...state} />
+                      <TutorialDoor {...state} />
+                      <TutorialDropdown {...state} />
+                      <TutorialEmerge {...state} />
+                      <TutorialGrid {...state} />
+                      <TutorialInput {...state} />
+                      <TutorialLayer {...state} />
+                      <TutorialLoading {...state} />
+                      <TutorialModal {...state} />
+                      <TutorialPane {...state} />
+                      <TutorialSelectable {...state} />
+                      <TutorialShrink {...state} />
+                      <TutorialToolbar {...state} />
+                      <TutorialTransform {...state} />
+                      <TutorialWizard {...state} />
+                    </Wizard>
+                  </div>
+                </div>
+              )
+            }
+          })()}
+        </Layer>
+      </Door>
+
       </Layer>
     )
   }

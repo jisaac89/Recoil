@@ -16,23 +16,10 @@ class Input extends React.Component {
     }
     componentDidMount() {
         const props = this.props;
-        if (props.value) {
-            this.setState({
-                checked: true
-            });
-        }
+        this.setState({
+            checked: props.value ? true : false
+        });
         if (props.focusOnMount) {
-            this.focusOnMount();
-        }
-    }
-    componentWillReceiveProps(nextProps) {
-        const self = this;
-        if (nextProps.value > self.props.value) {
-            self.setState({
-                checked: true
-            });
-        }
-        else if (nextProps.focusOnMount != this.props.focusOnMount) {
             this.focusOnMount();
         }
     }
@@ -41,12 +28,15 @@ class Input extends React.Component {
         inputDOM.blur();
     }
     focusOnMount() {
+        const self = this;
         let inputDOM = ReactDOM.findDOMNode(this.refs['refInput']);
         let focusDelay;
-        focusDelay = this.props.focusDelay || 550;
-        window.setTimeout(function () {
-            inputDOM.focus();
-        }, focusDelay);
+        focusDelay = self.props.focusDelay || 800;
+        (function (inputDOM) {
+            setTimeout(function () {
+                inputDOM.focus();
+            }, focusDelay);
+        }(inputDOM));
     }
     focus(e) {
         this.setState({
@@ -67,7 +57,6 @@ class Input extends React.Component {
         });
     }
     onChange(value) {
-        console.log('onChange');
         if (this.props.onChange) {
             this.props.onChange(value.target.value);
         }

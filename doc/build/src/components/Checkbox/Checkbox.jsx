@@ -1,13 +1,13 @@
 "use strict";
 var React = require('react');
-var ReactDOM = require('react-dom');
 var Button_1 = require('../Button/Button');
 require('./Checkbox.less');
 class Checkbox extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            value: 0
+            value: 0,
+            checked: false
         };
     }
     componentDidMount() {
@@ -15,13 +15,6 @@ class Checkbox extends React.Component {
             value: this.props.tristate ? 2 : this.props.checked ? 1 : 0,
             checked: this.props.checked
         });
-        if (this.props.tristate) {
-            this.makeCheckboxTriState();
-        }
-    }
-    makeCheckboxTriState() {
-        let checkbox = ReactDOM.findDOMNode(this.refs["checkbox"]);
-        checkbox.indeterminate = true;
     }
     toggleChecked() {
         this.setState({
@@ -53,7 +46,6 @@ class Checkbox extends React.Component {
         let { checked } = props;
         let { value } = state;
         return (<Button_1.default className="r-Checkbox" progressiveClick={this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null} onClick={this.toggleChecked.bind(this)} tabIndex={-1} ghost disabled={props.disabled} icon={value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus"}>
-          <input ref="checkbox" type="checkbox" checked={this.state.checked}/>
         </Button_1.default>);
     }
 }

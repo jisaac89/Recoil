@@ -178,7 +178,10 @@ class Grid extends React.Component {
           <GridBody_1.default columns={renderedColumns} dataSource={renderedPage} dataType={state.dataType} numberOfPages={numberOfPages} height={props.height} open={props.open} detailTemplate={this.props.detailTemplate} hideColumns={props.hideColumns} columnTemplate={props.columnTemplate} detailTemplateOpenOnHover={props.detailTemplateOpenOnHover} detailTemplateOpenOnSelect={this.props.detailTemplateOpenOnSelect} rowIsSelectable={this.props.rowIsSelectable} onRowSelect={this.onRowSelect.bind(this)} selected={this.props.selected} selectedKey={this.props.selectedKey} rowIsSelectableType={this.props.rowIsSelectableType}/>
         </table>
           {(() => {
-            if (numberOfPages !== 1) {
+            if (numberOfPages <= 1) {
+                return null;
+            }
+            else {
                 return (<GridFooter_1.default gotoPage={this.gotoPage.bind(this)} previousPage={this.previousPage.bind(this)} nextPage={this.nextPage.bind(this)} lastPage={this.lastPage.bind(this)} firstPage={this.firstPage.bind(this)} numberOfPages={numberOfPages} currentPage={state.currentPage} changePageSize={this.changePageSize.bind(this)}/>);
             }
         })()}

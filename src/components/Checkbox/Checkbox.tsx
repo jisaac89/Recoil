@@ -16,10 +16,11 @@ interface ICheckboxState {
 }
 
 export default class Checkbox extends React.Component<ICheckboxProps,ICheckboxState>{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      value : 0
+      value : 0,
+      checked: false
     }
   }
 
@@ -28,15 +29,6 @@ export default class Checkbox extends React.Component<ICheckboxProps,ICheckboxSt
       value: this.props.tristate ? 2 : this.props.checked ? 1 : 0,
       checked : this.props.checked
     })
-
-    if (this.props.tristate) {
-      this.makeCheckboxTriState();
-    }
-  }
-
-  public makeCheckboxTriState() {
-    let checkbox = ReactDOM.findDOMNode<HTMLInputElement>(this.refs["checkbox"]);
-    checkbox.indeterminate = true;
   }
 
   public toggleChecked() {
@@ -84,7 +76,6 @@ export default class Checkbox extends React.Component<ICheckboxProps,ICheckboxSt
           disabled={props.disabled}
           icon={value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus"}
         >
-          <input ref="checkbox" type="checkbox" checked={this.state.checked} />
         </Button>
     )
   }

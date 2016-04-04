@@ -1,9 +1,21 @@
 @import '../../less/Global';
 
 .r-Door{
-  .transition(all 350ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
   overflow: hidden;
   position:relative;
+  -webkit-transform-origin: top;
+	-o-transform-origin: top;
+	-ms-transform-origin: top;
+	transform-origin: top;
+  -webkit-transform: scaleY(1);
+  -o-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition: -webkit-transform 0.26s ease-out;
+  -o-transition: -o-transform 0.26s ease;
+  -ms-transition: -ms-transform 0.26s ease;
+  transition: transform 0.26s ease;
+  height: auto;
 }
 
 .r-Door.e-autoHeight{
@@ -11,7 +23,10 @@
   max-height : none !important;
 }
 
-// .r-Door.e-open.w100 {
-//     height: auto !important;
-//     max-height: none !important;
-// }
+.r-Door.e-close{
+  height: 0;
+  -webkit-transform: scaleY(0);
+	-o-transform: scaleY(0);
+	-ms-transform: scaleY(0);
+	transform: scaleY(0);
+}

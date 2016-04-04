@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a75b2c2b18422add3da5"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "87cb68c852eac26ea14e"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -739,7 +739,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (props.vertical && index !== 0) {
 	                    return React.createElement(
 	                        'span',
-	                        null,
+	                        { key: index },
 	                        React.createElement('div', { style: { height: margin + '%' }, className: 'w100' }),
 	                        React.createElement(
 	                            'div',
@@ -21728,20 +21728,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
-	var ReactDOM = __webpack_require__(180);
 	var Button_1 = __webpack_require__(179);
 	__webpack_require__(190);
 	
 	var Checkbox = function (_React$Component) {
 	    _inherits(Checkbox, _React$Component);
 	
-	    function Checkbox() {
+	    function Checkbox(props) {
 	        _classCallCheck(this, Checkbox);
 	
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Checkbox).call(this));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Checkbox).call(this, props));
 	
 	        _this.state = {
-	            value: 0
+	            value: 0,
+	            checked: false
 	        };
 	        return _this;
 	    }
@@ -21753,15 +21753,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                value: this.props.tristate ? 2 : this.props.checked ? 1 : 0,
 	                checked: this.props.checked
 	            });
-	            if (this.props.tristate) {
-	                this.makeCheckboxTriState();
-	            }
-	        }
-	    }, {
-	        key: 'makeCheckboxTriState',
-	        value: function makeCheckboxTriState() {
-	            var checkbox = ReactDOM.findDOMNode(this.refs["checkbox"]);
-	            checkbox.indeterminate = true;
 	        }
 	    }, {
 	        key: 'toggleChecked',
@@ -21803,11 +21794,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var checked = props.checked;
 	            var value = state.value;
 	
-	            return React.createElement(
-	                Button_1.default,
-	                { className: 'r-Checkbox', progressiveClick: this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null, onClick: this.toggleChecked.bind(this), tabIndex: -1, ghost: true, disabled: props.disabled, icon: value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus" },
-	                React.createElement('input', { ref: 'checkbox', type: 'checkbox', checked: this.state.checked })
-	            );
+	            return React.createElement(Button_1.default, { className: 'r-Checkbox', progressiveClick: this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null, onClick: this.toggleChecked.bind(this), tabIndex: -1, ghost: true, disabled: props.disabled, icon: value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus" });
 	        }
 	    }]);
 	
@@ -21871,7 +21858,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
-	var ReactDOM = __webpack_require__(180);
 	var classNames = __webpack_require__(174);
 	__webpack_require__(193);
 	var getAbsoluteHeight = function getAbsoluteHeight(el) {
@@ -21890,63 +21876,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        _this.state = {
 	            autoHeight: false,
-	            maxHeight: 100
+	            height: 0
 	        };
 	        return _this;
 	    }
 	
 	    _createClass(Door, [{
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            this.refDoor = ReactDOM.findDOMNode(this.refs["door"]);
-	            if (this.props.open) {
-	                this.refDoor.style.maxHeight = getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px';
-	            }
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            var self = this;
-	            var refDoor = ReactDOM.findDOMNode(this.refs["door"]);
-	            if (nextProps.open) {
-	                self.setState({
-	                    maxHeight: getAbsoluteHeight(refDoor.childNodes[0])
-	                });
-	                {
-	                    (function () {
-	                        window.setTimeout(function () {
-	                            self.setAutoHeight();
-	                        }, 600);
-	                    })();
-	                }
-	            } else {
-	                self.setState({
-	                    autoHeight: false
-	                });
-	            }
-	        }
-	    }, {
-	        key: 'setAutoHeight',
-	        value: function setAutoHeight() {
-	            this.setState({
-	                autoHeight: true
-	            });
-	        }
-	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var self = this;
 	            var props = self.props;
 	            var state = self.state;
-	            var doorClass = classNames('r-Door', { 'e-open': props.open }, { 'e-autoHeight': state.autoHeight }, props.className);
+	            var doorClass = classNames('r-Door', { 'e-open': props.open }, { 'e-close': !props.open }, { 'e-autoHeight': state.autoHeight }, props.className);
 	            var doorContainerClass = classNames('r-Door__container');
 	            return React.createElement(
 	                'div',
-	                { ref: 'door', className: doorClass, style: { maxHeight: props.open ? this.state.maxHeight + 'px' : '0px' } },
+	                { ref: 'door', className: doorClass, style: { height: this.state.maxHeight } },
 	                React.createElement(
 	                    'div',
 	                    { className: doorContainerClass },
-	                    props.children
+	                    props.open ? props.children : null
 	                )
 	            );
 	        }
@@ -21992,7 +21941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Door {\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  overflow: hidden;\n  position: relative;\n}\n.r-Door.e-autoHeight {\n  height: auto !important;\n  max-height: none !important;\n}\n", ""]);
+	exports.push([module.id, ".r-Door {\n  overflow: hidden;\n  position: relative;\n  -webkit-transform-origin: top;\n  -o-transform-origin: top;\n  -ms-transform-origin: top;\n  transform-origin: top;\n  -webkit-transform: scaleY(1);\n  -o-transform: scaleY(1);\n  -ms-transform: scaleY(1);\n  transform: scaleY(1);\n  -webkit-transition: -webkit-transform 0.26s ease-out;\n  -o-transition: -o-transform 0.26s ease;\n  -ms-transition: -ms-transform 0.26s ease;\n  transition: transform 0.26s ease;\n  height: auto;\n}\n.r-Door.e-autoHeight {\n  height: auto !important;\n  max-height: none !important;\n}\n.r-Door.e-close {\n  height: 0;\n  -webkit-transform: scaleY(0);\n  -o-transform: scaleY(0);\n  -ms-transform: scaleY(0);\n  transform: scaleY(0);\n}\n", ""]);
 	
 	// exports
 
@@ -22332,24 +22281,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'componentDidMount',
 	        value: function componentDidMount() {
 	            var props = this.props;
-	            if (props.value) {
-	                this.setState({
-	                    checked: true
-	                });
-	            }
+	            this.setState({
+	                checked: props.value ? true : false
+	            });
 	            if (props.focusOnMount) {
-	                this.focusOnMount();
-	            }
-	        }
-	    }, {
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            var self = this;
-	            if (nextProps.value > self.props.value) {
-	                self.setState({
-	                    checked: true
-	                });
-	            } else if (nextProps.focusOnMount != this.props.focusOnMount) {
 	                this.focusOnMount();
 	            }
 	        }
@@ -22362,12 +22297,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'focusOnMount',
 	        value: function focusOnMount() {
+	            var self = this;
 	            var inputDOM = ReactDOM.findDOMNode(this.refs['refInput']);
 	            var focusDelay = void 0;
-	            focusDelay = this.props.focusDelay || 550;
-	            window.setTimeout(function () {
-	                inputDOM.focus();
-	            }, focusDelay);
+	            focusDelay = self.props.focusDelay || 800;
+	            (function (inputDOM) {
+	                setTimeout(function () {
+	                    inputDOM.focus();
+	                }, focusDelay);
+	            })(inputDOM);
 	        }
 	    }, {
 	        key: 'focus',
@@ -22396,7 +22334,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'onChange',
 	        value: function onChange(value) {
-	            console.log('onChange');
 	            if (this.props.onChange) {
 	                this.props.onChange(value.target.value);
 	            } else {
@@ -23206,7 +23143,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    React.createElement(GridBody_1.default, { columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, height: props.height, open: props.open, detailTemplate: this.props.detailTemplate, hideColumns: props.hideColumns, columnTemplate: props.columnTemplate, detailTemplateOpenOnHover: props.detailTemplateOpenOnHover, detailTemplateOpenOnSelect: this.props.detailTemplateOpenOnSelect, rowIsSelectable: this.props.rowIsSelectable, onRowSelect: this.onRowSelect.bind(this), selected: this.props.selected, selectedKey: this.props.selectedKey, rowIsSelectableType: this.props.rowIsSelectableType })
 	                ),
 	                function () {
-	                    if (numberOfPages !== 1) {
+	                    if (numberOfPages <= 1) {
+	                        return null;
+	                    } else {
 	                        return React.createElement(GridFooter_1.default, { gotoPage: _this2.gotoPage.bind(_this2), previousPage: _this2.previousPage.bind(_this2), nextPage: _this2.nextPage.bind(_this2), lastPage: _this2.lastPage.bind(_this2), firstPage: _this2.firstPage.bind(_this2), numberOfPages: numberOfPages, currentPage: state.currentPage, changePageSize: _this2.changePageSize.bind(_this2) });
 	                    }
 	                }()
@@ -23477,17 +23416,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var props = self.props;
 	            var key = props.i;
 	            return React.createElement(
-	                'tr',
-	                null,
-	                React.createElement(
-	                    'td',
-	                    { className: 'p0', colSpan: this.props.columns.length + 1 },
-	                    React.createElement(
-	                        Door_1.default,
-	                        { open: props.expanded },
-	                        self.props.detailTemplate(key, self.props.dataSource[key])
-	                    )
-	                )
+	                Door_1.default,
+	                { open: props.expanded },
+	                self.props.detailTemplate(key, self.props.dataSource[key])
 	            );
 	        }
 	    }]);
@@ -23564,9 +23495,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    React.createElement(
 	                        'td',
 	                        { className: 'p0', colSpan: this.props.columns.length + 1 },
-	                        React.createElement(SelectableGridRow, { onRowSelect: this.props.onRowSelect, item: item, selected: this.state.selected, selectedItem: _selectedItem, selectedKey: this.props.selectedKey })
+	                        React.createElement(SelectableGridRow, { onRowSelect: this.props.onRowSelect, item: item, selected: this.state.selected, selectedItem: _selectedItem, selectedKey: this.props.selectedKey }),
+	                        this.props.detailTemplate ? React.createElement(GridRowTemplate, _extends({ expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.includes(key), i: key }, props)) : null
 	                    )
-	                )], [this.props.detailTemplate ? React.createElement(GridRowTemplate, _extends({ expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.includes(key), i: key }, props)) : null]);
+	                )]);
 	            }
 	            return React.createElement(
 	                'tbody',

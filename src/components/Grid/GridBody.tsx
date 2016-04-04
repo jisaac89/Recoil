@@ -74,13 +74,9 @@ class GridRowTemplate extends React.Component<IGridRowTemplateProps,IGridRowTemp
     const key = props.i;
 
     return (
-      <tr>
-        <td className="p0" colSpan={this.props.columns.length + 1}>
-          <Door open={props.expanded}>
-            {self.props.detailTemplate(key, self.props.dataSource[key])}
-          </Door>
-        </td>
-      </tr>
+      <Door open={props.expanded}>
+        {self.props.detailTemplate(key, self.props.dataSource[key])}
+      </Door>
     )
   }
 }
@@ -167,9 +163,9 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
         [<tr>
           <td className="p0" colSpan={this.props.columns.length + 1}>
             <SelectableGridRow onRowSelect={this.props.onRowSelect} item={item} selected={this.state.selected} selectedItem={selectedItem} selectedKey={this.props.selectedKey} />
+            {this.props.detailTemplate ? <GridRowTemplate expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.includes(key)} i={key} {...props} />  : null}
           </td>
-        </tr>],
-        [this.props.detailTemplate ? <GridRowTemplate expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.includes(key)} i={key} {...props} />  : null]
+        </tr>]
       )
     }
 

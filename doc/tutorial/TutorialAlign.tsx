@@ -101,6 +101,7 @@ export default class TutorialAlign extends React.Component<any,any>{
 
           <Layer className="pb20">
             <h2 className="pb10">Examples</h2>
+
             <h3>Default</h3>
             <p>By default, the Align component aligns elements horizontally</p>
             <Layer className="ptb20">
@@ -111,6 +112,7 @@ export default class TutorialAlign extends React.Component<any,any>{
                 </Align>
               </Layer>
             </Layer>
+
             <h3>Vertical</h3>
             <p>To align elements vertically, pass the <strong>vertical</strong> prop.</p>
             <Layer className="ptb20">
@@ -122,23 +124,31 @@ export default class TutorialAlign extends React.Component<any,any>{
                 </Align>
               </Layer>
             </Layer>
-            <h3>Another Example</h3>
+
+            <h3>Multiple Aligns</h3>
             <p>Below shows an example using multiple Align components to achieve the desired effect.</p>
             <Layer className="ptb20">
               <Layer className="p10 dark h200px">
-                <Align margin={2}>
+                <Align margin={1}>
                   <Layer fill>
                     <Align margin={5} vertical>
-                      <Layer type="light" className="p10" fill>A</Layer>
-                      <Layer type="light" className="p10" fill>B</Layer>
-                      <Layer type="light" className="p10" fill>C</Layer>
+                      <Layer type="light" className="p10" fill>1</Layer>
+                      <Layer type="light" className="p10" fill>2</Layer>
+                      <Layer type="light" className="p10" fill>3</Layer>
                     </Align>
                   </Layer>
                   <Layer fill>
                     <Align margin={5} vertical>
-                      <Layer type="light" className="p10" fill>A</Layer>
-                      <Layer type="light" className="p10" fill>B</Layer>
-                      <Layer type="light" className="p10" fill>C</Layer>
+                      <Layer type="light" className="p10" fill>4</Layer>
+                      <Layer type="light" className="p10" fill>5</Layer>
+                      <Layer type="light" className="p10" fill>6</Layer>
+                    </Align>
+                  </Layer>
+                  <Layer fill>
+                    <Align margin={5} vertical>
+                      <Layer type="light" className="p10" fill>7</Layer>
+                      <Layer type="light" className="p10" fill>8</Layer>
+                      <Layer type="light" className="p10" fill>9</Layer>
                     </Align>
                   </Layer>
                 </Align>

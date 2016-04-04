@@ -114,7 +114,7 @@ export default class Align extends React.Component<IAlignProps, {}>{
 
       if (props.vertical && index !== 0) {
         return(
-          <span>
+          <span key={index}>
             <div style={{height: margin+'%'}} className="w100"></div>
             <div className={columnClass} style={columnStyle} key={index}>
               {item}

@@ -50,39 +50,29 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   }
   public componentDidMount() {
     const props = this.props;
-    if (props.value) {
-        this.setState({
-          checked: true
-        });
-    }
+    this.setState({
+      checked: props.value  ? true : false
+    });
     if (props.focusOnMount) {
       this.focusOnMount();
     }
-  }
-  public componentWillReceiveProps(nextProps) {
-      const self = this;
-      if (nextProps.value > self.props.value) {
-        self.setState({
-          checked: true
-        });
-      } else if (nextProps.focusOnMount != this.props.focusOnMount) {
-        this.focusOnMount();
-      }
   }
   public componentWillUnmount() {
     let inputDOM = ReactDOM.findDOMNode<HTMLInputElement>(this.refs['refInput']);
     inputDOM.blur();
   }
   public focusOnMount() {
+    const self = this;
     let inputDOM = ReactDOM.findDOMNode<HTMLInputElement>(this.refs['refInput']);
-
     let focusDelay;
 
-    focusDelay = this.props.focusDelay || 550;
+    focusDelay = self.props.focusDelay || 800;
 
-    window.setTimeout(function() {
-      inputDOM.focus();
-    }, focusDelay);
+    (function(inputDOM) {
+      setTimeout(function() {
+          inputDOM.focus();
+      }, focusDelay);
+    }(inputDOM));
   }
   public focus(e){
     this.setState({
@@ -104,7 +94,6 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   }
   public onChange(value) {
 
-    console.log('onChange')
     if (this.props.onChange) {
       this.props.onChange(value.target.value);
     } else {
