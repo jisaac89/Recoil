@@ -1,7 +1,7 @@
 {
   "name": "Recoil",
   "url" : "http://reactrecoil.com/",
-  "version": "0.3.28",
+  "version": "0.3.29",
   "description": "",
   "scripts": {
     "build": "webpack --config webpack.config.js",

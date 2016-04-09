@@ -70,9 +70,7 @@ export default class Pane extends React.Component<IPaneProps, {}>{
     }
 
     let childrenPartial = () => {
-      if (props.open) {
-        return props.children;
-      }
+      return props.children;
     }
 
     return(

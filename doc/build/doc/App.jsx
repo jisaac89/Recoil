@@ -8,6 +8,8 @@ var Input_1 = require('../src/components/Input/Input');
 var Wizard_1 = require('../src/components/Wizard/Wizard');
 var Door_1 = require('../src/components/Door/Door');
 var Emerge_1 = require('../src/components/Emerge/Emerge');
+var Pane_1 = require('../src/components/Pane/Pane');
+var Transform_1 = require('../src/components/Transform/Transform');
 var TutorialButton_1 = require('./tutorial/TutorialButton');
 var TutorialAlign_1 = require('./tutorial/TutorialAlign');
 var TutorialCard_1 = require('./tutorial/TutorialCard');
@@ -38,7 +40,8 @@ class App extends React.Component {
             slideIndex: 0,
             selected: [],
             keyword: '',
-            toggleMobileTutorial: 0
+            toggleMobileTutorial: 0,
+            toggleSideMenu: true
         };
     }
     componentWillMount() {
@@ -95,6 +98,11 @@ class App extends React.Component {
             toggleMobileTutorial: this.state.toggleMobileTutorial === 0 ? 1 : 0
         });
     }
+    toggleSideMenu() {
+        this.setState({
+            toggleSideMenu: !this.state.toggleSideMenu
+        });
+    }
     render() {
         const self = this;
         const props = self.props;
@@ -113,9 +121,9 @@ class App extends React.Component {
                 newComponentArray.push(thisKey);
             }
         }
-        return (<Layer_1.default fill scrollY flex flow="row wrap" className={state.nightMode ? 'e-NightMode' : ''}>
+        return (<Layer_1.default scrollY fill className={state.nightMode ? 'e-NightMode' : ''}>
       <Door_1.default className="w100" open={state.viewDocumentation}>
-        <Layer_1.default block>
+        <Layer_1.default block style={{ height: 60 }}>
           <div className="p10 w100 clearfix">
             <Emerge_1.default if={state.viewDocumentation}>
             <h1 className="pull-left">React <strong>Recoil</strong></h1>
@@ -143,7 +151,7 @@ class App extends React.Component {
         })()}
             </Emerge_1.default>
           </div>
-        <hr className="rainbow-line"/>
+          <hr className="rainbow-line"/>
         </Layer_1.default>
       </Door_1.default>
       <Door_1.default className="w100" open={!state.viewDocumentation}>
@@ -180,7 +188,7 @@ class App extends React.Component {
           <hr className="rainbow-line"/>
         </div>
       </Door_1.default>
-      <Door_1.default className="w100" open={state.viewDocumentation}>
+      <Door_1.default overflow className="w100" open={state.viewDocumentation}>
         <Layer_1.default>
           {(() => {
             if (this.state.mobile) {
@@ -219,33 +227,38 @@ class App extends React.Component {
             }
             else {
                 return (<div>
-                  <div className="w30 p10 pr20 pull-left">
-                    <Input_1.default icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
-                    <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={19} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
-                  </div>
-                  <div className="p10 w70 pull-left">
-                    <Wizard_1.default slideIndex={state.slideIndex}>
-                      <TutorialAlign_1.default {...state}/>
-                      <TutorialButton_1.default {...state}/>
-                      <TutorialCard_1.default {...state}/>
-                      <TutorialCheckbox_1.default {...state}/>
-                      <TutorialDoor_1.default {...state}/>
-                      <TutorialDropdown_1.default {...state}/>
-                      <TutorialEmerge_1.default {...state}/>
-                      <TutorialGrid_1.default {...state}/>
-                      <TutorialInput_1.default {...state}/>
-                      <TutorialLayer_1.default {...state}/>
-                      <TutorialLoading_1.default {...state}/>
-                      <TutorialModal_1.default {...state}/>
-                      <TutorialPane_1.default {...state}/>
-                      <TutorialSelectable_1.default {...state}/>
-                      <TutorialShrink_1.default {...state}/>
-                      <TutorialToggle_1.default {...state}/>
-                      <TutorialToolbar_1.default {...state}/>
-                      <TutorialTransform_1.default {...state}/>
-                      <TutorialWizard_1.default {...state}/>
-                    </Wizard_1.default>
-                  </div>
+                    <Pane_1.default open={self.state.toggleSideMenu} className="W400px" direction="left">
+                      <div className="p10">
+                        <Input_1.default icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
+                        <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={19} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
+                      </div>
+                    </Pane_1.default>
+                    <Transform_1.default push="left" if={self.state.toggleSideMenu} amount={'400px'}>
+                      <div className="p10">
+                        <Button_1.default size="small" className="mb20" pointer="left" icon="bars" onClick={this.toggleSideMenu.bind(this)}>{self.state.toggleSideMenu ? 'Hide Side Menu' : 'Show Side Menu'}</Button_1.default>
+                        <Wizard_1.default slideIndex={state.slideIndex}>
+                          <TutorialAlign_1.default {...state}/>
+                          <TutorialButton_1.default {...state}/>
+                          <TutorialCard_1.default {...state}/>
+                          <TutorialCheckbox_1.default {...state}/>
+                          <TutorialDoor_1.default {...state}/>
+                          <TutorialDropdown_1.default {...state}/>
+                          <TutorialEmerge_1.default {...state}/>
+                          <TutorialGrid_1.default {...state}/>
+                          <TutorialInput_1.default {...state}/>
+                          <TutorialLayer_1.default {...state}/>
+                          <TutorialLoading_1.default {...state}/>
+                          <TutorialModal_1.default {...state}/>
+                          <TutorialPane_1.default {...state}/>
+                          <TutorialSelectable_1.default {...state}/>
+                          <TutorialShrink_1.default {...state}/>
+                          <TutorialToggle_1.default {...state}/>
+                          <TutorialToolbar_1.default {...state}/>
+                          <TutorialTransform_1.default {...state}/>
+                          <TutorialWizard_1.default {...state}/>
+                        </Wizard_1.default>
+                      </div>
+                    </Transform_1.default>
                 </div>);
             }
         })()}
