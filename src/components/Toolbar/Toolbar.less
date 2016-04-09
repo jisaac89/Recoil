@@ -5,10 +5,25 @@
   vertical-align: middle;
 }
 
+.r-Toolbar.flush > .r-Button{
+  border-right:0;
+  border-radius:0;
+}
+
+.r-Toolbar.flush > .r-Button:nth-child(1){
+  border-top-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+
+.r-Toolbar.flush > .r-Button:last-child{
+  border-top-right-radius:3px;
+  border-bottom-right-radius:3px;
+  border-right:1px solid @standard-border;
+}
+
+
 .r-Toolbar.no-radius .r-Button{
   border-radius:0;
-  border-left-width: 1px;
-  border-right-width: 1px;
 }
 
 .r-Toolbar.no-radius .r-Button:first-child{
@@ -85,4 +100,8 @@
 
 .r-Toolbar.vertical.spacing .r-Input:last-child{
   margin-bottom:0px;
+}
+
+.r-Toolbar.no-border > .r-Button{
+  border:0 !important;
 }

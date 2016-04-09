@@ -36,6 +36,7 @@
         "tutorial/TutorialPane.tsx",
         "tutorial/TutorialSelectable.tsx",
         "tutorial/TutorialShrink.tsx",
+        "tutorial/TutorialToggle.tsx",
         "tutorial/TutorialToolbar.tsx",
         "tutorial/TutorialTransform.tsx",
         "tutorial/TutorialWizard.tsx"

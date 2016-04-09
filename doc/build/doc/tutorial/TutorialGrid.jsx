@@ -92,49 +92,44 @@ class TutorialGrid extends React.Component {
         const props = self.props;
         let state = self.state;
         const columns = [
-            { name: 'name', width: 250 },
-            { name: 'type', width: 300 },
-            { name: 'options', width: 250 },
-            { name: 'description' }
+            { name: 'name', width: 100 },
+            { name: 'description' },
+            { name: 'type', width: 200 },
+            { name: 'options', width: 250 }
         ];
         return (<Emerge_1.default>
       <Layer_1.default>
 
         <h1>Grid</h1>
 
-        <Layer_1.default className="ptb10">
+        <div className="ptb10">
           <h2 className="pb10">Description</h2>
           <p>The Grid component is a simple data-grid that currently takes in a object.</p>
-        </Layer_1.default>
+        </div>
 
-        <Layer_1.default className="ptb10">
+        <div className="ptb10">
           <h2 className="pb10">Examples</h2>
-          <Layer_1.default className="ptb10">
-            <Layer_1.default className="p10 light">
-              <Grid_1.default open={true} numberPerPage={20} hideHeader={true} columns={columns} dataSource={GridProperties}/>
-            </Layer_1.default>
-          </Layer_1.default>
-        </Layer_1.default>
+          <div className="ptb10">
+            <Grid_1.default open={true} numberPerPage={20} dataSource={GridProperties}/>
+          </div>
+        </div>
 
-        <Layer_1.default className="ptb10">
-          <h2 className="pb10">Options</h2>
-          <Button_1.default checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button_1.default>
-          <Door_1.default open={this.state.showProps}>
-            <Layer_1.default className="ptb10">
-              <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={GridProperties}/>
-            </Layer_1.default>
-          </Door_1.default>
-        </Layer_1.default>
+        <div className="ptb10">
+          <h2 className="pb10">Props</h2>
+          <div className="ptb10">
+            <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={GridProperties}/>
+          </div>
+        </div>
 
-        <Layer_1.default className="ptb10">
+        <div className="ptb10">
           <h2 className="pb10">Video</h2>
           <Button_1.default checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button_1.default>
           <Door_1.default open={this.state.showVideo}>
-            <Layer_1.default className="ptb10">
+            <div className="ptb10">
               VIDEO
-            </Layer_1.default>
+            </div>
           </Door_1.default>
-        </Layer_1.default>
+        </div>
 
       </Layer_1.default>
       </Emerge_1.default>);

@@ -1545,7 +1545,7 @@ h4 {
 h2 {
   font-size:20px;
   font-weight: 500;
-  color: @font-color-light;
+  color: @font-color;
       line-height: 16px;
 }
 h3 {
@@ -1776,6 +1776,11 @@ form{
 .e-NightMode{
   background: #111;
 
+  .dark {
+    background: #323232;
+    color: #A9A9A9;
+}
+
   .r-Layer.light{
     background:#222;
   }
@@ -1861,16 +1866,6 @@ form{
   height: 100%;
 }
 
-.Cart{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #FCFCFC;
-  height: 1000px;
-  width: 100%;
-}
-
 .r-GridBody .selected{
     background: rgba(0,0,0,0.08) !important;
 }
@@ -1879,7 +1874,7 @@ form{
     background: rgba(255,255,255, 1);
 }
 
-#root{
-  height:100%;
-  width:100%;
+html,
+body{
+  overflow: hidden !important;
 }

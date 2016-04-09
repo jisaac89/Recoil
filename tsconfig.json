@@ -43,6 +43,7 @@
         "src/components/Selectable/Selectable.tsx",
         "src/components/Shortcut/Shortcut.tsx",
         "src/components/Shrink/Shrink.tsx",
+        "src/components/Toggle/Toggle.tsx",
         "src/components/Toolbar/Toolbar.tsx",
         "src/components/Transform/Transform.tsx",
         "src/components/Wizard/Wizard.tsx",

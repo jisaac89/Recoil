@@ -1,7 +1,6 @@
 "use strict";
 var React = require('react');
 var classNames = require('classnames');
-var react_dom_1 = require('react-dom');
 var Selectable_1 = require('../Selectable/Selectable');
 require('./Button.less');
 class Button extends React.Component {
@@ -35,27 +34,6 @@ class Button extends React.Component {
         }
     }
     startShortcutListener(e) {
-        const context = this;
-        const props = context.props;
-        let state = context.state;
-        const refButton = react_dom_1.findDOMNode(context.refs["button"]);
-        context.setState({
-            showShortcut: e.shiftKey ? true : false
-        });
-        context.setState({
-            shiftCounter: 1
-        });
-        if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
-            refButton.click();
-            context.setState({
-                clickCounter: 1
-            });
-            setTimeout(() => {
-                context.setState({
-                    clickCounter: 0
-                });
-            }, 300);
-        }
     }
     onClick() {
         const self = this;

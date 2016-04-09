@@ -76,30 +76,30 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
   }
 
   public startShortcutListener(e) {
-    const context = this;
-    const props = context.props;
-    let state = context.state;
-
-    const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
-
-    context.setState({
-      showShortcut : e.shiftKey ? true : false
-    })
-    context.setState({
-      shiftCounter: 1
-    })
-
-    if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
-      refButton.click();
-      context.setState({
-        clickCounter: 1
-      })
-      setTimeout(() => {
-        context.setState({
-          clickCounter: 0
-        })
-      }, 300);
-    }
+    // const context = this;
+    // const props = context.props;
+    // let state = context.state;
+    //
+    // const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
+    //
+    // context.setState({
+    //   showShortcut : e.shiftKey ? true : false
+    // })
+    // context.setState({
+    //   shiftCounter: 1
+    // })
+    //
+    // if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
+    //   refButton.click();
+    //   context.setState({
+    //     clickCounter: 1
+    //   })
+    //   setTimeout(() => {
+    //     context.setState({
+    //       clickCounter: 0
+    //     })
+    //   }, 300);
+    // }
   }
 
   public onClick() {

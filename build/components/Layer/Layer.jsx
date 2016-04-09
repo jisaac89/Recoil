@@ -21,6 +21,7 @@ class Layer extends React.Component {
         if (props.flex) {
             flexStyle = {
                 'WebkitFlexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+                'flexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
                 'justifyContent': props.justify ? props.justify : 'flex-start',
                 'alignItems': props.align ? props.align : 'stretch',
                 'WebkitFlex': props.flex !== '' ? props.flex : null,

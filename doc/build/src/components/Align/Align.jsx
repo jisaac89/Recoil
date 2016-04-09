@@ -7,7 +7,7 @@ class Align extends React.Component {
         const self = this;
         const props = self.props;
         const margin = props.margin;
-        const data = props.data;
+        const columns = props.columns;
         let child;
         let maxCol, colwidth, singleColWidth, columnStyle;
         let index = 0;
@@ -47,7 +47,7 @@ class Align extends React.Component {
         const self = this;
         const props = self.props;
         const margin = props.margin;
-        const data = props.data;
+        const columns = props.columns;
         let maxCol, colwidth, columnStyle;
         if (props.maxCol) {
             maxCol = props.maxCol;
@@ -60,8 +60,8 @@ class Align extends React.Component {
         let columnClass = classNames('r-Align__column');
         let createList = (item, index) => {
             if (props.maxCol) {
-                let dataIdx = props.data[index];
-                colwidth = (singleColWidth * dataIdx) + (margin * (dataIdx - 1));
+                let columnsIdx = props.columns[index];
+                colwidth = (singleColWidth * columnsIdx) + (margin * (columnsIdx - 1));
             }
             if (props.vertical) {
                 columnStyle = {
@@ -110,7 +110,7 @@ Align.defaultProps = {
     margin: 0,
     vertical: false,
     maxCol: null,
-    data: null
+    columns: null
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Align;

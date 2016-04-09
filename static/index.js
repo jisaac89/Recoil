@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "87cb68c852eac26ea14e"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "27305c222f8efe37859c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -587,18 +587,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var Align_1 = __webpack_require__(4);
 	var Button_1 = __webpack_require__(179);
-	var Card_1 = __webpack_require__(186);
-	var Checkbox_1 = __webpack_require__(189);
-	var Door_1 = __webpack_require__(192);
-	var Dropdown_1 = __webpack_require__(195);
+	var Card_1 = __webpack_require__(185);
+	var Checkbox_1 = __webpack_require__(188);
+	var Door_1 = __webpack_require__(191);
+	var Dropdown_1 = __webpack_require__(194);
 	var Emerge_1 = __webpack_require__(208);
 	var Grid_1 = __webpack_require__(211);
-	var Input_1 = __webpack_require__(197);
+	var Input_1 = __webpack_require__(196);
 	var Layer_1 = __webpack_require__(203);
 	var Loading_1 = __webpack_require__(222);
 	var Modal_1 = __webpack_require__(225);
 	var Pane_1 = __webpack_require__(198);
-	var Selectable_1 = __webpack_require__(181);
+	var Selectable_1 = __webpack_require__(180);
 	var Shrink_1 = __webpack_require__(228);
 	var Toolbar_1 = __webpack_require__(219);
 	var Transform_1 = __webpack_require__(231);
@@ -664,7 +664,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var self = this;
 	            var props = self.props;
 	            var margin = props.margin;
-	            var data = props.data;
+	            var columns = props.columns;
 	            var child = void 0;
 	            var maxCol = void 0,
 	                colwidth = void 0,
@@ -707,7 +707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var self = this;
 	            var props = self.props;
 	            var margin = props.margin;
-	            var data = props.data;
+	            var columns = props.columns;
 	            var maxCol = void 0,
 	                colwidth = void 0,
 	                columnStyle = void 0;
@@ -721,8 +721,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var columnClass = classNames('r-Align__column');
 	            var createList = function createList(item, index) {
 	                if (props.maxCol) {
-	                    var dataIdx = props.data[index];
-	                    colwidth = singleColWidth * dataIdx + margin * (dataIdx - 1);
+	                    var columnsIdx = props.columns[index];
+	                    colwidth = singleColWidth * columnsIdx + margin * (columnsIdx - 1);
 	                }
 	                if (props.vertical) {
 	                    columnStyle = {
@@ -781,7 +781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    margin: 0,
 	    vertical: false,
 	    maxCol: null,
-	    data: null
+	    columns: null
 	};
 	exports.default = Align;
 
@@ -21269,9 +21269,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var React = __webpack_require__(5);
 	var classNames = __webpack_require__(174);
-	var react_dom_1 = __webpack_require__(180);
-	var Selectable_1 = __webpack_require__(181);
-	__webpack_require__(184);
+	var Selectable_1 = __webpack_require__(180);
+	__webpack_require__(183);
 	
 	var Button = function (_React$Component) {
 	    _inherits(Button, _React$Component);
@@ -21317,27 +21316,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'startShortcutListener',
 	        value: function startShortcutListener(e) {
-	            var context = this;
-	            var props = context.props;
-	            var state = context.state;
-	            var refButton = react_dom_1.findDOMNode(context.refs["button"]);
-	            context.setState({
-	                showShortcut: e.shiftKey ? true : false
-	            });
-	            context.setState({
-	                shiftCounter: 1
-	            });
-	            if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
-	                refButton.click();
-	                context.setState({
-	                    clickCounter: 1
-	                });
-	                setTimeout(function () {
-	                    context.setState({
-	                        clickCounter: 0
-	                    });
-	                }, 300);
-	            }
+	            // const context = this;
+	            // const props = context.props;
+	            // let state = context.state;
+	            //
+	            // const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
+	            //
+	            // context.setState({
+	            //   showShortcut : e.shiftKey ? true : false
+	            // })
+	            // context.setState({
+	            //   shiftCounter: 1
+	            // })
+	            //
+	            // if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
+	            //   refButton.click();
+	            //   context.setState({
+	            //     clickCounter: 1
+	            //   })
+	            //   setTimeout(() => {
+	            //     context.setState({
+	            //       clickCounter: 0
+	            //     })
+	            //   }, 300);
+	            // }
 	        }
 	    }, {
 	        key: 'onClick',
@@ -21445,15 +21447,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-	
-	module.exports = __webpack_require__(7);
-
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
 	"use strict";
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21466,7 +21459,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var React = __webpack_require__(5);
 	var classNames = __webpack_require__(174);
-	__webpack_require__(182);
+	__webpack_require__(181);
 	
 	var Selectable = function (_React$Component) {
 	    _inherits(Selectable, _React$Component);
@@ -21507,13 +21500,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Selectable;
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(183);
+	var content = __webpack_require__(182);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(178)(content, {});
@@ -21522,8 +21515,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(183, function() {
-				var newContent = __webpack_require__(183);
+			module.hot.accept(182, function() {
+				var newContent = __webpack_require__(182);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21533,7 +21526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(177)();
@@ -21547,13 +21540,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(185);
+	var content = __webpack_require__(184);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(178)(content, {});
@@ -21562,8 +21555,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(185, function() {
-				var newContent = __webpack_require__(185);
+			module.hot.accept(184, function() {
+				var newContent = __webpack_require__(184);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21573,7 +21566,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(177)();
@@ -21581,13 +21574,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Button {\n  color: #888;\n  background: rgba(247, 247, 247, 0.85);\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 6px 15px;\n  border-radius: 5px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  font-size: 18px;\n  position: relative;\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Button:focus {\n  transform: scale(0.95);\n}\n.r-Button.link {\n  border: 1px solid #ccc;\n  background: transparent;\n}\n.r-Button:hover,\n.r-Button:focus {\n  background: #DEDCDC;\n  color: #1995FF;\n}\n.r-Button.primary:hover,\n.r-Button.primary:focus {\n  background: #1995FF;\n  color: white;\n  border: 1px solid transparent;\n}\n.r-Button.error:hover,\n.r-Button.error:focus {\n  background: #8BC53F;\n}\n.r-Button.link:hover,\n.r-Button.link:focus {\n  color: #007EEA;\n  background: transparent;\n}\n.r-Button.large {\n  padding: 10px 2pc;\n  height: auto;\n  font-size: 18px;\n}\n.r-Button.small {\n  padding: 3px 1pc;\n  height: auto;\n  font-size: 12px;\n  font-weight: normal;\n}\n.r-Button.large {\n  padding: 10px 2pc;\n  height: auto;\n}\n.r-Button.xlarge {\n  padding: 17.5px 2pc;\n  font-size: 25px;\n  height: auto;\n}\n.r-Button.block {\n  width: 100%;\n  text-align: inherit;\n}\n.r-Button.disabled,\n.r-Button[disabled],\nfieldset[disabled] .r-Button {\n  cursor: not-allowed;\n  opacity: .50;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: 0;\n  -moz-box-shadow: 0;\n  box-shadow: 0;\n}\n.r-Button:active {\n  -webkit-transform: scale(0.92);\n  -moz-transform: scale(0.92);\n  -ms-transform: scale(0.92);\n  -o-transform: scale(0.92);\n  outline: 0;\n}\n.r-Button:focus {\n  outline: 0;\n}\n.spacing .r-Button {\n  margin-right: 5px;\n}\n.spacing .r-Button:last-child {\n  margin-right: 0px;\n}\n.text-center .r-Button span,\n.text-center .r-Button {\n  align-items: center;\n}\n/* --ghost button */\n.r-Button.ghost {\n  color: #888;\n  background: transparent;\n  border-color: transparent;\n}\n.r-Button.ghost:hover {\n  background: transparent;\n}\n/*Pointers*/\n.r-Button.pointer:before {\n  top: 50%;\n  left: -1px;\n}\n.r-Button.pointer:before {\n  border-color: inherit;\n}\n.r-Button.pointer:hover:before {\n  color: rgba(0, 0, 0, 0.8);\n}\n.r-Button.pointer:before {\n  border-width: 1px 0 0 1px;\n  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  top: 0;\n  left: 50%;\n}\n.r-Button.pointer:before {\n  background-color: inherit;\n  border-style: solid;\n  border-color: inherit;\n  position: absolute;\n  content: '';\n  -webkit-transform: rotate(45deg);\n  -ms-transform: rotate(45deg);\n  transform: rotate(45deg);\n  background-image: none;\n  z-index: 2;\n  width: .6666em;\n  height: .6666em;\n  -webkit-transition: background .1s ease;\n  transition: background .1s ease;\n}\n.r-Button.pointer.left:before {\n  border-width: 0 0 1px 1px;\n  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  bottom: auto;\n  right: auto;\n  top: 50%;\n  left: 0;\n}\n.r-Button.pointer.right:before {\n  top: 50%;\n  right: -1px;\n}\n.r-Button.pointer.right:before {\n  border-width: 1px 1px 0 0;\n  -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);\n  transform: translateX(50%) translateY(-50%) rotate(45deg);\n  top: 50%;\n  right: 0;\n  bottom: auto;\n  left: auto;\n}\n.r-Button {\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.r-Button.pointer {\n  overflow: visible;\n}\n.button-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n.r-Button.small:focus {\n  border: 1px solid transparent;\n}\n.r-Button .e-invisible {\n  opacity: 0;\n}\n.r-Button .e-shortcut {\n  position: absolute;\n  right: 0;\n  left: 0;\n  margin: auto;\n}\n", ""]);
+	exports.push([module.id, ".r-Button {\n  color: #888;\n  background: #f7f7f7;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 6px 15px;\n  border-radius: 5px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  font-size: 18px;\n  position: relative;\n  -webkit-transition: all 50ms ease-in;\n  -moz-transition: all 50ms ease-in;\n  -ms-transition: all 50ms ease-in;\n  -o-transition: all 50ms ease-in;\n  transition: all 50ms ease-in;\n}\n.r-Button.link {\n  border: 1px solid #ccc;\n  background: transparent;\n}\n.r-Button:hover,\n.r-Button:focus {\n  background: #DEDCDC;\n  color: #1995FF;\n}\n.r-Button.primary:hover,\n.r-Button.primary:focus {\n  background: #1995FF;\n  color: white;\n  border: 1px solid transparent;\n}\n.r-Button.error:hover,\n.r-Button.error:focus {\n  background: #8BC53F;\n}\n.r-Button.link:hover,\n.r-Button.link:focus {\n  color: #007EEA;\n  background: transparent;\n}\n.r-Button.large {\n  padding: 10px 2pc;\n  height: auto;\n  font-size: 18px;\n}\n.r-Button.small {\n  padding: 3px 1pc;\n  height: auto;\n  font-size: 12px;\n  font-weight: normal;\n}\n.r-Button.large {\n  padding: 10px 2pc;\n  height: auto;\n}\n.r-Button.xlarge {\n  padding: 17.5px 2pc;\n  font-size: 25px;\n  height: auto;\n}\n.r-Button.block {\n  width: 100%;\n  text-align: inherit;\n}\n.r-Button.disabled,\n.r-Button[disabled],\nfieldset[disabled] .r-Button {\n  cursor: not-allowed;\n  opacity: .50;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: 0;\n  -moz-box-shadow: 0;\n  box-shadow: 0;\n}\n.r-Button:active {\n  -webkit-transform: scale(0.92);\n  -moz-transform: scale(0.92);\n  -ms-transform: scale(0.92);\n  -o-transform: scale(0.92);\n  outline: 0;\n}\n.r-Button:focus {\n  outline: 0;\n}\n.spacing .r-Button {\n  margin-right: 5px;\n}\n.spacing .r-Button:last-child {\n  margin-right: 0px;\n}\n.text-center .r-Button span,\n.text-center .r-Button {\n  align-items: center;\n}\n/* --ghost button */\n.r-Button.ghost {\n  color: #888;\n  background: transparent;\n  border-color: transparent;\n}\n.r-Button.ghost:hover {\n  background: transparent;\n}\n/*Pointers*/\n.r-Button.pointer:before {\n  top: 50%;\n  left: -1px;\n}\n.r-Button.pointer:before {\n  border-color: inherit;\n}\n.r-Button.pointer:hover:before {\n  color: rgba(0, 0, 0, 0.8);\n}\n.r-Button.pointer:before {\n  border-width: 1px 0 0 1px;\n  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  top: 0;\n  left: 50%;\n}\n.r-Button.pointer:before {\n  background-color: inherit;\n  border-style: solid;\n  border-color: inherit;\n  position: absolute;\n  content: '';\n  -webkit-transform: rotate(45deg);\n  -ms-transform: rotate(45deg);\n  transform: rotate(45deg);\n  background-image: none;\n  z-index: 2;\n  width: .6666em;\n  height: .6666em;\n  -webkit-transition: background .1s ease;\n  transition: background .1s ease;\n}\n.r-Button.pointer.left:before {\n  border-width: 0 0 1px 1px;\n  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  bottom: auto;\n  right: auto;\n  top: 50%;\n  left: 0;\n}\n.r-Button.pointer.right:before {\n  top: 50%;\n  right: -1px;\n}\n.r-Button.pointer.right:before {\n  border-width: 1px 1px 0 0;\n  -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);\n  transform: translateX(50%) translateY(-50%) rotate(45deg);\n  top: 50%;\n  right: 0;\n  bottom: auto;\n  left: auto;\n}\n.r-Button {\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.r-Button.pointer {\n  overflow: visible;\n}\n.button-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n.r-Button.small:focus {\n  border: 1px solid transparent;\n}\n.r-Button .e-invisible {\n  opacity: 0;\n}\n.r-Button .e-shortcut {\n  position: absolute;\n  right: 0;\n  left: 0;\n  margin: auto;\n}\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21602,7 +21595,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var React = __webpack_require__(5);
 	var classNames = __webpack_require__(174);
-	__webpack_require__(187);
+	__webpack_require__(186);
 	
 	var CardHeader = function (_React$Component) {
 	    _inherits(CardHeader, _React$Component);
@@ -21674,13 +21667,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Card;
 
 /***/ },
-/* 187 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(188);
+	var content = __webpack_require__(187);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(178)(content, {});
@@ -21689,8 +21682,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(188, function() {
-				var newContent = __webpack_require__(188);
+			module.hot.accept(187, function() {
+				var newContent = __webpack_require__(187);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21700,7 +21693,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(177)();
@@ -21714,7 +21707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21729,7 +21722,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var React = __webpack_require__(5);
 	var Button_1 = __webpack_require__(179);
-	__webpack_require__(190);
+	__webpack_require__(189);
 	
 	var Checkbox = function (_React$Component) {
 	    _inherits(Checkbox, _React$Component);
@@ -21804,13 +21797,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Checkbox;
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(191);
+	var content = __webpack_require__(190);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(178)(content, {});
@@ -21819,8 +21812,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(191, function() {
-				var newContent = __webpack_require__(191);
+			module.hot.accept(190, function() {
+				var newContent = __webpack_require__(190);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21830,7 +21823,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 191 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(177)();
@@ -21844,7 +21837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 192 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21859,7 +21852,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var React = __webpack_require__(5);
 	var classNames = __webpack_require__(174);
-	__webpack_require__(193);
+	__webpack_require__(192);
 	var getAbsoluteHeight = function getAbsoluteHeight(el) {
 	    var styles = window.getComputedStyle(el);
 	    var margin = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
@@ -21907,13 +21900,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Door;
 
 /***/ },
-/* 193 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(194);
+	var content = __webpack_require__(193);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(178)(content, {});
@@ -21922,8 +21915,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(194, function() {
-				var newContent = __webpack_require__(194);
+			module.hot.accept(193, function() {
+				var newContent = __webpack_require__(193);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21933,7 +21926,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 194 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(177)();
@@ -21947,7 +21940,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 195 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21962,9 +21955,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var React = __webpack_require__(5);
 	var classNames = __webpack_require__(174);
-	var DropdownWrapper_1 = __webpack_require__(196);
-	var Selectable_1 = __webpack_require__(181);
-	var Input_1 = __webpack_require__(197);
+	var DropdownWrapper_1 = __webpack_require__(195);
+	var Selectable_1 = __webpack_require__(180);
+	var Input_1 = __webpack_require__(196);
 	var Button_1 = __webpack_require__(179);
 	var Layer_1 = __webpack_require__(203);
 	__webpack_require__(206);
@@ -22143,7 +22136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Dropdown;
 
 /***/ },
-/* 196 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22157,7 +22150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
-	var Selectable_1 = __webpack_require__(181);
+	var Selectable_1 = __webpack_require__(180);
 	
 	var DropdownWrapper = function (_React$Component) {
 	    _inherits(DropdownWrapper, _React$Component);
@@ -22241,7 +22234,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = DropdownWrapper;
 
 /***/ },
-/* 197 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -22255,9 +22248,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
-	var ReactDOM = __webpack_require__(180);
+	var ReactDOM = __webpack_require__(197);
 	var classNames = __webpack_require__(174);
-	var Selectable_1 = __webpack_require__(181);
+	var Selectable_1 = __webpack_require__(180);
 	var Pane_1 = __webpack_require__(198);
 	__webpack_require__(201);
 	
@@ -22466,6 +22459,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Input;
 
 /***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	module.exports = __webpack_require__(7);
+
+
+/***/ },
 /* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22672,6 +22674,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (props.flex) {
 	                flexStyle = {
 	                    'WebkitFlexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+	                    'flexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
 	                    'justifyContent': props.justify ? props.justify : 'flex-start',
 	                    'alignItems': props.align ? props.align : 'stretch',
 	                    'WebkitFlex': props.flex !== '' ? props.flex : null
@@ -23193,7 +23196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Grid {\n  width: 100%;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\n.r-Grid table,\n.r-Grid td,\n.r-Grid th {\n  vertical-align: middle;\n}\n.r-Grid caption,\n.r-Grid th,\n.r-Grid td {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n.r-Grid td.r-Grid__Row__Column {\n  padding: 10px;\n  color: #333;\n}\n.r-Grid__Header > tr > th {\n  border-bottom: 1px solid #ccc !important;\n  padding: 10px;\n}\n.e-NightMode .r-Grid__Row__Column {\n  color: #888 !important;\n}\n", ""]);
+	exports.push([module.id, ".r-Grid {\n  width: 100%;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\n.r-Grid table,\n.r-Grid td,\n.r-Grid th {\n  vertical-align: middle;\n}\n.r-Grid caption,\n.r-Grid th,\n.r-Grid td {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n.r-Grid td.r-Grid__Row__Column {\n  padding: 10px;\n  color: #333;\n}\n.r-Grid__Header > tr > th {\n  border-bottom: 1px solid #ccc !important;\n  padding: 10px;\n}\n.e-NightMode .r-Grid__Row__Column {\n  color: #888 !important;\n}\ntbody.r-Grid__Body > tr:nth-child(4n+1) {\n  cursor: pointer !important;\n  background: #E7E7E7 !important;\n}\ntbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n  background: #F5F5F5 !important;\n}\ntbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #D1ECFF !important;\n}\n.e-NightMode tbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #222 !important;\n}\n.e-NightMode tbody.r-Grid__Body > tr:nth-child(4n+1) {\n  background: #222 !important;\n}\n.e-NightMode tbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n  background: #333 !important;\n}\n", ""]);
 	
 	// exports
 
@@ -23281,7 +23284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var props = self.props;
 	            var headerTitle = void 0;
 	            var createColumns = function createColumns(item, index) {
-	                if (props.hideColumns && props.hideColumns.includes(item.name)) {
+	                if (props.hideColumns && props.hideColumns.length > 0 && props.hideColumns.includes(item.name)) {
 	                    return null;
 	                } else {
 	                    if (item.headerTemplate) {
@@ -23357,8 +23360,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23368,8 +23369,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
-	var Selectable_1 = __webpack_require__(181);
-	var Door_1 = __webpack_require__(192);
+	var Selectable_1 = __webpack_require__(180);
+	var Door_1 = __webpack_require__(191);
 	var GridRow_1 = __webpack_require__(216);
 	
 	var SelectableGridRow = function (_React$Component) {
@@ -23414,11 +23415,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function render() {
 	            var self = this;
 	            var props = self.props;
-	            var key = props.i;
+	            var i = props.i;
 	            return React.createElement(
 	                Door_1.default,
 	                { open: props.expanded },
-	                self.props.detailTemplate(key, self.props.dataSource[key])
+	                self.props.detailTemplate(i, self.props.dataSource[i])
 	            );
 	        }
 	    }]);
@@ -23472,6 +23473,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var Array = void 0;
 	            var self = this;
 	            var props = self.props;
 	            var columns = props.columns;
@@ -23481,6 +23483,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var rowArray = [];
 	            for (var key in self.props.dataSource) {
 	                var item = self.props.dataSource[key];
+	                Array.prototype.includes = function (obj) {
+	                    var i = this.length;
+	                    while (i--) {
+	                        if (this[i] === obj) {
+	                            return true;
+	                        }
+	                    }
+	                    return false;
+	                };
 	                var _selectedItem = void 0;
 	                if (this.state.selected) {
 	                    if (props.selectedKey) {
@@ -23489,14 +23500,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        _selectedItem = this.state.selected.includes(item);
 	                    }
 	                }
-	                rowArray.push([React.createElement(GridRow_1.default, { expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.includes(key), toggleDetailTemplate: this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null, key: key, i: key, selected: this.state.selected, item: item, selectedKey: this.props.selectedKey, dataSource: this.props.dataSource, columns: this.props.columns, onRowSelect: this.onRowSelect.bind(this), detailTemplate: this.props.detailTemplate, selectedItem: _selectedItem, hideColumns: this.props.hideColumns })], [React.createElement(
+	                rowArray.push([React.createElement(GridRow_1.default, { expanded: this.props.detailTemplateOpenOnSelect ? this.state.expandedRows.length > 0 && this.state.expandedRows[key] : false, toggleDetailTemplate: this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null, key: key, i: key, selected: this.state.selected, item: item, selectedKey: this.props.selectedKey, dataSource: this.props.dataSource, columns: this.props.columns, onRowSelect: this.onRowSelect.bind(this), detailTemplate: this.props.detailTemplate, selectedItem: _selectedItem, hideColumns: this.props.hideColumns })], [React.createElement(
 	                    'tr',
-	                    null,
+	                    { key: key },
 	                    React.createElement(
 	                        'td',
 	                        { className: 'p0', colSpan: this.props.columns.length + 1 },
 	                        React.createElement(SelectableGridRow, { onRowSelect: this.props.onRowSelect, item: item, selected: this.state.selected, selectedItem: _selectedItem, selectedKey: this.props.selectedKey }),
-	                        this.props.detailTemplate ? React.createElement(GridRowTemplate, _extends({ expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.includes(key), i: key }, props)) : null
+	                        this.props.detailTemplate ? React.createElement(GridRowTemplate, { detailTemplate: self.props.detailTemplate, dataSource: self.props.dataSource, expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false, i: key }) : null
 	                    )
 	                )]);
 	            }
@@ -23641,8 +23652,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        null,
 	                        dataSource[i][columns[x].name]
 	                    );
-	                } else if (columns[x].template) {
-	                    return columns[x].template(dataSource[i]);
+	                } else if (_typeof(dataSource[i][columns[x].name]) === 'object' && columns[x].template) {
+	                    return React.createElement(
+	                        'div',
+	                        null,
+	                        columns[x].template(dataSource[i])
+	                    );
 	                } else if (_typeof(dataSource[i][columns[x].name]) === 'object') {
 	                    return React.createElement(
 	                        'span',
@@ -23691,7 +23706,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var React = __webpack_require__(5);
 	var Toolbar_1 = __webpack_require__(219);
 	var Button_1 = __webpack_require__(179);
-	var Dropdown_1 = __webpack_require__(195);
+	var Dropdown_1 = __webpack_require__(194);
 	
 	var GridFooter = function (_React$Component) {
 	    _inherits(GridFooter, _React$Component);
@@ -23790,7 +23805,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                };
 	            }
 	            // ====================================
-	            var toolbarClass = classNames('r-Toolbar', { 'border': props.border }, { 'vertical': props.vertical }, { 'text-center': props.textCenter }, { 'no-radius': props.noRadius }, { 'spacing': props.spacing }, { 'w100': props.block }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'w100': props.fill }, { 'wh100': props.fill }, { 'flex': props.flex }, props.className);
+	            var toolbarClass = classNames('r-Toolbar', { 'border': props.border }, { 'vertical': props.vertical }, { 'text-center': props.textCenter }, { 'no-radius': props.noRadius }, { 'spacing': props.spacing }, { 'w100': props.block }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'w100': props.fill }, { 'wh100': props.fill }, { 'flush': props.flush }, { 'flex': props.flex }, { 'no-border': props.noBorder }, props.className);
 	            return React.createElement(
 	                'div',
 	                { ref: 'toolbar', style: Object.assign({}, flexStyle, props.style), className: toolbarClass },
@@ -23839,7 +23854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Toolbar {\n  display: inline-block;\n  vertical-align: middle;\n}\n.r-Toolbar.no-radius .r-Button {\n  border-radius: 0;\n  border-left-width: 1px;\n  border-right-width: 1px;\n}\n.r-Toolbar.no-radius .r-Button:first-child {\n  border-top-left-radius: 0px;\n  border-bottom-left-radius: 0px;\n  border-left-width: 1px;\n}\n.r-Toolbar.no-radius .r-Button:last-child {\n  border-top-right-radius: 0px;\n  border-bottom-right-radius: 0px;\n  border-right-width: 1px;\n}\n.r-Toolbar > .r-Button:last-child {\n  margin-right: 0;\n}\n.r-Toolbar.border > .r-Button:first-child {\n  border: 1px solid #ccc;\n}\n.r-Toolbar.border > .r-Button {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc;\n  border-right: 1px solid #ccc;\n}\n.r-Toolbar .selectable-border-gray {\n  border: 1px solid transparent !important;\n}\n.r-Toolbar.no-radius > .r-Input,\n.r-Toolbar.no-radius .r-Input {\n  border-radius: 0px;\n}\n.r-Toolbar.border > .r-Input,\n.r-Toolbar.border .r-Input {\n  border: 1px solid #ccc;\n}\n.r-Toolbar.border > .r-Dropdown .r-DropdownSelection {\n  border: 1px solid #ccc;\n  vertical-align: middle;\n}\n.r-Toolbar.border.no-radius > .r-Dropdown .r-DropdownSelection {\n  border-radius: 0 !important;\n}\n.r-Toolbar.vertical.border .r-Button {\n  border: 1px solid #ccc !important;\n  display: table-cell;\n  border-radius: 0 !important;\n  line-height: 19px;\n}\n.r-Toolbar.vertical .r-Button {\n  display: block;\n}\n.r-Toolbar.vertical.spacing .r-Button {\n  margin-bottom: 10px;\n}\n.r-Toolbar.vertical.spacing .r-Button:last-child {\n  margin-bottom: 0px;\n}\n.r-Toolbar.vertical.spacing .r-Input {\n  margin-bottom: 10px;\n}\n.r-Toolbar.vertical.spacing .r-Input:last-child {\n  margin-bottom: 0px;\n}\n", ""]);
+	exports.push([module.id, ".r-Toolbar {\n  display: inline-block;\n  vertical-align: middle;\n}\n.r-Toolbar.flush > .r-Button {\n  border-right: 0;\n  border-radius: 0;\n}\n.r-Toolbar.flush > .r-Button:nth-child(1) {\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.r-Toolbar.flush > .r-Button:last-child {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n  border-right: 1px solid #ccc;\n}\n.r-Toolbar.no-radius .r-Button {\n  border-radius: 0;\n}\n.r-Toolbar.no-radius .r-Button:first-child {\n  border-top-left-radius: 0px;\n  border-bottom-left-radius: 0px;\n  border-left-width: 1px;\n}\n.r-Toolbar.no-radius .r-Button:last-child {\n  border-top-right-radius: 0px;\n  border-bottom-right-radius: 0px;\n  border-right-width: 1px;\n}\n.r-Toolbar > .r-Button:last-child {\n  margin-right: 0;\n}\n.r-Toolbar.border > .r-Button:first-child {\n  border: 1px solid #ccc;\n}\n.r-Toolbar.border > .r-Button {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc;\n  border-right: 1px solid #ccc;\n}\n.r-Toolbar .selectable-border-gray {\n  border: 1px solid transparent !important;\n}\n.r-Toolbar.no-radius > .r-Input,\n.r-Toolbar.no-radius .r-Input {\n  border-radius: 0px;\n}\n.r-Toolbar.border > .r-Input,\n.r-Toolbar.border .r-Input {\n  border: 1px solid #ccc;\n}\n.r-Toolbar.border > .r-Dropdown .r-DropdownSelection {\n  border: 1px solid #ccc;\n  vertical-align: middle;\n}\n.r-Toolbar.border.no-radius > .r-Dropdown .r-DropdownSelection {\n  border-radius: 0 !important;\n}\n.r-Toolbar.vertical.border .r-Button {\n  border: 1px solid #ccc !important;\n  display: table-cell;\n  border-radius: 0 !important;\n  line-height: 19px;\n}\n.r-Toolbar.vertical .r-Button {\n  display: block;\n}\n.r-Toolbar.vertical.spacing .r-Button {\n  margin-bottom: 10px;\n}\n.r-Toolbar.vertical.spacing .r-Button:last-child {\n  margin-bottom: 0px;\n}\n.r-Toolbar.vertical.spacing .r-Input {\n  margin-bottom: 10px;\n}\n.r-Toolbar.vertical.spacing .r-Input:last-child {\n  margin-bottom: 0px;\n}\n.r-Toolbar.no-border > .r-Button {\n  border: 0 !important;\n}\n", ""]);
 	
 	// exports
 
@@ -24386,11 +24401,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
-	var ReactDOM = __webpack_require__(180);
+	var ReactDOM = __webpack_require__(197);
 	var Layer_1 = __webpack_require__(203);
 	var Shrink_1 = __webpack_require__(228);
 	var Toolbar_1 = __webpack_require__(219);
-	var Input_1 = __webpack_require__(197);
+	var Input_1 = __webpack_require__(196);
 	var Grid_1 = __webpack_require__(211);
 	var Pane_1 = __webpack_require__(198);
 	

@@ -1,39 +1,30 @@
 "use strict";
 var React = require('react');
-var ReactDOM = require('react-dom');
 var classNames = require('classnames');
 require('./Door.less');
+const getAbsoluteHeight = (el) => {
+    let styles = window.getComputedStyle(el);
+    let margin = parseFloat(styles.marginTop) +
+        parseFloat(styles.marginBottom);
+    return Math.ceil(el.offsetHeight + margin);
+};
 class Door extends React.Component {
-    componentDidMount() {
-        this.refDoor = ReactDOM.findDOMNode(this.refs["door"]);
-        const getAbsoluteHeight = (el) => {
-            let styles = window.getComputedStyle(el);
-            let margin = parseFloat(styles.marginTop) +
-                parseFloat(styles.marginBottom);
-            return Math.ceil(el.offsetHeight + margin);
+    constructor() {
+        super();
+        this.state = {
+            autoHeight: false,
+            height: 0
         };
-        if (this.props.open) {
-            this.refDoor.style.maxHeight = getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px';
-        }
     }
     render() {
         const self = this;
         const props = self.props;
-        const getAbsoluteHeight = (el) => {
-            let styles = window.getComputedStyle(el);
-            let margin = parseFloat(styles.marginTop) +
-                parseFloat(styles.marginBottom);
-            return Math.ceil(el.offsetHeight + margin);
-        };
-        let doorClass = classNames('r-Door', props.className);
-        let doorStyle = {
-            maxHeight: (props.open ? (this.refDoor ? getAbsoluteHeight(this.refDoor.childNodes[0]) + 'px' : 'auto') : '0px'),
-            overflow: 'hidden'
-        };
+        const state = self.state;
+        let doorClass = classNames('r-Door', { 'e-open': (props.open) }, { 'e-close': (!props.open) }, { 'e-autoHeight': (state.autoHeight) }, props.className);
         let doorContainerClass = classNames('r-Door__container');
-        return (<div ref="door" className={doorClass} style={doorStyle}>
+        return (<div ref="door" className={doorClass} style={{ height: this.state.maxHeight }}>
          <div className={doorContainerClass}>
-           {props.children}
+           {props.open ? props.children : null}
          </div>
        </div>);
     }

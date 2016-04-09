@@ -23,6 +23,7 @@ var TutorialModal_1 = require('./tutorial/TutorialModal');
 var TutorialPane_1 = require('./tutorial/TutorialPane');
 var TutorialSelectable_1 = require('./tutorial/TutorialSelectable');
 var TutorialShrink_1 = require('./tutorial/TutorialShrink');
+var TutorialToggle_1 = require('./tutorial/TutorialToggle');
 var TutorialToolbar_1 = require('./tutorial/TutorialToolbar');
 var TutorialTransform_1 = require('./tutorial/TutorialTransform');
 var TutorialWizard_1 = require('./tutorial/TutorialWizard');
@@ -112,7 +113,7 @@ class App extends React.Component {
                 newComponentArray.push(thisKey);
             }
         }
-        return (<Layer_1.default fill flex flow="row wrap" className={state.nightMode ? 'e-NightMode' : ''}>
+        return (<Layer_1.default fill scrollY flex flow="row wrap" className={state.nightMode ? 'e-NightMode' : ''}>
       <Door_1.default className="w100" open={state.viewDocumentation}>
         <Layer_1.default block>
           <div className="p10 w100 clearfix">
@@ -122,18 +123,20 @@ class App extends React.Component {
               {(() => {
             if (this.state.mobile) {
                 return (<Toolbar_1.default spacing right>
+                        <Button_1.default shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button_1.default>
                         <Button_1.default shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
-                          Get Started
+                          Start
                         </Button_1.default>
                       </Toolbar_1.default>);
             }
             else {
                 return (<Toolbar_1.default spacing right>
+                      <Button_1.default shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button_1.default>
                       <Button_1.default shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
                         Get Started
                       </Button_1.default>
-                      <Button_1.default icon="star" type="primary">
-                        Git Latest Version
+                      <Button_1.default href={'https://www.github.com/jisaac89/recoil'} icon="star" type="primary">
+                        Grab Latest Version
                       </Button_1.default>
                     </Toolbar_1.default>);
             }
@@ -184,7 +187,7 @@ class App extends React.Component {
                 return (<Wizard_1.default slideIndex={this.state.toggleMobileTutorial}>
                   <div className="p10">
                     <Input_1.default icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
-                    <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={18} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
+                    <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={19} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
                   </div>
                   <div className="p10">
                     <div className="mtb10">
@@ -206,6 +209,7 @@ class App extends React.Component {
                       <TutorialPane_1.default {...state}/>
                       <TutorialSelectable_1.default {...state}/>
                       <TutorialShrink_1.default {...state}/>
+                      <TutorialToggle_1.default {...state}/>
                       <TutorialToolbar_1.default {...state}/>
                       <TutorialTransform_1.default {...state}/>
                       <TutorialWizard_1.default {...state}/>
@@ -216,8 +220,8 @@ class App extends React.Component {
             else {
                 return (<div>
                   <div className="w30 p10 pr20 pull-left">
-                    <Input_1.default icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
-                    <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={18} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
+                    <Input_1.default icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
+                    <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={19} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
                   </div>
                   <div className="p10 w70 pull-left">
                     <Wizard_1.default slideIndex={state.slideIndex}>
@@ -236,6 +240,7 @@ class App extends React.Component {
                       <TutorialPane_1.default {...state}/>
                       <TutorialSelectable_1.default {...state}/>
                       <TutorialShrink_1.default {...state}/>
+                      <TutorialToggle_1.default {...state}/>
                       <TutorialToolbar_1.default {...state}/>
                       <TutorialTransform_1.default {...state}/>
                       <TutorialWizard_1.default {...state}/>

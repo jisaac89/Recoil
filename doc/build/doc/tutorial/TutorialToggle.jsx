@@ -1,11 +1,12 @@
 "use strict";
 var React = require('react');
 var Button_1 = require('../../src/components/Button/Button');
-var Card_1 = require('../../src/components/Card/Card');
 var Door_1 = require('../../src/components/Door/Door');
 var Emerge_1 = require('../../src/components/Emerge/Emerge');
 var Grid_1 = require('../../src/components/Grid/Grid');
 var Layer_1 = require('../../src/components/Layer/Layer');
+var Toolbar_1 = require('../../src/components/Toolbar/Toolbar');
+var Toggle_1 = require('../../src/components/Toggle/Toggle');
 const CardProperties = [
     {
         name: 'resize',
@@ -93,49 +94,78 @@ class TutorialCard extends React.Component {
         const props = self.props;
         let state = self.state;
         const columns = [
-            { name: 'name', width: 250 },
+            { name: 'name', width: 130 },
             { name: 'description' },
-            { name: 'type', width: 300 },
+            { name: 'type', width: 120 },
             { name: 'options', width: 250 }
         ];
         return (<Emerge_1.default>
         <Layer_1.default>
 
-          <h1>Card</h1>
+          <h1>Toggle</h1>
 
-          <div className="ptb20">
+          <Layer_1.default className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The material component is a google material enspired div, it has advanced feautures.</p>
-          </div>
+          </Layer_1.default>
 
-          <div className="pb20">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Examples</h2>
             <h3>Default</h3>
-            <div className="ptb20">
-              <Layer_1.default className="p10 dark">
-                <Card_1.default>
-                  This is an exampe of a Card.
-                </Card_1.default>
-              </Layer_1.default>
-            </div>
-          </div>
+            <Layer_1.default className="ptb20">
+              <Toggle_1.default />
+            </Layer_1.default>
+            <Layer_1.default className="pb20">
+              <p>With props checked passed as <strong>true</strong>.</p>
+              <Toggle_1.default className="mt10" checked={true}/>
+            </Layer_1.default>
 
-          <div className="pb20">
+            <h3>Toggle Numbers</h3>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Toggle_1.default columns={[15, 20, 25]}/>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <h3>Toggle Strings</h3>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Toggle_1.default columns={["S", "M", "L"]}/>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <h3>Toggle Colors</h3>
+            <p>To toggle a string of CSS based background colors or images just pass in the <strong>colors</strong> prop.</p>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Toggle_1.default type="colors" columns={['#FF5757', '#00A0DC', '#8D6CAB']}/>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <h3>Ghost Toggle</h3>
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default spacing>
+                <Toggle_1.default ghost columns={["Monday", "Tuesday", "Wednesday"]}/>
+              </Toolbar_1.default>
+            </Layer_1.default>
+          </Layer_1.default>
+
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Props</h2>
-            <div className="ptb10">
-              <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties}/>
-            </div>
-          </div>
+              <Layer_1.default className="ptb10">
+                <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties}/>
+              </Layer_1.default>
+          </Layer_1.default>
 
-          <div className="pb20">
+          <Layer_1.default className="pb20">
             <h2 className="pb10">Video</h2>
             <Button_1.default checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button_1.default>
             <Door_1.default open={this.state.showVideo}>
-              <div className="ptb10">
+              <Layer_1.default className="ptb10">
                 VIDEO
-              </div>
+              </Layer_1.default>
             </Door_1.default>
-          </div>
+          </Layer_1.default>
 
         </Layer_1.default>
       </Emerge_1.default>);

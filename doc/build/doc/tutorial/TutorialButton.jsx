@@ -182,8 +182,25 @@ class TutorialButton extends React.Component {
             <h3>Adding Icons</h3>
             <p>To add an icon to a button, just add an icon prop to it. Icon's are taken from font-awesome, you can omit the fa fa-, for example below it would be a Button compoent with a icon prop of "star"</p>
             <Layer_1.default className="ptb20">
-              <Toolbar_1.default spacing>
+              <Toolbar_1.default spacing className='mr10'>
                 <Button_1.default icon="star">Button with an icon</Button_1.default>
+                <Button_1.default icon="home" type="primary"></Button_1.default>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default flush>
+                <Button_1.default icon="fast-backward"></Button_1.default>
+                <Button_1.default icon="backward"></Button_1.default>
+                <Button_1.default icon="pause"></Button_1.default>
+              </Toolbar_1.default>
+            </Layer_1.default>
+
+            <Layer_1.default className="ptb20">
+              <Toolbar_1.default flush noRadius noBorder>
+                <Button_1.default icon="stop"></Button_1.default>
+                <Button_1.default icon="forward"></Button_1.default>
+                <Button_1.default icon="fast-forward"></Button_1.default>
               </Toolbar_1.default>
             </Layer_1.default>
 
@@ -228,11 +245,9 @@ class TutorialButton extends React.Component {
 
           <Layer_1.default className="pb20">
             <h2 className="pb10">Props</h2>
-            <Door_1.default open={this.state.showProps}>
-              <Layer_1.default className="ptb10">
-                <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties}/>
-              </Layer_1.default>
-            </Door_1.default>
+            <Layer_1.default className="ptb10">
+              <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties}/>
+            </Layer_1.default>
           </Layer_1.default>
 
           <Layer_1.default className="pb20">

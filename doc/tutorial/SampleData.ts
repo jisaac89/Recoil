@@ -58,7 +58,7 @@ const SampleData = [
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90sdfh",
     "component" : {
       "name": "Emerge",
-      "description": "Bring components into view if a certain event happens.",
+      "description": "Staggers children into view if a certain event happens.",
       "slideIndex": "6"
     }
   },
@@ -76,7 +76,7 @@ const SampleData = [
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90fbc",
     "component" : {
       "name": "Input",
-      "description": "Material inspired Card",
+      "description": "Advanced version of the HTML input control.",
       "slideIndex": "8"
     }
   },
@@ -85,7 +85,7 @@ const SampleData = [
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
       "name": "Layer",
-      "description": "Material inspired Card",
+      "description": "Advanced version of the standard HTML <div> tag.",
       "slideIndex": "9"
     }
   },
@@ -94,7 +94,7 @@ const SampleData = [
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
       "name": "Loading",
-      "description": "Material inspired Card",
+      "description": "Component that shows a loading state if a certain event happens.",
       "slideIndex": "10"
     }
   },
@@ -103,7 +103,7 @@ const SampleData = [
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
       "name": "Modal",
-      "description": "Material inspired Card",
+      "description": "A dialog box/pop up window.",
       "slideIndex": "11"
     }
   },
@@ -112,7 +112,7 @@ const SampleData = [
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
       "name": "Pane",
-      "description": "Material inspired Card",
+      "description": "A dialog box that appears relative to the parent from a certain direction.",
       "slideIndex": "12"
     }
   },
@@ -121,7 +121,7 @@ const SampleData = [
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
       "name": "Selectable",
-      "description": "Material inspired Card",
+      "description": "Allows any element to be Selectable.",
       "slideIndex": "13"
     }
   },
@@ -130,7 +130,7 @@ const SampleData = [
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
       "name": "Shrink",
-      "description": "Material inspired Card",
+      "description": "Shrink and disable an element if a certain event happens.",
       "slideIndex": "14"
     }
   },
@@ -138,8 +138,8 @@ const SampleData = [
     "index": 15,
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
-      "name": "Toolbar",
-      "description": "Material inspired Card",
+      "name": "Toggle",
+      "description": "Toggle between different states.",
       "slideIndex": "15"
     }
   },
@@ -147,8 +147,8 @@ const SampleData = [
     "index": 16,
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
-      "name": "Transform",
-      "description": "Material inspired Card",
+      "name": "Toolbar",
+      "description": "Gives advanced options to a group of input, dropdowns and buttons.",
       "slideIndex": "16"
     }
   },
@@ -156,9 +156,18 @@ const SampleData = [
     "index": 17,
     "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
     "component" : {
-      "name": "Wizard",
-      "description": "Material inspired Card",
+      "name": "Transform",
+      "description": "Move an element with CSS Transform if a certain event happens.",
       "slideIndex": "17"
+    }
+  },
+  {
+    "index": 18,
+    "guid": "d1f4326e-85dd-446d-93d1-1620efc6a90f",
+    "component" : {
+      "name": "Wizard",
+      "description": "A stanard slider.",
+      "slideIndex": "18"
     }
   }
 ];

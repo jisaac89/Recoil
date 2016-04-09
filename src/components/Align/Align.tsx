@@ -4,7 +4,7 @@ import './Align.less';
 
 interface IAlignProps {
   margin?: number;
-  data?: string[];
+  columns?: number[];
   maxCol? : number;
   children? : any;
   vertical? : boolean;
@@ -17,14 +17,14 @@ export default class Align extends React.Component<IAlignProps, {}>{
     margin: 0,
     vertical: false,
     maxCol: null,
-    data: null
+    columns: null
   }
 
   recursiveCloneChildren(children) {
     const self = this;
     const props = self.props;
     const margin = props.margin;
-    const data = props.data;
+    const columns = props.columns;
 
     let child;
 
@@ -71,7 +71,7 @@ export default class Align extends React.Component<IAlignProps, {}>{
     const self = this;
     const props = self.props;
     const margin = props.margin;
-    const data = props.data;
+    const columns = props.columns;
 
     let maxCol, colwidth, columnStyle;
 
@@ -95,8 +95,8 @@ export default class Align extends React.Component<IAlignProps, {}>{
     let createList = (item, index) => {
 
       if (props.maxCol) {
-        let dataIdx : any = props.data[index] ;
-        colwidth = (singleColWidth * dataIdx) + (margin * (dataIdx - 1));
+        let columnsIdx : any = props.columns[index] ;
+        colwidth = (singleColWidth * columnsIdx) + (margin * (columnsIdx - 1));
       }
 
       if (props.vertical) {

@@ -86,9 +86,9 @@ export default class TutorialDropdown extends React.Component<any,any>{
 
     const columns = [
       {name: 'name', width:250},
+      {name: 'description'},
       {name: 'type', width:300},
-      {name: 'options', width:250},
-      {name: 'description'}
+      {name: 'options', width:250}
     ]
 
     return (
@@ -111,15 +111,12 @@ export default class TutorialDropdown extends React.Component<any,any>{
           </Layer>
         </Layer>
 
-        <Layer className="ptb10">
-          <h2 className="pb10">Options</h2>
-          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-          <Door open={this.state.showProps}>
-            <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={DropdownProperties} />
-            </Layer>
-          </Door>
-        </Layer>
+        <div className="ptb10">
+          <h2 className="pb10">Props</h2>
+          <div className="ptb10">
+            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={DropdownProperties} />
+          </div>
+        </div>
 
         <Layer className="ptb10">
           <h2 className="pb10">Video</h2>

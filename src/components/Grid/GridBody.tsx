@@ -7,6 +7,8 @@ import Door from '../Door/Door';
 
 import GridRow from './GridRow';
 
+
+
 interface IGridProps {
   dataSource : any;
   numberPerPage ? : number;
@@ -71,11 +73,11 @@ class GridRowTemplate extends React.Component<IGridRowTemplateProps,IGridRowTemp
   render() {
     const self = this;
     const props = self.props;
-    const key = props.i;
+    const i = props.i;
 
     return (
       <Door open={props.expanded}>
-        {self.props.detailTemplate(key, self.props.dataSource[key])}
+        {self.props.detailTemplate(i, self.props.dataSource[i])}
       </Door>
     )
   }
@@ -122,6 +124,7 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
 
   render(){
 
+    let Array : any;
     const self = this;
     const props = self.props;
 
@@ -133,6 +136,16 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
     for (let key in self.props.dataSource) {
 
       let item = self.props.dataSource[key];
+
+      Array.prototype.includes = function(obj) {
+        var i = this.length;
+        while (i--) {
+            if (this[i] === obj) {
+                return true;
+            }
+        }
+        return false;
+      }
 
 
       let selectedItem;
@@ -146,7 +159,7 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
 
       rowArray.push(
         [<GridRow
-          expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.includes(key)}
+          expanded={this.props.detailTemplateOpenOnSelect ? this.state.expandedRows.length > 0 && this.state.expandedRows[key] : false}
           toggleDetailTemplate={this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null}
           key={key}
           i={key}
@@ -160,10 +173,10 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
           selectedItem={selectedItem}
           hideColumns={this.props.hideColumns}
         />],
-        [<tr>
+        [<tr key={key}>
           <td className="p0" colSpan={this.props.columns.length + 1}>
             <SelectableGridRow onRowSelect={this.props.onRowSelect} item={item} selected={this.state.selected} selectedItem={selectedItem} selectedKey={this.props.selectedKey} />
-            {this.props.detailTemplate ? <GridRowTemplate expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.includes(key)} i={key} {...props} />  : null}
+            {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false} i={key}  />  : null}
           </td>
         </tr>]
       )

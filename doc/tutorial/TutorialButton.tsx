@@ -204,8 +204,25 @@ export default class TutorialButton extends React.Component<any,any>{
             <h3>Adding Icons</h3>
             <p>To add an icon to a button, just add an icon prop to it. Icon's are taken from font-awesome, you can omit the fa fa-, for example below it would be a Button compoent with a icon prop of "star"</p>
             <Layer className="ptb20">
-              <Toolbar spacing>
+              <Toolbar spacing className='mr10'>
                 <Button icon="star">Button with an icon</Button>
+                <Button icon="home" type="primary"></Button>
+              </Toolbar>
+            </Layer>
+
+            <Layer className="ptb20">
+              <Toolbar flush>
+                <Button icon="fast-backward"></Button>
+                <Button icon="backward"></Button>
+                <Button icon="pause"></Button>
+              </Toolbar>
+            </Layer>
+
+            <Layer className="ptb20">
+              <Toolbar flush noRadius noBorder>
+                <Button icon="stop"></Button>
+                <Button icon="forward"></Button>
+                <Button icon="fast-forward"></Button>
               </Toolbar>
             </Layer>
 
@@ -250,11 +267,9 @@ export default class TutorialButton extends React.Component<any,any>{
 
           <Layer className="pb20">
             <h2 className="pb10">Props</h2>
-            <Door open={this.state.showProps}>
-              <Layer className="ptb10">
-                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties} />
-              </Layer>
-            </Door>
+            <Layer className="ptb10">
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties} />
+            </Layer>
           </Layer>
 
           <Layer className="pb20">

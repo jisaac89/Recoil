@@ -29,6 +29,7 @@ import TutorialModal from './tutorial/TutorialModal';
 import TutorialPane from './tutorial/TutorialPane';
 import TutorialSelectable from './tutorial/TutorialSelectable';
 import TutorialShrink from './tutorial/TutorialShrink';
+import TutorialToggle from './tutorial/TutorialToggle';
 import TutorialToolbar from './tutorial/TutorialToolbar';
 import TutorialTransform from './tutorial/TutorialTransform';
 import TutorialWizard from './tutorial/TutorialWizard';
@@ -109,11 +110,11 @@ export default class App extends React.Component<any, any> {
   }
 
 
-    toggleMobileTutorial(){
-      this.setState({
-        toggleMobileTutorial: this.state.toggleMobileTutorial === 0 ? 1 : 0
-      })
-    }
+  toggleMobileTutorial(){
+    this.setState({
+      toggleMobileTutorial: this.state.toggleMobileTutorial === 0 ? 1 : 0
+    })
+  }
 
 
   render() {
@@ -143,7 +144,7 @@ export default class App extends React.Component<any, any> {
     }
 
     return (
-      <Layer fill flex flow="row wrap" className={state.nightMode ? 'e-NightMode' : ''}>
+      <Layer fill scrollY flex flow="row wrap" className={state.nightMode ? 'e-NightMode' : ''}>
       <Door className="w100" open={state.viewDocumentation}>
         <Layer block>
           <div className="p10 w100 clearfix">
@@ -154,19 +155,21 @@ export default class App extends React.Component<any, any> {
                 if (this.state.mobile) {
                     return (
                       <Toolbar spacing right>
+                        <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button>
                         <Button shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
-                          Get Started
+                          Start
                         </Button>
                       </Toolbar>
                     )
                 } else {
                   return (
                     <Toolbar spacing right>
+                      <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button>
                       <Button shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
                         Get Started
                       </Button>
-                      <Button icon="star" type="primary">
-                        Git Latest Version
+                      <Button href={'https://www.github.com/jisaac89/recoil'} icon="star" type="primary">
+                        Grab Latest Version
                       </Button>
                     </Toolbar>
                   )
@@ -226,7 +229,7 @@ export default class App extends React.Component<any, any> {
                       hideHeader
                       dataSource={newComponentArray}
                       columns={columns}
-                      numberPerPage={18}
+                      numberPerPage={19}
                       onRowSelect={this.gotoTutorial.bind(this)}
                       detailTemplateOpenOnSelect
                       detailTemplate={this.detailTemplate.bind(this)}
@@ -254,6 +257,7 @@ export default class App extends React.Component<any, any> {
                       <TutorialPane {...state} />
                       <TutorialSelectable {...state} />
                       <TutorialShrink {...state} />
+                      <TutorialToggle {...state} />
                       <TutorialToolbar {...state} />
                       <TutorialTransform {...state} />
                       <TutorialWizard {...state} />
@@ -265,12 +269,12 @@ export default class App extends React.Component<any, any> {
               return (
                   <div>
                   <div className="w30 p10 pr20 pull-left">
-                    <Input icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
+                    <Input icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
                     <Grid
                       hideHeader
                       dataSource={newComponentArray}
                       columns={columns}
-                      numberPerPage={18}
+                      numberPerPage={19}
                       onRowSelect={this.gotoTutorial.bind(this)}
                       detailTemplateOpenOnSelect
                       detailTemplate={this.detailTemplate.bind(this)}
@@ -295,6 +299,7 @@ export default class App extends React.Component<any, any> {
                       <TutorialPane {...state} />
                       <TutorialSelectable {...state} />
                       <TutorialShrink {...state} />
+                      <TutorialToggle {...state} />
                       <TutorialToolbar {...state} />
                       <TutorialTransform {...state} />
                       <TutorialWizard {...state} />

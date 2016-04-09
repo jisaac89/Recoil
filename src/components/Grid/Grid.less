@@ -46,10 +46,7 @@
     vertical-align: middle;
 }
 
-tr.r-Grid__Row:hover {
-    // background: #fff;
-    // cursor: pointer;
-}
+
 
 .r-Grid td.r-Grid__Row__Column{
   padding:@grid-cell-padding;
@@ -65,4 +62,33 @@ tr.r-Grid__Row:hover {
 
 .e-NightMode .r-Grid__Row__Column, {
     color: #888 !important;
+}
+
+
+
+tbody.r-Grid__Body > tr:nth-child(4n+1) {
+    cursor: pointer !important;
+    background: #E7E7E7 !important;
+}
+
+
+tbody.r-Grid__Body > tr:hover {
+  cursor: pointer !important;
+  background: #F5F5F5 !important;
+}
+
+tbody.r-Grid__Body > .r-Grid__Row.e-selected {
+  background: #D1ECFF !important;
+}
+
+.e-NightMode tbody.r-Grid__Body > .r-Grid__Row.e-selected {
+  background: #222 !important;
+}
+.e-NightMode tbody.r-Grid__Body > tr:nth-child(4n+1){
+  background: #222 !important;
+}
+
+.e-NightMode tbody.r-Grid__Body > tr:hover {
+  cursor: pointer !important;
+  background: #333 !important;
 }

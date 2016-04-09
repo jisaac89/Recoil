@@ -31,6 +31,7 @@ interface IGridProps {
   rowIsSelectable ? : boolean;
   selectedKey ? : string;
   rowIsSelectableType? : string;
+  onSelect? : any;
 }
 
 interface IGridState {

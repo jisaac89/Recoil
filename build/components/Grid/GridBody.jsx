@@ -1,9 +1,15 @@
 "use strict";
 var React = require('react');
 var Selectable_1 = require('../Selectable/Selectable');
-var Layer_1 = require('../Layer/Layer');
 var Door_1 = require('../Door/Door');
 var GridRow_1 = require('./GridRow');
+class SelectableGridRow extends React.Component {
+    render() {
+        return (<div className="w100 posrel">
+        <Selectable_1.default checked={this.props.selectedItem}/>
+      </div>);
+    }
+}
 class GridRowTemplate extends React.Component {
     constructor() {
         super();
@@ -14,21 +20,18 @@ class GridRowTemplate extends React.Component {
     render() {
         const self = this;
         const props = self.props;
-        const key = props.i;
-        return (<tr>
-        <td className="p0" colSpan={this.props.columns.length + 1}>
-          <Door_1.default open={props.expanded}>
-            {self.props.detailTemplate(key, self.props.dataSource[key])}
-          </Door_1.default>
-        </td>
-      </tr>);
+        const i = props.i;
+        return (<Door_1.default open={props.expanded}>
+        {self.props.detailTemplate(i, self.props.dataSource[i])}
+      </Door_1.default>);
     }
 }
 class GridBody extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            expandedRows: []
+            expandedRows: [],
+            selected: props.selected || []
         };
     }
     toggleDetailTemplate(i) {
@@ -38,32 +41,59 @@ class GridBody extends React.Component {
             expandedRows: expanded
         });
     }
+    onRowSelect(item) {
+        if (this.props.rowIsSelectable) {
+            let selected;
+            if (this.props.rowIsSelectableType === 'single') {
+                selected = [];
+            }
+            else {
+                selected = this.state.selected;
+            }
+            selected.push(item);
+            this.setState({
+                selected: selected
+            });
+        }
+        else if (this.props.onRowSelect) {
+            this.props.onRowSelect(item);
+        }
+    }
     render() {
+        let Array;
         const self = this;
         const props = self.props;
         let { columns, dataSource } = props;
+        let selectedItem;
         let rowArray = [];
         for (let key in self.props.dataSource) {
-            if (props.detailTemplate) {
-                rowArray.push([<GridRow_1.default expanded={this.state.expandedRows.includes(key)} toggleDetailTemplate={this.toggleDetailTemplate.bind(this)} key={key} i={key} {...props}/>], [<tr>
-            <td className="p0" colSpan={this.props.columns.length + 1}>
-              <Layer_1.default>
-                <Selectable_1.default checked={this.state.expandedRows.includes(key)}/>
-              </Layer_1.default>
-            </td>
-          </tr>], [<GridRowTemplate expanded={this.state.expandedRows.includes(key)} i={key} {...props}/>]);
+            let item = self.props.dataSource[key];
+            Array.prototype.includes = function (obj) {
+                var i = this.length;
+                while (i--) {
+                    if (this[i] === obj) {
+                        return true;
+                    }
+                }
+                return false;
+            };
+            let selectedItem;
+            if (this.state.selected) {
+                if (props.selectedKey) {
+                    selectedItem = this.props.selected.includes(item[this.props.selectedKey]);
+                }
+                else {
+                    selectedItem = this.state.selected.includes(item);
+                }
             }
-            else {
-                rowArray.push([<GridRow_1.default detailTemplate={props.detailTemplate} key={key} i={key} {...props}/>], [<tr>
-            <td className="p0" colSpan={this.props.columns.length + 1}>
-              <Layer_1.default>
-                <Selectable_1.default checked={this.state.expandedRows.includes(key)}/>
-              </Layer_1.default>
-            </td>
-          </tr>]);
-            }
+            rowArray.push([<GridRow_1.default expanded={this.props.detailTemplateOpenOnSelect ? this.state.expandedRows.length > 0 && this.state.expandedRows[key] : false} toggleDetailTemplate={this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null} key={key} i={key} selected={this.state.selected} item={item} selectedKey={this.props.selectedKey} dataSource={this.props.dataSource} columns={this.props.columns} onRowSelect={this.onRowSelect.bind(this)} detailTemplate={this.props.detailTemplate} selectedItem={selectedItem} hideColumns={this.props.hideColumns}/>], [<tr key={key}>
+          <td className="p0" colSpan={this.props.columns.length + 1}>
+            <SelectableGridRow onRowSelect={this.props.onRowSelect} item={item} selected={this.state.selected} selectedItem={selectedItem} selectedKey={this.props.selectedKey}/>
+            {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false} i={key}/> : null}
+          </td>
+        </tr>]);
         }
-        return (<tbody className="r-Grid__Body" style={{ height: this.props.height }}>
+        return (<tbody className="r-Grid__Body w100" style={{ height: this.props.height }}>
         {rowArray}
       </tbody>);
     }

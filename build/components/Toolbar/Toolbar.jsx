@@ -16,7 +16,7 @@ class Toolbar extends React.Component {
                 'WebkitFlex': props.flex !== '' ? props.flex : null
             };
         }
-        let toolbarClass = classNames('r-Toolbar', { 'border': (props.border) }, { 'vertical': (props.vertical) }, { 'text-center': (props.textCenter) }, { 'no-radius': (props.noRadius) }, { 'spacing': (props.spacing) }, { 'w100': (props.block) }, { 'pull-left': (props.left) }, { 'pull-right': (props.right) }, { 'w100': (props.fill) }, { 'wh100': (props.fill) }, { 'flex': (props.flex) }, props.className);
+        let toolbarClass = classNames('r-Toolbar', { 'border': (props.border) }, { 'vertical': (props.vertical) }, { 'text-center': (props.textCenter) }, { 'no-radius': (props.noRadius) }, { 'spacing': (props.spacing) }, { 'w100': (props.block) }, { 'pull-left': (props.left) }, { 'pull-right': (props.right) }, { 'w100': (props.fill) }, { 'wh100': (props.fill) }, { 'flush': (props.flush) }, { 'flex': (props.flex) }, { 'no-border': (props.noBorder) }, props.className);
         return (<div ref="toolbar" style={Object.assign({}, flexStyle, props.style)} className={toolbarClass}>
         {props.children}
       </div>);

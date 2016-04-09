@@ -95,10 +95,10 @@ export default class TutorialEmerge extends React.Component<any,any>{
     let state = self.state;
 
     const columns = [
-      {name: 'name', width:250},
-      {name: 'type', width:300},
-      {name: 'options', width:250},
-      {name: 'description'}
+      {name: 'name', width:150},
+      {name: 'description'},
+      {name: 'type', width:100},
+      {name: 'options', width:250}
     ]
 
     return (
@@ -135,13 +135,10 @@ export default class TutorialEmerge extends React.Component<any,any>{
         </Layer>
 
         <Layer className="pb20">
-          <h2 className="pb10">Options</h2>
-          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-          <Door open={this.state.showProps}>
-            <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={EmergeProperties} />
-            </Layer>
-          </Door>
+          <h2 className="pb10">Props</h2>
+          <Layer className="ptb10">
+            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={EmergeProperties} />
+          </Layer>
         </Layer>
 
         <Layer className="pb20">

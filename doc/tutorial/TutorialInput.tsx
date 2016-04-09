@@ -142,9 +142,9 @@ export default class TutorialInput extends React.Component<any,any>{
 
     const columns = [
       {name: 'name', width:250},
+      {name: 'description'},
       {name: 'type', width:300},
-      {name: 'options', width:250},
-      {name: 'description'}
+      {name: 'options', width:250}
     ]
 
     return (
@@ -169,12 +169,9 @@ export default class TutorialInput extends React.Component<any,any>{
 
       <Layer className="ptb10">
         <h2 className="pb10">Options</h2>
-        <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-        <Door open={this.state.showProps}>
-          <Layer className="ptb10">
-            <Grid open={this.state.showProps} numberPerPage={5} sortable columns={columns} dataSource={InputProperties} />
-          </Layer>
-        </Door>
+        <Layer className="ptb10">
+          <Grid open={this.state.showProps} numberPerPage={5} sortable columns={columns} dataSource={InputProperties} />
+        </Layer>
       </Layer>
 
       <Layer className="ptb10">

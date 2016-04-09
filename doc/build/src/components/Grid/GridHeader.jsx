@@ -35,7 +35,7 @@ class GridHeader extends React.Component {
         const props = self.props;
         let headerTitle;
         let createColumns = (item, index) => {
-            if (props.hideColumns && props.hideColumns.includes(item.name)) {
+            if (props.hideColumns && props.hideColumns.length > 0 && props.hideColumns.includes(item.name)) {
                 return null;
             }
             else {

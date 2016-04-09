@@ -114,10 +114,10 @@ export default class TutorialGrid extends React.Component<any,any>{
     let state = self.state;
 
     const columns = [
-      {name: 'name', width:250},
-      {name: 'type', width:300},
-      {name: 'options', width:250},
-      {name: 'description'}
+      {name: 'name', width:100},
+      {name: 'description'},
+      {name: 'type', width:200},
+      {name: 'options', width:250}
     ]
 
     return (
@@ -126,39 +126,34 @@ export default class TutorialGrid extends React.Component<any,any>{
 
         <h1>Grid</h1>
 
-        <Layer className="ptb10">
+        <div className="ptb10">
           <h2 className="pb10">Description</h2>
           <p>The Grid component is a simple data-grid that currently takes in a object.</p>
-        </Layer>
+        </div>
 
-        <Layer className="ptb10">
+        <div className="ptb10">
           <h2 className="pb10">Examples</h2>
-          <Layer className="ptb10">
-            <Layer className="p10 light">
-              <Grid open={true} numberPerPage={20} hideHeader={true} columns={columns} dataSource={GridProperties} />
-            </Layer>
-          </Layer>
-        </Layer>
+          <div className="ptb10">
+            <Grid open={true} numberPerPage={20} dataSource={GridProperties} />
+          </div>
+        </div>
 
-        <Layer className="ptb10">
-          <h2 className="pb10">Options</h2>
-          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-          <Door open={this.state.showProps}>
-            <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={GridProperties} />
-            </Layer>
-          </Door>
-        </Layer>
+        <div className="ptb10">
+          <h2 className="pb10">Props</h2>
+          <div className="ptb10">
+            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={GridProperties} />
+          </div>
+        </div>
 
-        <Layer className="ptb10">
+        <div className="ptb10">
           <h2 className="pb10">Video</h2>
           <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
           <Door open={this.state.showVideo}>
-            <Layer className="ptb10">
+            <div className="ptb10">
               VIDEO
-            </Layer>
+            </div>
           </Door>
-        </Layer>
+        </div>
 
       </Layer>
       </Emerge>

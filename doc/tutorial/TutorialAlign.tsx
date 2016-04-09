@@ -27,7 +27,7 @@ const AlignProperties = [
     description: 'Defines the margin between the aligned components.'
   },
   {
-    name :'data',
+    name :'columns',
     type: 'array of numbers',
     options: '',
     description: 'Defines how columns are layed out.'
@@ -104,31 +104,31 @@ export default class TutorialAlign extends React.Component<any,any>{
 
             <h3>Default</h3>
             <p>By default, the Align component aligns elements horizontally</p>
-            <Layer className="ptb20">
-              <Layer className="p10 dark">
+            <div className="ptb20">
+              <div className="p10 dark">
                 <Align margin={1}>
                   <Layer type="light" className="p20">Aligned Element 1</Layer>
                   <Layer type="light" className="p20">Aligned Element 2</Layer>
                 </Align>
-              </Layer>
-            </Layer>
+              </div>
+            </div>
 
             <h3>Vertical</h3>
             <p>To align elements vertically, pass the <strong>vertical</strong> prop.</p>
-            <Layer className="ptb20">
-              <Layer className="p10 dark h200px">
+            <div className="ptb20">
+              <div className="p10 dark h200px">
                 <Align vertical margin={5}>
                   <Layer fill type="light" className="p20">Aligned Element 1</Layer>
                   <Layer fill type="light" className="p20">Aligned Element 2</Layer>
                   <Layer fill type="light" className="p20">Aligned Element 3</Layer>
                 </Align>
-              </Layer>
-            </Layer>
+              </div>
+            </div>
 
             <h3>Multiple Aligns</h3>
             <p>Below shows an example using multiple Align components to achieve the desired effect.</p>
-            <Layer className="ptb20">
-              <Layer className="p10 dark h200px">
+            <div className="ptb20">
+              <div className="p10 dark h200px">
                 <Align margin={1}>
                   <Layer fill>
                     <Align margin={5} vertical>
@@ -152,8 +152,22 @@ export default class TutorialAlign extends React.Component<any,any>{
                     </Align>
                   </Layer>
                 </Align>
+              </div>
+            </div>
+
+            <h3>Custom Columns</h3>
+            <p>To align columns with custom sizes, pass in a maxCol prop which accepts the max number of columns you would like. Then pass in the columns prop to define an array of numbers.</p>
+            <p>So the example below, would have the props <strong>maxCol={4}</strong> and <strong>columns={[1,3]}</strong> <strong>margin={3}</strong></p>
+            <div className="ptb20">
+              <div className="p10 dark h200px">
+              <Layer fill>
+                <Align maxCol={4} columns={[1,3]} margin={1}>
+                  <Layer type="light" className="p10" fill>1</Layer>
+                  <Layer type="light" className="p10" fill>2</Layer>
+                </Align>
               </Layer>
-            </Layer>
+              </div>
+            </div>
           </Layer>
 
           <Layer className="pb20">

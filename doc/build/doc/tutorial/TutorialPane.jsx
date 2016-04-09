@@ -77,9 +77,9 @@ class TutorialPane extends React.Component {
         let state = self.state;
         const columns = [
             { name: 'name', width: 250 },
+            { name: 'description' },
             { name: 'type', width: 300 },
-            { name: 'options', width: 250 },
-            { name: 'description' }
+            { name: 'options', width: 250 }
         ];
         return (<Emerge_1.default>
         <Layer_1.default>
@@ -113,12 +113,9 @@ class TutorialPane extends React.Component {
 
           <Layer_1.default className="ptb10">
             <h2 className="pb10">Options</h2>
-            <Button_1.default checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button_1.default>
-            <Door_1.default open={this.state.showProps}>
-              <Layer_1.default className="ptb10">
-                <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={PaneProperties}/>
-              </Layer_1.default>
-            </Door_1.default>
+            <Layer_1.default className="ptb10">
+              <Grid_1.default open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={PaneProperties}/>
+            </Layer_1.default>
           </Layer_1.default>
 
           <Layer_1.default className="ptb10">
