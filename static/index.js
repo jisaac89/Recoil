@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "27305c222f8efe37859c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "24b7d1638ae67d3de226"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -23483,15 +23483,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var rowArray = [];
 	            for (var key in self.props.dataSource) {
 	                var item = self.props.dataSource[key];
-	                Array.prototype.includes = function (obj) {
-	                    var i = this.length;
-	                    while (i--) {
-	                        if (this[i] === obj) {
-	                            return true;
-	                        }
-	                    }
-	                    return false;
-	                };
 	                var _selectedItem = void 0;
 	                if (this.state.selected) {
 	                    if (props.selectedKey) {

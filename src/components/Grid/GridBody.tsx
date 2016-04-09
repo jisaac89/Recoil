@@ -137,17 +137,6 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
 
       let item = self.props.dataSource[key];
 
-      Array.prototype.includes = function(obj) {
-        var i = this.length;
-        while (i--) {
-            if (this[i] === obj) {
-                return true;
-            }
-        }
-        return false;
-      }
-
-
       let selectedItem;
       if (this.state.selected) {
         if (props.selectedKey) {

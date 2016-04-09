@@ -60,6 +60,7 @@ class GridBody extends React.Component {
         }
     }
     render() {
+        let Array;
         const self = this;
         const props = self.props;
         let { columns, dataSource } = props;
@@ -67,15 +68,6 @@ class GridBody extends React.Component {
         let rowArray = [];
         for (let key in self.props.dataSource) {
             let item = self.props.dataSource[key];
-            Array.prototype.includes = function (obj) {
-                var i = this.length;
-                while (i--) {
-                    if (this[i] === obj) {
-                        return true;
-                    }
-                }
-                return false;
-            };
             let selectedItem;
             if (this.state.selected) {
                 if (props.selectedKey) {
