@@ -28,6 +28,7 @@ interface IInputProps {
   scrollHeight?: any;
   focusOnMount? : any;
   focusDelay? : any;
+  size? : string;
 }
 
 interface IInputState {
@@ -177,6 +178,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       'r-Input',
       {'w100' : (props.block)},
       {'checked' : (this.state.checked)},
+      props.size,
       props.className
     );
 

@@ -7,9 +7,10 @@ interface IBadgeProps {
   background ?: string;
   border ?: string;
   type?: string;
-  title? : string;
+  title? : any;
   children? : any;
   ghost ? : boolean;
+  className? : any;
 }
 
 export default class Badge extends React.Component<IBadgeProps,any> {
@@ -33,7 +34,8 @@ export default class Badge extends React.Component<IBadgeProps,any> {
     let itemClass= classNames(
       'r-Badge__item',
       props.type,
-      {'ghost': (props.ghost)}
+      {'ghost': (props.ghost)},
+      this.props.className
     );
 
     return (

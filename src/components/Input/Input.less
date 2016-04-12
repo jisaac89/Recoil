@@ -10,6 +10,84 @@
   .transition(all 200ms ease-in);
 }
 
+
+// sizes
+
+// small
+
+.r-Input.small,
+.r-Input.small > .r-Input__container,
+.r-Input.small > .r-Input__container > input{
+  height: 26px;
+}
+
+.r-Input.small > .r-Input__container > small{
+  top:8px;
+}
+
+.r-Input.small > .r-Input__container > small,
+.r-Input.small > .r-Input__container > input
+{
+  font-size:12px;
+}
+
+.r-Input.small > .r-Input__container > small + small {
+    left: 20px;
+    pointer-events: none;
+    top: 5px;
+}
+
+.r-Input.small.checked .r-Input__container > small {
+    top: 0px !important;
+}
+
+// large
+
+.r-Input.large,
+.r-Input.large > .r-Input__container,
+.r-Input.large > .r-Input__container > input{
+  height: 40px;
+}
+
+.r-Input.large > .r-Input__container > small{
+  top:12px;
+}
+
+// xlarge
+
+.r-Input.xlarge,
+.r-Input.xlarge > .r-Input__container,
+.r-Input.xlarge > .r-Input__container > input{
+  height: 62px;
+}
+
+.r-Input.xlarge > .r-Input__container > small{
+  top:22px;
+}
+
+.r-Input.xlarge > .r-Input__container > small,
+.r-Input.xlarge > .r-Input__container > input
+{
+  font-size:25px;;
+}
+
+.r-Input.xlarge.checked .r-Input__container > small {
+    top: 4px;
+    font-size: 83%;
+}
+
+.r-Input.xlarge.checked .r-Input__container > .writing {
+    top: 38px;
+}
+
+.r-Input.xlarge > .r-Input__container > small + small {
+    left: 35px;
+    pointer-events: none;
+    top: 23px ;
+}
+
+//
+
 textarea {
   height: 22px;
   outline: 0;
@@ -40,8 +118,6 @@ textarea {
 .r-Input__container input[type='text'],
 .r-Input__container input[type='password'] {
   border: 1px solid @default-border;
-  position:absolute;
-  height: 100%;
   width:100%;
   left:0;
   right:0;
@@ -80,7 +156,6 @@ textarea {
   padding-top: 10px;
   color:@input-color;
   border-radius:@input-border-radius;
-  opacity: 0;
   font-size: 16px;
   border: 0;
   background-color: @input-background;

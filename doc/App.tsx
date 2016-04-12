@@ -64,7 +64,8 @@ export default class App extends React.Component<any, any> {
 
   toggleDocumentation(){
     this.setState({
-      viewDocumentation: this.state.viewDocumentation ? false : true
+      viewDocumentation: this.state.viewDocumentation ? false : true,
+      toggleMobileTutorial: 0
     })
   }
 
@@ -82,7 +83,7 @@ export default class App extends React.Component<any, any> {
           if (this.state.mobile) {
               return (
                 <div className="mtb10">
-                  <small><a onClick={this.toggleMobileTutorial.bind(this)}>View Documentation</a></small>
+                  <Button icon="eye" type="primary" size="small" onClick={this.toggleMobileTutorial.bind(this)}>View Documentation</Button>
                 </div>
               )
           }
@@ -226,7 +227,7 @@ export default class App extends React.Component<any, any> {
           <hr className="rainbow-line" />
         </div>
       </Door>
-      <Door overflow className="w100" open={state.viewDocumentation}>
+      <Door overflow className="w100 mb100" open={state.viewDocumentation}>
         <Layer>
           {(()=>{
             if (this.state.mobile) {
@@ -248,7 +249,7 @@ export default class App extends React.Component<any, any> {
                   </div>
                   <div className="p10">
                     <div className="mtb10">
-                      <small><a onClick={this.toggleMobileTutorial.bind(this)}>Back to components</a></small>
+                      <Button pointer="left" type="primary" size="small" onClick={this.toggleMobileTutorial.bind(this)}>Back to components</Button>
                     </div>
                     <Wizard slideIndex={state.slideIndex}>
                       <TutorialAlign {...state}  />
@@ -323,9 +324,23 @@ export default class App extends React.Component<any, any> {
               )
             }
           })()}
+
         </Layer>
       </Door>
-
+          <Pane fixed open={this.state.toggleMobileTutorial === 1} direction="bottom">
+              <Layer fill className="w100 light p10 shadow">
+                <Toolbar block>
+                  {(()=>{
+                    if (SampleData[this.state.slideIndex - 1]) {
+                      return (
+                        <Button icon="chevron-left" onClick={this.gotoTutorial.bind(this, SampleData[this.state.slideIndex - 1])}>{SampleData[this.state.slideIndex - 1].component.name}</Button>
+                      )
+                    }
+                  })()}
+                  <Button icon="chevron-right" onClick={this.gotoTutorial.bind(this, SampleData[this.state.slideIndex + 1])} right>{SampleData[this.state.slideIndex + 1].component.name}</Button>
+                </Toolbar>
+              </Layer>
+          </Pane>
       </Layer>
     )
   }

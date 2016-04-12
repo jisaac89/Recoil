@@ -11,6 +11,7 @@ interface IPaneProps {
   offset? : any;
   wrapperClick? : any;
   children? : any;
+  fixed ? : boolean;
 }
 
 export default class Pane extends React.Component<IPaneProps, {}>{
@@ -30,7 +31,8 @@ export default class Pane extends React.Component<IPaneProps, {}>{
     let paneClass = classNames(
       'r-Pane',
       {'e-wrapper': (props.wrapper)},
-      {'e-open': (props.open)}
+      {'e-open': (props.open)},
+      {'e-fixed': (props.fixed)}
     );
 
     let paneContainerClass = classNames(
