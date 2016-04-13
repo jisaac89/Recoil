@@ -10,8 +10,17 @@ class Toggle extends React.Component {
             selected: props.selected || false
         };
     }
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            checked: nextProps.checked
+        });
+    }
     onChange(e) {
-        this.setState({ checked: e.target.checked });
+        const self = this;
+        self.setState({ checked: e.target.checked });
+        if (self.props.onChange) {
+            self.props.onChange();
+        }
     }
     changeSelected(item) {
         this.setState({ selected: item });
@@ -20,7 +29,7 @@ class Toggle extends React.Component {
         const self = this;
         const props = self.props;
         let state = self.state;
-        let toggleClass = classNames('r-Toggle', { 'e-checked': (state.checked) }, { 'e-color': (props.columns && props.type === 'colors') }, { 'e-numbers': (props.columns && !props.ghost && props.type !== 'colors') }, { 'e-ghost': (props.ghost) }, props.className);
+        let toggleClass = classNames('r-Toggle', { 'e-checked': (state.checked) }, { 'e-color': (props.columns && props.type === 'colors') }, { 'e-numbers': (props.columns && !props.ghost && props.type !== 'colors') }, { 'e-ghost': (props.ghost) }, props.size, props.className);
         let createList = (item, index) => {
             let itemClass = classNames('r-Toggle__item', { 'e-selected': (state.selected === item) });
             return (<div className={itemClass} onClick={this.changeSelected.bind(this, item)} key={index}>

@@ -120,7 +120,7 @@ export default class App extends React.Component<any, any> {
         </Door>
 
         <Door open={true}>
-          <Layer>
+          <Layer overflow>
             <Pane open={state.toggleSideMenu} className="h100" direction="left">
               <Layer style={{width: 250}} type='light' className="p10 h100 border-right">
                 <Toolbar vertical spacing block>
@@ -165,6 +165,10 @@ export default class App extends React.Component<any, any> {
                   </div>
                 </Door>
                 <Wizard slideIndex={state.slideIndex}>
+
+
+
+
                   <Layer fill>
                     <Toolbar block className="ps10 pt20">
                       <Badge title={4} type="error" className="circle floatL"><Button left ghost icon="bell">Alerts</Button></Badge>
@@ -175,6 +179,10 @@ export default class App extends React.Component<any, any> {
                       <Button size="large" block icon="cart-plus">Stock</Button>
                     </Toolbar>
                   </Layer>
+
+
+
+
                   <Layer fill>
                     <Toolbar vertical spacing block className="p10 text-center">
                       <Emerge exit={'fadeOut'} delay={80} if={this.state.slideIndex === 1}>
@@ -184,6 +192,10 @@ export default class App extends React.Component<any, any> {
                       </Emerge>
                     </Toolbar>
                   </Layer>
+
+
+
+
                   <Layer fill>
                     <Toolbar vertical spacing block className="p10 text-center">
                     <Input size="large" type="text" icon="search" title="Search Item by ID or Keyword" block />
@@ -200,6 +212,10 @@ export default class App extends React.Component<any, any> {
                     </Door>
                     </Toolbar>
                   </Layer>
+
+
+
+
                 </Wizard>
                 <Pane fill direction="bottom" open={this.state.toggleCamera}>
                   <Layer fill type="dark">

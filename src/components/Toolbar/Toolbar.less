@@ -11,8 +11,8 @@
 }
 
 .r-Toolbar.flush > .r-Button:nth-child(1){
-  border-top-left-radius:3px;
-  border-bottom-left-radius:3px;
+  border-top-left-radius:@default-border-radius;
+  border-bottom-left-radius:@default-border-radius;
 }
 
 .r-Toolbar.flush > .r-Button:last-child{
@@ -110,21 +110,18 @@
 
 // Toggle
 
-.r-Toolbar > .r-Toggle:not(:last-child) > label{
+.r-Toolbar.flush > .r-Toggle:not(:last-child) > label{
   border-radius: 0;
 }
 
-.r-Toolbar > .r-Toggle:last-child > label{
+.r-Toolbar.flush > .r-Toggle:last-child > label{
   border-top-left-radius : 0 ;
   border-bottom-left-radius : 0 ;
 }
 
-.r-Toolbar > .r-Toggle > label:after{
-
-}
-
-.r-Toggle {
-  min-width: 64px;
+.r-Toolbar.no-radius > .r-Toggle > label,
+.r-Toolbar.no-radius > .r-Toggle > label:after{
+  border-radius:0px !important;
 }
 
 // input
