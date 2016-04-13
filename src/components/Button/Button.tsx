@@ -25,7 +25,7 @@ interface IButtonProps {
   checked? : boolean;
   onClick?: () => void;
   tabIndex? : number;
-  progressiveClick? : Array<() => string>;
+  progressiveClick? : any;
   shortcut? : any;
 }
 

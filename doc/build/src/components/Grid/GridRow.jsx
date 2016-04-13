@@ -1,7 +1,7 @@
 "use strict";
-var React = require('react');
-var Button_1 = require('../Button/Button');
-var GridColumn_1 = require('./GridColumn');
+const React = require('react');
+const Button_1 = require('../Button/Button');
+const GridColumn_1 = require('./GridColumn');
 class GridRow extends React.Component {
     onRowSelect(item) {
         this.props.onRowSelect(item);

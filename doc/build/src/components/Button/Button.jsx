@@ -1,7 +1,7 @@
 "use strict";
-var React = require('react');
-var classNames = require('classnames');
-var Selectable_1 = require('../Selectable/Selectable');
+const React = require('react');
+const classNames = require('classnames');
+const Selectable_1 = require('../Selectable/Selectable');
 require('./Button.less');
 class Button extends React.Component {
     constructor(props) {

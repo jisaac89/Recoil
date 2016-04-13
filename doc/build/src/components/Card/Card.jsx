@@ -1,6 +1,6 @@
 "use strict";
-var React = require('react');
-var classNames = require('classnames');
+const React = require('react');
+const classNames = require('classnames');
 require('./Card.less');
 class CardHeader extends React.Component {
     render() {

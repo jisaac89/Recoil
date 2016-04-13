@@ -1,8 +1,8 @@
 "use strict";
-var React = require('react');
-var Toolbar_1 = require('../Toolbar/Toolbar');
-var Button_1 = require('../Button/Button');
-var Dropdown_1 = require('../Dropdown/Dropdown');
+const React = require('react');
+const Toolbar_1 = require('../Toolbar/Toolbar');
+const Button_1 = require('../Button/Button');
+const Dropdown_1 = require('../Dropdown/Dropdown');
 class GridFooter extends React.Component {
     gotoPage(i) {
         this.props.gotoPage(i);

@@ -1,9 +1,9 @@
 "use strict";
-var React = require('react');
-var ReactDOM = require('react-dom');
-var classNames = require('classnames');
-var Selectable_1 = require('../Selectable/Selectable');
-var Pane_1 = require('../Pane/Pane');
+const React = require('react');
+const ReactDOM = require('react-dom');
+const classNames = require('classnames');
+const Selectable_1 = require('../Selectable/Selectable');
+const Pane_1 = require('../Pane/Pane');
 require('./Input.less');
 class Input extends React.Component {
     constructor(props) {
@@ -126,7 +126,7 @@ class Input extends React.Component {
                 break;
             default:
         }
-        let inputWrapperClass = classNames('r-Input', { 'w100': (props.block) }, { 'checked': (this.state.checked) }, props.className);
+        let inputWrapperClass = classNames('r-Input', { 'w100': (props.block) }, { 'checked': (this.state.checked) }, props.size, props.className);
         let inputClass = classNames('r-Input__container', 'flohide', { 'no-title': (!props.title) }, { 'pt10': (props.type === 'textarea') });
         return (<div onMouseEnter={this.mouseOut.bind(this)} onMouseLeave={this.mouseOut.bind(this)} className={inputWrapperClass} style={props.style}>
           {errorInlinePartialTop}

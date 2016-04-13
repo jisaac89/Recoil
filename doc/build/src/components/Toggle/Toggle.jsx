@@ -1,6 +1,6 @@
 "use strict";
-var React = require('react');
-var classNames = require('classnames');
+const React = require('react');
+const classNames = require('classnames');
 require('./Toggle.less');
 class Toggle extends React.Component {
     constructor(props) {

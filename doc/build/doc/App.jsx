@@ -1,35 +1,35 @@
 "use strict";
-var React = require('react');
-var Button_1 = require('../src/components/Button/Button');
-var Toolbar_1 = require('../src/components/Toolbar/Toolbar');
-var Grid_1 = require('../src/components/Grid/Grid');
-var Layer_1 = require('../src/components/Layer/Layer');
-var Input_1 = require('../src/components/Input/Input');
-var Wizard_1 = require('../src/components/Wizard/Wizard');
-var Door_1 = require('../src/components/Door/Door');
-var Emerge_1 = require('../src/components/Emerge/Emerge');
-var Pane_1 = require('../src/components/Pane/Pane');
-var Transform_1 = require('../src/components/Transform/Transform');
-var TutorialButton_1 = require('./tutorial/TutorialButton');
-var TutorialAlign_1 = require('./tutorial/TutorialAlign');
-var TutorialCard_1 = require('./tutorial/TutorialCard');
-var TutorialCheckbox_1 = require('./tutorial/TutorialCheckbox');
-var TutorialDoor_1 = require('./tutorial/TutorialDoor');
-var TutorialDropdown_1 = require('./tutorial/TutorialDropdown');
-var TutorialEmerge_1 = require('./tutorial/TutorialEmerge');
-var TutorialGrid_1 = require('./tutorial/TutorialGrid');
-var TutorialInput_1 = require('./tutorial/TutorialInput');
-var TutorialLayer_1 = require('./tutorial/TutorialLayer');
-var TutorialLoading_1 = require('./tutorial/TutorialLoading');
-var TutorialModal_1 = require('./tutorial/TutorialModal');
-var TutorialPane_1 = require('./tutorial/TutorialPane');
-var TutorialSelectable_1 = require('./tutorial/TutorialSelectable');
-var TutorialShrink_1 = require('./tutorial/TutorialShrink');
-var TutorialToggle_1 = require('./tutorial/TutorialToggle');
-var TutorialToolbar_1 = require('./tutorial/TutorialToolbar');
-var TutorialTransform_1 = require('./tutorial/TutorialTransform');
-var TutorialWizard_1 = require('./tutorial/TutorialWizard');
-var SampleData_1 = require('./tutorial/SampleData');
+const React = require('react');
+const Button_1 = require('../src/components/Button/Button');
+const Toolbar_1 = require('../src/components/Toolbar/Toolbar');
+const Grid_1 = require('../src/components/Grid/Grid');
+const Layer_1 = require('../src/components/Layer/Layer');
+const Input_1 = require('../src/components/Input/Input');
+const Wizard_1 = require('../src/components/Wizard/Wizard');
+const Door_1 = require('../src/components/Door/Door');
+const Emerge_1 = require('../src/components/Emerge/Emerge');
+const Pane_1 = require('../src/components/Pane/Pane');
+const Transform_1 = require('../src/components/Transform/Transform');
+const TutorialButton_1 = require('./tutorial/TutorialButton');
+const TutorialAlign_1 = require('./tutorial/TutorialAlign');
+const TutorialCard_1 = require('./tutorial/TutorialCard');
+const TutorialCheckbox_1 = require('./tutorial/TutorialCheckbox');
+const TutorialDoor_1 = require('./tutorial/TutorialDoor');
+const TutorialDropdown_1 = require('./tutorial/TutorialDropdown');
+const TutorialEmerge_1 = require('./tutorial/TutorialEmerge');
+const TutorialGrid_1 = require('./tutorial/TutorialGrid');
+const TutorialInput_1 = require('./tutorial/TutorialInput');
+const TutorialLayer_1 = require('./tutorial/TutorialLayer');
+const TutorialLoading_1 = require('./tutorial/TutorialLoading');
+const TutorialModal_1 = require('./tutorial/TutorialModal');
+const TutorialPane_1 = require('./tutorial/TutorialPane');
+const TutorialSelectable_1 = require('./tutorial/TutorialSelectable');
+const TutorialShrink_1 = require('./tutorial/TutorialShrink');
+const TutorialToggle_1 = require('./tutorial/TutorialToggle');
+const TutorialToolbar_1 = require('./tutorial/TutorialToolbar');
+const TutorialTransform_1 = require('./tutorial/TutorialTransform');
+const TutorialWizard_1 = require('./tutorial/TutorialWizard');
+const SampleData_1 = require('./tutorial/SampleData');
 class App extends React.Component {
     constructor() {
         super();
@@ -55,7 +55,8 @@ class App extends React.Component {
     }
     toggleDocumentation() {
         this.setState({
-            viewDocumentation: this.state.viewDocumentation ? false : true
+            viewDocumentation: this.state.viewDocumentation ? false : true,
+            toggleMobileTutorial: 0
         });
     }
     toggleNightMode() {
@@ -69,7 +70,7 @@ class App extends React.Component {
         {(() => {
             if (this.state.mobile) {
                 return (<div className="mtb10">
-                  <small><a onClick={this.toggleMobileTutorial.bind(this)}>View Documentation</a></small>
+                  <Button_1.default icon="eye" type="primary" size="small" onClick={this.toggleMobileTutorial.bind(this)}>View Documentation</Button_1.default>
                 </div>);
             }
         })()}
@@ -188,7 +189,7 @@ class App extends React.Component {
           <hr className="rainbow-line"/>
         </div>
       </Door_1.default>
-      <Door_1.default overflow className="w100" open={state.viewDocumentation}>
+      <Door_1.default overflow className="w100 mb100" open={state.viewDocumentation}>
         <Layer_1.default>
           {(() => {
             if (this.state.mobile) {
@@ -199,7 +200,7 @@ class App extends React.Component {
                   </div>
                   <div className="p10">
                     <div className="mtb10">
-                      <small><a onClick={this.toggleMobileTutorial.bind(this)}>Back to components</a></small>
+                      <Button_1.default pointer="left" type="primary" size="small" onClick={this.toggleMobileTutorial.bind(this)}>Back to components</Button_1.default>
                     </div>
                     <Wizard_1.default slideIndex={state.slideIndex}>
                       <TutorialAlign_1.default {...state}/>
@@ -262,9 +263,21 @@ class App extends React.Component {
                 </div>);
             }
         })()}
+
         </Layer_1.default>
       </Door_1.default>
-
+          <Pane_1.default fixed open={this.state.toggleMobileTutorial === 1} direction="bottom">
+              <Layer_1.default fill className="w100 light p10 shadow">
+                <Toolbar_1.default block>
+                  {(() => {
+            if (SampleData_1.default[this.state.slideIndex - 1]) {
+                return (<Button_1.default icon="chevron-left" onClick={this.gotoTutorial.bind(this, SampleData_1.default[this.state.slideIndex - 1])}>{SampleData_1.default[this.state.slideIndex - 1].component.name}</Button_1.default>);
+            }
+        })()}
+                  <Button_1.default icon="chevron-right" onClick={this.gotoTutorial.bind(this, SampleData_1.default[this.state.slideIndex + 1])} right>{SampleData_1.default[this.state.slideIndex + 1].component.name}</Button_1.default>
+                </Toolbar_1.default>
+              </Layer_1.default>
+          </Pane_1.default>
       </Layer_1.default>);
     }
 }

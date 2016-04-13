@@ -1,6 +1,6 @@
 "use strict";
-var React = require('react');
-var Button_1 = require('../Button/Button');
+const React = require('react');
+const Button_1 = require('../Button/Button');
 class GridHeaderSortable extends React.Component {
     constructor() {
         super();

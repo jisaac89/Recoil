@@ -1,6 +1,6 @@
 "use strict";
-var React = require('react');
-var classNames = require('classnames');
+const React = require('react');
+const classNames = require('classnames');
 require('./Door.less');
 const getAbsoluteHeight = (el) => {
     let styles = window.getComputedStyle(el);

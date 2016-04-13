@@ -1,7 +1,7 @@
 "use strict";
-var React = require('react');
-var classNames = require('classnames');
-var Button_1 = require('../Button/Button');
+const React = require('react');
+const classNames = require('classnames');
+const Button_1 = require('../Button/Button');
 require('./Modal.less');
 class Modal extends React.Component {
     constructor() {

@@ -1,6 +1,6 @@
 "use strict";
-var React = require('react');
-var classNames = require('classnames');
+const React = require('react');
+const classNames = require('classnames');
 require('./Pane.less');
 class Pane extends React.Component {
     constructor(props) {
@@ -10,7 +10,7 @@ class Pane extends React.Component {
         const self = this;
         const props = self.props;
         let axis, paneContainerStyle;
-        let paneClass = classNames('r-Pane', { 'e-wrapper': (props.wrapper) }, { 'e-open': (props.open) });
+        let paneClass = classNames('r-Pane', { 'e-wrapper': (props.wrapper) }, { 'e-open': (props.open) }, { 'e-fixed': (props.fixed) });
         let paneContainerClass = classNames('r-Pane__container', { 'e-open': (props.open) }, { 'w100': (props.fill) }, { 'h100': (props.fill) }, props.direction, props.className);
         switch (props.direction) {
             case 'left' || 'right':

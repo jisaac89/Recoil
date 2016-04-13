@@ -1,6 +1,6 @@
 "use strict";
-var React = require('react');
-var Selectable_1 = require('../Selectable/Selectable');
+const React = require('react');
+const Selectable_1 = require('../Selectable/Selectable');
 class DropdownWrapper extends React.Component {
     selectItem(item) {
         this.props.selectItem(item);

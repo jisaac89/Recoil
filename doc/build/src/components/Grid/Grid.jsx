@@ -1,9 +1,9 @@
 "use strict";
-var React = require('react');
+const React = require('react');
 require('./Grid.less');
-var GridHeader_1 = require('./GridHeader');
-var GridBody_1 = require('./GridBody');
-var GridFooter_1 = require('./GridFooter');
+const GridHeader_1 = require('./GridHeader');
+const GridBody_1 = require('./GridBody');
+const GridFooter_1 = require('./GridFooter');
 class Grid extends React.Component {
     constructor(props) {
         super();

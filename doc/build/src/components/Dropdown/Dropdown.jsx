@@ -1,11 +1,11 @@
 "use strict";
-var React = require('react');
-var classNames = require('classnames');
-var DropdownWrapper_1 = require('./DropdownWrapper');
-var Selectable_1 = require('../Selectable/Selectable');
-var Input_1 = require('../Input/Input');
-var Button_1 = require('../Button/Button');
-var Layer_1 = require('../Layer/Layer');
+const React = require('react');
+const classNames = require('classnames');
+const DropdownWrapper_1 = require('./DropdownWrapper');
+const Selectable_1 = require('../Selectable/Selectable');
+const Input_1 = require('../Input/Input');
+const Button_1 = require('../Button/Button');
+const Layer_1 = require('../Layer/Layer');
 require('./Dropdown.less');
 const DropdownHeader = (props) => {
     return (<div className="r-DropdownHeader" onClick={props.onClick}>

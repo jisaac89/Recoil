@@ -1,12 +1,12 @@
 "use strict";
-var React = require('react');
-var Button_1 = require('../../src/components/Button/Button');
-var Door_1 = require('../../src/components/Door/Door');
-var Emerge_1 = require('../../src/components/Emerge/Emerge');
-var Grid_1 = require('../../src/components/Grid/Grid');
-var Layer_1 = require('../../src/components/Layer/Layer');
-var Pane_1 = require('../../src/components/Pane/Pane');
-var Toolbar_1 = require('../../src/components/Toolbar/Toolbar');
+const React = require('react');
+const Button_1 = require('../../src/components/Button/Button');
+const Door_1 = require('../../src/components/Door/Door');
+const Emerge_1 = require('../../src/components/Emerge/Emerge');
+const Grid_1 = require('../../src/components/Grid/Grid');
+const Layer_1 = require('../../src/components/Layer/Layer');
+const Pane_1 = require('../../src/components/Pane/Pane');
+const Toolbar_1 = require('../../src/components/Toolbar/Toolbar');
 const PaneProperties = [
     {
         name: 'wrapper',

@@ -1,8 +1,8 @@
 "use strict";
-var React = require('react');
-var Selectable_1 = require('../Selectable/Selectable');
-var Door_1 = require('../Door/Door');
-var GridRow_1 = require('./GridRow');
+const React = require('react');
+const Selectable_1 = require('../Selectable/Selectable');
+const Door_1 = require('../Door/Door');
+const GridRow_1 = require('./GridRow');
 class SelectableGridRow extends React.Component {
     render() {
         return (<div className="w100 posrel">
