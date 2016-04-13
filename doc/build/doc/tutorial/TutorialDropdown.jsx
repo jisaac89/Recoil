@@ -81,11 +81,44 @@ class TutorialDropdown extends React.Component {
 
         <Layer_1.default className="ptb10">
           <h2 className="pb10">Examples</h2>
-          <Layer_1.default className="ptb10">
+          <h3>Default</h3>
+          <div className="ptb20">
             <Layer_1.default className="p10 light">
               <Dropdown_1.default type="selection" title="Dropdown Options" data={dropData}/>
             </Layer_1.default>
-          </Layer_1.default>
+          </div>
+
+          <h3>With Icon</h3>
+          <p>To add an icon to a dropdowns, just add an icon prop to it. Icon's are taken from font-awesome, you can omit the fa fa-, for example below it would be a Button compoent with a icon prop of "star"</p>
+          <div className="ptb20">
+            <Layer_1.default className="p10 light">
+              <Dropdown_1.default icon="star" type="selection" title="Dropdown Options" data={dropData}/>
+            </Layer_1.default>
+          </div>
+
+          <h3>Custom Content</h3>
+          <p>To add custom content to a dropdown, just include it as a child of the component.</p>
+          <div className="ptb20">
+            <Layer_1.default className="p10 light">
+              <Dropdown_1.default contentClass="w300px" type="selection" title="Custom Content">
+                <div className="w100 p10">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+              </Dropdown_1.default>
+            </Layer_1.default>
+          </div>
+
+          <h3>Advanced Dropdown</h3>
+          <p>The example below shows a drop down with the block prop and a <strong>from</strong> prop with the value <strong>top left</strong> and a <strong>contentClass</strong> props of <strong>w300px</strong>.</p>
+          <div className="ptb20">
+            <Layer_1.default className="p10 light">
+              <Dropdown_1.default block icon="eye" from="top right" contentClass="w300px" type="selection" title="Advanced Dropdown">
+                <div className="w100 p10">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </div>
+              </Dropdown_1.default>
+            </Layer_1.default>
+          </div>
         </Layer_1.default>
 
         <div className="ptb10">

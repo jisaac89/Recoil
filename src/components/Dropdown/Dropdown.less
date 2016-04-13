@@ -3,11 +3,11 @@
 .r-Dropdown {
   position: relative;
   display: inline-block;
-  z-index: 10;
 
   .r-Card{
     background: white;
     overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   }
 
   .r-DropdownWrapperBottom{
@@ -15,7 +15,6 @@
     .transition(all 350ms cubic-bezier(0.215, 0.610, 0.355, 1.000));
     position: absolute;
     z-index: 4;
-    max-height: 0;
     overflow: hidden;
     min-width: -webkit-max-content;
     min-width: -moz-max-content;
@@ -97,7 +96,6 @@
 
 .r-Dropdown.e-open .r-DropdownWrapperTop, .r-Dropdown.e-open .r-DropdownWrapperBottom{
   overflow: visible;
-  max-height: 100%;
   .scale(1);
 }
 .r-Dropdown .r-DropdownHeader{
@@ -117,3 +115,28 @@
 .r-Dropdown .r-DropdownHeader {
     padding: 6px 15px;
 }
+
+.r-Dropdown.e-open{
+  z-index: 10;
+}
+
+.r-Dropdown.e-open:hover{
+  z-index: 11;
+}
+
+.e-drop-b{transform-origin: left top !important;}
+.e-drop-t{transform-origin: left bottom !important;}
+
+.e-drop-b.e-drop-left{transform-origin: left top !important;}
+.e-drop-t.e-drop-left{transform-origin: left bottom !important;}
+
+.e-drop-t.e-drop-left{transform-origin: left bottom !important; bottom:100%;}
+.e-drop-t.e-drop-right{    transform-origin: right bottom !important;
+    right: 0;
+    bottom: 100%;}
+.e-drop-t.e-drop-center{transform-origin: center bottom !important; right:0; left:0; margin:auto; bottom:100%;}
+
+
+.e-drop-b.e-drop-left{transform-origin: left top !important;}
+.e-drop-b.e-drop-right{transform-origin: right top !important; right:0;}
+.e-drop-b.e-drop-center{transform-origin: center top !important; right:0; left:0; margin:auto;}

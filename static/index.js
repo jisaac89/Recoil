@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9555dd8534d4adec0551"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "bef6142ac25128f72f11"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -21986,7 +21986,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                );
 	            }
 	        }(),
-	        React.createElement('i', { className: 'r-DropdownHeader__trigger fa fa-chevron-' + (props.from === ('top' || 'top left' || 'top right') ? 'up' : 'down') })
+	        React.createElement('i', { className: 'r-DropdownHeader__trigger fa fa-chevron-' + (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center' ? 'up' : 'down') })
 	    );
 	};
 	var DropdownButton = function DropdownButton(props) {
@@ -22081,36 +22081,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                bottomPartial = void 0,
 	                dropdownTypePartial = void 0;
 	            var dropdownClass = classNames('r-Dropdown', { 'e-open': state.open }, { 'dblock w100': props.block }, { 'pull-right': props.right }, { 'pull-left': props.left }, props.className);
-	            var dropdownWrapperBottomClass = classNames('r-DropdownWrapperBottom', { 'e-resize-tl': !props.from || props.from === 'bottom left' || props.from === 'bottom' }, { 'e-resize-tr': props.from === 'bottom right' }, { 'e-resize-bl': props.from === 'top left' || props.from === 'top' }, { 'e-resize-br': props.from === 'top right' }, { 'e-resize-b': props.block }, { 'e-resize-t': props.block }, props.contentClass);
-	            var dropdownWrapperTopClass = classNames('r-DropdownWrapperTop', { 'e-resize-tl': !props.from || props.from === 'bottom left' || props.from === 'bottom' }, { 'e-resize-tr': props.from === 'bottom right' }, { 'e-resize-bl': props.from === 'top left' || props.from === 'top' }, { 'e-resize-tr': props.from === 'top right' }, { 'e-resize-b': props.block }, { 'e-resize-t': props.block }, props.contentClass);
-	            var dropdownContentClass = classNames('r-DropdownContent', 'r-Card', 'w100');
+	            var dropdownWrapperBottomClass = classNames('r-DropdownWrapperBottom', 'e-drop-b', { 'e-drop-left': props.from === 'bottom left' }, { 'e-drop-right': props.from === 'bottom right' }, { 'e-drop-center': props.from === 'bottom center' }, props.contentClass);
+	            var dropdownWrapperTopClass = classNames('r-DropdownWrapperTop', 'e-drop-t', { 'e-drop-left': props.from === 'top left' }, { 'e-drop-right': props.from === 'top right' }, { 'e-drop-center': props.from === 'top center' }, props.contentClass);
+	            var dropdownContentClass = classNames('r-DropdownContent', 'r-Card', 'w100', props.contentClass);
 	            var buttonClass = classNames('w100', props.buttonClass);
 	            var selectionClass = classNames('r-DropdownSelection', 'w100', props.selectionClass);
-	            switch (props.from) {
-	                case 'top' || 'top left' || 'top right':
-	                    topPartial = React.createElement(
-	                        DropdownWrapper_1.default,
-	                        { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperTopClass, dropdownContentClass: dropdownContentClass },
-	                        props.children
-	                    );
-	                    bottomPartial = null;
-	                    break;
-	                case 'bottom' || 'bottom left' || 'bottom right':
-	                    topPartial = React.createElement(
-	                        DropdownWrapper_1.default,
-	                        { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperBottomClass, dropdownContentClass: dropdownContentClass },
-	                        props.children
-	                    );
-	                    bottomPartial = null;
-	                    break;
-	                default:
-	                    bottomPartial = React.createElement(
-	                        DropdownWrapper_1.default,
-	                        { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperBottomClass, dropdownContentClass: dropdownContentClass },
-	                        props.children
-	                    );
-	                    topPartial = null;
-	            }
 	            switch (props.type) {
 	                case 'button':
 	                    dropdownTypePartial = React.createElement(DropdownButton, { className: buttonClass, onClick: self.toggleDrop.bind(self), value: props.value, icon: props.icon, checked: state.open, theme: props.theme, ghost: props.ghost });
@@ -22127,9 +22102,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return React.createElement(
 	                'div',
 	                { className: dropdownClass },
-	                topPartial,
 	                dropdownTypePartial,
-	                bottomPartial
+	                function () {
+	                    if (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center') {
+	                        return React.createElement(
+	                            DropdownWrapper_1.default,
+	                            { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperTopClass, dropdownContentClass: dropdownContentClass },
+	                            props.children
+	                        );
+	                    } else {
+	                        return React.createElement(
+	                            DropdownWrapper_1.default,
+	                            { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperBottomClass, dropdownContentClass: dropdownContentClass },
+	                            props.children
+	                        );
+	                    }
+	                }()
 	            );
 	        }
 	    }]);
@@ -22779,7 +22767,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Dropdown {\n  position: relative;\n  display: inline-block;\n  z-index: 10;\n}\n.r-Dropdown .r-Card {\n  background: white;\n  overflow: hidden;\n}\n.r-Dropdown .r-DropdownWrapperBottom {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperBottom .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperTop {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  top: -100%;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n  top: auto;\n  bottom: 100%;\n  display: inline-table;\n  z-index: 10;\n}\n.r-Dropdown .r-DropdownWrapperTop .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-bl {\n  transform-origin: left bottom !important;\n}\n.r-Dropdown .e-resize-br {\n  transform-origin: right bottom !important;\n}\n.r-Dropdown .e-resize-tl {\n  transform-origin: left top !important;\n}\n.r-Dropdown .e-resize-tr {\n  transform-origin: top right !important;\n  right: 0 !important;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-t {\n  transform-origin: center top !important;\n}\n.r-Dropdown .e-resize-b {\n  transform-origin: center bottom !important;\n}\n.r-Dropdown .r-DropdownHeader {\n  display: inline-block;\n}\n.r-Dropdown .r-DropdownContent__item {\n  cursor: pointer;\n  position: relative;\n  padding: 5px;\n}\n.r-Dropdown .r-DropdownSelection {\n  color: #888;\n  background: #fff;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 0;\n  border-radius: 4px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  height: 32px;\n  position: relative;\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Dropdown.e-open .r-DropdownWrapperTop,\n.r-Dropdown.e-open .r-DropdownWrapperBottom {\n  overflow: visible;\n  max-height: 100%;\n  -webkit-transform: scale(1);\n  -moz-transform: scale(1);\n  -ms-transform: scale(1);\n  -o-transform: scale(1);\n}\n.r-Dropdown .r-DropdownHeader {\n  width: 100%;\n}\n.r-Dropdown.dblock .r-DropdownHeader {\n  width: 100%;\n}\n.r-DropdownHeader__trigger {\n  margin-left: 5px;\n  float: right;\n}\n.r-Dropdown .r-DropdownHeader {\n  padding: 6px 15px;\n}\n", ""]);
+	exports.push([module.id, ".r-Dropdown {\n  position: relative;\n  display: inline-block;\n}\n.r-Dropdown .r-Card {\n  background: white;\n  overflow: hidden;\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\n}\n.r-Dropdown .r-DropdownWrapperBottom {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperBottom .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperTop {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  top: -100%;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n  top: auto;\n  bottom: 100%;\n  display: inline-table;\n  z-index: 10;\n}\n.r-Dropdown .r-DropdownWrapperTop .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-bl {\n  transform-origin: left bottom !important;\n}\n.r-Dropdown .e-resize-br {\n  transform-origin: right bottom !important;\n}\n.r-Dropdown .e-resize-tl {\n  transform-origin: left top !important;\n}\n.r-Dropdown .e-resize-tr {\n  transform-origin: top right !important;\n  right: 0 !important;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-t {\n  transform-origin: center top !important;\n}\n.r-Dropdown .e-resize-b {\n  transform-origin: center bottom !important;\n}\n.r-Dropdown .r-DropdownHeader {\n  display: inline-block;\n}\n.r-Dropdown .r-DropdownContent__item {\n  cursor: pointer;\n  position: relative;\n  padding: 5px;\n}\n.r-Dropdown .r-DropdownSelection {\n  color: #888;\n  background: #fff;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 0;\n  border-radius: 4px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  height: 32px;\n  position: relative;\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Dropdown.e-open .r-DropdownWrapperTop,\n.r-Dropdown.e-open .r-DropdownWrapperBottom {\n  overflow: visible;\n  -webkit-transform: scale(1);\n  -moz-transform: scale(1);\n  -ms-transform: scale(1);\n  -o-transform: scale(1);\n}\n.r-Dropdown .r-DropdownHeader {\n  width: 100%;\n}\n.r-Dropdown.dblock .r-DropdownHeader {\n  width: 100%;\n}\n.r-DropdownHeader__trigger {\n  margin-left: 5px;\n  float: right;\n}\n.r-Dropdown .r-DropdownHeader {\n  padding: 6px 15px;\n}\n.r-Dropdown.e-open {\n  z-index: 10;\n}\n.r-Dropdown.e-open:hover {\n  z-index: 11;\n}\n.e-drop-b {\n  transform-origin: left top !important;\n}\n.e-drop-t {\n  transform-origin: left bottom !important;\n}\n.e-drop-b.e-drop-left {\n  transform-origin: left top !important;\n}\n.e-drop-t.e-drop-left {\n  transform-origin: left bottom !important;\n}\n.e-drop-t.e-drop-left {\n  transform-origin: left bottom !important;\n  bottom: 100%;\n}\n.e-drop-t.e-drop-right {\n  transform-origin: right bottom !important;\n  right: 0;\n  bottom: 100%;\n}\n.e-drop-t.e-drop-center {\n  transform-origin: center bottom !important;\n  right: 0;\n  left: 0;\n  margin: auto;\n  bottom: 100%;\n}\n.e-drop-b.e-drop-left {\n  transform-origin: left top !important;\n}\n.e-drop-b.e-drop-right {\n  transform-origin: right top !important;\n  right: 0;\n}\n.e-drop-b.e-drop-center {\n  transform-origin: center top !important;\n  right: 0;\n  left: 0;\n  margin: auto;\n}\n", ""]);
 	
 	// exports
 

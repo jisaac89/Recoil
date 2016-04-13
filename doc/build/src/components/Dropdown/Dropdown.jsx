@@ -25,7 +25,7 @@ const DropdownHeader = (props) => {
         }
     })()}
 
-      <i className={'r-DropdownHeader__trigger fa fa-chevron-' + ((props.from === ('top' || 'top left' || 'top right')) ? 'up' : 'down')}></i>
+      <i className={'r-DropdownHeader__trigger fa fa-chevron-' + ((props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center') ? 'up' : 'down')}></i>
     </div>);
 };
 const DropdownButton = (props) => {
@@ -92,24 +92,11 @@ class Dropdown extends React.Component {
         let state = self.state;
         let topPartial, bottomPartial, dropdownTypePartial;
         let dropdownClass = classNames('r-Dropdown', { 'e-open': (state.open) }, { 'dblock w100': (props.block) }, { 'pull-right': (props.right) }, { 'pull-left': (props.left) }, props.className);
-        let dropdownWrapperBottomClass = classNames('r-DropdownWrapperBottom', { 'e-resize-tl': (!props.from || props.from === 'bottom left' || props.from === 'bottom') }, { 'e-resize-tr': (props.from === 'bottom right') }, { 'e-resize-bl': (props.from === 'top left' || props.from === 'top') }, { 'e-resize-br': (props.from === 'top right') }, { 'e-resize-b': (props.block) }, { 'e-resize-t': (props.block) }, props.contentClass);
-        let dropdownWrapperTopClass = classNames('r-DropdownWrapperTop', { 'e-resize-tl': (!props.from || props.from === 'bottom left' || props.from === 'bottom') }, { 'e-resize-tr': (props.from === 'bottom right') }, { 'e-resize-bl': (props.from === 'top left' || props.from === 'top') }, { 'e-resize-tr': (props.from === 'top right') }, { 'e-resize-b': (props.block) }, { 'e-resize-t': (props.block) }, props.contentClass);
-        let dropdownContentClass = classNames('r-DropdownContent', 'r-Card', 'w100');
+        let dropdownWrapperBottomClass = classNames('r-DropdownWrapperBottom', 'e-drop-b', { 'e-drop-left': (props.from === 'bottom left') }, { 'e-drop-right': (props.from === 'bottom right') }, { 'e-drop-center': (props.from === 'bottom center') }, props.contentClass);
+        let dropdownWrapperTopClass = classNames('r-DropdownWrapperTop', 'e-drop-t', { 'e-drop-left': (props.from === 'top left') }, { 'e-drop-right': (props.from === 'top right') }, { 'e-drop-center': (props.from === 'top center') }, props.contentClass);
+        let dropdownContentClass = classNames('r-DropdownContent', 'r-Card', 'w100', props.contentClass);
         let buttonClass = classNames('w100', props.buttonClass);
         let selectionClass = classNames('r-DropdownSelection', 'w100', props.selectionClass);
-        switch (props.from) {
-            case ('top' || 'top left' || 'top right'):
-                topPartial = <DropdownWrapper_1.default type={props.type} selectedItem={state.selectedItem} checked={state.selectedItem > 0} selectItem={self.selectItem.bind(self)} data={props.data} filterText={state.filterText} dropdownWrapperClass={dropdownWrapperTopClass} dropdownContentClass={dropdownContentClass}>{props.children}</DropdownWrapper_1.default>;
-                bottomPartial = null;
-                break;
-            case ('bottom' || 'bottom left' || 'bottom right'):
-                topPartial = <DropdownWrapper_1.default type={props.type} selectedItem={state.selectedItem} checked={state.selectedItem > 0} selectItem={self.selectItem.bind(self)} data={props.data} filterText={state.filterText} dropdownWrapperClass={dropdownWrapperBottomClass} dropdownContentClass={dropdownContentClass}>{props.children}</DropdownWrapper_1.default>;
-                bottomPartial = null;
-                break;
-            default:
-                bottomPartial = <DropdownWrapper_1.default type={props.type} selectedItem={state.selectedItem} checked={state.selectedItem > 0} selectItem={self.selectItem.bind(self)} data={props.data} filterText={state.filterText} dropdownWrapperClass={dropdownWrapperBottomClass} dropdownContentClass={dropdownContentClass}>{props.children}</DropdownWrapper_1.default>;
-                topPartial = null;
-        }
         switch (props.type) {
             case 'button':
                 dropdownTypePartial = <DropdownButton className={buttonClass} onClick={self.toggleDrop.bind(self)} value={props.value} icon={props.icon} checked={state.open} theme={props.theme} ghost={props.ghost}/>;
@@ -124,9 +111,15 @@ class Dropdown extends React.Component {
                 dropdownTypePartial = null;
         }
         return (<div className={dropdownClass}>
-        {topPartial}
         {dropdownTypePartial}
-        {bottomPartial}
+        {(() => {
+            if (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center') {
+                return <DropdownWrapper_1.default type={props.type} selectedItem={state.selectedItem} checked={state.selectedItem > 0} selectItem={self.selectItem.bind(self)} data={props.data} filterText={state.filterText} dropdownWrapperClass={dropdownWrapperTopClass} dropdownContentClass={dropdownContentClass}>{props.children}</DropdownWrapper_1.default>;
+            }
+            else {
+                return <DropdownWrapper_1.default type={props.type} selectedItem={state.selectedItem} checked={state.selectedItem > 0} selectItem={self.selectItem.bind(self)} data={props.data} filterText={state.filterText} dropdownWrapperClass={dropdownWrapperBottomClass} dropdownContentClass={dropdownContentClass}>{props.children}</DropdownWrapper_1.default>;
+            }
+        })()}
       </div>);
     }
 }
