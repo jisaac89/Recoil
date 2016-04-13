@@ -45,7 +45,9 @@ class Checkbox extends React.Component {
         let state = self.state;
         let { checked } = props;
         let { value } = state;
-        return (<Button_1.default className="r-Checkbox" progressiveClick={this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null} onClick={this.toggleChecked.bind(this)} tabIndex={-1} ghost disabled={props.disabled} icon={value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus"}>
+        return (<Button_1.default ghost={props.ghost} size={props.size} className={"r-Checkbox " + (value === 1 ? 'e-checked' : value === 0 ? "" : "e-checked")} progressiveClick={this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null} onClick={this.toggleChecked.bind(this)} tabIndex={-1} disabled={props.disabled} icon={value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus"}>
+          <div className="r-Checkbox___back">
+          </div>
         </Button_1.default>);
     }
 }

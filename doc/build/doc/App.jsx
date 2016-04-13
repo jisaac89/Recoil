@@ -195,7 +195,7 @@ class App extends React.Component {
             if (this.state.mobile) {
                 return (<Wizard_1.default slideIndex={this.state.toggleMobileTutorial}>
                   <div className="p10">
-                    <Input_1.default icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
+                    <Input_1.default className="mb10" icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
                     <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={19} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
                   </div>
                   <div className="p10">
@@ -230,7 +230,7 @@ class App extends React.Component {
                 return (<div>
                     <Pane_1.default open={self.state.toggleSideMenu} className="W400px" direction="left">
                       <div className="p10">
-                        <Input_1.default icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
+                        <Input_1.default className="mb10" icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components"/>
                         <Grid_1.default hideHeader dataSource={newComponentArray} columns={columns} numberPerPage={19} onRowSelect={this.gotoTutorial.bind(this)} detailTemplateOpenOnSelect detailTemplate={this.detailTemplate.bind(this)} selected={[this.state.slideIndex]} selectedKey={'index'}/>
                       </div>
                     </Pane_1.default>

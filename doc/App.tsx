@@ -234,7 +234,7 @@ export default class App extends React.Component<any, any> {
               return (
                 <Wizard slideIndex={this.state.toggleMobileTutorial}>
                   <div className="p10">
-                    <Input icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
+                    <Input className="mb10" icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
                     <Grid
                       hideHeader
                       dataSource={newComponentArray}
@@ -280,7 +280,7 @@ export default class App extends React.Component<any, any> {
                   <div>
                     <Pane open={self.state.toggleSideMenu} className="W400px" direction="left">
                       <div className="p10">
-                        <Input icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
+                        <Input className="mb10" icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
                         <Grid
                           hideHeader
                           dataSource={newComponentArray}

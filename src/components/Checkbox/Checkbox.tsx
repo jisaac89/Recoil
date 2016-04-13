@@ -8,6 +8,8 @@ interface ICheckboxProps {
   checked? : boolean;
   tristate? : boolean;
   disabled? : boolean;
+  size? : string;
+  ghost? : boolean;
 }
 
 interface ICheckboxState {
@@ -68,14 +70,17 @@ export default class Checkbox extends React.Component<ICheckboxProps,ICheckboxSt
 
     return (
         <Button
-          className="r-Checkbox"
+          ghost={props.ghost}
+          size={props.size}
+          className={"r-Checkbox " + (value === 1 ? 'e-checked' : value === 0 ? "" : "e-checked")}
           progressiveClick={this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null}
           onClick={this.toggleChecked.bind(this)}
           tabIndex={-1}
-          ghost
           disabled={props.disabled}
           icon={value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus"}
         >
+          <div className="r-Checkbox___back">
+          </div>
         </Button>
     )
   }

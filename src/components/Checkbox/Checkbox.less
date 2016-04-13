@@ -3,3 +3,32 @@
 .r-Checkbox input{
   opacity: 0;
 }
+
+.r-Checkbox___back{
+  position: absolute;
+  border-radius: @default-border-radius;
+  height: 80%;
+  width: 80%;
+  background: #d2d2d2;
+  top: 0;
+  border: 1px solid #ccc;
+  z-index: 1;
+  margin: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.r-Checkbox.e-checked .r-Checkbox___back{
+  background: white;
+}
+
+.r-Checkbox > .fa {
+    z-index: 5 !important;
+    position: relative;
+    margin: 0 !important;
+}
+
+.r-Checkbox.e-checked > .fa{
+  color: @primary-background;
+}
