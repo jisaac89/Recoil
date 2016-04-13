@@ -112,12 +112,44 @@ class TutorialCard extends React.Component {
             <h2 className="pb10">Examples</h2>
             <h3>Default</h3>
             <div className="ptb20">
-              <Layer_1.default className="p10 dark">
+              <Layer_1.default className="p10 dark h100px">
                 <Card_1.default>
                   This is an exampe of a Card.
                 </Card_1.default>
               </Layer_1.default>
             </div>
+
+            <h3>Fill</h3>
+            <p>Fill gives the element a <strong>width</strong> and <strong>height</strong> of <strong>100%</strong> relative to its parent.</p>
+            <div className="ptb20">
+              <Layer_1.default className="p10 dark h100px">
+                <Card_1.default fill>
+                  This is an exampe of a Card with the prop <strong>fill</strong>.
+                </Card_1.default>
+              </Layer_1.default>
+            </div>
+
+            <h3>Block</h3>
+            <p>Block gives the element a <strong>width</strong> of <strong>100%</strong> relative to its parent.</p>
+            <div className="ptb20">
+              <Layer_1.default className="p10 dark h100px">
+                <Card_1.default block>
+                  This is an exampe of a Card with the prop <strong>block</strong>.
+                </Card_1.default>
+              </Layer_1.default>
+            </div>
+
+            <h3>Resize</h3>
+            <p>Resize allows the user to resize the element.</p>
+            <div className="ptb20">
+              <Layer_1.default className="p10 dark">
+                <Card_1.default resize>
+                  This is an exampe of a Card with the prop <strong>resize</strong>.
+                </Card_1.default>
+              </Layer_1.default>
+            </div>
+
+
           </div>
 
           <div className="pb20">

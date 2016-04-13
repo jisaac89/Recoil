@@ -4,8 +4,6 @@
   border-radius:  @card-radius;
   padding: @card-padding;
   max-width:100%;
-  margin-top:10px;
-  margin-bottom:10px;
   background: @card-background;
   position: relative;
   display: inline-block;
@@ -31,6 +29,11 @@
 .r-Card.e-scale:hover{
     cursor: pointer;
     .transform(scale(1.05));
+}
+
+.r-Card.e-resize{
+  resize: both;
+  overflow: auto;
 }
 
 

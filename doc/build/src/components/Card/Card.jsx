@@ -20,7 +20,7 @@ class Card extends React.Component {
         const self = this;
         const props = self.props;
         let headerPartial;
-        let cardClass = classNames('r-Card', { 'resize': (props.resize) }, { 'e-hover': (props.hover) }, { 'e-scale': (props.scale) }, { 'e-float': (props.float) }, { 'w100': (props.fill) }, { 'h100': (props.fill) }, { 'w100': (props.block) }, props.className);
+        let cardClass = classNames('r-Card', { 'e-resize': (props.resize) }, { 'e-hover': (props.hover) }, { 'e-scale': (props.scale) }, { 'e-float': (props.float) }, { 'w100': (props.fill) }, { 'h100': (props.fill) }, { 'w100': (props.block) }, props.className);
         if (props.title || props.subTitle) {
             headerPartial = <CardHeader title={props.title} subTitle={props.subTitle}/>;
         }

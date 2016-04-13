@@ -15,6 +15,7 @@ import Door from '../src/components/Door/Door';
 import Emerge from '../src/components/Emerge/Emerge';
 import Pane from '../src/components/Pane/Pane';
 import Transform from '../src/components/Transform/Transform';
+import Toggle from '../src/components/Toggle/Toggle';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
@@ -133,9 +134,13 @@ export default class App extends React.Component<any, any> {
     const props = self.props;
     let state = self.state;
 
+    console.log(self.state.slideIndex);
+
     let template = (item, index) => {
       return (
-        <Button key={index}>{item.component.name}</Button>
+        <Button>
+          {item.component.name}
+        </Button>
       )
     }
 

@@ -45,7 +45,7 @@ export default class Card extends React.Component<ICardProps, {}> {
     let headerPartial;
     let cardClass = classNames(
       'r-Card',
-      {'resize' : (props.resize)},
+      {'e-resize' : (props.resize)},
       {'e-hover' : (props.hover)},
       {'e-scale' : (props.scale)},
       {'e-float' : (props.float)},

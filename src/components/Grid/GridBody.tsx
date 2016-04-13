@@ -148,7 +148,7 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
 
       rowArray.push(
         [<GridRow
-          expanded={this.props.detailTemplateOpenOnSelect ? this.state.expandedRows.length > 0 && this.state.expandedRows[key] : false}
+          expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false}
           toggleDetailTemplate={this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null}
           key={key}
           i={key}

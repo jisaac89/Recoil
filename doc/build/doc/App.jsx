@@ -108,8 +108,11 @@ class App extends React.Component {
         const self = this;
         const props = self.props;
         let state = self.state;
+        console.log(self.state.slideIndex);
         let template = (item, index) => {
-            return (<Button_1.default key={index}>{item.component.name}</Button_1.default>);
+            return (<Button_1.default>
+          {item.component.name}
+        </Button_1.default>);
         };
         let columns = [
             { name: 'component', template: template }
