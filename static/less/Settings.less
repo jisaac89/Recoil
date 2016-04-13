@@ -6,35 +6,31 @@
 
 // Font Settings
 
-    @font-family : 'Roboto', sans-serif;
+    @font-family : 'Roboto';
     @font-color: #333;
     @font-color-light: #666;
 
 // Global Settings
 
-    @body-background : #EEEEEE;
-
-// Default State
-
+    @body-background : #EFEFEF;
     @loader-color: #ccc;
-
     @light-background: #fff;
     @dark-background:#929292;
     @standard-border: #ccc;
 
 // @default-border-radius
 
-  @default-border-radius: 5px;
+    @default-border-radius: 3px;
 
-// Default Card
+// Card
 
     @card-background : #fff;
     @card-padding: 10px;
     @card-radius : 0px;
 
-// Default State
+// Buttons / Dropdowns
 
-    @default-background: -webkit-linear-gradient(top,rgba(255,255,255,.85),rgba(247,247,247,.85));
+    @default-background:rgb(247, 247, 247);
     @default-border: #ccc;
     @default-color: #888;
     @default--hover-background: #DEDCDC;
@@ -55,18 +51,34 @@
     @error--hover-border: transparent;
     @error--hover-color: white;
 
+// Links
+
     @link-background: transparent;
     @link-border: #1995FF;
-    @link-color: white;
+    @link-color: #1995FF;
     @link--hover-background: transparent;
     @link--hover-border: #f30;
     @link--hover-color: #007EEA;
+
+// Selectable
 
     @selectable-default-background: #E6E6E6;
     @selectable-primary-background: #1995FF;
     @selectable-error-background: #FF592F;
 
+// Input
+
     @input-background:#fff;
     @input-color:#777;
     @input-height:32px;
-    @input-border-radius:0px;
+    @input-border-radius: @default-border-radius;
+
+// Grid
+
+    @grid-cell-padding: 10px;
+
+    @grid-header-border-color: #ccc;
+    @grid-header-border-size: 1px;
+
+    @grid-border-color: #ccc;
+    @grid-border-size: 1px;

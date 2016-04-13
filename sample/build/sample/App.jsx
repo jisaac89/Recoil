@@ -24,7 +24,8 @@ class App extends React.Component {
             facilityChecked: false,
             toggleCamera: false,
             toggleSideMenu: false,
-            toggleSearchItem: false
+            toggleSearchItem: false,
+            toggleSample: false
         };
     }
     toggleSearchItem() {
@@ -55,6 +56,11 @@ class App extends React.Component {
     toggleCamera() {
         this.setState({
             toggleCamera: !this.state.toggleCamera
+        });
+    }
+    toggleSample() {
+        this.setState({
+            toggleSample: !this.state.toggleSample
         });
     }
     render() {
@@ -142,7 +148,6 @@ class App extends React.Component {
                       <Button_1.default size="large" block onClick={this.toggleSlideIndex.bind(this, 1)} icon="cart-plus">Order</Button_1.default>
                       <Button_1.default size="large" block icon="cart-plus">Stock</Button_1.default>
                     </Toolbar_1.default>
-
                   </Layer_1.default>
                   <Layer_1.default fill>
                     <Toolbar_1.default vertical spacing block className="p10 text-center">

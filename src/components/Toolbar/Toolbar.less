@@ -126,3 +126,26 @@
 .r-Toggle {
   min-width: 64px;
 }
+
+// input
+
+.r-Toolbar.flush > .r-Button + .r-Input:not(:last-child) > .r-Input__container,
+.r-Toolbar.flush > .r-Button + .r-Input:not(:last-child),
+.r-Toolbar.flush > .r-Button + .r-Input:not(:last-child) > .r-Input__container > input[type='text']{
+  border-right:0;
+  border-radius: 0;
+}
+
+.r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container,
+.r-Toolbar.flush > .r-Button + .r-Input:last-child,
+.r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container > input[type='text']{
+  border-bottom-left-radius:0;
+  border-top-left-radius: 0;
+}
+
+
+
+.r-Input > .r-Input__container > .r-Selectable > div > .r-Selectable__border-gray,
+.r-Input > .r-Input__container > .r-Selectable > div > .r-Selectable__border.primary  {
+  bottom:1px !important;
+}

@@ -31,7 +31,8 @@ export default class App extends React.Component<any, any> {
       facilityChecked : false,
       toggleCamera: false,
       toggleSideMenu: false,
-      toggleSearchItem : false
+      toggleSearchItem : false,
+      toggleSample: false
     }
   }
 
@@ -68,6 +69,12 @@ export default class App extends React.Component<any, any> {
   toggleCamera() {
     this.setState({
       toggleCamera: !this.state.toggleCamera
+    })
+  }
+
+  toggleSample() {
+    this.setState({
+      toggleSample: !this.state.toggleSample
     })
   }
   render() {
@@ -167,7 +174,6 @@ export default class App extends React.Component<any, any> {
                       <Button size="large" block onClick={this.toggleSlideIndex.bind(this, 1)} icon="cart-plus">Order</Button>
                       <Button size="large" block icon="cart-plus">Stock</Button>
                     </Toolbar>
-
                   </Layer>
                   <Layer fill>
                     <Toolbar vertical spacing block className="p10 text-center">

@@ -1,12 +1,15 @@
 @import './Global';
 
+html {
+  font-family: @font-family !important;
+}
+
 * {
-  font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 body {
-  overflow:hidden;
   background: @body-background;
   overflow-y: scroll;
 }
@@ -31,76 +34,76 @@ h3 {
   height: 0px !important;
 }
 .h5px {
-  min-height: 5px !important;
+  height: 5px !important;
 }
 .h10px {
-  min-height: 10px !important;
+  height: 10px !important;
 }
 .h15px {
-  min-height: 15px !important;
+  height: 15px !important;
 }
 .h20px {
-  min-height: 20px !important;
+  height: 20px !important;
 }
 .h25px {
-  min-height: 25px !important;
+  height: 25px !important;
 }
 .h30px {
-  min-height: 30px !important;
+  height: 30px !important;
 }
 .h35px {
-  min-height: 35px !important;
+  height: 35px !important;
 }
 .h40px {
-  min-height: 40px !important;
+  height: 40px !important;
 }
 .h45px {
-  min-height: 45px !important;
+  height: 45px !important;
 }
 .h50px {
-  min-height: 50px !important;
+  height: 50px !important;
 }
 .h53px{
-    min-height: 53px !important;
+    height: 53px !important;
 }
 .h55px {
-  min-height: 55px !important;
+  height: 55px !important;
 }
 .h60px {
-  min-height: 60px !important;
+  height: 60px !important;
 }
 .h65px {
-  min-height: 65px !important;
+  height: 65px !important;
 }
 .h70px {
-  min-height: 70px !important;
+  height: 70px !important;
 }
 .h75px {
-  min-height: 75px !important;
+  height: 75px !important;
 }
 .h80px {
-  min-height: 80px !important;
+  height: 80px !important;
 }
 .h85px {
-  min-height: 85px !important;
+  height: 85px !important;
 }
 .h90px {
-  min-height: 90px !important;
+  height: 90px !important;
 }
 .h95px {
-  min-height: 95px !important;
+  height: 95px !important;
 }
 .h100px {
-  min-height: 100px !important;
+  height: 100px !important;
 }
 .h200px {
-  min-height: 200px !important;
+  height: 200px !important;
 }
 .h300px {
-  min-height: 300px !important;
+  height: 300px !important;
 }
 .h400px {
-  min-height: 400px !important;
+  height: 400px !important;
 }
 
 /*width px*/
@@ -1539,15 +1542,15 @@ h4 {
   line-height: 55px;
 }
 h2 {
-  font-size:17px;
-  font-weight: 300;
-  color: @font-color-light;
+  font-size:20px;
+  font-weight: 500;
+  color: @font-color;
       line-height: 16px;
 }
 h3 {
   font-weight: normal;
-  color: @font-color-light;
-  font-size: 13px;
+color: @font-color-light;
+font-size: 18px;
 }
 .t0 {
   top: 0;
@@ -1614,7 +1617,7 @@ h3 {
   }
 }
 a {
-  color: #1995FF;
+  color: @link-color;
   text-decoration: none;
   cursor: pointer;
 }
@@ -1765,4 +1768,115 @@ form{
   background-size:50% auto;
   height:3px;
   border: 0;
+}
+
+
+
+.e-NightMode{
+  background: #111;
+
+  .r-Wizard .r-Wizard__track .r-WizardSlide{
+    background: #111;
+  }
+
+  .dark {
+    background: #323232;
+    color: #A9A9A9;
+}
+
+  .r-Layer.light{
+    background:#222;
+  }
+
+  .r-Button{
+    background:#333;
+    border-color:#222;
+  }
+
+  h2, h1, h3{
+    color:#999;
+  }
+
+  .border-top,
+  .border-bottom,
+  .border-left,
+  .border-right{
+    border-color:#334;
+  }
+
+  .r-Pane__container{
+    background: #000;
+  }
+
+  .r-Button:hover, .r-Button:focus {
+    background: #1995FF !important;
+    color:white;
+  }
+
+  small {
+    color: #888;
+  }
+
+  p{
+    color:#888;
+  }
+
+  .r-Input__container {
+    position: relative;
+    overflow: hidden;
+    border-color:#111 !important;
+    height: #999;
+    color: #333;
+    background-color:#222;
+  }
+
+  .r-Input__container > input{
+    position: relative;
+    overflow: hidden;
+    border-color:#111 !important;
+    height: #333;
+    color: #999;
+    background-color:#333;
+  }
+
+  .r-Toolbar.border > .r-Input, .r-Toolbar.border .r-Input{
+    border: 1px solid #555;
+  }
+
+
+  .r-Input.checked .r-Input__container {
+    position: relative;
+    overflow: hidden;
+    border-color:#111 !important;
+    height: #333;
+    color: #333;
+    background-color:#333;
+  }
+
+  .r-GridBody .selected{
+      background: rgba(255,255,255, 0.15);
+  }
+
+  .r-GridBody > .r-Emerge > .r-Emerge:hover{
+      background: rgba(255,255,255, 0.1);
+  }
+
+}
+
+.gray{
+  background: #EEEEEE;
+  z-index: 10;
+  height: 100%;
+}
+
+.r-GridBody .selected{
+    background: rgba(0,0,0,0.08) !important;
+}
+
+.r-GridBody > .r-Emerge > .r-Emerge:hover{
+    background: rgba(255,255,255, 1);
+}
+
+.shadow{
+  box-shadow: 0 0 20px #A5A5A5;
 }

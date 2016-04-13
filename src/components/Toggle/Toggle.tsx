@@ -15,8 +15,18 @@ export default class Toggle extends React.Component<any, any>{
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      checked : nextProps.checked
+    })
+  }
+
   onChange(e) {
-    this.setState({checked: e.target.checked});
+    const self = this;
+    self.setState({checked: e.target.checked});
+    if (self.props.onChange) {
+      self.props.onChange();
+    }
   }
 
   changeSelected(item) {
@@ -34,6 +44,7 @@ export default class Toggle extends React.Component<any, any>{
       {'e-color' : (props.columns && props.type === 'colors')},
       {'e-numbers' : (props.columns && !props.ghost && props.type !== 'colors')},
       {'e-ghost' : (props.ghost)},
+      props.size,
       props.className
     );
 
