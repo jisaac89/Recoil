@@ -269,18 +269,22 @@ class App extends React.Component {
 
         </Layer_1.default>
       </Door_1.default>
-          <Pane_1.default fixed open={this.state.toggleMobileTutorial === 1} direction="bottom">
-              <Layer_1.default fill className="w100 light p10 shadow">
-                <Toolbar_1.default block>
-                  {(() => {
-            if (SampleData_1.default[this.state.slideIndex - 1]) {
-                return (<Button_1.default icon="chevron-left" onClick={this.gotoTutorial.bind(this, SampleData_1.default[this.state.slideIndex - 1])}>{SampleData_1.default[this.state.slideIndex - 1].component.name}</Button_1.default>);
+      {(() => {
+            if (this.state.mobile) {
+                return (<Pane_1.default open={this.state.toggleMobileTutorial === 1 && this.state.mobile} direction="bottom">
+                <Layer_1.default fill className="w100 light p10 shadow">
+                  <Toolbar_1.default block>
+                    {(() => {
+                    if (SampleData_1.default[this.state.slideIndex - 1]) {
+                        return (<Button_1.default icon="chevron-left" onClick={this.gotoTutorial.bind(this, SampleData_1.default[this.state.slideIndex - 1])}>{SampleData_1.default[this.state.slideIndex - 1].component.name}</Button_1.default>);
+                    }
+                })()}
+                    <Button_1.default icon="chevron-right" onClick={this.gotoTutorial.bind(this, SampleData_1.default[this.state.slideIndex + 1])} right>{SampleData_1.default[this.state.slideIndex + 1].component.name}</Button_1.default>
+                  </Toolbar_1.default>
+                </Layer_1.default>
+            </Pane_1.default>);
             }
         })()}
-                  <Button_1.default icon="chevron-right" onClick={this.gotoTutorial.bind(this, SampleData_1.default[this.state.slideIndex + 1])} right>{SampleData_1.default[this.state.slideIndex + 1].component.name}</Button_1.default>
-                </Toolbar_1.default>
-              </Layer_1.default>
-          </Pane_1.default>
       </Layer_1.default>);
     }
 }

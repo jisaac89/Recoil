@@ -86,7 +86,7 @@ class Button extends React.Component {
           {iconPartial}
           {(() => {
                 if (!this.state.showShortcut) {
-                    return (<span>{props.children}</span>);
+                    return props.children;
                 }
                 else {
                     return null;
@@ -99,7 +99,7 @@ class Button extends React.Component {
         else {
             return (<button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
           {iconPartial}
-          <span className={this.state.showShortcut ? "e-invisible" : ''}>{props.children}</span>
+          {props.children}
           {showTooltip()}
           {selectablePartial}
         </button>);

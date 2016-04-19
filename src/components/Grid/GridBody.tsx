@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import Selectable from '../Selectable/Selectable';
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
@@ -6,8 +7,6 @@ import Emerge from '../Emerge/Emerge';
 import Door from '../Door/Door';
 
 import GridRow from './GridRow';
-
-
 
 interface IGridProps {
   dataSource : any;
@@ -161,6 +160,7 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
           detailTemplate={this.props.detailTemplate}
           selectedItem={selectedItem}
           hideColumns={this.props.hideColumns}
+          detailTemplateOpenOnHover={this.props.detailTemplateOpenOnHover}
         />],
         [<tr key={key}>
           <td className="p0" colSpan={this.props.columns.length + 1}>

@@ -39,10 +39,8 @@ class Pane extends React.Component {
         let childrenPartial = () => {
             return props.children;
         };
-        return (<div onClick={props.wrapperClick} className={paneClass}>
-        <div ref="pane" className={paneContainerClass} style={paneContainerStyle}>
+        return (<div onClick={props.wrapperClick} ref="pane" className={paneContainerClass} style={paneContainerStyle}>
           {childrenPartial()}
-        </div>
       </div>);
     }
 }

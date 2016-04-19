@@ -49,9 +49,7 @@ class Door extends React.Component<IDoorProps, any>{
 
      return(
        <div ref="door" className={doorClass} style={{height: this.state.maxHeight}}>
-         <div className={doorContainerClass}>
-           {props.open ? props.children : null}
-         </div>
+         {props.open ? props.children : null}
        </div>
      )
   }

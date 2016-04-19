@@ -12,7 +12,7 @@ Recoil is a front-end react powered framework.
 > first web applications
 
 ### Version
-0.3.36
+0.3.37
 
 A lot of the components are still at the early stages of development.
 

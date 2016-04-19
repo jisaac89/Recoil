@@ -5,16 +5,16 @@
 }
 
 .r-Toggle__input:checked + .r-Toggle__button {
-    background: #1995FF;
+    background: @primary-background;
 }
 
 .r-Toggle__input + .r-Toggle__button {
-    background: rgba(247, 247, 247, 0.85);
+    background: @default-background;
     border-radius: 2em;
     padding: 2px;
     -webkit-transition: all .4s ease;
     transition: all .4s ease;
-    border: 1px solid #ccc;
+    border: 1px solid @default-border;
 }
 
 .r-Toggle__input + .r-Toggle__button {
@@ -44,7 +44,7 @@
 
 .r-Toggle__input + .r-Toggle__button:after {
     border-radius: 2em;
-    background: #888;
+    background: @default--hover-color;
     -webkit-transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
     transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
 }
@@ -186,4 +186,8 @@
 
 .r-Toggle {
   min-width: 64px;
+}
+
+.r-Toggle.small{
+  min-width: 45px;
 }

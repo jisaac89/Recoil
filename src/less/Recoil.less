@@ -1447,7 +1447,7 @@ h3 {
   position: absolute !important;
 }
 .posfix {
-  position: fixed;
+  position: fixed !important;
 }
 .possta {
   position: static;
@@ -1563,15 +1563,29 @@ font-size: 18px;
   color: @primary-color !important;
   border-color: @primary-border !important;
 }
+.text-primary{
+  color: @primary-background !important;
+}
 .error {
   background: @error-background !important;
   color: @error-color !important;
   border-color: @error-border !important;
 }
+.text-error{
+  color: @error-background !important;
+}
+.success {
+  background: @success-background !important;
+  color: @success-color !important;
+  border-color: @success-border !important;
+}
+.success-error{
+  color: @success-background !important;
+}
 .primary.ghost {
   background: transparent !important;
-  color: #1995FF !important;
-  border-color: #1995FF !important;
+  color: @primary-background !important;
+  border-color: @primary-background !important;
 }
 .light.ghost {
   color: #fff !important;
@@ -1590,9 +1604,6 @@ font-size: 18px;
 }
 .error.ghost:hover {
   color: #f30 !important;
-}
-.error.ghost:hover, .primary.ghost:hover, .error.ghost:focus, .primary.ghost:focus {
-  color: white !important;
 }
 @media screen and (max-width: 680px) {
   // .r-Align__column {
@@ -1754,10 +1765,11 @@ form{
   to { background-position:top right; }
 }
 
-.rainbow-line{
+hr{
   width:100%;
   margin:0;
-  background-image:-webkit-linear-gradient( left, #FF0050, #D800FF, #2F00FF, #00D4C0,#00C829,#4CF600, #FFE300, #FF6500);
+  // background-image:-webkit-linear-gradient( left, #FF0050, #D800FF, #2F00FF, #00D4C0,#00C829,#4CF600, #FFE300, #FF6500);
+      background-image:-webkit-linear-gradient( left, @primary-background, #000, @primary-background);
   -moz-animation:rainbowLine 10.5s forwards linear infinite;
   -webkit-animation:rainbowLine 10.5s forwards linear infinite;
   -o-animation:rainbowLine 10.5s forwards linear infinite;
@@ -1809,8 +1821,7 @@ form{
   }
 
   .r-Button:hover, .r-Button:focus {
-    background: #1995FF !important;
-    color:white;
+    background: transparent !important;
   }
 
   small {

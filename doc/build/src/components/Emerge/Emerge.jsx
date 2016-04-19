@@ -52,7 +52,7 @@ class Emerge extends React.Component {
 Emerge.defaultProps = {
     if: true,
     enter: 'fadeInUp',
-    exit: 'fadeOutDownBig',
+    exit: 'fadeOutDown',
     delay: 300,
     overflow: false
 };

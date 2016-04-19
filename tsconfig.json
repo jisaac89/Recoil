@@ -22,6 +22,7 @@
     "files": [
         "sample/App.tsx",
         "sample/index.tsx",
+        "sample/SampleData.ts",
         "sample/tutorial/SampleData.ts",
         "sample/tutorial/TutorialAlign.tsx",
         "sample/tutorial/TutorialButton.tsx",
@@ -43,6 +44,7 @@
         "sample/tutorial/TutorialTransform.tsx",
         "sample/tutorial/TutorialWizard.tsx",
         "src/components/Align/Align.tsx",
+        "src/components/Avatar/Avatar.tsx",
         "src/components/Badge/Badge.tsx",
         "src/components/Button/Button.tsx",
         "src/components/Card/Card.tsx",

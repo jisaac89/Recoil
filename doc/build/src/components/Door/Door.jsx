@@ -23,9 +23,7 @@ class Door extends React.Component {
         let doorClass = classNames('r-Door', { 'e-open': (props.open) }, { 'e-close': (!props.open) }, { 'e-autoHeight': (state.autoHeight) }, props.className);
         let doorContainerClass = classNames('r-Door__container');
         return (<div ref="door" className={doorClass} style={{ height: this.state.maxHeight }}>
-         <div className={doorContainerClass}>
-           {props.open ? props.children : null}
-         </div>
+         {props.open ? props.children : null}
        </div>);
     }
 }

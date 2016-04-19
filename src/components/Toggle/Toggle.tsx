@@ -44,6 +44,7 @@ export default class Toggle extends React.Component<any, any>{
       {'e-color' : (props.columns && props.type === 'colors')},
       {'e-numbers' : (props.columns && !props.ghost && props.type !== 'colors')},
       {'e-ghost' : (props.ghost)},
+      {'pull-right' : (props.right)},
       props.size,
       props.className
     );

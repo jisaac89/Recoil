@@ -37,12 +37,8 @@ export default class GridColumn extends React.Component<IGridColumnProps,{}>{
         //     </Layer>
         //   )
         // }
-        else if (typeof dataSource[i][columns[x].name] === 'object' && columns[x].template) {
-          return (
-            <div>
-              {columns[x].template(dataSource[i])}
-            </div>
-          );
+        else if ((typeof dataSource[i][columns[x].name] === 'object' && columns[x].template) || (typeof dataSource[i][columns[x].name] === 'string' && columns[x].template)) {
+          return columns[x].template(dataSource[i]);
         }
         else if (typeof dataSource[i][columns[x].name] === 'object') {
           return (

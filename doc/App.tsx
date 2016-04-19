@@ -332,20 +332,26 @@ export default class App extends React.Component<any, any> {
 
         </Layer>
       </Door>
-          <Pane fixed open={this.state.toggleMobileTutorial === 1} direction="bottom">
-              <Layer fill className="w100 light p10 shadow">
-                <Toolbar block>
-                  {(()=>{
-                    if (SampleData[this.state.slideIndex - 1]) {
-                      return (
-                        <Button icon="chevron-left" onClick={this.gotoTutorial.bind(this, SampleData[this.state.slideIndex - 1])}>{SampleData[this.state.slideIndex - 1].component.name}</Button>
-                      )
-                    }
-                  })()}
-                  <Button icon="chevron-right" onClick={this.gotoTutorial.bind(this, SampleData[this.state.slideIndex + 1])} right>{SampleData[this.state.slideIndex + 1].component.name}</Button>
-                </Toolbar>
-              </Layer>
-          </Pane>
+      {(()=>{
+        if (this.state.mobile) {
+          return (
+            <Pane open={this.state.toggleMobileTutorial === 1 && this.state.mobile} direction="bottom">
+                <Layer fill className="w100 light p10 shadow">
+                  <Toolbar block>
+                    {(()=>{
+                      if (SampleData[this.state.slideIndex - 1]) {
+                        return (
+                          <Button icon="chevron-left" onClick={this.gotoTutorial.bind(this, SampleData[this.state.slideIndex - 1])}>{SampleData[this.state.slideIndex - 1].component.name}</Button>
+                        )
+                      }
+                    })()}
+                    <Button icon="chevron-right" onClick={this.gotoTutorial.bind(this, SampleData[this.state.slideIndex + 1])} right>{SampleData[this.state.slideIndex + 1].component.name}</Button>
+                  </Toolbar>
+                </Layer>
+            </Pane>
+          )
+        }
+      })()}
       </Layer>
     )
   }

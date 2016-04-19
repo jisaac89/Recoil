@@ -76,10 +76,8 @@ export default class Pane extends React.Component<IPaneProps, {}>{
     }
 
     return(
-      <div onClick={props.wrapperClick} className={paneClass}>
-        <div ref="pane" className={paneContainerClass} style={paneContainerStyle}>
+      <div onClick={props.wrapperClick} ref="pane" className={paneContainerClass} style={paneContainerStyle}>
           {childrenPartial()}
-        </div>
       </div>
     );
   }

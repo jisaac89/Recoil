@@ -1,6 +1,5 @@
 "use strict";
 const React = require('react');
-const Button_1 = require('../Button/Button');
 class GridHeaderSortable extends React.Component {
     constructor() {
         super();
@@ -22,7 +21,7 @@ class GridHeaderSortable extends React.Component {
         let { item } = props;
         return (<th style={{ width: item.width }}>
         {this.props.children}
-        <Button_1.default onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className="w50px" ghost icon={this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up'}/>
+        <i onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className={"r-Grid__Header__Sort pl10 w50px fa fa-" + (this.state.sortType === 'none' ? 'sort' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up')}></i>
       </th>);
     }
 }
@@ -69,7 +68,7 @@ class GridHeader extends React.Component {
             {(() => {
                 if (this.props.detailTemplate) {
                     return (<th className="p0" width={5}>
-                    <Button_1.default ghost className="p5 ps10" tabIndex={-1} icon="caret-right"></Button_1.default>
+                      <i className={"fa pl20 fa-caret-right"} tabIndex={-1}></i>
                   </th>);
                 }
             })()}

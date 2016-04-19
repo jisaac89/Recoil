@@ -1,6 +1,5 @@
 "use strict";
 const React = require('react');
-const Button_1 = require('../Button/Button');
 const GridColumn_1 = require('./GridColumn');
 class GridRow extends React.Component {
     onRowSelect(item) {
@@ -22,8 +21,7 @@ class GridRow extends React.Component {
         if (props.detailTemplate) {
             return (<tr onMouseEnter={detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null} onClick={this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null} className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}>
           <td className="p0" width={5}>
-            <Button_1.default className="p5 ps10" ghost onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={expanded ? "caret-down" : "caret-right"}>
-            </Button_1.default>
+            <i className={"r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i>
           </td>
           {columnArray}
         </tr>);

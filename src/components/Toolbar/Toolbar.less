@@ -16,8 +16,8 @@
 }
 
 .r-Toolbar.flush > .r-Button:last-child{
-  border-top-right-radius:3px;
-  border-bottom-right-radius:3px;
+  border-top-right-radius:@default-border-radius;
+  border-bottom-right-radius:@default-border-radius;
   border-right:1px solid @standard-border;
 }
 
@@ -75,38 +75,42 @@
 .r-Toolbar.border.no-radius > .r-Dropdown .r-DropdownSelection{
   border-radius: 0 !important;
 }
-.r-Toolbar.vertical.border .r-Button {
+.r-Toolbar.vertical.border > .r-Button ,
+.r-Toolbar.vertical.border > .r-Emerge > .r-Button {
     border: 1px solid @standard-border !important;
     display: table-cell;
     border-radius: 0 !important;
     line-height: 19px;
 }
 
-.r-Toolbar.vertical .r-Button{
+.r-Toolbar.vertical > .r-Button,
+.r-Toolbar.vertical > .r-Emerge > .r-Button{
   display: block;
 }
 
-.r-Toolbar.vertical.spacing .r-Button{
+.r-Toolbar.vertical.spacing > .r-Button,
+.r-Toolbar.vertical.spacing > .r-Emerge > .r-Button{
   margin-bottom:10px;
 }
 
-.r-Toolbar.vertical.spacing .r-Button:last-child{
+.r-Toolbar.vertical.spacing > .r-Button:last-child,
+.r-Toolbar.vertical.spacing > .r-Emerge > .r-Button:last-child{
   margin-bottom:0px;
 }
 
-.r-Toolbar.vertical.spacing .r-Input{
+.r-Toolbar.vertical.spacing > .r-Input,
+.r-Toolbar.vertical.spacing > .r-Emerge > .r-Input{
   margin-bottom:10px;
 }
 
-.r-Toolbar.vertical.spacing .r-Input:last-child{
+.r-Toolbar.vertical.spacing > .r-Input:last-child,
+.r-Toolbar.vertical.spacing > .r-Emerge > .r-Input:last-child{
   margin-bottom:0px;
 }
 
 .r-Toolbar.no-border > .r-Button{
   border:0 !important;
 }
-
-
 
 // Toggle
 
@@ -139,8 +143,6 @@
   border-bottom-left-radius:0;
   border-top-left-radius: 0;
 }
-
-
 
 .r-Input > .r-Input__container > .r-Selectable > div > .r-Selectable__border-gray,
 .r-Input > .r-Input__container > .r-Selectable > div > .r-Selectable__border.primary  {

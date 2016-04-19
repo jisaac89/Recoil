@@ -27,7 +27,7 @@
 .r-Button:hover,
 .r-Button:focus{
   background:  @default--hover-background;
-  color: @primary-background;
+  color: @default-color;
 }
 
 .r-Button.primary:hover,
@@ -39,6 +39,10 @@
 .r-Button.error:hover,
 .r-Button.error:focus{
   background: @error--hover-background;
+}
+.r-Button.success:hover,
+.r-Button.success:focus{
+  background: @success--hover-background;
 }
 .r-Button.link:hover,
 .r-Button.link:focus{
@@ -217,4 +221,9 @@
   right:0;
   left:0;
   margin:auto;
+}
+
+a, .r-Button{
+	-ms-touch-action: manipulation;	/* IE10  */
+	touch-action: manipulation;		/* IE11+ */
 }

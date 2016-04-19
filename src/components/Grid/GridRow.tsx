@@ -65,8 +65,7 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
           className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}
         >
           <td className="p0" width={5}>
-            <Button className="p5 ps10" ghost onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1} icon={expanded ? "caret-down" : "caret-right"}>
-            </Button>
+            <i className={"r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i>
           </td>
           {columnArray}
         </tr>

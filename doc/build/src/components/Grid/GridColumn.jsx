@@ -13,10 +13,8 @@ class GridColumn extends React.Component {
               {dataSource[i][columns[x].name]}
             </Button_1.default>);
             }
-            else if (typeof dataSource[i][columns[x].name] === 'object' && columns[x].template) {
-                return (<div>
-              {columns[x].template(dataSource[i])}
-            </div>);
+            else if ((typeof dataSource[i][columns[x].name] === 'object' && columns[x].template) || (typeof dataSource[i][columns[x].name] === 'string' && columns[x].template)) {
+                return columns[x].template(dataSource[i]);
             }
             else if (typeof dataSource[i][columns[x].name] === 'object') {
                 return (<span><strong>hasObject</strong></span>);

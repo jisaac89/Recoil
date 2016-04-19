@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "a1c9cffbcf1d9cbb5ed9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "a1918d2a900a2670b6b7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -8040,7 +8040,7 @@
 	var react_dom_1 = __webpack_require__(248);
 	__webpack_require__(249);
 	var App_1 = __webpack_require__(253);
-	__webpack_require__(313);
+	__webpack_require__(310);
 	react_dom_1.render(React.createElement(App_1.default, null), document.getElementById('root'));
 
 /***/ },
@@ -28054,7 +28054,7 @@
 	
 	
 	// module
-	exports.push([module.id, "html {\n  font-family: 'Roboto' !important;\n}\n* {\n  box-sizing: border-box;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nbody {\n  background: #EFEFEF;\n  overflow-y: scroll;\n}\n.body-background {\n  background: #EFEFEF;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  padding: 0;\n  margin: 0;\n}\nh3 {\n  font-weight: normal;\n  color: #666;\n}\n/*height px*/\n.h0px {\n  height: 0px !important;\n}\n.h5px {\n  height: 5px !important;\n}\n.h10px {\n  height: 10px !important;\n}\n.h15px {\n  height: 15px !important;\n}\n.h20px {\n  height: 20px !important;\n}\n.h25px {\n  height: 25px !important;\n}\n.h30px {\n  height: 30px !important;\n}\n.h35px {\n  height: 35px !important;\n}\n.h40px {\n  height: 40px !important;\n}\n.h45px {\n  height: 45px !important;\n}\n.h50px {\n  height: 50px !important;\n}\n.h53px {\n  height: 53px !important;\n}\n.h55px {\n  height: 55px !important;\n}\n.h60px {\n  height: 60px !important;\n}\n.h65px {\n  height: 65px !important;\n}\n.h70px {\n  height: 70px !important;\n}\n.h75px {\n  height: 75px !important;\n}\n.h80px {\n  height: 80px !important;\n}\n.h85px {\n  height: 85px !important;\n}\n.h90px {\n  height: 90px !important;\n}\n.h95px {\n  height: 95px !important;\n}\n.h100px {\n  height: 100px !important;\n}\n.h200px {\n  height: 200px !important;\n}\n.h300px {\n  height: 300px !important;\n}\n.h400px {\n  height: 400px !important;\n}\n/*width px*/\n.w0px {\n  width: 0px !important;\n}\n.w5px {\n  width: 5px !important;\n}\n.w10px {\n  width: 10px !important;\n}\n.w15px {\n  width: 15px !important;\n}\n.w20px {\n  width: 20px !important;\n}\n.w25px {\n  width: 25px !important;\n}\n.w30px {\n  width: 30px !important;\n}\n.w35px {\n  width: 35px !important;\n}\n.w40px {\n  width: 40px !important;\n}\n.w45px {\n  width: 45px !important;\n}\n.w50px {\n  width: 50px !important;\n}\n.w55px {\n  width: 55px !important;\n}\n.w60px {\n  width: 60px !important;\n}\n.w65px {\n  width: 65px !important;\n}\n.w70px {\n  width: 70px !important;\n}\n.w75px {\n  width: 75px !important;\n}\n.w80px {\n  width: 80px !important;\n}\n.w85px {\n  width: 85px !important;\n}\n.w90px {\n  width: 90px !important;\n}\n.w95px {\n  width: 95px !important;\n}\n.w100px {\n  max-width: 100% !important;\n  width: 100px;\n}\n.w200px {\n  max-width: 100% !important;\n  width: 200px !important;\n}\n.w300px {\n  max-width: 100% !important;\n  width: 300px !important;\n}\n.w400px {\n  max-width: 100% !important;\n  width: 400px !important;\n}\n.w500px {\n  max-width: 100% !important;\n  width: 500px !important;\n}\n.w600px {\n  width: 100% !important;\n  max-width: 600px !important;\n}\n.w700px {\n  width: 100% !important;\n  max-width: 700px !important;\n}\n.w400px {\n  width: 100% !important;\n  max-width: 400px !important;\n}\n.w400px {\n  width: 100% !important;\n  max-width: 400px !important;\n}\n.w900px {\n  width: 100% !important;\n  max-width: 900px !important;\n}\n.w1000px {\n  width: 100% !important;\n  max-width: 1000px !important;\n}\n/*width percentage*/\n.w0 {\n  width: 0%;\n  max-width: 0%;\n}\n.w5 {\n  width: 5%;\n  max-width: 5%;\n}\n.w10 {\n  width: 10%;\n  max-width: 10%;\n}\n.w15 {\n  width: 15%;\n  max-width: 15%;\n}\n.w20 {\n  width: 20%;\n  max-width: 20%;\n}\n.w25 {\n  width: 25%;\n  max-width: 25%;\n}\n.w30 {\n  width: 30%;\n  max-width: 30%;\n}\n.w33 {\n  width: 33.3333%;\n  max-width: 33.3333%;\n}\n.w35 {\n  width: 35%;\n  max-width: 35%;\n}\n.w40 {\n  width: 40%;\n  max-width: 40%;\n}\n.w45 {\n  width: 45%;\n  max-width: 45%;\n}\n.w50 {\n  width: 50%;\n  max-width: 50%;\n}\n.w55 {\n  width: 55%;\n  max-width: 55%;\n}\n.w60 {\n  width: 60%;\n  max-width: 60%;\n}\n.w65 {\n  width: 65%;\n  max-width: 65%;\n}\n.w70 {\n  width: 70%;\n  max-width: 70%;\n}\n.w75 {\n  width: 75%;\n  max-width: 75%;\n}\n.w80 {\n  width: 80%;\n  max-width: 80%;\n}\n.w85 {\n  width: 85%;\n  max-width: 85%;\n}\n.w90 {\n  width: 90%;\n  max-width: 90%;\n}\n.w95 {\n  width: 95%;\n  max-width: 95%;\n}\n.w100 {\n  width: 100%;\n  max-width: 100%;\n}\n/*height percentage*/\n.h0 {\n  height: 0%;\n  max-height: 0%;\n}\n.h5 {\n  height: 5%;\n  max-height: 5%;\n}\n.h10 {\n  height: 10%;\n  max-height: 10%;\n}\n.h15 {\n  height: 15%;\n  max-height: 15%;\n}\n.h20 {\n  height: 20%;\n  max-height: 20%;\n}\n.h25 {\n  height: 25%;\n  max-height: 25%;\n}\n.h30 {\n  height: 30%;\n  max-height: 30%;\n}\n.h35 {\n  height: 35%;\n  max-height: 35%;\n}\n.h40 {\n  height: 40%;\n  max-height: 40%;\n}\n.h45 {\n  height: 45%;\n  max-height: 45%;\n}\n.h50 {\n  height: 50%;\n  max-height: 50%;\n}\n.h55 {\n  height: 55%;\n  max-height: 55%;\n}\n.h60 {\n  height: 60%;\n  max-height: 60%;\n}\n.h65 {\n  height: 65%;\n  max-height: 65%;\n}\n.h70 {\n  height: 70%;\n  max-height: 70%;\n}\n.h75 {\n  height: 75%;\n  max-height: 75%;\n}\n.h80 {\n  height: 80%;\n  max-height: 80%;\n}\n.h85 {\n  height: 85%;\n  max-height: 85%;\n}\n.h90 {\n  height: 90%;\n  max-height: 90%;\n}\n.h95 {\n  height: 95%;\n  max-height: 95%;\n}\n.h100 {\n  height: 100%;\n  max-height: 100%;\n}\n.p0 {\n  padding: 0px !important;\n}\n.p5 {\n  padding: 5px !important;\n}\n.p10 {\n  padding: 10px !important;\n}\n.p15 {\n  padding: 15px !important;\n}\n.p20 {\n  padding: 20px !important;\n}\n.p25 {\n  padding: 25px !important;\n}\n.p30 {\n  padding: 30px !important;\n}\n.p35 {\n  padding: 35px !important;\n}\n.p40 {\n  padding: 40px !important;\n}\n.p45 {\n  padding: 45px !important;\n}\n.p50 {\n  padding: 50px !important;\n}\n.p55 {\n  padding: 55px !important;\n}\n.p60 {\n  padding: 60px !important;\n}\n.p65 {\n  padding: 65px !important;\n}\n.p70 {\n  padding: 70px !important;\n}\n.p75 {\n  padding: 75px !important;\n}\n.p80 {\n  padding: 80px !important;\n}\n.p85 {\n  padding: 85px !important;\n}\n.p90 {\n  padding: 90px !important;\n}\n.p95 {\n  padding: 95px !important;\n}\n.p100 {\n  padding: 100px !important;\n}\n.ps0 {\n  padding-left: 0px !important;\n  padding-right: 0px !important;\n}\n.ps5 {\n  padding-left: 5px !important;\n  padding-right: 5px !important;\n}\n.ps10 {\n  padding-left: 10px !important;\n  padding-right: 10px !important;\n}\n.ps15 {\n  padding-left: 15px !important;\n  padding-right: 15px !important;\n}\n.ps20 {\n  padding-left: 20px !important;\n  padding-right: 20px !important;\n}\n.ps25 {\n  padding-left: 25px !important;\n  padding-right: 25px !important;\n}\n.ps30 {\n  padding-left: 30px !important;\n  padding-right: 30px !important;\n}\n.ps35 {\n  padding-left: 35px !important;\n  padding-right: 35px !important;\n}\n.ps40 {\n  padding-left: 40px !important;\n  padding-right: 40px !important;\n}\n.ps45 {\n  padding-left: 45px !important;\n  padding-right: 45px !important;\n}\n.ps50 {\n  padding-left: 50px !important;\n  padding-right: 50px !important;\n}\n.ps55 {\n  padding-left: 55px !important;\n  padding-right: 55px !important;\n}\n.ps60 {\n  padding-left: 60px !important;\n  padding-right: 60px !important;\n}\n.ps65 {\n  padding-left: 65px !important;\n  padding-right: 65px !important;\n}\n.ps70 {\n  padding-left: 70px !important;\n  padding-right: 70px !important;\n}\n.ps75 {\n  padding-left: 75px !important;\n  padding-right: 75px !important;\n}\n.ps80 {\n  padding-left: 80px !important;\n  padding-right: 80px !important;\n}\n.ps85 {\n  padding-left: 85px !important;\n  padding-right: 85px !important;\n}\n.ps90 {\n  padding-left: 90px !important;\n  padding-right: 90px !important;\n}\n.ps95 {\n  padding-left: 95px !important;\n  padding-right: 95px !important;\n}\n.ps100 {\n  padding-left: 100px !important;\n  padding-right: 100px !important;\n}\n.ptb0 {\n  padding-top: 0px !important;\n  padding-bottom: 0px !important;\n}\n.ptb5 {\n  padding-top: 5px !important;\n  padding-bottom: 5px !important;\n}\n.ptb10 {\n  padding-top: 10px !important;\n  padding-bottom: 10px !important;\n}\n.ptb15 {\n  padding-top: 15px !important;\n  padding-bottom: 15px !important;\n}\n.ptb20 {\n  padding-top: 20px !important;\n  padding-bottom: 20px !important;\n}\n.ptb25 {\n  padding-top: 25px !important;\n  padding-bottom: 25px !important;\n}\n.ptb30 {\n  padding-top: 30px !important;\n  padding-bottom: 30px !important;\n}\n.ptb35 {\n  padding-top: 35px !important;\n  padding-bottom: 35px !important;\n}\n.ptb40 {\n  padding-top: 40px !important;\n  padding-bottom: 40px !important;\n}\n.ptb45 {\n  padding-top: 45px !important;\n  padding-bottom: 45px !important;\n}\n.ptb50 {\n  padding-top: 50px !important;\n  padding-bottom: 50px !important;\n}\n.ptb55 {\n  padding-top: 55px !important;\n  padding-bottom: 55px !important;\n}\n.ptb60 {\n  padding-top: 60px !important;\n  padding-bottom: 60px !important;\n}\n.ptb65 {\n  padding-top: 65px !important;\n  padding-bottom: 65px !important;\n}\n.ptb70 {\n  padding-top: 70px !important;\n  padding-bottom: 70px !important;\n}\n.ptb75 {\n  padding-top: 75px !important;\n  padding-bottom: 75px !important;\n}\n.ptb80 {\n  padding-top: 80px !important;\n  padding-bottom: 80px !important;\n}\n.ptb85 {\n  padding-top: 85px !important;\n  padding-bottom: 85px !important;\n}\n.ptb90 {\n  padding-top: 90px !important;\n  padding-bottom: 90px !important;\n}\n.ptb95 {\n  padding-top: 95px !important;\n  padding-bottom: 95px !important;\n}\n.ptb100 {\n  padding-top: 100px !important;\n  padding-bottom: 100px !important;\n}\n.pl0 {\n  padding-left: 0px !important;\n}\n.pl5 {\n  padding-left: 5px !important;\n}\n.pl10 {\n  padding-left: 10px !important;\n}\n.pl15 {\n  padding-left: 15px !important;\n}\n.pl20 {\n  padding-left: 20px !important;\n}\n.pl25 {\n  padding-left: 25px !important;\n}\n.pl30 {\n  padding-left: 30px !important;\n}\n.pl35 {\n  padding-left: 35px !important;\n}\n.pl40 {\n  padding-left: 40px !important;\n}\n.pl45 {\n  padding-left: 45px !important;\n}\n.pl50 {\n  padding-left: 50px !important;\n}\n.pl55 {\n  padding-left: 55px !important;\n}\n.pl60 {\n  padding-left: 60px !important;\n}\n.pl65 {\n  padding-left: 65px !important;\n}\n.pl70 {\n  padding-left: 70px !important;\n}\n.pl75 {\n  padding-left: 75px !important;\n}\n.pl80 {\n  padding-left: 80px !important;\n}\n.pl85 {\n  padding-left: 85px !important;\n}\n.pl90 {\n  padding-left: 90px !important;\n}\n.pl95 {\n  padding-left: 95px !important;\n}\n.pl100 {\n  padding-left: 100px !important;\n}\n.pl200 {\n  padding-left: 200px !important;\n}\n.pl300 {\n  padding-left: 300px !important;\n}\n.pl400 {\n  padding-left: 400px !important;\n}\n.pr0 {\n  padding-right: 0px !important;\n}\n.pr5 {\n  padding-right: 5px !important;\n}\n.pr10 {\n  padding-right: 10px !important;\n}\n.pr15 {\n  padding-right: 15px !important;\n}\n.pr20 {\n  padding-right: 20px !important;\n}\n.pr25 {\n  padding-right: 25px !important;\n}\n.pr30 {\n  padding-right: 30px !important;\n}\n.pr35 {\n  padding-right: 35px !important;\n}\n.pr40 {\n  padding-right: 40px !important;\n}\n.pr45 {\n  padding-right: 45px !important;\n}\n.pr50 {\n  padding-right: 50px !important;\n}\n.pr55 {\n  padding-right: 55px !important;\n}\n.pr60 {\n  padding-right: 60px !important;\n}\n.pr65 {\n  padding-right: 65px !important;\n}\n.pr70 {\n  padding-right: 70px !important;\n}\n.pr75 {\n  padding-right: 75px !important;\n}\n.pr80 {\n  padding-right: 80px !important;\n}\n.pr85 {\n  padding-right: 85px !important;\n}\n.pr90 {\n  padding-right: 90px !important;\n}\n.pr95 {\n  padding-right: 95px !important;\n}\n.pr100 {\n  padding-right: 100px !important;\n}\n.pt0 {\n  padding-top: 0px !important;\n}\n.pt5 {\n  padding-top: 5px !important;\n}\n.pt10 {\n  padding-top: 10px !important;\n}\n.pt15 {\n  padding-top: 15px !important;\n}\n.pt20 {\n  padding-top: 20px !important;\n}\n.pt25 {\n  padding-top: 25px !important;\n}\n.pt30 {\n  padding-top: 30px !important;\n}\n.pt35 {\n  padding-top: 35px !important;\n}\n.pt40 {\n  padding-top: 40px !important;\n}\n.pt45 {\n  padding-top: 45px !important;\n}\n.pt50 {\n  padding-top: 50px !important;\n}\n.pt55 {\n  padding-top: 55px !important;\n}\n.pt60 {\n  padding-top: 60px !important;\n}\n.pt65 {\n  padding-top: 65px !important;\n}\n.pt70 {\n  padding-top: 70px !important;\n}\n.pt75 {\n  padding-top: 75px !important;\n}\n.pt80 {\n  padding-top: 80px !important;\n}\n.pt85 {\n  padding-top: 85px !important;\n}\n.pt90 {\n  padding-top: 90px !important;\n}\n.pt95 {\n  padding-top: 95px !important;\n}\n.pt100 {\n  padding-top: 100px !important;\n}\n.pb0 {\n  padding-bottom: 0px !important;\n}\n.pb5 {\n  padding-bottom: 5px !important;\n}\n.pb10 {\n  padding-bottom: 10px !important;\n}\n.pb15 {\n  padding-bottom: 15px !important;\n}\n.pb20 {\n  padding-bottom: 20px !important;\n}\n.pb25 {\n  padding-bottom: 25px !important;\n}\n.pb30 {\n  padding-bottom: 30px !important;\n}\n.pb35 {\n  padding-bottom: 35px !important;\n}\n.pb40 {\n  padding-bottom: 40px !important;\n}\n.pb45 {\n  padding-bottom: 45px !important;\n}\n.pb50 {\n  padding-bottom: 50px !important;\n}\n.pb55 {\n  padding-bottom: 55px !important;\n}\n.pb60 {\n  padding-bottom: 60px !important;\n}\n.pb65 {\n  padding-bottom: 65px !important;\n}\n.pb70 {\n  padding-bottom: 70px !important;\n}\n.pb75 {\n  padding-bottom: 75px !important;\n}\n.pb80 {\n  padding-bottom: 80px !important;\n}\n.pb85 {\n  padding-bottom: 85px !important;\n}\n.pb90 {\n  padding-bottom: 90px !important;\n}\n.pb95 {\n  padding-bottom: 95px !important;\n}\n.pb100 {\n  padding-bottom: 100px !important;\n}\n.pb200 {\n  padding-bottom: 200px !important;\n}\n.pb300 {\n  padding-bottom: 300px !important;\n}\n.pb400 {\n  padding-bottom: 400px !important;\n}\n.m0 {\n  margin: 0px !important;\n}\n.m5 {\n  margin: 5px !important;\n}\n.m10 {\n  margin: 10px !important;\n}\n.m15 {\n  margin: 15px !important;\n}\n.m20 {\n  margin: 20px !important;\n}\n.m25 {\n  margin: 25px !important;\n}\n.m30 {\n  margin: 30px !important;\n}\n.m35 {\n  margin: 35px !important;\n}\n.m40 {\n  margin: 40px !important;\n}\n.m45 {\n  margin: 45px !important;\n}\n.m50 {\n  margin: 50px !important;\n}\n.m55 {\n  margin: 55px !important;\n}\n.m60 {\n  margin: 60px !important;\n}\n.m65 {\n  margin: 65px !important;\n}\n.m70 {\n  margin: 70px !important;\n}\n.m75 {\n  margin: 75px !important;\n}\n.m80 {\n  margin: 80px !important;\n}\n.m85 {\n  margin: 85px !important;\n}\n.m90 {\n  margin: 90px !important;\n}\n.m95 {\n  margin: 95px !important;\n}\n.m100 {\n  margin: 100px !important;\n}\n.ms0 {\n  margin-left: 0px !important;\n  margin-right: 0px !important;\n}\n.ms5 {\n  margin-left: 5px !important;\n  margin-right: 5px !important;\n}\n.ms10 {\n  margin-left: 10px !important;\n  margin-right: 10px !important;\n}\n.ms15 {\n  margin-left: 15px !important;\n  margin-right: 15px !important;\n}\n.ms20 {\n  margin-left: 20px !important;\n  margin-right: 20px !important;\n}\n.ms25 {\n  margin-left: 25px !important;\n  margin-right: 25px !important;\n}\n.ms30 {\n  margin-left: 30px !important;\n  margin-right: 30px !important;\n}\n.ms35 {\n  margin-left: 35px !important;\n  margin-right: 35px !important;\n}\n.ms40 {\n  margin-left: 40px !important;\n  margin-right: 40px !important;\n}\n.ms45 {\n  margin-left: 45px !important;\n  margin-right: 45px !important;\n}\n.ms50 {\n  margin-left: 50px !important;\n  margin-right: 50px !important;\n}\n.ms55 {\n  margin-left: 55px !important;\n  margin-right: 55px !important;\n}\n.ms60 {\n  margin-left: 60px !important;\n  margin-right: 60px !important;\n}\n.ms65 {\n  margin-left: 65px !important;\n  margin-right: 65px !important;\n}\n.ms70 {\n  margin-left: 70px !important;\n  margin-right: 70px !important;\n}\n.ms75 {\n  margin-left: 75px !important;\n  margin-right: 75px !important;\n}\n.ms80 {\n  margin-left: 80px !important;\n  margin-right: 80px !important;\n}\n.ms85 {\n  margin-left: 85px !important;\n  margin-right: 85px !important;\n}\n.ms90 {\n  margin-left: 90px !important;\n  margin-right: 90px !important;\n}\n.ms95 {\n  margin-left: 95px !important;\n  margin-right: 95px !important;\n}\n.ms100 {\n  margin-left: 100px !important;\n  margin-right: 100px !important;\n}\n.mtb0 {\n  margin-top: 0px !important;\n  margin-bottom: 0px !important;\n}\n.mtb5 {\n  margin-top: 5px !important;\n  margin-bottom: 5px !important;\n}\n.mtb10 {\n  margin-top: 10px !important;\n  margin-bottom: 10px !important;\n}\n.mtb15 {\n  margin-top: 15px !important;\n  margin-bottom: 15px !important;\n}\n.mtb20 {\n  margin-top: 20px !important;\n  margin-bottom: 20px !important;\n}\n.mtb25 {\n  margin-top: 25px !important;\n  margin-bottom: 25px !important;\n}\n.mtb30 {\n  margin-top: 30px !important;\n  margin-bottom: 30px !important;\n}\n.mtb35 {\n  margin-top: 35px !important;\n  margin-bottom: 35px !important;\n}\n.mtb40 {\n  margin-top: 40px !important;\n  margin-bottom: 40px !important;\n}\n.mtb45 {\n  margin-top: 45px !important;\n  margin-bottom: 45px !important;\n}\n.mtb50 {\n  margin-top: 50px !important;\n  margin-bottom: 50px !important;\n}\n.mtb55 {\n  margin-top: 55px !important;\n  margin-bottom: 55px !important;\n}\n.mtb60 {\n  margin-top: 60px !important;\n  margin-bottom: 60px !important;\n}\n.mtb65 {\n  margin-top: 65px !important;\n  margin-bottom: 65px !important;\n}\n.mtb70 {\n  margin-top: 70px !important;\n  margin-bottom: 70px !important;\n}\n.mtb75 {\n  margin-top: 75px !important;\n  margin-bottom: 75px !important;\n}\n.mtb80 {\n  margin-top: 80px !important;\n  margin-bottom: 80px !important;\n}\n.mtb85 {\n  margin-top: 85px !important;\n  margin-bottom: 85px !important;\n}\n.mtb90 {\n  margin-top: 90px !important;\n  margin-bottom: 90px !important;\n}\n.mtb95 {\n  margin-top: 95px !important;\n  margin-bottom: 95px !important;\n}\n.mtb100 {\n  margin-top: 100px !important;\n  margin-bottom: 100px !important;\n}\n.ml0 {\n  margin-left: 0px !important;\n}\n.ml5 {\n  margin-left: 5px !important;\n}\n.ml10 {\n  margin-left: 10px !important;\n}\n.ml15 {\n  margin-left: 15px !important;\n}\n.ml20 {\n  margin-left: 20px !important;\n}\n.ml25 {\n  margin-left: 25px !important;\n}\n.ml30 {\n  margin-left: 30px !important;\n}\n.ml35 {\n  margin-left: 35px !important;\n}\n.ml40 {\n  margin-left: 40px !important;\n}\n.ml45 {\n  margin-left: 45px !important;\n}\n.ml50 {\n  margin-left: 50px !important;\n}\n.ml55 {\n  margin-left: 55px !important;\n}\n.ml60 {\n  margin-left: 60px !important;\n}\n.ml65 {\n  margin-left: 65px !important;\n}\n.ml70 {\n  margin-left: 70px !important;\n}\n.ml75 {\n  margin-left: 75px !important;\n}\n.ml80 {\n  margin-left: 80px !important;\n}\n.ml85 {\n  margin-left: 85px !important;\n}\n.ml90 {\n  margin-left: 90px !important;\n}\n.ml95 {\n  margin-left: 95px !important;\n}\n.ml100 {\n  margin-left: 100px !important;\n}\n.mr0 {\n  margin-right: 0px !important;\n}\n.mr5 {\n  margin-right: 5px !important;\n}\n.mr10 {\n  margin-right: 10px !important;\n}\n.mr15 {\n  margin-right: 15px !important;\n}\n.mr20 {\n  margin-right: 20px !important;\n}\n.mr25 {\n  margin-right: 25px !important;\n}\n.mr30 {\n  margin-right: 30px !important;\n}\n.mr35 {\n  margin-right: 35px !important;\n}\n.mr40 {\n  margin-right: 40px !important;\n}\n.mr45 {\n  margin-right: 45px !important;\n}\n.mr50 {\n  margin-right: 50px !important;\n}\n.mr55 {\n  margin-right: 55px !important;\n}\n.mr60 {\n  margin-right: 60px !important;\n}\n.mr65 {\n  margin-right: 65px !important;\n}\n.mr70 {\n  margin-right: 70px !important;\n}\n.mr75 {\n  margin-right: 75px !important;\n}\n.mr80 {\n  margin-right: 80px !important;\n}\n.mr85 {\n  margin-right: 85px !important;\n}\n.mr90 {\n  margin-right: 90px !important;\n}\n.mr95 {\n  margin-right: 95px !important;\n}\n.mr100 {\n  margin-right: 100px !important;\n}\n.mb0 {\n  margin-bottom: 0px !important;\n}\n.mb5 {\n  margin-bottom: 5px !important;\n}\n.mb10 {\n  margin-bottom: 10px !important;\n}\n.mb15 {\n  margin-bottom: 15px !important;\n}\n.mb20 {\n  margin-bottom: 20px !important;\n}\n.mb25 {\n  margin-bottom: 25px !important;\n}\n.mb30 {\n  margin-bottom: 30px !important;\n}\n.mb35 {\n  margin-bottom: 35px !important;\n}\n.mb40 {\n  margin-bottom: 40px !important;\n}\n.mb45 {\n  margin-bottom: 45px !important;\n}\n.mb50 {\n  margin-bottom: 50px !important;\n}\n.mb55 {\n  margin-bottom: 55px !important;\n}\n.mb60 {\n  margin-bottom: 60px !important;\n}\n.mb65 {\n  margin-bottom: 65px !important;\n}\n.mb70 {\n  margin-bottom: 70px !important;\n}\n.mb75 {\n  margin-bottom: 75px !important;\n}\n.mb80 {\n  margin-bottom: 80px !important;\n}\n.mb85 {\n  margin-bottom: 85px !important;\n}\n.mb90 {\n  margin-bottom: 90px !important;\n}\n.mb95 {\n  margin-bottom: 95px !important;\n}\n.mb100 {\n  margin-bottom: 100px !important;\n}\n.mt0 {\n  margin-top: 0px !important;\n}\n.mt5 {\n  margin-top: 5px !important;\n}\n.mt10 {\n  margin-top: 10px !important;\n}\n.mt15 {\n  margin-top: 15px !important;\n}\n.mt20 {\n  margin-top: 20px !important;\n}\n.mt25 {\n  margin-top: 25px !important;\n}\n.mt30 {\n  margin-top: 30px !important;\n}\n.mt35 {\n  margin-top: 35px !important;\n}\n.mt40 {\n  margin-top: 40px !important;\n}\n.mt45 {\n  margin-top: 45px !important;\n}\n.mt50 {\n  margin-top: 50px !important;\n}\n.mt55 {\n  margin-top: 55px !important;\n}\n.mt60 {\n  margin-top: 60px !important;\n}\n.mt65 {\n  margin-top: 65px !important;\n}\n.mt70 {\n  margin-top: 70px !important;\n}\n.mt75 {\n  margin-top: 75px !important;\n}\n.mt80 {\n  margin-top: 80px !important;\n}\n.mt85 {\n  margin-top: 85px !important;\n}\n.mt90 {\n  margin-top: 90px !important;\n}\n.mt95 {\n  margin-top: 95px !important;\n}\n.mt100 {\n  margin-top: 100px !important;\n}\n.z1 {\n  z-index: 1;\n}\n.z2 {\n  z-index: 2;\n}\n.z3 {\n  z-index: 3;\n}\n.z4 {\n  z-index: 4;\n}\n.z5 {\n  z-index: 5;\n}\n.z6 {\n  z-index: 6;\n}\n.z7 {\n  z-index: 7;\n}\n.z8 {\n  z-index: 8;\n}\n.z9 {\n  z-index: 9;\n}\n.pull-left {\n  float: left !important;\n}\n.pull-right {\n  float: right !important;\n}\n.center-parent {\n  margin: auto;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n.center-width {\n  margin: auto;\n  position: relative;\n}\n.flohide {\n  overflow: hidden;\n}\n.floshow {\n  overflow: visible !important;\n}\n.hide,\n.hide-override {\n  display: none !important;\n}\n.highlight {\n  background: #ffff99;\n}\n.dblock {\n  display: block;\n}\n.dinline {\n  display: inline;\n}\n.dinblock {\n  display: inline-block;\n}\n.posrel {\n  position: relative;\n}\n.posabs {\n  position: absolute !important;\n}\n.posfix {\n  position: fixed;\n}\n.possta {\n  position: static;\n}\n.clearfix {\n  clear: both;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.caps {\n  text-transform: uppercase;\n}\n.text-center {\n  text-align: center !important;\n}\n.text-left {\n  text-align: left !important;\n}\n.text-right {\n  text-align: right !important;\n}\n.text-blank {\n  text-decoration: none;\n  font-weight: normal;\n}\n.text-white {\n  color: white;\n}\n.wauto {\n  width: auto !important;\n}\n.fixed {\n  position: fixed;\n  z-index: 100;\n}\n.mw1000 {\n  max-width: 1000px;\n}\n.mw900 {\n  max-width: 900px;\n}\n.mw800 {\n  max-width: 800px;\n}\np {\n  font-size: 15px;\n  font-weight: 400;\n  letter-spacing: 0.010em;\n  line-height: 1.6em;\n  margin: 0;\n  color: #333;\n}\nh1 {\n  font-size: 24px;\n  color: #666;\n  display: block;\n  line-height: 36px;\n  font-weight: 200;\n}\n.border-all {\n  border: 1px solid #ccc;\n}\n.border-bottom {\n  border-bottom: 1px solid #ccc;\n}\n.border-top {\n  border-top: 1px solid #ccc;\n}\n.border-left {\n  border-left: 1px solid #ccc;\n}\n.border-right {\n  border-right: 1px solid #ccc;\n}\nh4 {\n  font-weight: normal;\n}\n.text-overflow {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  word-break: break-word;\n}\n.super {\n  font-weight: 300;\n  font-size: 45px;\n  line-height: 55px;\n}\nh2 {\n  font-size: 20px;\n  font-weight: 500;\n  color: #333;\n  line-height: 16px;\n}\nh3 {\n  font-weight: normal;\n  color: #666;\n  font-size: 18px;\n}\n.t0 {\n  top: 0;\n}\n.b0 {\n  bottom: 0;\n}\n.primary {\n  background: #1995FF !important;\n  color: white !important;\n  border-color: transparent !important;\n}\n.error {\n  background: #FF2E12 !important;\n  color: white !important;\n  border-color: transparent !important;\n}\n.primary.ghost {\n  background: transparent !important;\n  color: #1995FF !important;\n  border-color: #1995FF !important;\n}\n.light.ghost {\n  color: #fff !important;\n}\n.dark {\n  background: #929292;\n  color: #A9A9A9;\n}\n.primary.ghost:hover {\n  color: #1995FF !important;\n}\n.error.ghost {\n  background: transparent !important;\n  color: #f30 !important;\n  border-color: #f30 !important;\n}\n.error.ghost:hover {\n  color: #f30 !important;\n}\n.error.ghost:hover,\n.primary.ghost:hover,\n.error.ghost:focus,\n.primary.ghost:focus {\n  color: white !important;\n}\n@media screen and (max-width: 680px) {\n  .r-Align__column .r-Button.block {\n    margin-bottom: 0px !important;\n  }\n  .r-Align__column:last-child .r-Button.block {\n    margin-bottom: 0px !important;\n  }\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\na {\n  color: #1995FF;\n  text-decoration: none;\n  cursor: pointer;\n}\n.r0 {\n  right: 0;\n}\n.l0 {\n  left: 0;\n}\n.black {\n  background-color: #111;\n}\nform {\n  margin: 0;\n  padding: 0;\n}\n.circle {\n  border-radius: 50% !important;\n  overflow: hidden !important;\n}\n@keyframes floatL {\n  from {\n    -webkit-transform: translateY(2px) rotate3d(0, 1, 1, 1deg);\n  }\n  to {\n    -webkit-transform: translateY(-2px) rotate3d(0, 1, 1, 0deg);\n  }\n}\n@keyframes floatR {\n  from {\n    -webkit-transform: translateY(2px) rotate3d(0, 1, -1, 1deg);\n  }\n  to {\n    -webkit-transform: translateY(-2px) rotate3d(0, 1, -1, 0deg);\n  }\n}\n@keyframes float {\n  from {\n    -webkit-transform: scale(1) translateY(0px) rotate3d(0, 0, 0, 0deg);\n  }\n  to {\n    -webkit-transform: scale(1.014) translateY(-2px) rotate3d(0, 0, 1, 0.6deg);\n  }\n}\n.floatL {\n  position: relative;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: floatL;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-timing-function: ease-in-out;\n  -webkit-animation-direction: alternate;\n  -webkit-animation-play-state: running;\n}\n.floatR {\n  position: relative;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: floatL;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-timing-function: ease-in-out;\n  -webkit-animation-direction: alternate;\n  -webkit-animation-play-state: running;\n}\n.e-float {\n  position: relative;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: float;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-timing-function: ease-in-out;\n  -webkit-animation-direction: alternate;\n  -webkit-animation-play-state: running;\n}\n.selected-header-wrapper {\n  z-index: 300000;\n}\n.floating-action {\n  position: fixed;\n  bottom: 0px;\n  z-index: 30000;\n  width: 100%;\n  left: 0;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.flex {\n  display: flex !important;\n}\n@-moz-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@-webkit-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@-o-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@-ms-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@-khtml-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n.rainbow-line {\n  width: 100%;\n  margin: 0;\n  background-image: -webkit-linear-gradient(left, #FF0050, #D800FF, #2F00FF, #00D4C0, #00C829, #4CF600, #FFE300, #FF6500);\n  -moz-animation: rainbowLine 10.5s forwards linear infinite;\n  -webkit-animation: rainbowLine 10.5s forwards linear infinite;\n  -o-animation: rainbowLine 10.5s forwards linear infinite;\n  -khtml-animation: rainbowLine 10.5s forwards linear infinite;\n  -ms-animation: rainbowLine 10.5s forwards linear infinite;\n  -lynx-animation: rainbowLine 10.5s forwards linear infinite;\n  animation: rainbowLine 10.5s forwards linear infinite;\n  background-size: 50% auto;\n  height: 3px;\n  border: 0;\n}\n.e-NightMode {\n  background: #111;\n}\n.e-NightMode .r-Wizard .r-Wizard__track .r-WizardSlide {\n  background: #111;\n}\n.e-NightMode .dark {\n  background: #323232;\n  color: #A9A9A9;\n}\n.e-NightMode .r-Layer.light {\n  background: #222;\n}\n.e-NightMode .r-Button {\n  background: #333;\n  border-color: #222;\n}\n.e-NightMode h2,\n.e-NightMode h1,\n.e-NightMode h3 {\n  color: #999;\n}\n.e-NightMode .border-top,\n.e-NightMode .border-bottom,\n.e-NightMode .border-left,\n.e-NightMode .border-right {\n  border-color: #334;\n}\n.e-NightMode .r-Pane__container {\n  background: #000;\n}\n.e-NightMode .r-Button:hover,\n.e-NightMode .r-Button:focus {\n  background: #1995FF !important;\n  color: white;\n}\n.e-NightMode small {\n  color: #888;\n}\n.e-NightMode p {\n  color: #888;\n}\n.e-NightMode .r-Input__container {\n  position: relative;\n  overflow: hidden;\n  border-color: #111 !important;\n  height: #999;\n  color: #333;\n  background-color: #222;\n}\n.e-NightMode .r-Input__container > input {\n  position: relative;\n  overflow: hidden;\n  border-color: #111 !important;\n  height: #333;\n  color: #999;\n  background-color: #333;\n}\n.e-NightMode .r-Toolbar.border > .r-Input,\n.e-NightMode .r-Toolbar.border .r-Input {\n  border: 1px solid #555;\n}\n.e-NightMode .r-Input.checked .r-Input__container {\n  position: relative;\n  overflow: hidden;\n  border-color: #111 !important;\n  height: #333;\n  color: #333;\n  background-color: #333;\n}\n.e-NightMode .r-GridBody .selected {\n  background: rgba(255, 255, 255, 0.15);\n}\n.e-NightMode .r-GridBody > .r-Emerge > .r-Emerge:hover {\n  background: rgba(255, 255, 255, 0.1);\n}\n.gray {\n  background: #EEEEEE;\n  z-index: 10;\n  height: 100%;\n}\n.r-GridBody .selected {\n  background: rgba(0, 0, 0, 0.08) !important;\n}\n.r-GridBody > .r-Emerge > .r-Emerge:hover {\n  background: #ffffff;\n}\n.shadow {\n  box-shadow: 0 0 20px #A5A5A5;\n}\n", ""]);
+	exports.push([module.id, "html {\n  font-family: 'Roboto' !important;\n}\n* {\n  box-sizing: border-box;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nbody {\n  background: #EFEFEF;\n  overflow-y: scroll;\n}\n.body-background {\n  background: #EFEFEF;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  padding: 0;\n  margin: 0;\n}\nh3 {\n  font-weight: normal;\n  color: #666;\n}\n/*height px*/\n.h0px {\n  height: 0px !important;\n}\n.h5px {\n  height: 5px !important;\n}\n.h10px {\n  height: 10px !important;\n}\n.h15px {\n  height: 15px !important;\n}\n.h20px {\n  height: 20px !important;\n}\n.h25px {\n  height: 25px !important;\n}\n.h30px {\n  height: 30px !important;\n}\n.h35px {\n  height: 35px !important;\n}\n.h40px {\n  height: 40px !important;\n}\n.h45px {\n  height: 45px !important;\n}\n.h50px {\n  height: 50px !important;\n}\n.h53px {\n  height: 53px !important;\n}\n.h55px {\n  height: 55px !important;\n}\n.h60px {\n  height: 60px !important;\n}\n.h65px {\n  height: 65px !important;\n}\n.h70px {\n  height: 70px !important;\n}\n.h75px {\n  height: 75px !important;\n}\n.h80px {\n  height: 80px !important;\n}\n.h85px {\n  height: 85px !important;\n}\n.h90px {\n  height: 90px !important;\n}\n.h95px {\n  height: 95px !important;\n}\n.h100px {\n  height: 100px !important;\n}\n.h200px {\n  height: 200px !important;\n}\n.h300px {\n  height: 300px !important;\n}\n.h400px {\n  height: 400px !important;\n}\n/*width px*/\n.w0px {\n  width: 0px !important;\n}\n.w5px {\n  width: 5px !important;\n}\n.w10px {\n  width: 10px !important;\n}\n.w15px {\n  width: 15px !important;\n}\n.w20px {\n  width: 20px !important;\n}\n.w25px {\n  width: 25px !important;\n}\n.w30px {\n  width: 30px !important;\n}\n.w35px {\n  width: 35px !important;\n}\n.w40px {\n  width: 40px !important;\n}\n.w45px {\n  width: 45px !important;\n}\n.w50px {\n  width: 50px !important;\n}\n.w55px {\n  width: 55px !important;\n}\n.w60px {\n  width: 60px !important;\n}\n.w65px {\n  width: 65px !important;\n}\n.w70px {\n  width: 70px !important;\n}\n.w75px {\n  width: 75px !important;\n}\n.w80px {\n  width: 80px !important;\n}\n.w85px {\n  width: 85px !important;\n}\n.w90px {\n  width: 90px !important;\n}\n.w95px {\n  width: 95px !important;\n}\n.w100px {\n  max-width: 100% !important;\n  width: 100px;\n}\n.w200px {\n  max-width: 100% !important;\n  width: 200px !important;\n}\n.w300px {\n  max-width: 100% !important;\n  width: 300px !important;\n}\n.w400px {\n  max-width: 100% !important;\n  width: 400px !important;\n}\n.w500px {\n  max-width: 100% !important;\n  width: 500px !important;\n}\n.w600px {\n  width: 100% !important;\n  max-width: 600px !important;\n}\n.w700px {\n  width: 100% !important;\n  max-width: 700px !important;\n}\n.w400px {\n  width: 100% !important;\n  max-width: 400px !important;\n}\n.w400px {\n  width: 100% !important;\n  max-width: 400px !important;\n}\n.w900px {\n  width: 100% !important;\n  max-width: 900px !important;\n}\n.w1000px {\n  width: 100% !important;\n  max-width: 1000px !important;\n}\n/*width percentage*/\n.w0 {\n  width: 0%;\n  max-width: 0%;\n}\n.w5 {\n  width: 5%;\n  max-width: 5%;\n}\n.w10 {\n  width: 10%;\n  max-width: 10%;\n}\n.w15 {\n  width: 15%;\n  max-width: 15%;\n}\n.w20 {\n  width: 20%;\n  max-width: 20%;\n}\n.w25 {\n  width: 25%;\n  max-width: 25%;\n}\n.w30 {\n  width: 30%;\n  max-width: 30%;\n}\n.w33 {\n  width: 33.3333%;\n  max-width: 33.3333%;\n}\n.w35 {\n  width: 35%;\n  max-width: 35%;\n}\n.w40 {\n  width: 40%;\n  max-width: 40%;\n}\n.w45 {\n  width: 45%;\n  max-width: 45%;\n}\n.w50 {\n  width: 50%;\n  max-width: 50%;\n}\n.w55 {\n  width: 55%;\n  max-width: 55%;\n}\n.w60 {\n  width: 60%;\n  max-width: 60%;\n}\n.w65 {\n  width: 65%;\n  max-width: 65%;\n}\n.w70 {\n  width: 70%;\n  max-width: 70%;\n}\n.w75 {\n  width: 75%;\n  max-width: 75%;\n}\n.w80 {\n  width: 80%;\n  max-width: 80%;\n}\n.w85 {\n  width: 85%;\n  max-width: 85%;\n}\n.w90 {\n  width: 90%;\n  max-width: 90%;\n}\n.w95 {\n  width: 95%;\n  max-width: 95%;\n}\n.w100 {\n  width: 100%;\n  max-width: 100%;\n}\n/*height percentage*/\n.h0 {\n  height: 0%;\n  max-height: 0%;\n}\n.h5 {\n  height: 5%;\n  max-height: 5%;\n}\n.h10 {\n  height: 10%;\n  max-height: 10%;\n}\n.h15 {\n  height: 15%;\n  max-height: 15%;\n}\n.h20 {\n  height: 20%;\n  max-height: 20%;\n}\n.h25 {\n  height: 25%;\n  max-height: 25%;\n}\n.h30 {\n  height: 30%;\n  max-height: 30%;\n}\n.h35 {\n  height: 35%;\n  max-height: 35%;\n}\n.h40 {\n  height: 40%;\n  max-height: 40%;\n}\n.h45 {\n  height: 45%;\n  max-height: 45%;\n}\n.h50 {\n  height: 50%;\n  max-height: 50%;\n}\n.h55 {\n  height: 55%;\n  max-height: 55%;\n}\n.h60 {\n  height: 60%;\n  max-height: 60%;\n}\n.h65 {\n  height: 65%;\n  max-height: 65%;\n}\n.h70 {\n  height: 70%;\n  max-height: 70%;\n}\n.h75 {\n  height: 75%;\n  max-height: 75%;\n}\n.h80 {\n  height: 80%;\n  max-height: 80%;\n}\n.h85 {\n  height: 85%;\n  max-height: 85%;\n}\n.h90 {\n  height: 90%;\n  max-height: 90%;\n}\n.h95 {\n  height: 95%;\n  max-height: 95%;\n}\n.h100 {\n  height: 100%;\n  max-height: 100%;\n}\n.p0 {\n  padding: 0px !important;\n}\n.p5 {\n  padding: 5px !important;\n}\n.p10 {\n  padding: 10px !important;\n}\n.p15 {\n  padding: 15px !important;\n}\n.p20 {\n  padding: 20px !important;\n}\n.p25 {\n  padding: 25px !important;\n}\n.p30 {\n  padding: 30px !important;\n}\n.p35 {\n  padding: 35px !important;\n}\n.p40 {\n  padding: 40px !important;\n}\n.p45 {\n  padding: 45px !important;\n}\n.p50 {\n  padding: 50px !important;\n}\n.p55 {\n  padding: 55px !important;\n}\n.p60 {\n  padding: 60px !important;\n}\n.p65 {\n  padding: 65px !important;\n}\n.p70 {\n  padding: 70px !important;\n}\n.p75 {\n  padding: 75px !important;\n}\n.p80 {\n  padding: 80px !important;\n}\n.p85 {\n  padding: 85px !important;\n}\n.p90 {\n  padding: 90px !important;\n}\n.p95 {\n  padding: 95px !important;\n}\n.p100 {\n  padding: 100px !important;\n}\n.ps0 {\n  padding-left: 0px !important;\n  padding-right: 0px !important;\n}\n.ps5 {\n  padding-left: 5px !important;\n  padding-right: 5px !important;\n}\n.ps10 {\n  padding-left: 10px !important;\n  padding-right: 10px !important;\n}\n.ps15 {\n  padding-left: 15px !important;\n  padding-right: 15px !important;\n}\n.ps20 {\n  padding-left: 20px !important;\n  padding-right: 20px !important;\n}\n.ps25 {\n  padding-left: 25px !important;\n  padding-right: 25px !important;\n}\n.ps30 {\n  padding-left: 30px !important;\n  padding-right: 30px !important;\n}\n.ps35 {\n  padding-left: 35px !important;\n  padding-right: 35px !important;\n}\n.ps40 {\n  padding-left: 40px !important;\n  padding-right: 40px !important;\n}\n.ps45 {\n  padding-left: 45px !important;\n  padding-right: 45px !important;\n}\n.ps50 {\n  padding-left: 50px !important;\n  padding-right: 50px !important;\n}\n.ps55 {\n  padding-left: 55px !important;\n  padding-right: 55px !important;\n}\n.ps60 {\n  padding-left: 60px !important;\n  padding-right: 60px !important;\n}\n.ps65 {\n  padding-left: 65px !important;\n  padding-right: 65px !important;\n}\n.ps70 {\n  padding-left: 70px !important;\n  padding-right: 70px !important;\n}\n.ps75 {\n  padding-left: 75px !important;\n  padding-right: 75px !important;\n}\n.ps80 {\n  padding-left: 80px !important;\n  padding-right: 80px !important;\n}\n.ps85 {\n  padding-left: 85px !important;\n  padding-right: 85px !important;\n}\n.ps90 {\n  padding-left: 90px !important;\n  padding-right: 90px !important;\n}\n.ps95 {\n  padding-left: 95px !important;\n  padding-right: 95px !important;\n}\n.ps100 {\n  padding-left: 100px !important;\n  padding-right: 100px !important;\n}\n.ptb0 {\n  padding-top: 0px !important;\n  padding-bottom: 0px !important;\n}\n.ptb5 {\n  padding-top: 5px !important;\n  padding-bottom: 5px !important;\n}\n.ptb10 {\n  padding-top: 10px !important;\n  padding-bottom: 10px !important;\n}\n.ptb15 {\n  padding-top: 15px !important;\n  padding-bottom: 15px !important;\n}\n.ptb20 {\n  padding-top: 20px !important;\n  padding-bottom: 20px !important;\n}\n.ptb25 {\n  padding-top: 25px !important;\n  padding-bottom: 25px !important;\n}\n.ptb30 {\n  padding-top: 30px !important;\n  padding-bottom: 30px !important;\n}\n.ptb35 {\n  padding-top: 35px !important;\n  padding-bottom: 35px !important;\n}\n.ptb40 {\n  padding-top: 40px !important;\n  padding-bottom: 40px !important;\n}\n.ptb45 {\n  padding-top: 45px !important;\n  padding-bottom: 45px !important;\n}\n.ptb50 {\n  padding-top: 50px !important;\n  padding-bottom: 50px !important;\n}\n.ptb55 {\n  padding-top: 55px !important;\n  padding-bottom: 55px !important;\n}\n.ptb60 {\n  padding-top: 60px !important;\n  padding-bottom: 60px !important;\n}\n.ptb65 {\n  padding-top: 65px !important;\n  padding-bottom: 65px !important;\n}\n.ptb70 {\n  padding-top: 70px !important;\n  padding-bottom: 70px !important;\n}\n.ptb75 {\n  padding-top: 75px !important;\n  padding-bottom: 75px !important;\n}\n.ptb80 {\n  padding-top: 80px !important;\n  padding-bottom: 80px !important;\n}\n.ptb85 {\n  padding-top: 85px !important;\n  padding-bottom: 85px !important;\n}\n.ptb90 {\n  padding-top: 90px !important;\n  padding-bottom: 90px !important;\n}\n.ptb95 {\n  padding-top: 95px !important;\n  padding-bottom: 95px !important;\n}\n.ptb100 {\n  padding-top: 100px !important;\n  padding-bottom: 100px !important;\n}\n.pl0 {\n  padding-left: 0px !important;\n}\n.pl5 {\n  padding-left: 5px !important;\n}\n.pl10 {\n  padding-left: 10px !important;\n}\n.pl15 {\n  padding-left: 15px !important;\n}\n.pl20 {\n  padding-left: 20px !important;\n}\n.pl25 {\n  padding-left: 25px !important;\n}\n.pl30 {\n  padding-left: 30px !important;\n}\n.pl35 {\n  padding-left: 35px !important;\n}\n.pl40 {\n  padding-left: 40px !important;\n}\n.pl45 {\n  padding-left: 45px !important;\n}\n.pl50 {\n  padding-left: 50px !important;\n}\n.pl55 {\n  padding-left: 55px !important;\n}\n.pl60 {\n  padding-left: 60px !important;\n}\n.pl65 {\n  padding-left: 65px !important;\n}\n.pl70 {\n  padding-left: 70px !important;\n}\n.pl75 {\n  padding-left: 75px !important;\n}\n.pl80 {\n  padding-left: 80px !important;\n}\n.pl85 {\n  padding-left: 85px !important;\n}\n.pl90 {\n  padding-left: 90px !important;\n}\n.pl95 {\n  padding-left: 95px !important;\n}\n.pl100 {\n  padding-left: 100px !important;\n}\n.pl200 {\n  padding-left: 200px !important;\n}\n.pl300 {\n  padding-left: 300px !important;\n}\n.pl400 {\n  padding-left: 400px !important;\n}\n.pr0 {\n  padding-right: 0px !important;\n}\n.pr5 {\n  padding-right: 5px !important;\n}\n.pr10 {\n  padding-right: 10px !important;\n}\n.pr15 {\n  padding-right: 15px !important;\n}\n.pr20 {\n  padding-right: 20px !important;\n}\n.pr25 {\n  padding-right: 25px !important;\n}\n.pr30 {\n  padding-right: 30px !important;\n}\n.pr35 {\n  padding-right: 35px !important;\n}\n.pr40 {\n  padding-right: 40px !important;\n}\n.pr45 {\n  padding-right: 45px !important;\n}\n.pr50 {\n  padding-right: 50px !important;\n}\n.pr55 {\n  padding-right: 55px !important;\n}\n.pr60 {\n  padding-right: 60px !important;\n}\n.pr65 {\n  padding-right: 65px !important;\n}\n.pr70 {\n  padding-right: 70px !important;\n}\n.pr75 {\n  padding-right: 75px !important;\n}\n.pr80 {\n  padding-right: 80px !important;\n}\n.pr85 {\n  padding-right: 85px !important;\n}\n.pr90 {\n  padding-right: 90px !important;\n}\n.pr95 {\n  padding-right: 95px !important;\n}\n.pr100 {\n  padding-right: 100px !important;\n}\n.pt0 {\n  padding-top: 0px !important;\n}\n.pt5 {\n  padding-top: 5px !important;\n}\n.pt10 {\n  padding-top: 10px !important;\n}\n.pt15 {\n  padding-top: 15px !important;\n}\n.pt20 {\n  padding-top: 20px !important;\n}\n.pt25 {\n  padding-top: 25px !important;\n}\n.pt30 {\n  padding-top: 30px !important;\n}\n.pt35 {\n  padding-top: 35px !important;\n}\n.pt40 {\n  padding-top: 40px !important;\n}\n.pt45 {\n  padding-top: 45px !important;\n}\n.pt50 {\n  padding-top: 50px !important;\n}\n.pt55 {\n  padding-top: 55px !important;\n}\n.pt60 {\n  padding-top: 60px !important;\n}\n.pt65 {\n  padding-top: 65px !important;\n}\n.pt70 {\n  padding-top: 70px !important;\n}\n.pt75 {\n  padding-top: 75px !important;\n}\n.pt80 {\n  padding-top: 80px !important;\n}\n.pt85 {\n  padding-top: 85px !important;\n}\n.pt90 {\n  padding-top: 90px !important;\n}\n.pt95 {\n  padding-top: 95px !important;\n}\n.pt100 {\n  padding-top: 100px !important;\n}\n.pb0 {\n  padding-bottom: 0px !important;\n}\n.pb5 {\n  padding-bottom: 5px !important;\n}\n.pb10 {\n  padding-bottom: 10px !important;\n}\n.pb15 {\n  padding-bottom: 15px !important;\n}\n.pb20 {\n  padding-bottom: 20px !important;\n}\n.pb25 {\n  padding-bottom: 25px !important;\n}\n.pb30 {\n  padding-bottom: 30px !important;\n}\n.pb35 {\n  padding-bottom: 35px !important;\n}\n.pb40 {\n  padding-bottom: 40px !important;\n}\n.pb45 {\n  padding-bottom: 45px !important;\n}\n.pb50 {\n  padding-bottom: 50px !important;\n}\n.pb55 {\n  padding-bottom: 55px !important;\n}\n.pb60 {\n  padding-bottom: 60px !important;\n}\n.pb65 {\n  padding-bottom: 65px !important;\n}\n.pb70 {\n  padding-bottom: 70px !important;\n}\n.pb75 {\n  padding-bottom: 75px !important;\n}\n.pb80 {\n  padding-bottom: 80px !important;\n}\n.pb85 {\n  padding-bottom: 85px !important;\n}\n.pb90 {\n  padding-bottom: 90px !important;\n}\n.pb95 {\n  padding-bottom: 95px !important;\n}\n.pb100 {\n  padding-bottom: 100px !important;\n}\n.pb200 {\n  padding-bottom: 200px !important;\n}\n.pb300 {\n  padding-bottom: 300px !important;\n}\n.pb400 {\n  padding-bottom: 400px !important;\n}\n.m0 {\n  margin: 0px !important;\n}\n.m5 {\n  margin: 5px !important;\n}\n.m10 {\n  margin: 10px !important;\n}\n.m15 {\n  margin: 15px !important;\n}\n.m20 {\n  margin: 20px !important;\n}\n.m25 {\n  margin: 25px !important;\n}\n.m30 {\n  margin: 30px !important;\n}\n.m35 {\n  margin: 35px !important;\n}\n.m40 {\n  margin: 40px !important;\n}\n.m45 {\n  margin: 45px !important;\n}\n.m50 {\n  margin: 50px !important;\n}\n.m55 {\n  margin: 55px !important;\n}\n.m60 {\n  margin: 60px !important;\n}\n.m65 {\n  margin: 65px !important;\n}\n.m70 {\n  margin: 70px !important;\n}\n.m75 {\n  margin: 75px !important;\n}\n.m80 {\n  margin: 80px !important;\n}\n.m85 {\n  margin: 85px !important;\n}\n.m90 {\n  margin: 90px !important;\n}\n.m95 {\n  margin: 95px !important;\n}\n.m100 {\n  margin: 100px !important;\n}\n.ms0 {\n  margin-left: 0px !important;\n  margin-right: 0px !important;\n}\n.ms5 {\n  margin-left: 5px !important;\n  margin-right: 5px !important;\n}\n.ms10 {\n  margin-left: 10px !important;\n  margin-right: 10px !important;\n}\n.ms15 {\n  margin-left: 15px !important;\n  margin-right: 15px !important;\n}\n.ms20 {\n  margin-left: 20px !important;\n  margin-right: 20px !important;\n}\n.ms25 {\n  margin-left: 25px !important;\n  margin-right: 25px !important;\n}\n.ms30 {\n  margin-left: 30px !important;\n  margin-right: 30px !important;\n}\n.ms35 {\n  margin-left: 35px !important;\n  margin-right: 35px !important;\n}\n.ms40 {\n  margin-left: 40px !important;\n  margin-right: 40px !important;\n}\n.ms45 {\n  margin-left: 45px !important;\n  margin-right: 45px !important;\n}\n.ms50 {\n  margin-left: 50px !important;\n  margin-right: 50px !important;\n}\n.ms55 {\n  margin-left: 55px !important;\n  margin-right: 55px !important;\n}\n.ms60 {\n  margin-left: 60px !important;\n  margin-right: 60px !important;\n}\n.ms65 {\n  margin-left: 65px !important;\n  margin-right: 65px !important;\n}\n.ms70 {\n  margin-left: 70px !important;\n  margin-right: 70px !important;\n}\n.ms75 {\n  margin-left: 75px !important;\n  margin-right: 75px !important;\n}\n.ms80 {\n  margin-left: 80px !important;\n  margin-right: 80px !important;\n}\n.ms85 {\n  margin-left: 85px !important;\n  margin-right: 85px !important;\n}\n.ms90 {\n  margin-left: 90px !important;\n  margin-right: 90px !important;\n}\n.ms95 {\n  margin-left: 95px !important;\n  margin-right: 95px !important;\n}\n.ms100 {\n  margin-left: 100px !important;\n  margin-right: 100px !important;\n}\n.mtb0 {\n  margin-top: 0px !important;\n  margin-bottom: 0px !important;\n}\n.mtb5 {\n  margin-top: 5px !important;\n  margin-bottom: 5px !important;\n}\n.mtb10 {\n  margin-top: 10px !important;\n  margin-bottom: 10px !important;\n}\n.mtb15 {\n  margin-top: 15px !important;\n  margin-bottom: 15px !important;\n}\n.mtb20 {\n  margin-top: 20px !important;\n  margin-bottom: 20px !important;\n}\n.mtb25 {\n  margin-top: 25px !important;\n  margin-bottom: 25px !important;\n}\n.mtb30 {\n  margin-top: 30px !important;\n  margin-bottom: 30px !important;\n}\n.mtb35 {\n  margin-top: 35px !important;\n  margin-bottom: 35px !important;\n}\n.mtb40 {\n  margin-top: 40px !important;\n  margin-bottom: 40px !important;\n}\n.mtb45 {\n  margin-top: 45px !important;\n  margin-bottom: 45px !important;\n}\n.mtb50 {\n  margin-top: 50px !important;\n  margin-bottom: 50px !important;\n}\n.mtb55 {\n  margin-top: 55px !important;\n  margin-bottom: 55px !important;\n}\n.mtb60 {\n  margin-top: 60px !important;\n  margin-bottom: 60px !important;\n}\n.mtb65 {\n  margin-top: 65px !important;\n  margin-bottom: 65px !important;\n}\n.mtb70 {\n  margin-top: 70px !important;\n  margin-bottom: 70px !important;\n}\n.mtb75 {\n  margin-top: 75px !important;\n  margin-bottom: 75px !important;\n}\n.mtb80 {\n  margin-top: 80px !important;\n  margin-bottom: 80px !important;\n}\n.mtb85 {\n  margin-top: 85px !important;\n  margin-bottom: 85px !important;\n}\n.mtb90 {\n  margin-top: 90px !important;\n  margin-bottom: 90px !important;\n}\n.mtb95 {\n  margin-top: 95px !important;\n  margin-bottom: 95px !important;\n}\n.mtb100 {\n  margin-top: 100px !important;\n  margin-bottom: 100px !important;\n}\n.ml0 {\n  margin-left: 0px !important;\n}\n.ml5 {\n  margin-left: 5px !important;\n}\n.ml10 {\n  margin-left: 10px !important;\n}\n.ml15 {\n  margin-left: 15px !important;\n}\n.ml20 {\n  margin-left: 20px !important;\n}\n.ml25 {\n  margin-left: 25px !important;\n}\n.ml30 {\n  margin-left: 30px !important;\n}\n.ml35 {\n  margin-left: 35px !important;\n}\n.ml40 {\n  margin-left: 40px !important;\n}\n.ml45 {\n  margin-left: 45px !important;\n}\n.ml50 {\n  margin-left: 50px !important;\n}\n.ml55 {\n  margin-left: 55px !important;\n}\n.ml60 {\n  margin-left: 60px !important;\n}\n.ml65 {\n  margin-left: 65px !important;\n}\n.ml70 {\n  margin-left: 70px !important;\n}\n.ml75 {\n  margin-left: 75px !important;\n}\n.ml80 {\n  margin-left: 80px !important;\n}\n.ml85 {\n  margin-left: 85px !important;\n}\n.ml90 {\n  margin-left: 90px !important;\n}\n.ml95 {\n  margin-left: 95px !important;\n}\n.ml100 {\n  margin-left: 100px !important;\n}\n.mr0 {\n  margin-right: 0px !important;\n}\n.mr5 {\n  margin-right: 5px !important;\n}\n.mr10 {\n  margin-right: 10px !important;\n}\n.mr15 {\n  margin-right: 15px !important;\n}\n.mr20 {\n  margin-right: 20px !important;\n}\n.mr25 {\n  margin-right: 25px !important;\n}\n.mr30 {\n  margin-right: 30px !important;\n}\n.mr35 {\n  margin-right: 35px !important;\n}\n.mr40 {\n  margin-right: 40px !important;\n}\n.mr45 {\n  margin-right: 45px !important;\n}\n.mr50 {\n  margin-right: 50px !important;\n}\n.mr55 {\n  margin-right: 55px !important;\n}\n.mr60 {\n  margin-right: 60px !important;\n}\n.mr65 {\n  margin-right: 65px !important;\n}\n.mr70 {\n  margin-right: 70px !important;\n}\n.mr75 {\n  margin-right: 75px !important;\n}\n.mr80 {\n  margin-right: 80px !important;\n}\n.mr85 {\n  margin-right: 85px !important;\n}\n.mr90 {\n  margin-right: 90px !important;\n}\n.mr95 {\n  margin-right: 95px !important;\n}\n.mr100 {\n  margin-right: 100px !important;\n}\n.mb0 {\n  margin-bottom: 0px !important;\n}\n.mb5 {\n  margin-bottom: 5px !important;\n}\n.mb10 {\n  margin-bottom: 10px !important;\n}\n.mb15 {\n  margin-bottom: 15px !important;\n}\n.mb20 {\n  margin-bottom: 20px !important;\n}\n.mb25 {\n  margin-bottom: 25px !important;\n}\n.mb30 {\n  margin-bottom: 30px !important;\n}\n.mb35 {\n  margin-bottom: 35px !important;\n}\n.mb40 {\n  margin-bottom: 40px !important;\n}\n.mb45 {\n  margin-bottom: 45px !important;\n}\n.mb50 {\n  margin-bottom: 50px !important;\n}\n.mb55 {\n  margin-bottom: 55px !important;\n}\n.mb60 {\n  margin-bottom: 60px !important;\n}\n.mb65 {\n  margin-bottom: 65px !important;\n}\n.mb70 {\n  margin-bottom: 70px !important;\n}\n.mb75 {\n  margin-bottom: 75px !important;\n}\n.mb80 {\n  margin-bottom: 80px !important;\n}\n.mb85 {\n  margin-bottom: 85px !important;\n}\n.mb90 {\n  margin-bottom: 90px !important;\n}\n.mb95 {\n  margin-bottom: 95px !important;\n}\n.mb100 {\n  margin-bottom: 100px !important;\n}\n.mt0 {\n  margin-top: 0px !important;\n}\n.mt5 {\n  margin-top: 5px !important;\n}\n.mt10 {\n  margin-top: 10px !important;\n}\n.mt15 {\n  margin-top: 15px !important;\n}\n.mt20 {\n  margin-top: 20px !important;\n}\n.mt25 {\n  margin-top: 25px !important;\n}\n.mt30 {\n  margin-top: 30px !important;\n}\n.mt35 {\n  margin-top: 35px !important;\n}\n.mt40 {\n  margin-top: 40px !important;\n}\n.mt45 {\n  margin-top: 45px !important;\n}\n.mt50 {\n  margin-top: 50px !important;\n}\n.mt55 {\n  margin-top: 55px !important;\n}\n.mt60 {\n  margin-top: 60px !important;\n}\n.mt65 {\n  margin-top: 65px !important;\n}\n.mt70 {\n  margin-top: 70px !important;\n}\n.mt75 {\n  margin-top: 75px !important;\n}\n.mt80 {\n  margin-top: 80px !important;\n}\n.mt85 {\n  margin-top: 85px !important;\n}\n.mt90 {\n  margin-top: 90px !important;\n}\n.mt95 {\n  margin-top: 95px !important;\n}\n.mt100 {\n  margin-top: 100px !important;\n}\n.z1 {\n  z-index: 1;\n}\n.z2 {\n  z-index: 2;\n}\n.z3 {\n  z-index: 3;\n}\n.z4 {\n  z-index: 4;\n}\n.z5 {\n  z-index: 5;\n}\n.z6 {\n  z-index: 6;\n}\n.z7 {\n  z-index: 7;\n}\n.z8 {\n  z-index: 8;\n}\n.z9 {\n  z-index: 9;\n}\n.pull-left {\n  float: left !important;\n}\n.pull-right {\n  float: right !important;\n}\n.center-parent {\n  margin: auto;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  position: absolute;\n}\n.center-width {\n  margin: auto;\n  position: relative;\n}\n.flohide {\n  overflow: hidden;\n}\n.floshow {\n  overflow: visible !important;\n}\n.hide,\n.hide-override {\n  display: none !important;\n}\n.highlight {\n  background: #ffff99;\n}\n.dblock {\n  display: block;\n}\n.dinline {\n  display: inline;\n}\n.dinblock {\n  display: inline-block;\n}\n.posrel {\n  position: relative;\n}\n.posabs {\n  position: absolute !important;\n}\n.posfix {\n  position: fixed !important;\n}\n.possta {\n  position: static;\n}\n.clearfix {\n  clear: both;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.caps {\n  text-transform: uppercase;\n}\n.text-center {\n  text-align: center !important;\n}\n.text-left {\n  text-align: left !important;\n}\n.text-right {\n  text-align: right !important;\n}\n.text-blank {\n  text-decoration: none;\n  font-weight: normal;\n}\n.text-white {\n  color: white;\n}\n.wauto {\n  width: auto !important;\n}\n.fixed {\n  position: fixed;\n  z-index: 100;\n}\n.mw1000 {\n  max-width: 1000px;\n}\n.mw900 {\n  max-width: 900px;\n}\n.mw800 {\n  max-width: 800px;\n}\np {\n  font-size: 15px;\n  font-weight: 400;\n  letter-spacing: 0.010em;\n  line-height: 1.6em;\n  margin: 0;\n  color: #333;\n}\nh1 {\n  font-size: 24px;\n  color: #666;\n  display: block;\n  line-height: 36px;\n  font-weight: 200;\n}\n.border-all {\n  border: 1px solid #ccc;\n}\n.border-bottom {\n  border-bottom: 1px solid #ccc;\n}\n.border-top {\n  border-top: 1px solid #ccc;\n}\n.border-left {\n  border-left: 1px solid #ccc;\n}\n.border-right {\n  border-right: 1px solid #ccc;\n}\nh4 {\n  font-weight: normal;\n}\n.text-overflow {\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  word-break: break-word;\n}\n.super {\n  font-weight: 300;\n  font-size: 45px;\n  line-height: 55px;\n}\nh2 {\n  font-size: 20px;\n  font-weight: 500;\n  color: #333;\n  line-height: 16px;\n}\nh3 {\n  font-weight: normal;\n  color: #666;\n  font-size: 18px;\n}\n.t0 {\n  top: 0;\n}\n.b0 {\n  bottom: 0;\n}\n.primary {\n  background: #1995FF !important;\n  color: white !important;\n  border-color: transparent !important;\n}\n.text-primary {\n  color: #1995FF !important;\n}\n.error {\n  background: #FF592F !important;\n  color: #fff !important;\n  border-color: transparent !important;\n}\n.text-error {\n  color: #FF592F !important;\n}\n.success {\n  background: #3EBB27 !important;\n  color: #fff !important;\n  border-color: transparent !important;\n}\n.success-error {\n  color: #3EBB27 !important;\n}\n.primary.ghost {\n  background: transparent !important;\n  color: #1995FF !important;\n  border-color: #1995FF !important;\n}\n.light.ghost {\n  color: #fff !important;\n}\n.dark {\n  background: #929292;\n  color: #A9A9A9;\n}\n.primary.ghost:hover {\n  color: #1995FF !important;\n}\n.error.ghost {\n  background: transparent !important;\n  color: #f30 !important;\n  border-color: #f30 !important;\n}\n.error.ghost:hover {\n  color: #f30 !important;\n}\n@media screen and (max-width: 680px) {\n  .r-Align__column .r-Button.block {\n    margin-bottom: 0px !important;\n  }\n  .r-Align__column:last-child .r-Button.block {\n    margin-bottom: 0px !important;\n  }\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\na {\n  color: #1995FF;\n  text-decoration: none;\n  cursor: pointer;\n}\n.r0 {\n  right: 0;\n}\n.l0 {\n  left: 0;\n}\n.black {\n  background-color: #111;\n}\nform {\n  margin: 0;\n  padding: 0;\n}\n.circle {\n  border-radius: 50% !important;\n  overflow: hidden !important;\n}\n@keyframes floatL {\n  from {\n    -webkit-transform: translateY(2px) rotate3d(0, 1, 1, 1deg);\n  }\n  to {\n    -webkit-transform: translateY(-2px) rotate3d(0, 1, 1, 0deg);\n  }\n}\n@keyframes floatR {\n  from {\n    -webkit-transform: translateY(2px) rotate3d(0, 1, -1, 1deg);\n  }\n  to {\n    -webkit-transform: translateY(-2px) rotate3d(0, 1, -1, 0deg);\n  }\n}\n@keyframes float {\n  from {\n    -webkit-transform: scale(1) translateY(0px) rotate3d(0, 0, 0, 0deg);\n  }\n  to {\n    -webkit-transform: scale(1.014) translateY(-2px) rotate3d(0, 0, 1, 0.6deg);\n  }\n}\n.floatL {\n  position: relative;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: floatL;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-timing-function: ease-in-out;\n  -webkit-animation-direction: alternate;\n  -webkit-animation-play-state: running;\n}\n.floatR {\n  position: relative;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: floatL;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-timing-function: ease-in-out;\n  -webkit-animation-direction: alternate;\n  -webkit-animation-play-state: running;\n}\n.e-float {\n  position: relative;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-name: float;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-timing-function: ease-in-out;\n  -webkit-animation-direction: alternate;\n  -webkit-animation-play-state: running;\n}\n.selected-header-wrapper {\n  z-index: 300000;\n}\n.floating-action {\n  position: fixed;\n  bottom: 0px;\n  z-index: 30000;\n  width: 100%;\n  left: 0;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.flex {\n  display: flex !important;\n}\n@-moz-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@-webkit-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@-o-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@-ms-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@-khtml-keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\n@keyframes rainbowLine {\n  from {\n    background-position: top left;\n  }\n  to {\n    background-position: top right;\n  }\n}\nhr {\n  width: 100%;\n  margin: 0;\n  background-image: -webkit-linear-gradient(left, #1995FF, #000, #1995FF);\n  -moz-animation: rainbowLine 10.5s forwards linear infinite;\n  -webkit-animation: rainbowLine 10.5s forwards linear infinite;\n  -o-animation: rainbowLine 10.5s forwards linear infinite;\n  -khtml-animation: rainbowLine 10.5s forwards linear infinite;\n  -ms-animation: rainbowLine 10.5s forwards linear infinite;\n  -lynx-animation: rainbowLine 10.5s forwards linear infinite;\n  animation: rainbowLine 10.5s forwards linear infinite;\n  background-size: 50% auto;\n  height: 3px;\n  border: 0;\n}\n.e-NightMode {\n  background: #111;\n}\n.e-NightMode .r-Wizard .r-Wizard__track .r-WizardSlide {\n  background: #111;\n}\n.e-NightMode .dark {\n  background: #323232;\n  color: #A9A9A9;\n}\n.e-NightMode .r-Layer.light {\n  background: #222;\n}\n.e-NightMode .r-Button {\n  background: #333;\n  border-color: #222;\n}\n.e-NightMode h2,\n.e-NightMode h1,\n.e-NightMode h3 {\n  color: #999;\n}\n.e-NightMode .border-top,\n.e-NightMode .border-bottom,\n.e-NightMode .border-left,\n.e-NightMode .border-right {\n  border-color: #334;\n}\n.e-NightMode .r-Pane__container {\n  background: #000;\n}\n.e-NightMode .r-Button:hover,\n.e-NightMode .r-Button:focus {\n  background: #1995FF !important;\n  color: white;\n}\n.e-NightMode small {\n  color: #888;\n}\n.e-NightMode p {\n  color: #888;\n}\n.e-NightMode .r-Input__container {\n  position: relative;\n  overflow: hidden;\n  border-color: #111 !important;\n  height: #999;\n  color: #333;\n  background-color: #222;\n}\n.e-NightMode .r-Input__container > input {\n  position: relative;\n  overflow: hidden;\n  border-color: #111 !important;\n  height: #333;\n  color: #999;\n  background-color: #333;\n}\n.e-NightMode .r-Toolbar.border > .r-Input,\n.e-NightMode .r-Toolbar.border .r-Input {\n  border: 1px solid #555;\n}\n.e-NightMode .r-Input.checked .r-Input__container {\n  position: relative;\n  overflow: hidden;\n  border-color: #111 !important;\n  height: #333;\n  color: #333;\n  background-color: #333;\n}\n.e-NightMode .r-GridBody .selected {\n  background: rgba(255, 255, 255, 0.15);\n}\n.e-NightMode .r-GridBody > .r-Emerge > .r-Emerge:hover {\n  background: rgba(255, 255, 255, 0.1);\n}\n.gray {\n  background: #EEEEEE;\n  z-index: 10;\n  height: 100%;\n}\n.r-GridBody .selected {\n  background: rgba(0, 0, 0, 0.08) !important;\n}\n.r-GridBody > .r-Emerge > .r-Emerge:hover {\n  background: #ffffff;\n}\n.shadow {\n  box-shadow: 0 0 20px #A5A5A5;\n}\n", ""]);
 	
 	// exports
 
@@ -28385,20 +28385,19 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(80);
-	var Align_1 = __webpack_require__(254);
-	var Button_1 = __webpack_require__(258);
-	var Badge_1 = __webpack_require__(264);
-	var Toolbar_1 = __webpack_require__(267);
-	var Grid_1 = __webpack_require__(270);
-	var Layer_1 = __webpack_require__(296);
-	var Input_1 = __webpack_require__(297);
-	var Wizard_1 = __webpack_require__(298);
-	var Door_1 = __webpack_require__(301);
-	var Emerge_1 = __webpack_require__(302);
-	var Pane_1 = __webpack_require__(305);
-	var Transform_1 = __webpack_require__(306);
-	var Toggle_1 = __webpack_require__(309);
-	var SampleData_1 = __webpack_require__(312);
+	var Button_1 = __webpack_require__(254);
+	var Badge_1 = __webpack_require__(261);
+	var Toolbar_1 = __webpack_require__(264);
+	var Grid_1 = __webpack_require__(267);
+	var Layer_1 = __webpack_require__(293);
+	var Input_1 = __webpack_require__(294);
+	var Wizard_1 = __webpack_require__(295);
+	var Door_1 = __webpack_require__(298);
+	var Emerge_1 = __webpack_require__(299);
+	var Pane_1 = __webpack_require__(302);
+	var Transform_1 = __webpack_require__(303);
+	var Avatar_1 = __webpack_require__(306);
+	var SampleData_1 = __webpack_require__(309);
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -28416,7 +28415,8 @@
 	      toggleCamera: false,
 	      toggleSideMenu: false,
 	      toggleSearchItem: false,
-	      toggleSample: false
+	      toggleSample: false,
+	      selected: []
 	    };
 	    return _this;
 	  }
@@ -28437,6 +28437,10 @@
 	      if (n === 2) {
 	        this.setState({
 	          facilityChecked: true
+	        });
+	      } else if (n === 0) {
+	        this.setState({
+	          facilityChecked: false
 	        });
 	      }
 	    }
@@ -28463,9 +28467,76 @@
 	    }
 	  }, {
 	    key: 'toggleSample',
-	    value: function toggleSample() {
+	    value: function toggleSample(index) {
+	      var array = this.state.selected;
+	      if (array.includes(index)) {
+	        var i = array.indexOf(index);
+	        if (i != -1) {
+	          array.splice(i, 1);
+	        }
+	        this.setState({
+	          selected: array
+	        });
+	      } else {
+	        array.push(index);
+	        this.setState({
+	          selected: array
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'detailTemplate',
+	    value: function detailTemplate(index, item) {
+	      return React.createElement(
+	        'div',
+	        { className: 'p10' },
+	        React.createElement(
+	          Layer_1.default,
+	          { type: 'light', className: 'p10 border-bottom' },
+	          React.createElement(
+	            Toolbar_1.default,
+	            { block: true },
+	            React.createElement(
+	              Button_1.default,
+	              { type: 'success', size: 'small' },
+	              'In Stock'
+	            ),
+	            React.createElement(
+	              Button_1.default,
+	              { right: true, ghost: true, type: 'primary', checked: this.state.selected.includes(item.index), icon: 'cart-plus', size: 'small', onClick: this.toggleSample.bind(this, item.index) },
+	              'Add to Cart'
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          Layer_1.default,
+	          { type: 'light', className: 'p10' },
+	          React.createElement(
+	            'small',
+	            null,
+	            item.item.description
+	          )
+	        )
+	      );
+	    }
+	  }, {
+	    key: 'onItemSearch',
+	    value: function onItemSearch(value) {
+	      if (value.length) {
+	        this.setState({
+	          toggleSearchItem: true
+	        });
+	      } else {
+	        this.setState({
+	          toggleSearchItem: false
+	        });
+	      }
+	    }
+	  }, {
+	    key: 'clearSelectedItems',
+	    value: function clearSelectedItems() {
 	      this.setState({
-	        toggleSample: !this.state.toggleSample
+	        selected: []
 	      });
 	    }
 	  }, {
@@ -28480,168 +28551,228 @@
 	        return React.createElement(
 	          'div',
 	          null,
-	          item.item.name
+	          React.createElement(Avatar_1.default, { src: item.item.imageUrl }),
+	          React.createElement(
+	            Button_1.default,
+	            { ghost: true, size: 'small p0 pl5' },
+	            item.item.name
+	          )
 	        );
 	      };
 	      var toggleTemplate = function toggleTemplate(item, index) {
 	        return React.createElement(
-	          'div',
-	          null,
-	          React.createElement(Toggle_1.default, null)
+	          Button_1.default,
+	          { right: true, ghost: true, className: 'text-error' },
+	          item.price
 	        );
 	      };
-	      var columns = [{ name: 'item', width: 300, template: template }, { name: 'item', template: toggleTemplate }];
+	      var columns = [{ name: 'item', template: template }, { name: 'price', width: 100, template: toggleTemplate }];
+	      var columnsCheckout = [{ name: 'item', template: template }];
 	      return React.createElement(
 	        Layer_1.default,
-	        { overflow: true, scrollY: true, fill: true, className: state.nightMode ? 'e-NightMode' : '' },
+	        { overflow: true, fill: true, className: state.nightMode ? 'e-NightMode pt50' : 'pt50' },
 	        React.createElement(
-	          Door_1.default,
-	          { open: false },
+	          Layer_1.default,
+	          { overflow: true, className: 'light p10 h50px posfix t0' },
 	          React.createElement(
-	            'div',
-	            { className: 'p10' },
+	            Toolbar_1.default,
+	            { block: true },
 	            React.createElement(
-	              'h1',
-	              { className: 'mb10' },
-	              'Qtag'
+	              Door_1.default,
+	              { open: this.state.slideIndex !== 3 },
+	              React.createElement(Button_1.default, { ghost: true, onClick: this.toggleSideMenu.bind(this), icon: 'bars' }),
+	              this.state.selected.length ? React.createElement(
+	                Emerge_1.default,
+	                null,
+	                React.createElement(
+	                  Button_1.default,
+	                  { right: true, type: 'primary', onClick: this.toggleSlideIndex.bind(this, 3), icon: 'shopping-cart' },
+	                  this.state.selected.length
+	                )
+	              ) : null
 	            ),
 	            React.createElement(
-	              Toolbar_1.default,
-	              { vertical: true, spacing: true, block: true },
-	              React.createElement(Input_1.default, { block: true, type: 'text', title: 'username', icon: 'user' }),
-	              React.createElement(Input_1.default, { block: true, type: 'text', title: 'password', icon: 'key' }),
-	              React.createElement(
-	                Align_1.default,
-	                { margin: 1, className: 'text-center' },
-	                React.createElement(
-	                  Button_1.default,
-	                  { block: true },
-	                  'Forgot'
-	                ),
-	                React.createElement(
-	                  Button_1.default,
-	                  { block: true, type: 'primary' },
-	                  'Log-in'
-	                )
-	              )
-	            )
-	          )
-	        ),
-	        React.createElement(
-	          Door_1.default,
-	          { open: true },
-	          React.createElement(
-	            Layer_1.default,
-	            null,
-	            React.createElement(
-	              Pane_1.default,
-	              { open: state.toggleSideMenu, className: 'h100', direction: 'left' },
+	              Door_1.default,
+	              { open: this.state.slideIndex === 3 },
 	              React.createElement(
 	                Layer_1.default,
-	                { style: { width: 250 }, type: 'light', className: 'p10 h100 border-right' },
+	                { className: 'light p5 text-center' },
 	                React.createElement(
-	                  Toolbar_1.default,
-	                  { vertical: true, spacing: true, block: true },
+	                  Emerge_1.default,
+	                  null,
 	                  React.createElement(
-	                    Emerge_1.default,
-	                    { exit: 'fadeOut', delay: 80, 'if': this.state.toggleSideMenu },
+	                    'h4',
+	                    null,
+	                    'Checking out for ',
 	                    React.createElement(
-	                      Button_1.default,
-	                      { ghost: true, icon: 'barcode', block: true },
-	                      'Manage Items'
-	                    ),
-	                    React.createElement(
-	                      Button_1.default,
-	                      { ghost: true, icon: 'user', block: true },
-	                      'Manage User'
-	                    ),
-	                    React.createElement(
-	                      Button_1.default,
-	                      { ghost: true, icon: 'users', block: true },
-	                      'Manage Groups'
-	                    ),
-	                    React.createElement(
-	                      Button_1.default,
-	                      { ghost: true, icon: 'truck', block: true },
-	                      'Manage Suppliers'
-	                    ),
-	                    React.createElement(
-	                      Button_1.default,
-	                      { ghost: true, icon: 'bell', block: true },
-	                      'Manage Notifications'
+	                      'strong',
+	                      null,
+	                      'Scottsdale Dental'
 	                    )
 	                  )
 	                )
 	              )
 	            ),
 	            React.createElement(
-	              Transform_1.default,
-	              { type: 'translate', axis: 'X', amount: '250px', 'if': state.toggleSideMenu },
+	              Door_1.default,
+	              { open: this.state.slideIndex === 4 },
 	              React.createElement(
-	                'div',
-	                null,
+	                Layer_1.default,
+	                { className: 'light p5 text-center' },
+	                React.createElement(
+	                  Emerge_1.default,
+	                  null,
+	                  React.createElement(
+	                    'h4',
+	                    null,
+	                    'Succesfully checkout out for ',
+	                    React.createElement(
+	                      'strong',
+	                      null,
+	                      'Scottsdale Dental'
+	                    )
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement('hr', null),
+	        React.createElement(
+	          Layer_1.default,
+	          { overflow: true, fill: true, scrollY: true },
+	          React.createElement(
+	            Pane_1.default,
+	            { open: state.toggleSideMenu, className: 'h100', direction: 'left' },
+	            React.createElement(
+	              Layer_1.default,
+	              { style: { width: 250 }, type: 'light', className: 'p10 h100 border-right' },
+	              React.createElement(
+	                Toolbar_1.default,
+	                { vertical: true, spacing: true, block: true },
+	                React.createElement(
+	                  Emerge_1.default,
+	                  { exit: 'fadeOut', delay: 80, 'if': this.state.toggleSideMenu },
+	                  React.createElement(
+	                    Button_1.default,
+	                    { ghost: true, icon: 'barcode', block: true },
+	                    'Manage Items'
+	                  ),
+	                  React.createElement(
+	                    Button_1.default,
+	                    { ghost: true, icon: 'user', block: true },
+	                    'Manage User'
+	                  ),
+	                  React.createElement(
+	                    Button_1.default,
+	                    { ghost: true, icon: 'user', block: true },
+	                    'Order History'
+	                  ),
+	                  React.createElement(
+	                    Button_1.default,
+	                    { ghost: true, icon: 'user', block: true },
+	                    'Order Templates'
+	                  ),
+	                  React.createElement(
+	                    Button_1.default,
+	                    { ghost: true, icon: 'truck', block: true },
+	                    'Manage Suppliers'
+	                  ),
+	                  React.createElement(
+	                    Button_1.default,
+	                    { ghost: true, icon: 'bell', block: true },
+	                    'Manage Notifications'
+	                  )
+	                )
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            Transform_1.default,
+	            { type: 'translate', axis: 'X', amount: '250px', 'if': state.toggleSideMenu },
+	            React.createElement(
+	              Layer_1.default,
+	              { className: 'pb300' },
+	              React.createElement(
+	                Door_1.default,
+	                { open: state.slideIndex !== 0 },
+	                React.createElement(
+	                  'div',
+	                  { className: 'p10 border-bottom' },
+	                  function () {
+	                    if (state.slideIndex === 1) {
+	                      return React.createElement(
+	                        Toolbar_1.default,
+	                        { noRadius: true },
+	                        React.createElement(
+	                          Button_1.default,
+	                          { checked: true, size: 'small', onClick: _this2.toggleSlideIndex.bind(_this2, 0), pointer: 'right' },
+	                          'Order'
+	                        ),
+	                        React.createElement(
+	                          Button_1.default,
+	                          { ghost: true, size: 'small' },
+	                          'Select Facility'
+	                        )
+	                      );
+	                    } else if (state.slideIndex === 2) {
+	                      return React.createElement(
+	                        Toolbar_1.default,
+	                        { noRadius: true },
+	                        React.createElement(
+	                          Button_1.default,
+	                          { checked: true, pointer: 'right', size: 'small', onClick: _this2.toggleSlideIndex.bind(_this2, 0) },
+	                          'Order'
+	                        ),
+	                        React.createElement(
+	                          Button_1.default,
+	                          { checked: true, pointer: 'right', size: 'small', onClick: _this2.toggleSlideIndex.bind(_this2, 1) },
+	                          'Scottsdale Dental'
+	                        ),
+	                        React.createElement(
+	                          Button_1.default,
+	                          { ghost: true, size: 'small', onClick: _this2.toggleSearchItem.bind(_this2) },
+	                          'Select Item'
+	                        )
+	                      );
+	                    } else if (state.slideIndex === 3) {
+	                      return React.createElement(
+	                        Toolbar_1.default,
+	                        { noRadius: true },
+	                        React.createElement(
+	                          Button_1.default,
+	                          { checked: true, pointer: 'right', size: 'small', onClick: _this2.toggleSlideIndex.bind(_this2, 2) },
+	                          'Order'
+	                        ),
+	                        React.createElement(
+	                          Button_1.default,
+	                          { ghost: true, size: 'small', onClick: _this2.toggleSearchItem.bind(_this2) },
+	                          'Checkout'
+	                        )
+	                      );
+	                    } else if (state.slideIndex === 4) {
+	                      return React.createElement(
+	                        Toolbar_1.default,
+	                        { noRadius: true },
+	                        React.createElement(
+	                          Button_1.default,
+	                          { checked: true, pointer: 'right', size: 'small', onClick: _this2.toggleSlideIndex.bind(_this2, 2) },
+	                          'Order'
+	                        )
+	                      );
+	                    }
+	                  }()
+	                )
+	              ),
+	              React.createElement(
+	                Wizard_1.default,
+	                { slideIndex: state.slideIndex },
 	                React.createElement(
 	                  Layer_1.default,
-	                  { className: 'light p10' },
+	                  { fill: true },
 	                  React.createElement(
-	                    Toolbar_1.default,
+	                    Emerge_1.default,
 	                    null,
-	                    React.createElement(Button_1.default, { ghost: true, onClick: this.toggleSideMenu.bind(this), icon: 'bars' })
-	                  )
-	                ),
-	                React.createElement('hr', { className: 'rainbow-line' }),
-	                React.createElement(
-	                  Door_1.default,
-	                  { open: state.slideIndex !== 0 },
-	                  React.createElement(
-	                    'div',
-	                    { className: 'p10 border-bottom' },
-	                    function () {
-	                      if (state.slideIndex === 1) {
-	                        return React.createElement(
-	                          Toolbar_1.default,
-	                          { noRadius: true },
-	                          React.createElement(
-	                            Button_1.default,
-	                            { checked: true, size: 'small', onClick: _this2.toggleSlideIndex.bind(_this2, 0), pointer: 'right' },
-	                            'Order'
-	                          ),
-	                          React.createElement(
-	                            Button_1.default,
-	                            { ghost: true, size: 'small' },
-	                            'Select Facility'
-	                          )
-	                        );
-	                      } else if (state.slideIndex === 2) {
-	                        return React.createElement(
-	                          Toolbar_1.default,
-	                          { noRadius: true },
-	                          React.createElement(
-	                            Button_1.default,
-	                            { checked: true, pointer: 'right', size: 'small', onClick: _this2.toggleSlideIndex.bind(_this2, 0) },
-	                            'Order'
-	                          ),
-	                          React.createElement(
-	                            Button_1.default,
-	                            { checked: true, pointer: 'right', size: 'small', onClick: _this2.toggleSlideIndex.bind(_this2, 1) },
-	                            'Scottsdale Dental'
-	                          ),
-	                          React.createElement(
-	                            Button_1.default,
-	                            { ghost: true, size: 'small', onClick: _this2.toggleSearchItem.bind(_this2) },
-	                            'Select Item'
-	                          )
-	                        );
-	                      }
-	                    }()
-	                  )
-	                ),
-	                React.createElement(
-	                  Wizard_1.default,
-	                  { slideIndex: state.slideIndex },
-	                  React.createElement(
-	                    Layer_1.default,
-	                    { fill: true },
 	                    React.createElement(
 	                      Toolbar_1.default,
 	                      { block: true, className: 'ps10 pt20' },
@@ -28650,120 +28781,223 @@
 	                        { title: 4, type: 'error', className: 'circle floatL' },
 	                        React.createElement(
 	                          Button_1.default,
-	                          { left: true, ghost: true, icon: 'bell' },
+	                          { ghost: true, size: 'small', left: true, icon: 'bell' },
 	                          'Alerts'
 	                        )
 	                      ),
 	                      React.createElement(
 	                        Button_1.default,
-	                        { right: true, ghost: true, icon: 'barcode' },
+	                        { ghost: true, size: 'small', right: true, icon: 'barcode' },
 	                        'Scan a Item'
 	                      )
 	                    ),
 	                    React.createElement(
-	                      Toolbar_1.default,
-	                      { vertical: true, spacing: true, block: true, className: 'p10 text-center' },
+	                      'div',
+	                      { className: 'p10 pt15 text-center' },
 	                      React.createElement(
-	                        Button_1.default,
-	                        { size: 'large', block: true, onClick: this.toggleSlideIndex.bind(this, 1), icon: 'cart-plus' },
-	                        'Order'
-	                      ),
-	                      React.createElement(
-	                        Button_1.default,
-	                        { size: 'large', block: true, icon: 'cart-plus' },
-	                        'Stock'
-	                      )
-	                    )
-	                  ),
-	                  React.createElement(
-	                    Layer_1.default,
-	                    { fill: true },
-	                    React.createElement(
-	                      Toolbar_1.default,
-	                      { vertical: true, spacing: true, block: true, className: 'p10 text-center' },
-	                      React.createElement(
-	                        Emerge_1.default,
-	                        { exit: 'fadeOut', delay: 80, 'if': this.state.slideIndex === 1 },
+	                        Toolbar_1.default,
+	                        { vertical: true, spacing: true, block: true },
 	                        React.createElement(
 	                          Button_1.default,
-	                          { size: 'large', block: true },
-	                          'Chandler Dental'
-	                        ),
-	                        React.createElement(
-	                          Button_1.default,
-	                          { checked: this.state.facilityChecked, onClick: this.toggleSlideIndex.bind(this, 2), size: 'large', block: true },
-	                          'Scottsdale Dental'
+	                          { size: 'large', block: true, onClick: this.toggleSlideIndex.bind(this, 1) },
+	                          'Order'
 	                        ),
 	                        React.createElement(
 	                          Button_1.default,
 	                          { size: 'large', block: true },
-	                          'Arcadia Dental'
-	                        )
-	                      )
-	                    )
-	                  ),
-	                  React.createElement(
-	                    Layer_1.default,
-	                    { fill: true },
-	                    React.createElement(
-	                      Toolbar_1.default,
-	                      { vertical: true, spacing: true, block: true, className: 'p10 text-center' },
-	                      React.createElement(Input_1.default, { size: 'large', type: 'text', icon: 'search', title: 'Search Item by ID or Keyword', block: true }),
-	                      React.createElement(
-	                        Door_1.default,
-	                        { open: this.state.toggleSearchItem },
-	                        React.createElement(
-	                          Layer_1.default,
-	                          null,
-	                          React.createElement(Grid_1.default, { hideHeader: true, dataSource: SampleData_1.default, columns: columns })
-	                        )
-	                      ),
-	                      React.createElement(
-	                        Door_1.default,
-	                        { open: !this.state.toggleSearchItem },
-	                        React.createElement(
-	                          Layer_1.default,
-	                          null,
-	                          React.createElement(
-	                            'h2',
-	                            { className: 'mb20 mt10' },
-	                            'OR'
-	                          ),
-	                          React.createElement(
-	                            Button_1.default,
-	                            { onClick: this.toggleCamera.bind(this), size: 'large', icon: 'barcode', type: 'error', block: true },
-	                            'Scan Barcode'
-	                          )
+	                          'Stock'
 	                        )
 	                      )
 	                    )
 	                  )
 	                ),
 	                React.createElement(
-	                  Pane_1.default,
-	                  { fill: true, direction: 'bottom', open: this.state.toggleCamera },
+	                  Layer_1.default,
+	                  { fill: true },
 	                  React.createElement(
-	                    Layer_1.default,
-	                    { fill: true, type: 'dark' },
+	                    Toolbar_1.default,
+	                    { vertical: true, spacing: true, block: true, className: 'p10 text-center' },
 	                    React.createElement(
-	                      Pane_1.default,
-	                      { direction: 'top', open: true },
+	                      Emerge_1.default,
+	                      { exit: 'fadeOut', delay: 80, 'if': this.state.slideIndex === 1 },
+	                      React.createElement(
+	                        Button_1.default,
+	                        { size: 'large', block: true },
+	                        'Chandler Dental'
+	                      ),
+	                      React.createElement(
+	                        Button_1.default,
+	                        { checked: this.state.facilityChecked, onClick: this.toggleSlideIndex.bind(this, 2), size: 'large', block: true },
+	                        'Scottsdale Dental'
+	                      ),
+	                      React.createElement(
+	                        Button_1.default,
+	                        { size: 'large', block: true },
+	                        'Arcadia Dental'
+	                      )
+	                    )
+	                  )
+	                ),
+	                React.createElement(
+	                  Layer_1.default,
+	                  { fill: true },
+	                  React.createElement(
+	                    Toolbar_1.default,
+	                    { vertical: true, block: true, className: 'p10 text-center' },
+	                    React.createElement(Input_1.default, { size: 'large', type: 'text', icon: 'search', onChange: this.onItemSearch.bind(this), title: 'Search Item by ID or Keyword', block: true }),
+	                    React.createElement(
+	                      Door_1.default,
+	                      { open: !this.state.toggleSearchItem },
 	                      React.createElement(
 	                        Layer_1.default,
-	                        { type: 'p10' },
+	                        null,
 	                        React.createElement(
-	                          Toolbar_1.default,
-	                          { block: true, textCenter: true },
+	                          'h3',
+	                          { className: 'mtb20' },
+	                          'OR'
+	                        ),
+	                        React.createElement(
+	                          Button_1.default,
+	                          { onClick: this.toggleCamera.bind(this), size: 'large', icon: 'barcode', ghost: true, type: 'primary', block: true },
+	                          'Scan Barcode'
+	                        )
+	                      )
+	                    )
+	                  ),
+	                  React.createElement(
+	                    Door_1.default,
+	                    { open: this.state.toggleSearchItem },
+	                    React.createElement(
+	                      Layer_1.default,
+	                      null,
+	                      React.createElement(Grid_1.default, { hideHeader: true, dataSource: SampleData_1.default, columns: columns, detailTemplate: this.detailTemplate.bind(this), detailTemplateOpenOnHover: true, selected: this.state.selected, selectedKey: 'index' })
+	                    )
+	                  )
+	                ),
+	                React.createElement(
+	                  Layer_1.default,
+	                  { fill: true },
+	                  React.createElement(
+	                    Emerge_1.default,
+	                    { 'if': this.state.slideIndex === 3 },
+	                    React.createElement(
+	                      Layer_1.default,
+	                      null,
+	                      React.createElement(Grid_1.default, { hideHeader: true, dataSource: SampleData_1.default, filter: this.state.selected, columns: columnsCheckout })
+	                    )
+	                  )
+	                ),
+	                React.createElement(
+	                  Layer_1.default,
+	                  { fill: true },
+	                  React.createElement(
+	                    Emerge_1.default,
+	                    { 'if': this.state.slideIndex === 4 },
+	                    React.createElement(
+	                      Layer_1.default,
+	                      null,
+	                      React.createElement(
+	                        Toolbar_1.default,
+	                        { textCenter: true, block: true, vertical: true, spacing: true, className: 'p10' },
+	                        React.createElement(
+	                          Emerge_1.default,
+	                          { 'if': this.state.slideIndex === 4 },
 	                          React.createElement(
 	                            Button_1.default,
-	                            { onClick: this.toggleCamera.bind(this) },
-	                            'Close Camera'
+	                            { onClick: this.toggleSlideIndex.bind(this, 0), block: true, size: 'large' },
+	                            'Go Back'
 	                          )
 	                        )
 	                      )
 	                    )
 	                  )
 	                )
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          Pane_1.default,
+	          { fill: true, direction: 'bottom', open: this.state.toggleCamera },
+	          React.createElement(
+	            Layer_1.default,
+	            { fill: true, type: 'dark' },
+	            React.createElement(
+	              Pane_1.default,
+	              { direction: 'top', open: true },
+	              React.createElement(
+	                Layer_1.default,
+	                { type: 'p10' },
+	                React.createElement(
+	                  Toolbar_1.default,
+	                  { block: true, textCenter: true },
+	                  React.createElement(
+	                    Button_1.default,
+	                    { onClick: this.toggleCamera.bind(this) },
+	                    'Close Camera'
+	                  )
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          Pane_1.default,
+	          { direction: 'bottom', open: this.state.selected.length === 0 && (state.slideIndex === 2 || state.slideIndex === 1) },
+	          React.createElement(
+	            Layer_1.default,
+	            { type: 'light p10 border-top', fill: true },
+	            React.createElement(
+	              Toolbar_1.default,
+	              { textCenter: true, block: true, vertical: true, spacing: true },
+	              React.createElement(
+	                Button_1.default,
+	                { onClick: this.toggleSlideIndex.bind(this, state.slideIndex - 1), size: 'large', block: true },
+	                'Go Back'
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          Pane_1.default,
+	          { direction: 'bottom', open: this.state.selected.length && state.slideIndex === 2 },
+	          React.createElement(
+	            Layer_1.default,
+	            { type: 'light p10 border-top', fill: true },
+	            React.createElement(
+	              Toolbar_1.default,
+	              { textCenter: true, block: true, vertical: true, spacing: true },
+	              React.createElement(
+	                Button_1.default,
+	                { onClick: this.toggleSlideIndex.bind(this, 3), size: 'large', ghost: true, block: true, type: 'primary' },
+	                'Proceed to Checkout'
+	              ),
+	              React.createElement(
+	                Button_1.default,
+	                { onClick: this.clearSelectedItems.bind(this), size: 'large', block: true },
+	                'Clear All'
+	              )
+	            )
+	          )
+	        ),
+	        React.createElement(
+	          Pane_1.default,
+	          { direction: 'bottom', open: this.state.selected.length && state.slideIndex === 3 },
+	          React.createElement(
+	            Layer_1.default,
+	            { type: 'light p10 border-top', fill: true },
+	            React.createElement(
+	              Toolbar_1.default,
+	              { textCenter: true, block: true, vertical: true, spacing: true },
+	              React.createElement(
+	                Button_1.default,
+	                { onClick: this.toggleSlideIndex.bind(this, 4), type: 'primary', block: true, size: 'large' },
+	                'Confirm and Send Order'
+	              ),
+	              React.createElement(
+	                Button_1.default,
+	                { onClick: this.toggleSlideIndex.bind(this, 2), block: true, size: 'large' },
+	                'Cancel'
 	              )
 	            )
 	          )
@@ -28793,258 +29027,8 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(256);
-	
-	var Align = function (_React$Component) {
-	    _inherits(Align, _React$Component);
-	
-	    function Align() {
-	        _classCallCheck(this, Align);
-	
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Align).apply(this, arguments));
-	    }
-	
-	    _createClass(Align, [{
-	        key: 'recursiveCloneChildren',
-	        value: function recursiveCloneChildren(children) {
-	            var _this2 = this;
-	
-	            var self = this;
-	            var props = self.props;
-	            var margin = props.margin;
-	            var columns = props.columns;
-	            var child = void 0;
-	            var maxCol = void 0,
-	                colwidth = void 0,
-	                singleColWidth = void 0,
-	                columnStyle = void 0;
-	            var index = 0;
-	            if (props.maxCol) {
-	                maxCol = props.maxCol;
-	            } else {
-	                maxCol = props.children.props.children.length;
-	            }
-	            singleColWidth = (100 - margin * (maxCol - 1)) / maxCol;
-	            return React.Children.map(children, function (child, i) {
-	                if (!React.isValidElement(child)) {
-	                    return child;
-	                }
-	                if (props.vertical) {
-	                    columnStyle = {
-	                        marginTop: i === 0 ? 0 : margin + '%',
-	                        height: (colwidth ? colwidth : singleColWidth) + '%'
-	                    };
-	                } else {
-	                    columnStyle = {
-	                        marginLeft: i === 0 ? 0 : margin + '%',
-	                        width: (colwidth ? colwidth : singleColWidth) + '%',
-	                        float: 'left'
-	                    };
-	                }
-	                var childProps = {
-	                    className: 'r-Align__column ' + child.props.className,
-	                    style: columnStyle
-	                };
-	                childProps[children] = _this2.recursiveCloneChildren(child.props.children);
-	                return React.cloneElement(child, childProps);
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var self = this;
-	            var props = self.props;
-	            var margin = props.margin;
-	            var columns = props.columns;
-	            var maxCol = void 0,
-	                colwidth = void 0,
-	                columnStyle = void 0;
-	            if (props.maxCol) {
-	                maxCol = props.maxCol;
-	            } else {
-	                maxCol = props.children.length;
-	            }
-	            var singleColWidth = (100 - margin * (maxCol - 1)) / maxCol;
-	            var alignClass = classNames('r-Align', props.className);
-	            var columnClass = classNames('r-Align__column');
-	            var createList = function createList(item, index) {
-	                if (props.maxCol) {
-	                    var columnsIdx = props.columns[index];
-	                    colwidth = singleColWidth * columnsIdx + margin * (columnsIdx - 1);
-	                }
-	                if (props.vertical) {
-	                    columnStyle = {
-	                        marginTop: 0,
-	                        height: (colwidth ? colwidth : singleColWidth) + '%'
-	                    };
-	                } else {
-	                    columnStyle = {
-	                        marginLeft: index === 0 ? 0 : margin + '%',
-	                        width: (colwidth ? colwidth : singleColWidth) + '%',
-	                        float: 'left'
-	                    };
-	                }
-	                if (props.vertical && index !== 0) {
-	                    return React.createElement(
-	                        'span',
-	                        { key: index },
-	                        React.createElement('div', { style: { height: margin + '%' }, className: 'w100' }),
-	                        React.createElement(
-	                            'div',
-	                            { className: columnClass, style: columnStyle, key: index },
-	                            item
-	                        )
-	                    );
-	                } else {
-	                    return React.createElement(
-	                        'div',
-	                        { className: columnClass, style: columnStyle, key: index },
-	                        item
-	                    );
-	                }
-	            };
-	            if (props.children.length > 1) {
-	                return React.createElement(
-	                    'div',
-	                    { className: alignClass },
-	                    props.children.map(createList)
-	                );
-	            } else if (props.children) {
-	                var element = React.cloneElement(props.children, { className: 'primary' });
-	                return React.createElement(
-	                    'div',
-	                    { className: alignClass },
-	                    this.recursiveCloneChildren(this.props.children)
-	                );
-	            } else {
-	                return null;
-	            }
-	        }
-	    }]);
-	
-	    return Align;
-	}(React.Component);
-	
-	Align.defaultProps = {
-	    margin: 0,
-	    vertical: false,
-	    maxCol: null,
-	    columns: null
-	};
-	exports.default = Align;
-
-/***/ },
-/* 255 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2016 Jed Watson.
-	  Licensed under the MIT License (MIT), see
-	  http://jedwatson.github.io/classnames
-	*/
-	/* global define */
-	
-	(function () {
-		'use strict';
-	
-		var hasOwn = {}.hasOwnProperty;
-	
-		function classNames () {
-			var classes = [];
-	
-			for (var i = 0; i < arguments.length; i++) {
-				var arg = arguments[i];
-				if (!arg) continue;
-	
-				var argType = typeof arg;
-	
-				if (argType === 'string' || argType === 'number') {
-					classes.push(arg);
-				} else if (Array.isArray(arg)) {
-					classes.push(classNames.apply(null, arg));
-				} else if (argType === 'object') {
-					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
-							classes.push(key);
-						}
-					}
-				}
-			}
-	
-			return classes.join(' ');
-		}
-	
-		if (typeof module !== 'undefined' && module.exports) {
-			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
-				return classNames;
-			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else {
-			window.classNames = classNames;
-		}
-	}());
-
-
-/***/ },
-/* 256 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(257);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(252)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(257, function() {
-				var newContent = __webpack_require__(257);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 257 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(251)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".r-Align,\n.r-align > .r-Align__column {\n  box-sizing: border-box;\n}\n.r-Align:before,\n.r-Align:after {\n  content: \" \";\n  display: table;\n}\n.r-Align:after {\n  clear: both;\n}\n.r-Align > .r-Align__column {\n  position: relative;\n}\n.r-Align > .r-Align__column:nth-child(1),\n.r-Align__column > .r-Align__column:nth-child(1) {\n  margin-left: 0 !important;\n}\n.r-align > .r-Emerge {\n  width: 100%;\n}\n.r-align > .r-Emerge > .r-Align__column:nth-child(1) {\n  margin-left: 0 !important;\n}\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 258 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(80);
-	var classNames = __webpack_require__(255);
-	var Selectable_1 = __webpack_require__(259);
-	__webpack_require__(262);
+	var Selectable_1 = __webpack_require__(256);
+	__webpack_require__(259);
 	
 	var Button = function (_React$Component) {
 	    _inherits(Button, _React$Component);
@@ -29178,11 +29162,7 @@
 	                    iconPartial,
 	                    function () {
 	                        if (!_this2.state.showShortcut) {
-	                            return React.createElement(
-	                                'span',
-	                                null,
-	                                props.children
-	                            );
+	                            return props.children;
 	                        } else {
 	                            return null;
 	                        }
@@ -29195,11 +29175,7 @@
 	                    'button',
 	                    { ref: 'button', tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, target: props.target, className: buttonClass, style: props.style },
 	                    iconPartial,
-	                    React.createElement(
-	                        'span',
-	                        { className: this.state.showShortcut ? "e-invisible" : '' },
-	                        props.children
-	                    ),
+	                    props.children,
 	                    showTooltip(),
 	                    selectablePartial
 	                );
@@ -29218,7 +29194,61 @@
 	exports.default = Button;
 
 /***/ },
-/* 259 */
+/* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+	
+	(function () {
+		'use strict';
+	
+		var hasOwn = {}.hasOwnProperty;
+	
+		function classNames () {
+			var classes = [];
+	
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+	
+				var argType = typeof arg;
+	
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+	
+			return classes.join(' ');
+		}
+	
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29233,7 +29263,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(260);
+	__webpack_require__(257);
 	
 	var Selectable = function (_React$Component) {
 	    _inherits(Selectable, _React$Component);
@@ -29274,13 +29304,13 @@
 	exports.default = Selectable;
 
 /***/ },
-/* 260 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(261);
+	var content = __webpack_require__(258);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(252)(content, {});
@@ -29289,8 +29319,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(261, function() {
-				var newContent = __webpack_require__(261);
+			module.hot.accept(258, function() {
+				var newContent = __webpack_require__(258);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -29300,7 +29330,7 @@
 	}
 
 /***/ },
-/* 261 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(251)();
@@ -29314,13 +29344,13 @@
 
 
 /***/ },
-/* 262 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(263);
+	var content = __webpack_require__(260);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(252)(content, {});
@@ -29329,8 +29359,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(263, function() {
-				var newContent = __webpack_require__(263);
+			module.hot.accept(260, function() {
+				var newContent = __webpack_require__(260);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -29340,7 +29370,7 @@
 	}
 
 /***/ },
-/* 263 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(251)();
@@ -29348,13 +29378,13 @@
 	
 	
 	// module
-	exports.push([module.id, ".r-Button {\n  color: #888;\n  background: #f7f7f7;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 6px 15px;\n  border-radius: 3px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  font-size: 18px;\n  position: relative;\n  -webkit-transition: all 50ms ease-in;\n  -moz-transition: all 50ms ease-in;\n  -ms-transition: all 50ms ease-in;\n  -o-transition: all 50ms ease-in;\n  transition: all 50ms ease-in;\n}\n.r-Button.link {\n  border: 1px solid #ccc;\n  background: transparent;\n}\n.r-Button:hover,\n.r-Button:focus {\n  background: #DEDCDC;\n  color: #1995FF;\n}\n.r-Button.primary:hover,\n.r-Button.primary:focus {\n  background: #1995FF;\n  color: white;\n  border: 1px solid transparent;\n}\n.r-Button.error:hover,\n.r-Button.error:focus {\n  background: #8BC53F;\n}\n.r-Button.link:hover,\n.r-Button.link:focus {\n  color: #007EEA;\n  background: transparent;\n}\n.r-Button.large {\n  padding: 10px 2pc;\n  height: auto;\n  font-size: 18px;\n}\n.r-Button.small {\n  padding: 3px 1pc;\n  height: auto;\n  font-size: 12px;\n  font-weight: normal;\n}\n.r-Button.large {\n  padding: 10px 2pc;\n  height: auto;\n}\n.r-Button.xlarge {\n  padding: 17.5px 2pc;\n  font-size: 25px;\n  height: auto;\n}\n.r-Button.block {\n  width: 100%;\n  text-align: inherit;\n}\n.r-Button.disabled,\n.r-Button[disabled],\nfieldset[disabled] .r-Button {\n  cursor: not-allowed;\n  opacity: .50;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: 0;\n  -moz-box-shadow: 0;\n  box-shadow: 0;\n}\n.r-Button:active {\n  -webkit-transform: scale(0.92);\n  -moz-transform: scale(0.92);\n  -ms-transform: scale(0.92);\n  -o-transform: scale(0.92);\n  outline: 0;\n}\n.r-Button:focus {\n  outline: 0;\n}\n.spacing .r-Button {\n  margin-right: 5px;\n}\n.spacing .r-Button:last-child {\n  margin-right: 0px;\n}\n.text-center .r-Button span,\n.text-center .r-Button {\n  align-items: center;\n}\n/* --ghost button */\n.r-Button.ghost {\n  color: #888;\n  background: transparent;\n  border-color: transparent;\n}\n.r-Button.ghost:hover {\n  background: transparent;\n}\n/*Pointers*/\n.r-Button.pointer:before {\n  top: 50%;\n  left: -1px;\n}\n.r-Button.pointer:before {\n  border-color: inherit;\n}\n.r-Button.pointer:hover:before {\n  color: rgba(0, 0, 0, 0.8);\n}\n.r-Button.pointer:before {\n  border-width: 1px 0 0 1px;\n  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  top: 0;\n  left: 50%;\n}\n.r-Button.pointer:before {\n  background-color: inherit;\n  border-style: solid;\n  border-color: inherit;\n  position: absolute;\n  content: '';\n  -webkit-transform: rotate(45deg);\n  -ms-transform: rotate(45deg);\n  transform: rotate(45deg);\n  background-image: none;\n  z-index: 2;\n  width: .6666em;\n  height: .6666em;\n  -webkit-transition: background .1s ease;\n  transition: background .1s ease;\n}\n.r-Button.pointer.left:before {\n  border-width: 0 0 1px 1px;\n  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  bottom: auto;\n  right: auto;\n  top: 50%;\n  left: 0;\n}\n.r-Button.pointer.right:before {\n  top: 50%;\n  right: -1px;\n}\n.r-Button.pointer.right:before {\n  border-width: 1px 1px 0 0;\n  -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);\n  transform: translateX(50%) translateY(-50%) rotate(45deg);\n  top: 50%;\n  right: 0;\n  bottom: auto;\n  left: auto;\n}\n.r-Button {\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.r-Button.pointer {\n  overflow: visible;\n}\n.button-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n.r-Button.small:focus {\n  border: 1px solid transparent;\n}\n.r-Button .e-invisible {\n  opacity: 0;\n}\n.r-Button .e-shortcut {\n  position: absolute;\n  right: 0;\n  left: 0;\n  margin: auto;\n}\n", ""]);
+	exports.push([module.id, ".r-Button {\n  color: #888;\n  background: #f7f7f7;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 6px 15px;\n  border-radius: 4px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  font-size: 18px;\n  position: relative;\n  -webkit-transition: all 50ms ease-in;\n  -moz-transition: all 50ms ease-in;\n  -ms-transition: all 50ms ease-in;\n  -o-transition: all 50ms ease-in;\n  transition: all 50ms ease-in;\n}\n.r-Button.link {\n  border: 1px solid #ccc;\n  background: transparent;\n}\n.r-Button:hover,\n.r-Button:focus {\n  background: #DEDCDC;\n  color: #1995FF;\n}\n.r-Button.primary:hover,\n.r-Button.primary:focus {\n  background: #1995FF;\n  color: white;\n  border: 1px solid transparent;\n}\n.r-Button.error:hover,\n.r-Button.error:focus {\n  background: #FF592F;\n}\n.r-Button.success:hover,\n.r-Button.success:focus {\n  background: #3EBB27;\n}\n.r-Button.link:hover,\n.r-Button.link:focus {\n  color: #007EEA;\n  background: transparent;\n}\n.r-Button.large {\n  padding: 10px 2pc;\n  height: auto;\n  font-size: 18px;\n}\n.r-Button.small {\n  padding: 3px 1pc;\n  height: auto;\n  font-size: 12px;\n  font-weight: normal;\n  min-height: 26px;\n}\n.r-Button.large {\n  padding: 10px 2pc;\n  height: auto;\n}\n.r-Button.xlarge {\n  padding: 17.5px 2pc;\n  font-size: 25px;\n  height: auto;\n  min-height: 62px;\n}\n.r-Button.block {\n  width: 100%;\n  text-align: inherit;\n}\n.r-Button.disabled,\n.r-Button[disabled],\nfieldset[disabled] .r-Button {\n  cursor: not-allowed;\n  opacity: .50;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: 0;\n  -moz-box-shadow: 0;\n  box-shadow: 0;\n}\n.r-Button:active {\n  -webkit-transform: scale(0.92);\n  -moz-transform: scale(0.92);\n  -ms-transform: scale(0.92);\n  -o-transform: scale(0.92);\n  outline: 0;\n}\n.r-Button:focus {\n  outline: 0;\n}\n.spacing .r-Button {\n  margin-right: 5px;\n}\n.spacing .r-Button:last-child {\n  margin-right: 0px;\n}\n.text-center .r-Button span,\n.text-center .r-Button {\n  align-items: center;\n}\n/* --ghost button */\n.r-Button.ghost {\n  color: #888;\n  background: transparent;\n  border-color: transparent;\n}\n.r-Button.ghost:hover {\n  background: transparent;\n}\n/*Pointers*/\n.r-Button.pointer:before {\n  top: 50%;\n  left: -1px;\n}\n.r-Button.pointer:before {\n  border-color: inherit;\n}\n.r-Button.pointer:hover:before {\n  color: rgba(0, 0, 0, 0.8);\n}\n.r-Button.pointer:before {\n  border-width: 1px 0 0 1px;\n  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  top: 0;\n  left: 50%;\n}\n.r-Button.pointer:before {\n  background-color: inherit;\n  border-style: solid;\n  border-color: inherit;\n  position: absolute;\n  content: '';\n  -webkit-transform: rotate(45deg);\n  -ms-transform: rotate(45deg);\n  transform: rotate(45deg);\n  background-image: none;\n  z-index: 2;\n  width: .6666em;\n  height: .6666em;\n  -webkit-transition: background .1s ease;\n  transition: background .1s ease;\n}\n.r-Button.pointer.left:before {\n  border-width: 0 0 1px 1px;\n  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  transform: translateX(-50%) translateY(-50%) rotate(45deg);\n  bottom: auto;\n  right: auto;\n  top: 50%;\n  left: 0;\n}\n.r-Button.pointer.right:before {\n  top: 50%;\n  right: -1px;\n}\n.r-Button.pointer.right:before {\n  border-width: 1px 1px 0 0;\n  -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);\n  -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);\n  transform: translateX(50%) translateY(-50%) rotate(45deg);\n  top: 50%;\n  right: 0;\n  bottom: auto;\n  left: auto;\n}\n.r-Button {\n  box-sizing: border-box;\n  overflow: hidden;\n}\n.r-Button.pointer {\n  overflow: visible;\n}\n.button-overlay {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n}\n.r-Button.small:focus {\n  border: 1px solid transparent;\n}\n.r-Button .e-invisible {\n  opacity: 0;\n}\n.r-Button .e-shortcut {\n  position: absolute;\n  right: 0;\n  left: 0;\n  margin: auto;\n}\na,\n.r-Button {\n  -ms-touch-action: manipulation;\n  /* IE10  */\n  touch-action: manipulation;\n  /* IE11+ */\n}\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 264 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29369,7 +29399,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(265);
+	__webpack_require__(262);
 	
 	var Badge = function (_React$Component) {
 	    _inherits(Badge, _React$Component);
@@ -29413,6 +29443,104 @@
 	exports.default = Badge;
 
 /***/ },
+/* 262 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(263);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(252)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(263, function() {
+				var newContent = __webpack_require__(263);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 263 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(251)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".r-Badge {\n  display: inline-block;\n  position: relative;\n}\n.r-Badge .r-Badge__item {\n  position: absolute;\n  left: 80%;\n  top: -29%;\n  border-radius: 4px;\n  padding: 2px 7px;\n  white-space: nowrap;\n  z-index: 3;\n  font-size: small;\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 264 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(80);
+	var classNames = __webpack_require__(255);
+	__webpack_require__(265);
+	
+	var Toolbar = function (_React$Component) {
+	    _inherits(Toolbar, _React$Component);
+	
+	    function Toolbar() {
+	        _classCallCheck(this, Toolbar);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Toolbar).apply(this, arguments));
+	    }
+	
+	    _createClass(Toolbar, [{
+	        key: 'render',
+	        value: function render() {
+	            var self = this;
+	            var props = self.props;
+	            // FLEX ===============================
+	            var flexFlow = void 0;
+	            var flexStyle = void 0;
+	            if (props.flex) {
+	                flexStyle = {
+	                    'WebkitFlexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+	                    'justifyContent': props.justify ? props.justify : 'flex-start',
+	                    'alignItems': props.align ? props.align : 'stretch',
+	                    'WebkitFlex': props.flex !== '' ? props.flex : null
+	                };
+	            }
+	            // ====================================
+	            var toolbarClass = classNames('r-Toolbar', { 'border': props.border }, { 'vertical': props.vertical }, { 'text-center': props.textCenter }, { 'no-radius': props.noRadius }, { 'spacing': props.spacing }, { 'w100': props.block }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'w100': props.fill }, { 'wh100': props.fill }, { 'flush': props.flush }, { 'flex': props.flex }, { 'no-border': props.noBorder }, props.className);
+	            return React.createElement(
+	                'div',
+	                { ref: 'toolbar', style: Object.assign({}, flexStyle, props.style), className: toolbarClass, onClick: this.props.onClick },
+	                props.children
+	            );
+	        }
+	    }]);
+	
+	    return Toolbar;
+	}(React.Component);
+	
+	exports.default = Toolbar;
+
+/***/ },
 /* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -29447,111 +29575,13 @@
 	
 	
 	// module
-	exports.push([module.id, ".r-Badge {\n  display: inline-block;\n  position: relative;\n}\n.r-Badge .r-Badge__item {\n  position: absolute;\n  left: 80%;\n  top: -29%;\n  border-radius: 4px;\n  padding: 2px 7px;\n  white-space: nowrap;\n  z-index: 3;\n  font-size: small;\n}\n", ""]);
+	exports.push([module.id, ".r-Toolbar {\n  display: inline-block;\n  vertical-align: middle;\n}\n.r-Toolbar.flush > .r-Button {\n  border-right: 0;\n  border-radius: 0;\n}\n.r-Toolbar.flush > .r-Button:nth-child(1) {\n  border-top-left-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\n.r-Toolbar.flush > .r-Button:last-child {\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 4px;\n  border-right: 1px solid #ccc;\n}\n.r-Toolbar.no-radius .r-Button {\n  border-radius: 0;\n}\n.r-Toolbar.no-radius .r-Button:first-child {\n  border-top-left-radius: 0px;\n  border-bottom-left-radius: 0px;\n  border-left-width: 1px;\n}\n.r-Toolbar.no-radius .r-Button:last-child {\n  border-top-right-radius: 0px;\n  border-bottom-right-radius: 0px;\n  border-right-width: 1px;\n}\n.r-Toolbar > .r-Button:last-child {\n  margin-right: 0;\n}\n.r-Toolbar.border > .r-Button:first-child {\n  border: 1px solid #ccc;\n}\n.r-Toolbar.border > .r-Button {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc;\n  border-right: 1px solid #ccc;\n}\n.r-Toolbar .selectable-border-gray {\n  border: 1px solid transparent !important;\n}\n.r-Toolbar.no-radius > .r-Input,\n.r-Toolbar.no-radius .r-Input {\n  border-radius: 0px;\n}\n.r-Toolbar.border > .r-Input,\n.r-Toolbar.border .r-Input {\n  border: 1px solid #ccc;\n}\n.r-Toolbar.border > .r-Dropdown .r-DropdownSelection {\n  border: 1px solid #ccc;\n  vertical-align: middle;\n}\n.r-Toolbar.border.no-radius > .r-Dropdown .r-DropdownSelection {\n  border-radius: 0 !important;\n}\n.r-Toolbar.vertical.border > .r-Button,\n.r-Toolbar.vertical.border > .r-Emerge > .r-Button {\n  border: 1px solid #ccc !important;\n  display: table-cell;\n  border-radius: 0 !important;\n  line-height: 19px;\n}\n.r-Toolbar.vertical > .r-Button,\n.r-Toolbar.vertical > .r-Emerge > .r-Button {\n  display: block;\n}\n.r-Toolbar.vertical.spacing > .r-Button,\n.r-Toolbar.vertical.spacing > .r-Emerge > .r-Button {\n  margin-bottom: 10px;\n}\n.r-Toolbar.vertical.spacing > .r-Button:last-child,\n.r-Toolbar.vertical.spacing > .r-Emerge > .r-Button:last-child {\n  margin-bottom: 0px;\n}\n.r-Toolbar.vertical.spacing > .r-Input,\n.r-Toolbar.vertical.spacing > .r-Emerge > .r-Input {\n  margin-bottom: 10px;\n}\n.r-Toolbar.vertical.spacing > .r-Input:last-child,\n.r-Toolbar.vertical.spacing > .r-Emerge > .r-Input:last-child {\n  margin-bottom: 0px;\n}\n.r-Toolbar.no-border > .r-Button {\n  border: 0 !important;\n}\n.r-Toolbar.flush > .r-Toggle:not(:last-child) > label {\n  border-radius: 0;\n}\n.r-Toolbar.flush > .r-Toggle:last-child > label {\n  border-top-left-radius: 0 ;\n  border-bottom-left-radius: 0 ;\n}\n.r-Toolbar.no-radius > .r-Toggle > label,\n.r-Toolbar.no-radius > .r-Toggle > label:after {\n  border-radius: 0px !important;\n}\n.r-Toolbar.flush > .r-Button + .r-Input:not(:last-child) > .r-Input__container,\n.r-Toolbar.flush > .r-Button + .r-Input:not(:last-child),\n.r-Toolbar.flush > .r-Button + .r-Input:not(:last-child) > .r-Input__container > input[type='text'] {\n  border-right: 0;\n  border-radius: 0;\n}\n.r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container,\n.r-Toolbar.flush > .r-Button + .r-Input:last-child,\n.r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container > input[type='text'] {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.r-Input > .r-Input__container > .r-Selectable > div > .r-Selectable__border-gray,\n.r-Input > .r-Input__container > .r-Selectable > div > .r-Selectable__border.primary {\n  bottom: 1px !important;\n}\n", ""]);
 	
 	// exports
 
 
 /***/ },
 /* 267 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(80);
-	var classNames = __webpack_require__(255);
-	__webpack_require__(268);
-	
-	var Toolbar = function (_React$Component) {
-	    _inherits(Toolbar, _React$Component);
-	
-	    function Toolbar() {
-	        _classCallCheck(this, Toolbar);
-	
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Toolbar).apply(this, arguments));
-	    }
-	
-	    _createClass(Toolbar, [{
-	        key: 'render',
-	        value: function render() {
-	            var self = this;
-	            var props = self.props;
-	            // FLEX ===============================
-	            var flexFlow = void 0;
-	            var flexStyle = void 0;
-	            if (props.flex) {
-	                flexStyle = {
-	                    'WebkitFlexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
-	                    'justifyContent': props.justify ? props.justify : 'flex-start',
-	                    'alignItems': props.align ? props.align : 'stretch',
-	                    'WebkitFlex': props.flex !== '' ? props.flex : null
-	                };
-	            }
-	            // ====================================
-	            var toolbarClass = classNames('r-Toolbar', { 'border': props.border }, { 'vertical': props.vertical }, { 'text-center': props.textCenter }, { 'no-radius': props.noRadius }, { 'spacing': props.spacing }, { 'w100': props.block }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'w100': props.fill }, { 'wh100': props.fill }, { 'flush': props.flush }, { 'flex': props.flex }, { 'no-border': props.noBorder }, props.className);
-	            return React.createElement(
-	                'div',
-	                { ref: 'toolbar', style: Object.assign({}, flexStyle, props.style), className: toolbarClass },
-	                props.children
-	            );
-	        }
-	    }]);
-	
-	    return Toolbar;
-	}(React.Component);
-	
-	exports.default = Toolbar;
-
-/***/ },
-/* 268 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(269);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(252)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(269, function() {
-				var newContent = __webpack_require__(269);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 269 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(251)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".r-Toolbar {\n  display: inline-block;\n  vertical-align: middle;\n}\n.r-Toolbar.flush > .r-Button {\n  border-right: 0;\n  border-radius: 0;\n}\n.r-Toolbar.flush > .r-Button:nth-child(1) {\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.r-Toolbar.flush > .r-Button:last-child {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n  border-right: 1px solid #ccc;\n}\n.r-Toolbar.no-radius .r-Button {\n  border-radius: 0;\n}\n.r-Toolbar.no-radius .r-Button:first-child {\n  border-top-left-radius: 0px;\n  border-bottom-left-radius: 0px;\n  border-left-width: 1px;\n}\n.r-Toolbar.no-radius .r-Button:last-child {\n  border-top-right-radius: 0px;\n  border-bottom-right-radius: 0px;\n  border-right-width: 1px;\n}\n.r-Toolbar > .r-Button:last-child {\n  margin-right: 0;\n}\n.r-Toolbar.border > .r-Button:first-child {\n  border: 1px solid #ccc;\n}\n.r-Toolbar.border > .r-Button {\n  border-top: 1px solid #ccc;\n  border-bottom: 1px solid #ccc;\n  border-right: 1px solid #ccc;\n}\n.r-Toolbar .selectable-border-gray {\n  border: 1px solid transparent !important;\n}\n.r-Toolbar.no-radius > .r-Input,\n.r-Toolbar.no-radius .r-Input {\n  border-radius: 0px;\n}\n.r-Toolbar.border > .r-Input,\n.r-Toolbar.border .r-Input {\n  border: 1px solid #ccc;\n}\n.r-Toolbar.border > .r-Dropdown .r-DropdownSelection {\n  border: 1px solid #ccc;\n  vertical-align: middle;\n}\n.r-Toolbar.border.no-radius > .r-Dropdown .r-DropdownSelection {\n  border-radius: 0 !important;\n}\n.r-Toolbar.vertical.border .r-Button {\n  border: 1px solid #ccc !important;\n  display: table-cell;\n  border-radius: 0 !important;\n  line-height: 19px;\n}\n.r-Toolbar.vertical .r-Button {\n  display: block;\n}\n.r-Toolbar.vertical.spacing .r-Button {\n  margin-bottom: 10px;\n}\n.r-Toolbar.vertical.spacing .r-Button:last-child {\n  margin-bottom: 0px;\n}\n.r-Toolbar.vertical.spacing .r-Input {\n  margin-bottom: 10px;\n}\n.r-Toolbar.vertical.spacing .r-Input:last-child {\n  margin-bottom: 0px;\n}\n.r-Toolbar.no-border > .r-Button {\n  border: 0 !important;\n}\n.r-Toolbar > .r-Toggle:not(:last-child) > label {\n  border-radius: 0;\n}\n.r-Toolbar > .r-Toggle:last-child > label {\n  border-top-left-radius: 0 ;\n  border-bottom-left-radius: 0 ;\n}\n.r-Toggle {\n  min-width: 64px;\n}\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29567,10 +29597,10 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(80);
-	__webpack_require__(271);
-	var GridHeader_1 = __webpack_require__(273);
-	var GridBody_1 = __webpack_require__(275);
-	var GridFooter_1 = __webpack_require__(281);
+	__webpack_require__(268);
+	var GridHeader_1 = __webpack_require__(270);
+	var GridBody_1 = __webpack_require__(272);
+	var GridFooter_1 = __webpack_require__(278);
 	
 	var Grid = function (_React$Component) {
 	    _inherits(Grid, _React$Component);
@@ -29799,13 +29829,13 @@
 	exports.default = Grid;
 
 /***/ },
-/* 271 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(272);
+	var content = __webpack_require__(269);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(252)(content, {});
@@ -29814,8 +29844,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(272, function() {
-				var newContent = __webpack_require__(272);
+			module.hot.accept(269, function() {
+				var newContent = __webpack_require__(269);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -29825,7 +29855,7 @@
 	}
 
 /***/ },
-/* 272 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(251)();
@@ -29833,13 +29863,13 @@
 	
 	
 	// module
-	exports.push([module.id, ".r-Grid {\n  width: 100%;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\n.r-Grid table,\n.r-Grid td,\n.r-Grid th {\n  vertical-align: middle;\n}\n.r-Grid caption,\n.r-Grid th,\n.r-Grid td {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n.r-Grid td.r-Grid__Row__Column {\n  padding: 10px;\n  color: #333;\n}\n.r-Grid__Header > tr > th {\n  border-bottom: 1px solid #ccc !important;\n  padding: 10px;\n}\n.e-NightMode .r-Grid__Row__Column {\n  color: #888 !important;\n}\ntbody.r-Grid__Body > tr:nth-child(4n+1) {\n  cursor: pointer !important;\n  background: #E7E7E7 !important;\n}\ntbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n  background: #F5F5F5 !important;\n}\ntbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #D1ECFF !important;\n}\n.e-NightMode tbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #222 !important;\n}\n.e-NightMode tbody.r-Grid__Body > tr:nth-child(4n+1) {\n  background: #222 !important;\n}\n.e-NightMode tbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n  background: #333 !important;\n}\n", ""]);
+	exports.push([module.id, ".r-Grid {\n  width: 100%;\n  overflow: auto;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\n.r-Grid table,\n.r-Grid td,\n.r-Grid th {\n  vertical-align: middle;\n}\n.r-Grid caption,\n.r-Grid th,\n.r-Grid td {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n.r-Grid td.r-Grid__Row__Column {\n  padding: 10px;\n  color: #333;\n}\n.r-Grid__Header > tr > th {\n  border-bottom: 1px solid #ccc !important;\n  padding: 10px;\n}\n.e-NightMode .r-Grid__Row__Column {\n  color: #888 !important;\n}\ntbody.r-Grid__Body > tr:nth-child(4n+1) {\n  cursor: pointer !important;\n  background: #E7E7E7 !important;\n}\ntbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n}\ntbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #D1ECFF !important;\n}\n.e-NightMode tbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #222 !important;\n}\n.e-NightMode tbody.r-Grid__Body > tr:nth-child(4n+1) {\n  background: #222 !important;\n}\n.e-NightMode tbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n}\n.r-Grid__Header__Sort,\n.r-Grid__Row__Sort {\n  font-size: 60%;\n  position: relative;\n  top: -1px;\n  cursor: pointer !important;\n  color: #666;\n}\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 273 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -29853,7 +29883,6 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(80);
-	var Button_1 = __webpack_require__(274);
 	
 	var GridHeaderSortable = function (_React$Component) {
 	    _inherits(GridHeaderSortable, _React$Component);
@@ -29890,7 +29919,7 @@
 	                'th',
 	                { style: { width: item.width } },
 	                this.props.children,
-	                React.createElement(Button_1.default, { onClick: self.toggleSorting.bind(self, item.name), tabIndex: -1, className: 'w50px', ghost: true, icon: this.state.sortType === 'none' ? 'minus' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up' })
+	                React.createElement('i', { onClick: self.toggleSorting.bind(self, item.name), tabIndex: -1, className: "r-Grid__Header__Sort pl10 w50px fa fa-" + (this.state.sortType === 'none' ? 'sort' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up') })
 	            );
 	        }
 	    }]);
@@ -29973,7 +30002,7 @@
 	                                return React.createElement(
 	                                    'th',
 	                                    { className: 'p0', width: 5 },
-	                                    React.createElement(Button_1.default, { ghost: true, className: 'p5 ps10', tabIndex: -1, icon: 'caret-right' })
+	                                    React.createElement('i', { className: "fa pl20 fa-caret-right", tabIndex: -1 })
 	                                );
 	                            }
 	                        }(),
@@ -29992,7 +30021,7 @@
 	exports.default = GridHeader;
 
 /***/ },
-/* 274 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30007,8 +30036,8 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	var Selectable_1 = __webpack_require__(259);
-	__webpack_require__(262);
+	var Selectable_1 = __webpack_require__(256);
+	__webpack_require__(259);
 	
 	var Button = function (_React$Component) {
 	    _inherits(Button, _React$Component);
@@ -30142,11 +30171,7 @@
 	                    iconPartial,
 	                    function () {
 	                        if (!_this2.state.showShortcut) {
-	                            return React.createElement(
-	                                'span',
-	                                null,
-	                                props.children
-	                            );
+	                            return props.children;
 	                        } else {
 	                            return null;
 	                        }
@@ -30159,11 +30184,7 @@
 	                    'button',
 	                    { ref: 'button', tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, target: props.target, className: buttonClass, style: props.style },
 	                    iconPartial,
-	                    React.createElement(
-	                        'span',
-	                        { className: this.state.showShortcut ? "e-invisible" : '' },
-	                        props.children
-	                    ),
+	                    props.children,
 	                    showTooltip(),
 	                    selectablePartial
 	                );
@@ -30182,7 +30203,7 @@
 	exports.default = Button;
 
 /***/ },
-/* 275 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30196,9 +30217,9 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(80);
-	var Selectable_1 = __webpack_require__(259);
-	var Door_1 = __webpack_require__(276);
-	var GridRow_1 = __webpack_require__(279);
+	var Selectable_1 = __webpack_require__(256);
+	var Door_1 = __webpack_require__(273);
+	var GridRow_1 = __webpack_require__(276);
 	
 	var SelectableGridRow = function (_React$Component) {
 	    _inherits(SelectableGridRow, _React$Component);
@@ -30318,7 +30339,7 @@
 	                        _selectedItem = this.state.selected.includes(item);
 	                    }
 	                }
-	                rowArray.push([React.createElement(GridRow_1.default, { expanded: this.props.detailTemplateOpenOnSelect ? this.state.expandedRows.length > 0 && this.state.expandedRows[key] : false, toggleDetailTemplate: this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null, key: key, i: key, selected: this.state.selected, item: item, selectedKey: this.props.selectedKey, dataSource: this.props.dataSource, columns: this.props.columns, onRowSelect: this.onRowSelect.bind(this), detailTemplate: this.props.detailTemplate, selectedItem: _selectedItem, hideColumns: this.props.hideColumns })], [React.createElement(
+	                rowArray.push([React.createElement(GridRow_1.default, { expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false, toggleDetailTemplate: this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null, key: key, i: key, selected: this.state.selected, item: item, selectedKey: this.props.selectedKey, dataSource: this.props.dataSource, columns: this.props.columns, onRowSelect: this.onRowSelect.bind(this), detailTemplate: this.props.detailTemplate, selectedItem: _selectedItem, hideColumns: this.props.hideColumns, detailTemplateOpenOnHover: this.props.detailTemplateOpenOnHover })], [React.createElement(
 	                    'tr',
 	                    { key: key },
 	                    React.createElement(
@@ -30344,7 +30365,7 @@
 	// this.state.expandedRows.includes(key)
 
 /***/ },
-/* 276 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30359,7 +30380,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(277);
+	__webpack_require__(274);
 	var getAbsoluteHeight = function getAbsoluteHeight(el) {
 	    var styles = window.getComputedStyle(el);
 	    var margin = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
@@ -30392,11 +30413,7 @@
 	            return React.createElement(
 	                'div',
 	                { ref: 'door', className: doorClass, style: { height: this.state.maxHeight } },
-	                React.createElement(
-	                    'div',
-	                    { className: doorContainerClass },
-	                    props.open ? props.children : null
-	                )
+	                props.open ? props.children : null
 	            );
 	        }
 	    }]);
@@ -30407,13 +30424,13 @@
 	exports.default = Door;
 
 /***/ },
-/* 277 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(278);
+	var content = __webpack_require__(275);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(252)(content, {});
@@ -30422,8 +30439,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(278, function() {
-				var newContent = __webpack_require__(278);
+			module.hot.accept(275, function() {
+				var newContent = __webpack_require__(275);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -30433,7 +30450,7 @@
 	}
 
 /***/ },
-/* 278 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(251)();
@@ -30447,7 +30464,7 @@
 
 
 /***/ },
-/* 279 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30461,8 +30478,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(80);
-	var Button_1 = __webpack_require__(274);
-	var GridColumn_1 = __webpack_require__(280);
+	var GridColumn_1 = __webpack_require__(277);
 	
 	var GridRow = function (_React$Component) {
 	    _inherits(GridRow, _React$Component);
@@ -30508,7 +30524,7 @@
 	                    React.createElement(
 	                        'td',
 	                        { className: 'p0', width: 5 },
-	                        React.createElement(Button_1.default, { className: 'p5 ps10', ghost: true, onClick: this.toggleDetailTemplate.bind(this, i), tabIndex: -1, icon: expanded ? "caret-down" : "caret-right" })
+	                        React.createElement('i', { className: "r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right"), onClick: this.toggleDetailTemplate.bind(this, i), tabIndex: -1 })
 	                    ),
 	                    columnArray
 	                );
@@ -30528,7 +30544,7 @@
 	exports.default = GridRow;
 
 /***/ },
-/* 280 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30544,7 +30560,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(80);
-	var Button_1 = __webpack_require__(274);
+	var Button_1 = __webpack_require__(271);
 	
 	var GridColumn = function (_React$Component) {
 	    _inherits(GridColumn, _React$Component);
@@ -30573,12 +30589,8 @@
 	                        null,
 	                        dataSource[i][columns[x].name]
 	                    );
-	                } else if (_typeof(dataSource[i][columns[x].name]) === 'object' && columns[x].template) {
-	                    return React.createElement(
-	                        'div',
-	                        null,
-	                        columns[x].template(dataSource[i])
-	                    );
+	                } else if (_typeof(dataSource[i][columns[x].name]) === 'object' && columns[x].template || typeof dataSource[i][columns[x].name] === 'string' && columns[x].template) {
+	                    return columns[x].template(dataSource[i]);
 	                } else if (_typeof(dataSource[i][columns[x].name]) === 'object') {
 	                    return React.createElement(
 	                        'span',
@@ -30611,7 +30623,7 @@
 	exports.default = GridColumn;
 
 /***/ },
-/* 281 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30625,9 +30637,9 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(80);
-	var Toolbar_1 = __webpack_require__(282);
-	var Button_1 = __webpack_require__(274);
-	var Dropdown_1 = __webpack_require__(283);
+	var Toolbar_1 = __webpack_require__(279);
+	var Button_1 = __webpack_require__(271);
+	var Dropdown_1 = __webpack_require__(280);
 	
 	var GridFooter = function (_React$Component) {
 	    _inherits(GridFooter, _React$Component);
@@ -30683,7 +30695,7 @@
 	exports.default = GridFooter;
 
 /***/ },
-/* 282 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30698,7 +30710,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(268);
+	__webpack_require__(265);
 	
 	var Toolbar = function (_React$Component) {
 	    _inherits(Toolbar, _React$Component);
@@ -30729,7 +30741,7 @@
 	            var toolbarClass = classNames('r-Toolbar', { 'border': props.border }, { 'vertical': props.vertical }, { 'text-center': props.textCenter }, { 'no-radius': props.noRadius }, { 'spacing': props.spacing }, { 'w100': props.block }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'w100': props.fill }, { 'wh100': props.fill }, { 'flush': props.flush }, { 'flex': props.flex }, { 'no-border': props.noBorder }, props.className);
 	            return React.createElement(
 	                'div',
-	                { ref: 'toolbar', style: Object.assign({}, flexStyle, props.style), className: toolbarClass },
+	                { ref: 'toolbar', style: Object.assign({}, flexStyle, props.style), className: toolbarClass, onClick: this.props.onClick },
 	                props.children
 	            );
 	        }
@@ -30741,7 +30753,7 @@
 	exports.default = Toolbar;
 
 /***/ },
-/* 283 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30756,12 +30768,12 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	var DropdownWrapper_1 = __webpack_require__(284);
-	var Selectable_1 = __webpack_require__(259);
-	var Input_1 = __webpack_require__(285);
-	var Button_1 = __webpack_require__(274);
-	var Layer_1 = __webpack_require__(291);
-	__webpack_require__(294);
+	var DropdownWrapper_1 = __webpack_require__(281);
+	var Selectable_1 = __webpack_require__(256);
+	var Input_1 = __webpack_require__(282);
+	var Button_1 = __webpack_require__(271);
+	var Layer_1 = __webpack_require__(288);
+	__webpack_require__(291);
 	var DropdownHeader = function DropdownHeader(props) {
 	    return React.createElement(
 	        'div',
@@ -30783,7 +30795,7 @@
 	                );
 	            }
 	        }(),
-	        React.createElement('i', { className: 'r-DropdownHeader__trigger fa fa-chevron-' + (props.from === ('top' || 'top left' || 'top right') ? 'up' : 'down') })
+	        React.createElement('i', { className: 'r-DropdownHeader__trigger fa fa-chevron-' + (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center' ? 'up' : 'down') })
 	    );
 	};
 	var DropdownButton = function DropdownButton(props) {
@@ -30878,36 +30890,11 @@
 	                bottomPartial = void 0,
 	                dropdownTypePartial = void 0;
 	            var dropdownClass = classNames('r-Dropdown', { 'e-open': state.open }, { 'dblock w100': props.block }, { 'pull-right': props.right }, { 'pull-left': props.left }, props.className);
-	            var dropdownWrapperBottomClass = classNames('r-DropdownWrapperBottom', { 'e-resize-tl': !props.from || props.from === 'bottom left' || props.from === 'bottom' }, { 'e-resize-tr': props.from === 'bottom right' }, { 'e-resize-bl': props.from === 'top left' || props.from === 'top' }, { 'e-resize-br': props.from === 'top right' }, { 'e-resize-b': props.block }, { 'e-resize-t': props.block }, props.contentClass);
-	            var dropdownWrapperTopClass = classNames('r-DropdownWrapperTop', { 'e-resize-tl': !props.from || props.from === 'bottom left' || props.from === 'bottom' }, { 'e-resize-tr': props.from === 'bottom right' }, { 'e-resize-bl': props.from === 'top left' || props.from === 'top' }, { 'e-resize-tr': props.from === 'top right' }, { 'e-resize-b': props.block }, { 'e-resize-t': props.block }, props.contentClass);
-	            var dropdownContentClass = classNames('r-DropdownContent', 'r-Card', 'w100');
+	            var dropdownWrapperBottomClass = classNames('r-DropdownWrapperBottom', 'e-drop-b', { 'e-drop-left': props.from === 'bottom left' }, { 'e-drop-right': props.from === 'bottom right' }, { 'e-drop-center': props.from === 'bottom center' }, props.contentClass);
+	            var dropdownWrapperTopClass = classNames('r-DropdownWrapperTop', 'e-drop-t', { 'e-drop-left': props.from === 'top left' }, { 'e-drop-right': props.from === 'top right' }, { 'e-drop-center': props.from === 'top center' }, props.contentClass);
+	            var dropdownContentClass = classNames('r-DropdownContent', 'r-Card', 'w100', props.contentClass);
 	            var buttonClass = classNames('w100', props.buttonClass);
 	            var selectionClass = classNames('r-DropdownSelection', 'w100', props.selectionClass);
-	            switch (props.from) {
-	                case 'top' || 'top left' || 'top right':
-	                    topPartial = React.createElement(
-	                        DropdownWrapper_1.default,
-	                        { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperTopClass, dropdownContentClass: dropdownContentClass },
-	                        props.children
-	                    );
-	                    bottomPartial = null;
-	                    break;
-	                case 'bottom' || 'bottom left' || 'bottom right':
-	                    topPartial = React.createElement(
-	                        DropdownWrapper_1.default,
-	                        { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperBottomClass, dropdownContentClass: dropdownContentClass },
-	                        props.children
-	                    );
-	                    bottomPartial = null;
-	                    break;
-	                default:
-	                    bottomPartial = React.createElement(
-	                        DropdownWrapper_1.default,
-	                        { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperBottomClass, dropdownContentClass: dropdownContentClass },
-	                        props.children
-	                    );
-	                    topPartial = null;
-	            }
 	            switch (props.type) {
 	                case 'button':
 	                    dropdownTypePartial = React.createElement(DropdownButton, { className: buttonClass, onClick: self.toggleDrop.bind(self), value: props.value, icon: props.icon, checked: state.open, theme: props.theme, ghost: props.ghost });
@@ -30924,9 +30911,22 @@
 	            return React.createElement(
 	                'div',
 	                { className: dropdownClass },
-	                topPartial,
 	                dropdownTypePartial,
-	                bottomPartial
+	                function () {
+	                    if (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center') {
+	                        return React.createElement(
+	                            DropdownWrapper_1.default,
+	                            { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperTopClass, dropdownContentClass: dropdownContentClass },
+	                            props.children
+	                        );
+	                    } else {
+	                        return React.createElement(
+	                            DropdownWrapper_1.default,
+	                            { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperBottomClass, dropdownContentClass: dropdownContentClass },
+	                            props.children
+	                        );
+	                    }
+	                }()
 	            );
 	        }
 	    }]);
@@ -30937,7 +30937,7 @@
 	exports.default = Dropdown;
 
 /***/ },
-/* 284 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -30951,7 +30951,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(80);
-	var Selectable_1 = __webpack_require__(259);
+	var Selectable_1 = __webpack_require__(256);
 	
 	var DropdownWrapper = function (_React$Component) {
 	    _inherits(DropdownWrapper, _React$Component);
@@ -31035,7 +31035,7 @@
 	exports.default = DropdownWrapper;
 
 /***/ },
-/* 285 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31051,9 +31051,9 @@
 	var React = __webpack_require__(80);
 	var ReactDOM = __webpack_require__(248);
 	var classNames = __webpack_require__(255);
-	var Selectable_1 = __webpack_require__(259);
-	var Pane_1 = __webpack_require__(286);
-	__webpack_require__(289);
+	var Selectable_1 = __webpack_require__(256);
+	var Pane_1 = __webpack_require__(283);
+	__webpack_require__(286);
 	
 	var Input = function (_React$Component) {
 	    _inherits(Input, _React$Component);
@@ -31260,7 +31260,7 @@
 	exports.default = Input;
 
 /***/ },
-/* 286 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31275,7 +31275,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(287);
+	__webpack_require__(284);
 	
 	var Pane = function (_React$Component) {
 	    _inherits(Pane, _React$Component);
@@ -31322,12 +31322,8 @@
 	            };
 	            return React.createElement(
 	                'div',
-	                { onClick: props.wrapperClick, className: paneClass },
-	                React.createElement(
-	                    'div',
-	                    { ref: 'pane', className: paneContainerClass, style: paneContainerStyle },
-	                    childrenPartial()
-	                )
+	                { onClick: props.wrapperClick, ref: 'pane', className: paneContainerClass, style: paneContainerStyle },
+	                childrenPartial()
 	            );
 	        }
 	    }]);
@@ -31341,13 +31337,13 @@
 	exports.default = Pane;
 
 /***/ },
-/* 287 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(288);
+	var content = __webpack_require__(285);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(252)(content, {});
@@ -31356,8 +31352,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(288, function() {
-				var newContent = __webpack_require__(288);
+			module.hot.accept(285, function() {
+				var newContent = __webpack_require__(285);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -31367,7 +31363,7 @@
 	}
 
 /***/ },
-/* 288 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(251)();
@@ -31379,6 +31375,118 @@
 	
 	// exports
 
+
+/***/ },
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(287);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(252)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(287, function() {
+				var newContent = __webpack_require__(287);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 287 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(251)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".r-Input {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.r-Input * {\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Input.small,\n.r-Input.small > .r-Input__container,\n.r-Input.small > .r-Input__container > input {\n  height: 26px;\n}\n.r-Input.small > .r-Input__container > small {\n  top: 8px;\n}\n.r-Input.small > .r-Input__container > small,\n.r-Input.small > .r-Input__container > input {\n  font-size: 12px;\n}\n.r-Input.small > .r-Input__container > small + small {\n  left: 20px;\n  pointer-events: none;\n  top: 5px;\n}\n.r-Input.small.checked .r-Input__container > small {\n  top: 0px !important;\n}\n.r-Input.large,\n.r-Input.large > .r-Input__container,\n.r-Input.large > .r-Input__container > input {\n  height: 40px;\n}\n.r-Input.large > .r-Input__container > small {\n  top: 12px;\n}\n.r-Input.xlarge,\n.r-Input.xlarge > .r-Input__container,\n.r-Input.xlarge > .r-Input__container > input {\n  height: 62px;\n}\n.r-Input.xlarge > .r-Input__container > small {\n  top: 22px;\n}\n.r-Input.xlarge > .r-Input__container > small,\n.r-Input.xlarge > .r-Input__container > input {\n  font-size: 25px;\n}\n.r-Input.xlarge.checked .r-Input__container > small {\n  top: 4px;\n  font-size: 83%;\n}\n.r-Input.xlarge.checked .r-Input__container > .writing {\n  top: 38px;\n}\n.r-Input.xlarge > .r-Input__container > small + small {\n  left: 35px;\n  pointer-events: none;\n  top: 23px ;\n}\ntextarea {\n  height: 22px;\n  outline: 0;\n  border: 0;\n  width: 100%;\n  font: inherit;\n  vertical-align: middle;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  -ms-appearance: none;\n  -o-appearance: none;\n  appearance: none;\n  overflow: hidden;\n  background: #fff;\n  cursor: pointer !important;\n  border-radius: 4px;\n  box-sizing: border-box;\n  box-shadow: inset 0 0 0 0 #1995ff;\n  position: relative;\n  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;\n  transition: transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;\n}\n.r-Input__container {\n  position: relative;\n}\n.r-Input__container input[type='text'],\n.r-Input__container input[type='password'] {\n  border: 1px solid #ccc;\n  width: 100%;\n  left: 0;\n  right: 0;\n}\n.r-Input__container {\n  position: relative;\n  overflow: hidden;\n  border-radius: 4px;\n  height: 32px;\n  color: #777;\n  background-color: #fff;\n}\n.r-Input__container > small {\n  position: absolute;\n  top: 7px;\n  left: 10px;\n  z-index: 2;\n  line-height: 18px;\n  color: #888;\n  font-size: 18px;\n  pointer-events: none;\n}\n.r-Input.checked .r-Input__container > small i.fa {\n  opacity: 0;\n}\n.r-Input.checked .r-Input__container > small {\n  top: -1px;\n  font-size: 60%;\n}\n.r-Input__container > input {\n  z-index: 1;\n  padding-left: 5px;\n  padding-top: 10px;\n  color: #777;\n  border-radius: 4px;\n  font-size: 16px;\n  border: 0;\n  background-color: #fff;\n  outline: 0;\n  -webkit-transition-duration: 0.6s;\n}\n.no-title.r-Input__container > input {\n  opacity: 1;\n  color: #888;\n  padding-top: 0;\n}\n.r-Input.checked .r-Input__container > input {\n  opacity: 1;\n}\n.r-Input__container .r-Selectable__border-gray {\n  border: 1px solid transparent;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n}\n.r-Input__container > small + small {\n  left: 35px;\n  pointer-events: none;\n}\n.r-Input.checked .r-Input__container > small + small {\n  left: 15px;\n}\n@keyframes writing {\n  0% {\n    transform: translate(0px, 1px);\n  }\n  10% {\n    transform: translate(2px, 1px);\n  }\n  20% {\n    transform: translate(4px, -1px);\n  }\n  30% {\n    transform: translate(6px, -1px);\n  }\n  40% {\n    transform: translate(8px, 1px);\n  }\n  50% {\n    transform: translate(10px, 1px);\n  }\n  60% {\n    transform: translate(12px, -1px);\n  }\n  70% {\n    transform: translate(14px, -1px);\n  }\n  80% {\n    transform: translate(16px, 1px);\n  }\n  90% {\n    transform: translate(18px, 1px);\n  }\n  100% {\n    transform: translate(20px, -1px);\n  }\n}\n@-webkit-keyframes writing {\n  0% {\n    transform: translate(0px, 1px);\n  }\n  10% {\n    transform: translate(2px, 1px);\n  }\n  20% {\n    transform: translate(4px, -1px);\n  }\n  30% {\n    transform: translate(6px, -1px);\n  }\n  40% {\n    transform: translate(8px, 1px);\n  }\n  50% {\n    transform: translate(10px, 1px);\n  }\n  60% {\n    transform: translate(12px, -1px);\n  }\n  70% {\n    transform: translate(14px, -1px);\n  }\n  80% {\n    transform: translate(16px, 1px);\n  }\n  90% {\n    transform: translate(18px, 1px);\n  }\n  100% {\n    transform: translate(20px, -1px);\n  }\n}\n.writing {\n  z-index: 3;\n  opacity: 0;\n  position: absolute;\n  top: 16px;\n  left: 5px;\n  font-size: 12px !important;\n}\n.r-Input.checked .writing {\n  animation: writing 0.8s infinite;\n  -webkit-animation: writing 0.8s infinite;\n  z-index: 3;\n  opacity: 1;\n}\ntextarea,\ninput {\n  font-size: 13px;\n}\n.error-message {\n  color: red;\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(80);
+	var classNames = __webpack_require__(255);
+	__webpack_require__(289);
+	
+	var Layer = function (_React$Component) {
+	    _inherits(Layer, _React$Component);
+	
+	    function Layer(props) {
+	        _classCallCheck(this, Layer);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Layer).call(this, props));
+	    }
+	
+	    _createClass(Layer, [{
+	        key: 'render',
+	        value: function render() {
+	            var self = this;
+	            var props = self.props;
+	            var borderClass = void 0;
+	            if (props.border) {
+	                borderClass = 'border' + props.border;
+	            } else {
+	                borderClass = null;
+	            }
+	            // FLEX ===============================
+	            var flexFlow = void 0;
+	            var flexStyle = void 0;
+	            if (props.flex) {
+	                flexStyle = {
+	                    'WebkitFlexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+	                    'flexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
+	                    'justifyContent': props.justify ? props.justify : 'flex-start',
+	                    'alignItems': props.align ? props.align : 'stretch',
+	                    'WebkitFlex': props.flex !== '' ? props.flex : null
+	                };
+	            }
+	            // ===================================
+	            var layerClass = classNames(props.className, 'r-Layer', { 'flohide': props.overflow }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'e-scroll-y': props.scrollY }, { 'e-scroll-x': props.scrollX }, { 'h100': props.fill }, { 'w100': props.fill }, { 'flex': props.flex }, borderClass, props.type);
+	            return React.createElement(
+	                'div',
+	                { onClick: props.onClick, className: layerClass, style: Object.assign({}, flexStyle, props.style) },
+	                props.children
+	            );
+	        }
+	    }]);
+	
+	    return Layer;
+	}(React.Component);
+	
+	Layer.defaultProps = {
+	    overflow: false,
+	    type: '',
+	    left: false,
+	    right: false,
+	    border: ''
+	};
+	exports.default = Layer;
 
 /***/ },
 /* 289 */
@@ -31415,7 +31523,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".r-Input {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.r-Input * {\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Input.small,\n.r-Input.small > .r-Input__container,\n.r-Input.small > .r-Input__container > input {\n  height: 26px;\n}\n.r-Input.small > .r-Input__container > small {\n  top: 8px;\n}\n.r-Input.small > .r-Input__container > small,\n.r-Input.small > .r-Input__container > input {\n  font-size: 12px;\n}\n.r-Input.small > .r-Input__container > small + small {\n  left: 20px;\n  pointer-events: none;\n  top: 5px;\n}\n.r-Input.small.checked .r-Input__container > small {\n  top: 0px !important;\n}\n.r-Input.large,\n.r-Input.large > .r-Input__container,\n.r-Input.large > .r-Input__container > input {\n  height: 40px;\n}\n.r-Input.large > .r-Input__container > small {\n  top: 12px;\n}\n.r-Input.xlarge,\n.r-Input.xlarge > .r-Input__container,\n.r-Input.xlarge > .r-Input__container > input {\n  height: 62px;\n}\n.r-Input.xlarge > .r-Input__container > small {\n  top: 22px;\n}\n.r-Input.xlarge > .r-Input__container > small,\n.r-Input.xlarge > .r-Input__container > input {\n  font-size: 25px;\n}\n.r-Input.xlarge.checked .r-Input__container > small {\n  top: 4px;\n  font-size: 83%;\n}\n.r-Input.xlarge.checked .r-Input__container > .writing {\n  top: 38px;\n}\n.r-Input.xlarge > .r-Input__container > small + small {\n  left: 35px;\n  pointer-events: none;\n  top: 23px ;\n}\ntextarea {\n  height: 22px;\n  outline: 0;\n  border: 0;\n  width: 100%;\n  font: inherit;\n  vertical-align: middle;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  -ms-appearance: none;\n  -o-appearance: none;\n  appearance: none;\n  overflow: hidden;\n  background: #fff;\n  cursor: pointer !important;\n  border-radius: 3px;\n  box-sizing: border-box;\n  box-shadow: inset 0 0 0 0 #1995ff;\n  position: relative;\n  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;\n  transition: transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;\n}\n.r-Input__container {\n  position: relative;\n}\n.r-Input__container input[type='text'],\n.r-Input__container input[type='password'] {\n  border: 1px solid #ccc;\n  width: 100%;\n  left: 0;\n  right: 0;\n}\n.r-Input__container {\n  position: relative;\n  overflow: hidden;\n  border-radius: 3px;\n  height: 32px;\n  color: #777;\n  background-color: #fff;\n}\n.r-Input__container > small {\n  position: absolute;\n  top: 7px;\n  left: 5px;\n  z-index: 2;\n  line-height: 18px;\n  color: #888;\n  font-size: 18px;\n  pointer-events: none;\n}\n.r-Input.checked .r-Input__container > small i.fa {\n  opacity: 0;\n}\n.r-Input.checked .r-Input__container > small {\n  top: -1px;\n  font-size: 60%;\n}\n.r-Input__container > input {\n  z-index: 1;\n  padding-left: 5px;\n  padding-top: 10px;\n  color: #777;\n  border-radius: 3px;\n  font-size: 16px;\n  border: 0;\n  background-color: #fff;\n  outline: 0;\n  -webkit-transition-duration: 0.6s;\n}\n.no-title.r-Input__container > input {\n  opacity: 1;\n  color: #888;\n  padding-top: 0;\n}\n.r-Input.checked .r-Input__container > input {\n  opacity: 1;\n}\n.r-Input__container .r-Selectable__border-gray {\n  border: 1px solid transparent;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n}\n.r-Input__container > small + small {\n  left: 25px;\n  pointer-events: none;\n}\n.r-Input.checked .r-Input__container > small + small {\n  left: 5px;\n}\n@keyframes writing {\n  0% {\n    transform: translate(0px, 1px);\n  }\n  10% {\n    transform: translate(2px, 1px);\n  }\n  20% {\n    transform: translate(4px, -1px);\n  }\n  30% {\n    transform: translate(6px, -1px);\n  }\n  40% {\n    transform: translate(8px, 1px);\n  }\n  50% {\n    transform: translate(10px, 1px);\n  }\n  60% {\n    transform: translate(12px, -1px);\n  }\n  70% {\n    transform: translate(14px, -1px);\n  }\n  80% {\n    transform: translate(16px, 1px);\n  }\n  90% {\n    transform: translate(18px, 1px);\n  }\n  100% {\n    transform: translate(20px, -1px);\n  }\n}\n@-webkit-keyframes writing {\n  0% {\n    transform: translate(0px, 1px);\n  }\n  10% {\n    transform: translate(2px, 1px);\n  }\n  20% {\n    transform: translate(4px, -1px);\n  }\n  30% {\n    transform: translate(6px, -1px);\n  }\n  40% {\n    transform: translate(8px, 1px);\n  }\n  50% {\n    transform: translate(10px, 1px);\n  }\n  60% {\n    transform: translate(12px, -1px);\n  }\n  70% {\n    transform: translate(14px, -1px);\n  }\n  80% {\n    transform: translate(16px, 1px);\n  }\n  90% {\n    transform: translate(18px, 1px);\n  }\n  100% {\n    transform: translate(20px, -1px);\n  }\n}\n.writing {\n  z-index: 3;\n  opacity: 0;\n  position: absolute;\n  top: 16px;\n  left: 5px;\n  font-size: 12px !important;\n}\n.r-Input.checked .writing {\n  animation: writing 0.8s infinite;\n  -webkit-animation: writing 0.8s infinite;\n  z-index: 3;\n  opacity: 1;\n}\ntextarea,\ninput {\n  font-size: 13px;\n}\n.error-message {\n  color: red;\n}\n", ""]);
+	exports.push([module.id, ".r-Layer {\n  zoom: 1;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  width: 100%;\n  position: relative;\n  color: #333;\n}\n.r-Layer:before,\n.r-Layer:after {\n  content: \"\";\n  display: table;\n}\n.r-Layer:after {\n  clear: both;\n}\n.r-Layer.light {\n  background: #fff;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.r-Layer.e-scroll-y {\n  -webkit-overflow-scrolling: touch;\n  overflow-y: scroll;\n}\n.r-Layer.e-scroll-x {\n  -webkit-overflow-scrolling: touch;\n  overflow-x: scroll;\n}\n.e-NightMode .r-Layer.light {\n  color: #888;\n}\n", ""]);
 	
 	// exports
 
@@ -31424,156 +31532,44 @@
 /* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(80);
-	var classNames = __webpack_require__(255);
-	__webpack_require__(292);
-	
-	var Layer = function (_React$Component) {
-	    _inherits(Layer, _React$Component);
-	
-	    function Layer(props) {
-	        _classCallCheck(this, Layer);
-	
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Layer).call(this, props));
-	    }
-	
-	    _createClass(Layer, [{
-	        key: 'render',
-	        value: function render() {
-	            var self = this;
-	            var props = self.props;
-	            var borderClass = void 0;
-	            if (props.border) {
-	                borderClass = 'border' + props.border;
-	            } else {
-	                borderClass = null;
-	            }
-	            // FLEX ===============================
-	            var flexFlow = void 0;
-	            var flexStyle = void 0;
-	            if (props.flex) {
-	                flexStyle = {
-	                    'WebkitFlexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
-	                    'flexFlow': props.flow !== '' && props.flow ? props.flow : 'row nowrap',
-	                    'justifyContent': props.justify ? props.justify : 'flex-start',
-	                    'alignItems': props.align ? props.align : 'stretch',
-	                    'WebkitFlex': props.flex !== '' ? props.flex : null
-	                };
-	            }
-	            // ===================================
-	            var layerClass = classNames(props.className, 'r-Layer', { 'flohide': props.overflow }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'e-scroll-y': props.scrollY }, { 'e-scroll-x': props.scrollX }, { 'h100': props.fill }, { 'w100': props.fill }, { 'flex': props.flex }, borderClass, props.type);
-	            return React.createElement(
-	                'div',
-	                { onClick: props.onClick, className: layerClass, style: Object.assign({}, flexStyle, props.style) },
-	                props.children
-	            );
-	        }
-	    }]);
-	
-	    return Layer;
-	}(React.Component);
-	
-	Layer.defaultProps = {
-	    overflow: false,
-	    type: '',
-	    left: false,
-	    right: false,
-	    border: ''
-	};
-	exports.default = Layer;
+	// load the styles
+	var content = __webpack_require__(292);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(252)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(292, function() {
+				var newContent = __webpack_require__(292);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
 /***/ },
 /* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	exports = module.exports = __webpack_require__(251)();
+	// imports
 	
-	// load the styles
-	var content = __webpack_require__(293);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(252)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(293, function() {
-				var newContent = __webpack_require__(293);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
+	
+	// module
+	exports.push([module.id, ".r-Dropdown {\n  position: relative;\n  display: inline-block;\n}\n.r-Dropdown .r-Card {\n  background: white;\n  overflow: hidden;\n  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);\n}\n.r-Dropdown .r-DropdownWrapperBottom {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperBottom .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperTop {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  top: -100%;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n  top: auto;\n  bottom: 100%;\n  display: inline-table;\n  z-index: 10;\n}\n.r-Dropdown .r-DropdownWrapperTop .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-bl {\n  transform-origin: left bottom !important;\n}\n.r-Dropdown .e-resize-br {\n  transform-origin: right bottom !important;\n}\n.r-Dropdown .e-resize-tl {\n  transform-origin: left top !important;\n}\n.r-Dropdown .e-resize-tr {\n  transform-origin: top right !important;\n  right: 0 !important;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-t {\n  transform-origin: center top !important;\n}\n.r-Dropdown .e-resize-b {\n  transform-origin: center bottom !important;\n}\n.r-Dropdown .r-DropdownHeader {\n  display: inline-block;\n}\n.r-Dropdown .r-DropdownContent__item {\n  cursor: pointer;\n  position: relative;\n  padding: 5px;\n}\n.r-Dropdown .r-DropdownSelection {\n  color: #888;\n  background: #fff;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 0;\n  border-radius: 4px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  height: 32px;\n  position: relative;\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Dropdown.e-open .r-DropdownWrapperTop,\n.r-Dropdown.e-open .r-DropdownWrapperBottom {\n  overflow: visible;\n  -webkit-transform: scale(1);\n  -moz-transform: scale(1);\n  -ms-transform: scale(1);\n  -o-transform: scale(1);\n}\n.r-Dropdown .r-DropdownHeader {\n  width: 100%;\n}\n.r-Dropdown.dblock .r-DropdownHeader {\n  width: 100%;\n}\n.r-DropdownHeader__trigger {\n  margin-left: 5px;\n  float: right;\n}\n.r-Dropdown .r-DropdownHeader {\n  padding: 6px 15px;\n}\n.r-Dropdown.e-open {\n  z-index: 10;\n}\n.r-Dropdown.e-open:hover {\n  z-index: 11;\n}\n.e-drop-b {\n  transform-origin: left top !important;\n}\n.e-drop-t {\n  transform-origin: left bottom !important;\n}\n.e-drop-b.e-drop-left {\n  transform-origin: left top !important;\n}\n.e-drop-t.e-drop-left {\n  transform-origin: left bottom !important;\n}\n.e-drop-t.e-drop-left {\n  transform-origin: left bottom !important;\n  bottom: 100%;\n}\n.e-drop-t.e-drop-right {\n  transform-origin: right bottom !important;\n  right: 0;\n  bottom: 100%;\n}\n.e-drop-t.e-drop-center {\n  transform-origin: center bottom !important;\n  right: 0;\n  left: 0;\n  margin: auto;\n  bottom: 100%;\n}\n.e-drop-b.e-drop-left {\n  transform-origin: left top !important;\n}\n.e-drop-b.e-drop-right {\n  transform-origin: right top !important;\n  right: 0;\n}\n.e-drop-b.e-drop-center {\n  transform-origin: center top !important;\n  right: 0;\n  left: 0;\n  margin: auto;\n}\n", ""]);
+	
+	// exports
+
 
 /***/ },
 /* 293 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(251)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".r-Layer {\n  zoom: 1;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  width: 100%;\n  position: relative;\n  color: #333;\n}\n.r-Layer:before,\n.r-Layer:after {\n  content: \"\";\n  display: table;\n}\n.r-Layer:after {\n  clear: both;\n}\n.r-Layer.light {\n  background: #fff;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.r-Layer.e-scroll-y {\n  -webkit-overflow-scrolling: touch;\n  overflow-y: scroll;\n}\n.r-Layer.e-scroll-x {\n  -webkit-overflow-scrolling: touch;\n  overflow-x: scroll;\n}\n.e-NightMode .r-Layer.light {\n  color: #888;\n}\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 294 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(295);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(252)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(295, function() {
-				var newContent = __webpack_require__(295);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 295 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(251)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".r-Dropdown {\n  position: relative;\n  display: inline-block;\n  z-index: 10;\n}\n.r-Dropdown .r-Card {\n  background: white;\n  overflow: hidden;\n}\n.r-Dropdown .r-DropdownWrapperBottom {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperBottom .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n}\n.r-Dropdown .r-DropdownWrapperTop {\n  -webkit-transform: scale(0);\n  -moz-transform: scale(0);\n  -ms-transform: scale(0);\n  -o-transform: scale(0);\n  -webkit-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 250ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  position: absolute;\n  z-index: 4;\n  max-height: 0;\n  top: -100%;\n  overflow: hidden;\n  min-width: -webkit-max-content;\n  min-width: -moz-max-content;\n  min-width: max-content;\n  width: 100%;\n  top: auto;\n  bottom: 100%;\n  display: inline-table;\n  z-index: 10;\n}\n.r-Dropdown .r-DropdownWrapperTop .r-DropdownContent {\n  padding: 0;\n  margin: 0;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-bl {\n  transform-origin: left bottom !important;\n}\n.r-Dropdown .e-resize-br {\n  transform-origin: right bottom !important;\n}\n.r-Dropdown .e-resize-tl {\n  transform-origin: left top !important;\n}\n.r-Dropdown .e-resize-tr {\n  transform-origin: top right !important;\n  right: 0 !important;\n  z-index: 10;\n}\n.r-Dropdown .e-resize-t {\n  transform-origin: center top !important;\n}\n.r-Dropdown .e-resize-b {\n  transform-origin: center bottom !important;\n}\n.r-Dropdown .r-DropdownHeader {\n  display: inline-block;\n}\n.r-Dropdown .r-DropdownContent__item {\n  cursor: pointer;\n  position: relative;\n  padding: 5px;\n}\n.r-Dropdown .r-DropdownSelection {\n  color: #888;\n  background: #fff;\n  border: 1px solid #ccc;\n  cursor: pointer;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  display: inline-block;\n  padding: 0;\n  border-radius: 4px;\n  text-decoration: none;\n  vertical-align: middle;\n  margin: 0;\n  line-height: 18px;\n  height: 32px;\n  position: relative;\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Dropdown.e-open .r-DropdownWrapperTop,\n.r-Dropdown.e-open .r-DropdownWrapperBottom {\n  overflow: visible;\n  max-height: 100%;\n  -webkit-transform: scale(1);\n  -moz-transform: scale(1);\n  -ms-transform: scale(1);\n  -o-transform: scale(1);\n}\n.r-Dropdown .r-DropdownHeader {\n  width: 100%;\n}\n.r-Dropdown.dblock .r-DropdownHeader {\n  width: 100%;\n}\n.r-DropdownHeader__trigger {\n  margin-left: 5px;\n  float: right;\n}\n.r-Dropdown .r-DropdownHeader {\n  padding: 6px 15px;\n}\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31588,7 +31584,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(292);
+	__webpack_require__(289);
 	
 	var Layer = function (_React$Component) {
 	    _inherits(Layer, _React$Component);
@@ -31645,7 +31641,7 @@
 	exports.default = Layer;
 
 /***/ },
-/* 297 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31661,9 +31657,9 @@
 	var React = __webpack_require__(80);
 	var ReactDOM = __webpack_require__(248);
 	var classNames = __webpack_require__(255);
-	var Selectable_1 = __webpack_require__(259);
-	var Pane_1 = __webpack_require__(286);
-	__webpack_require__(289);
+	var Selectable_1 = __webpack_require__(256);
+	var Pane_1 = __webpack_require__(283);
+	__webpack_require__(286);
 	
 	var Input = function (_React$Component) {
 	    _inherits(Input, _React$Component);
@@ -31870,7 +31866,7 @@
 	exports.default = Input;
 
 /***/ },
-/* 298 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -31885,7 +31881,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(299);
+	__webpack_require__(296);
 	var WizardSlide = function WizardSlide(props) {
 	    return React.createElement(
 	        'div',
@@ -31946,13 +31942,13 @@
 	exports.default = Wizard;
 
 /***/ },
-/* 299 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(300);
+	var content = __webpack_require__(297);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(252)(content, {});
@@ -31961,8 +31957,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(300, function() {
-				var newContent = __webpack_require__(300);
+			module.hot.accept(297, function() {
+				var newContent = __webpack_require__(297);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -31972,7 +31968,7 @@
 	}
 
 /***/ },
-/* 300 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(251)();
@@ -31980,13 +31976,13 @@
 	
 	
 	// module
-	exports.push([module.id, ".r-Wizard {\n  overflow: hidden !important;\n}\n.r-Wizard .r-Wizard__track {\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  width: 100%;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide {\n  -webkit-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -webkit-transform: translate(0%, 0);\n  -moz-transform: translate(0%, 0);\n  -ms-transform: translate(0%, 0);\n  -o-transform: translate(0%, 0);\n  width: 100%;\n  height: 100%;\n  overflow: visible;\n  position: absolute;\n  top: auto;\n  left: auto;\n  right: auto;\n  bottom: auto;\n  margin: auto;\n  background: #EFEFEF;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-selected {\n  -webkit-transform: translate(0%, 0);\n  -moz-transform: translate(0%, 0);\n  -ms-transform: translate(0%, 0);\n  -o-transform: translate(0%, 0);\n  position: relative;\n  opacity: 1;\n  -webkit-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-backward {\n  -webkit-transform: translate(-10%, 0);\n  -moz-transform: translate(-10%, 0);\n  -ms-transform: translate(-10%, 0);\n  -o-transform: translate(-10%, 0);\n  top: 0;\n  pointer-events: none !important;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-forward {\n  -webkit-transform: translate(120%, 0);\n  -moz-transform: translate(120%, 0);\n  -ms-transform: translate(120%, 0);\n  -o-transform: translate(120%, 0);\n  top: 0;\n  pointer-events: none !important;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-selected.e-vertical {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  opacity: 1;\n  position: relative ;\n  visibility: visible;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-backward.e-vertical {\n  -webkit-transform: translate(0%, -100%);\n  -moz-transform: translate(0%, -100%);\n  -ms-transform: translate(0%, -100%);\n  -o-transform: translate(0%, -100%);\n  visibility: hidden;\n  height: 0;\n  overflow: hidden;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-forward.e-vertical {\n  -webkit-transform: translate(0%, 100%);\n  -moz-transform: translate(0%, 100%);\n  -ms-transform: translate(0%, 100%);\n  -o-transform: translate(0%, 100%);\n  visibility: hidden;\n  height: 0;\n  overflow: hidden;\n}\n", ""]);
+	exports.push([module.id, ".r-Wizard {\n  overflow: hidden !important;\n}\n.r-Wizard .r-Wizard__track {\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  width: 100%;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide {\n  -webkit-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -webkit-transform: translate(0%, 0);\n  -moz-transform: translate(0%, 0);\n  -ms-transform: translate(0%, 0);\n  -o-transform: translate(0%, 0);\n  width: 100%;\n  overflow: visible;\n  position: absolute;\n  top: auto;\n  left: auto;\n  right: auto;\n  bottom: auto;\n  margin: auto;\n  background: #EFEFEF;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-selected {\n  -webkit-transform: translate(0%, 0);\n  -moz-transform: translate(0%, 0);\n  -ms-transform: translate(0%, 0);\n  -o-transform: translate(0%, 0);\n  position: relative;\n  opacity: 1;\n  -webkit-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-backward {\n  -webkit-transform: translate(-10%, 0);\n  -moz-transform: translate(-10%, 0);\n  -ms-transform: translate(-10%, 0);\n  -o-transform: translate(-10%, 0);\n  top: 0;\n  pointer-events: none !important;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-forward {\n  -webkit-transform: translate(120%, 0);\n  -moz-transform: translate(120%, 0);\n  -ms-transform: translate(120%, 0);\n  -o-transform: translate(120%, 0);\n  top: 0;\n  pointer-events: none !important;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-selected.e-vertical {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  opacity: 1;\n  position: relative ;\n  visibility: visible;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-backward.e-vertical {\n  -webkit-transform: translate(0%, -100%);\n  -moz-transform: translate(0%, -100%);\n  -ms-transform: translate(0%, -100%);\n  -o-transform: translate(0%, -100%);\n  visibility: hidden;\n  height: 0;\n  overflow: hidden;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-forward.e-vertical {\n  -webkit-transform: translate(0%, 100%);\n  -moz-transform: translate(0%, 100%);\n  -ms-transform: translate(0%, 100%);\n  -o-transform: translate(0%, 100%);\n  visibility: hidden;\n  height: 0;\n  overflow: hidden;\n}\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 301 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32001,7 +31997,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(277);
+	__webpack_require__(274);
 	var getAbsoluteHeight = function getAbsoluteHeight(el) {
 	    var styles = window.getComputedStyle(el);
 	    var margin = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
@@ -32034,11 +32030,7 @@
 	            return React.createElement(
 	                'div',
 	                { ref: 'door', className: doorClass, style: { height: this.state.maxHeight } },
-	                React.createElement(
-	                    'div',
-	                    { className: doorContainerClass },
-	                    props.open ? props.children : null
-	                )
+	                props.open ? props.children : null
 	            );
 	        }
 	    }]);
@@ -32049,7 +32041,7 @@
 	exports.default = Door;
 
 /***/ },
-/* 302 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32064,7 +32056,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(303);
+	__webpack_require__(300);
 	
 	var Emerge = function (_React$Component) {
 	    _inherits(Emerge, _React$Component);
@@ -32133,20 +32125,20 @@
 	Emerge.defaultProps = {
 	    if: true,
 	    enter: 'fadeInUp',
-	    exit: 'fadeOutDownBig',
+	    exit: 'fadeOutDown',
 	    delay: 300,
 	    overflow: false
 	};
 	exports.default = Emerge;
 
 /***/ },
-/* 303 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(304);
+	var content = __webpack_require__(301);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(252)(content, {});
@@ -32155,8 +32147,8 @@
 	if(true) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept(304, function() {
-				var newContent = __webpack_require__(304);
+			module.hot.accept(301, function() {
+				var newContent = __webpack_require__(301);
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -32166,7 +32158,7 @@
 	}
 
 /***/ },
-/* 304 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(251)();
@@ -32180,7 +32172,7 @@
 
 
 /***/ },
-/* 305 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32195,7 +32187,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(287);
+	__webpack_require__(284);
 	
 	var Pane = function (_React$Component) {
 	    _inherits(Pane, _React$Component);
@@ -32242,12 +32234,8 @@
 	            };
 	            return React.createElement(
 	                'div',
-	                { onClick: props.wrapperClick, className: paneClass },
-	                React.createElement(
-	                    'div',
-	                    { ref: 'pane', className: paneContainerClass, style: paneContainerStyle },
-	                    childrenPartial()
-	                )
+	                { onClick: props.wrapperClick, ref: 'pane', className: paneContainerClass, style: paneContainerStyle },
+	                childrenPartial()
 	            );
 	        }
 	    }]);
@@ -32261,7 +32249,7 @@
 	exports.default = Pane;
 
 /***/ },
-/* 306 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -32276,7 +32264,7 @@
 	
 	var React = __webpack_require__(80);
 	var classNames = __webpack_require__(255);
-	__webpack_require__(307);
+	__webpack_require__(304);
 	
 	var Transform = function (_React$Component) {
 	    _inherits(Transform, _React$Component);
@@ -32330,6 +32318,88 @@
 	exports.default = Transform;
 
 /***/ },
+/* 304 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(305);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(252)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(305, function() {
+				var newContent = __webpack_require__(305);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(251)();
+	// imports
+	
+	
+	// module
+	exports.push([module.id, ".r-Transform {\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n}\n.r-Transform.e-scroll-y {\n  overflow-y: scroll;\n}\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 306 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var React = __webpack_require__(80);
+	var classNames = __webpack_require__(255);
+	__webpack_require__(307);
+	
+	var Avatar = function (_React$Component) {
+	    _inherits(Avatar, _React$Component);
+	
+	    function Avatar() {
+	        _classCallCheck(this, Avatar);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(Avatar).apply(this, arguments));
+	    }
+	
+	    _createClass(Avatar, [{
+	        key: 'render',
+	        value: function render() {
+	            var self = this;
+	            var props = self.props;
+	            var avatarClass = classNames('r-Avatar');
+	            return React.createElement('div', { className: avatarClass, style: { backgroundImage: 'url(' + this.props.src + ')' } });
+	        }
+	    }]);
+	
+	    return Avatar;
+	}(React.Component);
+	
+	exports.default = Avatar;
+
+/***/ },
 /* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -32364,114 +32434,129 @@
 	
 	
 	// module
-	exports.push([module.id, ".r-Transform {\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n}\n.r-Transform.e-scroll-y {\n  overflow-y: scroll;\n}\n", ""]);
+	exports.push([module.id, ".r-Avatar {\n  height: 35px;\n  width: 35px;\n  border-radius: 50%;\n  border: 1px solid #ccc;\n  background-size: cover;\n  vertical-align: middle;\n  display: inline-block;\n}\n", ""]);
 	
 	// exports
 
 
 /***/ },
 /* 309 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ function(module, exports) {
 
 	"use strict";
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var React = __webpack_require__(80);
-	var classNames = __webpack_require__(255);
-	__webpack_require__(310);
-	
-	var Toggle = function (_React$Component) {
-	    _inherits(Toggle, _React$Component);
-	
-	    function Toggle(props) {
-	        _classCallCheck(this, Toggle);
-	
-	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Toggle).call(this, props));
-	
-	        _this.state = {
-	            checked: props.checked || false,
-	            selected: props.selected || false
-	        };
-	        return _this;
+	var SampleData = [{
+	    "index": 0,
+	    "price": '$5.00',
+	    "orderedBefore": true,
+	    "guid": "9115d5a0-906a-4859-8584-d75b39d8cca2",
+	    "item": {
+	        "name": "Glove - Redbox",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "0",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
 	    }
-	
-	    _createClass(Toggle, [{
-	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {
-	            this.setState({
-	                checked: nextProps.checked
-	            });
-	        }
-	    }, {
-	        key: 'onChange',
-	        value: function onChange(e) {
-	            var self = this;
-	            self.setState({ checked: e.target.checked });
-	            if (self.props.onChange) {
-	                self.props.onChange();
-	            }
-	        }
-	    }, {
-	        key: 'changeSelected',
-	        value: function changeSelected(item) {
-	            this.setState({ selected: item });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this2 = this;
-	
-	            var self = this;
-	            var props = self.props;
-	            var state = self.state;
-	            var toggleClass = classNames('r-Toggle', { 'e-checked': state.checked }, { 'e-color': props.columns && props.type === 'colors' }, { 'e-numbers': props.columns && !props.ghost && props.type !== 'colors' }, { 'e-ghost': props.ghost }, props.className);
-	            var createList = function createList(item, index) {
-	                var itemClass = classNames('r-Toggle__item', { 'e-selected': state.selected === item });
-	                return React.createElement(
-	                    'div',
-	                    { className: itemClass, onClick: _this2.changeSelected.bind(_this2, item), key: index },
-	                    function () {
-	                        if (props.columns && props.type === 'colors') {
-	                            return React.createElement('div', { className: 'r-Toggle__item__color', style: { background: item, height: 26, width: 26 } });
-	                        } else {
-	                            return React.createElement(
-	                                'div',
-	                                { className: 'r-Toggle__item__string', style: { minWidth: 26 } },
-	                                item
-	                            );
-	                        }
-	                    }()
-	                );
-	            };
-	            if (props.columns) {
-	                return React.createElement(
-	                    'div',
-	                    { className: toggleClass },
-	                    this.props.columns.map(createList)
-	                );
-	            } else {
-	                return React.createElement(
-	                    'div',
-	                    { className: toggleClass },
-	                    React.createElement('input', { type: 'checkbox', className: 'r-Toggle__input', name: this.props.name, checked: this.state.checked, onChange: this.onChange.bind(this), value: this.props.value }),
-	                    this.props.label,
-	                    React.createElement('label', { className: 'r-Toggle__button' })
-	                );
-	            }
-	        }
-	    }]);
-	
-	    return Toggle;
-	}(React.Component);
-	
-	exports.default = Toggle;
+	}, {
+	    "index": 1,
+	    "price": '$15.00',
+	    "orderedBefore": false,
+	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
+	    "item": {
+	        "name": "Glove - Walmart",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "1",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}, {
+	    "index": 2,
+	    "price": '$3.00',
+	    "orderedBefore": false,
+	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
+	    "item": {
+	        "name": "Glove - Walmart",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "2",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}, {
+	    "index": 3,
+	    "price": '$5.25',
+	    "orderedBefore": false,
+	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
+	    "item": {
+	        "name": "Glove - Walmart",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "3",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}, {
+	    "index": 4,
+	    "price": '$6.50',
+	    "orderedBefore": false,
+	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
+	    "item": {
+	        "name": "Glove - Walmart",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "4",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}, {
+	    "index": 5,
+	    "price": '$5.99',
+	    "orderedBefore": true,
+	    "guid": "9115d5a0-906a-4859-8584-d75b39d8cca2",
+	    "item": {
+	        "name": "Glove - Redbox",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "5",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}, {
+	    "index": 6,
+	    "price": '$5.00',
+	    "orderedBefore": false,
+	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
+	    "item": {
+	        "name": "Glove - Walmart",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "6",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}, {
+	    "index": 7,
+	    "price": '$11.00',
+	    "orderedBefore": false,
+	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
+	    "item": {
+	        "name": "Glove - Walmart",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "7",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}, {
+	    "index": 8,
+	    "price": '$9.00',
+	    "orderedBefore": false,
+	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
+	    "item": {
+	        "name": "Glove - Walmart",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "8",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}, {
+	    "index": 9,
+	    "price": '$4.50',
+	    "orderedBefore": false,
+	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
+	    "item": {
+	        "name": "Glove - Walmart",
+	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
+	        "slideIndex": "9",
+	        "imageUrl": "http://ecx.images-amazon.com/images/I/41UYb-EQvaL._AC_AA160_.jpg"
+	    }
+	}];
+	exports.default = SampleData;
 
 /***/ },
 /* 310 */
@@ -32508,72 +32593,7 @@
 	
 	
 	// module
-	exports.push([module.id, ".r-Toggle__input:checked + .r-Toggle__button {\n  background: #1995FF;\n}\n.r-Toggle__input + .r-Toggle__button {\n  background: rgba(247, 247, 247, 0.85);\n  border-radius: 2em;\n  padding: 2px;\n  -webkit-transition: all .4s ease;\n  transition: all .4s ease;\n  border: 1px solid #ccc;\n}\n.r-Toggle__input + .r-Toggle__button {\n  outline: 0;\n  display: block;\n  width: 4em;\n  height: 2em;\n  position: relative;\n  cursor: pointer;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.r-Toggle__input + .r-Toggle__button:after {\n  position: relative;\n  display: block;\n  content: \"\";\n  width: 26px;\n  height: 100%;\n}\n.r-Toggle__input:checked + .r-Toggle__button:after {\n  left: 55%;\n}\n.r-Toggle__input + .r-Toggle__button:after {\n  border-radius: 2em;\n  background: #888;\n  -webkit-transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;\n  transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;\n}\n.r-Toggle__input + .r-Toggle__button:after {\n  left: 0;\n}\n.r-Toggle__input + .r-Toggle__button:active {\n  box-shadow: inset 0 0 0 2em #e8eae9;\n}\n.r-Toggle__input + .r-Toggle__button:active:after {\n  padding-right: .8em;\n}\n.r-Toggle__input {\n  opacity: 1;\n  position: absolute;\n  z-index: 5;\n  width: 64px;\n  height: 32px;\n  opacity: 0;\n  cursor: pointer;\n}\n.r-Toggle {\n  display: inline-block;\n  vertical-align: middle;\n  overflow: hidden;\n}\n.r-Toggle__input:checked + .r-Toggle__button:after {\n  border-radius: 2em;\n  background: #fff;\n}\n.r-Toggle.e-color {\n  background: rgba(247, 247, 247, 0.85);\n  border-radius: 2em;\n  padding: 2px;\n  -webkit-transition: all .4s ease;\n  transition: all .4s ease;\n  border: 1px solid #ccc;\n}\n.r-Toggle__item {\n  border-radius: 50%;\n  display: inline-block;\n  cursor: pointer;\n  position: relative;\n  text-align: center;\n}\n.r-Toggle__item > div {\n  border-radius: 50%;\n}\n.r-Toggle__item:not(.e-selected) {\n  opacity: 0.5;\n}\n.r-Toggle__item:not(:last-child) > div {\n  margin-right: 3px !important;\n}\n.r-Toggle.e-numbers {\n  background: rgba(247, 247, 247, 0.85);\n  border-radius: 2em;\n  padding: 1px;\n  -webkit-transition: all .4s ease;\n  transition: all .4s ease;\n  border: 1px solid #ccc;\n  height: 32px;\n}\n.r-Toggle__item__string {\n  margin-top: 5px;\n}\n.r-Toggle__item.e-selected {\n  opacity: 1;\n  font-weight: 800;\n  color: #1995FF;\n}\n.r-Toggle__item:not(:last-child) .r-Toggle__item__string {\n  margin-right: 10px !important;\n}\n", ""]);
-	
-	// exports
-
-
-/***/ },
-/* 312 */
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	var SampleData = [{
-	    "index": 0,
-	    "guid": "9115d5a0-906a-4859-8584-d75b39d8cca2",
-	    "item": {
-	        "name": "Glove - Redbox",
-	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
-	        "slideIndex": "0"
-	    }
-	}, {
-	    "index": 1,
-	    "guid": "a23be417-d3cf-4ad1-bc93-f9b15462697g",
-	    "item": {
-	        "name": "Glove - Walmart",
-	        "description": "A close-fitting covering for the hand with a separate sheath for each finger and the thumb, worn especially as protection from the cold",
-	        "slideIndex": "1"
-	    }
-	}];
-	exports.default = SampleData;
-
-/***/ },
-/* 313 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	
-	// load the styles
-	var content = __webpack_require__(314);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(252)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(true) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept(314, function() {
-				var newContent = __webpack_require__(314);
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 314 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(251)();
-	// imports
-	
-	
-	// module
-	exports.push([module.id, ".r-WizardSlide {\n  box-shadow: 0 0 50px rgba(0, 0, 0, 0.35);\n}\n.rainbow-line {\n  background-image: -webkit-linear-gradient(left, #FF2E12, #000, #FF2E12);\n}\n.dark {\n  background: black !important;\n}\n", ""]);
+	exports.push([module.id, ".r-WizardSlide {\n  box-shadow: 0 0 50px rgba(0, 0, 0, 0.35);\n}\nhr {\n  background-image: -webkit-linear-gradient(left, #1995FF, #000, #1995FF);\n}\n.dark {\n  background: black !important;\n}\n.r-WizardSlide {\n  height: 100%;\n}\ntbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #E0E0E0 !important;\n}\ntbody.r-Grid__Body > tr:nth-child(4n+1) {\n  background: transparent !important;\n}\n* {\n  outline: 0;\n}\n", ""]);
 	
 	// exports
 

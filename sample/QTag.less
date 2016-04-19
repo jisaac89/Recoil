@@ -15,8 +15,8 @@
 
 }
 
-.rainbow-line{
-    background-image:-webkit-linear-gradient( left, #FF2E12, #000, #FF2E12);
+hr{
+    background-image:-webkit-linear-gradient( left, @primary-background, #000, @primary-background);
 }
 
 .dark{
@@ -26,3 +26,19 @@
 // .r-Selectable .r-Selectable__border.primary{
 //     background: rgb(199, 58, 58) !important;
 // }
+
+.r-WizardSlide{
+  height: 100%;
+}
+
+tbody.r-Grid__Body > .r-Grid__Row.e-selected {
+    background: #E0E0E0 !important;
+}
+
+tbody.r-Grid__Body > tr:nth-child(4n+1){
+  background: transparent !important;
+}
+
+*{
+  outline: 0;
+}
