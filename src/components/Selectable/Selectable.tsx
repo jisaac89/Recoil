@@ -22,17 +22,12 @@ class Selectable extends React.Component<ISelectableProps, {}> {
 
     let selectableClass = classNames(
       'r-Selectable',
+      'r-Selectable__border',
+      props.type,
       {'checked' : (props.checked)}
     );
 
-    let borderPartial = (!props.ghost ? <div><div className='r-Selectable__border-gray'></div><div className={'r-Selectable__border '+props.type}></div></div> : null);
-
-    return (
-      <div className={selectableClass}>
-        {props.children}
-        {borderPartial}
-      </div>
-    );
+    return <div className={selectableClass}></div>;
   }
 }
 

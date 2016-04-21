@@ -2,16 +2,17 @@
 
 .r-Selectable{
   background: @input-background;
-
-  width:100%;
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   input{
    width:100%;
   }
 
-  .r-Selectable__border.primary{
-    opacity: 0;
-    border:1px solid transparent;
+
     width:0%;
     position: absolute ;
     bottom: 0 ;
@@ -26,7 +27,6 @@
        -moz-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
          -o-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
             transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
-  }
 
   .r-Selectable__border.error {
     opacity: 0;
@@ -55,22 +55,14 @@
 
 // test
 
-@media screen and (max-width:800px) {
-
 
   .r-Selectable{
-    width:100%;
-    .r-Selectable__border.primary{
-      -webkit-transform:scaleX(0);
-    }
+    -webkit-transform:scaleX(0);
 
-    .r-Selectable__border.error {
-      -webkit-transform:scaleX(0);
-    }
+    width:100% !important;
+
   }
 
-  .r-Selectable.checked .r-Selectable__border{
+  .r-Selectable.checked {
     -webkit-transform:scaleX(1);
   }
-
-}

@@ -28,6 +28,8 @@ interface IGridProps {
   rowIsSelectable? : boolean;
   selectedKey ? : string;
   rowIsSelectableType? : string;
+  detailTemplateOpenOnRowSelect? : boolean;
+  filterSelected? : boolean;
 }
 
 interface IGridBodyState {
@@ -145,8 +147,7 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
         }
       }
 
-      rowArray.push(
-        [<GridRow
+      let rowItem = [[<GridRow
           expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false}
           toggleDetailTemplate={this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null}
           key={key}
@@ -161,14 +162,22 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
           selectedItem={selectedItem}
           hideColumns={this.props.hideColumns}
           detailTemplateOpenOnHover={this.props.detailTemplateOpenOnHover}
+          detailTemplateOpenOnRowSelect={this.props.detailTemplateOpenOnRowSelect}
         />],
         [<tr key={key}>
           <td className="p0" colSpan={this.props.columns.length + 1}>
             <SelectableGridRow onRowSelect={this.props.onRowSelect} item={item} selected={this.state.selected} selectedItem={selectedItem} selectedKey={this.props.selectedKey} />
             {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false} i={key}  />  : null}
           </td>
-        </tr>]
-      )
+        </tr>]];
+
+      if (props.filterSelected) {
+        if (selectedItem) {
+          rowArray.push(rowItem)
+        }
+      } else if (!props.filterSelected) {
+        rowArray.push(rowItem);
+      }
     }
 
     return (

@@ -49,9 +49,8 @@ export default class Card extends React.Component<ICardProps, {}> {
       {'e-hover' : (props.hover)},
       {'e-scale' : (props.scale)},
       {'e-float' : (props.float)},
-      {'w100' : (props.fill)},
-      {'h100' : (props.fill)},
-      {'w100' : (props.block)},
+      {'fill' : (props.fill)},
+      {'dblock' : (props.block)},
       props.className
     );
 

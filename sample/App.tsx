@@ -102,7 +102,7 @@ export default class App extends React.Component<any, any> {
         <Layer type="light" className="p10 border-bottom">
           <Toolbar block>
             <Button type="success" size="small">In Stock</Button>
-            <Button right ghost type="primary" checked={this.state.selected.includes(item.index)} icon="cart-plus" size="small" onClick={this.toggleSample.bind(this, item.index)}>Add to Cart</Button>
+            <Button right ghost type="primary" checked={this.state.selected.includes(item.index)} icon="cart-plus" size="small" onClick={this.toggleSample.bind(this, item.index)}>{this.state.selected.includes(item.index) ? 'Remove'  : 'Add to Cart'}</Button>
           </Toolbar>
         </Layer>
         <Layer type="light" className="p10">
@@ -134,33 +134,59 @@ export default class App extends React.Component<any, any> {
       nightMode: !this.state.nightMode
     })
   }
+  resetItems() {
+    this.setState({
+      selected:[],
+      toggleSearchItem: false,
+      facilityChecked: false,
+      slideIndex:0
+    })
+  }
   render() {
 
     const self = this;
     const props = self.props;
     let state = self.state;
+    let totalCart = [];
+
+    for (let i = 0; i < SampleData.length; i++) {
+      if (state.selected.includes(SampleData[i].index)) {
+        totalCart.push(SampleData[i].price);
+      }
+    }
+
+    let add = (a,b) => {
+      return a + b;
+    }
+
+    let totalSum = totalCart.reduce(add, 0);
 
     let template = (item, index) => {
       return (
         <div>
-          <Avatar src={item.item.imageUrl}></Avatar>
-          <Button ghost size="small p0 pl5">
-            {item.item.name}
-          </Button>
+          <Toolbar vertical>
+            <Button ghost className="text-error p0">
+              ${item.price}
+            </Button>
+            <small className="small p0">
+              {item.item.name}
+            </small>
+          </Toolbar>
         </div>
       )
     }
 
     let toggleTemplate = (item, index) => {
-      return <Button right ghost className="text-error">{item.price}</Button>;
+      return <Avatar src={item.item.imageUrl}></Avatar>;
     }
 
     let columns = [
-      {name: 'item', template: template},
-      {name: 'price', width:100, template: toggleTemplate}
+      {name: 'item', width:90, template: toggleTemplate},
+      {name: 'item', template: template}
     ]
 
     let columnsCheckout = [
+      {name: 'item', width:90, template: toggleTemplate},
       {name: 'item', template : template}
     ]
 
@@ -171,7 +197,7 @@ export default class App extends React.Component<any, any> {
           <Toolbar block>
             <Door open={this.state.slideIndex !== 3 }>
               <Button ghost onClick={this.toggleSideMenu.bind(this)} icon="bars"></Button>
-              {this.state.selected.length ? <Emerge><Button right type="primary" onClick={this.toggleSlideIndex.bind(this, 3)} icon="shopping-cart">{this.state.selected.length}</Button></Emerge>: null}
+              {this.state.selected.length && this.state.slideIndex !== 4 ? <Emerge><Button right type="primary" onClick={this.toggleSlideIndex.bind(this, 3)} icon="shopping-cart">{this.state.selected.length}</Button></Emerge>: null}
               <Button ghost right icon="moon-o" className="mr5" onClick={this.toggleNightMode.bind(this)} />
             </Door>
             <Door open={this.state.slideIndex === 3}>
@@ -197,6 +223,7 @@ export default class App extends React.Component<any, any> {
           <Layer style={{width: 250}} type='light' className="p10 h100 border-right">
             <Toolbar vertical spacing block>
               <Emerge exit={'fadeOut'} delay={80} if={this.state.toggleSideMenu}>
+                <Button checked={true} ghost icon="barcode" block>Dashboard</Button>
                 <Button ghost icon="barcode" block>Manage Items</Button>
                 <Button ghost icon="user" block>Manage User</Button>
                 <Button ghost icon="user" block>Order History</Button>
@@ -237,7 +264,7 @@ export default class App extends React.Component<any, any> {
                   } else if(state.slideIndex === 4) {
                     return (
                       <Toolbar noRadius>
-                        <Button checked={true} pointer="right" size="small" onClick={this.toggleSlideIndex.bind(this, 2)}>Order</Button>
+                        <Button checked={true} pointer="right" size="small" onClick={this.resetItems.bind(this)}>Dashboard</Button>
                       </Toolbar>
                     )
                   }
@@ -246,125 +273,114 @@ export default class App extends React.Component<any, any> {
             </Door>
             <Wizard slideIndex={state.slideIndex}>
 
-              <Layer fill>
-                <Emerge>
-                  <Toolbar block className="ps10 pt20">
-                    <Badge title={4} type="error" className="circle floatL">
-                      <Button ghost size="small" left  icon="bell">Alerts</Button>
-                    </Badge>
-                    <Button ghost size="small" right  icon="barcode">Scan a Item</Button>
-                  </Toolbar>
-                  <div className="p10 pt15 text-center">
-                    <Toolbar vertical spacing block>
-                      <Button size="large" block onClick={this.toggleSlideIndex.bind(this, 1)}>
-                        Order
-                      </Button>
-                      <Button size="large" block>
-                        Stock
-                      </Button>
-                    </Toolbar>
-                  </div>
-                </Emerge>
-              </Layer>
-
-              <Layer fill>
-                <Toolbar vertical spacing block className="p10 text-center">
-                  <Emerge exit={'fadeOut'} delay={80} if={this.state.slideIndex === 1}>
-                    <Button size="large" block>Chandler Dental</Button>
-                    <Button checked={this.state.facilityChecked} onClick={this.toggleSlideIndex.bind(this, 2)} size="large" block>Scottsdale Dental</Button>
-                    <Button size="large" block>Arcadia Dental</Button>
-                  </Emerge>
+              <Emerge>
+                <Toolbar block className="ps10 pt20">
+                  <Badge title={4} type="error" className="circle floatL">
+                    <Button ghost size="small" left  icon="bell">Alerts</Button>
+                  </Badge>
+                  <Button ghost size="small" right  icon="barcode">Scan a Item</Button>
                 </Toolbar>
-              </Layer>
+                <div className="p10 pt15 text-center">
+                  <Toolbar vertical spacing block>
+                    <Button size="large" block onClick={this.toggleSlideIndex.bind(this, 1)}>
+                      Order
+                    </Button>
+                    <Button size="large" block>
+                      Stock
+                    </Button>
+                  </Toolbar>
+                </div>
+              </Emerge>
 
-              <Layer fill>
+              <Toolbar vertical spacing block className="p10 text-center">
+                <Emerge exit={'fadeOut'} delay={80} if={this.state.slideIndex === 1}>
+                  <Button size="large" block>Chandler Dental</Button>
+                  <Button checked={this.state.facilityChecked} onClick={this.toggleSlideIndex.bind(this, 2)} size="large" block>Scottsdale Dental</Button>
+                  <Button size="large" block>Arcadia Dental</Button>
+                </Emerge>
+              </Toolbar>
+
+              <div>
                 <Toolbar vertical block className="p10 text-center">
                   <Input size="large" type="text" icon="search" onChange={this.onItemSearch.bind(this)} title="Search Item by ID or Keyword" block />
                   <Door open={!this.state.toggleSearchItem}>
-                    <Layer>
-                      <h3 className="mtb20">OR</h3>
-                      <Button onClick={this.toggleCamera.bind(this)} size="large" icon="barcode" ghost type="primary" block>Scan Barcode</Button>
-                    </Layer>
+                    <h3 className="mtb20">OR</h3>
+                    <Button onClick={this.toggleCamera.bind(this)} size="large" icon="barcode" ghost type="primary" block>Scan Barcode</Button>
                   </Door>
                 </Toolbar>
 
-                <Door open={this.state.toggleSearchItem}>
-                  <Layer>
-                    <Grid
-                      hideHeader
-                      dataSource={SampleData}
-                      columns={columns}
-                      detailTemplate={this.detailTemplate.bind(this)}
-                      detailTemplateOpenOnHover
-                      selected={this.state.selected}
-                      selectedKey={'index'}
-                    />
-                  </Layer>
+                <Door overflow={true} open={this.state.toggleSearchItem}>
+                  <Grid
+                    hideHeader
+                    detailTemplate={this.detailTemplate.bind(this)}
+                    detailTemplateOpenOnRowSelect
+                    dataSource={SampleData}
+                    columns={columns}
+                    selected={this.state.selected}
+                    selectedKey={'index'}
+                  />
                 </Door>
-              </Layer>
+              </div>
 
-              <Layer fill>
-                <Emerge if={this.state.slideIndex === 3}>
-                  <Layer>
-                    <Grid
-                      hideHeader
-                      dataSource={SampleData}
-                      filter={this.state.selected}
-                      columns={columnsCheckout}
-                    />
-                  </Layer>
-                </Emerge>
-              </Layer>
+              <Emerge if={this.state.slideIndex === 3}>
+                  <h1 className="p10 text-center">
+                    Order Total <span className="text-error">${totalSum}</span>.
+                  </h1>
+                  <Grid
+                    hideHeader
+                    dataSource={SampleData}
+                    columns={columnsCheckout}
+                    filterSelected={true}
+                    selected={this.state.selected}
+                    selectedKey={'index'}
+                  />
+              </Emerge>
 
-              <Layer fill>
-                <Emerge if={this.state.slideIndex === 4}>
-                  <Layer>
-                    <Toolbar textCenter block vertical spacing className="p10">
-                      <Emerge if={this.state.slideIndex === 4}>
-                        <Button onClick={this.toggleSlideIndex.bind(this, 0)} block size="large">Go Back</Button>
-                      </Emerge>
-                    </Toolbar>
-                  </Layer>
-                </Emerge>
-              </Layer>
+              <Emerge if={this.state.slideIndex === 4}>
+                <Layer>
+                  <h1 className="p10 text-center">
+                    Order successfully placed.
+                  </h1>
+                  <Toolbar textCenter block vertical spacing className="p10">
+                    <Emerge if={this.state.slideIndex === 4}>
+                      <Button onClick={this.resetItems.bind(this)} block size="large">Go Back</Button>
+                    </Emerge>
+                  </Toolbar>
+                </Layer>
+              </Emerge>
+
             </Wizard>
           </Layer>
         </Transform>
       </Layer>
 
       <Pane fill direction="bottom" open={this.state.toggleCamera}>
-        <Layer fill type="dark">
-          <Pane direction="top" open={true}>
-            <Layer type="p10">
-              <Toolbar block textCenter>
-                <Button onClick={this.toggleCamera.bind(this)}>Close Camera</Button>
-              </Toolbar>
-            </Layer>
-          </Pane>
-        </Layer>
+        <Pane direction="top" open={true}>
+          <Layer type="p10">
+            <Toolbar block textCenter>
+              <Button onClick={this.toggleCamera.bind(this)}>Close Camera</Button>
+            </Toolbar>
+          </Layer>
+        </Pane>
       </Pane>
 
       <Pane direction="bottom" open={this.state.selected.length === 0 && (state.slideIndex === 2 || state.slideIndex === 1)}>
-        <Layer type="light p10 border-top" fill>
-          <Toolbar textCenter block vertical spacing>
-            <Button onClick={this.toggleSlideIndex.bind(this, state.slideIndex - 1)} size="large" block>
-              Go Back
-            </Button>
-          </Toolbar>
-        </Layer>
+        <Toolbar textCenter block vertical spacing className="light p10 border-top">
+          <Button onClick={this.toggleSlideIndex.bind(this, state.slideIndex - 1)} size="large" block>
+            Go Back
+          </Button>
+        </Toolbar>
       </Pane>
 
       <Pane direction="bottom" open={this.state.selected.length && state.slideIndex === 2}>
-        <Layer type="light p10 border-top" fill>
-          <Toolbar textCenter block vertical spacing>
-            <Button onClick={this.toggleSlideIndex.bind(this, 3)} size="large" ghost block type="primary">
-              Proceed to Checkout
-            </Button>
-            <Button onClick={this.clearSelectedItems.bind(this)} size="large" block>
-              Clear All
-            </Button>
-          </Toolbar>
-        </Layer>
+        <Toolbar textCenter block vertical spacing className="light p10 border-top">
+          <Button onClick={this.toggleSlideIndex.bind(this, 3)} size="large" ghost block type="primary">
+            Proceed to Checkout
+          </Button>
+          <Button onClick={this.clearSelectedItems.bind(this)} size="large" block>
+            Clear All
+          </Button>
+        </Toolbar>
       </Pane>
 
       <Pane direction="bottom" open={this.state.selected.length && state.slideIndex === 3}>

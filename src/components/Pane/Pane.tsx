@@ -16,10 +16,6 @@ interface IPaneProps {
 
 export default class Pane extends React.Component<IPaneProps, {}>{
 
-  public static defaultProps = {
-    className : 'w100'
-  }
-
   constructor(props){
     super(props);
   }
@@ -28,18 +24,11 @@ export default class Pane extends React.Component<IPaneProps, {}>{
     const props = self.props;
     let axis, paneContainerStyle;
 
-    let paneClass = classNames(
-      'r-Pane',
-      {'e-wrapper': (props.wrapper)},
-      {'e-open': (props.open)},
-      {'e-fixed': (props.fixed)}
-    );
 
     let paneContainerClass = classNames(
-      'r-Pane__container',
+      'r-Pane',
       {'e-open': (props.open)},
-      {'w100': (props.fill)},
-      {'h100': (props.fill)},
+      {'fill': (props.fill)},
       props.direction,
       props.className
     );
@@ -72,7 +61,9 @@ export default class Pane extends React.Component<IPaneProps, {}>{
     }
 
     let childrenPartial = () => {
-      return props.children;
+      if (props.open) {
+        return props.children;
+      }
     }
 
     return(

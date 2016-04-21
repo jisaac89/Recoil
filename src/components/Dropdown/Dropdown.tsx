@@ -31,7 +31,6 @@ interface IDropdownProps {
 const DropdownHeader : any = (props) => {
   return (
     <div className="r-DropdownHeader" onClick={props.onClick}>
-
       {(() => {
         if (props.selectedItem.length === 0) {
           return (
@@ -142,7 +141,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
     let dropdownClass = classNames(
       'r-Dropdown',
       {'e-open' : (state.open)},
-      {'dblock w100' : (props.block)},
+      {'dblock' : (props.block)},
       {'pull-right' : (props.right)},
       {'pull-left' : (props.left)},
       props.className

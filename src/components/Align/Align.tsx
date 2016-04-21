@@ -114,12 +114,12 @@ export default class Align extends React.Component<IAlignProps, {}>{
 
       if (props.vertical && index !== 0) {
         return(
-          <span key={index}>
+          <div key={index}>
             <div style={{height: margin+'%'}} className="w100"></div>
             <div className={columnClass} style={columnStyle} key={index}>
               {item}
             </div>
-          </span>
+          </div>
         )
       } else {
         return(
@@ -137,7 +137,7 @@ export default class Align extends React.Component<IAlignProps, {}>{
         </div>
       );
     } else if (props.children) {
-      var element = React.cloneElement(props.children, {className: 'primary'});
+      let element = React.cloneElement(props.children, {className: 'primary'});
       return (
         <div className={alignClass}>
           {this.recursiveCloneChildren(this.props.children)}

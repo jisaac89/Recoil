@@ -23,6 +23,7 @@ interface IGridRowProps {
   includes ? : any;
   selectedKey? : string;
   selectedItem? : any;
+  detailTemplateOpenOnRowSelect? : boolean;
 }
 
 interface IGridRowState {
@@ -61,12 +62,18 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
       return (
         <tr
           onMouseEnter={detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null}
-          onClick={this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null}
+          onClick={this.toggleDetailTemplate.bind(this, i)}
           className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}
         >
-          <td className="p0" width={5}>
-            <i className={"r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i>
-          </td>
+          {(()=>{
+            if (!this.props.detailTemplateOpenOnRowSelect) {
+              return (
+                <td className="p0" width={5}>
+                  <i className={"r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i>
+                </td>
+              )
+            }
+          })()}
           {columnArray}
         </tr>
       )

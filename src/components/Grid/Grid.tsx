@@ -32,6 +32,8 @@ interface IGridProps {
   selectedKey ? : string;
   rowIsSelectableType? : string;
   onSelect? : any;
+  detailTemplateOpenOnRowSelect? : boolean;
+  filterSelected? : boolean;
 }
 
 interface IGridState {
@@ -266,16 +268,18 @@ export default class Grid extends React.Component<IGridProps,IGridState>{
             numberOfPages={numberOfPages}
             height={props.height}
             open={props.open}
-            detailTemplate={this.props.detailTemplate}
+            detailTemplate={props.detailTemplate}
             hideColumns={props.hideColumns}
             columnTemplate={props.columnTemplate}
             detailTemplateOpenOnHover={props.detailTemplateOpenOnHover}
-            detailTemplateOpenOnSelect={this.props.detailTemplateOpenOnSelect}
-            rowIsSelectable={this.props.rowIsSelectable}
+            detailTemplateOpenOnSelect={props.detailTemplateOpenOnSelect}
+            rowIsSelectable={props.rowIsSelectable}
             onRowSelect={this.onRowSelect.bind(this)}
-            selected={this.props.selected}
-            selectedKey={this.props.selectedKey}
-            rowIsSelectableType={this.props.rowIsSelectableType}
+            selected={props.selected}
+            selectedKey={props.selectedKey}
+            rowIsSelectableType={props.rowIsSelectableType}
+            detailTemplateOpenOnRowSelect={props.detailTemplateOpenOnRowSelect}
+            filterSelected={this.props.filterSelected}
             />
         </table>
           {(()=>{
