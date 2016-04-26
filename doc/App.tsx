@@ -16,6 +16,7 @@ import Emerge from '../src/components/Emerge/Emerge';
 import Pane from '../src/components/Pane/Pane';
 import Transform from '../src/components/Transform/Transform';
 import Toggle from '../src/components/Toggle/Toggle';
+import Shrink from '../src/components/Shrink/Shrink';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
@@ -96,7 +97,8 @@ export default class App extends React.Component<any, any> {
   gotoTutorial(item){
     this.setState({
       slideIndex: item.index,
-      selected: [item.index]
+      selected: [item.index],
+      toggleMobileTutorial: 1
     })
   }
 
@@ -137,11 +139,7 @@ export default class App extends React.Component<any, any> {
     console.log(self.state.slideIndex);
 
     let template = (item, index) => {
-      return (
-        <Button>
-          {item.component.name}
-        </Button>
-      )
+      return item.component.name
     }
 
     let columns = [
@@ -237,23 +235,23 @@ export default class App extends React.Component<any, any> {
           {(()=>{
             if (this.state.mobile) {
               return (
-                <Wizard slideIndex={this.state.toggleMobileTutorial}>
-                  <div className="p10">
-                    <Input className="mb10" icon="th" block focusOnMount={state.viewDocumentation} focusDelay={2000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
-                    <Grid
-                      hideHeader
-                      dataSource={newComponentArray}
-                      columns={columns}
-                      numberPerPage={19}
-                      onRowSelect={this.gotoTutorial.bind(this)}
-                      detailTemplateOpenOnSelect
-                      detailTemplate={this.detailTemplate.bind(this)}
-                      selected={[this.state.slideIndex]}
-                      selectedKey={'index'}
-                    />
-                  </div>
-                  <div className="p10">
-                    <div className="mtb10">
+                <Layer fill>
+                  <Pane open={this.state.toggleMobileTutorial === 1} direction="left" className="h100 w300px">
+                    <Layer fill type="light" className="p10">
+                      <Input className="mb10" block onChange={this.filterComponentMenu.bind(this)} type="text" placeholder="Find Components" />
+                      <Grid
+                        hideHeader
+                        dataSource={newComponentArray}
+                        columns={columns}
+                        numberPerPage={19}
+                        onRowSelect={this.gotoTutorial.bind(this)}
+                        selected={[this.state.slideIndex]}
+                        selectedKey={'index'}
+                      />
+                    </Layer>
+                  </Pane>
+                  <Transform type="translate" axis={'X'} amount={'300px'} if={this.state.toggleMobileTutorial === 1}>
+                    <div className="p10 border-bottom">
                       <Button pointer="left" type="primary" size="small" onClick={this.toggleMobileTutorial.bind(this)}>Back to components</Button>
                     </div>
                     <Wizard slideIndex={state.slideIndex}>
@@ -277,8 +275,8 @@ export default class App extends React.Component<any, any> {
                       <TutorialTransform {...state} />
                       <TutorialWizard {...state} />
                     </Wizard>
-                  </div>
-                </Wizard>
+                  </Transform>
+                </Layer>
               )
             } else {
               return (

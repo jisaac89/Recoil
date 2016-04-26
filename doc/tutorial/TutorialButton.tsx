@@ -181,16 +181,16 @@ export default class TutorialButton extends React.Component<any,any>{
 
     return (
       <Emerge>
-        <Layer>
+        <div className="p10">
 
           <h1>Button</h1>
 
-          <Layer className="ptb20">
+          <div className="ptb20">
             <h2 className="pb10">Description</h2>
             <p>The Button component is an advanced version of the standard default button control.</p>
-          </Layer>
+          </div>
 
-          <Layer className="pb20">
+          <div className="pb20">
             <h2 className="pb10">Examples</h2>
             <h3>Default</h3>
             <Layer className="ptb20">
@@ -263,16 +263,16 @@ export default class TutorialButton extends React.Component<any,any>{
                 <Button icon="github" href='https//www.github.com/jisaac89/recoil'>Recoil Github</Button>
               </Toolbar>
             </Layer>
-          </Layer>
+          </div>
 
-          <Layer className="pb20">
+          <div className="pb20">
             <h2 className="pb10">Props</h2>
             <Layer className="ptb10">
               <Grid open={this.state.showProps} numberPerPage={20} sortable columns={ButtonColumns} dataSource={ButtonProperties} />
             </Layer>
-          </Layer>
+          </div>
 
-          <Layer className="pb20">
+          <div className="pb20">
             <h2 className="pb10">Video</h2>
             <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
             <Door open={this.state.showVideo}>
@@ -280,9 +280,9 @@ export default class TutorialButton extends React.Component<any,any>{
                 VIDEO
               </Layer>
             </Door>
-          </Layer>
+          </div>
 
-        </Layer>
+        </div>
       </Emerge>
     )
   }

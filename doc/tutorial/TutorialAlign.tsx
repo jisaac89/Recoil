@@ -90,7 +90,7 @@ export default class TutorialAlign extends React.Component<any,any>{
 
     return (
       <Emerge>
-        <Layer>
+        <div className="p10">
 
           <h1>Align</h1>
 
@@ -144,13 +144,6 @@ export default class TutorialAlign extends React.Component<any,any>{
                       <Layer type="light" className="p10" fill>6</Layer>
                     </Align>
                   </Layer>
-                  <Layer fill>
-                    <Align margin={5} vertical>
-                      <Layer type="light" className="p10" fill>7</Layer>
-                      <Layer type="light" className="p10" fill>8</Layer>
-                      <Layer type="light" className="p10" fill>9</Layer>
-                    </Align>
-                  </Layer>
                 </Align>
               </div>
             </div>
@@ -170,14 +163,14 @@ export default class TutorialAlign extends React.Component<any,any>{
             </div>
           </Layer>
 
-          <Layer className="pb20">
+          <div className="pb20">
             <h2 className="pb10">Props</h2>
-            <Layer className="ptb10">
+            <div className="ptb10">
               <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={AlignProperties} />
-            </Layer>
-          </Layer>
+            </div>
+          </div>
 
-          <Layer className="pb20">
+          <div className="pb20">
             <h2 className="pb10">Video</h2>
             <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
             <Door open={this.state.showVideo}>
@@ -185,9 +178,9 @@ export default class TutorialAlign extends React.Component<any,any>{
                 VIDEO
               </Layer>
             </Door>
-          </Layer>
+          </div>
 
-        </Layer>
+        </div>
       </Emerge>
     )
   }

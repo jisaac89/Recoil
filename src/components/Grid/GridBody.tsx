@@ -50,18 +50,6 @@ interface IGridRowTemplateState {
   selected? : any;
 }
 
-class SelectableGridRow extends React.Component<any, any>{
-
-  render() {
-
-    return (
-      <div className="w100 posrel">
-        <Selectable checked={this.props.selectedItem} />
-      </div>
-    )
-  }
-}
-
 class GridRowTemplate extends React.Component<IGridRowTemplateProps,IGridRowTemplateState>{
 
   constructor() {
@@ -165,9 +153,9 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
           detailTemplateOpenOnRowSelect={this.props.detailTemplateOpenOnRowSelect}
         />],
         [<tr key={key}>
-          <td className="p0" colSpan={this.props.columns.length + 1}>
-            <SelectableGridRow onRowSelect={this.props.onRowSelect} item={item} selected={this.state.selected} selectedItem={selectedItem} selectedKey={this.props.selectedKey} />
+          <td colSpan={this.props.columns.length + 1}>
             {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false} i={key}  />  : null}
+            <Selectable checked={selectedItem} />
           </td>
         </tr>]];
 
@@ -189,3 +177,4 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
 }
 
 // this.state.expandedRows.includes(key)
+// <SelectableGridRow onRowSelect={this.props.onRowSelect} item={item} selected={this.state.selected} selectedItem={selectedItem} selectedKey={this.props.selectedKey} />
