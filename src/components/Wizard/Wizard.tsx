@@ -8,6 +8,7 @@ interface IWizardProps {
   className ? : any;
   children ? : any;
   style ? : any;
+  mobile? : boolean;
 }
 
 const WizardSlide : any = (props : any) => {
@@ -45,8 +46,22 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
         props.className
       );
 
-      if (props.slideIndex === index ||
-            index === props.slideIndex + 1
+      if(props.mobile) {
+          if (props.slideIndex === index ||
+              index === props.slideIndex + 1 
+            ) {
+              return(
+                <WizardSlide className={wizardSlideClass} key={index}>
+                  {item}
+                </WizardSlide>
+              )
+        } else {
+          return null;
+        }
+      } else {
+              if (props.slideIndex === index ||
+            index === props.slideIndex + 1 ||
+            index === props.slideIndex - 1
           ) {
         return(
           <WizardSlide className={wizardSlideClass} key={index}>
@@ -55,6 +70,7 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
         )
       } else {
         return null;
+      }
       }
     };
 

@@ -18,9 +18,14 @@
     @dark-background:#929292;
     @standard-border: #ccc;
 
+    // Night Mode Settings
+
+        @nightMode-background : #1D1E21;
+
+
 // @default-border-radius
 
-    @default-border-radius: 3px;
+    @default-border-radius:4px;
 
 // Card
 
@@ -33,7 +38,7 @@
     @default-background:rgb(247, 247, 247);
     @default-border: #ccc;
     @default-color: #888;
-    @default--hover-background: #DEDCDC;
+    @default--hover-background: rgb(247, 247, 247);
     @default--hover-border: transparent;
     @default--hover-color: #777;
 
@@ -44,12 +49,19 @@
     @primary--hover-border: transparent;
     @primary--hover-color: white;
 
-    @error-background: #FF2E12;
+    @error-background: #FF592F ;
     @error-border: transparent;
-    @error-color: white;
-    @error--hover-background: #8BC53F;
+    @error-color: #fff ;
+    @error--hover-background: #FF592F ;
     @error--hover-border: transparent;
-    @error--hover-color: white;
+    @error--hover-color: #FF592F ;
+
+    @success-background: #3EBB27;
+    @success-border: transparent;
+    @success-color: #fff;
+    @success--hover-background: #3EBB27;
+    @success--hover-border: transparent;
+    @success--hover-color: #3EBB27;
 
 // Links
 
@@ -57,14 +69,14 @@
     @link-border: #1995FF;
     @link-color: #1995FF;
     @link--hover-background: transparent;
-    @link--hover-border: #f30;
+    @link--hover-border: #FF592F ;
     @link--hover-color: #007EEA;
 
 // Selectable
 
     @selectable-default-background: #E6E6E6;
-    @selectable-primary-background: #1995FF;
-    @selectable-error-background: #FF592F;
+    @selectable-primary-background: @primary-background;
+    @selectable-error-background: #FF592F ;
 
 // Input
 

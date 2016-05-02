@@ -1,10 +1,11 @@
 {
-  "name": "Recoil",
+  "name": "react-recoil",
   "url" : "http://reactrecoil.com/",
   "homepage": "http://reactrecoil.com/",
   "version": "0.3.37",
   "description": "",
   "scripts": {
+    "typings": "typings",
     "build": "webpack --config webpack.config.js",
     "lint": "eslint src"
   },
@@ -46,8 +47,7 @@
     "url": "https://github.com/jisaac89/recoil.git"
   },
   "license": "MIT",
-  "author": "Joe",
-  "homepage": "",
+  "author": "Joseph Isaac",
   "devDependencies": {
     "babel": "^6.3.26",
     "babel-core": "^6.0.20",

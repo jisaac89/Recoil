@@ -65,7 +65,7 @@ export default class TutorialWizard extends React.Component<any,any>{
 
     return (
       <Emerge>
-        <Layer>
+        <div className="p10">
 
           <h1>Wizard</h1>
 
@@ -103,7 +103,7 @@ export default class TutorialWizard extends React.Component<any,any>{
             </Door>
           </Layer>
 
-        </Layer>
+        </div>
       </Emerge>
     )
   }

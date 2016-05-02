@@ -122,7 +122,7 @@ export default class TutorialModal extends React.Component<any,any>{
 
     return (
       <Emerge>
-        <Layer>
+          <div className="p10">
 
           <h1>Modal</h1>
 
@@ -169,7 +169,7 @@ export default class TutorialModal extends React.Component<any,any>{
             </Layer>
           </Modal>
 
-        </Layer>
+        </div>
       </Emerge>
     )
   }

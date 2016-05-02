@@ -149,7 +149,7 @@ export default class TutorialInput extends React.Component<any,any>{
 
     return (
     <Emerge>
-    <Layer>
+    <div className="p10">
 
       <h1>Input</h1>
 
@@ -184,7 +184,7 @@ export default class TutorialInput extends React.Component<any,any>{
         </Door>
       </Layer>
 
-    </Layer>
+    </div>
 
     </Emerge>
     )

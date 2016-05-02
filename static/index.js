@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "d12f98c83dd2c7bca17d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "091ca334127a8b252fde"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -737,37 +737,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    };
 	                }
 	                if (props.vertical && index !== 0) {
-	                    return React.createElement(
-	                        'span',
-	                        { key: index },
-	                        React.createElement('div', { style: { height: margin + '%' }, className: 'w100' }),
-	                        React.createElement(
-	                            'div',
-	                            { className: columnClass, style: columnStyle, key: index },
-	                            item
-	                        )
-	                    );
+	                    return React.createElement("div", { key: index }, React.createElement("div", { style: { height: margin + '%' }, className: "w100" }), React.createElement("div", { className: columnClass, style: columnStyle, key: index }, item));
 	                } else {
-	                    return React.createElement(
-	                        'div',
-	                        { className: columnClass, style: columnStyle, key: index },
-	                        item
-	                    );
+	                    return React.createElement("div", { className: columnClass, style: columnStyle, key: index }, item);
 	                }
 	            };
 	            if (props.children.length > 1) {
-	                return React.createElement(
-	                    'div',
-	                    { className: alignClass },
-	                    props.children.map(createList)
-	                );
+	                return React.createElement("div", { className: alignClass }, props.children.map(createList));
 	            } else if (props.children) {
 	                var element = React.cloneElement(props.children, { className: 'primary' });
-	                return React.createElement(
-	                    'div',
-	                    { className: alignClass },
-	                    this.recursiveCloneChildren(this.props.children)
-	                );
+	                return React.createElement("div", { className: alignClass }, this.recursiveCloneChildren(this.props.children));
 	            } else {
 	                return null;
 	            }
@@ -21300,10 +21279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    progressiveClickLength: props.progressiveClick.length
 	                });
 	            }
-	            if (props.shortcut) {
-	                window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
-	                window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
-	            }
+	            if (props.shortcut) {}
 	        }
 	    }, {
 	        key: 'componentWillUnmount',
@@ -21319,26 +21295,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // const context = this;
 	            // const props = context.props;
 	            // let state = context.state;
-	            //
 	            // const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
-	            //
 	            // context.setState({
 	            //   showShortcut : e.shiftKey ? true : false
 	            // })
 	            // context.setState({
 	            //   shiftCounter: 1
 	            // })
-	            //
 	            // if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
 	            //   refButton.click();
 	            //   context.setState({
-	            //     clickCounter: 1
+	            //     clickCounter: state.clickCounter === 0 ? 1 : 0
 	            //   })
-	            //   setTimeout(() => {
-	            //     context.setState({
-	            //       clickCounter: 0
-	            //     })
-	            //   }, 300);
 	            // }
 	        }
 	    }, {
@@ -21387,40 +21355,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	                buttonType = 'button';
 	            }
 	            var selectablePartial = React.createElement(Selectable_1.default, { checked: props.checked ? true : false });
-	            var iconPartial = props.icon ? React.createElement('i', { className: (this.state.showShortcut ? 'e-invisible ' : '') + 'fa fa-' + props.icon + (props.children ? ' mr5' : '') }) : null;
+	            var iconPartial = props.icon ? React.createElement("i", { className: (this.state.showShortcut ? 'e-invisible ' : '') + 'fa fa-' + props.icon + (props.children ? ' mr5' : '') }) : null;
 	            var showTooltip = function showTooltip() {
 	                if (_this2.state.showShortcut) {
-	                    return React.createElement(
-	                        'span',
-	                        { className: 'e-shortcut animated fadeInUp' },
-	                        _this2.props.shortcut
-	                    );
+	                    return React.createElement("span", { className: "e-shortcut animated fadeInUp" }, _this2.props.shortcut);
 	                }
 	            };
 	            if (props.href) {
-	                return React.createElement(
-	                    'a',
-	                    { href: props.href, target: props.target, ref: 'button', tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, className: buttonClass, style: props.style },
-	                    iconPartial,
-	                    function () {
-	                        if (!_this2.state.showShortcut) {
-	                            return props.children;
-	                        } else {
-	                            return null;
-	                        }
-	                    }(),
-	                    showTooltip(),
-	                    selectablePartial
-	                );
+	                return React.createElement("a", { href: props.href, target: props.target, ref: "button", tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, className: buttonClass, style: props.style }, iconPartial, function () {
+	                    if (!_this2.state.showShortcut) {
+	                        return props.children;
+	                    } else {
+	                        return null;
+	                    }
+	                }(), showTooltip(), selectablePartial);
 	            } else {
-	                return React.createElement(
-	                    'button',
-	                    { ref: 'button', tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, target: props.target, className: buttonClass, style: props.style },
-	                    iconPartial,
-	                    props.children,
-	                    showTooltip(),
-	                    selectablePartial
-	                );
+	                return React.createElement("button", { ref: "button", tabIndex: props.tabIndex, onClick: props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this), type: buttonType, disabled: props.disabled === true, target: props.target, className: buttonClass, style: props.style }, iconPartial, props.children, showTooltip(), selectablePartial);
 	            }
 	        }
 	    }]);
@@ -21467,19 +21417,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function render() {
 	            var self = this;
 	            var props = self.props;
-	            var selectableClass = classNames('r-Selectable', { 'checked': props.checked });
-	            var borderPartial = !props.ghost ? React.createElement(
-	                'div',
-	                null,
-	                React.createElement('div', { className: 'r-Selectable__border-gray' }),
-	                React.createElement('div', { className: 'r-Selectable__border ' + props.type })
-	            ) : null;
-	            return React.createElement(
-	                'div',
-	                { className: selectableClass },
-	                props.children,
-	                borderPartial
-	            );
+	            var selectableClass = classNames('r-Selectable', 'r-Selectable__border', props.type, { 'checked': props.checked });
+	            return React.createElement("div", { className: selectableClass });
 	        }
 	    }]);
 	
@@ -21526,7 +21465,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Selectable {\n  background: #fff;\n  width: 100%;\n}\n.r-Selectable input {\n  width: 100%;\n}\n.r-Selectable .r-Selectable__border.primary {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n}\n.r-Selectable .r-Selectable__border.error {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n}\n.r-Selectable.checked .r-Selectable__border {\n  opacity: 1;\n  width: 100%;\n}\n.r-Selectable.checked .r-Selectable__border.primary {\n  border-color: #1995FF;\n}\n.r-Selectable.checked .r-Selectable__border.error {\n  border-color: #FF592F;\n}\n@media screen and (max-width: 800px) {\n  .r-Selectable {\n    width: 100%;\n  }\n  .r-Selectable .r-Selectable__border.primary {\n    -webkit-transform: scaleX(0);\n  }\n  .r-Selectable .r-Selectable__border.error {\n    -webkit-transform: scaleX(0);\n  }\n  .r-Selectable.checked .r-Selectable__border {\n    -webkit-transform: scaleX(1);\n  }\n}\n", ""]);
+	exports.push([module.id, ".r-Selectable {\n  background: #fff;\n  position: absolute;\n  height: 2px;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\n  /* easeOutCubic */\n}\n.r-Selectable input {\n  width: 100%;\n}\n.r-Selectable .r-Selectable__border.error {\n  opacity: 0;\n  border: 1px solid transparent;\n  width: 0%;\n  position: absolute ;\n  bottom: 0 ;\n  left: 0 ;\n  right: 0 ;\n  margin: auto ;\n}\n.r-Selectable.checked .r-Selectable__border {\n  opacity: 1;\n  width: 100%;\n}\n.r-Selectable.checked .r-Selectable__border.primary {\n  border-color: #1995FF;\n}\n.r-Selectable.checked .r-Selectable__border.error {\n  border-color: #FF592F;\n}\n.r-Selectable {\n  -webkit-transform: scaleX(0);\n  width: 100% !important;\n}\n.r-Selectable.checked {\n  -webkit-transform: scaleX(1);\n}\n", ""]);
 	
 	// exports
 
@@ -21603,20 +21542,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function render() {
 	            var self = this;
 	            var props = self.props;
-	            return React.createElement(
-	                'div',
-	                { className: 'r-CardHeader p10' },
-	                React.createElement(
-	                    'h2',
-	                    null,
-	                    props.title
-	                ),
-	                React.createElement(
-	                    'h3',
-	                    null,
-	                    props.subTitle
-	                )
-	            );
+	            return React.createElement("div", { className: "r-CardHeader p10" }, React.createElement("h2", null, props.title), React.createElement("h3", null, props.subTitle));
 	        }
 	    }]);
 	
@@ -21638,18 +21564,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var self = this;
 	            var props = self.props;
 	            var headerPartial = void 0;
-	            var cardClass = classNames('r-Card', { 'e-resize': props.resize }, { 'e-hover': props.hover }, { 'e-scale': props.scale }, { 'e-float': props.float }, { 'w100': props.fill }, { 'h100': props.fill }, { 'w100': props.block }, props.className);
+	            var cardClass = classNames('r-Card', { 'e-resize': props.resize }, { 'e-hover': props.hover }, { 'e-scale': props.scale }, { 'e-float': props.float }, { 'fill': props.fill }, { 'dblock': props.block }, props.className);
 	            if (props.title || props.subTitle) {
 	                headerPartial = React.createElement(CardHeader, { title: props.title, subTitle: props.subTitle });
 	            } else {
 	                headerPartial = null;
 	            }
-	            return React.createElement(
-	                'div',
-	                { onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave, onClick: props.onClick, style: props.style, ref: 'card', className: cardClass },
-	                headerPartial,
-	                props.children
-	            );
+	            return React.createElement("div", { onMouseEnter: props.onMouseEnter, onMouseLeave: props.onMouseLeave, onClick: props.onClick, style: props.style, ref: 'card', className: cardClass }, headerPartial, props.children);
 	        }
 	    }]);
 	
@@ -21779,11 +21700,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var checked = props.checked;
 	            var value = state.value;
 	
-	            return React.createElement(
-	                Button_1.default,
-	                { ghost: props.ghost, size: props.size, className: "r-Checkbox " + (value === 1 ? 'e-checked' : value === 0 ? "" : "e-checked"), progressiveClick: this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null, onClick: this.toggleChecked.bind(this), tabIndex: -1, disabled: props.disabled, icon: value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus" },
-	                React.createElement('div', { className: 'r-Checkbox___back' })
-	            );
+	            return React.createElement(Button_1.default, { ghost: props.ghost, size: props.size, className: "r-Checkbox " + (value === 1 ? 'e-checked' : value === 0 ? "" : "e-checked"), progressiveClick: this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null, onClick: this.toggleChecked.bind(this), tabIndex: -1, disabled: props.disabled, icon: value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus" }, React.createElement("div", { className: "r-Checkbox___back" }));
 	        }
 	    }]);
 	
@@ -21878,11 +21795,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var state = self.state;
 	            var doorClass = classNames('r-Door', { 'e-open': props.open }, { 'e-close': !props.open }, { 'e-autoHeight': state.autoHeight }, props.className);
 	            var doorContainerClass = classNames('r-Door__container');
-	            return React.createElement(
-	                'div',
-	                { ref: 'door', className: doorClass, style: { height: this.state.maxHeight } },
-	                props.open ? props.children : null
-	            );
+	            return React.createElement("div", { ref: "door", className: doorClass, style: { height: this.state.maxHeight } }, props.open ? props.children : null);
 	        }
 	    }]);
 	
@@ -21954,54 +21867,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Layer_1 = __webpack_require__(203);
 	__webpack_require__(206);
 	var DropdownHeader = function DropdownHeader(props) {
-	    return React.createElement(
-	        'div',
-	        { className: 'r-DropdownHeader', onClick: props.onClick },
-	        function () {
-	            if (props.selectedItem.length === 0) {
-	                return React.createElement(
-	                    'div',
-	                    { className: 'dinblock' },
-	                    React.createElement('i', { className: 'mr5 fa fa-' + props.icon }),
-	                    props.title
-	                );
-	            } else if (props.selectedItem) {
-	                return React.createElement(
-	                    'div',
-	                    { className: 'dinblock' },
-	                    React.createElement('i', { className: "mr5 fa fa-times", onClick: props.deselectItem }),
-	                    props.selectedItem
-	                );
-	            }
-	        }(),
-	        React.createElement('i', { className: 'r-DropdownHeader__trigger fa fa-chevron-' + (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center' ? 'up' : 'down') })
-	    );
+	    return React.createElement("div", { className: "r-DropdownHeader", onClick: props.onClick }, function () {
+	        if (props.selectedItem.length === 0) {
+	            return React.createElement("div", { className: "dinblock" }, React.createElement("i", { className: 'mr5 fa fa-' + props.icon }), props.title);
+	        } else if (props.selectedItem) {
+	            return React.createElement("div", { className: "dinblock" }, React.createElement("i", { className: "mr5 fa fa-times", onClick: props.deselectItem }), props.selectedItem);
+	        }
+	    }(), React.createElement("i", { className: 'r-DropdownHeader__trigger fa fa-chevron-' + (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center' ? 'up' : 'down') }));
 	};
 	var DropdownButton = function DropdownButton(props) {
-	    return React.createElement(
-	        'div',
-	        { className: 'r-DropdownButton' },
-	        React.createElement(
-	            Button_1.default,
-	            { className: props.className, onClick: props.onClick, icon: props.icon, checked: props.checked, type: props.theme, ghost: props.ghost },
-	            props.value
-	        )
-	    );
+	    return React.createElement("div", { className: "r-DropdownButton" }, React.createElement(Button_1.default, { className: props.className, onClick: props.onClick, icon: props.icon, checked: props.checked, type: props.theme, ghost: props.ghost }, props.value));
 	};
 	var DropdownSelection = function DropdownSelection(props) {
-	    return React.createElement(
-	        Layer_1.default,
-	        { overflow: true, className: props.className },
-	        React.createElement(DropdownHeader, { deselectItem: props.deselectItem, selectedItem: props.selectedItem, from: props.from, onClick: props.onClick, icon: props.icon, title: props.title }),
-	        React.createElement(Selectable_1.default, { checked: props.checked })
-	    );
+	    return React.createElement(Layer_1.default, { overflow: true, className: props.className }, React.createElement(DropdownHeader, { deselectItem: props.deselectItem, selectedItem: props.selectedItem, from: props.from, onClick: props.onClick, icon: props.icon, title: props.title }), React.createElement(Selectable_1.default, { checked: props.checked }));
 	};
 	var DropdownSearch = function DropdownSearch(props) {
-	    return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(Input_1.default, { className: 'w100', icon: props.icon, value: props.inputValue, type: 'text', onChange: props.onChange, title: props.title })
-	    );
+	    return React.createElement("div", null, React.createElement(Input_1.default, { className: "w100", icon: props.icon, value: props.inputValue, type: "text", onChange: props.onChange, title: props.title }));
 	};
 	
 	var Dropdown = function (_React$Component) {
@@ -22068,7 +21949,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var topPartial = void 0,
 	                bottomPartial = void 0,
 	                dropdownTypePartial = void 0;
-	            var dropdownClass = classNames('r-Dropdown', { 'e-open': state.open }, { 'dblock w100': props.block }, { 'pull-right': props.right }, { 'pull-left': props.left }, props.className);
+	            var dropdownClass = classNames('r-Dropdown', { 'e-open': state.open }, { 'dblock': props.block }, { 'pull-right': props.right }, { 'pull-left': props.left }, props.className);
 	            var dropdownWrapperBottomClass = classNames('r-DropdownWrapperBottom', 'e-drop-b', { 'e-drop-left': props.from === 'bottom left' }, { 'e-drop-right': props.from === 'bottom right' }, { 'e-drop-center': props.from === 'bottom center' }, props.contentClass);
 	            var dropdownWrapperTopClass = classNames('r-DropdownWrapperTop', 'e-drop-t', { 'e-drop-left': props.from === 'top left' }, { 'e-drop-right': props.from === 'top right' }, { 'e-drop-center': props.from === 'top center' }, props.contentClass);
 	            var dropdownContentClass = classNames('r-DropdownContent', 'r-Card', 'w100', props.contentClass);
@@ -22087,26 +21968,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	                default:
 	                    dropdownTypePartial = null;
 	            }
-	            return React.createElement(
-	                'div',
-	                { className: dropdownClass },
-	                dropdownTypePartial,
-	                function () {
-	                    if (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center') {
-	                        return React.createElement(
-	                            DropdownWrapper_1.default,
-	                            { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperTopClass, dropdownContentClass: dropdownContentClass },
-	                            props.children
-	                        );
-	                    } else {
-	                        return React.createElement(
-	                            DropdownWrapper_1.default,
-	                            { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperBottomClass, dropdownContentClass: dropdownContentClass },
-	                            props.children
-	                        );
-	                    }
-	                }()
-	            );
+	            return React.createElement("div", { className: dropdownClass }, dropdownTypePartial, function () {
+	                if (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center') {
+	                    return React.createElement(DropdownWrapper_1.default, { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperTopClass, dropdownContentClass: dropdownContentClass }, props.children);
+	                } else {
+	                    return React.createElement(DropdownWrapper_1.default, { type: props.type, selectedItem: state.selectedItem, checked: state.selectedItem > 0, selectItem: self.selectItem.bind(self), data: props.data, filterText: state.filterText, dropdownWrapperClass: dropdownWrapperBottomClass, dropdownContentClass: dropdownContentClass }, props.children);
+	                }
+	            }());
 	        }
 	    }]);
 	
@@ -22154,57 +22022,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var updatedList = [];
 	            var selectionList = function selectionList(item, index) {
 	                if (props.type === 'search' && item.toLowerCase().indexOf(props.filterText.toLowerCase()) > -1 && props.filterText !== '') {
-	                    updatedList.push(React.createElement(
-	                        'div',
-	                        { key: index, className: 'r-DropdownContent__item', onClick: self.selectItem.bind(self, item) },
-	                        React.createElement(
-	                            'p',
-	                            null,
-	                            item
-	                        ),
-	                        React.createElement(Selectable_1.default, { checked: props.selectedItem === item ? true : false })
-	                    ));
+	                    updatedList.push(React.createElement("div", { key: index, className: "r-DropdownContent__item", onClick: self.selectItem.bind(self, item) }, React.createElement("p", null, item), React.createElement(Selectable_1.default, { checked: props.selectedItem === item ? true : false })));
 	                } else if (props.type === 'search' && props.filterText === '') {
 	                    return null;
 	                } else if (props.type != 'search') {
-	                    updatedList.push(React.createElement(
-	                        'div',
-	                        { key: index, className: 'r-DropdownContent__item', onClick: self.selectItem.bind(self, item) },
-	                        React.createElement(
-	                            'p',
-	                            null,
-	                            item
-	                        ),
-	                        React.createElement(Selectable_1.default, { checked: props.selectedItem === item ? true : false })
-	                    ));
+	                    updatedList.push(React.createElement("div", { key: index, className: "r-DropdownContent__item", onClick: self.selectItem.bind(self, item) }, React.createElement("p", null, item), React.createElement(Selectable_1.default, { checked: props.selectedItem === item ? true : false })));
 	                }
 	            };
-	            return React.createElement(
-	                'div',
-	                { className: props.dropdownWrapperClass },
-	                React.createElement(
-	                    'div',
-	                    { className: props.dropdownContentClass },
-	                    function () {
-	                        if (props.children) {
-	                            return React.createElement(
-	                                'div',
-	                                null,
-	                                props.children
-	                            );
-	                        } else if (props.data) {
-	                            return React.createElement(
-	                                'div',
-	                                null,
-	                                props.data.map(selectionList),
-	                                updatedList
-	                            );
-	                        } else {
-	                            return null;
-	                        }
-	                    }()
-	                )
-	            );
+	            return React.createElement("div", { className: props.dropdownWrapperClass }, React.createElement("div", { className: props.dropdownContentClass }, function () {
+	                if (props.children) {
+	                    return React.createElement("div", null, props.children);
+	                } else if (props.data) {
+	                    return React.createElement("div", null, props.data.map(selectionList), updatedList);
+	                } else {
+	                    return null;
+	                }
+	            }()));
 	        }
 	    }]);
 	
@@ -22327,27 +22160,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	                errorInlinePartialBottom = void 0;
 	            var errorInlinePartial = function errorInlinePartial() {
 	                if (props.errorInline && (props.errorDirection === 'top' || 'bottom')) {
-	                    return React.createElement(
-	                        Pane_1.default,
-	                        { direction: props.errorDirection, open: !state.mouseOut && props.error, className: 'p5 h90 r-Layer light w100 error-pane h30px ' },
-	                        React.createElement(
-	                            'div',
-	                            { className: 'error-message' },
-	                            props.errorMessage
-	                        )
-	                    );
+	                    return React.createElement(Pane_1.default, { direction: props.errorDirection, open: !state.mouseOut && props.error, className: "p5 h90 r-Layer light w100 error-pane h30px " }, React.createElement("div", { className: "error-message" }, props.errorMessage));
 	                } else {
 	                    return null;
 	                }
 	            };
 	            // if input has icon then show it
 	            if (props.icon) {
-	                iconPartial = React.createElement(
-	                    'small',
-	                    null,
-	                    React.createElement('i', { className: 'fa fa-' + props.icon }),
-	                    ' '
-	                );
+	                iconPartial = React.createElement("small", null, React.createElement("i", { className: 'fa fa-' + props.icon }), " ");
 	            } else {
 	                iconPartial = null;
 	            }
@@ -22361,7 +22181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	                // hide pencil if placholder present or input has value
 	                if (!props.placeholder && !state.inputValue) {
-	                    pencilPartial = React.createElement('i', { className: 'fa fa-pencil writing' });
+	                    pencilPartial = React.createElement("i", { className: "fa fa-pencil writing" });
 	                } else {
 	                    pencilPartial = null;
 	                }
@@ -22369,26 +22189,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // error directions
 	            if (!props.errorInline && props.error) {
 	                if (props.errorDirection === 'top') {
-	                    errorInlinePartialTop = React.createElement(
-	                        'div',
-	                        { className: 'p5 border-bottom' },
-	                        React.createElement(
-	                            'small',
-	                            { className: 'error-message' },
-	                            props.errorMessage
-	                        )
-	                    );
+	                    errorInlinePartialTop = React.createElement("div", { className: "p5 border-bottom" }, React.createElement("small", { className: "error-message" }, props.errorMessage));
 	                    errorInlinePartialBottom = null;
 	                } else {
-	                    errorInlinePartialBottom = React.createElement(
-	                        'div',
-	                        { className: 'p5' },
-	                        React.createElement(
-	                            'small',
-	                            { className: 'error-message' },
-	                            props.errorMessage
-	                        )
-	                    );
+	                    errorInlinePartialBottom = React.createElement("div", { className: "p5" }, React.createElement("small", { className: "error-message" }, props.errorMessage));
 	                    errorInlinePartialTop = null;
 	                }
 	            } else {
@@ -22398,38 +22202,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	            // switch input type depending on propType
 	            switch (props.type) {
 	                case 'password':
-	                    inputPartial = React.createElement('input', { defaultValue: props.value, ref: 'refInput', onInput: this.focus.bind(this), onChange: this.onChange.bind(this), onBlur: this.blur.bind(this), onFocus: this.focus.bind(this), placeholder: props.placeholder, type: 'password' });
+	                    inputPartial = React.createElement("input", { defaultValue: props.value, ref: 'refInput', onInput: this.focus.bind(this), onChange: this.onChange.bind(this), onBlur: this.blur.bind(this), onFocus: this.focus.bind(this), placeholder: props.placeholder, type: 'password' });
 	                    break;
 	                case 'text':
-	                    inputPartial = React.createElement('input', { defaultValue: props.value, ref: 'refInput', onInput: this.focus.bind(this), onChange: this.onChange.bind(this), onBlur: this.blur.bind(this), onFocus: this.focus.bind(this), placeholder: props.placeholder, type: 'text' });
+	                    inputPartial = React.createElement("input", { defaultValue: props.value, ref: 'refInput', onInput: this.focus.bind(this), onChange: this.onChange.bind(this), onBlur: this.blur.bind(this), onFocus: this.focus.bind(this), placeholder: props.placeholder, type: 'text' });
 	                    break;
 	                case 'textarea':
-	                    inputPartial = React.createElement('textarea', { rows: props.rows, cols: props.cols, ref: 'refInput', style: { height: textAreaScrollHeight }, onFocus: this.focus.bind(this), onBlur: this.blur.bind(this), onChange: this.focus.bind(this) });
+	                    inputPartial = React.createElement("textarea", { rows: props.rows, cols: props.cols, ref: "refInput", style: { height: textAreaScrollHeight }, onFocus: this.focus.bind(this), onBlur: this.blur.bind(this), onChange: this.focus.bind(this) });
 	                    break;
 	                default:
 	            }
 	            var inputWrapperClass = classNames('r-Input', { 'w100': props.block }, { 'checked': this.state.checked }, props.size, props.className);
 	            var inputClass = classNames('r-Input__container', 'flohide', { 'no-title': !props.title }, { 'pt10': props.type === 'textarea' });
-	            return React.createElement(
-	                'div',
-	                { onMouseEnter: this.mouseOut.bind(this), onMouseLeave: this.mouseOut.bind(this), className: inputWrapperClass, style: props.style },
-	                errorInlinePartialTop,
-	                React.createElement(
-	                    'div',
-	                    { className: inputClass },
-	                    iconPartial,
-	                    React.createElement(
-	                        'small',
-	                        null,
-	                        props.title
-	                    ),
-	                    inputPartial,
-	                    pencilPartial,
-	                    React.createElement(Selectable_1.default, { type: props.error ? 'error' : 'primary', ghost: props.ghost, checked: this.state.checked }),
-	                    errorInlinePartial()
-	                ),
-	                errorInlinePartialBottom
-	            );
+	            return React.createElement("div", { onMouseEnter: this.mouseOut.bind(this), onMouseLeave: this.mouseOut.bind(this), className: inputWrapperClass, style: props.style }, errorInlinePartialTop, React.createElement("div", { className: inputClass }, iconPartial, React.createElement("small", null, props.title), inputPartial, pencilPartial, React.createElement(Selectable_1.default, { type: props.error ? 'error' : 'primary', ghost: props.ghost, checked: this.state.checked }), errorInlinePartial()), errorInlinePartialBottom);
 	        }
 	    }]);
 	
@@ -22481,8 +22266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var props = self.props;
 	            var axis = void 0,
 	                paneContainerStyle = void 0;
-	            var paneClass = classNames('r-Pane', { 'e-wrapper': props.wrapper }, { 'e-open': props.open }, { 'e-fixed': props.fixed });
-	            var paneContainerClass = classNames('r-Pane__container', { 'e-open': props.open }, { 'w100': props.fill }, { 'h100': props.fill }, props.direction, props.className);
+	            var paneContainerClass = classNames('r-Pane', { 'e-open': props.open }, { 'fill': props.fill }, props.direction, props.className);
 	            switch (props.direction) {
 	                case 'left' || 'right':
 	                    axis = 'X';
@@ -22506,22 +22290,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	                paneContainerStyle = null;
 	            }
 	            var childrenPartial = function childrenPartial() {
-	                return props.children;
+	                if (props.open) {
+	                    return props.children;
+	                }
 	            };
-	            return React.createElement(
-	                'div',
-	                { onClick: props.wrapperClick, ref: 'pane', className: paneContainerClass, style: paneContainerStyle },
-	                childrenPartial()
-	            );
+	            return React.createElement("div", { onClick: props.wrapperClick, ref: "pane", className: paneContainerClass, style: paneContainerStyle }, childrenPartial());
 	        }
 	    }]);
 	
 	    return Pane;
 	}(React.Component);
 	
-	Pane.defaultProps = {
-	    className: 'w100'
-	};
 	exports.default = Pane;
 
 /***/ },
@@ -22559,7 +22338,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Pane.e-wrapper {\n  background: rgba(0, 0, 0, 0);\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  height: 100%;\n  width: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n  pointer-events: none;\n  z-index: 9;\n}\n.r-Pane.e-open {\n  background: rgba(0, 0, 0, 0.4);\n  pointer-events: all;\n}\n.r-Pane__container {\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.r-Pane__container.bottom {\n  -webkit-transform: translate(0%, 100%);\n  -moz-transform: translate(0%, 100%);\n  -ms-transform: translate(0%, 100%);\n  -o-transform: translate(0%, 100%);\n  top: auto;\n  bottom: 0;\n}\n.r-Pane__container.top {\n  -webkit-transform: translate(0%, -100%);\n  -moz-transform: translate(0%, -100%);\n  -ms-transform: translate(0%, -100%);\n  -o-transform: translate(0%, -100%);\n}\n.r-Pane__container.left {\n  -webkit-transform: translate(-100%, 0%);\n  -moz-transform: translate(-100%, 0%);\n  -ms-transform: translate(-100%, 0%);\n  -o-transform: translate(-100%, 0%);\n}\n.r-Pane__container.right {\n  -webkit-transform: translate(100%, 0%);\n  -moz-transform: translate(100%, 0%);\n  -ms-transform: translate(100%, 0%);\n  -o-transform: translate(100%, 0%);\n  left: auto;\n  right: 0;\n}\n.r-Pane__container.bottom.e-open {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  bottom: 0;\n}\n.r-Pane__container.top.e-open {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n}\n.r-Pane__container.left.e-open {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n}\n.r-Pane__container.right.e-open {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  right: 0;\n}\n.r-Pane.e-fixed > .r-Pane__container {\n  position: fixed;\n}\n", ""]);
+	exports.push([module.id, ".r-Pane {\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n}\n.r-Pane.bottom {\n  -webkit-transform: translate(0%, 100%);\n  -moz-transform: translate(0%, 100%);\n  -ms-transform: translate(0%, 100%);\n  -o-transform: translate(0%, 100%);\n  top: auto;\n  bottom: 0;\n}\n.r-Pane.top {\n  -webkit-transform: translate(0%, -100%);\n  -moz-transform: translate(0%, -100%);\n  -ms-transform: translate(0%, -100%);\n  -o-transform: translate(0%, -100%);\n}\n.r-Pane.left {\n  -webkit-transform: translate(-100%, 0%);\n  -moz-transform: translate(-100%, 0%);\n  -ms-transform: translate(-100%, 0%);\n  -o-transform: translate(-100%, 0%);\n}\n.r-Pane.right {\n  -webkit-transform: translate(100%, 0%);\n  -moz-transform: translate(100%, 0%);\n  -ms-transform: translate(100%, 0%);\n  -o-transform: translate(100%, 0%);\n  left: auto;\n  right: 0;\n}\n.r-Pane.bottom.e-open {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  bottom: 0;\n}\n.r-Pane.top.e-open {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n}\n.r-Pane.left.e-open {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n}\n.r-Pane.right.e-open {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  right: 0;\n}\n.r-Pane.e-fixed {\n  position: fixed;\n}\n", ""]);
 	
 	// exports
 
@@ -22599,7 +22378,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Input {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.r-Input * {\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Input.small,\n.r-Input.small > .r-Input__container,\n.r-Input.small > .r-Input__container > input {\n  height: 26px;\n}\n.r-Input.small > .r-Input__container > small {\n  top: 8px;\n}\n.r-Input.small > .r-Input__container > small,\n.r-Input.small > .r-Input__container > input {\n  font-size: 12px;\n}\n.r-Input.small > .r-Input__container > small + small {\n  left: 20px;\n  pointer-events: none;\n  top: 5px;\n}\n.r-Input.small.checked .r-Input__container > small {\n  top: 0px !important;\n}\n.r-Input.large,\n.r-Input.large > .r-Input__container,\n.r-Input.large > .r-Input__container > input {\n  height: 40px;\n}\n.r-Input.large > .r-Input__container > small {\n  top: 12px;\n}\n.r-Input.xlarge,\n.r-Input.xlarge > .r-Input__container,\n.r-Input.xlarge > .r-Input__container > input {\n  height: 62px;\n}\n.r-Input.xlarge > .r-Input__container > small {\n  top: 22px;\n}\n.r-Input.xlarge > .r-Input__container > small,\n.r-Input.xlarge > .r-Input__container > input {\n  font-size: 25px;\n}\n.r-Input.xlarge.checked .r-Input__container > small {\n  top: 4px;\n  font-size: 83%;\n}\n.r-Input.xlarge.checked .r-Input__container > .writing {\n  top: 38px;\n}\n.r-Input.xlarge > .r-Input__container > small + small {\n  left: 35px;\n  pointer-events: none;\n  top: 23px ;\n}\ntextarea {\n  height: 22px;\n  outline: 0;\n  border: 0;\n  width: 100%;\n  font: inherit;\n  vertical-align: middle;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  -ms-appearance: none;\n  -o-appearance: none;\n  appearance: none;\n  overflow: hidden;\n  background: #fff;\n  cursor: pointer !important;\n  border-radius: 4px;\n  box-sizing: border-box;\n  box-shadow: inset 0 0 0 0 #1995ff;\n  position: relative;\n  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;\n  transition: transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;\n}\n.r-Input__container {\n  position: relative;\n}\n.r-Input__container input[type='text'],\n.r-Input__container input[type='password'] {\n  border: 1px solid #ccc;\n  width: 100%;\n  left: 0;\n  right: 0;\n}\n.r-Input__container {\n  position: relative;\n  overflow: hidden;\n  border-radius: 4px;\n  height: 32px;\n  color: #777;\n  background-color: #fff;\n}\n.r-Input__container > small {\n  position: absolute;\n  top: 7px;\n  left: 10px;\n  z-index: 2;\n  line-height: 18px;\n  color: #888;\n  font-size: 18px;\n  pointer-events: none;\n}\n.r-Input.checked .r-Input__container > small i.fa {\n  opacity: 0;\n}\n.r-Input.checked .r-Input__container > small {\n  top: -1px;\n  font-size: 60%;\n}\n.r-Input__container > input {\n  z-index: 1;\n  padding-left: 5px;\n  padding-top: 10px;\n  color: #777;\n  border-radius: 4px;\n  font-size: 16px;\n  border: 0;\n  background-color: #fff;\n  outline: 0;\n  -webkit-transition-duration: 0.6s;\n}\n.no-title.r-Input__container > input {\n  opacity: 1;\n  color: #888;\n  padding-top: 0;\n}\n.r-Input.checked .r-Input__container > input {\n  opacity: 1;\n}\n.r-Input__container .r-Selectable__border-gray {\n  border: 1px solid transparent;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n}\n.r-Input__container > small + small {\n  left: 35px;\n  pointer-events: none;\n}\n.r-Input.checked .r-Input__container > small + small {\n  left: 15px;\n}\n@keyframes writing {\n  0% {\n    transform: translate(0px, 1px);\n  }\n  10% {\n    transform: translate(2px, 1px);\n  }\n  20% {\n    transform: translate(4px, -1px);\n  }\n  30% {\n    transform: translate(6px, -1px);\n  }\n  40% {\n    transform: translate(8px, 1px);\n  }\n  50% {\n    transform: translate(10px, 1px);\n  }\n  60% {\n    transform: translate(12px, -1px);\n  }\n  70% {\n    transform: translate(14px, -1px);\n  }\n  80% {\n    transform: translate(16px, 1px);\n  }\n  90% {\n    transform: translate(18px, 1px);\n  }\n  100% {\n    transform: translate(20px, -1px);\n  }\n}\n@-webkit-keyframes writing {\n  0% {\n    transform: translate(0px, 1px);\n  }\n  10% {\n    transform: translate(2px, 1px);\n  }\n  20% {\n    transform: translate(4px, -1px);\n  }\n  30% {\n    transform: translate(6px, -1px);\n  }\n  40% {\n    transform: translate(8px, 1px);\n  }\n  50% {\n    transform: translate(10px, 1px);\n  }\n  60% {\n    transform: translate(12px, -1px);\n  }\n  70% {\n    transform: translate(14px, -1px);\n  }\n  80% {\n    transform: translate(16px, 1px);\n  }\n  90% {\n    transform: translate(18px, 1px);\n  }\n  100% {\n    transform: translate(20px, -1px);\n  }\n}\n.writing {\n  z-index: 3;\n  opacity: 0;\n  position: absolute;\n  top: 16px;\n  left: 5px;\n  font-size: 12px !important;\n}\n.r-Input.checked .writing {\n  animation: writing 0.8s infinite;\n  -webkit-animation: writing 0.8s infinite;\n  z-index: 3;\n  opacity: 1;\n}\ntextarea,\ninput {\n  font-size: 13px;\n}\n.error-message {\n  color: red;\n}\n", ""]);
+	exports.push([module.id, ".r-Input {\n  vertical-align: middle;\n  display: inline-block;\n  overflow: hidden;\n}\n.r-Input * {\n  -webkit-transition: all 200ms ease-in;\n  -moz-transition: all 200ms ease-in;\n  -ms-transition: all 200ms ease-in;\n  -o-transition: all 200ms ease-in;\n  transition: all 200ms ease-in;\n}\n.r-Input.small,\n.r-Input.small > .r-Input__container,\n.r-Input.small > .r-Input__container > input {\n  height: 26px;\n}\n.r-Input.small > .r-Input__container > small {\n  top: 8px;\n}\n.r-Input.small > .r-Input__container > small,\n.r-Input.small > .r-Input__container > input {\n  font-size: 12px;\n}\n.r-Input.small > .r-Input__container > small + small {\n  left: 20px;\n  pointer-events: none;\n  top: 5px;\n}\n.r-Input.small.checked .r-Input__container > small {\n  top: 0px !important;\n}\n.r-Input.large,\n.r-Input.large > .r-Input__container,\n.r-Input.large > .r-Input__container > input {\n  height: 40px;\n}\n.r-Input.large > .r-Input__container > small {\n  top: 12px;\n}\n.r-Input.xlarge,\n.r-Input.xlarge > .r-Input__container,\n.r-Input.xlarge > .r-Input__container > input {\n  height: 62px;\n}\n.r-Input.xlarge > .r-Input__container > small {\n  top: 22px;\n}\n.r-Input.xlarge > .r-Input__container > small,\n.r-Input.xlarge > .r-Input__container > input {\n  font-size: 25px;\n}\n.r-Input.xlarge.checked .r-Input__container > small {\n  top: 4px;\n  font-size: 83%;\n}\n.r-Input.xlarge.checked .r-Input__container > .writing {\n  top: 38px;\n}\n.r-Input.xlarge > .r-Input__container > small + small {\n  left: 35px;\n  pointer-events: none;\n  top: 23px ;\n}\ntextarea {\n  height: 22px;\n  outline: 0;\n  border: 0;\n  width: 100%;\n  font: inherit;\n  vertical-align: middle;\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  -ms-appearance: none;\n  -o-appearance: none;\n  appearance: none;\n  overflow: hidden;\n  background: #fff;\n  cursor: pointer !important;\n  border-radius: 4px;\n  box-sizing: border-box;\n  box-shadow: inset 0 0 0 0 #1995ff;\n  position: relative;\n  -webkit-transition: -webkit-transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;\n  transition: transform 0.3s cubic-bezier(0.2, 0.3, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0.3, 0, 1), border-color 0s linear 0.17s;\n}\n.r-Input__container {\n  position: relative;\n}\n.r-Input__container input[type='text'],\n.r-Input__container input[type='password'] {\n  border: 1px solid #ccc;\n  width: 100%;\n  height: 100%;\n  left: 0;\n  right: 0;\n}\n.r-Input__container {\n  position: relative;\n  overflow: hidden;\n  border-radius: 4px;\n  height: 32px;\n  color: #777;\n  background-color: #fff;\n}\n.r-Input__container > small {\n  position: absolute;\n  top: 7px;\n  left: 10px;\n  z-index: 2;\n  line-height: 18px;\n  color: #888;\n  font-size: 18px;\n  pointer-events: none;\n}\n.r-Input.checked .r-Input__container > small i.fa {\n  opacity: 0;\n}\n.r-Input.checked .r-Input__container > small {\n  top: -1px;\n  font-size: 60%;\n}\n.r-Input__container > input {\n  z-index: 1;\n  padding-left: 5px;\n  padding-top: 10px;\n  color: #777;\n  border-radius: 4px;\n  font-size: 16px;\n  border: 0;\n  background-color: #fff;\n  outline: 0;\n  -webkit-transition-duration: 0.6s;\n}\n.no-title.r-Input__container > input {\n  opacity: 1;\n  color: #888;\n  padding-top: 0;\n}\n.r-Input.checked .r-Input__container > input {\n  opacity: 1;\n}\n.r-Input__container .r-Selectable__border-gray {\n  border: 1px solid transparent;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 100%;\n}\n.r-Input__container > small + small {\n  left: 35px;\n  pointer-events: none;\n}\n.r-Input.checked .r-Input__container > small + small {\n  left: 15px;\n}\n@keyframes writing {\n  0% {\n    transform: translate(0px, 1px);\n  }\n  10% {\n    transform: translate(2px, 1px);\n  }\n  20% {\n    transform: translate(4px, -1px);\n  }\n  30% {\n    transform: translate(6px, -1px);\n  }\n  40% {\n    transform: translate(8px, 1px);\n  }\n  50% {\n    transform: translate(10px, 1px);\n  }\n  60% {\n    transform: translate(12px, -1px);\n  }\n  70% {\n    transform: translate(14px, -1px);\n  }\n  80% {\n    transform: translate(16px, 1px);\n  }\n  90% {\n    transform: translate(18px, 1px);\n  }\n  100% {\n    transform: translate(20px, -1px);\n  }\n}\n@-webkit-keyframes writing {\n  0% {\n    transform: translate(0px, 1px);\n  }\n  10% {\n    transform: translate(2px, 1px);\n  }\n  20% {\n    transform: translate(4px, -1px);\n  }\n  30% {\n    transform: translate(6px, -1px);\n  }\n  40% {\n    transform: translate(8px, 1px);\n  }\n  50% {\n    transform: translate(10px, 1px);\n  }\n  60% {\n    transform: translate(12px, -1px);\n  }\n  70% {\n    transform: translate(14px, -1px);\n  }\n  80% {\n    transform: translate(16px, 1px);\n  }\n  90% {\n    transform: translate(18px, 1px);\n  }\n  100% {\n    transform: translate(20px, -1px);\n  }\n}\n.writing {\n  z-index: 3;\n  opacity: 0;\n  position: absolute;\n  top: 16px;\n  left: 5px;\n  font-size: 12px !important;\n}\n.r-Input.checked .writing {\n  animation: writing 0.8s infinite;\n  -webkit-animation: writing 0.8s infinite;\n  z-index: 3;\n  opacity: 1;\n}\ntextarea,\ninput {\n  font-size: 13px;\n}\n.error-message {\n  color: red;\n}\n", ""]);
 	
 	// exports
 
@@ -22655,12 +22434,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                };
 	            }
 	            // ===================================
-	            var layerClass = classNames(props.className, 'r-Layer', { 'flohide': props.overflow }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'e-scroll-y': props.scrollY }, { 'e-scroll-x': props.scrollX }, { 'h100': props.fill }, { 'w100': props.fill }, { 'flex': props.flex }, borderClass, props.type);
-	            return React.createElement(
-	                'div',
-	                { onClick: props.onClick, className: layerClass, style: Object.assign({}, flexStyle, props.style) },
-	                props.children
-	            );
+	            var layerClass = classNames('r-Layer', { 'flohide': props.overflow }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'e-scroll-y': props.scrollY }, { 'e-scroll-x': props.scrollX }, { 'fill': props.fill }, { 'flex': props.flex }, borderClass, props.type, props.className);
+	            return React.createElement("div", { onClick: props.onClick, className: layerClass, style: Object.assign({}, flexStyle, props.style) }, props.children);
 	        }
 	    }]);
 	
@@ -22711,7 +22486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Layer {\n  zoom: 1;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  width: 100%;\n  position: relative;\n  color: #333;\n}\n.r-Layer:before,\n.r-Layer:after {\n  content: \"\";\n  display: table;\n}\n.r-Layer:after {\n  clear: both;\n}\n.r-Layer.light {\n  background: #fff;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.r-Layer.e-scroll-y {\n  -webkit-overflow-scrolling: touch;\n  overflow-y: scroll;\n}\n.r-Layer.e-scroll-x {\n  -webkit-overflow-scrolling: touch;\n  overflow-x: scroll;\n}\n.e-NightMode .r-Layer.light {\n  color: #888;\n}\n", ""]);
+	exports.push([module.id, ".r-Layer {\n  zoom: 1;\n  -webkit-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 350ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  width: 100%;\n  position: relative;\n  color: #333;\n}\n.r-Layer:before,\n.r-Layer:after {\n  content: \"\";\n  display: table;\n}\n.r-Layer:after {\n  clear: both;\n}\n.clearfix {\n  zoom: 1;\n}\n.clearfix:before,\n.clearfix:after {\n  content: \"\";\n  display: table;\n}\n.clearfix:after {\n  clear: both;\n}\n.r-Layer.e-scroll-y {\n  -webkit-overflow-scrolling: touch;\n  overflow-y: scroll;\n}\n.r-Layer.e-scroll-x {\n  -webkit-overflow-scrolling: touch;\n  overflow-x: scroll;\n}\n.e-NightMode .r-Layer.light {\n  color: #888;\n}\n", ""]);
 	
 	// exports
 
@@ -22792,11 +22567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var emergeClass = classNames('r-Emerge', props.className, { 'e-enter': props.if }, { 'floshow': props.overflow });
 	            var itemClass = classNames('r-Emerge', { 'e-enter': props.if });
 	            var createItems = function createItems(item, index) {
-	                return React.createElement(
-	                    'div',
-	                    { className: itemClass, style: { animationDelay: (index + 1) * props.delay + 'ms' }, key: index },
-	                    item
-	                );
+	                return React.createElement("div", { className: itemClass, style: { animationDelay: (index + 1) * props.delay + 'ms' }, key: index }, item);
 	            };
 	            var newChildren = React.Children.map(this.props.children, function (child) {
 	                var exit = void 0,
@@ -22827,11 +22598,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	                return React.cloneElement(child, { className: newClass, style: merge_options(newStyle, props.style) });
 	            });
-	            return React.createElement(
-	                'span',
-	                { className: emergeClass, ref: 'element' },
-	                newChildren
-	            );
+	            return React.createElement("span", { className: emergeClass, ref: "element" }, newChildren);
 	        }
 	    }]);
 	
@@ -23110,23 +22877,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            } else {
 	                renderedColumns = this.state.columns;
 	            }
-	            return React.createElement(
-	                'div',
-	                { className: 'r-Grid' },
-	                React.createElement(
-	                    'table',
-	                    { className: 'r-Grid__Table w100' },
-	                    React.createElement(GridHeader_1.default, { hideHeader: props.hideHeader, columns: renderedColumns, dataSource: renderedPage, sortable: props.sortable, toggleSorting: this.toggleSorting.bind(this), sortType: state.sortType, detailTemplate: this.props.detailTemplate, hideColumns: props.hideColumns }),
-	                    React.createElement(GridBody_1.default, { columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, height: props.height, open: props.open, detailTemplate: this.props.detailTemplate, hideColumns: props.hideColumns, columnTemplate: props.columnTemplate, detailTemplateOpenOnHover: props.detailTemplateOpenOnHover, detailTemplateOpenOnSelect: this.props.detailTemplateOpenOnSelect, rowIsSelectable: this.props.rowIsSelectable, onRowSelect: this.onRowSelect.bind(this), selected: this.props.selected, selectedKey: this.props.selectedKey, rowIsSelectableType: this.props.rowIsSelectableType })
-	                ),
-	                function () {
-	                    if (numberOfPages <= 1) {
-	                        return null;
-	                    } else {
-	                        return React.createElement(GridFooter_1.default, { gotoPage: _this2.gotoPage.bind(_this2), previousPage: _this2.previousPage.bind(_this2), nextPage: _this2.nextPage.bind(_this2), lastPage: _this2.lastPage.bind(_this2), firstPage: _this2.firstPage.bind(_this2), numberOfPages: numberOfPages, currentPage: state.currentPage, changePageSize: _this2.changePageSize.bind(_this2) });
-	                    }
-	                }()
-	            );
+	            return React.createElement("div", { className: "r-Grid" }, React.createElement("table", { className: 'r-Grid__Table w100' }, React.createElement(GridHeader_1.default, { hideHeader: props.hideHeader, columns: renderedColumns, dataSource: renderedPage, sortable: props.sortable, toggleSorting: this.toggleSorting.bind(this), sortType: state.sortType, detailTemplate: this.props.detailTemplate, hideColumns: props.hideColumns }), React.createElement(GridBody_1.default, { columns: renderedColumns, dataSource: renderedPage, dataType: state.dataType, numberOfPages: numberOfPages, height: props.height, open: props.open, detailTemplate: props.detailTemplate, hideColumns: props.hideColumns, columnTemplate: props.columnTemplate, detailTemplateOpenOnHover: props.detailTemplateOpenOnHover, detailTemplateOpenOnSelect: props.detailTemplateOpenOnSelect, rowIsSelectable: props.rowIsSelectable, onRowSelect: this.onRowSelect.bind(this), selected: props.selected, selectedKey: props.selectedKey, rowIsSelectableType: props.rowIsSelectableType, detailTemplateOpenOnRowSelect: props.detailTemplateOpenOnRowSelect, filterSelected: this.props.filterSelected })), function () {
+	                if (numberOfPages <= 1) {
+	                    return null;
+	                } else {
+	                    return React.createElement(GridFooter_1.default, { gotoPage: _this2.gotoPage.bind(_this2), previousPage: _this2.previousPage.bind(_this2), nextPage: _this2.nextPage.bind(_this2), lastPage: _this2.lastPage.bind(_this2), firstPage: _this2.firstPage.bind(_this2), numberOfPages: numberOfPages, currentPage: state.currentPage, changePageSize: _this2.changePageSize.bind(_this2) });
+	                }
+	            }());
 	        }
 	    }]);
 	
@@ -23170,7 +22927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Grid {\n  width: 100%;\n  overflow: auto;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\n.r-Grid table,\n.r-Grid td,\n.r-Grid th {\n  vertical-align: middle;\n}\n.r-Grid caption,\n.r-Grid th,\n.r-Grid td {\n  text-align: left;\n  font-weight: normal;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n.r-Grid td.r-Grid__Row__Column {\n  padding: 10px;\n  color: #333;\n}\n.r-Grid__Header > tr > th {\n  border-bottom: 1px solid #ccc !important;\n  padding: 10px;\n}\n.e-NightMode .r-Grid__Row__Column {\n  color: #888 !important;\n}\ntbody.r-Grid__Body > tr:nth-child(4n+1) {\n  cursor: pointer !important;\n  background: #E7E7E7 !important;\n}\ntbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n}\ntbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #D1ECFF !important;\n}\n.e-NightMode tbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #222 !important;\n}\n.e-NightMode tbody.r-Grid__Body > tr:nth-child(4n+1) {\n  background: #222 !important;\n}\n.e-NightMode tbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n}\n.r-Grid__Header__Sort,\n.r-Grid__Row__Sort {\n  font-size: 60%;\n  position: relative;\n  top: -1px;\n  cursor: pointer !important;\n  color: #666;\n}\n", ""]);
+	exports.push([module.id, ".r-Grid {\n  width: 100%;\n  overflow: auto;\n}\n.r-Grid__Row {\n  position: relative;\n}\n.r-Grid__Footer {\n  margin-top: 10px;\n}\n.r-Grid__Header > tr > th {\n  text-align: left;\n}\n.r-Grid table,\n.r-Grid td,\n.r-Grid th {\n  vertical-align: middle;\n}\n.r-Grid caption,\n.r-Grid th,\n.r-Grid td {\n  text-align: left;\n  font-weight: normal;\n  position: relative;\n}\n.r-Grid tr,\n.r-Grid th,\n.r-Grid td {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-weight: inherit;\n  font-style: inherit;\n  font-size: 100%;\n  font-family: inherit;\n  vertical-align: middle;\n}\n.r-Grid td.r-Grid__Row__Column {\n  padding: 10px;\n  color: #333;\n}\n.r-Grid__Header > tr > th {\n  border-bottom: 1px solid #ccc !important;\n  padding: 10px;\n}\n.e-NightMode .r-Grid__Row__Column {\n  color: #888 !important;\n}\ntbody.r-Grid__Body > tr:nth-child(4n+1) {\n  cursor: pointer !important;\n  background: #E7E7E7 !important;\n}\ntbody.r-Grid__Body > tr:hover {\n  cursor: pointer !important;\n}\ntbody.r-Grid__Body > .r-Grid__Row.e-selected {\n  background: #D1ECFF !important;\n}\n.r-Grid__Header__Sort,\n.r-Grid__Row__Sort {\n  font-size: 60%;\n  position: relative;\n  top: -1px;\n  cursor: pointer !important;\n  color: #666;\n}\n", ""]);
 	
 	// exports
 
@@ -23222,12 +22979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var props = self.props;
 	            var item = props.item;
 	
-	            return React.createElement(
-	                'th',
-	                { style: { width: item.width } },
-	                this.props.children,
-	                React.createElement('i', { onClick: self.toggleSorting.bind(self, item.name), tabIndex: -1, className: "r-Grid__Header__Sort pl10 w50px fa fa-" + (this.state.sortType === 'none' ? 'sort' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up') })
-	            );
+	            return React.createElement("th", { style: { width: item.width } }, this.props.children, React.createElement("i", { onClick: self.toggleSorting.bind(self, item.name), tabIndex: -1, className: "r-Grid__Header__Sort pl10 w50px fa fa-" + (this.state.sortType === 'none' ? 'sort' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up') }));
 	        }
 	    }]);
 	
@@ -23261,61 +23013,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    return null;
 	                } else {
 	                    if (item.headerTemplate) {
-	                        return React.createElement(
-	                            'th',
-	                            { style: { width: item.width }, key: index },
-	                            item.headerTemplate()
-	                        );
+	                        return React.createElement("th", { style: { width: item.width }, key: index }, item.headerTemplate());
 	                    } else if (props.sortable) {
 	                        if (item.headerTemplate) {
-	                            return React.createElement(
-	                                GridHeaderSortable,
-	                                { key: index, item: item, toggleSorting: _this3.toggleSorting.bind(_this3) },
-	                                item.headerTemplate()
-	                            );
+	                            return React.createElement(GridHeaderSortable, { key: index, item: item, toggleSorting: _this3.toggleSorting.bind(_this3) }, item.headerTemplate());
 	                        } else {
-	                            return React.createElement(
-	                                GridHeaderSortable,
-	                                { key: index, item: item, toggleSorting: _this3.toggleSorting.bind(_this3) },
-	                                React.createElement(
-	                                    'a',
-	                                    null,
-	                                    item.name
-	                                )
-	                            );
+	                            return React.createElement(GridHeaderSortable, { key: index, item: item, toggleSorting: _this3.toggleSorting.bind(_this3) }, React.createElement("a", null, item.name));
 	                        }
 	                    } else {
-	                        return React.createElement(
-	                            'th',
-	                            { style: { width: item.width }, key: index },
-	                            React.createElement(
-	                                'a',
-	                                null,
-	                                item.name
-	                            )
-	                        );
+	                        return React.createElement("th", { style: { width: item.width }, key: index }, React.createElement("a", null, item.name));
 	                    }
 	                }
 	            };
 	            if (!props.hideHeader && props.columns) {
-	                return React.createElement(
-	                    'thead',
-	                    { className: 'r-Grid__Header' },
-	                    React.createElement(
-	                        'tr',
-	                        null,
-	                        function () {
-	                            if (_this3.props.detailTemplate) {
-	                                return React.createElement(
-	                                    'th',
-	                                    { className: 'p0', width: 5 },
-	                                    React.createElement('i', { className: "fa pl20 fa-caret-right", tabIndex: -1 })
-	                                );
-	                            }
-	                        }(),
-	                        this.props.columns.map(createColumns)
-	                    )
-	                );
+	                return React.createElement("thead", { className: "r-Grid__Header" }, React.createElement("tr", null, function () {
+	                    if (_this3.props.detailTemplate) {
+	                        return React.createElement("th", { className: "p0", width: 5 }, React.createElement("i", { className: "fa pl20 fa-caret-right", tabIndex: -1 }));
+	                    }
+	                }(), this.props.columns.map(createColumns)));
 	            } else {
 	                return null;
 	            }
@@ -23346,41 +23061,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Door_1 = __webpack_require__(191);
 	var GridRow_1 = __webpack_require__(216);
 	
-	var SelectableGridRow = function (_React$Component) {
-	    _inherits(SelectableGridRow, _React$Component);
-	
-	    function SelectableGridRow() {
-	        _classCallCheck(this, SelectableGridRow);
-	
-	        return _possibleConstructorReturn(this, Object.getPrototypeOf(SelectableGridRow).apply(this, arguments));
-	    }
-	
-	    _createClass(SelectableGridRow, [{
-	        key: 'render',
-	        value: function render() {
-	            return React.createElement(
-	                'div',
-	                { className: 'w100 posrel' },
-	                React.createElement(Selectable_1.default, { checked: this.props.selectedItem })
-	            );
-	        }
-	    }]);
-	
-	    return SelectableGridRow;
-	}(React.Component);
-	
-	var GridRowTemplate = function (_React$Component2) {
-	    _inherits(GridRowTemplate, _React$Component2);
+	var GridRowTemplate = function (_React$Component) {
+	    _inherits(GridRowTemplate, _React$Component);
 	
 	    function GridRowTemplate() {
 	        _classCallCheck(this, GridRowTemplate);
 	
-	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GridRowTemplate).call(this));
+	        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(GridRowTemplate).call(this));
 	
-	        _this2.state = {
+	        _this.state = {
 	            open: false
 	        };
-	        return _this2;
+	        return _this;
 	    }
 	
 	    _createClass(GridRowTemplate, [{
@@ -23389,30 +23081,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var self = this;
 	            var props = self.props;
 	            var i = props.i;
-	            return React.createElement(
-	                Door_1.default,
-	                { open: props.expanded },
-	                self.props.detailTemplate(i, self.props.dataSource[i])
-	            );
+	            return React.createElement(Door_1.default, { open: props.expanded }, self.props.detailTemplate(i, self.props.dataSource[i]));
 	        }
 	    }]);
 	
 	    return GridRowTemplate;
 	}(React.Component);
 	
-	var GridBody = function (_React$Component3) {
-	    _inherits(GridBody, _React$Component3);
+	var GridBody = function (_React$Component2) {
+	    _inherits(GridBody, _React$Component2);
 	
 	    function GridBody(props) {
 	        _classCallCheck(this, GridBody);
 	
-	        var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(GridBody).call(this, props));
+	        var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(GridBody).call(this, props));
 	
-	        _this3.state = {
+	        _this2.state = {
 	            expandedRows: [],
 	            selected: props.selected || []
 	        };
-	        return _this3;
+	        return _this2;
 	    }
 	
 	    _createClass(GridBody, [{
@@ -23464,22 +23152,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        _selectedItem = this.state.selected.includes(item);
 	                    }
 	                }
-	                rowArray.push([React.createElement(GridRow_1.default, { expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false, toggleDetailTemplate: this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null, key: key, i: key, selected: this.state.selected, item: item, selectedKey: this.props.selectedKey, dataSource: this.props.dataSource, columns: this.props.columns, onRowSelect: this.onRowSelect.bind(this), detailTemplate: this.props.detailTemplate, selectedItem: _selectedItem, hideColumns: this.props.hideColumns, detailTemplateOpenOnHover: this.props.detailTemplateOpenOnHover })], [React.createElement(
-	                    'tr',
-	                    { key: key },
-	                    React.createElement(
-	                        'td',
-	                        { className: 'p0', colSpan: this.props.columns.length + 1 },
-	                        React.createElement(SelectableGridRow, { onRowSelect: this.props.onRowSelect, item: item, selected: this.state.selected, selectedItem: _selectedItem, selectedKey: this.props.selectedKey }),
-	                        this.props.detailTemplate ? React.createElement(GridRowTemplate, { detailTemplate: self.props.detailTemplate, dataSource: self.props.dataSource, expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false, i: key }) : null
-	                    )
-	                )]);
+	                var rowItem = [[React.createElement(GridRow_1.default, { expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false, toggleDetailTemplate: this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null, key: key, i: key, selected: this.state.selected, item: item, selectedKey: this.props.selectedKey, dataSource: this.props.dataSource, columns: this.props.columns, onRowSelect: this.onRowSelect.bind(this), detailTemplate: this.props.detailTemplate, selectedItem: _selectedItem, hideColumns: this.props.hideColumns, detailTemplateOpenOnHover: this.props.detailTemplateOpenOnHover, detailTemplateOpenOnRowSelect: this.props.detailTemplateOpenOnRowSelect })], [React.createElement("tr", { key: key }, React.createElement("td", { colSpan: this.props.columns.length + 1 }, this.props.detailTemplate ? React.createElement(GridRowTemplate, { detailTemplate: self.props.detailTemplate, dataSource: self.props.dataSource, expanded: this.props.detailTemplateOpenOnSelect ? _selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false, i: key }) : null, React.createElement(Selectable_1.default, { checked: _selectedItem })))]];
+	                if (props.filterSelected) {
+	                    if (_selectedItem) {
+	                        rowArray.push(rowItem);
+	                    }
+	                } else if (!props.filterSelected) {
+	                    rowArray.push(rowItem);
+	                }
 	            }
-	            return React.createElement(
-	                'tbody',
-	                { className: 'r-Grid__Body w100', style: { height: this.props.height } },
-	                rowArray
-	            );
+	            return React.createElement("tbody", { className: "r-Grid__Body w100", style: { height: this.props.height } }, rowArray);
 	        }
 	    }]);
 	
@@ -23488,6 +23170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	exports.default = GridBody;
 	// this.state.expandedRows.includes(key)
+	// <SelectableGridRow onRowSelect={this.props.onRowSelect} item={item} selected={this.state.selected} selectedItem={selectedItem} selectedKey={this.props.selectedKey} />
 
 /***/ },
 /* 216 */
@@ -23504,6 +23187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var React = __webpack_require__(5);
+	var Selectable_1 = __webpack_require__(180);
 	var GridColumn_1 = __webpack_require__(217);
 	
 	var GridRow = function (_React$Component) {
@@ -23522,12 +23206,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }, {
 	        key: 'toggleDetailTemplate',
-	        value: function toggleDetailTemplate(i) {
+	        value: function toggleDetailTemplate(i, item) {
 	            this.props.toggleDetailTemplate(i);
+	            if (this.props.onRowSelect) {
+	                this.props.onRowSelect(item);
+	            }
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+	
 	            var self = this;
 	            var props = self.props;
 	            var columns = props.columns;
@@ -23544,22 +23233,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	            var selectEvent = void 0;
 	            if (props.detailTemplate) {
-	                return React.createElement(
-	                    'tr',
-	                    { onMouseEnter: detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null, onClick: this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null, className: "r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '') },
-	                    React.createElement(
-	                        'td',
-	                        { className: 'p0', width: 5 },
-	                        React.createElement('i', { className: "r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right"), onClick: this.toggleDetailTemplate.bind(this, i), tabIndex: -1 })
-	                    ),
-	                    columnArray
-	                );
+	                return React.createElement("tr", { onMouseEnter: detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null, onClick: this.toggleDetailTemplate.bind(this, i, item), className: "r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '') }, function () {
+	                    if (!_this2.props.detailTemplateOpenOnRowSelect) {
+	                        return React.createElement("td", { className: "p0", width: 5 }, React.createElement("i", { className: "r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right"), onClick: _this2.toggleDetailTemplate.bind(_this2, i), tabIndex: -1 }));
+	                    }
+	                }(), columnArray);
 	            } else {
-	                return React.createElement(
-	                    'tr',
-	                    { onClick: this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null, className: "r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '') },
-	                    columnArray
-	                );
+	                return React.createElement("tr", { onClick: this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null, className: "r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '') }, columnArray, React.createElement("td", { colSpan: this.props.columns.length + 1 }, React.createElement(Selectable_1.default, { checked: props.selectedItem })));
 	            }
 	        }
 	    }]);
@@ -23610,23 +23290,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	            var columnPartial = function columnPartial() {
 	                if (columns[x].tabbable) {
-	                    return React.createElement(
-	                        Button_1.default,
-	                        null,
-	                        dataSource[i][columns[x].name]
-	                    );
+	                    return React.createElement(Button_1.default, null, dataSource[i][columns[x].name]);
 	                } else if (_typeof(dataSource[i][columns[x].name]) === 'object' && columns[x].template || typeof dataSource[i][columns[x].name] === 'string' && columns[x].template) {
 	                    return columns[x].template(dataSource[i]);
 	                } else if (_typeof(dataSource[i][columns[x].name]) === 'object') {
-	                    return React.createElement(
-	                        'span',
-	                        null,
-	                        React.createElement(
-	                            'strong',
-	                            null,
-	                            'hasObject'
-	                        )
-	                    );
+	                    return React.createElement("span", null, React.createElement("strong", null, "hasObject"));
 	                } else {
 	                    return dataSource[i][columns[x].name];
 	                }
@@ -23634,11 +23302,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (props.hideColumns && props.hideColumns.includes(columns[x].name)) {
 	                return null;
 	            } else {
-	                return React.createElement(
-	                    'td',
-	                    { className: 'r-Grid__Row__Column', style: { width: columns[x].width }, key: i + x },
-	                    columnPartial()
-	                );
+	                return React.createElement("td", { className: "r-Grid__Row__Column", style: { width: columns[x].width }, key: i + x }, columnPartial());
 	            }
 	        }
 	    }]);
@@ -23692,26 +23356,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var self = this;
 	            var paginationPartial = [];
 	            for (var i = 0; i < self.props.numberOfPages; i++) {
-	                paginationPartial.push(React.createElement(
-	                    Button_1.default,
-	                    { tabIndex: -1, type: this.props.currentPage - 1 === i ? 'primary' : null, onClick: self.gotoPage.bind(self, i), key: i },
-	                    i + 1
-	                ));
+	                paginationPartial.push(React.createElement(Button_1.default, { tabIndex: -1, type: this.props.currentPage - 1 === i ? 'primary' : null, onClick: self.gotoPage.bind(self, i), key: i }, i + 1));
 	            }
-	            return React.createElement(
-	                'div',
-	                { className: 'r-Grid__Footer' },
-	                React.createElement(
-	                    Toolbar_1.default,
-	                    { spacing: true },
-	                    React.createElement(Button_1.default, { disabled: this.props.currentPage === 1, tabIndex: -1, onClick: this.props.firstPage, icon: 'fast-backward' }),
-	                    React.createElement(Button_1.default, { disabled: this.props.currentPage === 1, tabIndex: -1, onClick: this.props.previousPage, icon: 'step-backward' }),
-	                    paginationPartial,
-	                    React.createElement(Button_1.default, { disabled: this.props.currentPage === this.props.numberOfPages, tabIndex: -1, onClick: this.props.nextPage, icon: 'step-forward' }),
-	                    React.createElement(Button_1.default, { disabled: this.props.currentPage === this.props.numberOfPages, tabIndex: -1, onClick: this.props.lastPage, icon: 'fast-forward' }),
-	                    React.createElement(Dropdown_1.default, { onSelected: this.onSelected.bind(this), title: 'Page Size', type: 'selection', data: ['5', '10', '15'] })
-	                )
-	            );
+	            return React.createElement("div", { className: "r-Grid__Footer" }, React.createElement(Toolbar_1.default, { spacing: true }, React.createElement(Button_1.default, { disabled: this.props.currentPage === 1, tabIndex: -1, onClick: this.props.firstPage, icon: "fast-backward" }), React.createElement(Button_1.default, { disabled: this.props.currentPage === 1, tabIndex: -1, onClick: this.props.previousPage, icon: "step-backward" }), paginationPartial, React.createElement(Button_1.default, { disabled: this.props.currentPage === this.props.numberOfPages, tabIndex: -1, onClick: this.props.nextPage, icon: "step-forward" }), React.createElement(Button_1.default, { disabled: this.props.currentPage === this.props.numberOfPages, tabIndex: -1, onClick: this.props.lastPage, icon: "fast-forward" }), React.createElement(Dropdown_1.default, { onSelected: this.onSelected.bind(this), title: "Page Size", type: "selection", data: ['5', '10', '15'] })));
 	        }
 	    }]);
 	
@@ -23765,11 +23412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	            // ====================================
 	            var toolbarClass = classNames('r-Toolbar', { 'border': props.border }, { 'vertical': props.vertical }, { 'text-center': props.textCenter }, { 'no-radius': props.noRadius }, { 'spacing': props.spacing }, { 'w100': props.block }, { 'pull-left': props.left }, { 'pull-right': props.right }, { 'w100': props.fill }, { 'wh100': props.fill }, { 'flush': props.flush }, { 'flex': props.flex }, { 'no-border': props.noBorder }, props.className);
-	            return React.createElement(
-	                'div',
-	                { ref: 'toolbar', style: Object.assign({}, flexStyle, props.style), className: toolbarClass, onClick: this.props.onClick },
-	                props.children
-	            );
+	            return React.createElement("div", { ref: "toolbar", style: Object.assign({}, flexStyle, props.style), className: toolbarClass, onClick: this.props.onClick }, props.children);
 	        }
 	    }]);
 	
@@ -23852,7 +23495,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var props = self.props;
 	            var loadingClass = classNames('r-Loading', 'animated', 'fadeInUp', 'text-center', props.className);
 	            if (props.if) {
-	                return React.createElement('i', { className: 'fa fa-circle-o-notch fa-spin' });
+	                return React.createElement("i", { className: "fa fa-circle-o-notch fa-spin" });
 	            } else {
 	                return null;
 	            }
@@ -23954,38 +23597,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var body = document.querySelectorAll('body')[0];
 	            var modalWrapperClass = classNames('r-Modal', { 'e-show': props.open }, { 'ghost': props.ghost }, { 'e-float': props.float }, { 'e-fade': props.effect === 'fade' }, { 'e-fullscreen': self.state.min });
 	            var modalClass = classNames('r-ModalContent', props.className);
-	            props.icon ? iconPartial = React.createElement('i', { className: 'pull-left mt10 fa fa-' + props.icon }) : null;
+	            props.icon ? iconPartial = React.createElement("i", { className: 'pull-left mt10 fa fa-' + props.icon }) : null;
 	            props.open ? body.className += ' flohide' : body.className = '';
-	            props.fullScreen ? fullScreenPartial = React.createElement(Button_1.default, { className: 'pull-right ', onClick: this.toggleMin.bind(this), icon: this.state.min ? 'expand' : 'compress', type: 'link' }) : null;
-	            return React.createElement(
-	                'div',
-	                { className: modalWrapperClass },
-	                React.createElement(
-	                    'div',
-	                    { className: modalClass, style: props.style },
-	                    function () {
-	                        if (props.title) {
-	                            return React.createElement(
-	                                'div',
-	                                { className: 'r-Modal__header p10 border-bottom clearfix' },
-	                                React.createElement(
-	                                    'div',
-	                                    null,
-	                                    iconPartial,
-	                                    fullScreenPartial,
-	                                    React.createElement(
-	                                        'h2',
-	                                        { className: 'dinblock pull-left' },
-	                                        props.title
-	                                    )
-	                                ),
-	                                React.createElement(Button_1.default, { className: 'pull-right', onClick: props.onClose, icon: 'times', type: 'link' })
-	                            );
-	                        }
-	                    }(),
-	                    props.children
-	                )
-	            );
+	            props.fullScreen ? fullScreenPartial = React.createElement(Button_1.default, { className: "pull-right ", onClick: this.toggleMin.bind(this), icon: this.state.min ? 'expand' : 'compress', type: "link" }) : null;
+	            return React.createElement("div", { className: modalWrapperClass }, React.createElement("div", { className: modalClass, style: props.style }, function () {
+	                if (props.title) {
+	                    return React.createElement("div", { className: "r-Modal__header p10 border-bottom clearfix" }, React.createElement("div", null, iconPartial, fullScreenPartial, React.createElement("h2", { className: "dinblock pull-left" }, props.title)), React.createElement(Button_1.default, { className: "pull-right", onClick: props.onClose, icon: "times", type: "link" }));
+	                }
+	            }(), props.children));
 	        }
 	    }]);
 	
@@ -24067,11 +23686,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var self = this;
 	            var props = self.props;
 	            var shrinkClass = classNames('r-Shrink', { 'e-shrink': props.if }, { 'h100': props.fill }, { 'w100': props.fill }, props.className);
-	            return React.createElement(
-	                'div',
-	                { className: shrinkClass },
-	                props.children
-	            );
+	            return React.createElement("div", { className: shrinkClass }, props.children);
 	        }
 	    }]);
 	
@@ -24176,11 +23791,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    transitionDelay: 0 + 'ms'
 	                };
 	            }
-	            return React.createElement(
-	                'div',
-	                { className: transformClass, style: transformStyle },
-	                props.children
-	            );
+	            return React.createElement("div", { className: transformClass, style: transformStyle }, props.children);
 	        }
 	    }]);
 	
@@ -24247,11 +23858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var classNames = __webpack_require__(174);
 	__webpack_require__(235);
 	var WizardSlide = function WizardSlide(props) {
-	    return React.createElement(
-	        'div',
-	        { className: props.className },
-	        props.children
-	    );
+	    return React.createElement("div", { className: props.className }, props.children);
 	};
 	
 	var Wizard = function (_React$Component) {
@@ -24271,26 +23878,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var wizardClass = classNames('r-Wizard');
 	            var createSlidesPartial = function createSlidesPartial(item, index) {
 	                var wizardSlideClass = classNames('r-WizardSlide', { 'e-selected': props.slideIndex === index }, { 'e-backward': props.slideIndex > index }, { 'e-forward': props.slideIndex < index }, { 'e-vertical': props.vertical }, props.className);
-	                if (props.slideIndex === index || index === props.slideIndex - 1 || index === props.slideIndex + 1) {
-	                    return React.createElement(
-	                        WizardSlide,
-	                        { className: wizardSlideClass, key: index },
-	                        item
-	                    );
+	                if (props.mobile) {
+	                    if (props.slideIndex === index || index === props.slideIndex + 1) {
+	                        return React.createElement(WizardSlide, { className: wizardSlideClass, key: index }, item);
+	                    } else {
+	                        return null;
+	                    }
 	                } else {
-	                    return null;
+	                    if (props.slideIndex === index || index === props.slideIndex + 1 || index === props.slideIndex - 1) {
+	                        return React.createElement(WizardSlide, { className: wizardSlideClass, key: index }, item);
+	                    } else {
+	                        return null;
+	                    }
 	                }
 	            };
 	            if (props.children) {
-	                return React.createElement(
-	                    'div',
-	                    { ref: 'r-Wizard', className: wizardClass, style: props.style },
-	                    React.createElement(
-	                        'div',
-	                        { ref: 'r-Wizard__track', className: 'r-Wizard__track' },
-	                        props.children.map(createSlidesPartial)
-	                    )
-	                );
+	                return React.createElement("div", { ref: "r-Wizard", className: wizardClass, style: props.style }, React.createElement("div", { ref: 'r-Wizard__track', className: "r-Wizard__track" }, props.children.map(createSlidesPartial)));
 	            } else {
 	                return null;
 	            }
@@ -24340,7 +23943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	
 	// module
-	exports.push([module.id, ".r-Wizard {\n  overflow: hidden !important;\n}\n.r-Wizard .r-Wizard__track {\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  width: 100%;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide {\n  -webkit-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -webkit-transform: translate(0%, 0);\n  -moz-transform: translate(0%, 0);\n  -ms-transform: translate(0%, 0);\n  -o-transform: translate(0%, 0);\n  width: 100%;\n  overflow: visible;\n  position: absolute;\n  top: auto;\n  left: auto;\n  right: auto;\n  bottom: auto;\n  margin: auto;\n  background: #EFEFEF;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-selected {\n  -webkit-transform: translate(0%, 0);\n  -moz-transform: translate(0%, 0);\n  -ms-transform: translate(0%, 0);\n  -o-transform: translate(0%, 0);\n  position: relative;\n  opacity: 1;\n  -webkit-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-backward {\n  -webkit-transform: translate(-10%, 0);\n  -moz-transform: translate(-10%, 0);\n  -ms-transform: translate(-10%, 0);\n  -o-transform: translate(-10%, 0);\n  top: 0;\n  pointer-events: none !important;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-forward {\n  -webkit-transform: translate(120%, 0);\n  -moz-transform: translate(120%, 0);\n  -ms-transform: translate(120%, 0);\n  -o-transform: translate(120%, 0);\n  top: 0;\n  pointer-events: none !important;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-selected.e-vertical {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  opacity: 1;\n  position: relative ;\n  visibility: visible;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-backward.e-vertical {\n  -webkit-transform: translate(0%, -100%);\n  -moz-transform: translate(0%, -100%);\n  -ms-transform: translate(0%, -100%);\n  -o-transform: translate(0%, -100%);\n  visibility: hidden;\n  height: 0;\n  overflow: hidden;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-forward.e-vertical {\n  -webkit-transform: translate(0%, 100%);\n  -moz-transform: translate(0%, 100%);\n  -ms-transform: translate(0%, 100%);\n  -o-transform: translate(0%, 100%);\n  visibility: hidden;\n  height: 0;\n  overflow: hidden;\n}\n", ""]);
+	exports.push([module.id, ".r-Wizard {\n  overflow: hidden !important;\n}\n.r-Wizard .r-Wizard__track {\n  -webkit-transform: translateZ(0);\n  -moz-transform: translateZ(0);\n  -ms-transform: translateZ(0);\n  -o-transform: translateZ(0);\n  width: 100%;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide {\n  -webkit-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 650ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -webkit-transform: translate(0%, 0);\n  -moz-transform: translate(0%, 0);\n  -ms-transform: translate(0%, 0);\n  -o-transform: translate(0%, 0);\n  width: 100%;\n  overflow: visible;\n  position: absolute;\n  top: auto;\n  left: auto;\n  right: auto;\n  bottom: auto;\n  margin: auto;\n  background: #EFEFEF;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-selected {\n  -webkit-transform: translate(0%, 0);\n  -moz-transform: translate(0%, 0);\n  -ms-transform: translate(0%, 0);\n  -o-transform: translate(0%, 0);\n  position: relative;\n  opacity: 1;\n  -webkit-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -moz-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -ms-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  -o-transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n  transition: all 550ms cubic-bezier(0.215, 0.61, 0.355, 1);\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-backward {\n  -webkit-transform: translate(-10%, 0);\n  -moz-transform: translate(-10%, 0);\n  -ms-transform: translate(-10%, 0);\n  -o-transform: translate(-10%, 0);\n  top: 0;\n  pointer-events: none !important;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-forward {\n  -webkit-transform: translate(120%, 0);\n  -moz-transform: translate(120%, 0);\n  -ms-transform: translate(120%, 0);\n  -o-transform: translate(120%, 0);\n  top: 0;\n  pointer-events: none !important;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-selected.e-vertical {\n  -webkit-transform: translate(0%, 0%);\n  -moz-transform: translate(0%, 0%);\n  -ms-transform: translate(0%, 0%);\n  -o-transform: translate(0%, 0%);\n  opacity: 1;\n  position: relative ;\n  visibility: visible;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-backward.e-vertical {\n  -webkit-transform: translate(0%, -100%);\n  -moz-transform: translate(0%, -100%);\n  -ms-transform: translate(0%, -100%);\n  -o-transform: translate(0%, -100%);\n  visibility: hidden;\n  height: 0;\n  overflow: hidden;\n}\n.r-Wizard .r-Wizard__track .r-WizardSlide.e-forward.e-vertical {\n  -webkit-transform: translate(0%, 100%);\n  -moz-transform: translate(0%, 100%);\n  -ms-transform: translate(0%, 100%);\n  -o-transform: translate(0%, 100%);\n  visibility: hidden;\n  height: 0;\n  overflow: hidden;\n}\n.r-WizardSlide {\n  min-height: 100%;\n  box-shadow: 0 -10px 20px 15px rgba(0, 0, 0, 0.2);\n}\n", ""]);
 	
 	// exports
 
@@ -24432,33 +24035,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    itemArray.push(item);
 	                }
 	            }
-	            return React.createElement(
-	                Layer_1.default,
-	                { fill: true, overflow: true },
-	                React.createElement(
-	                    Shrink_1.default,
-	                    { className: 'posrel', 'if': this.state.showShortcut },
-	                    this.props.children
-	                ),
-	                React.createElement(
-	                    Pane_1.default,
-	                    { direction: 'top', open: this.state.showShortcut },
-	                    React.createElement(
-	                        Layer_1.default,
-	                        { type: 'light h100 w600px p10 posrel center-width mt100' },
-	                        function () {
-	                            if (_this2.state.showShortcut) {
-	                                return React.createElement(
-	                                    Toolbar_1.default,
-	                                    { block: true },
-	                                    React.createElement(Input_1.default, { ghost: true, focusOnMount: _this2.state.showShortcut, value: _this2.state.value, onChange: _this2.onChange.bind(_this2), block: true, ref: 'input', type: 'text', icon: 'search', title: _this2.props.title ? _this2.props.title : 'Search website' })
-	                                );
-	                            }
-	                        }(),
-	                        React.createElement(Grid_1.default, { dataSource: itemArray, open: this.state.showShortcut, columns: columns, onSelect: this.props.onChange })
-	                    )
-	                )
-	            );
+	            return React.createElement(Layer_1.default, { fill: true, overflow: true }, React.createElement(Shrink_1.default, { className: 'posrel', if: this.state.showShortcut }, this.props.children), React.createElement(Pane_1.default, { direction: "top", open: this.state.showShortcut }, React.createElement(Layer_1.default, { type: "light h100 w600px p10 posrel center-width mt100" }, function () {
+	                if (_this2.state.showShortcut) {
+	                    return React.createElement(Toolbar_1.default, { block: true }, React.createElement(Input_1.default, { ghost: true, focusOnMount: _this2.state.showShortcut, value: _this2.state.value, onChange: _this2.onChange.bind(_this2), block: true, ref: 'input', type: "text", icon: "search", title: _this2.props.title ? _this2.props.title : 'Search website' }));
+	                }
+	            }(), React.createElement(Grid_1.default, { dataSource: itemArray, open: this.state.showShortcut, columns: columns, onSelect: this.props.onChange }))));
 	        }
 	    }]);
 	

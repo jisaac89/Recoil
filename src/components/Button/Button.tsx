@@ -63,8 +63,8 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       })
     }
     if (props.shortcut) {
-      window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
-      window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
+      // window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
+      // window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
     }
   }
 
@@ -76,25 +76,25 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
   }
 
   public startShortcutListener(e) {
-    const context = this;
-    const props = context.props;
-    let state = context.state;
+    // const context = this;
+    // const props = context.props;
+    // let state = context.state;
 
-    const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
+    // const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
 
-    context.setState({
-      showShortcut : e.shiftKey ? true : false
-    })
-    context.setState({
-      shiftCounter: 1
-    })
+    // context.setState({
+    //   showShortcut : e.shiftKey ? true : false
+    // })
+    // context.setState({
+    //   shiftCounter: 1
+    // })
 
-    if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
-      refButton.click();
-      context.setState({
-        clickCounter: state.clickCounter === 0 ? 1 : 0
-      })
-    }
+    // if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
+    //   refButton.click();
+    //   context.setState({
+    //     clickCounter: state.clickCounter === 0 ? 1 : 0
+    //   })
+    // }
   }
 
   public onClick() {

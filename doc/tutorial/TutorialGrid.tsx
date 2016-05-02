@@ -122,7 +122,7 @@ export default class TutorialGrid extends React.Component<any,any>{
 
     return (
       <Emerge>
-      <Layer>
+      <div className="p10">
 
         <h1>Grid</h1>
 
@@ -155,7 +155,7 @@ export default class TutorialGrid extends React.Component<any,any>{
           </Door>
         </div>
 
-      </Layer>
+      </div>
       </Emerge>
     )
   }

@@ -104,7 +104,7 @@ export default class TutorialPane extends React.Component<any,any>{
 
     return (
       <Emerge>
-        <Layer>
+        <div className="p10">
 
           <h1>Pane</h1>
 
@@ -150,7 +150,7 @@ export default class TutorialPane extends React.Component<any,any>{
             </Door>
           </Layer>
 
-        </Layer>
+        </div>
       </Emerge>
     )
   }

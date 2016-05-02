@@ -1,4 +1,4 @@
-/// <reference path="../typings/tsd.d.ts" />
+/// <reference path='../typings/main.d.ts'/>
 
 import * as React from 'react';
 
@@ -20,29 +20,46 @@ import Transform from '../src/components/Transform/Transform';
 import Toggle from '../src/components/Toggle/Toggle';
 import Avatar from '../src/components/Avatar/Avatar';
 
-import SampleData from './SampleData';
+import Sampledata from './Sampledata';
+import Reverb from './Reverb';
 
 export default class App extends React.Component<any, any> {
+  
   constructor() {
     super();
     this.state = {
       mobile: false,
       nightMode: false,
       slideIndex: 0,
-      selected: []
+      selected: [],
+      data: []
     }
   }
   
+  componentDidMount() {
+    
+    let data = new Reverb('https://www.reddit.com/r/worldnews.json');
+    
+    data.syncState({
+        dataSet: 'data.children',
+        toState: 'data',
+        isArray: true
+    });
+    
+  }
+    
   render() {
 
     const self = this;
     const props = self.props;
     let state = self.state;
-
+    
+    
     return (
-      <div>
-         Reddit Recoil
-      </div>
+      <h1>
+        Reddit Recoil
+      </h1>
     )
+    
   }
 }

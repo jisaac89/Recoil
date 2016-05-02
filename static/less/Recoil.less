@@ -1447,7 +1447,7 @@ h3 {
   position: absolute !important;
 }
 .posfix {
-  position: fixed;
+  position: fixed !important;
 }
 .possta {
   position: static;
@@ -1563,15 +1563,29 @@ font-size: 18px;
   color: @primary-color !important;
   border-color: @primary-border !important;
 }
+.text-primary{
+  color: @primary-background !important;
+}
 .error {
   background: @error-background !important;
   color: @error-color !important;
   border-color: @error-border !important;
 }
+.text-error{
+  color: @error-background !important;
+}
+.success {
+  background: @success-background !important;
+  color: @success-color !important;
+  border-color: @success-border !important;
+}
+.success-error{
+  color: @success-background !important;
+}
 .primary.ghost {
   background: transparent !important;
-  color: #1995FF !important;
-  border-color: #1995FF !important;
+  color: @primary-background !important;
+  border-color: @primary-background !important;
 }
 .light.ghost {
   color: #fff !important;
@@ -1590,9 +1604,6 @@ font-size: 18px;
 }
 .error.ghost:hover {
   color: #f30 !important;
-}
-.error.ghost:hover, .primary.ghost:hover, .error.ghost:focus, .primary.ghost:focus {
-  color: white !important;
 }
 @media screen and (max-width: 680px) {
   // .r-Align__column {
@@ -1754,10 +1765,11 @@ form{
   to { background-position:top right; }
 }
 
-.rainbow-line{
+hr{
   width:100%;
   margin:0;
-  background-image:-webkit-linear-gradient( left, #FF0050, #D800FF, #2F00FF, #00D4C0,#00C829,#4CF600, #FFE300, #FF6500);
+  // background-image:-webkit-linear-gradient( left, #FF0050, #D800FF, #2F00FF, #00D4C0,#00C829,#4CF600, #FFE300, #FF6500);
+      background-image:-webkit-linear-gradient( left, @primary-background, #000, @primary-background);
   -moz-animation:rainbowLine 10.5s forwards linear infinite;
   -webkit-animation:rainbowLine 10.5s forwards linear infinite;
   -o-animation:rainbowLine 10.5s forwards linear infinite;
@@ -1769,28 +1781,86 @@ form{
   height:3px;
   border: 0;
 }
+.light{
+  background: @light-background;
+}
+
+.gray{
+  background: #EEEEEE;
+  z-index: 10;
+  height: 100%;
+}
+
+.r-GridBody .selected{
+    background: rgba(0,0,0,0.08) !important;
+}
+
+.r-GridBody > .r-Emerge > .r-Emerge:hover{
+    background: rgba(255,255,255, 1);
+}
+
+.shadow{
+  box-shadow: 0 0 20px #A5A5A5;
+}
+
+.fill{
+  width:100% !important;
+  height: 100% !important;
+  overflow-y: auto !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 .e-NightMode{
-  background: #111;
+  background: @nightMode-background;
 
   .r-Wizard .r-Wizard__track .r-WizardSlide{
-    background: #111;
+    background: @nightMode-background;
   }
 
   .dark {
-    background: #323232;
+    background: #21252B;
     color: #A9A9A9;
 }
 
-  .r-Layer.light{
+  .light{
     background:#222;
   }
 
   .r-Button{
     background:#333;
-    border-color:#222;
+    border-color:#222 !important;
+  }
+  
+  .r-Dropdown .r-DropdownSelection,
+  .r-Checkbox___back{
+        background:#111;
+    border-color:#222 !important;
+  }
+  
+  .r-Checkbox.e-checked .r-Checkbox___back{
+            background:#333 !important;
+    border-color:#222 !important;
+    
+  }
+  .r-Checkbox.r-Button{
+    color:#585858 !important;
+  }
+  
+  .r-Card{
+    background:#12141A;
   }
 
   h2, h1, h3{
@@ -1804,28 +1874,74 @@ form{
     border-color:#334;
   }
 
-  .r-Pane__container{
-    background: #000;
-  }
+  // .r-Pane__container{
+  //   background: #000;
+  // }
 
   .r-Button:hover, .r-Button:focus {
-    background: #1995FF !important;
-    color:white;
+    background: transparent !important;
   }
 
   small {
-    color: #888;
+    color: #CECECE;
   }
 
+  h1,h2,h3,h4,h5,h6{
+    color: @primary-background !important;
+    font-weight: normal;
+  }
+
+  .text-error {
+    color: #F62D73 !important;
+}
+
+
+.r-Button{
+  color: #ADADAD !important;
+}
+
+.error{
+  background: #F62D73 !important;
+}
+
+.primary:not(.r-Selectable){
+  background: transparent !important;
+  color: @primary-background !important;
+  border-color: @primary-background !important;
+}
+
+.primary.ghost:hover{
+  color: @primary-background !important;
+}
+
+.success{
+  background: transparent !important;
+  color: #A7DC3A !important;
+  border-color: #A7DC3A !important;
+  font-weight: bold !important;
+}
+
+
+tbody.r-Grid__Body > .r-Grid__Row.e-selected {
+  background: #23272D !important;
+}
+tbody.r-Grid__Body > tr:nth-child(4n+1){
+  background: #23272D !important;
+}
+
+tbody.r-Grid__Body > tr:hover {
+  cursor: pointer !important;
+  // background: #333 !important;
+}
+
   p{
-    color:#888;
+    color:#CECECE;
   }
 
   .r-Input__container {
     position: relative;
     overflow: hidden;
     border-color:#111 !important;
-    height: #999;
     color: #333;
     background-color:#222;
   }
@@ -1835,7 +1951,7 @@ form{
     overflow: hidden;
     border-color:#111 !important;
     height: #333;
-    color: #999;
+    color: #CECECE;
     background-color:#333;
   }
 
@@ -1861,22 +1977,5 @@ form{
       background: rgba(255,255,255, 0.1);
   }
 
-}
 
-.gray{
-  background: #EEEEEE;
-  z-index: 10;
-  height: 100%;
-}
-
-.r-GridBody .selected{
-    background: rgba(0,0,0,0.08) !important;
-}
-
-.r-GridBody > .r-Emerge > .r-Emerge:hover{
-    background: rgba(255,255,255, 1);
-}
-
-.shadow{
-  box-shadow: 0 0 20px #A5A5A5;
 }

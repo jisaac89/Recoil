@@ -93,7 +93,7 @@ export default class TutorialSelectable extends React.Component<any,any>{
 
     return (
       <Emerge>
-        <Layer>
+        <div className="p10">
 
           <h1>Selectable</h1>
 
@@ -131,7 +131,7 @@ export default class TutorialSelectable extends React.Component<any,any>{
             </Door>
           </Layer>
 
-        </Layer>
+        </div>
       </Emerge>
     )
   }

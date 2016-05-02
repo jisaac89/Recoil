@@ -1,80 +1,16 @@
 {
-    "compilerOptions": {
-        "target": "ES6",
-        "moduleResolution": "node",
-        "isolatedModules": false,
-        "jsx": "preserve",
-        "experimentalDecorators": true,
-        "outDir": "build"
-    },
-    "filesGlob": [
-        "*/**/*.{ts,tsx}",
-        "typings/browser.d.ts"
-    ],
-    "exclude": [
-        "node_modules",
-        "doc"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
-    },
-    "compileOnSave": false,
-    "files": [
-        "sample/App.tsx",
-        "sample/index.tsx",
-        "sample/SampleData.ts",
-        "sample/tutorial/SampleData.ts",
-        "sample/tutorial/TutorialAlign.tsx",
-        "sample/tutorial/TutorialButton.tsx",
-        "sample/tutorial/TutorialCard.tsx",
-        "sample/tutorial/TutorialCheckbox.tsx",
-        "sample/tutorial/TutorialDoor.tsx",
-        "sample/tutorial/TutorialDropdown.tsx",
-        "sample/tutorial/TutorialEmerge.tsx",
-        "sample/tutorial/TutorialGrid.tsx",
-        "sample/tutorial/TutorialInput.tsx",
-        "sample/tutorial/TutorialLayer.tsx",
-        "sample/tutorial/TutorialLoading.tsx",
-        "sample/tutorial/TutorialModal.tsx",
-        "sample/tutorial/TutorialPane.tsx",
-        "sample/tutorial/TutorialSelectable.tsx",
-        "sample/tutorial/TutorialShrink.tsx",
-        "sample/tutorial/TutorialToggle.tsx",
-        "sample/tutorial/TutorialToolbar.tsx",
-        "sample/tutorial/TutorialTransform.tsx",
-        "sample/tutorial/TutorialWizard.tsx",
-        "src/components/Align/Align.tsx",
-        "src/components/Avatar/Avatar.tsx",
-        "src/components/Badge/Badge.tsx",
-        "src/components/Button/Button.tsx",
-        "src/components/Card/Card.tsx",
-        "src/components/Checkbox/Checkbox.tsx",
-        "src/components/Door/Door.tsx",
-        "src/components/Dropdown/Dropdown.tsx",
-        "src/components/Dropdown/DropdownWrapper.tsx",
-        "src/components/Emerge/Emerge.tsx",
-        "src/components/Grid/Grid.tsx",
-        "src/components/Grid/GridBody.tsx",
-        "src/components/Grid/GridColumn.tsx",
-        "src/components/Grid/GridFooter.tsx",
-        "src/components/Grid/GridHeader.tsx",
-        "src/components/Grid/GridRow.tsx",
-        "src/components/Input/Input.tsx",
-        "src/components/Layer/Layer.tsx",
-        "src/components/Loading/Loading.tsx",
-        "src/components/Modal/Modal.tsx",
-        "src/components/Pane/Pane.tsx",
-        "src/components/Selectable/Selectable.tsx",
-        "src/components/Shortcut/Shortcut.tsx",
-        "src/components/Shrink/Shrink.tsx",
-        "src/components/Toggle/Toggle.tsx",
-        "src/components/Toolbar/Toolbar.tsx",
-        "src/components/Transform/Transform.tsx",
-        "src/components/Wizard/Wizard.tsx",
-        "src/index.ts",
-        "typings/classnames/classnames.d.ts",
-        "typings/react/react-dom.d.ts",
-        "typings/react/react.d.ts",
-        "typings/tsd.d.ts"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "jsx": "react",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "outDir": "dist"
+  },
+  "exclude": [
+    "dist",
+    "node_modules",
+    "typings"
+  ]
 }

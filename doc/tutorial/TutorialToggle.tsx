@@ -122,7 +122,7 @@ export default class TutorialCard extends React.Component<any,any>{
 
     return (
       <Emerge>
-        <Layer>
+        <div className="p10">
 
           <h1>Toggle</h1>
 
@@ -189,7 +189,7 @@ export default class TutorialCard extends React.Component<any,any>{
             </Door>
           </Layer>
 
-        </Layer>
+        </div>
       </Emerge>
     )
   }

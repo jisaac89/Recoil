@@ -1841,7 +1841,26 @@ hr{
 
   .r-Button{
     background:#333;
-    border-color:#222;
+    border-color:#222 !important;
+  }
+  
+  .r-Dropdown .r-DropdownSelection,
+  .r-Checkbox___back{
+        background:#111;
+    border-color:#222 !important;
+  }
+  
+  .r-Checkbox.e-checked .r-Checkbox___back{
+            background:#333 !important;
+    border-color:#222 !important;
+    
+  }
+  .r-Checkbox.r-Button{
+    color:#585858 !important;
+  }
+  
+  .r-Card{
+    background:#12141A;
   }
 
   h2, h1, h3{
@@ -1885,7 +1904,7 @@ hr{
   background: #F62D73 !important;
 }
 
-.primary{
+.primary:not(.r-Selectable){
   background: transparent !important;
   color: @primary-background !important;
   border-color: @primary-background !important;
@@ -1956,6 +1975,14 @@ tbody.r-Grid__Body > tr:hover {
 
   .r-GridBody > .r-Emerge > .r-Emerge:hover{
       background: rgba(255,255,255, 0.1);
+  }
+  
+  .r-Dropdown .r-Card{
+    background:#23272D;
+  }
+  
+  .error{
+    color:white !important;
   }
 
 
