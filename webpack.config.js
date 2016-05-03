@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'eval',
   entry: {
     'react-recoil': './src/index.ts'
   },
@@ -14,7 +14,16 @@ module.exports = {
     publicPath: 'static'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.optimize.UglifyJsPlugin({sourceMap: false,
+      compress:{
+        warnings: true
+      }}),
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    })
   ],
   module: {
     loaders:  [
