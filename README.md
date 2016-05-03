@@ -71,7 +71,8 @@ An example of how to use them in your app.
 $ git clone https://github.com/jisaac89/recoil.git
 $ cd recoil
 $ npm install
-$ tsd install
+$ npm install typings -g
+$ npm run typings install
 $ cd doc
 $ npm start
 ```
