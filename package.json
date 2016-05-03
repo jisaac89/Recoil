@@ -2,7 +2,7 @@
   "name": "react-recoil",
   "url" : "http://reactrecoil.com/",
   "homepage": "http://reactrecoil.com/",
-  "version": "0.3.4",
+  "version": "0.3.41",
   "description": "",
   "scripts": {
     "typings": "typings",
@@ -71,10 +71,6 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
-    "extract-text-webpack-plugin": "^1.0.1",
-    "react": "^15.0.0-rc.1",
-    "react-dom": "^15.0.0-rc.1",
-    "react-highlight": "^0.7.0",
-    "typescript": "^1.8.0"
+    "extract-text-webpack-plugin": "^1.0.1"
   }
 }
