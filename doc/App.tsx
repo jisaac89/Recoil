@@ -228,7 +228,7 @@ export default class App extends React.Component<any, any> {
                       )
                   } else {
                     return (
-                      <Toolbar spacing right>
+                      <Toolbar flush right>
                         <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button>
                         <Button shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
                           Get Started
@@ -269,7 +269,7 @@ export default class App extends React.Component<any, any> {
                       )
                   } else {
                     return (
-                      <Toolbar className="mt50" spacing>
+                      <Toolbar className="mt50" flush>
                         <Button shortcut="n" size="large" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button>
                         <Button shortcut="d" onClick={this.toggleDocumentation.bind(this)} size="large">Documentation</Button>
                         <Button href={'https://www.github.com/jisaac89/recoil'} icon="github" type="primary" size="large">Grab Latest Version</Button>
@@ -282,7 +282,7 @@ export default class App extends React.Component<any, any> {
             <hr className="rainbow-line" />
           </div>
         </Door>
-        <Door overflow className="w100 mb100" open={state.viewDocumentation}>
+        <Door overflow className="w100" open={state.viewDocumentation}>
           <Layer>
             {(()=>{
               if (this.state.mobile) {
