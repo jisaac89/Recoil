@@ -71,7 +71,7 @@ export default class GridHeader extends React.Component<IGridHeaderProps,{}>{
     let headerTitle;
 
     let createColumns = (item, index) => {
-      if (props.hideColumns && props.hideColumns.length > 0 && props.hideColumns.includes(item.name) ) {
+      if (props.hideColumns && props.hideColumns.length > 0 && props.hideColumns.indexOf(item.name) !== -1) {
         return null
       } else{
         if (item.headerTemplate) {

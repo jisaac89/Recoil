@@ -127,16 +127,17 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
       let item = self.props.dataSource[key];
 
       let selectedItem;
+      
       if (this.state.selected) {
         if (props.selectedKey) {
-          selectedItem = this.props.selected.includes(item[this.props.selectedKey])
+          selectedItem = this.props.selected.indexOf(item[this.props.selectedKey]) !== -1
         } else {
-          selectedItem = this.state.selected.includes(item);
+          selectedItem = this.state.selected.indexOf(item) !== -1;
         }
       }
 
       let rowItem = [[<GridRow
-          expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false}
+          expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.indexOf(key) !== -1 : false}
           toggleDetailTemplate={this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null}
           key={key}
           i={key}
@@ -154,7 +155,7 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
         />],
         [<tr key={key}>
           <td colSpan={this.props.columns.length + 1}>
-            {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.includes(key) : false} i={key}  />  : null}
+            {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.indexOf(key) !== 1 : false} i={key}  />  : null}
             <Selectable checked={selectedItem} />
           </td>
         </tr>]];

@@ -50,7 +50,7 @@ export default class GridColumn extends React.Component<IGridColumnProps,{}>{
         }
     }
 
-    if (props.hideColumns && props.hideColumns.includes(columns[x].name)) {
+    if (props.hideColumns && props.hideColumns.indexOf(columns[x].name) !== -1) {
         return null;
     }
     else {

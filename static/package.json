@@ -2,7 +2,7 @@
   "name": "react-recoil",
   "url" : "http://reactrecoil.com/",
   "homepage": "http://reactrecoil.com/",
-  "version": "0.3.49",
+  "version": "0.3.50",
   "description": "react-recoil-npm",
   "main": "recoil.js",
   "scripts": {
