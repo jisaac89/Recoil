@@ -2,12 +2,13 @@
   "name": "react-recoil",
   "url" : "http://reactrecoil.com/",
   "homepage": "http://reactrecoil.com/",
-  "version": "0.3.43",
+  "version": "0.3.47",
   "description": "",
   "scripts": {
     "typings": "typings",
     "build": "webpack --config webpack.config.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "tsc": "tsc -p ./"
   },
   "main": "src/index.js",
   "directories": {

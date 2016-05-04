@@ -22,6 +22,8 @@ import Transform from './components/Transform/Transform';
 import Wizard from './components/Wizard/Wizard';
 import Shortcut from './components/Shortcut/Shortcut';
 
+import './less/Recoil.less';
+
 (module).exports = {
   Align,
   Button,

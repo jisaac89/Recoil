@@ -3,7 +3,7 @@
     "module": "commonjs",
     "target": "es6",
     "jsx": "react",
-    "sourceMap": false,
+    "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "outDir": "dist"
@@ -11,8 +11,6 @@
   "exclude": [
     "dist",
     "node_modules",
-    "typings",
-    "doc",
-    "sample"
+    "typings"
   ]
 }
