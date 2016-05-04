@@ -12,7 +12,7 @@ Recoil is a front-end react powered framework.
 > first web applications
 
 ### Version
-0.3.47
+0.3.48
 
 A lot of the components are still at the early stages of development.
 
@@ -27,12 +27,7 @@ Then include the following CSS files in your HTML:
 ```sh
 $ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
 $ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-```
-
-Then include the relevant LESS file (webpack less-loader required.)
-
-```sh
-import 'react-recoil/less/Recoil.less';
+$ <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' rel='stylesheet' type='text/css'>
 ```
 
 Now, on your project you can destructure the components you want.
