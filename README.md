@@ -12,7 +12,7 @@ Recoil is a front-end react powered framework.
 > first web applications
 
 ### Version
-0.3.48
+0.3.49
 
 A lot of the components are still at the early stages of development.
 
@@ -41,6 +41,7 @@ Then include the following CSS files in your HTML:
 $ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
 $ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
 $ <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' rel='stylesheet' type='text/css'>
+$ <link href='  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css' rel='stylesheet' type='text/css' />
 ```
 
 Now, on your project you can destructure the components you want.
