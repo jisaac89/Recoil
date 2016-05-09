@@ -121,56 +121,54 @@ export default class TutorialModal extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
-          <div className="p10">
+      <div className="p10">
 
-          <h1>Modal</h1>
+      <h1>Modal</h1>
 
-          <Layer className="ptb10">
-            <h2 className="pb10">Description</h2>
-            <p>The Modal component shows a simple modal if a certain event happens.</p>
+      <div className="ptb10">
+        <h2 className="pb10">Description</h2>
+        <p>The Modal component shows a simple modal if a certain event happens.</p>
+      </div>
+
+      <div className="ptb10">
+        <h2 className="pb10">Examples</h2>
+        <div className="ptb10">
+          <Layer className="p10 light">
+            <Button onClick={this.toggleModal.bind(this)}>Show Modal</Button>
           </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
-              <Layer className="p10 light">
-                <Button onClick={this.toggleModal.bind(this)}>Show Modal</Button>
-              </Layer>
-            </Layer>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-            <Door open={this.state.showProps}>
-              <Layer className="ptb10">
-                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={ModalProperties} />
-              </Layer>
-            </Door>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Video</h2>
-            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-            <Door open={this.state.showVideo}>
-              <Layer className="ptb10">
-                VIDEO
-              </Layer>
-            </Door>
-          </Layer>
-
-          <Modal open={this.state.showModal}>
-            <Layer className="p10">
-              <p className="mb10">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <Button onClick={this.toggleModal.bind(this)}>Close Modal</Button>
-            </Layer>
-          </Modal>
-
         </div>
-      </Emerge>
+      </div>
+
+      <div className="ptb10">
+        <h2 className="pb10">Options</h2>
+        <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
+        <Door open={this.state.showProps}>
+          <Layer className="ptb10">
+            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={ModalProperties} />
+          </Layer>
+        </Door>
+      </div>
+
+      <div className="ptb10">
+        <h2 className="pb10">Video</h2>
+        <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+        <Door open={this.state.showVideo}>
+          <Layer className="ptb10">
+            VIDEO
+          </Layer>
+        </Door>
+      </div>
+
+      <Modal open={this.state.showModal}>
+        <Layer className="p10">
+          <p className="mb10">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <Button onClick={this.toggleModal.bind(this)}>Close Modal</Button>
+        </Layer>
+      </Modal>
+
+    </div>
     )
   }
 }

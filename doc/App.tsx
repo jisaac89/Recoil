@@ -99,7 +99,8 @@ export default class App extends React.Component<any, any> {
   gotoTutorial(item){
     this.setState({
       slideIndex: item.index,
-      selected: [item.index]
+      selected: [item.index],
+      toggleMobileTutorial: 0
     })
   }
 
@@ -154,16 +155,20 @@ export default class App extends React.Component<any, any> {
           newComponentArray.push(thisKey);
       }
     }
-    
-    
+
+
     // Mobile Version //////////////////////////////////////////////////////////////////////////////
-    
-    
+
+
     let MobileVersion = () => {
       return (
-         <Layer fill>
-            <Pane open={this.state.toggleMobileTutorial === 1} direction="left" className="h100 w200px">
-              <Layer fill type="light" className="p10">
+         <Layer fill scrollY className="pb400">
+              <div className="p10 border-bottom text-center">
+                <Button icon="th" block type="primary" onClick={this.toggleMobileTutorial.bind(this)}>View components</Button>
+              </div>
+              
+            <Door open={this.state.toggleMobileTutorial === 1}>
+              <div className="p10">
                 <Input className="mb10" block onChange={this.filterComponentMenu.bind(this)} type="text" placeholder="Find Components" />
                 <Grid
                   hideHeader
@@ -174,12 +179,9 @@ export default class App extends React.Component<any, any> {
                   selected={[this.state.slideIndex]}
                   selectedKey={'index'}
                 />
-              </Layer>
-            </Pane>
-            <Transform type="translate" axis={'X'} amount={'200px'} if={this.state.toggleMobileTutorial === 1}>
-              <div className="p10 border-bottom">
-                <Button pointer="left" type="primary" size="small" onClick={this.toggleMobileTutorial.bind(this)}>Back to components</Button>
               </div>
+            </Door>
+            <Door open={this.state.toggleMobileTutorial !== 1}>
               <Wizard mobile={true} slideIndex={state.slideIndex}>
                 <TutorialAlign {...state}  />
                 <TutorialButton {...state} />
@@ -201,15 +203,15 @@ export default class App extends React.Component<any, any> {
                 <TutorialTransform {...state} />
                 <TutorialWizard {...state} />
               </Wizard>
-            </Transform>
+              </Door>
           </Layer>
       )
     }
-       
+
     // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- 
+
     return (
-      <Layer scrollY fill className={state.nightMode ? 'e-NightMode' : ''}>
+      <Layer scrollY={this.state.mobile ? false : true} fill overflow className={state.nightMode ? 'e-NightMode' : ''}>
         <Door className="w100" open={state.viewDocumentation}>
           <Layer block style={{height:60}}>
             <div className="p10 w100 clearfix">
@@ -228,7 +230,7 @@ export default class App extends React.Component<any, any> {
                       )
                   } else {
                     return (
-                      <Toolbar flush right>
+                      <Toolbar spacing right>
                         <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button>
                         <Button shortcut="g" onClick={this.toggleDocumentation.bind(this)}>
                           Get Started
@@ -269,7 +271,7 @@ export default class App extends React.Component<any, any> {
                       )
                   } else {
                     return (
-                      <Toolbar className="mt50" flush>
+                      <Toolbar className="mt50" spacing>
                         <Button shortcut="n" size="large" onClick={this.toggleNightMode.bind(this)} icon="moon-o"></Button>
                         <Button shortcut="d" onClick={this.toggleDocumentation.bind(this)} size="large">Documentation</Button>
                         <Button href={'https://www.github.com/jisaac89/recoil'} icon="github" type="primary" size="large">Grab Latest Version</Button>
@@ -293,18 +295,15 @@ export default class App extends React.Component<any, any> {
                       <Pane open={self.state.toggleSideMenu} className="W400px" direction="left">
                         <div className="p10 border-right">
                           <Input className="mb10" icon="th" block focusOnMount={state.viewDocumentation} focusDelay={1000} onChange={this.filterComponentMenu.bind(this)} type="text" title="Find Components" />
-                          <Grid
-                            hideHeader
-                            dataSource={newComponentArray}
-                            columns={columns}
-                            numberPerPage={19}
-                            onRowSelect={this.gotoTutorial.bind(this)}
-                            selected={[this.state.slideIndex]}
-                            selectedKey={'index'}
-                            detailTemplate={this.detailTemplate.bind(this)}
-                            detailTemplateOpenOnSelect
-
-                          />
+                              <Grid
+                  hideHeader
+                  dataSource={newComponentArray}
+                  columns={columns}
+                  numberPerPage={19}
+                  onRowSelect={this.gotoTutorial.bind(this)}
+                  selected={[this.state.slideIndex]}
+                  selectedKey={'index'}
+                />
                         </div>
                       </Pane>
                       <Transform push="left" if={self.state.toggleSideMenu} amount={'400px'}>
@@ -366,3 +365,17 @@ export default class App extends React.Component<any, any> {
     )
   }
 }
+
+
+
+                          // <Grid
+                          //   hideHeader
+                          //   dataSource={newComponentArray}
+                          //   columns={columns}
+                          //   numberPerPage={19}
+                          //   onRowSelect={this.gotoTutorial.bind(this)}
+                          //   selected={[this.state.slideIndex]}
+                          //   selectedKey={'index'}
+                          //   detailTemplate={this.detailTemplate.bind(this)}
+                          //   detailTemplateOpenOnSelect
+                          // />

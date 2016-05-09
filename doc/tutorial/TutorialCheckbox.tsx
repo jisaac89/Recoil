@@ -78,59 +78,57 @@ export default class TutorialCheckbox extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
-        <div className="p10">
+      <div className="p10">
 
-          <h1>Checkbox</h1>
+        <h1>Checkbox</h1>
 
+        <Layer className="ptb20">
+          <h2 className="pb10">Description</h2>
+          <p>The Checkbox component is an advanced version of the standard input type='checkbox' control.</p>
+        </Layer>
+
+        <Layer className="pb20">
+          <h2 className="pb10">Examples</h2>
+          <h3>Default</h3>
           <Layer className="ptb20">
-            <h2 className="pb10">Description</h2>
-            <p>The Checkbox component is an advanced version of the standard input type='checkbox' control.</p>
-          </Layer>
-
-          <Layer className="pb20">
-            <h2 className="pb10">Examples</h2>
-            <h3>Default</h3>
-            <Layer className="ptb20">
-              <Layer className="p10 light">
-                <Checkbox />
-              </Layer>
-            </Layer>
-
-            <h3>Checked</h3>
-            <Layer className="ptb20">
-              <Layer className="p10 light">
-                <Checkbox checked />
-              </Layer>
-            </Layer>
-
-            <h3>TriState</h3>
-            <Layer className="ptb20">
-              <Layer className="p10 light">
-                <Checkbox tristate />
-              </Layer>
+            <Layer className="p10 light">
+              <Checkbox />
             </Layer>
           </Layer>
 
-          <Layer className="pb20">
-            <h2 className="pb10">Props</h2>
+          <h3>Checked</h3>
+          <Layer className="ptb20">
+            <Layer className="p10 light">
+              <Checkbox checked />
+            </Layer>
+          </Layer>
+
+          <h3>TriState</h3>
+          <Layer className="ptb20">
+            <Layer className="p10 light">
+              <Checkbox tristate />
+            </Layer>
+          </Layer>
+        </Layer>
+
+        <Layer className="pb20">
+          <h2 className="pb10">Props</h2>
+          <Layer className="ptb10">
+            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={ChecboxProperties} />
+          </Layer>
+        </Layer>
+
+        <Layer className="pb20">
+          <h2 className="pb10">Video</h2>
+          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+          <Door open={this.state.showVideo}>
             <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={ChecboxProperties} />
+              VIDEO
             </Layer>
-          </Layer>
+          </Door>
+        </Layer>
 
-          <Layer className="pb20">
-            <h2 className="pb10">Video</h2>
-            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-            <Door open={this.state.showVideo}>
-              <Layer className="ptb10">
-                VIDEO
-              </Layer>
-            </Door>
-          </Layer>
-
-        </div>
-      </Emerge>
+      </div>
     )
   }
 }

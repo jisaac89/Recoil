@@ -92,47 +92,45 @@ export default class TutorialSelectable extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
-        <div className="p10">
+      <div className="p10">
 
-          <h1>Selectable</h1>
+        <h1>Selectable</h1>
 
-          <Layer className="ptb10">
-            <h2 className="pb10">Description</h2>
-            <p>The Selectable component is a simple way to attach a checked state to any element.</p>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
-              <Layer className="p10 light">
-                Selectable
-              </Layer>
-            </Layer>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
-            <Door open={this.state.showProps}>
-              <Layer className="ptb10">
-                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={SelectableProperties} />
-              </Layer>
-            </Door>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Video</h2>
-            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-            <Door open={this.state.showVideo}>
-              <Layer className="ptb10">
-                VIDEO
-              </Layer>
-            </Door>
-          </Layer>
-
+        <div className="ptb10">
+          <h2 className="pb10">Description</h2>
+          <p>The Selectable component is a simple way to attach a checked state to any element.</p>
         </div>
-      </Emerge>
+
+        <div className="ptb10">
+          <h2 className="pb10">Examples</h2>
+          <div className="ptb10">
+            <Layer className="p10 light">
+              Selectable
+            </Layer>
+          </div>
+        </div>
+
+        <div className="ptb10">
+          <h2 className="pb10">Options</h2>
+          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
+          <Door open={this.state.showProps}>
+            <div className="ptb10">
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={SelectableProperties} />
+            </div>
+          </Door>
+        </div>
+
+        <div className="ptb10">
+          <h2 className="pb10">Video</h2>
+          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+          <Door open={this.state.showVideo}>
+            <div className="ptb10">
+              VIDEO
+            </div>
+          </Door>
+        </div>
+
+      </div>
     )
   }
 }

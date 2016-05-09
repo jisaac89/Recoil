@@ -72,26 +72,25 @@ export default class TutorialLoading extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
       <div className="p10">
 
           <h1>Loading</h1>
 
-          <Layer className="ptb10">
+          <div className="ptb10">
             <h2 className="pb10">Description</h2>
             <p>The Loading component shows a simple loader if a certain event happens.</p>
-          </Layer>
+          </div>
 
-          <Layer className="ptb10">
+          <div className="ptb10">
             <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
+            <div className="ptb10">
               <Layer className="p10 light">
                 <Loading if={true} />
               </Layer>
-            </Layer>
-          </Layer>
+            </div>
+          </div>
 
-          <Layer className="ptb10">
+          <div className="ptb10">
             <h2 className="pb10">Options</h2>
             <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Options</Button>
             <Door open={this.state.showProps}>
@@ -99,9 +98,9 @@ export default class TutorialLoading extends React.Component<any,any>{
                 <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={LoadingProperties} />
               </Layer>
             </Door>
-          </Layer>
+          </div>
 
-          <Layer className="ptb10">
+          <div className="ptb10">
             <h2 className="pb10">Video</h2>
             <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
             <Door open={this.state.showVideo}>
@@ -109,10 +108,9 @@ export default class TutorialLoading extends React.Component<any,any>{
                 VIDEO
               </Layer>
             </Door>
-          </Layer>
+          </div>
 
         </div>
-      </Emerge>
     )
   }
 }

@@ -102,19 +102,18 @@ export default class TutorialEmerge extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
       <div className="p10">
 
         <h1>Emerge</h1>
 
-        <Layer className="ptb20">
+        <div className="ptb20">
           <h2 className="pb10">Description</h2>
           <p>The Emerge component staggers children into view if a certain event happens.</p>
-        </Layer>
+        </div>
 
-        <Layer className="pb20">
+        <div className="pb20">
           <h2 className="pb10">Examples</h2>
-          <Layer className="ptb10">
+          <div className="ptb10">
             <Layer className="p10 light">
               <Emerge delay={300} if={this.props.slideIndex === 6}>
                 <Button className="p10 mr10">
@@ -131,28 +130,27 @@ export default class TutorialEmerge extends React.Component<any,any>{
                 </Button>
               </Emerge>
             </Layer>
-          </Layer>
-        </Layer>
+          </div>
+        </div>
 
-        <Layer className="pb20">
+        <div className="pb20">
           <h2 className="pb10">Props</h2>
-          <Layer className="ptb10">
+          <div className="ptb10">
             <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={EmergeProperties} />
-          </Layer>
-        </Layer>
+          </div>
+        </div>
 
-        <Layer className="pb20">
+        <div className="pb20">
           <h2 className="pb10">Video</h2>
           <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
           <Door open={this.state.showVideo}>
-            <Layer className="ptb10">
+            <div className="ptb10">
               VIDEO
-            </Layer>
+            </div>
           </Door>
-        </Layer>
+        </div>
 
       </div>
-      </Emerge>
     )
   }
 }

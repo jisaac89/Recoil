@@ -97,7 +97,6 @@ export default class TutorialDoor extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
       <div className="p10">
 
         <h1>Door</h1>
@@ -140,7 +139,6 @@ export default class TutorialDoor extends React.Component<any,any>{
         </Layer>
 
       </div>
-      </Emerge>
     )
   }
 }

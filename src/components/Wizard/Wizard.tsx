@@ -9,6 +9,7 @@ interface IWizardProps {
   children ? : any;
   style ? : any;
   mobile? : boolean;
+  animate? : boolean;
 }
 
 const WizardSlide : any = (props : any) => {
@@ -43,12 +44,13 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
         {'e-backward' : (props.slideIndex > index)},
         {'e-forward' : (props.slideIndex < index)},
         {'e-vertical' : (props.vertical)},
+        {'e-dont-animate' : (props.animate === false)},
         props.className
       );
 
       if(props.mobile) {
           if (props.slideIndex === index ||
-              index === props.slideIndex + 1 
+              index === props.slideIndex + 1
             ) {
               return(
                 <WizardSlide className={wizardSlideClass} key={index}>

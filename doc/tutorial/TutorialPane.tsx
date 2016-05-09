@@ -103,55 +103,53 @@ export default class TutorialPane extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
-        <div className="p10">
+      <div className="p10">
 
-          <h1>Pane</h1>
+        <h1>Pane</h1>
 
-          <Layer className="ptb10">
-            <h2 className="pb10">Description</h2>
-            <p>The Pane slides in an element if a certain event happens, user must state the direction as well.</p>
-          </Layer>
+        <Layer className="ptb10">
+          <h2 className="pb10">Description</h2>
+          <p>The Pane slides in an element if a certain event happens, user must state the direction as well.</p>
+        </Layer>
 
-          <Layer className="ptb10">
-            <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
-              <Layer overflow className="p10 dark text-center w100 h200px">
-                <Button onClick={this.togglePane.bind(this)}>Toggle Pane</Button>
-                <Pane direction='bottom' open={this.state.paneOpen}>
-                  <Layer type="light text-center p10">
-                    <Toolbar spacing>
-                      <Emerge if={this.state.paneOpen}>
-                          <Button onClick={this.togglePane.bind(this)} icon="user"></Button>
-                          <Button onClick={this.togglePane.bind(this)} icon="search"></Button>
-                          <Button onClick={this.togglePane.bind(this)} icon="plus"></Button>
-                      </Emerge>
-                    </Toolbar>
-                  </Layer>
-                </Pane>
-              </Layer>
+        <div className="ptb10">
+          <h2 className="pb10">Examples</h2>
+          <div className="ptb10">
+            <Layer overflow className="p10 dark text-center w100 h200px">
+              <Button onClick={this.togglePane.bind(this)}>Toggle Pane</Button>
+              <Pane direction='bottom' open={this.state.paneOpen}>
+                <Layer type="light text-center p10">
+                  <Toolbar spacing>
+                    <Emerge if={this.state.paneOpen}>
+                        <Button onClick={this.togglePane.bind(this)} icon="user"></Button>
+                        <Button onClick={this.togglePane.bind(this)} icon="search"></Button>
+                        <Button onClick={this.togglePane.bind(this)} icon="plus"></Button>
+                    </Emerge>
+                  </Toolbar>
+                </Layer>
+              </Pane>
             </Layer>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Options</h2>
-            <Layer className="ptb10">
-              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={PaneProperties} />
-            </Layer>
-          </Layer>
-
-          <Layer className="ptb10">
-            <h2 className="pb10">Video</h2>
-            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-            <Door open={this.state.showVideo}>
-              <Layer className="ptb10">
-                VIDEO
-              </Layer>
-            </Door>
-          </Layer>
-
+          </div>
         </div>
-      </Emerge>
+
+        <div className="ptb10">
+          <h2 className="pb10">Options</h2>
+          <Layer className="ptb10">
+            <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={PaneProperties} />
+          </Layer>
+        </div>
+
+        <div className="ptb10">
+          <h2 className="pb10">Video</h2>
+          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+          <Door open={this.state.showVideo}>
+            <Layer className="ptb10">
+              VIDEO
+            </Layer>
+          </Door>
+        </div>
+
+      </div>
     )
   }
 }

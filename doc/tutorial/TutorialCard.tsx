@@ -87,7 +87,7 @@ export default class TutorialCard extends React.Component<any,any>{
     super();
 
     this.state = {
-      showProps : true,
+      showProps : false,
       showVideo: false
     }
   }
@@ -120,79 +120,81 @@ export default class TutorialCard extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
-        <div className="p10">
+      <div className="p10">
 
-          <h1>Card</h1>
+        <h1>Card</h1>
 
+        <div className="ptb20">
+          <h2 className="pb10">Description</h2>
+          <p>The material component is a google material enspired div, it has advanced feautures.</p>
+        </div>
+
+        <div className="pb20">
+          <h2 className="pb10">Examples</h2>
+          <h3>Default</h3>
           <div className="ptb20">
-            <h2 className="pb10">Description</h2>
-            <p>The material component is a google material enspired div, it has advanced feautures.</p>
+            <Layer className="p10 dark h100px">
+              <Card>
+                This is an exampe of a Card.
+              </Card>
+            </Layer>
           </div>
 
-          <div className="pb20">
-            <h2 className="pb10">Examples</h2>
-            <h3>Default</h3>
-            <div className="ptb20">
-              <Layer className="p10 dark h100px">
-                <Card>
-                  This is an exampe of a Card.
-                </Card>
-              </Layer>
-            </div>
-
-            <h3>Fill</h3>
-            <p>Fill gives the element a <strong>width</strong> and <strong>height</strong> of <strong>100%</strong> relative to its parent.</p>
-            <div className="ptb20">
-              <Layer className="p10 dark h100px">
-                <Card fill>
-                  This is an exampe of a Card with the prop <strong>fill</strong>.
-                </Card>
-              </Layer>
-            </div>
-
-            <h3>Block</h3>
-            <p>Block gives the element a <strong>width</strong> of <strong>100%</strong> relative to its parent.</p>
-            <div className="ptb20">
-              <Layer className="p10 dark h100px">
-                <Card block>
-                  This is an exampe of a Card with the prop <strong>block</strong>.
-                </Card>
-              </Layer>
-            </div>
-
-            <h3>Resize</h3>
-            <p>Resize allows the user to resize the element.</p>
-            <div className="ptb20">
-              <Layer className="p10 dark">
-                <Card resize>
-                  This is an exampe of a Card with the prop <strong>resize</strong>.
-                </Card>
-              </Layer>
-            </div>
-
-
+          <h3>Fill</h3>
+          <p>Fill gives the element a <strong>width</strong> and <strong>height</strong> of <strong>100%</strong> relative to its parent.</p>
+          <div className="ptb20">
+            <Layer className="p10 dark h100px">
+              <Card fill>
+                This is an exampe of a Card with the prop <strong>fill</strong>.
+              </Card>
+            </Layer>
           </div>
 
-          <div className="pb20">
-            <h2 className="pb10">Props</h2>
+          <h3>Block</h3>
+          <p>Block gives the element a <strong>width</strong> of <strong>100%</strong> relative to its parent.</p>
+          <div className="ptb20">
+            <Layer className="p10 dark h100px">
+              <Card block>
+                This is an exampe of a Card with the prop <strong>block</strong>.
+              </Card>
+            </Layer>
+          </div>
+
+          <h3>Resize</h3>
+          <p>Resize allows the user to resize the element.</p>
+          <div className="ptb20">
+            <Layer className="p10 dark">
+              <Card resize>
+                This is an exampe of a Card with the prop <strong>resize</strong>.
+              </Card>
+            </Layer>
+          </div>
+
+
+        </div>
+
+        <div className="pb20">
+          <h2 className="pb10">Props</h2>
+          <Button checked={this.state.showProps} onClick={this.toggleShowProps.bind(this)}>Toggle Props</Button>
+          <Door open={this.state.showProps}>
             <div className="ptb10">
               <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties} />
             </div>
-          </div>
-
-          <div className="pb20">
-            <h2 className="pb10">Video</h2>
-            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-            <Door open={this.state.showVideo}>
-              <div className="ptb10">
-                VIDEO
-              </div>
-            </Door>
-          </div>
+          </Door>
 
         </div>
-      </Emerge>
+
+        <div className="pb20">
+          <h2 className="pb10">Video</h2>
+          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+          <Door open={this.state.showVideo}>
+            <div className="ptb10">
+              VIDEO
+            </div>
+          </Door>
+        </div>
+
+      </div>
     )
   }
 }

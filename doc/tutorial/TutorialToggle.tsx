@@ -121,76 +121,74 @@ export default class TutorialCard extends React.Component<any,any>{
     ]
 
     return (
-      <Emerge>
-        <div className="p10">
+      <div className="p10">
 
-          <h1>Toggle</h1>
+        <h1>Toggle</h1>
 
-          <Layer className="ptb20">
-            <h2 className="pb10">Description</h2>
-            <p>The material component is a google material enspired div, it has advanced feautures.</p>
-          </Layer>
+        <Layer className="ptb20">
+          <h2 className="pb10">Description</h2>
+          <p>The material component is a google material enspired div, it has advanced feautures.</p>
+        </Layer>
 
-          <Layer className="pb20">
-            <h2 className="pb10">Examples</h2>
-            <h3>Default</h3>
-            <Layer className="ptb20">
-              <Toggle />
-            </Layer>
-            <Layer className="pb20">
-              <p>With props checked passed as <strong>true</strong>.</p>
-              <Toggle className="mt10" checked={true} />
-            </Layer>
+        <div className="pb20">
+          <h2 className="pb10">Examples</h2>
+          <h3>Default</h3>
+          <div className="ptb20">
+            <Toggle />
+          </div>
+          <div className="pb20">
+            <p>With props checked passed as <strong>true</strong>.</p>
+            <Toggle className="mt10" checked={true} />
+          </div>
 
-            <h3>Toggle Numbers</h3>
-            <Layer className="ptb20">
-              <Toolbar spacing>
-                <Toggle columns={[15, 20, 25]} />
-              </Toolbar>
-            </Layer>
+          <h3>Toggle Numbers</h3>
+          <div className="ptb20">
+            <Toolbar spacing>
+              <Toggle columns={[15, 20, 25]} />
+            </Toolbar>
+          </div>
 
-            <h3>Toggle Strings</h3>
-            <Layer className="ptb20">
-              <Toolbar spacing>
-                <Toggle columns={["S", "M", "L"]} />
-              </Toolbar>
-            </Layer>
+          <h3>Toggle Strings</h3>
+          <div className="ptb20">
+            <Toolbar spacing>
+              <Toggle columns={["S", "M", "L"]} />
+            </Toolbar>
+          </div>
 
-            <h3>Toggle Colors</h3>
-            <p>To toggle a string of CSS based background colors or images just pass in the <strong>colors</strong> prop.</p>
-            <Layer className="ptb20">
-              <Toolbar spacing>
-                <Toggle type="colors" columns={['#FF5757', '#00A0DC', '#8D6CAB']} />
-              </Toolbar>
-            </Layer>
+          <h3>Toggle Colors</h3>
+          <p>To toggle a string of CSS based background colors or images just pass in the <strong>colors</strong> prop.</p>
+          <div className="ptb20">
+            <Toolbar spacing>
+              <Toggle type="colors" columns={['#FF5757', '#00A0DC', '#8D6CAB']} />
+            </Toolbar>
+          </div>
 
-            <h3>Ghost Toggle</h3>
-            <Layer className="ptb20">
-              <Toolbar spacing>
-                <Toggle ghost columns={["Monday", "Tuesday", "Wednesday"]} />
-              </Toolbar>
-            </Layer>
-          </Layer>
-
-          <Layer className="pb20">
-            <h2 className="pb10">Props</h2>
-              <Layer className="ptb10">
-                <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties} />
-              </Layer>
-          </Layer>
-
-          <Layer className="pb20">
-            <h2 className="pb10">Video</h2>
-            <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-            <Door open={this.state.showVideo}>
-              <Layer className="ptb10">
-                VIDEO
-              </Layer>
-            </Door>
-          </Layer>
-
+          <h3>Ghost Toggle</h3>
+          <div className="ptb20">
+            <Toolbar spacing>
+              <Toggle ghost columns={["Monday", "Tuesday", "Wednesday"]} />
+            </Toolbar>
+          </div>
         </div>
-      </Emerge>
+
+        <div className="pb20">
+          <h2 className="pb10">Props</h2>
+            <div className="ptb10">
+              <Grid open={this.state.showProps} numberPerPage={20} sortable columns={columns} dataSource={CardProperties} />
+            </div>
+        </div>
+
+        <div className="pb20">
+          <h2 className="pb10">Video</h2>
+          <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
+          <Door open={this.state.showVideo}>
+            <div className="ptb10">
+              VIDEO
+            </div>
+          </Door>
+        </div>
+
+      </div>
     )
   }
 }
