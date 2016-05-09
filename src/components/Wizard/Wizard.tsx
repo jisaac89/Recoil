@@ -15,7 +15,11 @@ interface IWizardProps {
 const WizardSlide : any = (props : any) => {
   return (
     <div className={props.className}>
-      {props.children}
+      {(()=>{
+        if (props.visible) {
+          return props.children;
+        }
+      })()}
     </div>
   );
 }
@@ -37,6 +41,10 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
     );
 
     let createSlidesPartial = (item, index) => {
+      
+      let selected = props.slideIndex === index;
+      let forward = index === props.slideIndex + 1;
+      let backward = index === props.slideIndex - 1;
 
       let wizardSlideClass = classNames(
         'r-WizardSlide',
@@ -48,32 +56,11 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
         props.className
       );
 
-      if(props.mobile) {
-          if (props.slideIndex === index ||
-              index === props.slideIndex + 1
-            ) {
-              return(
-                <WizardSlide className={wizardSlideClass} key={index}>
-                  {item}
-                </WizardSlide>
-              )
-        } else {
-          return null;
-        }
-      } else {
-              if (props.slideIndex === index ||
-            index === props.slideIndex + 1 ||
-            index === props.slideIndex - 1
-          ) {
-        return(
-          <WizardSlide className={wizardSlideClass} key={index}>
-            {item}
-          </WizardSlide>
-        )
-      } else {
-        return null;
-      }
-      }
+      return(
+        <WizardSlide visible={selected || forward || backward} className={wizardSlideClass} key={index}>
+          {item}
+        </WizardSlide>
+      )
     };
 
     if (props.children) {
