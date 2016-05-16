@@ -1,5 +1,3 @@
-/// <reference path="../typings/main.d.ts" />
-
 import * as React from 'react';
 
 import Button from '../src/components/Button/Button';
@@ -166,7 +164,6 @@ export default class App extends React.Component<any, any> {
               <div className="p10 border-bottom text-center">
                 <Button icon="th" block type="primary" onClick={this.toggleMobileTutorial.bind(this)}>View components</Button>
               </div>
-              
             <Door open={this.state.toggleMobileTutorial === 1}>
               <div className="p10">
                 <Input className="mb10" block onChange={this.filterComponentMenu.bind(this)} type="text" placeholder="Find Components" />

@@ -16,30 +16,5 @@
     "atom": {
         "rewriteTsconfig": true
     },
-    "compileOnSave": false,
-    "files": [
-        "App.tsx",
-        "index.tsx",
-        "SampleData.ts",
-        "tutorial/SampleData.ts",
-        "tutorial/TutorialAlign.tsx",
-        "tutorial/TutorialButton.tsx",
-        "tutorial/TutorialCard.tsx",
-        "tutorial/TutorialCheckbox.tsx",
-        "tutorial/TutorialDoor.tsx",
-        "tutorial/TutorialDropdown.tsx",
-        "tutorial/TutorialEmerge.tsx",
-        "tutorial/TutorialGrid.tsx",
-        "tutorial/TutorialInput.tsx",
-        "tutorial/TutorialLayer.tsx",
-        "tutorial/TutorialLoading.tsx",
-        "tutorial/TutorialModal.tsx",
-        "tutorial/TutorialPane.tsx",
-        "tutorial/TutorialSelectable.tsx",
-        "tutorial/TutorialShrink.tsx",
-        "tutorial/TutorialToggle.tsx",
-        "tutorial/TutorialToolbar.tsx",
-        "tutorial/TutorialTransform.tsx",
-        "tutorial/TutorialWizard.tsx"
-    ]
+    "compileOnSave": false
 }

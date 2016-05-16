@@ -1,3 +1,6 @@
+/*jshint quotmark:false */
+/*global React, Router, classNames*/
+
 // for typescript we need to decalre module first.
 
 declare var module : any

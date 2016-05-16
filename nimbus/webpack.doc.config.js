@@ -14,7 +14,12 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': '"production"'
+      }
+    })
   ],
   module: {
     loaders:  [
@@ -33,3 +38,4 @@ module.exports = {
     resolve: {
       extensions: ["", ".webpack.js", ".web.js", ".js", ".ts", ".tsx"]
     }
+};

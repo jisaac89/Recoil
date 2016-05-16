@@ -14,7 +14,7 @@
   vertical-align: middle;
   margin: 0;
   line-height: 18px;
-  font-size:18px;
+  font-size:14px;
   position:relative;
   .transition(all 50ms ease-in);
 }
@@ -226,4 +226,12 @@
 a, .r-Button{
 	-ms-touch-action: manipulation;	/* IE10  */
 	touch-action: manipulation;		/* IE11+ */
+}
+
+.r-Button > a{
+  color:inherit;
+}
+
+.r-Button.icon > .fa{
+  font-size: 18px !important;
 }
