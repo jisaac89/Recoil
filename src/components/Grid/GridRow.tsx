@@ -87,7 +87,6 @@ export default class GridRow extends React.Component<IGridRowProps,IGridRowState
           className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}
         >
           {columnArray}
-
           <td colSpan={this.props.columns.length + 1}>
             <Selectable checked={props.selectedItem} />
           </td>

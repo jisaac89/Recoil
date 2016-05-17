@@ -14,11 +14,10 @@ import {appState} from '../state/AppState';
 export default class Login extends React.Component<any, any> {
     
     render() {
-        const {key} = this.props;
-        const {loginView} = appState;
+        const {loggedIn} = appState;
         
         return (
-            <Door open={loginView} className="text-center">
+            <Door open={!loggedIn} className="text-center">
                 <Toolbar block vertical spacing className="p20 w400px">
                     <Emerge>
                         <div>
@@ -36,7 +35,7 @@ export default class Login extends React.Component<any, any> {
      }
      
      signIn = () => {
-        appState.toggleSignIn();
+        appState.toggleLoggedIn();
         browserHistory.push('/dashboard');
      }
     

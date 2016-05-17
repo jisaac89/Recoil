@@ -30,13 +30,6 @@ export default class GridColumn extends React.Component<IGridColumnProps,{}>{
             </Button>
           )
         }
-        // else if (columns[x].name === props.columnTemplate[x].name) {
-        //   return (
-        //     <Layer>
-        //       {props.columnTemplate[x].template(dataSource[i])}
-        //     </Layer>
-        //   )
-        // }
         else if ((typeof dataSource[i][columns[x].name] === 'object' && columns[x].template) || (typeof dataSource[i][columns[x].name] === 'string' && columns[x].template)) {
           return columns[x].template(dataSource[i]);
         }
@@ -55,7 +48,7 @@ export default class GridColumn extends React.Component<IGridColumnProps,{}>{
     }
     else {
       return (
-        <td className="r-Grid__Row__Column" style={{width: columns[x].width}} key={i+x}>
+        <td className="r-Grid__Row__Column" style={{width: columns[x].width +'px'}} key={i+x}>
           {columnPartial()}
         </td>
       )

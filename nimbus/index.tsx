@@ -11,12 +11,17 @@ import DevTools from 'mobx-react-devtools';
 import App from './views/App';
 import Dashboard from './views/Dashboard';
 import Inventory from './views/Inventory';
+import Suppliers from './views/Suppliers';
+import AddSupplier from './views/AddSupplier';
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path='/' component={App}>
         <Route path="dashboard" component={Dashboard}>
             <Route path="inventory" component={Inventory} />
+            <Route path="suppliers" component={Suppliers}>
+              <Route path="add" component={AddSupplier} />
+            </Route>
         </Route>
     </Route>
   </Router>,

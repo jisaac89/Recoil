@@ -1,33 +1,34 @@
 import {observable, computed} from 'mobx';
 import {observer} from 'mobx-react';
+import {browserHistory} from 'react-router';
 
 export class AppState {
     @observable nightmode = false;
-    @observable loginView = true;
-    @observable dashboardView = true;
-    @observable inventoryView = false;
-    @observable suppliersView = false;
-    @observable slideIndex = 0;
-    
-    constructor() {
-        //
-    }
+    @observable loggedIn = false;
+    @observable viewName = '';
+    @observable userName = '';
     
     toggleNightMode() {
       this.nightmode = this.nightmode ? false : true;
     }
     
-    toggleSignIn() {
-      this.loginView = this.loginView ? false : true;
+    toggleLoggedIn() {
+      this.loggedIn = this.loggedIn ? false : true;
+      this.userName = 'Joseph Isaac'
     }
     
     signOut() {
-      this.loginView = true;
+      this.loggedIn = false;
+    }
+  
+    changeViewName(name) {
+      this.viewName = name;
     }
     
-    gotoSlideIndex(index) {
-      this.slideIndex = index;
-    }
+   gotoPage(page) {
+       browserHistory.push(page);
+   }
+ 
 }
 
 export const appState =  new AppState();
