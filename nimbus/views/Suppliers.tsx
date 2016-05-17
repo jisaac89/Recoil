@@ -56,25 +56,29 @@ export default class Inventory extends React.Component<any, any> {
         ]
 
         return (
-            <Wizard slideIndex={supplierState.slideIndex}>
-                <div className="p10 ps20" >
-                    <h1>Suppliers</h1>
-                    <Toolbar block className="mtb10">
-                        <Input focusOnMount block type="text" title="Find Item by keyword or tag name." />
-                    </Toolbar>
-                    <Toolbar spacing block className="mb10">
-                        <Button icon="plus" onClick={this.toggleSlideIndex}>Add Supplier</Button>
-                    </Toolbar>
-                    <Grid 
-                        hideHeader 
-                        dataSource={supplierState.suppliers.reverse()} 
-                        columns={columns}
-                    />
-                </div>
-                <div className="p10 ps20" >
-                    <AddSupplier />
-                </div>
-            </Wizard> 
+           <Emerge if={key  === '/dashboard/suppliers'}>
+            <Layer>
+                <Wizard slideIndex={supplierState.slideIndex}>
+                    <div className="p10 ps20">
+                        <h1>Suppliers</h1>
+                        <Toolbar block className="mtb10">
+                            <Input focusOnMount block type="text" title="Find Item by keyword or tag name." />
+                        </Toolbar>
+                        <Toolbar spacing block className="mb10">
+                            <Button icon="plus" onClick={this.toggleSlideIndex}>Add Supplier</Button>
+                        </Toolbar>
+                        <Grid 
+                            hideHeader 
+                            dataSource={supplierState.suppliers.reverse()} 
+                            columns={columns}
+                        />
+                    </div>
+                    <div>
+                        <AddSupplier />
+                    </div>
+                </Wizard>   
+            </Layer>
+            </Emerge>
             )
      }
      

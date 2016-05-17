@@ -11,6 +11,8 @@ import Layer from '../../src/components/Layer/Layer';
 import Door from '../../src/components/Door/Door';
 import Emerge from '../../src/components/Emerge/Emerge';
 
+import DynamicNavigation from './DynamicNavigation';
+
 @observer
 export default class Dashboard extends React.Component<any, any> {
     render() {
@@ -18,17 +20,11 @@ export default class Dashboard extends React.Component<any, any> {
         const {loggedIn} = appState;
         const { pathname } = this.props.location;
         return (
-            <Door open={loggedIn}>
-                <Toolbar spacing block className="p10 border-bottom">
-                    <Button ghost checked={pathname === "/dashboard/inventory"} onClick={this.gotoPage.bind(this,"/dashboard/inventory")}>Inventory</Button> 
-                    <Button ghost checked={pathname === "/dashboard/suppliers"} onClick={this.gotoPage.bind(this,"/dashboard/suppliers")}>Suppliers</Button>
-                </Toolbar>
-                {React.cloneElement(this.props.children || <div />, { key: key })}
+            <Door open={loggedIn} className="pt50">
+                <hr />
+                <DynamicNavigation pathname={pathname} />
+                {React.cloneElement(this.props.children || <div />)}
             </Door>
         );
      }
-     
-   gotoPage(page) {
-       appState.gotoPage(page);
-   }
 };

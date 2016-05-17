@@ -14,7 +14,7 @@ export default class Header extends React.Component<any,any>{
     
     render() {
         return(
-            <Pane direction="top" open={appState.loggedIn}>
+            <Pane className="z5" direction="top" open={appState.loggedIn}>
                 <Layer type="light">
                     <Toolbar block className="p10">
                         <Button ghost>Welcome <strong>{appState.userName}</strong></Button>

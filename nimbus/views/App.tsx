@@ -32,11 +32,10 @@ export default class App extends React.Component<any, any> {
         const { pathname } = this.props.location;
         const key = pathname;
         return (
-            <Layer scrollY fill overflow className={appState.nightmode ? 'e-NightMode pt50' : 'pt50'}>
+            <Layer scrollY fill overflow className={appState.nightmode ? 'e-NightMode' : ''}>
                 <Login />
                 <Header />
                 {React.cloneElement(this.props.children || <div />, { key: key})}
-                
             </Layer>
         );
      }

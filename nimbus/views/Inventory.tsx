@@ -42,28 +42,25 @@ export default class Inventory extends React.Component<any, any> {
             ]
             
             return (
-                <Layer className="p10 ps20">
-                    <Wizard>
-                        <div>
-                            <h1>Inventory List</h1>
-                            <Toolbar block className="mtb10">
-                                <Input focusOnMount block type="text" title="Find Item by keyword or tag name." />
-                            </Toolbar>
-                            <Toolbar spacing block className="mb10">
-                                <Button icon="plus" onClick={this.gotoSuppliers}>Add Inventory</Button>
-                            </Toolbar>
-                            
-                            <Emerge if={key  === '/dashboard/inventory'}>
-                                <div>
-                                    <Grid hideHeader numberPerPage={inventoryState.inventoryLength} dataSource={inventoryState.inventory.reverse()} columns={columns} />
-                                </div>
-                            </Emerge>
-                        </div>
-                        <div>
-                            {React.cloneElement(this.props.children || <div/>, { key: pathname })}
-                        </div>
-                    </Wizard>
-                </Layer>
+                <Emerge if={key  === '/dashboard/inventory'}>
+                    <Layer className="p10 ps20">
+                        <Wizard>
+                            <div>
+                                <h1>Inventory List</h1>
+                                <Toolbar block className="mtb10">
+                                    <Input focusOnMount block type="text" title="Find Item by keyword or tag name." />
+                                </Toolbar>
+                                <Toolbar spacing block className="mb10">
+                                    <Button icon="plus" onClick={this.gotoSuppliers}>Add Inventory</Button>
+                                </Toolbar>
+                                <Grid hideHeader numberPerPage={inventoryState.inventoryLength} dataSource={inventoryState.inventory.reverse()} columns={columns} />
+                            </div>
+                            <div>
+                                {React.cloneElement(this.props.children || <div/>, { key: pathname })}
+                            </div>
+                        </Wizard>
+                    </Layer>
+                </Emerge>
             )
      }
      

@@ -40,7 +40,7 @@ export default class AddSupplier extends React.Component<any, any> {
     render() {
         const {loggedIn} = appState;
         return (
-            <div>
+            <div className="p10 ps20">
                 <h1 className="mb10">Add Supplier</h1>
                 <h3 className="mtb20"><strong>Supplier Defaults</strong></h3>
                 <Toolbar vertical spacing block>
@@ -80,8 +80,9 @@ export default class AddSupplier extends React.Component<any, any> {
                         <Input type="text" placeholder="e-mail" />
                         <Button type="success" icon="plus" />
                     </Toolbar>
-                    <Toolbar block flush className="border-top pt10">
-                        <Button right type="primary" onClick={this.addSupplierAndCloseModal}>Add Item</Button>
+                    <Toolbar block spacing className="border-top pt10 text-right">
+                        <Button  onClick={this.cancel}>Cancel</Button>
+                        <Button  type="primary" onClick={this.addSupplier}>Add Item</Button>
                     </Toolbar>
                     </div>
                 </div>
@@ -89,7 +90,11 @@ export default class AddSupplier extends React.Component<any, any> {
         );
      }
      
-     addSupplierAndCloseModal = () => {
+     cancel = () => {
+        supplierState.toggleSlideIndex();
+     }
+     
+     addSupplier = () => {
         const self = this;
         var supplier = {
             "SupplierName": self.state.SupplierName,
@@ -97,6 +102,5 @@ export default class AddSupplier extends React.Component<any, any> {
         };
         supplierState.addSupplier(supplier);
         supplierState.toggleSlideIndex();
-        appState.gotoPage('/dashboard/suppliers');
      }
 };

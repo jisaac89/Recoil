@@ -19,9 +19,7 @@ ReactDOM.render(
     <Route path='/' component={App}>
         <Route path="dashboard" component={Dashboard}>
             <Route path="inventory" component={Inventory} />
-            <Route path="suppliers" component={Suppliers}>
-              <Route path="add" component={AddSupplier} />
-            </Route>
+            <Route path="suppliers" component={Suppliers} />
         </Route>
     </Route>
   </Router>,
