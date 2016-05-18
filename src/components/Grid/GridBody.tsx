@@ -155,7 +155,7 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
         />],
         [<tr key={key}>
           <td colSpan={this.props.columns.length + 1}>
-            {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.indexOf(key) !== 1 : false} i={key}  />  : null}
+            {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.props.detailTemplateOpenOnSelect ? selectedItem : this.state.expandedRows.length > 0 ? this.state.expandedRows.indexOf(key) !== -1 : false} i={key}  />  : null}
             <Selectable checked={selectedItem} />
           </td>
         </tr>]];

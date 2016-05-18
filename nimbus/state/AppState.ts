@@ -1,5 +1,4 @@
 import {observable, computed} from 'mobx';
-import {observer} from 'mobx-react';
 import {browserHistory} from 'react-router';
 
 export class AppState {

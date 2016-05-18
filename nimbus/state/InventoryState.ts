@@ -1,5 +1,4 @@
 import {observable, computed} from 'mobx';
-import {observer} from 'mobx-react';
 import InventoryData from '../data/InventoryData';
 
 export class InventoryState {

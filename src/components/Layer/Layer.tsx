@@ -15,12 +15,14 @@ interface ILayerProps {
   className? : any;
   style? : any;
   onClick?: () => void;
-  block? : any;
+  block? : boolean;
   key? : any;
-  align? : any;
-  flex? : any;
-  flow? : any;
-  justify? : any;
+  align? : string;
+  flex? : boolean;
+  flow? : string;
+  justify? : string;
+  parent? : boolean;
+  child? : boolean;
 }
 
 export default class Layer extends React.Component<ILayerProps, {}> {
@@ -56,7 +58,7 @@ export default class Layer extends React.Component<ILayerProps, {}> {
         'flexFlow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
         'justifyContent' : props.justify ? props.justify : 'flex-start',
         'alignItems' : props.align ? props.align : 'stretch',
-        'WebkitFlex' : props.flex !== '' ? props.flex : null,
+        'WebkitFlex' : props.flex ? props.flex : null,
       }
     }
 
@@ -71,6 +73,8 @@ export default class Layer extends React.Component<ILayerProps, {}> {
       {'e-scroll-x': (props.scrollX)},
       {'fill': (props.fill)},
       {'flex': (props.flex)},
+      {'parent': (props.parent)},
+      {'child': (props.child)},
       borderClass,
       props.type,
       props.className

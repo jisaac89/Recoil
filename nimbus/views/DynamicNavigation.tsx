@@ -19,12 +19,15 @@ export default class DynamicNavigation extends React.Component<any,any>{
             <div>
                 <Wizard vertical slideIndex={supplierState.slideIndex}>
                     <Toolbar spacing block className="p10 border-bottom">
+                        <Button size="small" checked={pathname === "/dashboard/inventory"} onClick={this.gotoPage.bind(this,"/dashboard")}>Dashboard</Button> 
                         <Button size="small" checked={pathname === "/dashboard/inventory"} onClick={this.gotoPage.bind(this,"/dashboard/inventory")}>Inventory</Button> 
                         <Button size="small" checked={pathname === "/dashboard/suppliers"} onClick={this.gotoPage.bind(this,"/dashboard/suppliers")}>Suppliers</Button>
                     </Toolbar>
                     <Toolbar flush block className="p10 border-bottom">
-                        <Button pointer="right" size="small" onClick={this.gotoIndex.bind(this)}>Suppliers</Button>
-                        <Button size="small" checked={supplierState.slideIndex === 1}>Add</Button>
+                        <Emerge>
+                            <Button pointer="right" size="small" onClick={this.gotoIndex.bind(this)}>Suppliers</Button>
+                            <Button size="small" checked={supplierState.slideIndex === 1}>Add</Button>
+                        </Emerge>
                     </Toolbar>
                 </Wizard>
             </div>

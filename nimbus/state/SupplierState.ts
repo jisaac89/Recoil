@@ -1,5 +1,4 @@
 import {observable, computed} from 'mobx';
-import {observer} from 'mobx-react';
 import SupplierData from '../data/SupplierData';
 
 export class SupplierState {

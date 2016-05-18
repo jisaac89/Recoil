@@ -13,6 +13,7 @@ import Dashboard from './views/Dashboard';
 import Inventory from './views/Inventory';
 import Suppliers from './views/Suppliers';
 import AddSupplier from './views/AddSupplier';
+import Take from './views/Take';
 
 ReactDOM.render(
   <Router history={browserHistory}>
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Route path="dashboard" component={Dashboard}>
             <Route path="inventory" component={Inventory} />
             <Route path="suppliers" component={Suppliers} />
+            <Route path="take" component={Take} />
         </Route>
     </Route>
   </Router>,

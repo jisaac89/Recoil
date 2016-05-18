@@ -8,6 +8,7 @@ import Layer from '../../src/components/Layer/Layer';
 import Pane from '../../src/components/Pane/Pane';
  
 import {appState} from '../state/AppState';
+import {takeState} from '../state/takeState';
 
 @observer 
 export default class Header extends React.Component<any,any>{
@@ -18,7 +19,7 @@ export default class Header extends React.Component<any,any>{
                 <Layer type="light">
                     <Toolbar block className="p10">
                         <Button ghost>Welcome <strong>{appState.userName}</strong></Button>
-                        <Button right onClick={this.signOut}>Sign Out</Button>
+                        <Button right onClick={this.signOut}>Sign Out {takeState.cartLength}</Button>
                     </Toolbar>
                 </Layer>
             </Pane>

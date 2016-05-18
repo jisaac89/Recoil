@@ -8,6 +8,9 @@ interface IDoorProps {
   className? : any;
   children? : any;
   overflow? : boolean;
+  parent? : boolean;
+  child? : boolean;
+  fill? : boolean;
 }
 
 const getAbsoluteHeight = (el) => {
@@ -40,6 +43,9 @@ class Door extends React.Component<IDoorProps, any>{
        {'e-open': (props.open)},
        {'e-close': (!props.open)},
        {'e-autoHeight': (state.autoHeight)},
+       {'parent': (props.parent)},
+      {'child': (props.child)},
+      {'fill': (props.fill)},
        props.className
      );
 

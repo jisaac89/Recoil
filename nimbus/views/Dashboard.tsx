@@ -23,8 +23,23 @@ export default class Dashboard extends React.Component<any, any> {
             <Door open={loggedIn} className="pt50">
                 <hr />
                 <DynamicNavigation pathname={pathname} />
-                {React.cloneElement(this.props.children || <div />)}
+                <Door open={pathname === '/dashboard'}>
+                    <Toolbar block spacing className="p10 ps20 pt100 text-center">
+                        <Button onClick={this.gotoPage.bind(this, '/dashboard/take')} className="h100px ps50">
+                            TAKE ITEM
+                        </Button>
+                        <Button className="h100px ps50">
+                            STORE ITEM
+                        </Button>
+                    </Toolbar>
+                </Door>
+                <Layer>
+                    {React.cloneElement(this.props.children || <div />)}
+                </Layer>
             </Door>
         );
      }
+   gotoPage(page) {
+       appState.gotoPage(page);
+   }
 };
