@@ -1,4 +1,3 @@
-/// <reference path="../typings/main.d.ts" />
 // for typescript we need to decalre module first.
 
 declare var module : any

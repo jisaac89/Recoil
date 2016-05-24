@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
+    "target": "es5",
     "jsx": "react",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "dist"
+    "outDir": "static"
   },
   "exclude": [
-    "dist",
+    "static",
     "node_modules",
-    "typings"
+    "typings/main",
+    "typings/main.d.ts"
   ]
 }
