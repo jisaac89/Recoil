@@ -11,7 +11,7 @@ import GridHeader from './GridHeader';
 import GridBody from './GridBody';
 import GridFooter from './GridFooter';
 
-interface IGridProps {
+export interface IGridProps {
   dataSource ? : any;
   numberPerPage ? : number;
   columns ? : any;
@@ -36,7 +36,7 @@ interface IGridProps {
   filterSelected? : boolean;
 }
 
-interface IGridState {
+export interface IGridState {
   columns ?: any;
   collection ?: any;
   pageList ?: any;
@@ -47,7 +47,7 @@ interface IGridState {
   sortType ? : any;
 }
 
-export default class Grid extends React.Component<IGridProps,IGridState>{
+export default class Grid extends React.Component<IGridProps, IGridState>{
 
   constructor(props) {
     super();

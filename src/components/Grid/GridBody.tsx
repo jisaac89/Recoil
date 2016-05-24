@@ -8,7 +8,7 @@ import Door from '../Door/Door';
 
 import GridRow from './GridRow';
 
-interface IGridProps {
+export interface IGridProps {
   dataSource : any;
   numberPerPage ? : number;
   columns ? : any;
@@ -32,7 +32,7 @@ interface IGridProps {
   filterSelected? : boolean;
 }
 
-interface IGridBodyState {
+export interface IGridBodyState {
   expandedRows ? : any;
   selected  ? : any;
 }
@@ -72,7 +72,7 @@ class GridRowTemplate extends React.Component<IGridRowTemplateProps,IGridRowTemp
   }
 }
 
-export default class GridBody extends React.Component<IGridProps,IGridBodyState>{
+export default class GridBody extends React.Component<IGridProps, IGridBodyState>{
 
   constructor(props) {
     super(props);
@@ -127,7 +127,7 @@ export default class GridBody extends React.Component<IGridProps,IGridBodyState>
       let item = self.props.dataSource[key];
 
       let selectedItem;
-      
+
       if (this.state.selected) {
         if (props.selectedKey) {
           selectedItem = this.props.selected.indexOf(item[this.props.selectedKey]) !== -1

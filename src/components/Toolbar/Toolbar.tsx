@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Toolbar.less';
 
-interface IToolbarProps {
+export interface IToolbarProps {
   border?: boolean;
   vertical?: boolean;
   textCenter?: boolean;

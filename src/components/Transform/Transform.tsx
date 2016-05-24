@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Transform.less';
 
-interface ITransformProps {
+export interface ITransformProps {
   type? : string;
   className ? : any;
   if ? : boolean;

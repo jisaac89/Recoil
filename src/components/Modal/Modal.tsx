@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import './Modal.less';
 
-interface IModalProps {
+export interface IModalProps {
   ghost ? : boolean;
   open ? : boolean;
   float ? : boolean;
@@ -19,11 +19,11 @@ interface IModalProps {
   children ? : any;
 }
 
-interface IModalState {
+export interface IModalState {
   min ? : boolean;
 }
 
-export default class Modal extends React.Component<IModalProps,IModalState>{
+export default class Modal extends React.Component<IModalProps, IModalState>{
   constructor(){
     super();
     this.state = {

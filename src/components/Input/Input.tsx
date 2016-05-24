@@ -5,7 +5,7 @@ import Selectable from '../Selectable/Selectable';
 import Pane from '../Pane/Pane';
 import './Input.less';
 
-interface IInputProps {
+export interface IInputProps {
   ghost?: boolean;
   ref? : any;
   className? : string;
@@ -31,7 +31,7 @@ interface IInputProps {
   size? : string;
 }
 
-interface IInputState {
+export interface IInputState {
   checked? : boolean;
   inputValue? : string;
   mouseOut? : boolean;

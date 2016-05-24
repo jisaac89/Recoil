@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import './Dropdown.less';
 
-interface IDropdownProps {
+export interface IDropdownProps {
   from ? : string;
   block ? : boolean;
   right? : boolean;

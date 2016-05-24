@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Align.less';
 
-interface IAlignProps {
+export interface IAlignProps {
   margin?: number;
   columns?: number[];
   maxCol? : number;

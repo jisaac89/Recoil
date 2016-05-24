@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import './Door.less';
 
-interface IDoorProps {
+export interface IDoorProps {
   open? : boolean;
   className? : any;
   children? : any;

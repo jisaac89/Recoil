@@ -4,7 +4,7 @@ import {findDOMNode} from 'react-dom';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
 
-interface IButtonProps {
+export interface IButtonProps {
   active?: boolean;
   disabled?: boolean;
   block?: boolean;
@@ -29,7 +29,7 @@ interface IButtonProps {
   shortcut? : any;
 }
 
-interface IButtonState {
+export interface IButtonState {
   checked? : boolean;
   progressiveClickIndex? : any;
   showShortcut?: boolean;

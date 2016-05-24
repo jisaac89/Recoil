@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Selectable.less';
 
-interface ISelectableProps {
+export interface ISelectableProps {
   checked? : boolean;
   classNames? : any;
   ghost? : boolean;

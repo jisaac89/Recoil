@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Selectable from '../Selectable/Selectable';
 
-interface IDropdownWrapperProps {
+export interface IDropdownWrapperProps {
   selectItem ? : any;
   type ? : string;
   filterText ? : string;
@@ -13,7 +13,7 @@ interface IDropdownWrapperProps {
   checked ? : boolean;
 }
 
-export default class DropdownWrapper extends React.Component<IDropdownWrapperProps,{}> {
+export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
   selectItem(item){
     this.props.selectItem(item);
   }

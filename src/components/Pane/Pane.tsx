@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Pane.less';
 
-interface IPaneProps {
+export interface IPaneProps {
   wrapper? : any;
   open? : any;
   fill? : any;

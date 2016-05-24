@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Wizard.less';
 
-interface IWizardProps {
+export interface IWizardProps {
   slideIndex ? : number;
   vertical ? : boolean;
   className ? : any;
@@ -41,7 +41,7 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
     );
 
     let createSlidesPartial = (item, index) => {
-      
+
       let selected = props.slideIndex === index;
       let forward = index === props.slideIndex + 1;
       let backward = index === props.slideIndex - 1;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Avatar.less';
 
-export default class Avatar extends React.Component<any,any>{
+export default class Avatar extends React.Component<any, any>{
   render() {
 
     const self = this;

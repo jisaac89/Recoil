@@ -1,17 +1,18 @@
 {
   "compilerOptions": {
+    "declaration": true,
     "module": "commonjs",
     "target": "es5",
     "jsx": "react",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "static"
+    "outDir": "dist"
   },
   "exclude": [
-    "static",
     "node_modules",
     "typings/main",
     "typings/main.d.ts"
-  ]
+  ],
+  "compileOnSave": false
 }

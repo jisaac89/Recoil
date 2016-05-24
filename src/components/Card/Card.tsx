@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Card.less';
 
-interface ICardProps {
+export interface ICardProps {
   resize? : boolean;
   hover? : boolean;
   scale? : boolean;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Badge.less';
 
-interface IBadgeProps {
+export interface IBadgeProps {
   opacity ?: any;
   background ?: string;
   border ?: string;
@@ -13,7 +13,7 @@ interface IBadgeProps {
   className? : any;
 }
 
-export default class Badge extends React.Component<IBadgeProps,any> {
+export default class Badge extends React.Component<IBadgeProps, any> {
   render() {
 
     const self = this;

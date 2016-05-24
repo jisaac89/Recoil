@@ -4,7 +4,7 @@ import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
 
-interface IGridColumnProps {
+export interface IGridColumnProps {
   dataSource ? : any;
   columns ? : any;
   i ? : any;
@@ -13,7 +13,7 @@ interface IGridColumnProps {
   columnTemplate? : any;
 }
 
-export default class GridColumn extends React.Component<IGridColumnProps,{}>{
+export default class GridColumn extends React.Component<IGridColumnProps, {}>{
   render() {
 
     const self = this;

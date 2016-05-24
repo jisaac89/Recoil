@@ -4,7 +4,7 @@ import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 
-interface IGridFooterProps {
+export interface IGridFooterProps {
   gotoPage ? : any;
   currentPage ? : number;
   changePageSize ? : any;
@@ -16,7 +16,7 @@ interface IGridFooterProps {
   previousPage ? : any;
 }
 
-export default class GridFooter extends React.Component<IGridFooterProps,{}>{
+export default class GridFooter extends React.Component<IGridFooterProps, {}>{
   gotoPage(i) {
     this.props.gotoPage(i);
   }

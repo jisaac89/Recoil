@@ -6,7 +6,7 @@ import Emerge from '../Emerge/Emerge';
 
 import GridColumn from './GridColumn';
 
-interface IGridRowProps {
+export interface IGridRowProps {
   onRowSelect ? : any;
   detailTemplateOpenOnSelect ? : boolean;
   toggleDetailTemplate ? : any;
@@ -26,11 +26,11 @@ interface IGridRowProps {
   detailTemplateOpenOnRowSelect? : boolean;
 }
 
-interface IGridRowState {
+export interface IGridRowState {
   selected ? : boolean;
 }
 
-export default class GridRow extends React.Component<IGridRowProps,IGridRowState>{
+export default class GridRow extends React.Component<IGridRowProps, IGridRowState>{
 
   onRowSelect(item) {
     this.props.onRowSelect(item);

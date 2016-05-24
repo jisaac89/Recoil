@@ -10,9 +10,9 @@ module.exports = {
   output: {
     library: 'ReactRecoil',
     libraryTarget: 'umd',
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, 'dist'),
     filename: 'index.js',
-    publicPath: 'static'
+    publicPath: 'dist'
   },
   externals: [
     {
@@ -55,7 +55,7 @@ module.exports = {
 			{
         test: /\.less$/,
         loader: 'style-loader!css-loader!less-loader'
-      
+
       },
       {
         test: /\.json$/,

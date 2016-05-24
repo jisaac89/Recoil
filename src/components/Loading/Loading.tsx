@@ -4,13 +4,13 @@ import './Loading.less';
 
 import Button from '../Button/Button';
 
-interface ILoadingProps {
+export interface ILoadingProps {
   children ? : any;
   if? : boolean;
   className? : any;
 }
 
-interface ILoadingState {}
+export interface ILoadingState {}
 
 export default class Loading extends React.Component<ILoadingProps, ILoadingState> {
   public state : ILoadingState;

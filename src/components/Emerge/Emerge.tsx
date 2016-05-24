@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Emerge.less';
 
-interface IEmergeProps {
+export interface IEmergeProps {
   if? : boolean;
   enter? : string;
   exit? : string;

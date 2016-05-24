@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 
 import './Checkbox.less';
 
-interface ICheckboxProps {
+export interface ICheckboxProps {
   checked? : boolean;
   tristate? : boolean;
   disabled? : boolean;
@@ -12,12 +12,12 @@ interface ICheckboxProps {
   ghost? : boolean;
 }
 
-interface ICheckboxState {
+export interface ICheckboxState {
   value? : number;
   checked? : boolean;
 }
 
-export default class Checkbox extends React.Component<ICheckboxProps,ICheckboxState>{
+export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState>{
   constructor(props) {
     super(props);
     this.state = {
