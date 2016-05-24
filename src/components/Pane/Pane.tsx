@@ -29,6 +29,7 @@ export default class Pane extends React.Component<IPaneProps, {}>{
       'r-Pane',
       {'e-open': (props.open)},
       {'fill': (props.fill)},
+      {'fixed': (props.fixed)},
       props.direction,
       props.className
     );
