@@ -50,6 +50,11 @@
   "license": "MIT",
   "author": "Joseph Isaac",
   "dependencies": {
+    "classnames": "^2.2.3",
+    "react": "^15.0.2",
+    "react-dom": "^15.0.2"
+  },
+  "devDependencies": {
     "babel": "^6.3.26",
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
@@ -58,7 +63,6 @@
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
-    "classnames": "^2.2.3",
     "css-loader": "^0.23.1",
     "eslint-plugin-react": "^3.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
