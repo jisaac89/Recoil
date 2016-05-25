@@ -2,46 +2,24 @@
 
 declare var module : any
 
-import Align from './components/Align/Align';
-import Button from './components/Button/Button';
-import Card from './components/Card/Card';
-import Checkbox from './components/Checkbox/Checkbox';
-import Door from './components/Door/Door';
-import Dropdown from './components/Dropdown/Dropdown';
-import Emerge from './components/Emerge/Emerge';
-import Grid from './components/Grid/Grid';
-import Input from './components/Input/Input';
-import Layer from './components/Layer/Layer';
-import Loading from './components/Loading/Loading';
-import Modal from './components/Modal/Modal';
-import Pane from './components/Pane/Pane';
-import Selectable from './components/Selectable/Selectable';
-import Shrink from './components/Shrink/Shrink';
-import Toolbar from './components/Toolbar/Toolbar';
-import Transform from './components/Transform/Transform';
-import Wizard from './components/Wizard/Wizard';
-import Shortcut from './components/Shortcut/Shortcut';
+export * from './components/Align/Align';
+export * from './components/Button/Button';
+export * from './components/Card/Card';
+export * from './components/Checkbox/Checkbox';
+export * from './components/Door/Door';
+export * from './components/Dropdown/Dropdown';
+export * from './components/Emerge/Emerge';
+export * from './components/Grid/Grid';
+export * from './components/Input/Input';
+export * from './components/Layer/Layer';
+export * from './components/Loading/Loading';
+export * from './components/Modal/Modal';
+export * from './components/Pane/Pane';
+export * from './components/Selectable/Selectable';
+export * from './components/Shrink/Shrink';
+export * from './components/Toolbar/Toolbar';
+export * from './components/Transform/Transform';
+export * from './components/Wizard/Wizard';
+export * from './components/Shortcut/Shortcut';
 
 import './less/Recoil.less';
-
-(module).exports = {
-  Align,
-  Button,
-  Card,
-  Checkbox,
-  Door,
-  Dropdown,
-  Emerge,
-  Grid,
-  Input,
-  Layer,
-  Loading,
-  Modal,
-  Pane,
-  Selectable,
-  Shrink,
-  Toolbar,
-  Transform,
-  Wizard,
-  Shortcut
-}
