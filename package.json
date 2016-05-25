@@ -9,16 +9,14 @@
     "build": "webpack --config webpack.config.js",
     "lint": "eslint src",
     "tsc": "tsc -p ./",
-    "preinstall": "npm install autodts",
-    "postinstall": "autodts link",
-    "prepublish": "tsc && autodts generate"
+    "prepublish": "tsc"
   },
   "main": "dist/index.js",
   "directories": {
     "lib": "src/"
   },
   "typescript": {
-    "definition": "index.d.ts"
+    "definition": "dist/index.d.ts"
   },
   "keywords": [
     "react",
@@ -56,7 +54,6 @@
   "license": "MIT",
   "author": "Joseph Isaac",
   "dependencies": {
-    "autodts": "^0.0.6",
     "classnames": "^2.2.3"
   },
   "peerDependencies": {
@@ -73,7 +70,6 @@
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
     "css-loader": "^0.23.1",
-    "@lib/autodts-generator": "^0.0.2",
     "eslint-plugin-react": "^3.6.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "json-loader": "^0.5.4",
