@@ -4,3 +4,7 @@ npm-debug.log
 /src/recoil.d.ts
 typings
 dist
+
+*.d.ts
+*.log
+*.tgz
