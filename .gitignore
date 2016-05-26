@@ -1,7 +1,6 @@
 node_modules
 npm-debug.log
 .DS_Store
-/src/recoil.d.ts
 typings
 dist
 

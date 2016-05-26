@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "module": "commonjs",
+    "module": "amd",
     "target": "es6",
     "jsx": "react",
     "sourceMap": true,

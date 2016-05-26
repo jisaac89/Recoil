@@ -9,9 +9,9 @@ module.exports = {
     ],
     output: {
         library: 'ReactRecoil',
-        libraryTarget: 'umd',
-        //path: path.join(__dirname, 'dist'),
-        filename: 'recoil.js',
+        libraryTarget: 'amd',
+        path: path.join(__dirname, 'dist'),
+        filename: 'index.js',
         publicPath: 'dist'
     },
     externals: [{

@@ -12,7 +12,7 @@
     "typings": "typings install",
     "build": "webpack --config webpack.config.js"
   },
-  "main": "recoil.js",
+  "main": "dist/index.js",
   "directories": {
     "lib": "src/"
   },
