@@ -47,7 +47,7 @@ module.exports = {
         loaders: [{
             test: /\.tsx?$/,
             loader: 'ts-loader',
-            exclude: /node_modules/
+            include: /src/
         }, {
             test: /\.less$/,
             loader: 'style-loader!css-loader!less-loader'
