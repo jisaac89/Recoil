@@ -5,13 +5,14 @@
   "version": "0.3.50",
   "description": "",
   "scripts": {
-    "typings": "typings",
-    "build": "webpack --config webpack.config.js",
+    "install": "typings install",
+    "prepublish": "tsc && webpack --config webpack.config.js",
     "lint": "eslint src",
     "tsc": "tsc -p ./",
-    "prepublish": "tsc"
+    "typings": "typings install",
+    "build": "webpack --config webpack.config.js"
   },
-  "main": "dist/index.js",
+  "main": "recoil.js",
   "directories": {
     "lib": "src/"
   },
@@ -81,6 +82,7 @@
     "style-loader": "^0.13.0",
     "ts-loader": "^0.7.2",
     "typescript": "^1.8.10",
+    "typings": "^1.0.4",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
   }

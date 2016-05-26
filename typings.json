@@ -1,7 +1,7 @@
 {
   "name": "react-recoil",
   "version": false,
-  "ambientDependencies": {
+  "globalDependencies": {
     "classnames": "github:DefinitelyTyped/DefinitelyTyped/classnames/classnames.d.ts#ba257a9b91bc0de1bdd9091b6723194c905a902a",
     "mocha": "github:DefinitelyTyped/DefinitelyTyped/mocha/mocha.d.ts#ba257a9b91bc0de1bdd9091b6723194c905a902a",
     "react": "registry:dt/react#0.14.0+20160319053454",

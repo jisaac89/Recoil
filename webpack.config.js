@@ -10,8 +10,8 @@ module.exports = {
     output: {
         library: 'ReactRecoil',
         libraryTarget: 'umd',
-        path: path.join(__dirname, 'dist'),
-        filename: 'index.js',
+        //path: path.join(__dirname, 'dist'),
+        filename: 'recoil.js',
         publicPath: 'dist'
     },
     externals: [{
@@ -45,9 +45,9 @@ module.exports = {
     ],
     module: {
         loaders: [{
-            test: /\.ts(x?)$/,
-            loader: 'babel-loader?presets[]=es2015&presets[]=react!ts-loader',
-            include: path.join(__dirname, 'src')
+            test: /\.tsx?$/,
+            loader: 'ts-loader',
+            exclude: /node_modules/
         }, {
             test: /\.less$/,
             loader: 'style-loader!css-loader!less-loader'
