@@ -13,6 +13,7 @@ export {default as Modal} from './components/Modal/Modal';
 export {default as Pane} from './components/Pane/Pane';
 export {default as Selectable} from './components/Selectable/Selectable';
 export {default as Shrink} from './components/Shrink/Shrink';
+export {default as Toggle} from './components/Toggle/Toggle';
 export {default as Toolbar} from './components/Toolbar/Toolbar';
 export {default as Transform} from './components/Transform/Transform';
 export {default as Wizard} from './components/Wizard/Wizard';
