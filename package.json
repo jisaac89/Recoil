@@ -19,6 +19,7 @@
   "typescript": {
     "definition": "dist/index.d.ts"
   },
+  "typings": "dist/index.d.ts",
   "keywords": [
     "react",
     "reactjs",
