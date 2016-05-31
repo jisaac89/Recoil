@@ -1,8 +1,4 @@
 node_modules/
 src/
-*.d.ts
 *.log
 *.tgz
-
-!index.d.ts
-!index.ref.d.ts
