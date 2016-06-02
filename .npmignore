@@ -1,4 +1,14 @@
 node_modules/
+typings
 src/
+.vscode
 *.log
 *.tgz
+.babelrc
+.eslintrc
+.gitignore
+.jshintrc
+.npmignore
+tsconfig.json
+typings.json
+webpack.config.js
