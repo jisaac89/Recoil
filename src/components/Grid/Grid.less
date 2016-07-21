@@ -25,10 +25,6 @@
   margin-top:10px;
 }
 
-.r-Grid__Header > tr > th{
-  text-align: left;
-}
-
 .r-Grid table,
 .r-Grid td,
 .r-Grid th {
@@ -66,8 +62,14 @@
 }
 
 .r-Grid__Header > tr > th {
-  border-bottom: @grid-header-border-size solid @grid-header-border-color !important;
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
   padding:@grid-cell-padding;
+}
+
+.r-Grid{
+  border-top: 1px solid @default-border;
 }
 
 .e-NightMode .r-Grid__Row__Column, {

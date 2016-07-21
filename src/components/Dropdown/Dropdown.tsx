@@ -16,7 +16,7 @@ export interface IDropdownProps {
   contentClass? : string;
   buttonClass? : string;
   selectionClass? : string;
-  data? : any;
+  dataSource? : any;
   children ? : any;
   type ? : string;
   icon ? : string;
@@ -26,30 +26,20 @@ export interface IDropdownProps {
   value ? : any;
   onSelected ? : any;
   checked ? : boolean;
+  listTemplate ? : any;
 }
 
 const DropdownHeader : any = (props) => {
-  return (
-    <div className="r-DropdownHeader" onClick={props.onClick}>
-      {(() => {
-        if (props.selectedItem.length === 0) {
-          return (
-            <div className="dinblock">
-              <i className={'mr5 fa fa-'+props.icon}></i>
-              {props.title}
-            </div>
-          );
-        } else if (props.selectedItem) {
-          return (
-            <div className="dinblock">
-              <i className={"mr5 fa fa-times"} onClick={props.deselectItem}></i>
-              {props.selectedItem}
-            </div>
-          );
-        }
-      })()}
 
-      <i className={'r-DropdownHeader__trigger fa fa-chevron-'+((props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center') ? 'up' : 'down')}></i>
+  let {selectedItem, title, icon, from, deselectItem, onClick} = props;
+
+  return (
+    <div className="r-DropdownHeader" onClick={onClick}>
+      <div className="dinblock">
+        <i onClick={selectedItem ? deselectItem : null} className={'mr5 fa fa-'+(selectedItem ? 'times' : icon)}></i>
+        {selectedItem.length ? selectedItem  : title}
+      </div>
+      <i className={'r-DropdownHeader__trigger fa fa-chevron-'+((from === 'top' || from === 'top left' || from === 'top right' || from === 'top center') ? 'up' : 'down')}></i>
     </div>
   );
 };
@@ -131,6 +121,9 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
       open: true
     });
   }
+  listTemplate(index, item) {
+    return this.props.listTemplate(index, item);
+  }
   render() {
     const self = this;
     const props = self.props;
@@ -150,18 +143,12 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
     let dropdownWrapperBottomClass = classNames(
       'r-DropdownWrapperBottom',
       'e-drop-b',
-      {'e-drop-left': (props.from === 'bottom left')},
-      {'e-drop-right': (props.from === 'bottom right')},
-      {'e-drop-center': (props.from === 'bottom center')},
       props.contentClass
     );
 
     let dropdownWrapperTopClass = classNames(
       'r-DropdownWrapperTop',
       'e-drop-t',
-      {'e-drop-left': (props.from === 'top left')},
-      {'e-drop-right': (props.from === 'top right')},
-      {'e-drop-center': (props.from === 'top center')},
       props.contentClass
     );
 
@@ -200,13 +187,18 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
     return (
       <div className={dropdownClass}>
         {dropdownTypePartial}
-        {(()=>{
-          if (props.from === 'top' || props.from === 'top left' || props.from === 'top right' || props.from === 'top center') {
-            return <DropdownWrapper type={props.type} selectedItem={state.selectedItem} checked={state.selectedItem > 0} selectItem={self.selectItem.bind(self)} data={props.data} filterText={state.filterText} dropdownWrapperClass={dropdownWrapperTopClass} dropdownContentClass={dropdownContentClass}>{props.children}</DropdownWrapper>;
-          } else {
-            return <DropdownWrapper type={props.type} selectedItem={state.selectedItem} checked={state.selectedItem > 0} selectItem={self.selectItem.bind(self)} data={props.data} filterText={state.filterText} dropdownWrapperClass={dropdownWrapperBottomClass} dropdownContentClass={dropdownContentClass}>{props.children}</DropdownWrapper>;
-          }
-        })()}
+        <DropdownWrapper 
+          listTemplate={self.listTemplate.bind(self)} 
+          type={props.type} 
+          selectedItem={state.selectedItem} 
+          checked={state.selectedItem > 0} 
+          selectItem={self.selectItem.bind(self)} 
+          dataSource={props.dataSource} 
+          filterText={state.filterText} 
+          dropdownWrapperClass={props.from === 'top' ? dropdownWrapperTopClass : dropdownWrapperBottomClass} 
+          dropdownContentClass={dropdownContentClass}>
+            {props.children}
+          </DropdownWrapper>
       </div>
     );
   }

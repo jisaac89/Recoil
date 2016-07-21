@@ -3,36 +3,20 @@
 .r-Toolbar{
   display: inline-block;
   vertical-align: middle;
+  transition: .2s all ease-in;
 }
 
-.r-Toolbar.flush > .r-Button{
-  border-right:0;
-  border-radius:0;
+.r-Toolbar.no-radius > .r-Button{
+  border-radius:0 !important;
 }
 
-.r-Toolbar.flush > .r-Button:nth-child(1){
-  border-top-left-radius:@default-border-radius;
-  border-bottom-left-radius:@default-border-radius;
-}
-
-.r-Toolbar.flush > .r-Button:last-child{
-  border-top-right-radius:@default-border-radius;
-  border-bottom-right-radius:@default-border-radius;
-  border-right:1px solid @standard-border;
-}
-
-
-.r-Toolbar.no-radius .r-Button{
-  border-radius:0;
-}
-
-.r-Toolbar.no-radius .r-Button:first-child{
+.r-Toolbar.no-radius > .r-Button:first-child{
   border-top-left-radius:0px;
   border-bottom-left-radius:0px;
   border-left-width: 1px;
 }
 
-.r-Toolbar.no-radius .r-Button:last-child{
+.r-Toolbar.no-radius > .r-Button:last-child{
   border-top-right-radius:0px;
   border-bottom-right-radius:0px;
   border-right-width: 1px;
@@ -134,9 +118,19 @@
   border-radius: 0;
 }
 
+.r-Toolbar.flush > .r-Input:not(:last-child) > .r-Input__container,
+.r-Toolbar.flush > .r-Input:not(:last-child),
+.r-Toolbar.flush > .r-Input:not(:last-child) > .r-Input__container > input[type='text'],
+.r-Toolbar.flush > .r-Input.r-Input__container:not(:last-child) > input[type='text'] {
+  border-right:0;
+  border-radius: 0;
+}
+
+
 .r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container,
 .r-Toolbar.flush > .r-Button + .r-Input:last-child,
-.r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container > input[type='text']{
+.r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container > input[type='text'],
+.r-Toolbar.flush > .r-Button + .r-Input.r-Input__container:last-child > input[type='text']{
   border-bottom-left-radius:0;
   border-top-left-radius: 0;
 }
@@ -144,4 +138,48 @@
 .r-Input > .r-Input__container > .r-Selectable > div > .r-Selectable__border-gray,
 .r-Input > .r-Input__container > .r-Selectable > div > .r-Selectable__border.primary  {
   bottom:1px !important;
+}
+
+.r-Toolbar.flush.vertical > .r-Button:not(':first-child'){
+  border-top:0;
+  border-radius:0;
+}
+
+.r-Toolbar.flush.vertical > .r-Button:last-child{
+    border-bottom-right-radius:@default-border-radius;
+    border-bottom-left-radius:@default-border-radius;
+}
+
+.r-Toolbar.flush.vertical > .r-Button:nth-child(1){
+  border-bottom-left-radius: 0 !important;
+}
+
+.r-Toolbar.flush.vertical > .r-Button:first-child{
+    border-top-right-radius:@default-border-radius;
+    border-top-left-radius:@default-border-radius;
+}
+
+.r-Toolbar.flush.horizontal > .r-Button{
+  margin-right:-1px;
+  border-radius:0;
+}
+
+.r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1),
+.r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1) input,
+.r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1),
+.r-Toolbar.flush.horizontal > .r-Input:nth-child(1) > input{
+  border-right:0;
+  border-top-right-radius:0;
+  border-bottom-right-radius:0;
+}
+
+.r-Toolbar.flush.horizontal > .r-Button:nth-child(1){
+  border-top-left-radius:@default-border-radius;
+  border-bottom-left-radius:@default-border-radius;
+}
+
+.r-Toolbar.flush.horizontal > .r-Button:last-child{
+  border-top-right-radius:@default-border-radius;
+  border-bottom-right-radius:@default-border-radius;
+  border-right:1px solid @standard-border;
 }

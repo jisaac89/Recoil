@@ -13,7 +13,8 @@ export interface IInputProps {
   icon? : string;
   title? : string;
   placeholder? : string;
-  value ? : any;
+  value ? : string | number;
+  defaultValue ? : string | number;
   children? : any;
   style? : any;
   errorInline? : any;
@@ -29,11 +30,15 @@ export interface IInputProps {
   focusOnMount? : any;
   focusDelay? : any;
   size? : string;
+  simple? : boolean;
+  maxLength? : number;
+  max ? : number;
+  min ? : number;
 }
 
 export interface IInputState {
   checked? : boolean;
-  inputValue? : string;
+  inputValue? : string | number;
   mouseOut? : boolean;
 }
 
@@ -41,19 +46,20 @@ export default class Input extends React.Component<IInputProps, IInputState>{
 
   public state : IInputState;
 
+  public static defaultProps = {
+      simple: true
+  };
+
   constructor(props : IInputProps) {
     super(props);
     this.state = {
       checked : false,
-      inputValue: '',
+      inputValue: props.value ||  '',
       mouseOut: false
     };
   }
   public componentDidMount() {
     const props = this.props;
-    this.setState({
-      checked: props.value  ? true : false
-    });
     if (props.focusOnMount) {
       this.focusOnMount();
     }
@@ -67,7 +73,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     let inputDOM = ReactDOM.findDOMNode<HTMLInputElement>(this.refs['refInput']);
     let focusDelay;
 
-    focusDelay = self.props.focusDelay || 800;
+    focusDelay = self.props.focusDelay || 400;
 
     (function(inputDOM) {
       setTimeout(function() {
@@ -101,6 +107,15 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       return null;
     }
   }
+
+  limit(max) {
+    let inputDOM = ReactDOM.findDOMNode<HTMLInputElement>(this.refs['refInput']);
+    let maxLength = max - 1;
+    if(inputDOM.value.length > maxLength) {
+        inputDOM.value = inputDOM.value.substr(0, maxLength);
+    } 
+  }
+
   render(){
 
     const self = this;
@@ -163,10 +178,13 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     // switch input type depending on propType
     switch (props.type) {
       case 'password':
-        inputPartial = <input defaultValue={props.value} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.placeholder} type='password' />;
+        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.simple? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
         break;
       case 'text':
-        inputPartial = <input defaultValue={props.value} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.placeholder} type='text' />;
+        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.simple? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
+        break;
+      case 'number':
+        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} max={props.max} min={props.min} maxLength={props.maxLength} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.simple? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
         break;
       case 'textarea':
         inputPartial = <textarea rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;
@@ -189,19 +207,39 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       {'pt10' : (props.type === 'textarea')}
     );
 
-    return (
-      <div onMouseEnter={this.mouseOut.bind(this)} onMouseLeave={this.mouseOut.bind(this)} className={inputWrapperClass} style={props.style}>
-          {errorInlinePartialTop}
-          <div className={inputClass}>
-              {iconPartial}
-              <small>{props.title}</small>
-              {inputPartial}
-              {pencilPartial}
-              <Selectable type={props.error ? 'error' : 'primary'} ghost={props.ghost} checked={this.state.checked} />
-              {errorInlinePartial()}
-          </div>
-          {errorInlinePartialBottom}
-      </div>
+    let inputClassSimple = classNames(
+      'r-Input',
+      props.size,
+      {'w100' : (props.block)},
+      {'checked' : (this.state.checked)},
+      'r-Input__container',
+      'flohide',
+      'no-title',
+      'e-simple',
+      props.className
     );
+
+    if (props.simple) {
+      return (
+        <div className={inputClassSimple}>
+            {inputPartial}
+        </div>
+      )
+    } else {
+      return (
+        <div onMouseEnter={self.mouseOut.bind(self)} onMouseLeave={self.mouseOut.bind(self)} className={inputWrapperClass} style={props.style}>
+            {errorInlinePartialTop}
+            <div className={inputClass}>
+                {iconPartial}
+                <small>{props.title}</small>
+                {inputPartial}
+                {pencilPartial}
+                <Selectable type={props.error ? 'error' : 'primary'} ghost={props.ghost} checked={self.state.checked} />
+                {errorInlinePartial()}
+            </div>
+            {errorInlinePartialBottom}
+        </div>
+      );
+    }
   }
 }

@@ -50,6 +50,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       'r-Toolbar',
       {'border' : (props.border)},
       {'vertical' : (props.vertical)},
+      {'horizontal' : (!props.vertical)},
       {'text-center' : (props.textCenter)},
       {'no-radius' : (props.noRadius)},
       {'spacing' : (props.spacing)},

@@ -16,7 +16,8 @@
   line-height: 18px;
   font-size:14px;
   position:relative;
-  .transition(all 50ms ease-in);
+  height: 32px;
+  .transition(all 200ms ease-in) !important;
 }
 
 .r-Button.link{
@@ -27,15 +28,18 @@
 .r-Button:hover,
 .r-Button:focus{
   background:  @default--hover-background;
-  color: @default-color;
-  transform:scale(.94);
+  color: @primary-background;
+  border:1px solid @primary-background;
+}
+
+*:focus{
+    outline: 0 !important;
 }
 
 .r-Button.primary:hover,
 .r-Button.primary:focus{
-  background: @primary--hover-background;
-  color: @primary--hover-color;
-  border: 1px solid  @primary--hover-border;
+  background:@primary--hover-background !important;
+  color: white;
 }
 .r-Button.error:hover,
 .r-Button.error:focus{
@@ -49,6 +53,10 @@
 .r-Button.link:focus{
   color:@link--hover-color;
   background: @link-background;
+}
+.r-Button.ghost.primary:hover,
+.r-Button.ghost.primary:focus{
+  background:transparent !important;
 }
 
 .r-Button.large{
@@ -116,8 +124,8 @@
 
 .r-Button.ghost{
   color: @default-color;
-  background: transparent;
-  border-color: transparent;
+  background: transparent !important;
+  border-color: transparent !important;
 }
 
 .r-Button.ghost:hover{

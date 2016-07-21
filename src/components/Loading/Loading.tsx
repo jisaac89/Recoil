@@ -8,6 +8,7 @@ export interface ILoadingProps {
   children ? : any;
   if? : boolean;
   className? : any;
+  src? : any;
 }
 
 export interface ILoadingState {}
@@ -33,7 +34,11 @@ export default class Loading extends React.Component<ILoadingProps, ILoadingStat
     )
 
     if (props.if) {
-      return <i className="fa fa-circle-o-notch fa-spin"></i>
+      if (props.src) {
+        return <div className="w100 text-center"><img src={props.src} className="w50 p10 mb20 floatL loader" /></div>;
+      } else {
+        return <i className="fa fa-circle-o-notch fa-spin"></i>
+      }
     } else {
       return null;
     }

@@ -1,18 +1,13 @@
 import * as React from 'react';
-import './Grid.less';
-
 import * as classNames from 'classnames';
-
-import Selectable from '../Selectable/Selectable';
-import Layer from '../Layer/Layer';
-import Button from '../Button/Button';
+import './Grid.less';
 
 import GridHeader from './GridHeader';
 import GridBody from './GridBody';
 import GridFooter from './GridFooter';
 
 export interface IGridProps {
-  dataSource ? : any;
+  dataSource ? : any[];
   numberPerPage ? : number;
   columns ? : any;
   open ? : boolean;
@@ -34,109 +29,120 @@ export interface IGridProps {
   onSelect? : any;
   detailTemplateOpenOnRowSelect? : boolean;
   filterSelected? : boolean;
+  initialSortKey? : string;
 }
 
 export interface IGridState {
   columns ?: any;
-  collection ?: any;
+  dataSource ?: any;
   pageList ?: any;
   currentPage  ?: number;
   numberPerPage ?: number;
   numberOfPages ?: number;
   dataType ? : any;
   sortType ? : any;
+  selected ? : any;
 }
 
 export default class Grid extends React.Component<IGridProps, IGridState>{
 
   constructor(props) {
-    super();
+    super(props);
     this.state = {
+
+      // the defined columns to show
       columns: [],
-      collection: [],
+
+      // datasource, an array of objects
+      dataSource: [],
+
+      // seperate dataSource into seperate pages
       pageList: [],
+
+      // set the current page
       currentPage : 1,
+
+      // number of items to show per page
       numberPerPage: 10,
-      numberOfPages: 0
+
+      // default amount of pages
+      numberOfPages: 0,
+
+      // an array of selected items
+      selected : props.selected || []
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      collection : nextProps.dataSource !== this.props.dataSource ? nextProps.dataSource : this.props.dataSource
-    })
-  }
+  // 1) When the component mounts, check to see if a user has already defined a columns array,
+  //    if not automatically create the columns
 
   componentDidMount() {
+    let columnsDefinedByUser = this.props.columns;
 
-    // the array of column object settings;
-    let columns = this.props.columns;
-
-    if (!columns) {
-      this.automaticallyCreateColumns();
+    if (columnsDefinedByUser) {
       this.loadCollection();
     } else {
+      this.automaticallyCreateColumns();
       this.loadCollection();
     }
   }
 
   automaticallyCreateColumns() {
+    const self = this;
+    const props = self.props;
+    let {dataSource} = props;
+
     let columnsArray = [];
+    let columnsArrayLength = columnsArray.length;
     let columns = [];
 
-    if (this.props.dataSource[0] === undefined) {
-      for (let i = 0; i < Object.keys(this.props.dataSource).length; i++) {
-        columnsArray.push(Object.keys(this.props.dataSource)[i]);
-      }
+    let firstItemOfDataSource = dataSource[0];
+    let columnHeadersForFirstItem = Object.keys(firstItemOfDataSource);
+
+    // check to see if the dataSource is an array. 
+    // checking "dataSource.constructor === Array" would be faster, but with some datSources like mobx it overides the contructor
+    if (dataSource instanceof Array) {
+      // Grab the first item of the dataSource and push the header names to columns array.
+      columnHeadersForFirstItem.map((columnHeaderName)=>{
+        columnsArray.push(columnHeaderName);
+      })
     } else {
-      for (let i = 0; i < Object.keys(this.props.dataSource[0]).length; i++) {
-        columnsArray.push(Object.keys(this.props.dataSource[0])[i]);
-      }
-    }
-
-    let len = columnsArray.length;
-
-    for (let i = 0; i < len; i++) {
-      columns.push({
-          name: columnsArray[i]
+      Object.keys(dataSource).map((columnHeaderName) => {
+        columnsArray.push(Object.keys(dataSource)[columnHeaderName]);
       })
     }
 
-    this.setState({
+    columnsArray.map((columnHeaderName) => {
+      columns.push({
+          name: columnHeaderName
+      });
+    })
+
+    self.setState({
       columns: columns.reverse()
     })
   }
 
   loadCollection() {
-
     const self = this;
     const props = self.props;
-    let state = self.state;
+    let dataSource = props.dataSource;
 
-    let collection = props.dataSource;
-    let numberOfPages;
-
-    if (this.props.dataSource[0] === undefined) {
-      self.setState({
-        collection: [props.dataSource]
-      });
+    if (props.initialSortKey) {
+       self.sortCollection(props.dataSource, props.initialSortKey, "asc");
     } else {
       self.setState({
-        collection: props.dataSource
+        dataSource: dataSource[0] === undefined ? [dataSource] : dataSource
       });
     }
-
   }
 
-  toggleSorting(key, sortType) {
-    let updatedCollection = [];
+  sortCollection(dataSource, key, sortType) {
+      const self = this;
+      
+      let sortOrder;
 
-    for (let key in this.props.dataSource) {
-      updatedCollection.push(this.props.dataSource[key])
-    }
-
-    let sortCollection = () => {
-      updatedCollection.sort(function(a, b){
+      let sortedDataSource = dataSource.sort(function(a, b){
         switch (typeof a[key]) {
           case ('string'):
             let itemPrev = a[key].toLowerCase();
@@ -151,25 +157,24 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
           default:
         }
       })
-      return updatedCollection;
-    }
 
-    if (sortType === 'none') {
-      sortCollection();
-    } else if (sortType === 'desc') {
-      sortCollection().reverse();
-    }
+      if (sortType === 'asc') {
+        sortOrder = sortedDataSource;
+      } else {
+        sortOrder = sortedDataSource.reverse();
+      }
 
-    this.setState({
-      collection: updatedCollection,
-      currentPage : 1
-    })
-
+      self.setState({
+        dataSource : sortOrder,
+        currentPage : 1
+      })
   }
 
-  columns(id) {
-    this.props.columns(id);
+  toggleSorting(key, sortType) {
+    const self = this;
+    self.sortCollection(self.state.dataSource, key, sortType);
   }
+
 
   firstPage() {
     this.setState({
@@ -189,9 +194,9 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
     })
   }
 
-  lastPage() {
+  lastPage(numberOfPages) {
     this.setState({
-      currentPage : this.state.numberOfPages
+      currentPage : numberOfPages
     })
   }
 
@@ -221,26 +226,25 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
     let renderedPage = [];
     let renderedColumns;
 
-    let {columns, dataSource} = props;
-    let {collection} = state;
+    let {dataSource} = state;
 
     let numberPerPage, numberOfPages;
 
     if (props.numberPerPage) {
       numberPerPage = props.numberPerPage;
-      numberOfPages = Math.ceil(collection.length / (props.numberPerPage));
+      numberOfPages = Math.ceil(dataSource.length / (props.numberPerPage));
     } else {
       numberPerPage = state.numberPerPage;
-      numberOfPages = Math.ceil(collection.length / (state.numberPerPage));
+      numberOfPages = Math.ceil(dataSource.length / (state.numberPerPage));
     }
 
     let begin = ((state.currentPage - 1) * numberPerPage);
     let end = begin + numberPerPage;
-    let pageList = collection.slice(begin, end);
+    let pageList = dataSource.slice(begin, end);
 
-    for (let i = 0; i < pageList.length; i++) {
-      renderedPage.push(pageList[i]);
-    }
+    pageList.map((item, index)=> {
+      renderedPage.push(item);
+    })
 
     if (this.props.columns) {
       renderedColumns = this.props.columns;
@@ -266,6 +270,7 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
             dataSource={renderedPage}
             dataType={state.dataType}
             numberOfPages={numberOfPages}
+            currentPage={state.currentPage}
             height={props.height}
             open={props.open}
             detailTemplate={props.detailTemplate}
@@ -275,7 +280,7 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
             detailTemplateOpenOnSelect={props.detailTemplateOpenOnSelect}
             rowIsSelectable={props.rowIsSelectable}
             onRowSelect={this.onRowSelect.bind(this)}
-            selected={props.selected}
+            selected={this.state.selected}
             selectedKey={props.selectedKey}
             rowIsSelectableType={props.rowIsSelectableType}
             detailTemplateOpenOnRowSelect={props.detailTemplateOpenOnRowSelect}
@@ -304,3 +309,10 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
     )
   }
 }
+
+
+// if (sortType === 'none' || sortType === 'asc') {
+//   collectionType = self.sortCollection(key);
+// } else if (sortType === 'desc') {
+//   collectionType = self.sortCollection(key).reverse();
+// }

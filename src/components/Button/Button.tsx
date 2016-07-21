@@ -23,26 +23,28 @@ export interface IButtonProps {
   submit? : boolean;
   style? : any;
   checked? : boolean;
-  onClick?: () => void;
+  onClick? : (event: React.MouseEvent) => void;
   tabIndex? : number;
   progressiveClick? : any;
-  shortcut? : any;
+  shortcut? : string;
+  simple?: boolean;
 }
 
 export interface IButtonState {
   checked? : boolean;
-  progressiveClickIndex? : any;
+  progressiveClickIndex? : number;
   showShortcut?: boolean;
-  progressiveClickLength? : any;
-  clickCounter? : any;
-  shiftCounter? : any;
+  progressiveClickLength? : number;
+  clickCounter? : number;
+  shiftCounter? : number;
 }
 
 export default class Button extends React.Component<IButtonProps, IButtonState>{
   public static defaultProps = {
       active: true,
       disabled: false,
-      block: false
+      block: false,
+      simple: true
   };
   constructor(props: IButtonProps) {
     super(props);
@@ -62,45 +64,48 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickLength: props.progressiveClick.length
       })
     }
-    if (props.shortcut) {
-      // window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
-      // window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
-    }
-  }
-
-  public componentWillUnmount() {
-    if (this.props.shortcut) {
-      window.removeEventListener("keydown", null, false);
-      window.removeEventListener("keyup", null, false);
-    }
-  }
-
-  public startShortcutListener(e) {
-    // const context = this;
-    // const props = context.props;
-    // let state = context.state;
-
-    // const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
-
-    // context.setState({
-    //   showShortcut : e.shiftKey ? true : false
-    // })
-    // context.setState({
-    //   shiftCounter: 1
-    // })
-
-    // if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
-    //   refButton.click();
-    //   context.setState({
-    //     clickCounter: state.clickCounter === 0 ? 1 : 0
-    //   })
+    // if (props.shortcut) {
+    //   window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
+    //   window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
     // }
   }
 
-  public onClick() {
+  public componentWillUnmount() {
+    // if (this.props.shortcut) {
+    //   window.removeEventListener("keydown", null, false);
+    //   window.removeEventListener("keyup", null, false);
+    // }
+  }
+
+  public startShortcutListener(e) {
+    const context = this;
+    const props = context.props;
+    let state = context.state;
+
+    const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
+
+    if (refButton) {
+      context.setState({
+        showShortcut : e.shiftKey ? true : false
+      })
+      context.setState({
+        shiftCounter: 1
+      })
+
+      if (refButton && e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
+        refButton.click();
+        context.setState({
+          clickCounter: state.clickCounter === 0 ? 1 : 0
+        })
+      }
+    }
+
+  }
+
+  public onClick(event: React.MouseEvent) {
     const self = this;
     if (this.props.onClick) {
-      this.props.onClick();
+      this.props.onClick(event);
       this.setState({
         checked : true
       });
@@ -181,14 +186,29 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         </a>
       );
     } else {
-      return (
-        <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
-          {iconPartial}
-          {props.children}
-          {showTooltip()}
-          {selectablePartial}
-        </button>
-      );
+      if (props.simple) {
+        return (
+          <button ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
+            {iconPartial}
+            {props.children}
+          </button>
+        );
+      } else {
+        return (
+          <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
+            {iconPartial}
+            {(()=>{
+              if (!this.state.showShortcut) {
+                return props.children;
+              } else {
+                return null;
+              }
+            })()}
+            {showTooltip()}
+            {selectablePartial}
+          </button>
+        );
+      }
     }
   }
 }

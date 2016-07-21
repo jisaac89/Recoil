@@ -7,7 +7,8 @@ export interface IDropdownWrapperProps {
   filterText ? : string;
   selectedItem ? : any;
   children ? : any;
-  data ? : any;
+  dataSource ? : any;
+  listTemplate ? : any;
   dropdownWrapperClass ? : string;
   dropdownContentClass ? : string;
   checked ? : boolean;
@@ -36,12 +37,18 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
       } else if ((props.type === 'search') && props.filterText === '') {
         return null;
       } else if (props.type != 'search'){
-        updatedList.push(
-          <div key={index} className="r-DropdownContent__item" onClick={self.selectItem.bind(self, item)}>
-            <p>{item}</p>
-            <Selectable checked={(props.selectedItem === item ? true : false)}/>
-          </div>
-        );
+          if (!props.dataSource[0].length) {
+            updatedList.push(
+              props.listTemplate(index,props.dataSource[index])
+            )
+          } else {
+            updatedList.push(
+              <div key={index} className="r-DropdownContent__item" onClick={self.selectItem.bind(self, item)}>
+                <p>{item}</p>
+                <Selectable checked={(props.selectedItem === item ? true : false)}/>
+              </div>
+            );
+          }
       }
     };
 
@@ -55,10 +62,10 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
                     {props.children}
                   </div>
                 );
-              } else if (props.data) {
+              } else if (props.dataSource) {
                 return (
                   <div>
-                    {props.data.map(selectionList)}
+                    {props.dataSource.map(selectionList)}
                     {updatedList}
                   </div>
                 );

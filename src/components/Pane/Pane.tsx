@@ -61,15 +61,9 @@ export default class Pane extends React.Component<IPaneProps, {}>{
       paneContainerStyle = null;
     }
 
-    let childrenPartial = () => {
-      if (props.open) {
-        return props.children;
-      }
-    }
-
     return(
-      <div onClick={props.wrapperClick} ref="pane" className={paneContainerClass} style={paneContainerStyle}>
-          {childrenPartial()}
+      <div slideIndex={-1} onClick={props.wrapperClick} ref="pane" className={paneContainerClass} style={paneContainerStyle}>
+          {props.children}
       </div>
     );
   }

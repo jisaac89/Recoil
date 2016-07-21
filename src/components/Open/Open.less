@@ -1,6 +1,6 @@
 @import '../../less/Global';
 
-.r-Door{
+.r-Open{
   position:relative;
   -webkit-transform-origin: top;
 	-o-transform-origin: top;
@@ -13,16 +13,16 @@
   -webkit-transition: -webkit-transform 0.26s ease-out;
   -o-transition: -o-transform 0.26s ease;
   -ms-transition: -ms-transform 0.26s ease;
-  transition: transform 0.26s ease;
+  transition: all 0.26s ease;
   height: auto;
 }
 
-.r-Door.e-autoHeight{
+.r-Open.e-autoHeight{
   height : auto !important;
   max-height : none !important;
 }
 
-.r-Door.e-close{
+.r-Open.e-close{
   height: 0;
   -webkit-transform: scaleY(0);
 	-o-transform: scaleY(0);

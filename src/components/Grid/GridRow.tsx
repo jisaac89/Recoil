@@ -37,7 +37,7 @@ export default class GridRow extends React.Component<IGridRowProps, IGridRowStat
   }
 
   toggleDetailTemplate(i, item) {
-    this.props.toggleDetailTemplate(i);
+    this.props.toggleDetailTemplate(i, item);
     if(this.props.onRowSelect) {
       this.props.onRowSelect(item);
     }
@@ -69,7 +69,10 @@ export default class GridRow extends React.Component<IGridRowProps, IGridRowStat
           className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}
         >
           {(()=>{
-            if (!this.props.detailTemplateOpenOnRowSelect) {
+            if (this.props.detailTemplateOpenOnSelect) {
+              return null
+            }
+            else {
               return (
                 <td className="p0" width={5}>
                   <i className={"r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i>
