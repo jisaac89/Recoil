@@ -54,7 +54,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     super(props);
     this.state = {
       checked : false,
-      inputValue: props.value ||  '',
+      inputValue: props.value && props.value !== '' ? props.value : '',
       mouseOut: false
     };
   }

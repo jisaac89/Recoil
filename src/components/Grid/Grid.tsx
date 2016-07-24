@@ -78,12 +78,22 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
 
   componentDidMount() {
     let columnsDefinedByUser = this.props.columns;
+    let dataSource = this.props.dataSource;
 
     if (columnsDefinedByUser) {
-      this.loadCollection();
+      this.loadCollection(dataSource);
     } else {
       this.automaticallyCreateColumns();
-      this.loadCollection();
+      this.loadCollection(dataSource);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.dataSource !== this.props.dataSource) {
+      this.setState({
+        currentPage: 1
+      });
+      this.loadCollection(nextProps.dataSource);
     }
   }
 
@@ -123,13 +133,12 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
     })
   }
 
-  loadCollection() {
+  loadCollection(dataSource) {
     const self = this;
     const props = self.props;
-    let dataSource = props.dataSource;
 
     if (props.initialSortKey) {
-       self.sortCollection(props.dataSource, props.initialSortKey, "asc");
+       self.sortCollection(dataSource, props.initialSortKey, "asc");
     } else {
       self.setState({
         dataSource: dataSource[0] === undefined ? [dataSource] : dataSource
