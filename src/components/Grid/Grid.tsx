@@ -106,7 +106,7 @@ export default class Grid extends React.Component<IGridProps, IGridState>{
     let columnsArrayLength = columnsArray.length;
     let columns = [];
 
-    let firstItemOfDataSource = dataSource[0];
+    let firstItemOfDataSource = dataSource[0] || [dataSource];
     let columnHeadersForFirstItem = Object.keys(firstItemOfDataSource);
 
     // check to see if the dataSource is an array. 

@@ -25,7 +25,7 @@ export default class Toggle extends React.Component<any, any>{
     const self = this;
     self.setState({checked: e.target.checked});
     if (self.props.onChange) {
-      self.props.onChange();
+      self.props.onChange(e.target.checked);
     }
   }
 

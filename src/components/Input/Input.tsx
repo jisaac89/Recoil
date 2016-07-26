@@ -82,8 +82,9 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     }(inputDOM));
   }
   public focus(e){
+    const self = this;
     this.setState({
-      checked: true,
+      checked: self.props.simple ? false : true,
       inputValue:e.target.value
     });
   }
