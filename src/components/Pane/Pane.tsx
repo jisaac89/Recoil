@@ -24,7 +24,6 @@ export default class Pane extends React.Component<IPaneProps, {}>{
     const props = self.props;
     let axis, paneContainerStyle;
 
-
     let paneContainerClass = classNames(
       'r-Pane',
       {'e-open': (props.open)},
@@ -62,7 +61,7 @@ export default class Pane extends React.Component<IPaneProps, {}>{
     }
 
     return(
-      <div slideIndex={-1} onClick={props.wrapperClick} ref="pane" className={paneContainerClass} style={paneContainerStyle}>
+      <div tabIndex={-1} onClick={props.wrapperClick} ref="pane" className={paneContainerClass} style={paneContainerStyle}>
           {props.children}
       </div>
     );

@@ -28,6 +28,7 @@ export interface IButtonProps {
   progressiveClick? : any;
   shortcut? : string;
   simple?: boolean;
+  iconPointer? : string;
 }
 
 export interface IButtonState {
@@ -144,6 +145,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       {'column' : (props.strech)},
       {'icon' : (!props.children)},
       {'pointer' : (props.pointer)},
+      {'iconPointer' : (props.iconPointer)},
       {'right' :(props.pointer === 'right')},
       {'left' :(props.pointer === 'left')},
       {'pull-right' :(props.right)},
@@ -161,6 +163,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let selectablePartial = <Selectable checked={props.checked ? true : false}></Selectable>;
     let iconPartial = (props.icon ? <i className={(this.state.showShortcut ? 'e-invisible ' : '') + 'fa fa-'+props.icon+(props.children ? ' mr5' : '')}></i> : null );
+    let animatedIcon = (props.iconPointer ? <i className={"e-ico fa fa-caret-"+props.iconPointer} ></i> : null );
 
     let showTooltip = () => {
       if (this.state.showShortcut) {
@@ -191,6 +194,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
           <button ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
             {iconPartial}
             {props.children}
+            {props.iconPointer ? animatedIcon : null}
           </button>
         );
       } else {

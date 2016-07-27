@@ -244,3 +244,22 @@ a, .r-Button{
 .r-Button.icon > .fa{
   font-size: 14px !important;
 }
+
+.r-Button.iconPointer .e-ico{
+  .transition(150ms);
+  opacity: 0;
+  margin:auto;
+  left:0;
+  right:0;
+  position: absolute;
+}
+
+.r-Button:hover .e-ico{
+  opacity: 1 !important;
+  transform: translateX(20%) !important;
+}
+
+.r-Button.iconPointer:hover .fa:not(.e-ico) {
+    transform: translateX(-30%);
+    .transition(200ms);
+}
