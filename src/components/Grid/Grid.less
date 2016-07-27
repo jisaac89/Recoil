@@ -57,15 +57,24 @@
 .r-Grid td.r-Grid__Row__Column{
   padding:@grid-cell-padding;
   color: @font-color;
+    color: #a5a5a5;
+    font-size: 14px;
+    font-weight: 400;
   // border-bottom: @grid-border-size solid @grid-border-color !important;
   // border-right: @grid-border-size solid @grid-border-color !important;
 }
 
 .r-Grid__Header > tr > th {
   text-align: left;
-  font-size: 13px;
-  font-weight: bold;
+  font-size: 11px !important;
+  
+    font-weight: 300;
+  // font-weight: bold;
   padding:@grid-cell-padding;
+}
+
+.r-Grid__Header > tr > th > a{
+  color:#333
 }
 
 .r-Grid{
@@ -78,11 +87,15 @@
 
 
 
-tbody.r-Grid__Body > tr:nth-child(4n+1) {
-    cursor: pointer !important;
-    background: #E7E7E7 !important;
-}
+// tbody.r-Grid__Body > tr:nth-child(4n+1) {
+//     cursor: pointer !important;
+//     background: #E7E7E7 !important;
+// }
 
+tbody.r-Grid__Body > tr{
+background:white;
+border-bottom:1px solid #e6e6e6;
+}
 
 tbody.r-Grid__Body > tr:hover {
   cursor: pointer !important;
@@ -100,4 +113,14 @@ tbody.r-Grid__Body > .r-Grid__Row.e-selected {
   top:-1px;
   cursor: pointer !important;
   color:@font-color-light;
+}
+
+.r-Grid__Table{
+  color: rgba(0,0,0,0.64);
+    font-size: 12px;
+    background: #f5f5f5;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+    padding: 8px 24px;
+    font-weight: 500;
+    text-align: left;
 }
