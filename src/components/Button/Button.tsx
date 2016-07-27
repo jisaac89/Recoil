@@ -28,7 +28,7 @@ export interface IButtonProps {
   progressiveClick? : any;
   shortcut? : string;
   simple?: boolean;
-  iconPointer? : string;
+  iconPointer? : any;
 }
 
 export interface IButtonState {
