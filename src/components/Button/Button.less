@@ -254,12 +254,16 @@ a, .r-Button{
   position: absolute;
 }
 
-.r-Button:hover .e-ico{
-  opacity: 1 !important;
-  transform: translateX(20%) !important;
+.r-Button:hover .e-ico {
+    opacity: 1 !important;
+    transform: translateX(8px) !important;
 }
 
 .r-Button.iconPointer:hover .fa:not(.e-ico) {
     transform: translateX(-30%);
     .transition(200ms);
+}
+
+i.e-ico.fa.fa-caret-down {
+    top: 5px;
 }
