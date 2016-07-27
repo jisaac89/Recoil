@@ -41,12 +41,14 @@ export interface IButtonState {
 }
 
 export default class Button extends React.Component<IButtonProps, IButtonState>{
+  
   public static defaultProps = {
       active: true,
       disabled: false,
       block: false,
       simple: true
   };
+
   constructor(props: IButtonProps) {
     super(props);
     this.state = {
@@ -57,6 +59,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       shiftCounter: 0
     };
   }
+
   public componentDidMount() {
     const self = this;
     const props = self.props;
@@ -65,17 +68,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickLength: props.progressiveClick.length
       })
     }
-    // if (props.shortcut) {
-    //   window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
-    //   window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
-    // }
-  }
-
-  public componentWillUnmount() {
-    // if (this.props.shortcut) {
-    //   window.removeEventListener("keydown", null, false);
-    //   window.removeEventListener("keyup", null, false);
-    // }
   }
 
   public startShortcutListener(e) {
@@ -100,7 +92,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         })
       }
     }
-
   }
 
   public onClick(event: React.MouseEvent) {
@@ -112,6 +103,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       });
     }
   }
+
   public progressiveClick (arrayOfFunctions) {
     const self = this;
     const array = this.props.progressiveClick;
@@ -131,11 +123,13 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       })
     }
   }
+
   render() {
 
     const self = this;
     const props = self.props;
 
+    let showShortcut = this.state.showShortcut;
     let buttonType;
 
     let buttonClass = classNames(
@@ -166,30 +160,26 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let animatedIcon = (props.iconPointer ? <i className={"e-ico fa fa-caret-"+props.iconPointer} ></i> : null );
 
     let showTooltip = () => {
-      if (this.state.showShortcut) {
+      if (showShortcut) {
         return (
           <span className="e-shortcut animated fadeInUp">{this.props.shortcut}</span>
         )
       }
     }
 
-    if (props.href) {
+    let linkButton = () => {
       return (
         <a href={props.href} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} className={buttonClass} style={props.style}>
           {iconPartial}
-          {(()=>{
-            if (!this.state.showShortcut) {
-              return props.children;
-            } else {
-              return null;
-            }
-          })()}
+          {!showShortcut ? props.children : null}
           {showTooltip()}
           {selectablePartial}
+          {props.iconPointer ? animatedIcon : null}
         </a>
-      );
-    } else {
-      if (props.simple) {
+      )
+    }
+
+    let simpleButton = () => {
         return (
           <button ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
             {iconPartial}
@@ -197,22 +187,25 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
             {props.iconPointer ? animatedIcon : null}
           </button>
         );
-      } else {
+    }
+
+    let defaultButton = () => {
         return (
           <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
             {iconPartial}
-            {(()=>{
-              if (!this.state.showShortcut) {
-                return props.children;
-              } else {
-                return null;
-              }
-            })()}
+            {!showShortcut ? props.children : null}
             {showTooltip()}
             {selectablePartial}
+            {props.iconPointer ? animatedIcon : null}
           </button>
         );
-      }
     }
+
+    if (props.href) {
+      return linkButton();
+    } else {
+      return props.simple ? simpleButton() : defaultButton();
+    }
+
   }
 }
