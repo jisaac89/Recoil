@@ -26,15 +26,14 @@ export interface IButtonProps {
   onClick? : (event: React.MouseEvent) => void;
   tabIndex? : number;
   progressiveClick? : any;
-  shortcut? : string;
   simple?: boolean;
   iconPointer? : any;
+  loading? : boolean;
 }
 
 export interface IButtonState {
   checked? : boolean;
   progressiveClickIndex? : number;
-  showShortcut?: boolean;
   progressiveClickLength? : number;
   clickCounter? : number;
   shiftCounter? : number;
@@ -54,7 +53,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     this.state = {
       checked : false,
       progressiveClickIndex: 0,
-      showShortcut : false,
       clickCounter: 0,
       shiftCounter: 0
     };
@@ -67,30 +65,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       this.setState({
         progressiveClickLength: props.progressiveClick.length
       })
-    }
-  }
-
-  public startShortcutListener(e) {
-    const context = this;
-    const props = context.props;
-    let state = context.state;
-
-    const refButton = findDOMNode<HTMLElement>(context.refs["button"]);
-
-    if (refButton) {
-      context.setState({
-        showShortcut : e.shiftKey ? true : false
-      })
-      context.setState({
-        shiftCounter: 1
-      })
-
-      if (refButton && e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase() && state.clickCounter !== 1) {
-        refButton.click();
-        context.setState({
-          clickCounter: state.clickCounter === 0 ? 1 : 0
-        })
-      }
     }
   }
 
@@ -129,7 +103,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     const self = this;
     const props = self.props;
 
-    let showShortcut = this.state.showShortcut;
     let buttonType;
 
     let buttonClass = classNames(
@@ -156,23 +129,16 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
 
     let selectablePartial = <Selectable checked={props.checked ? true : false}></Selectable>;
-    let iconPartial = (props.icon ? <i className={(this.state.showShortcut ? 'e-invisible ' : '') + 'fa fa-'+props.icon+(props.children ? ' mr5' : '')}></i> : null );
-    let animatedIcon = (props.iconPointer ? <i className={"e-ico fa fa-caret-"+props.iconPointer} ></i> : null );
-
-    let showTooltip = () => {
-      if (showShortcut) {
-        return (
-          <span className="e-shortcut animated fadeInUp">{this.props.shortcut}</span>
-        )
-      }
-    }
+    let iconPartial = (props.icon && !props.loading ? <i className={'fa fa-'+props.icon+(props.children ? ' mr5' : '')}></i> : null );
+    let loadingPartial = (props.loading ? <i className={'fa fa-circle-o-notch fa-spin '+(props.children ? ' mr5' : '')}></i> : null );
+    let animatedIcon = (props.iconPointer && !props.loading ? <i className={"e-ico fa fa-caret-"+props.iconPointer} ></i> : null );
 
     let linkButton = () => {
       return (
-        <a href={props.href} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} className={buttonClass} style={props.style}>
+        <a href={props.href} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
           {iconPartial}
-          {!showShortcut ? props.children : null}
-          {showTooltip()}
+          {loadingPartial}
+          {props.children}
           {selectablePartial}
           {props.iconPointer ? animatedIcon : null}
         </a>
@@ -181,8 +147,9 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let simpleButton = () => {
         return (
-          <button ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
+          <button ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
             {iconPartial}
+            {loadingPartial}
             {props.children}
             {props.iconPointer ? animatedIcon : null}
           </button>
@@ -191,10 +158,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let defaultButton = () => {
         return (
-          <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled === true} target={props.target} className={buttonClass} style={props.style}>
+          <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
             {iconPartial}
-            {!showShortcut ? props.children : null}
-            {showTooltip()}
+            {loadingPartial}
+            {props.children}
             {selectablePartial}
             {props.iconPointer ? animatedIcon : null}
           </button>
