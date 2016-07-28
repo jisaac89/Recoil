@@ -41,8 +41,8 @@ export default class GridFooter extends React.Component<IGridFooterProps, {}>{
         self.props.currentPage === i ||
         self.props.currentPage === i + 1) {
         paginationPartial.push(
-          <Button size="small" tabIndex={-1} type={self.props.currentPage - 1  === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} key={i}>
-            {i + 1}
+          <Button size="small" tabIndex={-1} type={self.props.currentPage === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} key={i}>
+            {i}
           </Button>
         )
       }
@@ -51,8 +51,8 @@ export default class GridFooter extends React.Component<IGridFooterProps, {}>{
     return (
       <div className="r-Grid__Footer">
         <Toolbar flush>
-          <Button size="small" disabled={this.props.currentPage === 1} tabIndex={-1} onClick={this.props.firstPage} icon="fast-backward"></Button>
-          <Button size="small" disabled={this.props.currentPage === 1} tabIndex={-1} onClick={this.props.previousPage} icon="step-backward"></Button>
+          <Button size="small" disabled={this.props.currentPage === 0} tabIndex={-1} onClick={this.props.firstPage} icon="fast-backward"></Button>
+          <Button size="small" disabled={this.props.currentPage === 0} tabIndex={-1} onClick={this.props.previousPage} icon="step-backward"></Button>
           {paginationPartial}
           <Button size="small" disabled={this.props.currentPage === this.props.numberOfPages} tabIndex={-1} onClick={this.props.nextPage} icon="step-forward"></Button>
           <Button size="small" disabled={this.props.currentPage === this.props.numberOfPages} tabIndex={-1} onClick={this.lastPage.bind(this, this.props.numberOfPages)} icon="fast-forward"></Button>

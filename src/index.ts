@@ -3,6 +3,7 @@ export {default as Button} from './components/Button/Button';
 export {default as Card} from './components/Card/Card';
 export {default as Checkbox} from './components/Checkbox/Checkbox';
 export {default as Open} from './components/Open/Open';
+export {default as DataSource} from './components/DataSource/DataSource';
 export {default as Dropdown} from './components/Dropdown/Dropdown';
 export {default as Emerge} from './components/Emerge/Emerge';
 export {default as Fixed} from './components/Fixed/Fixed';

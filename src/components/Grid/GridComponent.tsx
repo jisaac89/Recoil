@@ -1,9 +1,10 @@
-import * as React from 'react';
+﻿import * as React from 'react';
 import * as classNames from 'classnames';
 import './Grid.less';
 
-import GridComponent from './GridComponent';
-import DataSource from '../DataSource/DataSource';
+import GridHeader from './GridHeader';
+import GridBody from './GridBody';
+import GridFooter from './GridFooter';
 
 export interface IGridProps {
     dataSource?: any[];
@@ -44,11 +45,23 @@ export interface IGridState {
     selected?: any;
 }
 
-export default class Grid extends React.Component<IGridProps, IGridState>{
+export default class GridComponent extends React.Component<IGridProps, IGridState>{
     render() {
         const self = this;
         const props = self.props;
 
-        return React.createElement(DataSource(<GridComponent {...props} />))
+        return (
+            <div className="r-Grid">
+                <table className='r-Grid__Table w100'>
+                    <GridHeader
+                        {...props}
+                        />
+                    <GridBody
+                        {...props}
+                        />
+                </table>
+                {props.numberOfPages <= 1 ? null : <GridFooter {...props} />}
+            </div>
+        )
     }
 }
