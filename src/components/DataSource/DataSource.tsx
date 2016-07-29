@@ -91,7 +91,7 @@ const DataSource = (Component) =>
         componentWillReceiveProps(nextProps) {
             if (nextProps.dataSource !== Component.props.dataSource) {
                 this.setState({
-                    page: 1
+                    page: 9
                 });
                 this.loadCollection(nextProps.dataSource);
             }
@@ -175,7 +175,7 @@ const DataSource = (Component) =>
 
             self.setState({
                 dataSource: sortOrder,
-                page: 1
+                page: 0
             })
         }
 

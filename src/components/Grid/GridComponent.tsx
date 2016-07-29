@@ -9,15 +9,15 @@ import GridFooter from './GridFooter';
 export interface IGridProps {
     dataSource : Array<any>;
     numberPerPage?: number;
-    columns?: any;
+    columns?: Array<any>;
     open?: boolean;
     hideHeader?: boolean;
     sortable?: boolean;
     detailTemplate?: any;
     height?: string;
     onRowSelect?: any;
-    selected?: any;
-    hideColumns?: any;
+    selected?: Array<any>;
+    hideColumns?: Array<string>;
     columnTemplate?: any;
     detailTemplateOpenOnHover?: boolean;
     detailTemplateOpenOnSelect?: boolean;
@@ -30,7 +30,7 @@ export interface IGridProps {
     detailTemplateOpenOnRowSelect?: boolean;
     filterSelected?: boolean;
     initialSortKey?: string;
-    numberOfPages?: any;
+    numberOfPages?: number;
 }
 
 export interface S {}
@@ -46,7 +46,7 @@ export default class GridComponent extends React.Component<IGridProps, S>{
                     <GridHeader {...props} />
                     <GridBody {...props} />
                 </table>
-                {props.numberOfPages <= 1 ? null : <GridFooter {...props} />}
+                <GridFooter {...props} />
             </div>
         )
     }

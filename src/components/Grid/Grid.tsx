@@ -5,7 +5,10 @@ import './Grid.less';
 import GridComponent from './GridComponent';
 import DataSource from '../DataSource/DataSource';
 
-export interface P{}
+export interface P{
+    dataSource ? : Array<any>;
+}
+
 export interface S{}
 
 export default class Grid extends React.Component<P, S>{
