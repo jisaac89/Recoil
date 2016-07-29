@@ -205,7 +205,7 @@ const DataSource = (Component) =>
 
         lastPage(numberOfPages) {
             this.setState({
-                page: numberOfPages
+                page: numberOfPages - 1
             })
         }
 
