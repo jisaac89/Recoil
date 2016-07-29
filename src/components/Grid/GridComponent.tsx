@@ -7,7 +7,7 @@ import GridBody from './GridBody';
 import GridFooter from './GridFooter';
 
 export interface IGridProps {
-    dataSource?: any[];
+    dataSource : Array<any>;
     numberPerPage?: number;
     columns?: any;
     open?: boolean;
@@ -33,19 +33,9 @@ export interface IGridProps {
     numberOfPages?: any;
 }
 
-export interface IGridState {
-    columns?: any;
-    dataSource?: any;
-    pageList?: any;
-    currentPage?: number;
-    numberPerPage?: number;
-    numberOfPages?: number;
-    dataType?: any;
-    sortType?: any;
-    selected?: any;
-}
+export interface S {}
 
-export default class GridComponent extends React.Component<IGridProps, IGridState>{
+export default class GridComponent extends React.Component<IGridProps, S>{
     render() {
         const self = this;
         const props = self.props;
@@ -53,12 +43,8 @@ export default class GridComponent extends React.Component<IGridProps, IGridStat
         return (
             <div className="r-Grid">
                 <table className='r-Grid__Table w100'>
-                    <GridHeader
-                        {...props}
-                        />
-                    <GridBody
-                        {...props}
-                        />
+                    <GridHeader {...props} />
+                    <GridBody {...props} />
                 </table>
                 {props.numberOfPages <= 1 ? null : <GridFooter {...props} />}
             </div>

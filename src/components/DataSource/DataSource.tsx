@@ -77,7 +77,7 @@ const DataSource = (Component) =>
         //    if not automatically create the columns
 
         componentDidMount() {
-            let columnsDefinedByUser = this.props.columns;
+            let columnsDefinedByUser = Component.props.columns;
             let dataSource = Component.props.dataSource;
 
             if (columnsDefinedByUser) {
@@ -138,7 +138,7 @@ const DataSource = (Component) =>
             const props = self.props;
 
             if (props.initialSortKey) {
-                self.sortCollection(dataSource, props.initialSortKey, "asc");
+                self.sortCollection(dataSource, Component.props.initialSortKey, "asc");
             } else {
                 self.setState({
                     dataSource: dataSource[0] === undefined ? [dataSource] : dataSource
@@ -222,28 +222,25 @@ const DataSource = (Component) =>
         }
 
         onRowSelect(item) {
-            if (this.props.onRowSelect) {
-                this.props.onRowSelect(item);
+            if (Component.props.onRowSelect) {
+                Component.props.onRowSelect(item);
             }
         }
 
         render() {
             const self = this;
             const props = self.props;
+            let state = self.state;
+            let {dataSource} = state;
 
             // grab the dataSource props;
 
-            let state = self.state;
             let renderedPage = [];
-            let renderedColumns;
+            let numberPerPage, numberOfPages, renderedColumns;
 
-            let {dataSource} = state;
-
-            let numberPerPage, numberOfPages;
-
-            if (props.pageSize) {
+            if (Component.props.pageSize) {
                 numberPerPage = Component.props.pageSize;
-                numberOfPages = Math.ceil(dataSource.length / (props.pageSize));
+                numberOfPages = Math.ceil(dataSource.length / (Component.props.pageSize));
             } else {
                 numberPerPage = state.pageSize;
                 numberOfPages = Math.ceil(dataSource.length / (state.pageSize));
@@ -265,14 +262,13 @@ const DataSource = (Component) =>
 
             let renderedObject = {
                 // high order
-                hideHeader : props.hideHeader,
                 columns: renderedColumns,
                 dataSource: renderedPage,
-                toggleSorting: this.toggleSorting.bind(this),
                 sortType: state.sortType,
                 currentPage: state.page,
                 numberOfPages: numberOfPages,
                 // component / view specific
+                hideHeader : Component.props.hideHeader,
                 detailTemplate: Component.props.detailTemplate,
                 sortable: Component.props.sortable,
                 hideColumns: Component.props.hideColumns,
@@ -290,6 +286,7 @@ const DataSource = (Component) =>
                 detailTemplateOpenOnRowSelect: Component.props.detailTemplateOpenOnRowSelect,
                 filterSelected: Component.props.filterSelected,
                 // methods
+                toggleSorting: this.toggleSorting.bind(this),
                 gotoPage:this.gotoPage.bind(this),
                 previousPage:this.previousPage.bind(this),
                 nextPage:this.nextPage.bind(this),
@@ -303,8 +300,8 @@ const DataSource = (Component) =>
             const newProps = Object.assign({}, renderedObject)
             // clone the original Component and add the new props;
             const updatedComponent = React.cloneElement(Component, newProps, Component.props);
-            // return the new element
-            return updatedComponent;
+            // only if a dataSource exists return the new element else return original
+            return Component.props.dataSource.length ? updatedComponent : Component;
         }
     };
 
