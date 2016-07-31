@@ -5,11 +5,19 @@ import './Grid.less';
 import GridComponent from './GridComponent';
 import DataSource from '../DataSource/DataSource';
 
-export interface P{
-    dataSource ? : Array<any>;
+export interface P {
+    dataSource?: Array<any>;
+    sortable?: any;
+    initialSortKey?: string;
+    columns?: any;
+    hideHeader?: boolean;
+    selectedKey?: string;
+    detailTemplate?: any;
+    onSelect?: Function;
+    open?: boolean;
 }
 
-export interface S{}
+export interface S { }
 
 export default class Grid extends React.Component<P, S>{
     render() {
