@@ -136,11 +136,13 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let linkButton = () => {
       return (
         <a href={props.href} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
-          {iconPartial}
+          <div className="dinblock posrel">
+            {iconPartial}
+            {props.iconPointer ? animatedIcon : null}
+          </div>
           {loadingPartial}
           {props.children}
           {selectablePartial}
-          {props.iconPointer ? animatedIcon : null}
         </a>
       )
     }
@@ -148,10 +150,12 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let simpleButton = () => {
         return (
           <button ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
-            {iconPartial}
+            <div className="dinblock posrel">
+              {iconPartial}
+              {props.iconPointer ? animatedIcon : null}
+            </div>
             {loadingPartial}
             {props.children}
-            {props.iconPointer ? animatedIcon : null}
           </button>
         );
     }
@@ -159,11 +163,13 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let defaultButton = () => {
         return (
           <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
-            {iconPartial}
+            <div className="dinblock posrel">
+              {iconPartial}
+              {props.iconPointer ? animatedIcon : null}
+            </div>
             {loadingPartial}
             {props.children}
             {selectablePartial}
-            {props.iconPointer ? animatedIcon : null}
           </button>
         );
     }

@@ -80,11 +80,13 @@ const DataSource = (Component) =>
             let columnsDefinedByUser = Component.props.columns;
             let dataSource = Component.props.dataSource;
 
-            if (columnsDefinedByUser) {
-                this.loadCollection(dataSource);
-            } else {
-                this.automaticallyCreateColumns();
-                this.loadCollection(dataSource);
+            if (dataSource) {
+                if (columnsDefinedByUser) {
+                    this.loadCollection(dataSource);
+                } else {
+                    this.automaticallyCreateColumns();
+                    this.loadCollection(dataSource);
+                }
             }
         }
 
@@ -293,7 +295,6 @@ const DataSource = (Component) =>
                 lastPage:this.lastPage.bind(this),
                 firstPage:this.firstPage.bind(this),
                 changePageSize:this.changePageSize.bind(this)
-
             }
 
             // grab new props;
@@ -301,7 +302,7 @@ const DataSource = (Component) =>
             // clone the original Component and add the new props;
             const updatedComponent = React.cloneElement(Component, newProps, Component.props);
             // only if a dataSource exists return the new element else return original
-            return Component.props.dataSource.length ? updatedComponent : Component;
+            return Component.props.dataSource ? updatedComponent : Component;
         }
     };
 
