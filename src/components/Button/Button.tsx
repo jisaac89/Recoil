@@ -45,7 +45,8 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       active: true,
       disabled: false,
       block: false,
-      simple: true
+      simple: true,
+      iconLocation : 'left'
   };
 
   constructor(props: IButtonProps) {
@@ -129,20 +130,20 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
 
     let selectablePartial = <Selectable checked={props.checked ? true : false}></Selectable>;
-    let iconPartial = (props.icon && !props.loading ? <i className={'fa fa-'+props.icon+(props.children ? ' mr5' : '')}></i> : null );
-    let loadingPartial = (props.loading ? <i className={'fa fa-circle-o-notch fa-spin '+(props.children ? ' mr5' : '')}></i> : null );
+    let iconPartial = (props.icon && !props.loading ? <i className={'fa fa-'+props.icon}></i> : null );
+    let loadingPartial = (props.loading ? <i className='fa fa-circle-o-notch fa-spin'></i> : null );
     let animatedIcon = (props.iconPointer && !props.loading ? <i className={"e-ico fa fa-caret-"+props.iconPointer} ></i> : null );
+    let iconWrapperRight = (props.icon && props.iconLocation === 'right' ? <div className={"ml10 dinblock posrel " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
+    let iconWrapperLeft = (props.icon && props.iconLocation === 'left' ? <div className={"dinblock posrel " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
 
     let linkButton = () => {
       return (
         <a href={props.href} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
-          <div className="dinblock posrel">
-            {iconPartial}
-            {props.iconPointer ? animatedIcon : null}
-          </div>
+          {iconWrapperLeft}
           {loadingPartial}
           {props.children}
           {selectablePartial}
+          {iconWrapperRight}
         </a>
       )
     }
@@ -150,12 +151,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let simpleButton = () => {
         return (
           <button ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
-            <div className="dinblock posrel">
-              {iconPartial}
-              {props.iconPointer ? animatedIcon : null}
-            </div>
+            {iconWrapperLeft}
             {loadingPartial}
             {props.children}
+            {iconWrapperRight}
           </button>
         );
     }
@@ -163,13 +162,11 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let defaultButton = () => {
         return (
           <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
-            <div className="dinblock posrel">
-              {iconPartial}
-              {props.iconPointer ? animatedIcon : null}
-            </div>
+            {iconWrapperLeft}
             {loadingPartial}
             {props.children}
             {selectablePartial}
+            {iconWrapperRight}
           </button>
         );
     }

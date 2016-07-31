@@ -28,6 +28,7 @@ export default class DropdownComponent extends React.Component<any,any>{
                         block={props.block}
                         icon="bars"
                         iconPointer="down"
+                        iconLocation="right"
                     >{props.title}</Button>
                 break;
             case 'selection':
