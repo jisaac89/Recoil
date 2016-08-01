@@ -1,0 +1,31 @@
+@import '../../less/Global';
+
+.r-Dropdown > .r-DropdownWrapper{    
+    opacity: 1;
+    -webkit-transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
+    transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
+    -webkit-transition-duration: 200ms;
+    transition-duration: 200ms;
+    position: absolute;
+    transform-origin: right top 0px;
+    transform: scale(0);
+    top:0;
+    right:0;
+    min-width: 100%;
+    border-radius: @default-border-radius;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12);
+}
+
+
+.r-Dropdown.e-open > .r-DropdownWrapper{
+    opacity: 1;
+    -webkit-transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
+    transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
+    -webkit-transition-duration: 200ms;
+    transition-duration: 200ms;
+    position: absolute;
+    transform-origin: right top 0px;
+    transform: scale(1);
+    z-index: 10;
+    background:white;
+}
