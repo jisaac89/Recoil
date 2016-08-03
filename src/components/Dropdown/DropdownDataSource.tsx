@@ -6,20 +6,14 @@ import Grid from '../Grid/Grid';
 interface IDropdownDataSourceProps {}
 
 export default class DropdownDataSource extends React.Component<IDropdownDataSourceProps, {}> {
-    selectItem(item){
-        this.props.selectItem(item);
+    onRowSelect(item){
+        this.props.onRowSelect(item);
     }
     render() {
 
         const self = this;
         const props = self.props;
 
-        return <Grid 
-                    dataSource={props.dataSource} 
-                    hideHeader={props.dataSource.length < 10}
-                    onRowSelect={this.selectItem.bind(this)}
-                    selected={props.selected}
-                    selectedKey={props.selectedKey}
-                />
+        return <Grid {...props} onRowSelect={this.onRowSelect.bind(this)} selected={this.props.selected} />
     }
 }

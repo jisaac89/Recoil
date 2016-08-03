@@ -1,12 +1,16 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import DataSource from '../DataSource/DataSource';
+// import DataSource from '../DataSource/DataSource';
 import DropdownComponent from './DropdownComponent';
 
 import './Dropdown.less';
 
-export default class Dropdown extends React.Component<any, any>{
+interface P {
+  rowIsSelectable? : boolean;
+}
+
+export default class Dropdown extends React.Component<P, any>{
   constructor(props) {
     super(props);
   }
@@ -15,6 +19,8 @@ export default class Dropdown extends React.Component<any, any>{
     const self = this;
     const props = self.props;
 
-    return React.createElement(DataSource(<DropdownComponent {...props} />))
+    return <DropdownComponent {...props} />;
   }
 }
+
+// return React.createElement(DataSource(<DropdownComponent {...props} />))

@@ -15,6 +15,7 @@ export interface P {
     detailTemplate?: any;
     onSelect?: Function;
     open?: boolean;
+    rowIsSelectable? : any;
 }
 
 export interface S { }

@@ -235,74 +235,80 @@ const DataSource = (Component) =>
             let state = self.state;
             let {dataSource} = state;
 
-            // grab the dataSource props;
+            let updatedComponent;
 
-            let renderedPage = [];
-            let numberPerPage, numberOfPages, renderedColumns;
+            if (dataSource) {
 
-            if (Component.props.pageSize) {
-                numberPerPage = Component.props.pageSize;
-                numberOfPages = Math.ceil(dataSource.length / (Component.props.pageSize));
-            } else {
-                numberPerPage = state.pageSize;
-                numberOfPages = Math.ceil(dataSource.length / (state.pageSize));
+                // grab the dataSource props;
+
+                let renderedPage = [];
+                let numberPerPage, numberOfPages, renderedColumns;
+
+                if (Component.props.pageSize) {
+                    numberPerPage = Component.props.pageSize;
+                    numberOfPages = Math.ceil(dataSource.length / (Component.props.pageSize));
+                } else {
+                    numberPerPage = state.pageSize;
+                    numberOfPages = Math.ceil(dataSource.length / (state.pageSize));
+                }
+
+                let begin = ((state.page) * numberPerPage);
+                let end = begin + numberPerPage;
+                let pageList = dataSource.slice(begin, end);
+
+                pageList.map((item, index) => {
+                    renderedPage.push(item);
+                })
+
+                if (Component.props.columns) {
+                    renderedColumns = Component.props.columns;
+                } else {
+                    renderedColumns = this.state.columns;
+                }
+
+                let renderedObject = {
+                    // high order
+                    columns: renderedColumns,
+                    dataSource: renderedPage,
+                    sortType: state.sortType,
+                    currentPage: state.page,
+                    numberOfPages: numberOfPages,
+                    // component / view specific
+                    hideHeader : Component.props.hideHeader,
+                    detailTemplate: Component.props.detailTemplate,
+                    sortable: Component.props.sortable,
+                    hideColumns: Component.props.hideColumns,
+                    columnTemplate: Component.props.columnTemplate,
+                    pageSize: Component.props.pageSize,
+                    height: Component.props.height,
+                    open: Component.props.open,
+                    detailTemplateOpenOnHover: Component.props.detailTemplateOpenOnHover,
+                    detailTemplateOpenOnSelect: Component.props.detailTemplateOpenOnSelect,
+                    rowIsSelectable: Component.props.rowIsSelectable,
+                    onRowSelect: Component.props.onRowSelect,
+                    selected: Component.props.selected,
+                    selectedKey: Component.props.selectedKey,
+                    rowIsSelectableType: Component.props.rowIsSelectableType,
+                    detailTemplateOpenOnRowSelect: Component.props.detailTemplateOpenOnRowSelect,
+                    filterSelected: Component.props.filterSelected,
+                    // methods
+                    toggleSorting: this.toggleSorting.bind(this),
+                    gotoPage:this.gotoPage.bind(this),
+                    previousPage:this.previousPage.bind(this),
+                    nextPage:this.nextPage.bind(this),
+                    lastPage:this.lastPage.bind(this),
+                    firstPage:this.firstPage.bind(this),
+                    changePageSize:this.changePageSize.bind(this)
+                }
+
+                // grab new props;
+                const newProps = Object.assign({}, renderedObject)
+                // clone the original Component and add the new props;
+                updatedComponent = React.cloneElement(Component, newProps, Component.props);
             }
 
-            let begin = ((state.page) * numberPerPage);
-            let end = begin + numberPerPage;
-            let pageList = dataSource.slice(begin, end);
-
-            pageList.map((item, index) => {
-                renderedPage.push(item);
-            })
-
-            if (Component.props.columns) {
-                renderedColumns = Component.props.columns;
-            } else {
-                renderedColumns = this.state.columns;
-            }
-
-            let renderedObject = {
-                // high order
-                columns: renderedColumns,
-                dataSource: renderedPage,
-                sortType: state.sortType,
-                currentPage: state.page,
-                numberOfPages: numberOfPages,
-                // component / view specific
-                hideHeader : Component.props.hideHeader,
-                detailTemplate: Component.props.detailTemplate,
-                sortable: Component.props.sortable,
-                hideColumns: Component.props.hideColumns,
-                columnTemplate: Component.props.columnTemplate,
-                pageSize: Component.props.pageSize,
-                height: Component.props.height,
-                open: Component.props.open,
-                detailTemplateOpenOnHover: Component.props.detailTemplateOpenOnHover,
-                detailTemplateOpenOnSelect: Component.props.detailTemplateOpenOnSelect,
-                rowIsSelectable: Component.props.rowIsSelectable,
-                onRowSelect: Component.props.onRowSelect,
-                selected: Component.props.selected,
-                selectedKey: Component.props.selectedKey,
-                rowIsSelectableType: Component.props.rowIsSelectableType,
-                detailTemplateOpenOnRowSelect: Component.props.detailTemplateOpenOnRowSelect,
-                filterSelected: Component.props.filterSelected,
-                // methods
-                toggleSorting: this.toggleSorting.bind(this),
-                gotoPage:this.gotoPage.bind(this),
-                previousPage:this.previousPage.bind(this),
-                nextPage:this.nextPage.bind(this),
-                lastPage:this.lastPage.bind(this),
-                firstPage:this.firstPage.bind(this),
-                changePageSize:this.changePageSize.bind(this)
-            }
-
-            // grab new props;
-            const newProps = Object.assign({}, renderedObject)
-            // clone the original Component and add the new props;
-            const updatedComponent = React.cloneElement(Component, newProps, Component.props);
             // only if a dataSource exists return the new element else return original
-            return Component.props.dataSource ? updatedComponent : Component;
+            return dataSource ? updatedComponent : Component;
         }
     };
 

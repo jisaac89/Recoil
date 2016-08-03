@@ -41,6 +41,10 @@ export interface IGridBodyState {
 
 export default class GridBody extends React.Component<IGridProps, IGridBodyState>{
 
+  public static defaultProps = {
+      rowIsSelectableType: 'single'
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -92,10 +96,18 @@ export default class GridBody extends React.Component<IGridProps, IGridBodyState
         selected = this.state.selected;
       }
 
-      selected.push(item);
+      if (this.props.selectedKey) {
+        selected.push(item[this.props.selectedKey]);  
+      } else {
+        selected.push(item);
+      }
+
       this.setState({
         selected: selected
       })
+      if (this.props.onRowSelect) {
+        this.props.onRowSelect(item);
+      }
     } else if (this.props.onRowSelect) {
       this.props.onRowSelect(item);
     }
@@ -158,11 +170,11 @@ export default class GridBody extends React.Component<IGridProps, IGridBodyState
       }
     }
 
-    return (
-      <tbody className="r-Grid__Body w100" style={{height : this.props.height}}>
-        {rowArray}
-      </tbody>
-    )
+      return (
+        <tbody className="r-Grid__Body w100" style={{height : this.props.height}}>
+          {rowArray}
+        </tbody>
+      )
   }
 }
 

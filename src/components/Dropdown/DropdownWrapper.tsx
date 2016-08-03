@@ -17,7 +17,7 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
     let DropdownContent;
 
     if (props.dataSource) {
-      DropdownContent = <DropdownDataSource selectItem={this.selectItem.bind(this)} {...props} />;
+      DropdownContent = <DropdownDataSource {...props} />;
     } else {
       DropdownContent = props.children;
     }
