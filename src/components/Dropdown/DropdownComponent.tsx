@@ -18,7 +18,8 @@ interface P {
 export default class DropdownComponent extends React.Component<P,any>{
 
     public static defaultProps = {
-        type: 'button'
+        type: 'button',
+        icon: 'bars'
     };
 
     constructor(props) {
@@ -95,14 +96,14 @@ export default class DropdownComponent extends React.Component<P,any>{
             props.className
         );
 
-        let dropdownContentPartial = <DropdownWrapper {...props} onRowSelect={this.onRowSelect.bind(this)} selected={this.state.selected}>{props.children}</DropdownWrapper>;
+        let dropdownContentPartial = <DropdownWrapper {...props} onRowSelect={this.onRowSelect.bind(this)} selected={this.state.selected} open={state.open}>{props.children}</DropdownWrapper>;
 
         switch (props.type) {
             case 'button':
                 dropdownTypePartial = 
                     <Button 
                         block={props.block}
-                        icon="bars"
+                        icon={props.icon}
                         iconPointer="down"
                         iconLocation="left"
                         onClick={this.toggleOpen.bind(this)}
