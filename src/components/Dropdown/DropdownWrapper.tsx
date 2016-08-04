@@ -3,7 +3,12 @@ import Selectable from '../Selectable/Selectable';
 
 import DropdownDataSource from './DropdownDataSource';
 
-interface IDropdownWrapperProps {}
+interface IDropdownWrapperProps {
+    selectItem?: (item: any) => void;
+    dataSource?: any;
+    onRowSelect?: (item: any) => void;
+    selected?: any;
+}
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
   selectItem(item) {

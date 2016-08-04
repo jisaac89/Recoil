@@ -13,9 +13,22 @@ interface P {
     toggleCpenOnRowSelect? : boolean;
     open? : boolean;
     selected? : Array<any>;
+    rowIsSelectable?: boolean;
+    block?: boolean;
+    right?: boolean;
+    left?: boolean;
+    className?: string;
+    type?: '' | 'button' | 'selection' | 'search';
+    title?: string;
 }
 
-export default class DropdownComponent extends React.Component<P,any>{
+export interface State {
+    open?: boolean;
+    selected?: Array<any>;
+}
+
+export default class DropdownComponent extends React.Component<P, State>{
+    mouseIsDownOnCalendar: boolean;
 
     public static defaultProps = {
         type: 'button',

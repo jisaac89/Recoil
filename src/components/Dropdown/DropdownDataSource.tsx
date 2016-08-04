@@ -3,7 +3,10 @@ import Selectable from '../Selectable/Selectable';
 
 import Grid from '../Grid/Grid';
 
-interface IDropdownDataSourceProps {}
+interface IDropdownDataSourceProps {
+    onRowSelect?: (item: any) => void;
+    selected?: any;
+}
 
 export default class DropdownDataSource extends React.Component<IDropdownDataSourceProps, {}> {
     onRowSelect(item){

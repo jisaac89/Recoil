@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 interface P {}
-interface S {}
+interface S {
+    dataSource?: any;
+}
 
 const DataSource = (Component) =>
     class Enhance extends React.Component<P, S> {
