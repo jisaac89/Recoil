@@ -16,6 +16,7 @@ export interface P {
     onSelect?: Function;
     open?: boolean;
     rowIsSelectable? : any;
+    searchableKeys? : Array<any>;
 }
 
 export interface S { }

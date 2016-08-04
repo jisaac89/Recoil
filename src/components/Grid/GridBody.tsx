@@ -177,6 +177,3 @@ export default class GridBody extends React.Component<IGridProps, IGridBodyState
       )
   }
 }
-
-// this.state.expandedRows.includes(key)
-// <SelectableGridRow onRowSelect={this.props.onRowSelect} item={item} selected={this.state.selected} selectedItem={selectedItem} selectedKey={this.props.selectedKey} />

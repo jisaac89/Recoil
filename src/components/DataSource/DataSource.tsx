@@ -63,13 +63,15 @@ const DataSource = (Component) =>
 
         constructor(props) {
             super(props);
+            this.dataSource = [];
             this.state = {
                 dataSource: Component.props.dataSource || [],
                 columns: Component.props.columns || [],
                 page: Component.props.page || 0,
                 numberOfPages: Component.props.pagerSize|| [],
                 activeRows: Component.props.activeRows || [],
-                pageSize: Component.props.pageSize || 10
+                pageSize: Component.props.pageSize || 10,
+                searchedItems: []
             }
         }
          
@@ -229,6 +231,18 @@ const DataSource = (Component) =>
             }
         }
 
+        filterItems(term, key) {
+            // let searchedItems = [];
+            // Component.props.dataSource.filter((el) => {
+            //     if (term !== '') {
+            //         el[key].includes(term.toLowerCase()) ? searchedItems.push(el) : null
+            //     } else {
+            //         return null
+            //     }
+            // });
+            
+        }
+
         render() {
             const self = this;
             const props = self.props;
@@ -265,11 +279,20 @@ const DataSource = (Component) =>
                 } else {
                     renderedColumns = this.state.columns;
                 }
+                
+                let searchHasValues = this.state.searchedItems.length;
+                let data;
+
+                if (searchHasValues) {
+                    data = this.state.searchedItems;
+                } else {
+                    data = renderedPage;
+                }
 
                 let renderedObject = {
                     // high order
                     columns: renderedColumns,
-                    dataSource: renderedPage,
+                    dataSource: data,
                     sortType: state.sortType,
                     currentPage: state.page,
                     numberOfPages: numberOfPages,
@@ -298,7 +321,8 @@ const DataSource = (Component) =>
                     nextPage:this.nextPage.bind(this),
                     lastPage:this.lastPage.bind(this),
                     firstPage:this.firstPage.bind(this),
-                    changePageSize:this.changePageSize.bind(this)
+                    changePageSize:this.changePageSize.bind(this),
+                    filterItems: this.filterItems.bind(this),
                 }
 
                 // grab new props;

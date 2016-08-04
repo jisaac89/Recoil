@@ -2,6 +2,7 @@
 import * as classNames from 'classnames';
 import './Grid.less';
 
+import GridSearch from './GridSearch';
 import GridHeader from './GridHeader';
 import GridBody from './GridBody';
 import GridFooter from './GridFooter';
@@ -31,6 +32,7 @@ export interface IGridProps {
     filterSelected?: boolean;
     initialSortKey?: string;
     numberOfPages?: number;
+    searchableKeys? : Array<any>;
 }
 
 export interface S {}
@@ -42,6 +44,7 @@ export default class GridComponent extends React.Component<IGridProps, S>{
 
         return (
             <div className="r-Grid">
+                <GridSearch {...props} />
                 <table className='r-Grid__Table w100'>
                     <GridHeader {...props} />
                     <GridBody {...props} />
