@@ -28,7 +28,8 @@ export interface IButtonProps {
   progressiveClick? : any;
   simple?: boolean;
   iconPointer? : any;
-  loading? : boolean;
+  loading?: boolean;
+  iconLocation?: 'left' | 'right';
 }
 
 export interface IButtonState {
