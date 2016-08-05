@@ -5,21 +5,77 @@ import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
 
-export default class GridSearch extends React.Component<any, {}>{
-    filterItems(value) {
-        this.props.filterItems(value, this.props.searchableKeys);
+export default class GridSearch extends React.Component<any, any>{
+
+  public static defaultProps = {
+      active: true,
+      className: '',
+      disabled: false,
+      block: false,
+      simple: true,
+      throttle: 200,
+      iconLocation : 'left',
+      onChange () {}
+  };
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      searchTerm: props.value || ''
     }
+  }
+
+  // filterItems(term, keys) {
+  //   const props = this.props;
+  //   props.filterItems(this.state.searchTerm, keys);
+  // }
+
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.value && nextProps.value !== this.props.value) {
+      const e = {
+        target: {
+          value: nextProps.value
+        }
+      }
+      this.updateSearch(e)
+    }
+  }
+
+  updateSearch (term) {
+    const searchTerm = term
+    this.setState({
+      searchTerm: searchTerm
+    }, () => {
+      if (this._throttleTimeout) {
+        clearTimeout(this._throttleTimeout)
+      }
+      this._throttleTimeout = setTimeout(() => this.props.filterItems(searchTerm, this.props.searchableKeys), this.props.throttle)
+    })
+  }
+
   render() {
 
     const self = this;
+    const props = self.props;
+    let {filterItems} = this;
 
-    if(this.props.searchableKeys) {
-      return <Toolbar block noRadius><Input focusOnMount block type="text" title="Find" onChange={this.filterItems.bind(this)} /></Toolbar>
-    } else {
-        return null
+    const {className, onChange, throttle, searchableKeys, value} = this.props
+
+    let searchPartial = () => {
+      return (
+        <Toolbar block noRadius>
+          <Input 
+            title={props.searchTitle} 
+            onChange={this.updateSearch.bind(this)} 
+            focusOnMount
+            block
+            type="text"
+          />
+        </Toolbar>
+      )
     }
+    
+    return props.searchableKeys ? searchPartial() : null;
 
   }
 }
-
-// <Dropdown from="top left" onSelected={this.onSelected.bind(this)} title="Page Size" type="selection" data={['5', '10', '15']} />

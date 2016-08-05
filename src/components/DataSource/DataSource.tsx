@@ -1,4 +1,5 @@
 ﻿import * as React from 'react';
+import {search} from './Utils';
 
 enum SortDirection {
     None = 0,
@@ -231,16 +232,13 @@ const DataSource = (Component) =>
             }
         }
 
-        filterItems(term, key) {
-            // let searchedItems = [];
-            // Component.props.dataSource.filter((el) => {
-            //     if (term !== '') {
-            //         el[key].includes(term.toLowerCase()) ? searchedItems.push(el) : null
-            //     } else {
-            //         return null
-            //     }
-            // });
-            
+        filterItems(term, keys) {
+            const self = this;
+            let state = self.state;
+
+            self.setState({
+                searchedItems: search(state.dataSource, term, keys)
+            })
         }
 
         render() {

@@ -8,6 +8,12 @@ import './Dropdown.less';
 
 interface P {
   rowIsSelectable? : boolean;
+  title? : string;
+  icon? : string;
+  searchTitle? : string;
+  searchableKeys? : Array<any>;
+  hideHeader? : boolean;
+  dataSource? : Array<any>;
 }
 
 export default class Dropdown extends React.Component<P, any>{
@@ -22,5 +28,3 @@ export default class Dropdown extends React.Component<P, any>{
     return <DropdownComponent {...props} />;
   }
 }
-
-// return React.createElement(DataSource(<DropdownComponent {...props} />))
