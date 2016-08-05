@@ -14,6 +14,17 @@ interface P {
   searchableKeys? : Array<any>;
   hideHeader? : boolean;
   dataSource? : Array<any>;
+  columns? : Array<any>;
+  type? : string;
+  sortable?  : boolean;
+  onClose? : Function;
+  ghost? : boolean;
+  iconLocation ? : string;
+  iconPointer?  : string;
+  dropDirection? : string;
+  material ? : boolean;
+  block ? : boolean;
+  detailTemplate? : Function;
 }
 
 export default class Dropdown extends React.Component<P, any>{

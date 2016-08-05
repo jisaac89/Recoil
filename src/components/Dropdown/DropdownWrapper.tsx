@@ -8,6 +8,7 @@ interface IDropdownWrapperProps {
     dataSource?: any;
     onRowSelect?: (item: any) => void;
     selected?: any;
+    material ? : boolean;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {

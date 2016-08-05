@@ -14,9 +14,11 @@ export interface P {
     selectedKey?: string;
     detailTemplate?: any;
     onSelect?: Function;
+    onRowSelect?: Function;
     open?: boolean;
     rowIsSelectable? : any;
     searchableKeys? : Array<any>;
+    searchTitle ? : string;
 }
 
 export interface S { }

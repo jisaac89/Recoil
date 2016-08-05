@@ -17,6 +17,6 @@ export default class DropdownDataSource extends React.Component<IDropdownDataSou
         const self = this;
         const props = self.props;
 
-        return props.open ? <Grid {...props} onRowSelect={this.onRowSelect.bind(this)} selected={this.props.selected} /> : null
+        return props.open ? <Grid {...props} onRowSelect={this.onRowSelect.bind(this)} overflow selected={this.props.selected} /> : null
     }
 }

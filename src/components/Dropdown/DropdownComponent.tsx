@@ -20,6 +20,10 @@ interface P {
     className?: string;
     type?: '' | 'button' | 'selection' | 'search';
     title?: string;
+    iconLocation ? : string;
+    iconPointer ? : string;
+    dropDirection? : string;
+    material? : boolean;
 }
 
 export interface State {
@@ -32,7 +36,7 @@ export default class DropdownComponent extends React.Component<P, State>{
 
     public static defaultProps = {
         type: 'button',
-        icon: 'bars'
+        dropDirection: 'down'
     };
 
     constructor(props) {
@@ -53,6 +57,9 @@ export default class DropdownComponent extends React.Component<P, State>{
         this.setState({
             open : !this.state.open
         });
+
+        if (this.state.open)
+            this.props.onClose();
     }
     onRowSelect(item){
         if (this.props.rowIsSelectable) {
@@ -83,6 +90,8 @@ export default class DropdownComponent extends React.Component<P, State>{
         this.setState({
             open: false
         });
+
+        this.props.onClose ? this.props.onClose() : null
     }
 
     onMouseDown() {
@@ -103,10 +112,12 @@ export default class DropdownComponent extends React.Component<P, State>{
         let dropdownClass = classNames(
             'r-Dropdown',
             {'e-open' : (state.open)},
-            {'dblock' : (props.block)},
+            this.props.dropDirection,
+            {'block' : (props.block)},
             {'pull-right' : (props.right)},
             {'pull-left' : (props.left)},
-            props.className
+            props.className,
+            {'material' : (props.material)}
         );
 
         let dropdownContentPartial = <DropdownWrapper {...props} onRowSelect={this.onRowSelect.bind(this)} selected={this.state.selected} open={state.open}>{props.children}</DropdownWrapper>;
@@ -117,9 +128,10 @@ export default class DropdownComponent extends React.Component<P, State>{
                     <Button 
                         block={props.block}
                         icon={props.icon}
-                        iconPointer="down"
-                        iconLocation="left"
+                        iconPointer={props.iconPointer}
+                        iconLocation={props.iconLocation}
                         onClick={this.toggleOpen.bind(this)}
+                        ghost={props.ghost}
                     >
                         {props.title}
                     </Button>
@@ -127,7 +139,7 @@ export default class DropdownComponent extends React.Component<P, State>{
             case 'selection':
                 dropdownTypePartial = <Button block={props.block}>{props.title}</Button>;
                 break;
-            case 'search':
+            case 'input':
                 dropdownTypePartial = <Input block={props.block} type="text" placeholder={props.title} />
                 break;
             default:
