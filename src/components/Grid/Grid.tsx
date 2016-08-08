@@ -19,6 +19,7 @@ export interface P {
     rowIsSelectable? : any;
     searchableKeys? : Array<any>;
     searchTitle ? : string;
+    hideColumns ? : Array<string>;
 }
 
 export interface S { }
