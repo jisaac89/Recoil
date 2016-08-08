@@ -32,7 +32,7 @@ export interface State {
 }
 
 export default class DropdownComponent extends React.Component<P, State>{
-    mouseIsDownOnCalendar: boolean;
+    mouseIsDown: boolean;
 
     public static defaultProps = {
         type: 'button',
@@ -59,7 +59,7 @@ export default class DropdownComponent extends React.Component<P, State>{
         });
 
         if (this.state.open)
-            this.props.onClose();
+            this.props.onClose ? this.props.onClose() : null
     }
     onRowSelect(item){
         if (this.props.rowIsSelectable) {
@@ -83,7 +83,7 @@ export default class DropdownComponent extends React.Component<P, State>{
     }
 
     pageClick(e) {
-        if (this.mouseIsDownOnCalendar) {
+        if (this.mouseIsDown) {
             return;
         }
 
@@ -91,15 +91,15 @@ export default class DropdownComponent extends React.Component<P, State>{
             open: false
         });
 
-        this.props.onClose ? this.props.onClose() : null
+        // this.props.onClose ? this.props.onClose() : null
     }
 
     onMouseDown() {
-        this.mouseIsDownOnCalendar = true;
+        this.mouseIsDown = true;
     }
 
     onMouseUp() {
-        this.mouseIsDownOnCalendar = false;
+        this.mouseIsDown = false;
     }
 
     render() {

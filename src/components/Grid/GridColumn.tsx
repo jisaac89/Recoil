@@ -3,6 +3,7 @@ import Selectable from '../Selectable/Selectable';
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
+import Dropdown from '../Dropdown/Dropdown';
 
 export interface IGridColumnProps {
   dataSource ? : any;
@@ -35,7 +36,7 @@ export default class GridColumn extends React.Component<IGridColumnProps, {}>{
         }
         else if (typeof dataSource[i][columns[x].name] === 'object') {
           return (
-            <span><strong>hasObject</strong></span>
+            <Dropdown material type="button" title={Object.keys(dataSource[i][columns[x].name]).length + " { objects }"} dataSource={dataSource[i][columns[x].name]} sortable />
           )
         }
         else {
