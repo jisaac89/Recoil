@@ -24,6 +24,7 @@ export default class GridColumn extends React.Component<IGridColumnProps, {}>{
     let {dataSource, columns, i, x} = props;
 
     let columnPartial = () => {
+        // if tabbable
         if (columns[x].tabbable) {
           return (
             <Button>
@@ -31,14 +32,23 @@ export default class GridColumn extends React.Component<IGridColumnProps, {}>{
             </Button>
           )
         }
+        // if it has a template function in the columns object
         else if ((typeof dataSource[i][columns[x].name] === 'object' && columns[x].template) || (typeof dataSource[i][columns[x].name] === 'string' && columns[x].template)) {
           return columns[x].template(dataSource[i]);
         }
-        else if (typeof dataSource[i][columns[x].name] === 'object') {
+        // if the item is an array
+        else if (Object.prototype.toString.call( dataSource[i][columns[x].name] ) === '[object Array]') {
           return (
-            <Dropdown material type="button" title={Object.keys(dataSource[i][columns[x].name]).length + " { objects }"} dataSource={dataSource[i][columns[x].name]} sortable />
+            <Dropdown material type="button" title={Object.keys(dataSource[i][columns[x].name]).length + " { Array }"} dataSource={[dataSource[i][columns[x].name]]} sortable />
           )
         }
+        // if the item is an object
+        else if (typeof dataSource[i][columns[x].name] === 'object') {
+          return (
+            <Dropdown material type="button" title={Object.keys(dataSource[i][columns[x].name]).length + " { objects }"} dataSource={[dataSource[i][columns[x].name]]} sortable />
+          )
+        }
+        // else just return the name
         else {
           return dataSource[i][columns[x].name];
         }

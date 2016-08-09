@@ -50,8 +50,9 @@ export default class GridRow extends React.Component<IGridRowProps, IGridRowStat
 
     let {columns, dataSource, i, onRowSelect, detailTemplateOpenOnHover, expanded} = props;
 
-    let item = self.props.dataSource[i];
     let columnArray = [];
+    let item = self.props.dataSource[i];
+    let detailTemplateIconColumn = <td className="p0" width={5}><i className={"r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i></td>;
 
     for (let x = 0; x < columns.length; x++) {
       columnArray.push(
@@ -59,44 +60,25 @@ export default class GridRow extends React.Component<IGridRowProps, IGridRowStat
       )
     }
 
-    let selectEvent;
+    let tableRowProps;
 
-    if (props.detailTemplate) {
-      return (
-        <tr
-          onMouseEnter={detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null}
-          onClick={this.toggleDetailTemplate.bind(this, i, item)}
-          className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}
-        >
-          {(()=>{
-            if (this.props.detailTemplateOpenOnSelect) {
-              return null
-            }
-            else {
-              return (
-                <td className="p0" width={5}>
-                  <i className={"r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i>
-                </td>
-              )
-            }
-          })()}
-          {columnArray}
-        </tr>
-      )
+    if(props.detailTemplate) {
+      tableRowProps = {
+        onMouseEnter: detailTemplateOpenOnHover ? self.toggleDetailTemplate.bind(this, i) : null,
+        onClick: this.toggleDetailTemplate.bind(this, i, item),
+        className: "r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')
+      }
     } else {
-      return (
-        <tr
-          onClick={this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null}
-          className={"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')}
-        >
-          {columnArray}
-
-        </tr>
-      )
+      tableRowProps = {
+        onClick:this.props.onRowSelect ? this.onRowSelect.bind(this, item) : null,
+        className:"r-Grid__Row" + (this.props.selectedItem ? ' e-selected' : '')
+      }
     }
+
+    return (
+        <tr {...tableRowProps}>
+          {columnArray}
+        </tr>
+    )
   }
 }
-
-// <td colSpan={this.props.columns.length + 1}>
-//   <Selectable checked={props.selectedItem} />
-// </td>
