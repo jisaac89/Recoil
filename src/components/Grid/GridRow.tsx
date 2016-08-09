@@ -77,6 +77,7 @@ export default class GridRow extends React.Component<IGridRowProps, IGridRowStat
 
     return (
         <tr {...tableRowProps}>
+          {props.detailTemplate ? detailTemplateIconColumn : null }
           {columnArray}
         </tr>
     )
