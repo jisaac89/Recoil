@@ -9,7 +9,8 @@ import Layer from '../Layer/Layer';
 import DropdownWrapper from './DropdownWrapper';
 
 interface P {
-    onRowSelect? : any;
+    onRowSelect?: any;
+    onClose?: any;
     toggleCpenOnRowSelect? : boolean;
     open? : boolean;
     selected? : Array<any>;
@@ -20,10 +21,12 @@ interface P {
     className?: string;
     type?: '' | 'button' | 'selection' | 'search';
     title?: string;
-    iconLocation ? : string;
+    iconLocation?: 'left' | 'right';
     iconPointer ? : string;
     dropDirection? : string;
     material? : boolean;
+    icon?: string;
+    ghost?: boolean;
 }
 
 export interface State {
@@ -132,6 +135,8 @@ export default class DropdownComponent extends React.Component<P, State>{
                         iconLocation={props.iconLocation}
                         onClick={this.toggleOpen.bind(this)}
                         ghost={props.ghost}
+                        checked={this.state.open}
+                        simple={false}
                     >
                         {props.title}
                     </Button>

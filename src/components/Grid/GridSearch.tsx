@@ -6,6 +6,7 @@ import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
 
 export default class GridSearch extends React.Component<any, any>{
+    _throttleTimeout: any;
 
   public static defaultProps = {
       active: true,
@@ -57,7 +58,6 @@ export default class GridSearch extends React.Component<any, any>{
 
     const self = this;
     const props = self.props;
-    let {filterItems} = this;
 
     const {className, onChange, throttle, searchableKeys, value} = this.props
 

@@ -15,11 +15,11 @@ interface P {
   hideHeader? : boolean;
   dataSource? : Array<any>;
   columns? : Array<any>;
-  type? : string;
+  type?: '' | 'button' | 'selection' | 'search';
   sortable?  : boolean;
   onClose? : Function;
   ghost? : boolean;
-  iconLocation ? : string;
+  iconLocation ? : 'left' | 'right';
   iconPointer?  : string;
   dropDirection? : string;
   material ? : boolean;

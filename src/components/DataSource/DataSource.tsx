@@ -57,10 +57,12 @@ interface S {
     pageSize?: number;
     sortType?: any;
     selected?: any;
+    searchedItems?: Array<any>;
 }
 
 const DataSource = (Component) =>
     class Enhance extends React.Component<P, S> {
+        dataSource: any;
 
         constructor(props) {
             super(props);

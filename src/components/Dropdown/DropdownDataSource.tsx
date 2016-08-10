@@ -6,6 +6,7 @@ import Grid from '../Grid/Grid';
 interface IDropdownDataSourceProps {
     onRowSelect?: (item: any) => void;
     selected?: any;
+    open?: boolean;
 }
 
 export default class DropdownDataSource extends React.Component<IDropdownDataSourceProps, {}> {
@@ -17,6 +18,6 @@ export default class DropdownDataSource extends React.Component<IDropdownDataSou
         const self = this;
         const props = self.props;
 
-        return props.open ? <Grid {...props} onRowSelect={this.onRowSelect.bind(this)} overflow selected={this.props.selected} /> : null
+        return props.open ? <Grid {...props} onRowSelect={this.onRowSelect.bind(this)} overflow selectedKey={this.props.selected} /> : null
     }
 }
