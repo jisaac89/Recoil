@@ -25,12 +25,7 @@ export default class GridSearch extends React.Component<any, any>{
       searchTerm: props.value || ''
     }
   }
-
-  // filterItems(term, keys) {
-  //   const props = this.props;
-  //   props.filterItems(this.state.searchTerm, keys);
-  // }
-
+  
   componentWillReceiveProps (nextProps) {
     if (nextProps.value && nextProps.value !== this.props.value) {
       const e = {
