@@ -33,7 +33,7 @@ export default class GridColumn extends React.Component<IGridColumnProps, {}>{
           )
         }
         // if it has a template function in the columns object
-        else if ((typeof dataSource[i][columns[x].name] === 'object' && columns[x].template) || (typeof dataSource[i][columns[x].name] === 'string' && columns[x].template)) {
+        else if ((typeof dataSource[i][columns[x].name] === 'object' && columns[x].template) || (typeof dataSource[i][columns[x].name] === 'string' && columns[x].template) || (typeof dataSource[i][columns[x].name] === 'number' && columns[x].template)) {
           return columns[x].template(dataSource[i]);
         }
         // if the item is an array
@@ -54,7 +54,7 @@ export default class GridColumn extends React.Component<IGridColumnProps, {}>{
         }
     }
 
-    if (props.hideColumns && props.hideColumns.indexOf(columns[x].name) !== -1) {
+    if (props.hideColumns && (columns[x].title ? props.hideColumns.indexOf(columns[x].title) !== -1 : props.hideColumns.indexOf(columns[x].name) !== -1 ) ) {
         return null;
     }
     else {

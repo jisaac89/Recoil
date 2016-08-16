@@ -98,7 +98,7 @@ const DataSource = (Component) =>
         componentWillReceiveProps(nextProps) {
             if (nextProps.dataSource !== Component.props.dataSource) {
                 this.setState({
-                    page: 9
+                    page: 0
                 });
                 this.loadCollection(nextProps.dataSource);
             }

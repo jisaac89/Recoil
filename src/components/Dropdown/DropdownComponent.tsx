@@ -27,6 +27,10 @@ interface P {
     material? : boolean;
     icon?: string;
     ghost?: boolean;
+    onChange ? : Function;
+    theme? : string;
+    size? : string;
+    pointer? : string;
 }
 
 export interface State {
@@ -65,6 +69,7 @@ export default class DropdownComponent extends React.Component<P, State>{
             this.props.onClose ? this.props.onClose() : null
     }
     onRowSelect(item){
+        this.props.onChange ? this.props.onChange(item) : null;
         if (this.props.rowIsSelectable) {
             this.setState({
                 selected : [item]
@@ -129,6 +134,7 @@ export default class DropdownComponent extends React.Component<P, State>{
             case 'button':
                 dropdownTypePartial = 
                     <Button 
+                        size={props.size}
                         block={props.block}
                         icon={props.icon}
                         iconPointer={props.iconPointer}
@@ -137,6 +143,8 @@ export default class DropdownComponent extends React.Component<P, State>{
                         ghost={props.ghost}
                         checked={this.state.open}
                         simple={false}
+                        type={props.theme}
+                        pointer={props.pointer}
                     >
                         {props.title}
                     </Button>

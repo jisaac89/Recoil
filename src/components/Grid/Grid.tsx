@@ -21,6 +21,8 @@ export interface P {
     searchTitle ? : string;
     hideColumns?: Array<string>;
     overflow?: boolean;
+
+    simple? : boolean;
 }
 
 export interface S { }

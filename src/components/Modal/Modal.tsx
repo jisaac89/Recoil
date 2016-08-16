@@ -5,6 +5,8 @@ import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import './Modal.less';
 
+import ModalHeader from './ModalHeader';
+
 export interface IModalProps {
   ghost ? : boolean;
   open ? : boolean;
@@ -21,14 +23,50 @@ export interface IModalProps {
 
 export interface IModalState {
   min ? : boolean;
+  open ? : boolean;
 }
 
 export default class Modal extends React.Component<IModalProps, IModalState>{
-  constructor(){
-    super();
+  mouseIsDown: boolean;
+
+  public static defaultProps = {
+      type: 'button',
+      dropDirection: 'down'
+  };
+  
+  constructor(props){
+    super(props);
     this.state = {
-      min : false
+      min : false,
+      open: props.open || false
     };
+  }
+  componentWillReceiveProps(nextProps) {
+      const state = this.state;
+      this.setState({
+          open : nextProps.open !== state.open ? nextProps.open : state.open
+      });
+  }
+  componentDidMount() {
+      window.addEventListener('mousedown', this.pageClick.bind(this), false);
+  }
+  pageClick(e) {
+      if (this.mouseIsDown) {
+          return;
+      }
+
+      this.setState({
+          open: false
+      });
+
+      this.props.onClose ? this.props.onClose() : null
+  }
+  onMouseDown() {
+      this.mouseIsDown = true;
+  }
+
+  onMouseUp() {
+      this.mouseIsDown = false;
   }
   toggleMin() {
     this.setState({
@@ -46,7 +84,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
 
     let modalWrapperClass = classNames(
       'r-Modal',
-      {'e-show': ( props.open )},
+      {'e-show': ( this.state.open )},
       {'ghost': ( props.ghost )},
       {'e-float': ( props.float )},
       {'e-fade': ( props.effect === 'fade' )},
@@ -59,29 +97,25 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
     );
 
     props.icon ? (iconPartial = <i className={'pull-left mt10 fa fa-'+props.icon}></i>) : null;
-    props.open ? (body.className += ' flohide') : (body.className = '');
+    this.state.open ? (body.className += ' flohide') : (body.className = '');
     props.fullScreen ? (fullScreenPartial = <Button className="pull-right " onClick={this.toggleMin.bind(this)} icon={this.state.min ? 'expand' : 'compress'} type="link" />) : null;
+
+    let openProps;
+
+    if (this.state.open) {
+      openProps = {
+        onMouseDown: this.onMouseDown.bind(this),
+        onMouseUp: this.onMouseUp.bind(this)
+      }
+    } else {
+      openProps = null;
+    }
 
     return (
       <div className={modalWrapperClass}>
-        <div className={modalClass}  style={props.style}>
-            {(() => {
-              if (props.title) {
-                return (
-                <div className="r-Modal__header p10 border-bottom clearfix">
-                  <div>
-                    {iconPartial}
-                    {fullScreenPartial}
-                    <h2 className="dinblock pull-left">
-                      {props.title}
-                    </h2>
-                  </div>
-                  <Button className="pull-right" onClick={props.onClose} icon="times" type="link" />
-                </div>
-                );
-              }
-            })()}
-          {props.children}
+        <div className={modalClass} style={props.style} {...openProps}>
+          <ModalHeader {...props}/>
+          {props.open ? props.children : null}
         </div>
       </div>
     );

@@ -25,6 +25,10 @@ interface P {
   material ? : boolean;
   block ? : boolean;
   detailTemplate? : Function;
+  onChange ? : Function;
+  theme? : string;
+  size? : string;
+  pointer? : string;
 }
 
 export default class Dropdown extends React.Component<P, any>{

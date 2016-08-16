@@ -57,6 +57,7 @@
   border-radius: 0 !important;
 }
 .r-Toolbar.vertical.border > .r-Button ,
+.r-Toolbar.vertical.border > .r-Dropdown > .r-Button,
 .r-Toolbar.vertical.border > .r-Emerge > .r-Button {
     border: 1px solid @standard-border !important;
     display: table-cell;
@@ -162,7 +163,8 @@
     border-top-left-radius:@default-border-radius;
 }
 
-.r-Toolbar.flush.horizontal > .r-Button{
+.r-Toolbar.flush.horizontal > .r-Button,
+.r-Toolbar.flush.horizontal > .r-Dropdown > .r-Button{
   margin-right:-1px;
   border-radius:0;
 }
@@ -176,13 +178,16 @@
   border-bottom-right-radius:0;
 }
 
-.r-Toolbar.flush.horizontal > .r-Button:nth-child(1){
+.r-Toolbar.flush.horizontal > .r-Button:nth-child(1),
+.r-Toolbar.flush.horizontal > .r-Dropdown > .r-Button:nth-child(1){
   border-top-left-radius:@default-border-radius;
   border-bottom-left-radius:@default-border-radius;
 }
 
-.r-Toolbar.flush.horizontal > .r-Button:last-child{
+.r-Toolbar.flush.horizontal > .r-Button:last-child,
+.r-Toolbar.flush.horizontal > .r-Dropdown >.r-Button:last-child{
   border-top-right-radius:@default-border-radius;
   border-bottom-right-radius:@default-border-radius;
   border-right:1px solid @standard-border;
 }
+

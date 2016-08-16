@@ -1,4 +1,11 @@
 @import url('./Global');
+::selection {
+  background: transparent; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: transparent; /* Gecko Browsers */
+}
+
 html {
 	font-family: @font-family !important;
 }
@@ -182,6 +189,10 @@ h3 {
 	max-width: 100% !important;
 	width: 400px !important;
 }
+.w450px {
+	max-width: 100% !important;
+	width: 450px !important;
+}
 .w500px {
 	max-width: 100% !important;
 	width: 500px !important;
@@ -201,6 +212,14 @@ h3 {
 .w400px {
 	width: 100% !important;
 	max-width: 400px !important;
+}
+.w480px {
+	width: 100% !important;
+	max-width: 480px !important;
+}
+.w800px {
+	width: 100% !important;
+	max-width: 800px !important;
 }
 .w900px {
 	width: 100% !important;
@@ -1860,8 +1879,11 @@ hr {
 		color: #CECECE;
 	}
 	h1, h2, h3, h4, h5, h6 {
-		color: @primary-background !important;
+		color: #bfc2c4 !important;
 		font-weight: normal;
+	}
+	h1{
+		color:white !important;
 	}
 	.text-error {
 		color: #F62D73 !important;
@@ -1873,18 +1895,14 @@ hr {
 		background: #f62d2d !important;
 	}
 	.primary:not(.r-Selectable) {
-		background: transparent !important;
-		color: @primary-background !important;
-		border-color: @primary-background !important;
+		    background: #1a619e !important;
+		color: @primary-color !important;
 	}
 	.primary.ghost:hover {
-		color: @primary-background !important;
+		color: @primary-color !important;
 	}
-	.success {
-		background: transparent !important;
-		color: #A7DC3A !important;
-		border-color: #A7DC3A !important;
-		font-weight: bold !important;
+	.success{
+		color:white !important;
 	}
 	tbody.r-Grid__Body > .r-Grid__Row.e-selected {
 		background: #07233c !important;

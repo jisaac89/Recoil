@@ -31,9 +31,12 @@
 .r-Grid td.r-Grid__Row__Column {
 	padding: @grid-cell-padding;
 	color: @font-color;
-	color: #a5a5a5;
-	font-size: 14px;
-	font-weight: 400;
+	// color: #a5a5a5;
+	// font-size: 14px;
+	// font-weight: 400;
+    font-size: 14px;
+    font-weight: 300;
+	color: #585858;
 }
 .r-Grid__Header > tr > th {
 	text-align: left;
@@ -79,4 +82,25 @@ tbody.r-Grid__Body > .r-Grid__Row.e-selected {
 	padding: 8px 24px;
 	font-weight: 500;
 	text-align: left;
+}
+
+.r-Grid.e-simple {
+
+	> table > tbody.r-Grid__Body > tr > td.r-Grid__Row__Column{
+		// padding:0;
+	}
+
+	> .r-Grid__Table{
+		background:transparent;
+		border:0;
+	}
+
+	> table > tbody.r-Grid__Body > tr{
+		border:0;
+		background:transparent;
+	}
+
+	> table > tbody.r-Grid__Body > tr:hover{
+		background:transparent !important;
+	}
 }

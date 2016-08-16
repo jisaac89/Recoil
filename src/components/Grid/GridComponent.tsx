@@ -33,6 +33,7 @@ export interface IGridProps {
     initialSortKey?: string;
     numberOfPages?: number;
     searchableKeys? : Array<any>;
+    simple? : boolean;
 }
 
 export interface S {}
@@ -42,8 +43,13 @@ export default class GridComponent extends React.Component<IGridProps, S>{
         const self = this;
         const props = self.props;
 
+        let gridClass = classNames(
+            'r-Grid',
+            {'e-simple' : (props.simple)}
+        )
+
         return (
-            <div className="r-Grid">
+            <div className={gridClass}>
                 <GridSearch {...props} />
                 <table className='r-Grid__Table w100'>
                     <GridHeader {...props} />
