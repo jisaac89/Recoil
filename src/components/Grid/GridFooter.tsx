@@ -52,7 +52,7 @@ export default class GridFooter extends React.Component<IGridFooterProps, {}>{
       return null
     } else {
         return (
-          <div className="r-Grid__Footer mt0">
+          <div className="r-Grid__Footer">
             <Toolbar flush noRadius>
               <Button size="small" disabled={this.props.currentPage === 0} tabIndex={-1} onClick={this.props.firstPage} icon="fast-backward"></Button>
               <Button size="small" disabled={this.props.currentPage === 0} tabIndex={-1} onClick={this.props.previousPage} icon="step-backward"></Button>
