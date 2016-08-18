@@ -52,7 +52,7 @@ export default class GridRow extends React.Component<IGridRowProps, IGridRowStat
 
     let columnArray = [];
     let item = self.props.dataSource[i];
-    let detailTemplateIconColumn = <td className="p0" width={5}><i className={"r-Grid__Row__Sort fa pl20 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i></td>;
+    let detailTemplateIconColumn = <td className="p0" width={5}><i className={"r-Grid__Row__Sort fa ps10 fa-" + (expanded ? "caret-down" : "caret-right")} onClick={this.toggleDetailTemplate.bind(this, i)} tabIndex={-1}></i></td>;
 
     for (let x = 0; x < columns.length; x++) {
       columnArray.push(
