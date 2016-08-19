@@ -47,7 +47,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   public state : IInputState;
 
   public static defaultProps = {
-      simple: true
+      simple: true,
+      type: 'text'
   };
 
   constructor(props : IInputProps) {
