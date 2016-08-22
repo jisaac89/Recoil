@@ -1,10 +1,4 @@
 @import url('./Global');
-::selection {
-  background: transparent; /* WebKit/Blink Browsers */
-}
-::-moz-selection {
-  background: transparent; /* Gecko Browsers */
-}
 
 html {
 	font-family: @font-family !important;
@@ -1403,6 +1397,9 @@ h3 {
 .mt100 {
 	margin-top: 100px !important;
 }
+.mt200 {
+	margin-top: 200px !important;
+}
 .z1 {
 	z-index: 1 !important;
 }
@@ -1445,8 +1442,9 @@ h3 {
 	position: absolute;
 }
 .center-width {
-	margin: auto;
+	margin: 0 auto;
 	position: relative;
+	display: block !important;	
 }
 .flohide {
 	overflow: hidden;

@@ -31,6 +31,7 @@ interface P {
     theme? : string;
     size? : string;
     pointer? : string;
+    pageSize? : any;
 }
 
 export interface State {

@@ -29,6 +29,7 @@ interface P {
   theme? : string;
   size? : string;
   pointer? : string;
+  pageSize? : any;
 }
 
 export default class Dropdown extends React.Component<P, any>{
