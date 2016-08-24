@@ -129,6 +129,10 @@ const DataSource = (Component) =>
                 })
             }
 
+            if (this.props.keys) {
+                console.log(keys);
+            }
+
             columnsArray.map((columnHeaderName) => {
                 columns.push({
                     name: columnHeaderName

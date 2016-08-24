@@ -23,6 +23,7 @@ export interface P {
     overflow?: boolean;
 
     simple? : boolean;
+    filterItems? : any;
 }
 
 export interface S { }

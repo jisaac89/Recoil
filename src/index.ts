@@ -14,6 +14,7 @@ export {default as Loading} from './components/Loading/Loading';
 export {default as Modal} from './components/Modal/Modal';
 export {default as Notifications} from './components/Notifications/Notifications';
 export {default as Pane} from './components/Pane/Pane';
+export {default as Searchbar} from './components/Searchbar/Searchbar';
 export {default as Selectable} from './components/Selectable/Selectable';
 export {default as Shrink} from './components/Shrink/Shrink';
 export {default as Toggle} from './components/Toggle/Toggle';
