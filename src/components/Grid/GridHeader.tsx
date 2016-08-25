@@ -51,7 +51,7 @@ class GridHeaderSortable extends React.Component<IGridHeaderProps, IGridHeaderSo
     let {item} = props;
 
     return (
-      <th style={{width : item.width}}>
+      <th style={{width : item.width + 'px'}}>
         {this.props.children}
         {item.dontSort ? null : <i onClick={self.toggleSorting.bind(self, item.name)} tabIndex={-1} className={"r-Grid__Header__Sort pl10 w50px fa fa-" + (this.state.sortType === 'none' ? 'sort' : this.state.sortType === 'desc' ? 'caret-down' : 'caret-up' )}></i>}
       </th>
@@ -78,7 +78,7 @@ export default class GridHeader extends React.Component<IGridHeaderProps,{}>{
       } else{
         if (item.headerTemplate) {
           return (
-            <th style={{width : item.width}} key={index}>
+            <th style={{width : item.width + 'px'}} key={index}>
               {item.headerTemplate()}
             </th>
           )
@@ -108,7 +108,7 @@ export default class GridHeader extends React.Component<IGridHeaderProps,{}>{
         }
         else {
           return (
-            <th style={{width : item.width}} key={index}>
+            <th style={{width : item.width + 'px'}} key={index}>
               <a>{item.title ? item.title : item.name}</a>
             </th>
           )
@@ -123,7 +123,7 @@ export default class GridHeader extends React.Component<IGridHeaderProps,{}>{
             {(()=>{
               if (this.props.detailTemplate) {
                 return (
-                  <th className="p0" width={5}>
+                  <th className="p0" width={'5px'}>
                       <i className={"fa pl20 fa-caret-right hide"} tabIndex={-1}></i>
                   </th>
                 )

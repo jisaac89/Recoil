@@ -9,7 +9,7 @@ export interface IButtonProps {
   disabled?: boolean;
   block?: boolean;
   className? : string;
-  type?: string;
+  theme?: string;
   icon? : string;
   href?: string;
   target?: string;
@@ -30,6 +30,7 @@ export interface IButtonProps {
   iconPointer? : any;
   loading?: boolean;
   iconLocation?: 'left' | 'right';
+  checkedTheme? : string;
 }
 
 export interface IButtonState {
@@ -120,7 +121,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       {'pull-right' :(props.right)},
       {'pull-left' :(props.left)},
       props.size,
-      props.type,
+      props.theme,
       props.className
     );
 
@@ -130,7 +131,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       buttonType = 'button';
     }
 
-    let selectablePartial = <Selectable checked={props.checked ? true : false}></Selectable>;
+    let selectablePartial = <Selectable type={props.checkedTheme} checked={props.checked ? true : false}></Selectable>;
     let iconPartial = (props.icon && !props.loading ? <i className={'fa fa-'+props.icon}></i> : null );
     let loadingPartial = (props.loading ? <i className='fa fa-circle-o-notch fa-spin'></i> : null );
     let animatedIcon = (props.iconPointer && !props.loading ? <i className={"e-ico fa fa-caret-"+props.iconPointer} ></i> : null );

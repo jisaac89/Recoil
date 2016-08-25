@@ -96,9 +96,9 @@ export default class DropdownComponent extends React.Component<P, State>{
             return;
         }
 
-        this.setState({
-            open: false
-        });
+        // this.setState({
+        //     open: false
+        // });
 
         // this.props.onClose ? this.props.onClose() : null
     }

@@ -55,9 +55,9 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
           return;
       }
 
-      this.setState({
-          open: false
-      });
+      // this.setState({
+      //     open: false
+      // });
 
       this.props.onClose ? this.props.onClose() : null
   }
