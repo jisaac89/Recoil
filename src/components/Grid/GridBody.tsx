@@ -71,8 +71,8 @@ export default class GridBody extends React.Component<IGridProps, IGridBodyState
     }
 
     self.setState({
-      expandedRows : expandedRows.includes(selectedItem) ? [] : expanded,
-      selected : expandedRows.includes(selectedItem) ? [] : expanded
+      expandedRows : expandedRows.indexOf(selectedItem) >= 0 ? [] : expanded,
+      selected : expandedRows.indexOf(selectedItem) >= 0 ? [] : expanded
     })
   }
 
@@ -131,13 +131,13 @@ export default class GridBody extends React.Component<IGridProps, IGridBodyState
       let selectedItem;
 
       if (props.selectedKey) {
-        selectedItem = this.state.selected.includes(item[this.props.selectedKey]);
+        selectedItem = this.state.selected.indexOf(item[this.props.selectedKey]) >= 0;
       } else {
-        selectedItem = this.state.selected.indexOf(item) !== -1;
+        selectedItem = this.state.selected.indexOf(item) >= 0;
       }
 
       let rowItem = [[<GridRow
-          expanded={this.state.expandedRows.includes(props.selectedKey ? item[props.selectedKey] : key)}
+          expanded={this.state.expandedRows.indexOf(props.selectedKey ? item[props.selectedKey] : key) >= 0}
           toggleDetailTemplate={this.props.detailTemplate ? this.toggleDetailTemplate.bind(this) : null}
           key={key}
           i={key}
@@ -156,7 +156,7 @@ export default class GridBody extends React.Component<IGridProps, IGridBodyState
         />],
         [<tr key={key}>
           <td colSpan={this.props.columns.length + 1}>
-            {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.state.expandedRows.includes(props.selectedKey ? item[props.selectedKey] : key)} i={key}  />  : null}
+            {this.props.detailTemplate ? <GridRowTemplate detailTemplate={self.props.detailTemplate} dataSource={self.props.dataSource} expanded={this.state.expandedRows.indexOf(props.selectedKey ? item[props.selectedKey] : key) >= 0} i={key}  />  : null}
             <Selectable checked={selectedItem} />
           </td>
         </tr>]];

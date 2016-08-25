@@ -13,7 +13,7 @@ export interface ISearchbarProps {
   open ? : boolean;
   dataSource : Array<any>;
   columns? : any;
-  searchableKeys? : any;
+  searchableKeys : Array<string>;
 }
 
 export interface ISearchbarState {
