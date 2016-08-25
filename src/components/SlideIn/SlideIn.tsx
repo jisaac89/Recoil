@@ -1,20 +1,19 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import './Pane.less';
+import './SlideIn.less';
 
-export interface IPaneProps {
-  wrapper? : any;
-  open? : any;
+export interface ISlideInProps {
+  if? : boolean;
   fill? : any;
-  direction? : any;
+  from? : any;
   className? : any;
   offset? : any;
-  wrapperClick? : any;
+  onClick? : any;
   children? : any;
   fixed ? : boolean;
 }
 
-export default class Pane extends React.Component<IPaneProps, {}>{
+export default class SlideIn extends React.Component<ISlideInProps, {}>{
 
   constructor(props){
     super(props);
@@ -22,18 +21,18 @@ export default class Pane extends React.Component<IPaneProps, {}>{
   render() {
     const self = this;
     const props = self.props;
-    let axis, paneContainerStyle;
+    let axis, slideInContainerStyle;
 
-    let paneContainerClass = classNames(
-      'r-Pane',
-      {'e-open': (props.open)},
+    let slideInContainerClass = classNames(
+      'r-SlideIn',
+      {'e-open': (props.if)},
       {'fill': (props.fill)},
       {'fixed': (props.fixed)},
-      props.direction,
+      props.from,
       props.className
     );
 
-    switch (props.direction) {
+    switch (props.from) {
       case 'left' || 'right':
         axis = 'X';
         break;
@@ -52,16 +51,16 @@ export default class Pane extends React.Component<IPaneProps, {}>{
       offset = '0px';
     }
 
-    if (props.open) {
-      paneContainerStyle = {
+    if (props.if) {
+      slideInContainerStyle = {
         transform : 'translate'+axis+'('+offset+')'
       };
     } else {
-      paneContainerStyle = null;
+      slideInContainerStyle = null;
     }
 
     return(
-      <div tabIndex={-1} onClick={props.wrapperClick} ref="pane" className={paneContainerClass} style={paneContainerStyle}>
+      <div tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={slideInContainerStyle}>
           {props.children}
       </div>
     );

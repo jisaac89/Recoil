@@ -13,7 +13,6 @@ export {default as Layer} from './components/Layer/Layer';
 export {default as Loading} from './components/Loading/Loading';
 export {default as Modal} from './components/Modal/Modal';
 export {default as Notifications} from './components/Notifications/Notifications';
-export {default as Pane} from './components/Pane/Pane';
 export {default as Searchbar} from './components/Searchbar/Searchbar';
 export {default as Selectable} from './components/Selectable/Selectable';
 export {default as Shrink} from './components/Shrink/Shrink';
@@ -22,5 +21,6 @@ export {default as Toolbar} from './components/Toolbar/Toolbar';
 export {default as Transform} from './components/Transform/Transform';
 export {default as Wizard} from './components/Wizard/Wizard';
 export {default as Shortcut} from './components/Shortcut/Shortcut';
+export {default as SlideIn} from './components/SlideIn/SlideIn';
 
 import './less/Recoil.less';

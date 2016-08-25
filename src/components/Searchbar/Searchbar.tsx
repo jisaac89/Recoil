@@ -36,16 +36,14 @@ export default class Searchbar extends React.Component<ISearchbarProps, ISearchb
         let filteredSearchString;
 
         let createList = (element) => {
-            if(element[key]){
-                element['_searchString'] += ' ' + element[key]
-            }
+            this.props.searchableKeys.forEach(key => {
+                if(element[key]){
+                    element['_searchString'] += ' ' + element[key]
+                }
+            });
         }
 
-        this.props.searchableKeys.map(createList);
-
-        this.props.searchableKeys.forEach(key => {
-            
-        });
+        this.props.dataSource.map(createList);
 
         console.log(this.props.dataSource);
     }

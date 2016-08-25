@@ -26,7 +26,7 @@ export interface IButtonProps {
   onClick? : (event: React.MouseEvent) => void;
   tabIndex? : number;
   progressiveClick? : any;
-  simple?: boolean;
+  advanced?: boolean;
   iconPointer? : any;
   loading?: boolean;
   iconLocation?: 'left' | 'right';
@@ -47,7 +47,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       active: true,
       disabled: false,
       block: false,
-      simple: true,
+      advanced: false,
       iconLocation : 'left'
   };
 
@@ -176,7 +176,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     if (props.href) {
       return linkButton();
     } else {
-      return props.simple ? simpleButton() : defaultButton();
+      return props.advanced ? defaultButton() : simpleButton();
     }
 
   }
