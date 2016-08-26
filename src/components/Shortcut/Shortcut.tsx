@@ -9,7 +9,7 @@ import Toolbar from '../Toolbar/Toolbar';
 import Input from '../Input/Input';
 import Emerge from '../Emerge/Emerge';
 import Grid from '../Grid/Grid';
-import Pane from '../Pane/Pane';
+import SlideIn from '../SlideIn/SlideIn';
 
 export default class Shortcut extends React.Component<any,any>{
 
@@ -79,20 +79,20 @@ export default class Shortcut extends React.Component<any,any>{
         <Shrink className={'posrel'} if={this.state.showShortcut}>
           {this.props.children}
         </Shrink>
-        <Pane direction="top" open={this.state.showShortcut}>
+        <SlideIn from="top" if={this.state.showShortcut}>
           <Layer type="light h100 w600px p10 posrel center-width mt100">
             {(()=>{
               if (this.state.showShortcut) {
                 return (
-              <Toolbar block>
-                <Input ghost focusOnMount={this.state.showShortcut} value={this.state.value} onChange={this.onChange.bind(this)} block ref='input' type="text" icon="search" title={this.props.title ? this.props.title : 'Search website'} />
-              </Toolbar>
-            )
-            }
+                  <Toolbar block>
+                    <Input ghost focusOnMount={this.state.showShortcut} value={this.state.value} onChange={this.onChange.bind(this)} block ref='input' type="text" icon="search" title={this.props.title ? this.props.title : 'Search website'} />
+                  </Toolbar>
+                )
+              }
             })()}
             <Grid dataSource={itemArray} open={this.state.showShortcut} columns={columns} onSelect={this.props.onChange} />
           </Layer>
-        </Pane>
+        </SlideIn>
       </Layer>
     )
   }

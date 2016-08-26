@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
-import Pane from '../Pane/Pane';
+import SlideIn from '../SlideIn/SlideIn';
 import './Input.less';
 
 export interface IInputProps {
@@ -129,9 +129,9 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     let errorInlinePartial = () => {
       if (props.errorInline && (props.errorDirection === 'top' || 'bottom') ) {
         return (
-          <Pane direction={props.errorDirection} open={!state.mouseOut && props.error} className="p5 h90 r-Layer light w100 error-pane h30px " >
+          <SlideIn from={props.errorDirection} if={!state.mouseOut && props.error} className="p5 h90 r-Layer light w100 error-pane h30px " >
             <div className="error-message">{props.errorMessage}</div>
-          </Pane>
+          </SlideIn>
         );
       } else {
         return null;
