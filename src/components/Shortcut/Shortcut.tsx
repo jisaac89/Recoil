@@ -80,7 +80,7 @@ export default class Shortcut extends React.Component<any,any>{
           {this.props.children}
         </Shrink>
         <SlideIn from="top" if={this.state.showShortcut}>
-          <Layer type="light h100 w600px p10 posrel center-width mt100">
+          <Layer className="light h100 w600px p10 posrel center-width mt100">
             {(()=>{
               if (this.state.showShortcut) {
                 return (

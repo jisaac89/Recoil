@@ -2,6 +2,14 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Layer.less';
 
+interface ObjectCtor extends ObjectConstructor {
+    assign(target: any, ...sources: any[]): any;
+}
+declare var Object: ObjectCtor;
+export let assign = Object.assign ? Object.assign : function(target: any, ...sources: any[]): any {
+        return;
+};
+
 export interface ILayerProps {
   border? : boolean;
   overflow? : boolean;
@@ -10,7 +18,7 @@ export interface ILayerProps {
   scrollY? : boolean;
   scrollX? : boolean;
   fill? : boolean;
-  type? : string;
+  theme? : string;
   children? : any;
   className? : any;
   style? : any;
@@ -76,7 +84,7 @@ export default class Layer extends React.Component<ILayerProps, {}> {
       {'parent': (props.parent)},
       {'child': (props.child)},
       borderClass,
-      props.type,
+      props.theme,
       props.className
     );
 

@@ -12,7 +12,7 @@ export default class ModalHeader extends React.Component<any, any>{
         let iconPartial, fullScreenPartial;
 
         props.icon ? (iconPartial = <i className={'pull-left mt10 fa fa-'+props.icon}></i>) : null;
-        props.fullScreen ? (fullScreenPartial = <Button className="pull-right " onClick={this.toggleMin.bind(this)} icon={this.state.min ? 'expand' : 'compress'} type="link" />) : null;
+        props.fullScreen ? (fullScreenPartial = <Button className="pull-right " onClick={this.toggleMin.bind(this)} icon={this.state.min ? 'expand' : 'compress'} theme="link" />) : null;
 
 
         if (props.title) {
@@ -23,7 +23,7 @@ export default class ModalHeader extends React.Component<any, any>{
                         {fullScreenPartial}
                         <h1 className="dinblock pull-left"> {props.title} </h1>
                     </div>
-                    <Button ghost className="pull-right" onClick={props.onClose} icon="times" type="link" />
+                    <Button ghost className="pull-right" onClick={props.onClose} icon="times" theme="link" />
                 </div>
             );
         }

@@ -1,6 +1,14 @@
 ﻿import * as React from 'react';
 import {search} from './Utils';
 
+interface ObjectCtor extends ObjectConstructor {
+    assign(target: any, ...sources: any[]): any;
+}
+declare var Object: ObjectCtor;
+export let assign = Object.assign ? Object.assign : function(target: any, ...sources: any[]): any {
+        return;
+};
+
 enum SortDirection {
     None = 0,
     Asc,
@@ -127,10 +135,6 @@ const DataSource = (Component) =>
                 Object.keys(dataSource).map((columnHeaderName) => {
                     columnsArray.push(Object.keys(dataSource)[columnHeaderName]);
                 })
-            }
-
-            if (this.props.keys) {
-                console.log(keys);
             }
 
             columnsArray.map((columnHeaderName) => {

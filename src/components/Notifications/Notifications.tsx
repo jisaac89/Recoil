@@ -41,7 +41,7 @@ class Notification extends React.Component<any, any>{
         
         if (this.state.view !== 'removed' ) {
             return (
-                <div className="w100 clearfix"><Button right type={props.item.type ? props.item.type : ''} className={animationClass}>{props.item.title}</Button></div>
+                <div className="w100 clearfix"><Button right theme={props.item.type ? props.item.type : ''} className={animationClass}>{props.item.title}</Button></div>
             )
         } else {
             return null;

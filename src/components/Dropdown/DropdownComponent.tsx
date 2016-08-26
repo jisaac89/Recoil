@@ -143,8 +143,8 @@ export default class DropdownComponent extends React.Component<P, State>{
                         onClick={this.toggleOpen.bind(this)}
                         ghost={props.ghost}
                         checked={this.state.open}
-                        simple={false}
-                        type={props.theme}
+                        advanced
+                        theme={props.theme}
                         pointer={props.pointer}
                     >
                         {props.title}

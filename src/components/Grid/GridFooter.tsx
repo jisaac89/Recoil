@@ -41,7 +41,7 @@ export default class GridFooter extends React.Component<IGridFooterProps, {}>{
         self.props.currentPage === i ||
         self.props.currentPage === i + 1) {
         paginationPartial.push(
-          <Button size="small" tabIndex={-1} type={self.props.currentPage === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} key={i}>
+          <Button size="small" tabIndex={-1} theme={self.props.currentPage === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} key={i}>
             {i+1}
           </Button>
         )
