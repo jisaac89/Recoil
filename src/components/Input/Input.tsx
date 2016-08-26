@@ -30,7 +30,7 @@ export interface IInputProps {
   focusOnMount? : any;
   focusDelay? : any;
   size? : string;
-  simple? : boolean;
+  advanced? : boolean;
   maxLength? : number;
   max ? : number;
   min ? : number;
@@ -47,7 +47,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   public state : IInputState;
 
   public static defaultProps = {
-      simple: true,
+      advanced: false,
       type: 'text'
   };
 
@@ -85,7 +85,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   public focus(e){
     const self = this;
     this.setState({
-      checked: self.props.simple ? false : true,
+      checked: self.props.advanced ? false : true,
       inputValue:e.target.value
     });
   }
@@ -180,13 +180,13 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     // switch input type depending on propType
     switch (props.type) {
       case 'password':
-        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.simple? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
+        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
         break;
       case 'text':
-        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.simple? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
+        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
         break;
       case 'number':
-        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} max={props.max} min={props.min} maxLength={props.maxLength} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={props.simple? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
+        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} max={props.max} min={props.min} maxLength={props.maxLength} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
         break;
       case 'textarea':
         inputPartial = <textarea rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;
@@ -209,7 +209,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       {'pt10' : (props.type === 'textarea')}
     );
 
-    let inputClassSimple = classNames(
+    let inputClassadvanced = classNames(
       'r-Input',
       props.size,
       {'w100' : (props.block)},
@@ -217,13 +217,13 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       'r-Input__container',
       'flohide',
       'no-title',
-      'e-simple',
+      'e-advanced',
       props.className
     );
 
-    if (props.simple) {
+    if (!props.advanced) {
       return (
-        <div className={inputClassSimple}>
+        <div className={inputClassadvanced}>
             {inputPartial}
         </div>
       )
