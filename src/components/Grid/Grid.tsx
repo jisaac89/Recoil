@@ -21,9 +21,10 @@ export interface P {
     searchTitle ? : string;
     hideColumns?: Array<string>;
     overflow?: boolean;
-
+    selected? : Array<any>;
     simple? : boolean;
     filterItems? : any;
+    pageSize? : number;
 }
 
 export interface S { }

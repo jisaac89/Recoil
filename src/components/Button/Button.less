@@ -21,7 +21,7 @@
 }
 
 .r-Button.link{
-  border:1px solid @default-border;
+  border-color: @default-border;
   background:transparent;
 }
 
@@ -29,16 +29,16 @@
 .r-Button:focus{
   background:  @default--hover-background;
   color: @primary-background;
-  border:1px solid @primary-background;
+  border-color: @primary-background;
 }
 
-*:focus{
-    outline: 0 !important;
+.r-Button:focus{
+    outline: 0;
 }
 
 .r-Button.primary:hover,
 .r-Button.primary:focus{
-  background:@primary--hover-background !important;
+  background:@primary--hover-background;
   color: white;
 }
 .r-Button.error:hover,
@@ -54,8 +54,8 @@
   color:@link--hover-color;
   background: @link-background;
 }
-.r-Button.ghost.primary:hover,
-.r-Button.ghost.primary:focus{
+.r-Button.simple.primary:hover,
+.r-Button.simple.primary:focus{
   background:transparent !important;
 }
 
@@ -67,7 +67,7 @@
 
 .r-Button.small{
   // padding: 3px 1pc;
-  padding:0 13px;
+  padding:3px 13px;
   height: auto;
   font-size:10px;
   font-weight: normal;
@@ -123,41 +123,29 @@
 
 /* --ghost button */
 
-.r-Button.ghost{
+.r-Button.simple{
   color: @default-color;
   background: transparent !important;
   border-color: transparent !important;
 }
 
-.r-Button.ghost:hover{
+.r-Button.simple:hover{
   background: transparent;
 }
 
 /*Pointers*/
 
-.r-Button.pointer:before {
+.r-Button.button-pointer-left:before,
+.r-Button.button-pointer-right:before {
     top: 50%;
     left: -1px;
-}
-
-.r-Button.pointer:before {
     border-color: inherit;
-}
-
-.r-Button.pointer:hover:before {
-    color: rgba(0,0,0,.8);
-}
-
-.r-Button.pointer:before {
     border-width: 1px 0 0 1px;
     -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
     -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
     transform: translateX(-50%) translateY(-50%) rotate(45deg);
     top: 0;
     left: 50%;
-}
-
-.r-Button.pointer:before {
     background-color: inherit;
     border-style: solid;
     border-color: inherit;
@@ -174,7 +162,12 @@
     transition: background .1s ease;
 }
 
-.r-Button.pointer.left:before {
+.r-Button.button-pointer-left:hover:before,
+.r-Button.button-pointer-right:hover:before {
+    color: rgba(0,0,0,.8);
+}
+
+.r-Button.button-pointer-left:before {
     border-width: 0 0 1px 1px;
     -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
     -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -185,12 +178,12 @@
     left: 0;
 }
 
-.r-Button.pointer.right:before {
+.r-Button.button-pointer-right:before {
     top: 50%;
     right: -1px;
 }
 
-.r-Button.pointer.right:before {
+.r-Button.button-pointer-right:before {
     border-width: 1px 1px 0 0;
     -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
     -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);
@@ -206,7 +199,8 @@
   overflow: hidden;
 }
 
-.r-Button.pointer{
+.r-Button.button-pointer-right,
+.r-Button.button-pointer-left{
   overflow: visible;
 }
 
@@ -246,24 +240,34 @@ a, .r-Button{
   font-size: 14px;
 }
 
-.r-Button.iconPointer .e-ico{
-  .transition(150ms);
-  opacity: 0;
-  margin:auto;
-  position: absolute;
+.icon-wrapper{
+  display: inline-block;
 }
 
-.r-Button:hover .e-ico {
-    opacity: 1;
-    transform: translateX(4px);
+.icon-pointer{
+  margin-left:5px;
+  margin-right:0px;
 }
 
-.r-Button.iconPointer:hover .fa:not(.e-ico) {
-    transform: translateX(-6px);
-    .transition(200ms);
+// 
+
+.r-Button.outline{
+  color: @default-color;
+  background: @body-background !important;
+  border-color: @default-color !important;
 }
 
-i.e-ico.fa.fa-caret-down {
-    top: 2px;
-    right:0px;
+.r-Button.outline.primary{
+  border-color:@primary-background !important;
+  color:@primary-background !important;
+}
+
+.r-Button.outline.error{
+  border-color:@error-background !important;
+  color:@error-background !important;
+}
+
+.r-Button.outline.success{
+  border-color:@success-background !important;
+  color:@success-background !important;
 }

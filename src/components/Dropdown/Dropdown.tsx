@@ -8,28 +8,30 @@ import './Dropdown.less';
 
 interface P {
   rowIsSelectable? : boolean;
-  title? : string;
   icon? : string;
   searchTitle? : string;
   searchableKeys? : Array<any>;
   hideHeader? : boolean;
   dataSource? : Array<any>;
   columns? : Array<any>;
-  type?: '' | 'button' | 'selection' | 'search';
   sortable?  : boolean;
   onClose? : Function;
   ghost? : boolean;
-  iconLocation ? : 'left' | 'right';
-  iconPointer?  : string;
+  type?: '' | 'button' | 'selection' | 'search';
+  title?: string;
+  iconLocation?: 'left' | 'right';
+  iconPointer? : 'left' | 'right' | 'up' | 'down';
   dropDirection? : string;
   material ? : boolean;
   block ? : boolean;
   detailTemplate? : Function;
   onChange ? : Function;
-  theme? : string;
-  size? : string;
-  pointer? : string;
+  theme?: 'success' | 'primary' | 'error';
+  size? : 'small' | 'medium' | 'large' | 'xlarge';
+  pointer? : 'left' | 'right' | boolean;
   pageSize? : any;
+  simple? : boolean;
+  outline? : boolean;
 }
 
 export default class Dropdown extends React.Component<P, any>{

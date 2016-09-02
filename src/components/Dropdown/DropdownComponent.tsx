@@ -22,16 +22,18 @@ interface P {
     type?: '' | 'button' | 'selection' | 'search';
     title?: string;
     iconLocation?: 'left' | 'right';
-    iconPointer ? : string;
+    iconPointer? : 'left' | 'right' | 'up' | 'down';
     dropDirection? : string;
     material? : boolean;
     icon?: string;
     ghost?: boolean;
     onChange ? : Function;
-    theme? : string;
-    size? : string;
-    pointer? : string;
+    theme?: 'success' | 'primary' | 'error';
+    size? : 'small' | 'medium' | 'large' | 'xlarge';
+    pointer? : 'left' | 'right' | boolean;
     pageSize? : any;
+    outline? : boolean;
+    simple?: boolean;
 }
 
 export interface State {
@@ -141,7 +143,7 @@ export default class DropdownComponent extends React.Component<P, State>{
                         iconPointer={props.iconPointer}
                         iconLocation={props.iconLocation}
                         onClick={this.toggleOpen.bind(this)}
-                        ghost={props.ghost}
+                        simple={props.simple}
                         checked={this.state.open}
                         advanced
                         theme={props.theme}

@@ -1608,27 +1608,32 @@ h3 {
 .success-error {
 	color: @success-background !important;
 }
-.primary.ghost {
+.primary.simple {
 	background: transparent !important;
 	color: @primary-background !important;
 	border-color: @primary-background !important;
 }
-.light.ghost {
+.light.simple {
 	color: #fff !important;
 }
 .dark {
 	background: @dark-background;
 	color: #A9A9A9;
 }
-.primary.ghost:hover {
+.primary.simple:hover {
 	color: #1995FF !important;
 }
-.error.ghost {
+.error.simple {
 	background: transparent !important;
 	color: #f30 !important;
 	border-color: #f30 !important;
 }
-.error.ghost:hover {
+.success.simple {
+	background: transparent !important;
+	color: #3EBB27 !important;
+	border-color: #3EBB27 !important;
+}
+.error.simple:hover {
 	color: #f30 !important;
 }
 @media screen and (max-width: 680px) {
@@ -1893,10 +1898,10 @@ hr {
 		background: #f62d2d !important;
 	}
 	.primary:not(.r-Selectable) {
-		    background: #1a619e !important;
+		background: #1a619e !important;
 		color: @primary-color !important;
 	}
-	.primary.ghost:hover {
+	.primary.simple:hover {
 		color: @primary-color !important;
 	}
 	.success{

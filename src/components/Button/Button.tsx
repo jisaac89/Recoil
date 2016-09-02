@@ -9,17 +9,17 @@ export interface IButtonProps {
   disabled?: boolean;
   block?: boolean;
   className? : string;
-  theme?: string;
+  theme?: 'success' | 'primary' | 'error';
   icon? : string;
   href?: string;
   target?: string;
-  ghost? : boolean;
+  simple? : boolean;
   strech? : boolean;
   children? : boolean;
-  pointer? : any;
+  pointer? : 'left' | 'right' | boolean;
   right? : boolean;
   left? : boolean;
-  size? : string;
+  size? : 'small' | 'medium' | 'large' | 'xlarge';
   submit? : boolean;
   style? : any;
   checked? : boolean;
@@ -27,10 +27,11 @@ export interface IButtonProps {
   tabIndex? : number;
   progressiveClick? : any;
   advanced?: boolean;
-  iconPointer? : any;
+  iconPointer? : 'left' | 'right' | 'up' | 'down';
   loading?: boolean;
   iconLocation?: 'left' | 'right';
-  checkedTheme? : string;
+  checkedTheme? : 'primary' | 'success' | 'error';
+  outline? : boolean;
 }
 
 export interface IButtonState {
@@ -110,14 +111,15 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let buttonClass = classNames(
       'r-Button',
-      {'ghost' : (props.ghost)},
+      {'simple' : (props.simple)},
+      {'outline' : (props.outline)},
       {'block' : (props.block)},
       {'column' : (props.strech)},
       {'icon' : (!props.children)},
-      {'pointer' : (props.pointer)},
-      {'iconPointer' : (props.iconPointer)},
-      {'right' :(props.pointer === 'right')},
-      {'left' :(props.pointer === 'left')},
+      {'button-pointer-right' :(props.pointer === 'right')},
+      {'button-pointer-left' :(props.pointer === 'left')},
+      {'icon-right' :(props.iconLocation === 'right')},
+      {'icon-left' :(props.iconLocation === 'left')},
       {'pull-right' :(props.right)},
       {'pull-left' :(props.left)},
       props.size,
@@ -134,9 +136,9 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let selectablePartial = <Selectable type={props.checkedTheme} checked={props.checked ? true : false}></Selectable>;
     let iconPartial = (props.icon && !props.loading ? <i className={'fa fa-'+props.icon}></i> : null );
     let loadingPartial = (props.loading ? <i className='fa fa-circle-o-notch fa-spin'></i> : null );
-    let animatedIcon = (props.iconPointer && !props.loading ? <i className={"e-ico fa fa-caret-"+props.iconPointer} ></i> : null );
-    let iconWrapperRight = (props.icon && props.iconLocation === 'right' ? <div className={"ml10 dinblock posrel " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
-    let iconWrapperLeft = (props.icon && props.iconLocation === 'left' ? <div className={"dinblock posrel " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
+    let animatedIcon = (props.iconPointer && !props.loading ? <i className={"icon-pointer fa fa-caret-"+props.iconPointer} ></i> : null );
+    let iconWrapperRight = (props.icon && props.iconLocation === 'right' ? <div className={'icon-pointer-'+props.iconPointer+ " ml10 icon-wrapper " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
+    let iconWrapperLeft = (props.icon && props.iconLocation === 'left' ? <div className={'icon-pointer-'+props.iconPointer+" icon-wrapper " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
 
     let linkButton = () => {
       return (
