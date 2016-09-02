@@ -28,8 +28,8 @@ export default class SlideIn extends React.Component<ISlideInProps, {}>{
       {'e-open': (props.if)},
       {'fill': (props.fill)},
       {'fixed': (props.fixed)},
-      props.from,
-      props.className
+      props.className,
+      props.from
     );
 
     switch (props.from) {
