@@ -23,7 +23,7 @@ export default class ModalHeader extends React.Component<any, any>{
                         {fullScreenPartial}
                         <h1 className="dinblock pull-left"> {props.title} </h1>
                     </div>
-                    <Button ghost className="pull-right" onClick={props.onClose} icon="times" theme="link" />
+                    <Button simple className="pull-right" onClick={props.onClose} icon="times" />
                 </div>
             );
         }
