@@ -98,7 +98,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
 
     props.icon ? (iconPartial = <i className={'pull-left mt10 fa fa-'+props.icon}></i>) : null;
     this.state.open ? (body.className += ' flohide') : (body.className = '');
-    props.fullScreen ? (fullScreenPartial = <Button className="pull-right " onClick={this.toggleMin.bind(this)} icon={this.state.min ? 'expand' : 'compress'} theme="link" />) : null;
+    props.fullScreen ? (fullScreenPartial = <Button className="pull-right " onClick={this.toggleMin.bind(this)} icon={this.state.min ? 'expand' : 'compress'} simple />) : null;
 
     let openProps;
 

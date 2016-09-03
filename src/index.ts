@@ -1,6 +1,5 @@
 export {default as Align} from './components/Align/Align';
 export {default as Button} from './components/Button/Button';
-export {default as Card} from './components/Card/Card';
 export {default as Checkbox} from './components/Checkbox/Checkbox';
 export {default as Open} from './components/Open/Open';
 export {default as DataSource} from './components/DataSource/DataSource';
