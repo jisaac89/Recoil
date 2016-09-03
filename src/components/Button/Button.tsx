@@ -32,6 +32,7 @@ export interface IButtonProps {
   iconLocation?: 'left' | 'right';
   checkedTheme? : 'primary' | 'success' | 'error';
   outline? : boolean;
+  fill? : boolean;
 }
 
 export interface IButtonState {
@@ -124,7 +125,8 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       {'pull-left' :(props.left)},
       props.size,
       props.theme,
-      props.className
+      props.className,
+      {'fill': (props.fill)}
     );
 
     if (props.submit) {

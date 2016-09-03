@@ -9,6 +9,7 @@ export interface IAlignProps {
   children? : any;
   vertical? : boolean;
   className? : string;
+  fill? : boolean;
 }
 
 export default class Align extends React.Component<IAlignProps, {}>{
@@ -85,6 +86,7 @@ export default class Align extends React.Component<IAlignProps, {}>{
 
     let alignClass = classNames(
       'r-Align',
+      {'fill': (props.fill)},
       props.className
     );
 
@@ -114,7 +116,7 @@ export default class Align extends React.Component<IAlignProps, {}>{
 
       if (props.vertical && index !== 0) {
         return(
-          <div key={index}>
+          <div style={{display : "initial"}} key={index}>
             <div style={{height: margin+'%'}} className="w100"></div>
             <div className={columnClass} style={columnStyle} key={index}>
               {item}
