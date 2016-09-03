@@ -103,7 +103,7 @@ export default class Align extends React.Component<IAlignProps, {}>{
 
       if (props.vertical) {
         columnStyle = {
-          marginTop : 0,
+          // marginTop : 0,
           height: (colwidth ? colwidth : singleColWidth)+'%'
         };
       } else {

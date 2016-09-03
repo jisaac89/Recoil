@@ -62,7 +62,6 @@ export default class GridSearch extends React.Component<any, any>{
           <Input 
             title={props.searchTitle} 
             onChange={this.updateSearch.bind(this)} 
-            focusOnMount
             block
             type="text"
             size="small"

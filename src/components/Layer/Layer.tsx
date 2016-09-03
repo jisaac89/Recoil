@@ -31,6 +31,7 @@ export interface ILayerProps {
   justify? : string;
   parent? : boolean;
   child? : boolean;
+  dimensions?:any;
 }
 
 export default class Layer extends React.Component<ILayerProps, {}> {
@@ -72,6 +73,17 @@ export default class Layer extends React.Component<ILayerProps, {}> {
 
     // ===================================
 
+
+    let dimensionStyle;
+
+    if(props.dimensions) {
+      dimensionStyle = {
+        width: props.dimensions[0],
+        height: props.dimensions[1],
+        zIndex: props.dimensions[2]
+      }
+    }
+
     let layerClass = classNames(
       'r-Layer',
       {'flohide' : (props.overflow)},
@@ -89,7 +101,7 @@ export default class Layer extends React.Component<ILayerProps, {}> {
     );
 
     return(
-      <div onClick={props.onClick} className={layerClass} style={Object.assign({}, flexStyle, props.style)}>
+      <div onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, flexStyle, props.style)}>
         {props.children}
       </div>
     );
