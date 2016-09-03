@@ -19,8 +19,7 @@
 
 .r-Toggle__input + .r-Toggle__button {
     outline: 0;
-    display: block;
-    width: 4em;
+    display: table;
     height: 2em;
     position: relative;
     cursor: pointer;
@@ -28,18 +27,43 @@
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    width:100%;
+}
+
+.r-Toggle__input + .r-Toggle__button > .r-Wizard{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.r-Toggle__input + .r-Toggle__button > div{
+  font-size:13px;
+  
+  color: #888; 
+}
+
+.r-Toggle__input + .r-Toggle__button .text-right{
+  margin-left:30px;
+  margin-right:10px;
+  
+}
+
+.r-Toggle__input + .r-Toggle__button .text-white{
+  margin-right:30px;
+  margin-left:10px;
 }
 
 .r-Toggle__input + .r-Toggle__button:after{
-    position: relative;
+    position: absolute;
+    top:0;
     display: block;
     content: "";
-    width: 26px;
+    width: 30px;
     height: 100%;
 }
 
 .r-Toggle__input:checked + .r-Toggle__button:after {
-    left: 55%;
+    left: 100%;
+    transform: translateX(-30px)
 }
 
 .r-Toggle__input + .r-Toggle__button:after {
@@ -141,7 +165,7 @@
 
 
 .r-Toggle.large .r-Toggle__input + .r-Toggle__button {
-    width: 5em;
+    // width: 5em;
     height: 2.5em;
 }
 
@@ -150,14 +174,31 @@
 }
 
 .r-Toggle.large .r-Toggle__input + .r-Toggle__button:after {
-    width: 2em;
+    width: 2.4em;
+}
+
+.r-Toggle.large .r-Toggle__input:checked + .r-Toggle__button:after {
+    left: 100%;
+    transform: translateX(-38px)
+}
+
+.r-Toggle.large .r-Toggle__input + .r-Toggle__button .text-right{
+  margin-left:40px;
+  margin-right:10px;
+  font-size:18px;      
+}
+
+.r-Toggle.large .r-Toggle__input + .r-Toggle__button .text-white{
+  margin-right:40px;
+  margin-left:10px;
+  font-size:18px; 
 }
 
 // xlarge
 
 .r-Toggle.xlarge .r-Toggle__input + .r-Toggle__button {
-  width: 7.8em;
-      height: 3.9em;
+  // width: 7.8em;
+ height: 3.9em;
 }
 
 .r-Toggle.xlarge .r-Toggle__input + .r-Toggle__button:after {
@@ -165,14 +206,31 @@
 }
 
 .r-Toggle.xlarge .r-Toggle__input + .r-Toggle__button:after {
-      width: 3.2em;
+      width: 3.6em;
+}
+
+.r-Toggle.xlarge .r-Toggle__input:checked + .r-Toggle__button:after {
+    left: 100%;
+    transform: translateX(-58px)
+}
+
+.r-Toggle.xlarge .r-Toggle__input + .r-Toggle__button .text-right{
+  margin-left:60px;
+  font-size:25px;
+  margin-right:10px;
+}
+
+.r-Toggle.xlarge .r-Toggle__input + .r-Toggle__button .text-white{
+  margin-right:60px;
+  font-size:25px;
+  margin-left:10px;
 }
 
 // small
 
 .r-Toggle.small .r-Toggle__input + .r-Toggle__button {
-  width: 2.8em;
-      height: 1.6em;
+  // width: 2.8em;
+  height: 26px;
 }
 
 .r-Toggle.small .r-Toggle__input + .r-Toggle__button:after {
@@ -180,8 +238,14 @@
 }
 
 .r-Toggle.small .r-Toggle__input + .r-Toggle__button:after {
-      width: 1.1em;
+      width: 1.5em;
 }
+
+.r-Toggle.small .r-Toggle__input:checked + .r-Toggle__button:after {
+    left: 100%;
+    transform: translateX(-24px)
+}
+
 //
 
 .r-Toggle {

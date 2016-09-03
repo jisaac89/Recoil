@@ -5,6 +5,8 @@ import './Toggle.less';
 import Selectable from '../Selectable/Selectable';
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
+import Align from '../Align/Align';
+import Wizard from '../Wizard/Wizard';
 
 export default class Toggle extends React.Component<any, any>{
   constructor(props) {
@@ -41,8 +43,8 @@ export default class Toggle extends React.Component<any, any>{
     let toggleClass = classNames(
       'r-Toggle',
       {'e-checked' : (state.checked)},
-      {'e-color' : (props.columns && props.type === 'colors')},
-      {'e-numbers' : (props.columns && !props.ghost && props.type !== 'colors')},
+      {'e-color' : (props.array && props.array.length > 2 && props.type === 'colors')},
+      {'e-numbers' : (props.array && props.array.length > 2 && !props.ghost && props.type !== 'colors')},
       {'e-ghost' : (props.ghost)},
       {'pull-right' : (props.right)},
       props.size,
@@ -59,7 +61,7 @@ export default class Toggle extends React.Component<any, any>{
       return (
         <div className={itemClass} onClick={this.changeSelected.bind(this, item)} key={index}>
           {(()=>{
-            if (props.columns && props.type === 'colors') {
+            if (props.array && props.type === 'colors') {
               return (
                 <div className={'r-Toggle__item__color'} style={{background: item, height: 26, width: 26}}></div>
               )
@@ -73,10 +75,18 @@ export default class Toggle extends React.Component<any, any>{
       )
     }
 
-    if (props.columns) {
+    let slideIndex;
+
+    if (state.checked) {
+      slideIndex = 1
+    } else {
+      slideIndex = 0
+    }
+
+    if (props.type === 'colors' && props.array && props.array.length > 2) {
       return (
         <div className={toggleClass}>
-          {this.props.columns.map(createList)}
+          {this.props.array.map(createList)}
         </div>
       )
     }
@@ -90,7 +100,13 @@ export default class Toggle extends React.Component<any, any>{
                onChange={this.onChange.bind(this)}
                value={this.props.value} />
                {this.props.label}
-          <label className="r-Toggle__button"></label>
+          {props.array && props.array.length === 2 ? 
+            <label className="r-Toggle__button">
+            <Wizard slideIndex={slideIndex}>
+              <div className="text-right">{props.array[0]}</div>
+              <div className="text-white">{props.array[1]}</div>
+            </Wizard>
+            </label> :<label className="r-Toggle__button"></label>}
         </div>
       )
     }

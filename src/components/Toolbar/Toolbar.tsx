@@ -23,10 +23,6 @@ export interface IToolbarProps {
   className?: any;
   style?: any;
   children?: any;
-  flex? : any;
-  flow? : any;
-  justify? : any;
-  align ? : any;
   flush ? : boolean;
   noBorder? : boolean;
   onClick? : any;
@@ -39,22 +35,6 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
 
     const self = this;
     const props = self.props;
-
-    // FLEX ===============================
-
-    let flexFlow;
-    let flexStyle;
-
-    if (props.flex) {
-      flexStyle = {
-        'WebkitFlexFlow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
-        'justifyContent' : props.justify ? props.justify : 'flex-start',
-        'alignItems' : props.align ? props.align : 'stretch',
-        'WebkitFlex' : props.flex !== '' ? props.flex : null
-      }
-    }
-
-    // ====================================
 
     let toolbarClass = classNames(
       'r-Toolbar',
@@ -70,7 +50,6 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       {'w100': (props.fill)},
       {'wh100': (props.fill)},
       {'flush': (props.flush)},
-      {'flex': (props.flex)},
       {'no-border': (props.noBorder)},
       props.className,
       {'tabs': (props.tabs)},
@@ -78,7 +57,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
     );
 
     return (
-      <div ref="toolbar" style={Object.assign({}, flexStyle, props.style)} className={toolbarClass} onClick={this.props.onClick}>
+      <div ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
         {props.children}
       </div>
     );

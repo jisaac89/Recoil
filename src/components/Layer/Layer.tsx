@@ -25,10 +25,6 @@ export interface ILayerProps {
   onClick?: () => void;
   block? : boolean;
   key? : any;
-  align? : string;
-  flex? : boolean;
-  flow? : string;
-  justify? : string;
   parent? : boolean;
   child? : boolean;
   dimensions?:any;
@@ -56,24 +52,6 @@ export default class Layer extends React.Component<ILayerProps, {}> {
       borderClass = null;
     }
 
-    // FLEX ===============================
-
-    let flexFlow;
-    let flexStyle;
-
-    if (props.flex) {
-      flexStyle = {
-        'WebkitFlexFlow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
-        'flexFlow' : props.flow !== '' && props.flow ? props.flow : 'row nowrap',
-        'justifyContent' : props.justify ? props.justify : 'flex-start',
-        'alignItems' : props.align ? props.align : 'stretch',
-        'WebkitFlex' : props.flex ? props.flex : null,
-      }
-    }
-
-    // ===================================
-
-
     let dimensionStyle;
 
     if(props.dimensions) {
@@ -92,7 +70,6 @@ export default class Layer extends React.Component<ILayerProps, {}> {
       {'e-scroll-y': (props.scrollY)},
       {'e-scroll-x': (props.scrollX)},
       {'fill': (props.fill)},
-      {'flex': (props.flex)},
       {'parent': (props.parent)},
       {'child': (props.child)},
       borderClass,
@@ -101,7 +78,7 @@ export default class Layer extends React.Component<ILayerProps, {}> {
     );
 
     return(
-      <div onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, flexStyle, props.style)}>
+      <div onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, props.style)}>
         {props.children}
       </div>
     );
