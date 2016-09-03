@@ -191,8 +191,40 @@
   border-right:1px solid @standard-border;
 }
 
+// .r-Toolbar.tabs>.r-Button {
+//     border: 0!important;
+//     border-bottom: 1px solid #cccccc !important;
+//     background: transparent;
+// }
+
 .r-Toolbar.tabs>.r-Button {
-    border: 0!important;
-    border-bottom: 1px solid #cccccc !important;
+    border-bottom: 1px solid @body-background !important;
     background: transparent;
+    margin-bottom:-1px;
+}
+
+.r-Toolbar.tabs{
+  border-bottom:1px solid #cccccc;
+}
+
+.r-Toolbar.tabs>.r-Button{
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.r-Toolbar.tabs>.r-Button>.r-Selectable{
+  position: absolute;
+  top:0;
+  left:0;
+  margin:0;
+}
+
+.r-Toolbar.tabs>button.r-Button.simple{
+  border-bottom:1px solid #cccccc !important;
+}
+
+.r-Toolbar.tabs>button.r-Button.simple>.r-Selectable{
+  position: absolute;
+  top: auto;
+  bottom:-1px !important;
 }

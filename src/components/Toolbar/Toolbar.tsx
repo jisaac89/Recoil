@@ -30,7 +30,7 @@ export interface IToolbarProps {
   flush ? : boolean;
   noBorder? : boolean;
   onClick? : any;
-  theme? : any;
+  tabs? : boolean;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{
@@ -72,7 +72,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       {'flex': (props.flex)},
       {'no-border': (props.noBorder)},
       props.className,
-      props.theme
+      {'tabs': (props.tabs)}
     );
 
     return (
