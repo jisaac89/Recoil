@@ -70,17 +70,13 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
 
     return (
         <Button
-          simple={props.ghost}
+          className="r-Checkbox"
           size={props.size}
-          className={"r-Checkbox " + (value === 1 ? 'e-checked' : value === 0 ? "" : "e-checked")}
           progressiveClick={this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null}
           onClick={this.toggleChecked.bind(this)}
-          tabIndex={-1}
-          disabled={props.disabled}
-          icon={value === 1 ? 'check floatL' : value === 0 ? "circle-o" : "minus"}
+          theme={ props.theme ? props.theme : value === 1 ? 'primary' : ''}
+          icon={props.icon}
         >
-          <div className="r-Checkbox___back">
-          </div>
         </Button>
     )
   }
