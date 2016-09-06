@@ -19,7 +19,7 @@
 
 .r-Toggle__input + .r-Toggle__button {
     outline: 0;
-    display: table;
+    display: inline-block !important;
     height: 2em;
     position: relative;
     cursor: pointer;
@@ -28,6 +28,10 @@
     -ms-user-select: none;
     user-select: none;
     width:100%;
+}
+
+.r-Toggle.e-text .r-Toggle__input + .r-Toggle__button{
+  display: table !important;
 }
 
 .r-Toggle__input + .r-Toggle__button > .r-Wizard{

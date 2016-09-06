@@ -42,6 +42,7 @@ export default class Toggle extends React.Component<any, any>{
 
     let toggleClass = classNames(
       'r-Toggle',
+      {'e-text' : (props.array && props.array.length === 2)},
       {'e-checked' : (state.checked)},
       {'e-color' : (props.array && props.array.length > 2 && props.type === 'colors')},
       {'e-numbers' : (props.array && props.array.length > 2 && !props.ghost && props.type !== 'colors')},
