@@ -3,16 +3,16 @@ import * as classNames from 'classnames';
 import {findDOMNode} from 'react-dom';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
-import * as smooth from 'smoothscroll-polyfill';
+// import * as smooth from 'smoothscroll-polyfill';
 
-smooth.polyfill();
+// smooth.polyfill();
 
-function scrollTo(target, offset) {
-    let node = window.document.querySelector('#'+target);
-    // let offsetElement = window.document.querySelector('#'+target+'-offset')
+// function scrollTo(target, offset) {
+//     let node = window.document.querySelector('#'+target);
+//     // let offsetElement = window.document.querySelector('#'+target+'-offset')
 
-    node.scrollIntoView({behavior: "smooth"});
-}
+//     node.scrollIntoView({behavior: "smooth"});
+// }
 
 export interface IButtonProps {
   active?: boolean;
@@ -133,7 +133,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
   }
 
   scrollTo() {
-    	scrollTo(this.props.scrollToId, this.props.scrollOffset);
+    	// scrollTo(this.props.scrollToId, this.props.scrollOffset);
   }
 
   render() {
