@@ -10,6 +10,8 @@ export interface ICheckboxProps {
   disabled? : boolean;
   size? : "small" | "medium" | "large" | "xlarge";
   ghost? : boolean;
+  theme? : 'primary' | 'error' | 'success' | 'default';
+  icon? : string;
 }
 
 export interface ICheckboxState {
@@ -74,7 +76,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
           size={props.size}
           progressiveClick={this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null}
           onClick={this.toggleChecked.bind(this)}
-          theme={ props.theme ? props.theme : value === 1 ? 'primary' : ''}
+          theme={value === 1 ? 'primary' : 'default'}
           icon={props.icon}
         >
         </Button>

@@ -3,13 +3,23 @@ import * as classNames from 'classnames';
 import {findDOMNode} from 'react-dom';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
+import * as smooth from 'smoothscroll-polyfill';
+
+smooth.polyfill();
+
+function scrollTo(target, offset) {
+    let node = window.document.querySelector('#'+target);
+    // let offsetElement = window.document.querySelector('#'+target+'-offset')
+
+    node.scrollIntoView({behavior: "smooth"});
+}
 
 export interface IButtonProps {
   active?: boolean;
   disabled?: boolean;
   block?: boolean;
   className? : string;
-  theme?: 'success' | 'primary' | 'error';
+  theme?: 'success' | 'primary' | 'error' | 'default';
   icon? : string;
   href?: string;
   target?: string;
@@ -33,6 +43,9 @@ export interface IButtonProps {
   checkedTheme? : 'primary' | 'success' | 'error';
   outline? : boolean;
   fill? : boolean;
+  scrollToId? : any;
+  scrollOffset? : any;
+  scrollDuration? : number;
 }
 
 export interface IButtonState {
@@ -50,7 +63,9 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       disabled: false,
       block: false,
       advanced: false,
-      iconLocation : 'left'
+      iconLocation : 'left',
+      scrollDuration: 300,
+      scrollOffset: 0
   };
 
   constructor(props: IButtonProps) {
@@ -71,6 +86,20 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickLength: props.progressiveClick.length
       })
     }
+
+
+    // if (props.scrollOffset) {
+    //       var c = document.createDocumentFragment();
+    //       let offsetElement = document.createElement("h1");
+    //       let node = window.document.querySelector('#'+props.scrollToId);
+    //       offsetElement.id = props.scrollToId+'-offset';
+    //       offsetElement.style.top = props.scrollOffset;
+    //       offsetElement.appendChild(document.createTextNode('New div'));
+    //       c.appendChild(offsetElement)
+    //       node.appendChild(c);
+    // }
+
+
   }
 
   public onClick(event: React.MouseEvent) {
@@ -101,6 +130,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickIndex: 1
       })
     }
+  }
+
+  scrollTo() {
+    	scrollTo(this.props.scrollToId, this.props.scrollOffset);
   }
 
   render() {
@@ -167,7 +200,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let defaultButton = () => {
         return (
-          <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
+          <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.props.scrollToId ? this.scrollTo.bind(this) : this.props.onClick} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
             {iconWrapperLeft}
             {loadingPartial}
             {props.children}

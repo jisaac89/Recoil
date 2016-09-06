@@ -28,6 +28,7 @@ export interface IToolbarProps {
   onClick? : any;
   tabs? : boolean;
   size? : "small" | "medium" | "large" | "xlarge";
+  theme? : string;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{
@@ -53,7 +54,8 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       {'no-border': (props.noBorder)},
       props.className,
       {'tabs': (props.tabs)},
-      props.size
+      props.size,
+      props.theme
     );
 
     return (
