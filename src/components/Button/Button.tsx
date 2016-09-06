@@ -159,6 +159,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       props.size,
       props.theme,
       props.className,
+      { 'checked': (props.checked) },
       {'fill': (props.fill)}
     );
 

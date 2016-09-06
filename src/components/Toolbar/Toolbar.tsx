@@ -26,7 +26,8 @@ export interface IToolbarProps {
   flush ? : boolean;
   noBorder? : boolean;
   onClick? : any;
-  tabs? : boolean;
+  tabs?: boolean;
+  breadcrumbs?: boolean;
   size? : "small" | "medium" | "large" | "xlarge";
   theme? : string;
 }
@@ -53,7 +54,8 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       {'flush': (props.flush)},
       {'no-border': (props.noBorder)},
       props.className,
-      {'tabs': (props.tabs)},
+      { 'tabs': (props.tabs) },
+      { 'breadcrumbs': (props.breadcrumbs) },
       props.size,
       props.theme
     );

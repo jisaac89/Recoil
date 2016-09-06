@@ -1795,14 +1795,6 @@ form {
 		background-position: top right;
 	}
 }
-@-khtml-keyframes rainbowLine {
-	from {
-		background-position: top left;
-	}
-	to {
-		background-position: top right;
-	}
-}
 @keyframes rainbowLine {
 	from {
 		background-position: top left;
@@ -1818,9 +1810,6 @@ hr {
 	-moz-animation: rainbowLine 10.5s forwards linear infinite;
 	-webkit-animation: rainbowLine 10.5s forwards linear infinite;
 	-o-animation: rainbowLine 10.5s forwards linear infinite;
-	-khtml-animation: rainbowLine 10.5s forwards linear infinite;
-	-ms-animation: rainbowLine 10.5s forwards linear infinite;
-	-lynx-animation: rainbowLine 10.5s forwards linear infinite;
 	animation: rainbowLine 10.5s forwards linear infinite;
 	background-size: 50% auto;
 	height: 3px;
@@ -1855,6 +1844,9 @@ hr {
 	.r-Grid {
 		border-top: 1px solid #2b2b2b;
 	}
+    .r-ModalContent{
+        background:#171717;
+    }
 	.dark {
 		background: #21252B;
 		color: #A9A9A9;
@@ -1902,6 +1894,10 @@ hr {
 	.text-error {
 		color: #F62D73 !important;
 	}
+    .r-Toolbar.tabs>.r-Button,
+    .r-Toolbar.tabs{
+        border-bottom: 1px solid #424242!important;
+    }
 	.r-Button {
 		color: #ADADAD !important;
 	}
@@ -1964,7 +1960,6 @@ hr {
 		position: relative;
 		overflow: hidden;
 		border-color: #111 !important;
-		height: #333;
 		color: #333;
 		background-color: #333;
 	}
@@ -1995,10 +1990,6 @@ hr {
 .scrollX {
 	-webkit-overflow-scrolling: touch !important;
 	overflow-x: scroll !important;
-}
-
-i{
-	color:#666;
 }
 
 .vertical-align{
