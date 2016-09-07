@@ -51,11 +51,9 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
   }
   componentWillUnmount(){
       window.removeEventListener('mousedown', this.pageClick.bind(this), false);
-      const removeEvent = window.removeEventListener;
-      removeEvent("mousedown", this.pageClick.bind(this));
   }
   pageClick(e) {
-      event.preventDefault();
+      e.preventDefault();
       e.stopPropagation();
       
       if (this.mouseIsDown) {
