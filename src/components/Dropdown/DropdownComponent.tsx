@@ -95,9 +95,6 @@ export default class DropdownComponent extends React.Component<P, State>{
         window.removeEventListener('mousedown', this.pageClick.bind(this), false);
     }
     pageClick(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        
         if (this.mouseIsDown) {
             return;
         }
