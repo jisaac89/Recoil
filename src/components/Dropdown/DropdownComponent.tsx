@@ -93,8 +93,13 @@ export default class DropdownComponent extends React.Component<P, State>{
     }
     componentWillUnmount(){
         window.removeEventListener('mousedown', this.pageClick.bind(this), false);
+        const removeEvent = window.removeEventListener;
+        removeEvent("mousedown", this.pageClick.bind(this));
     }
     pageClick(e) {
+        event.preventDefault();
+        e.stopPropagation();
+        
         if (this.mouseIsDown) {
             return;
         }
@@ -104,8 +109,6 @@ export default class DropdownComponent extends React.Component<P, State>{
         });
 
         this.props.onClose ? this.props.onClose() : null;
-
-        e.stopPropagation();
     }
 
     onMouseDown() {
