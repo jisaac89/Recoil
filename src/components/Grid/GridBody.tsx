@@ -10,21 +10,21 @@ import GridRow from './GridRow';
 import GridRowTemplate from './GridRowTemplate';
 
 export interface IGridProps {
-  dataSource : any;
+  dataSource : Array<any>;
   numberPerPage ? : number;
-  columns ? : any;
+  columns ? : Array<any>;
   open ? : boolean;
   hideHeader ? : boolean;
   sortable ? : boolean;
   detailTemplateOpenOnSelect? : boolean;
-  detailTemplate? : any;
+  detailTemplate? : Function;
   height ? : string;
-  onRowSelect ? :any;
-  selected ? : any;
+  onRowSelect ? :Function;
+  selected ? : Array<any>;
   dataType ? : any;
   numberOfPages ? : number;
-  hideColumns ? : any;
-  columnTemplate? : any;
+  hideColumns ? : Array<string>;
+  columnTemplate? : Function;
   detailTemplateOpenOnHover? : boolean;
   rowIsSelectable? : boolean;
   selectedKey ? : string;

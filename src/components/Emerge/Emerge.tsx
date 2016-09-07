@@ -9,7 +9,7 @@ export interface IEmergeProps {
   delay? : number;
   overflow? : boolean;
   children? : any;
-  className? : any;
+  className? : string;
   style? : any;
 }
 

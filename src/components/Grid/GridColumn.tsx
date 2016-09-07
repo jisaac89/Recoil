@@ -6,12 +6,12 @@ import Emerge from '../Emerge/Emerge';
 import Dropdown from '../Dropdown/Dropdown';
 
 export interface IGridColumnProps {
-  dataSource ? : any;
-  columns ? : any;
+  dataSource ? : Array<any>;
+  columns ? : Array<any>;
   i ? : any;
   x ? : any;
-  hideColumns ? : any;
-  columnTemplate? : any;
+  hideColumns ? : Array<string>;
+  columnTemplate? : Function;
 }
 
 export default class GridColumn extends React.Component<IGridColumnProps, {}>{

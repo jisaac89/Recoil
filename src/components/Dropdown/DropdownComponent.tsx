@@ -9,8 +9,8 @@ import Layer from '../Layer/Layer';
 import DropdownWrapper from './DropdownWrapper';
 
 interface P {
-    onRowSelect?: any;
-    onClose?: any;
+    onRowSelect?: Function;
+    onClose?: Function;
     toggleCpenOnRowSelect? : boolean;
     open? : boolean;
     selected? : Array<any>;
@@ -20,18 +20,17 @@ interface P {
     left?: boolean;
     className?: string;
     type?: '' | 'button' | 'selection' | 'search';
-    title?: string;
+    title?: string | number;
     iconLocation?: 'left' | 'right';
     iconPointer? : 'left' | 'right' | 'up' | 'down';
     dropDirection? : string;
     material? : boolean;
     icon?: string;
-    ghost?: boolean;
     onChange ? : Function;
     theme?: 'success' | 'primary' | 'error';
     size? : 'small' | 'medium' | 'large' | 'xlarge';
     pointer? : 'left' | 'right' | boolean;
-    pageSize? : any;
+    pageSize? : number;
     outline? : boolean;
     simple?: boolean;
 }
@@ -98,11 +97,13 @@ export default class DropdownComponent extends React.Component<P, State>{
             return;
         }
 
-        // this.setState({
-        //     open: false
-        // });
+        this.setState({
+            open: false
+        });
 
-        // this.props.onClose ? this.props.onClose() : null
+        this.props.onClose ? this.props.onClose() : null;
+
+        e.stopPropagation();
     }
 
     onMouseDown() {

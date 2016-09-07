@@ -1,4 +1,5 @@
 export {default as Align} from './components/Align/Align';
+export {default as Badge} from './components/Badge/Badge';
 export {default as Button} from './components/Button/Button';
 export {default as Checkbox} from './components/Checkbox/Checkbox';
 export {default as Open} from './components/Open/Open';

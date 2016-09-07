@@ -5,9 +5,9 @@ import DropdownDataSource from './DropdownDataSource';
 
 interface IDropdownWrapperProps {
     selectItem?: (item: any) => void;
-    dataSource?: any;
+    dataSource?: Array<any>;
     onRowSelect?: (item: any) => void;
-    selected?: any;
+    selected?: Array<any>;
     material?: boolean;
     open?: boolean;
 }

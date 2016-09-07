@@ -2,7 +2,11 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Avatar.less';
 
-export default class Avatar extends React.Component<any, any>{
+export interface IAvatarProps{
+  src : 'string';
+}
+
+export default class Avatar extends React.Component<IAvatarProps, {}>{
   render() {
 
     const self = this;

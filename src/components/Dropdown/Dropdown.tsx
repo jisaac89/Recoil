@@ -15,22 +15,21 @@ interface P {
   dataSource? : Array<any>;
   columns? : Array<any>;
   sortable?  : boolean;
-  onClose? : Function;
-  ghost? : boolean;
+  onClose? : (event: React.MouseEvent) => void;
+  simple? : boolean;
   type?: '' | 'button' | 'selection' | 'search';
-  title?: string;
+  title?: string | number;
   iconLocation?: 'left' | 'right';
   iconPointer? : 'left' | 'right' | 'up' | 'down';
   dropDirection? : string;
   material ? : boolean;
   block ? : boolean;
-  detailTemplate? : Function;
-  onChange ? : Function;
+  detailTemplate? : (event: React.MouseEvent) => void;
+  onChange ? : (event: React.MouseEvent) => void;
   theme?: 'success' | 'primary' | 'error';
   size? : 'small' | 'medium' | 'large' | 'xlarge';
   pointer? : 'left' | 'right' | boolean;
   pageSize? : any;
-  simple? : boolean;
   outline? : boolean;
 }
 

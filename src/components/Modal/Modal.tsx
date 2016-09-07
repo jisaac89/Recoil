@@ -50,15 +50,17 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
       window.addEventListener('mousedown', this.pageClick.bind(this), false);
   }
   pageClick(e) {
-      if (this.mouseIsDown) {
-          return;
-      }
+    if (this.mouseIsDown) {
+        return;
+    }
 
-      // this.setState({
-      //     open: false
-      // });
+    this.setState({
+        open: false
+    });
 
-      this.props.onClose ? this.props.onClose() : null
+    this.props.onClose ? this.props.onClose() : null;
+
+    e.stopPropagation();
   }
   onMouseDown() {
       this.mouseIsDown = true;

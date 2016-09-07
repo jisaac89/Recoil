@@ -42,7 +42,7 @@ export default class Toggle extends React.Component<any, any>{
 
     let toggleClass = classNames(
       'r-Toggle',
-      {'e-text' : (props.array && props.array.length === 2)},
+      {'e-text' : (props.array && props.array.length === 2  || props.iconArray && props.iconArray.length === 2)},
       {'e-checked' : (state.checked)},
       {'e-color' : (props.array && props.array.length > 2 && props.type === 'colors')},
       {'e-numbers' : (props.array && props.array.length > 2 && !props.ghost && props.type !== 'colors')},
@@ -78,6 +78,15 @@ export default class Toggle extends React.Component<any, any>{
 
     let slideIndex;
 
+    let inputProps = {
+      type:"checkbox",
+      className:"r-Toggle__input",
+      name:this.props.name,
+      checked:this.state.checked,
+      onChange:this.onChange.bind(this),
+      value:this.props.value
+    }
+
     if (state.checked) {
       slideIndex = 1
     } else {
@@ -94,20 +103,16 @@ export default class Toggle extends React.Component<any, any>{
     else {
       return(
         <div className={toggleClass}>
-          <input type="checkbox"
-               className="r-Toggle__input"
-               name={this.props.name}
-               checked={this.state.checked}
-               onChange={this.onChange.bind(this)}
-               value={this.props.value} />
-               {this.props.label}
-          {props.array && props.array.length === 2 ? 
-            <label className="r-Toggle__button">
+          <input {...inputProps} />
+          {this.props.label}
+          {props.array && props.array.length === 2 || props.iconArray && props.iconArray.length === 2 ? 
+          <label className="r-Toggle__button">
             <Wizard slideIndex={slideIndex}>
-              <div className="text-right">{props.array[0]}</div>
-              <div className="text-white">{props.array[1]}</div>
+              <div className="text-right">{props.array && props.array[0] || (props.iconArray[0] ? <i className={"fa fa-"+props.iconArray[0]} /> : null)}</div>
+              <div className="text-white">{props.array && props.array[1] || (props.iconArray[1] ? <i className={"fa fa-"+props.iconArray[1]} /> : null)}</div>
             </Wizard>
-            </label> :<label className="r-Toggle__button"></label>}
+          </label> : 
+          <label className="r-Toggle__button"></label>}
         </div>
       )
     }

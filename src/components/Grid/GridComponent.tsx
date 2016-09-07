@@ -16,10 +16,10 @@ export interface IGridProps {
     sortable?: boolean;
     detailTemplate?: any;
     height?: string;
-    onRowSelect?: any;
+    onRowSelect?: Function;
     selected?: Array<any>;
     hideColumns?: Array<string>;
-    columnTemplate?: any;
+    columnTemplate?: Function;
     detailTemplateOpenOnHover?: boolean;
     detailTemplateOpenOnSelect?: boolean;
     isSelected?: any;

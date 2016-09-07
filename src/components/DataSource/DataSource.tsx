@@ -32,26 +32,26 @@ interface P {
     pageList?: Array<any>,
     initialSortKey?: string;
     numberOfPages: number;
-    hideHeader?: Array<any>;
+    hideHeader?: boolean;
     sortable?: boolean;
-    detailTemplate?: any;
-    hideColumns?: any;
+    detailTemplate?: Function;
+    hideColumns?: Array<string>;
 
-    columnTemplate?: any;
-    height?: any;
-    detailTemplateOpenOnHover?: any;
-    detailTemplateOpenOnSelect?: any;
-    rowIsSelectableType?: any;
-    filterSelected?: any;
-    detailTemplateOpenOnRowSelect?: any;
-    rowIsSelectable?: any;
-    selectedKey?: any;
-    open?: any;
+    columnTemplate?: Function;
+    height?: number;
+    detailTemplateOpenOnHover?: boolean;
+    detailTemplateOpenOnSelect?: boolean;
+    rowIsSelectableType?: Function;
+    filterSelected?: boolean;
+    detailTemplateOpenOnRowSelect?: boolean;
+    rowIsSelectable?: boolean;
+    selectedKey?: string;
+    open?: boolean;
 
     // methods
-    onPageChange?: any;
-    onSort?: any;
-    onRowSelect?: any;
+    onPageChange?: Function;
+    onSort?: Function;
+    onRowSelect?: Function;
 }
 
 interface S {
@@ -63,8 +63,8 @@ interface S {
     activeRows?: Array<any>;
     page?: number;
     pageSize?: number;
-    sortType?: any;
-    selected?: any;
+    sortType?: string;
+    selected?: Array<any>;
     searchedItems?: Array<any>;
 }
 

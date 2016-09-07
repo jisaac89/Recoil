@@ -7,18 +7,18 @@ import DataSource from '../DataSource/DataSource';
 
 export interface P {
     dataSource?: Array<any>;
-    sortable?: any;
+    sortable?: boolean;
     initialSortKey?: string;
-    columns?: any;
+    columns?: Array<any>;
     hideHeader?: boolean;
     selectedKey?: string;
-    detailTemplate?: any;
+    detailTemplate?: Function;
     onSelect?: Function;
     onRowSelect?: Function;
     open?: boolean;
-    rowIsSelectable? : any;
+    rowIsSelectable? : boolean;
     searchableKeys? : Array<any>;
-    searchTitle ? : string;
+    searchTitle ? : string | number;
     hideColumns?: Array<string>;
     overflow?: boolean;
     selected? : Array<any>;

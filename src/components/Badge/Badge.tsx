@@ -3,14 +3,13 @@ import * as classNames from 'classnames';
 import './Badge.less';
 
 export interface IBadgeProps {
-  opacity ?: any;
+  opacity ?: string;
   background ?: string;
   border ?: string;
-  type?: string;
-  title? : any;
+  theme?: 'success' | 'primary' | 'error' | 'default';
+  title? : string | number;
   children? : any;
-  ghost ? : boolean;
-  className? : any;
+  className? : string;
 }
 
 export default class Badge extends React.Component<IBadgeProps, any> {
@@ -33,8 +32,9 @@ export default class Badge extends React.Component<IBadgeProps, any> {
 
     let itemClass= classNames(
       'r-Badge__item',
-      props.type,
-      {'ghost': (props.ghost)},
+      props.theme,
+      'animated',
+      'fadeInUp',
       this.props.className
     );
 

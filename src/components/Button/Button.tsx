@@ -3,16 +3,6 @@ import * as classNames from 'classnames';
 import {findDOMNode} from 'react-dom';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
-// import * as smooth from 'smoothscroll-polyfill';
-
-// smooth.polyfill();
-
-// function scrollTo(target, offset) {
-//     let node = window.document.querySelector('#'+target);
-//     // let offsetElement = window.document.querySelector('#'+target+'-offset')
-
-//     node.scrollIntoView({behavior: "smooth"});
-// }
 
 export interface IButtonProps {
   active?: boolean;
@@ -86,20 +76,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickLength: props.progressiveClick.length
       })
     }
-
-
-    // if (props.scrollOffset) {
-    //       var c = document.createDocumentFragment();
-    //       let offsetElement = document.createElement("h1");
-    //       let node = window.document.querySelector('#'+props.scrollToId);
-    //       offsetElement.id = props.scrollToId+'-offset';
-    //       offsetElement.style.top = props.scrollOffset;
-    //       offsetElement.appendChild(document.createTextNode('New div'));
-    //       c.appendChild(offsetElement)
-    //       node.appendChild(c);
-    // }
-
-
   }
 
   public onClick(event: React.MouseEvent) {
@@ -130,10 +106,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickIndex: 1
       })
     }
-  }
-
-  scrollTo() {
-    	// scrollTo(this.props.scrollToId, this.props.scrollOffset);
   }
 
   render() {
@@ -171,7 +143,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let selectablePartial = <Selectable type={props.checkedTheme} checked={props.checked ? true : false}></Selectable>;
     let iconPartial = (props.icon && !props.loading ? <i className={'fa fa-'+props.icon}></i> : null );
-    let loadingPartial = (props.loading ? <i className='fa fa-circle-o-notch fa-spin'></i> : null );
+    let loadingPartial = (props.loading ? <i className={'fa fa-circle-o-notch fa-spin'+ (props.children ? ' mr5' : '')}></i> : null );
     let animatedIcon = (props.iconPointer && !props.loading ? <i className={"icon-pointer fa fa-caret-"+props.iconPointer} ></i> : null );
     let iconWrapperRight = (props.icon && props.iconLocation === 'right' ? <div className={'icon-pointer-'+props.iconPointer+ " ml10 icon-wrapper " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
     let iconWrapperLeft = (props.icon && props.iconLocation === 'left' ? <div className={'icon-pointer-'+props.iconPointer+" icon-wrapper " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
@@ -201,7 +173,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let defaultButton = () => {
         return (
-          <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.props.scrollToId ? this.scrollTo.bind(this) : this.props.onClick} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
+          <button ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
             {iconWrapperLeft}
             {loadingPartial}
             {props.children}
