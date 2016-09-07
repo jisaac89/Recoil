@@ -30,6 +30,7 @@ export interface IToolbarProps {
   breadcrumbs?: boolean;
   size? : "small" | "medium" | "large" | "xlarge";
   theme? : string;
+  flex?: boolean;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{

@@ -35,7 +35,8 @@ export interface IButtonProps {
   fill? : boolean;
   scrollToId? : any;
   scrollOffset? : any;
-  scrollDuration? : number;
+  scrollDuration?: number;
+  ghost?: boolean;
 }
 
 export interface IButtonState {
