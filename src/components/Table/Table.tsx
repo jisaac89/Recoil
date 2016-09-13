@@ -7,9 +7,13 @@ import TableHead from './TableHead';
 import TableBody from './TableBody';
 
 interface ITableProps {
+    // initial dataSource loaded as prop
     dataSource :  any;
+    // columns defined by user
     columns? : Array<any>;
+    // a detail template function that returns a view
     detailTemplate? : any;
+    // toggle if the table header should show
     hideHeader ? : boolean;
 }
 

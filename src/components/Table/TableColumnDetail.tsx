@@ -14,9 +14,9 @@ export default class TableColumnDetail extends React.Component<any,any>{
         if (detailTemplate) {
             return (
                 <tr className="r-TableColumnDetail">
-                    <td colSpan={columns.length}>
+                    <td colSpan={columns.length + 1}>
                         <Open if={true}>
-                            {detailTemplate.bind(element)}
+                            {detailTemplate(element)}
                         </Open>
                     </td>
                 </tr>

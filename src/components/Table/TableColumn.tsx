@@ -27,7 +27,7 @@ export default class TableColumn extends React.Component<any,any>{
 
         return (
             <tr className="r-TableColumn">
-                {detailTemplate ? <td><Button simple size="small" icon="plus" /></td> : null}
+                {detailTemplate ? <td width={25}><Button simple size="small" icon="plus" /></td> : null}
                 {TableDataArray.map(createList)}
             </tr>
         )

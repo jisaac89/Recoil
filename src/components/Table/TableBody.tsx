@@ -22,13 +22,12 @@ export default class TableBody extends React.Component<any,any>{
                     element: element,
                     columns: columns,
                     detailTemplate: detailTemplate,
-                    selected : selected,
-                    key: key
+                    selected : selected
                 }
 
                 columnArray.push(
                     [
-                        [<TableColumn {...columnProps} />],
+                        [<TableColumn key={key} {...columnProps} />],
                         [<TableColumnSelectable {...columnProps} />],
                         [<TableColumnDetail {...columnProps} />]
                     ]

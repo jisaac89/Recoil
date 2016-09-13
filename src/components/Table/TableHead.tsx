@@ -12,7 +12,7 @@ export default class TableHead extends React.Component<any,any>{
         
         columns.map((key) => {
             columnHeadArray.push(
-                <th key={key}>
+                <th key={key.name}>
                     {key.title || key.name}
                 </th>
             )
@@ -22,7 +22,7 @@ export default class TableHead extends React.Component<any,any>{
             return (
                 <thead>
                     <tr>
-                        {detailTemplate ? <th><Button simple size="small" icon="plus" /></th> : null}
+                        {detailTemplate ? <th width={25}><Button simple size="small" icon="plus" /></th> : null}
                         {columnHeadArray}
                     </tr>
                 </thead>
