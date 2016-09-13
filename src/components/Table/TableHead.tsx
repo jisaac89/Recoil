@@ -3,6 +3,8 @@ import * as classNames from 'classnames';
 
 import Button from '../Button/Button';
 
+const DetailTemplateHeadToggle = (props) => <th width={25}><Button simple size="small" icon="plus" /></th>;
+
 export default class TableHead extends React.Component<any,any>{
 
     render() {
@@ -12,7 +14,7 @@ export default class TableHead extends React.Component<any,any>{
         
         columns.map((key) => {
             columnHeadArray.push(
-                <th key={key.name}>
+                <th width={key.width} key={key.name}>
                     {key.title || key.name}
                 </th>
             )
@@ -22,7 +24,7 @@ export default class TableHead extends React.Component<any,any>{
             return (
                 <thead>
                     <tr>
-                        {detailTemplate ? <th width={25}><Button simple size="small" icon="plus" /></th> : null}
+                        {detailTemplate ? <DetailTemplateHeadToggle /> : null}
                         {columnHeadArray}
                     </tr>
                 </thead>

@@ -7,6 +7,7 @@ import Dropdown from '../Dropdown/Dropdown';
 interface ITableDataProps {
     value ?: Array<any>;
     renderChild? : any;
+    column? : any;
 }
 
 interface ITableDataState {
@@ -50,11 +51,11 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
         const self = this;
         let state = self.state;
         let {type} = state;
-        let {value} = self.props;
+        let {value, column} = self.props;
 
         return (
-            <td>
-                {type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
+            <td width={column.width}>
+                {column.template ? column.template(value) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
             </td>
         )
     }

@@ -77,23 +77,29 @@ export default class Table extends React.Component<ITableProps,any>{
         let {detailTemplate, hideHeader} = props;
         let {columns, dataSource} = self.state;
 
-        let columnsArray = [];
+        let columnsArray;
 
-        if (dataSource.length) {
-            if (Array.isArray(dataSource)) {
-                if (typeof dataSource[0] === 'string') {
-                    columnsArray.push({name : '_Array'});
-                } else {
-                    Object.keys(dataSource[0]).map((key) => {
-                        columnsArray.push({name: key})
-                    })
+        if (props.columns) {
+            columnsArray = props.columns;
+        } else {
+            columnsArray = [];
+
+            if (dataSource.length) {
+                if (Array.isArray(dataSource)) {
+                    if (typeof dataSource[0] === 'string') {
+                        columnsArray.push({name : '_Array'});
+                    } else {
+                        Object.keys(dataSource[0]).map((key) => {
+                            columnsArray.push({name: key})
+                        })
+                    }
                 }
             }
         }
 
         let tableProps = {
             dataSource: dataSource,
-            columns: props.columns || columnsArray,
+            columns: columnsArray,
             hideHeader: hideHeader,
             detailTemplate: detailTemplate
         }

@@ -5,17 +5,25 @@ import Open from '../Open/Open';
 import Table from '../Table/Table';
 
 export default class TableColumnDetail extends React.Component<any,any>{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            open: false
+        }
+    }
     render() {
 
         const self = this;
         const props = self.props;
         let {element, columns, detailTemplate} = props;
+        let {open} = self.state;
 
         if (detailTemplate) {
             return (
                 <tr className="r-TableColumnDetail">
                     <td colSpan={columns.length + 1}>
-                        <Open if={true}>
+                        <Open if={open}>
                             {detailTemplate(element)}
                         </Open>
                     </td>

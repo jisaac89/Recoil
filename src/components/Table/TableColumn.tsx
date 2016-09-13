@@ -4,6 +4,8 @@ import * as classNames from 'classnames';
 import TableData from './TableData';
 import Button from '../Button/Button';
 
+const DetailTemplateColumnToggle = (props) => <th width={25}><Button simple size="small" icon="plus" /></th>;
+
 export default class TableColumn extends React.Component<any,any>{
 
     render() {
@@ -19,15 +21,15 @@ export default class TableColumn extends React.Component<any,any>{
             TableDataArray.push(element[key]);
         }
 
-        let createList = (value, index) => {
+        let createList = (value, key) => {
             return (
-                <TableData key={index} value={value} />
+                <TableData key={key} value={value} column={columns[key]} />
             )
         }
 
         return (
             <tr className="r-TableColumn">
-                {detailTemplate ? <td width={25}><Button simple size="small" icon="plus" /></td> : null}
+                {detailTemplate ? <DetailTemplateColumnToggle /> : null}
                 {TableDataArray.map(createList)}
             </tr>
         )
