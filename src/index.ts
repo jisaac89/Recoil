@@ -22,5 +22,7 @@ export {default as Transform} from './components/Transform/Transform';
 export {default as Wizard} from './components/Wizard/Wizard';
 export {default as Shortcut} from './components/Shortcut/Shortcut';
 export {default as SlideIn} from './components/SlideIn/SlideIn';
+export {default as Tree} from './components/Tree/Tree';
+export {default as Table} from './components/Table/Table';
 
 import './less/Recoil.less';

@@ -9,80 +9,14 @@ export let assign = Object.assign ? Object.assign : function(target: any, ...sou
         return;
 };
 
-enum SortDirection {
-    None = 0,
-    Asc,
-    Desc
-}
-
-interface P {
-    // default
-    pageSize?: number;
-    page?: number;
-    pagerSize?: number;
-    sortedColumn?: string;
-    sortedDirection?: SortDirection;
-    activeRows?: Array<any>;
-    rowCount?: number;
-    error?: boolean;
-
-    // added
-    dataSource?: Array<any>;
-    columns?: Array<any>;
-    pageList?: Array<any>,
-    initialSortKey?: string;
-    numberOfPages: number;
-    hideHeader?: boolean;
-    sortable?: boolean;
-    detailTemplate?: Function;
-    hideColumns?: Array<string>;
-
-    columnTemplate?: Function;
-    height?: number;
-    detailTemplateOpenOnHover?: boolean;
-    detailTemplateOpenOnSelect?: boolean;
-    rowIsSelectableType?: Function;
-    filterSelected?: boolean;
-    detailTemplateOpenOnRowSelect?: boolean;
-    rowIsSelectable?: boolean;
-    selectedKey?: string;
-    open?: boolean;
-
-    // methods
-    onPageChange?: Function;
-    onSort?: Function;
-    onRowSelect?: Function;
-}
-
-interface S {
-    dataSource?: Array<any>;
-    columns?: Array<any>;
-    pageList?: Array<any>,
-    initialSortKey?: string;
-    numberOfPages?: number,
-    activeRows?: Array<any>;
-    page?: number;
-    pageSize?: number;
-    sortType?: string;
-    selected?: Array<any>;
-    searchedItems?: Array<any>;
-}
-
 const DataSource = (Component) =>
-    class Enhance extends React.Component<P, S> {
+    class Enhance extends React.Component<any, any> {
         dataSource: any;
 
         constructor(props) {
             super(props);
-            this.dataSource = [];
             this.state = {
-                dataSource: Component.props.dataSource || [],
-                columns: Component.props.columns || [],
-                page: Component.props.page || 0,
-                numberOfPages: Component.props.pagerSize|| [],
-                activeRows: Component.props.activeRows || [],
-                pageSize: Component.props.pageSize || 10,
-                searchedItems: []
+                dataSource: []
             }
         }
          
@@ -90,16 +24,10 @@ const DataSource = (Component) =>
         //    if not automatically create the columns
 
         componentDidMount() {
-            let columnsDefinedByUser = Component.props.columns;
             let dataSource = Component.props.dataSource;
 
             if (dataSource) {
-                if (columnsDefinedByUser) {
-                    this.loadCollection(dataSource);
-                } else {
-                    this.automaticallyCreateColumns();
-                    this.loadCollection(dataSource);
-                }
+                this.loadCollection(dataSource);
             }
         }
 
@@ -110,42 +38,6 @@ const DataSource = (Component) =>
                 });
                 this.loadCollection(nextProps.dataSource);
             }
-        }
-
-        automaticallyCreateColumns() {
-            const self = this;
-            const props = self.props;
-            let {dataSource} = Component.props;
-
-            let columnsArray = [];
-            let columnsArrayLength = columnsArray.length;
-            let columns = [];
-
-            let firstItemOfDataSource = dataSource[0] || [dataSource];
-            let columnHeadersForFirstItem = Object.keys(firstItemOfDataSource);
-
-            // check to see if the dataSource is an array. 
-            // checking "dataSource.constructor === Array" would be faster, but with some datSources like mobx it overides the contructor
-            if (dataSource instanceof Array) {
-                // Grab the first item of the dataSource and push the header names to columns array.
-                columnHeadersForFirstItem.map((columnHeaderName) => {
-                    columnsArray.push(columnHeaderName);
-                })
-            } else {
-                Object.keys(dataSource).map((columnHeaderName) => {
-                    columnsArray.push(Object.keys(dataSource)[columnHeaderName]);
-                })
-            }
-
-            columnsArray.map((columnHeaderName) => {
-                columns.push({
-                    name: columnHeaderName
-                });
-            })
-
-            self.setState({
-                columns: columns.reverse()
-            })
         }
 
         loadCollection(dataSource) {
@@ -264,7 +156,7 @@ const DataSource = (Component) =>
                 // grab the dataSource props;
 
                 let renderedPage = [];
-                let numberPerPage, numberOfPages, renderedColumns;
+                let numberPerPage, numberOfPages, renderedDataSource;
 
                 if (Component.props.pageSize) {
                     numberPerPage = Component.props.pageSize;
@@ -283,54 +175,16 @@ const DataSource = (Component) =>
                 })
 
                 if (Component.props.columns) {
-                    renderedColumns = Component.props.columns;
+                    renderedDataSource = Component.props.columns;
                 } else {
-                    renderedColumns = this.state.columns;
+                    renderedDataSource = this.state.columns;
                 }
                 
-                let searchHasValues = this.state.searchedItems.length;
                 let data;
-
-                if (searchHasValues) {
-                    data = this.state.searchedItems;
-                } else {
-                    data = renderedPage;
-                }
 
                 let renderedObject = {
                     // high order
-                    columns: renderedColumns,
-                    dataSource: data,
-                    sortType: state.sortType,
-                    currentPage: state.page,
-                    numberOfPages: numberOfPages,
-                    // component / view specific
-                    hideHeader : Component.props.hideHeader,
-                    detailTemplate: Component.props.detailTemplate,
-                    sortable: Component.props.sortable,
-                    hideColumns: Component.props.hideColumns,
-                    columnTemplate: Component.props.columnTemplate,
-                    pageSize: Component.props.pageSize,
-                    height: Component.props.height,
-                    open: Component.props.open,
-                    detailTemplateOpenOnHover: Component.props.detailTemplateOpenOnHover,
-                    detailTemplateOpenOnSelect: Component.props.detailTemplateOpenOnSelect,
-                    rowIsSelectable: Component.props.rowIsSelectable,
-                    onRowSelect: Component.props.onRowSelect,
-                    selected: Component.props.selected,
-                    selectedKey: Component.props.selectedKey,
-                    rowIsSelectableType: Component.props.rowIsSelectableType,
-                    detailTemplateOpenOnRowSelect: Component.props.detailTemplateOpenOnRowSelect,
-                    filterSelected: Component.props.filterSelected,
-                    // methods
-                    toggleSorting: this.toggleSorting.bind(this),
-                    gotoPage:this.gotoPage.bind(this),
-                    previousPage:this.previousPage.bind(this),
-                    nextPage:this.nextPage.bind(this),
-                    lastPage:this.lastPage.bind(this),
-                    firstPage:this.firstPage.bind(this),
-                    changePageSize:this.changePageSize.bind(this),
-                    filterItems: this.filterItems.bind(this),
+                    dataSource: renderedDataSource,
                 }
 
                 // grab new props;
