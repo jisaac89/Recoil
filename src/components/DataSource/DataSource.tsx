@@ -1,5 +1,5 @@
 ﻿import * as React from 'react';
-import {search} from './Utils';
+import {search} from '../Utils';
 
 interface ObjectCtor extends ObjectConstructor {
     assign(target: any, ...sources: any[]): any;

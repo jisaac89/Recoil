@@ -8,6 +8,7 @@ interface IDropdownDataSourceProps {
     onRowSelect?: (item: any) => void;
     selected?: any;
     open?: boolean;
+    dataSource? : any;
 }
 
 export default class DropdownDataSource extends React.Component<IDropdownDataSourceProps, {}> {
@@ -19,7 +20,7 @@ export default class DropdownDataSource extends React.Component<IDropdownDataSou
         const self = this;
         const props = self.props;
 
-        return props.open ? <Table {...props} /> : null
+        return props.open ? <Table dataSource={props.dataSource} /> : null
     }
 }
 

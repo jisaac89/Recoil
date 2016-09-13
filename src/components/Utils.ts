@@ -52,3 +52,20 @@ export function ObjectAssignPolyfill () {
     }
 
 }
+
+export function isType (value) {
+
+    let type;
+
+    if (Array.isArray(value)) {
+        type = 'array';
+    } else if (typeof value === 'object') {
+        type = 'object'
+    } else if (typeof value === 'string') {
+        type = 'string'
+    } else {
+        type = 'value'
+    }
+
+    return type;
+}
