@@ -11,7 +11,7 @@ export default class TableBody extends React.Component<any,any>{
 
         const self = this;
         const props = self.props;
-        let {dataSource, columns, detailTemplate, selected} = props;
+        let {dataSource, columns, detailTemplate, selected, detailTemplateOpenAll} = props;
 
         let columnArray = [];
 
@@ -22,7 +22,8 @@ export default class TableBody extends React.Component<any,any>{
                     element: element,
                     columns: columns,
                     detailTemplate: detailTemplate,
-                    selected : selected
+                    selected : selected,
+                    detailTemplateOpenAll : detailTemplateOpenAll
                 }
 
                 columnArray.push(

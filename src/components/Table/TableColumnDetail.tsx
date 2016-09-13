@@ -16,14 +16,14 @@ export default class TableColumnDetail extends React.Component<any,any>{
 
         const self = this;
         const props = self.props;
-        let {element, columns, detailTemplate} = props;
+        let {element, columns, detailTemplate, detailTemplateOpenAll} = props;
         let {open} = self.state;
 
         if (detailTemplate) {
             return (
                 <tr className="r-TableColumnDetail">
                     <td colSpan={columns.length + 1}>
-                        <Open if={open}>
+                        <Open if={detailTemplateOpenAll}>
                             {detailTemplate(element)}
                         </Open>
                     </td>

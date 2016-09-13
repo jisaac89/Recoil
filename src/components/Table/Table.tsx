@@ -20,6 +20,7 @@ interface ITableProps {
 interface ITableState {
     dataSource ?: any;
     type ?: string;
+    detailTemplateOpenAll? : boolean;
 }
 
 export default class Table extends React.Component<ITableProps,any>{
@@ -28,7 +29,8 @@ export default class Table extends React.Component<ITableProps,any>{
         super();
         
         this.state = {
-            dataSource : []
+            dataSource : [],
+            detailTemplateOpenAll: false
         }
     }
 
@@ -70,12 +72,18 @@ export default class Table extends React.Component<ITableProps,any>{
 
     }
 
+    openDetailTemplateHeadToggle() {
+        this.setState({
+            detailTemplateOpenAll : !this.state.detailTemplateOpenAll
+        })
+    }
+
     render() {
 
         const self = this;
         const props = self.props;
         let {detailTemplate, hideHeader} = props;
-        let {columns, dataSource} = self.state;
+        let {columns, dataSource, detailTemplateOpenAll} = self.state;
 
         let columnsArray;
 
@@ -101,13 +109,14 @@ export default class Table extends React.Component<ITableProps,any>{
             dataSource: dataSource,
             columns: columnsArray,
             hideHeader: hideHeader,
-            detailTemplate: detailTemplate
+            detailTemplate: detailTemplate,
+            detailTemplateOpenAll : detailTemplateOpenAll
         }
         
         return (
             <div className="r-Table">
                 <table>
-                    <TableHead {...tableProps} />
+                    <TableHead {...tableProps} openDetailTemplateHeadToggle={this.openDetailTemplateHeadToggle.bind(this)} />
                     <TableBody {...tableProps}/>
                 </table>
             </div>

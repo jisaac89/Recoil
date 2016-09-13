@@ -3,13 +3,13 @@ import * as classNames from 'classnames';
 
 import Button from '../Button/Button';
 
-const DetailTemplateHeadToggle = (props) => <th width={25}><Button simple size="small" icon="plus" /></th>;
+const DetailTemplateHeadToggle = (props) => <th width={25}><Button icon={props.detailTemplateOpenAll ? 'minus' : 'plus'} onClick={props.openDetailTemplateHeadToggle} simple size="small"  /></th>;
 
 export default class TableHead extends React.Component<any,any>{
 
     render() {
         
-        let {detailTemplate, columns, hideHeader} = this.props;
+        let {detailTemplate, columns, hideHeader, openDetailTemplateHeadToggle, detailTemplateOpenAll} = this.props;
         let columnHeadArray = [];
         
         columns.map((key) => {
@@ -20,11 +20,16 @@ export default class TableHead extends React.Component<any,any>{
             )
         })
 
+        let detailTemplateHeadProps = {
+            openDetailTemplateHeadToggle : openDetailTemplateHeadToggle,
+            detailTemplateOpenAll: detailTemplateOpenAll
+        }
+
         if(!hideHeader) {
             return (
                 <thead>
                     <tr>
-                        {detailTemplate ? <DetailTemplateHeadToggle /> : null}
+                        {detailTemplate ? <DetailTemplateHeadToggle {...detailTemplateHeadProps} /> : null}
                         {columnHeadArray}
                     </tr>
                 </thead>
