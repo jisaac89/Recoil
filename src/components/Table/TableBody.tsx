@@ -15,11 +15,19 @@ export default class TableBody extends React.Component<any,any>{
         let {
             dataSource, 
             columns, 
-            detailTemplate, 
-            selected, 
+            detailTemplate,
+
+            selectedElements,
+
             detailTemplateOpenAll, 
             detailTemplateToggleSelectedElements, 
-            detailTemplateSelectedElements
+            detailTemplateSelectedElements,
+
+            toggleSelectedElements,
+            rowIsSelectable,
+
+            checkable
+
         } = props;
 
         let columnArray = [];
@@ -31,10 +39,13 @@ export default class TableBody extends React.Component<any,any>{
                     element: element,
                     columns: columns,
                     detailTemplate: detailTemplate,
-                    selected : selected,
+                    toggleSelectedElements : toggleSelectedElements,
                     detailTemplateOpenAll : detailTemplateOpenAll,
                     detailTemplateToggleSelectedElements: detailTemplateToggleSelectedElements,
-                    detailTemplateSelectedElements: detailTemplateSelectedElements
+                    detailTemplateSelectedElements: detailTemplateSelectedElements,
+                    rowIsSelectable: rowIsSelectable,
+                    selectedElements: selectedElements,
+                    checkable: checkable
                 }
 
                 columnArray.push(

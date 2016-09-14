@@ -3,6 +3,7 @@ import * as classNames from 'classnames';
 
 import TableData from './TableData';
 import Button from '../Button/Button';
+import Checkbox from '../Checkbox/Checkbox';
 
 class DetailTemplateColumnToggle extends React.Component<any,any>{
     detailTemplateToggleSelectedElements(element) {
@@ -19,7 +20,26 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
     }
 };
 
+class CheckboxColumn extends React.Component<any,any>{
+    toggleSelectedElements(element) {
+        this.props.toggleSelectedElements(element);
+    }
+    render() {
+        let props = this.props;
+        
+        return (
+            <th width={25}>
+                <Checkbox onChange={this.toggleSelectedElements.bind(this, props.element)} size='small' checked={props.selectedElements.includes(props.element)}/>
+            </th>
+        )
+    }
+};
+
 export default class TableColumn extends React.Component<any,any>{
+
+    toggleSelectedElements(element) {
+        this.props.toggleSelectedElements(element);
+    }
 
     render() {
 
@@ -28,11 +48,17 @@ export default class TableColumn extends React.Component<any,any>{
         
         let {
             element, 
-            columns, 
+            columns,
+
             detailTemplate, 
-            detailTemplateOpenAll, 
             detailTemplateToggleSelectedElements, 
-            detailTemplateSelectedElements
+            detailTemplateSelectedElements,
+            
+            toggleSelectedElements,
+            selectedElements,
+            rowIsSelectable,
+            
+            checkable
         } = props;
 
         let TableDataArray = []
@@ -51,12 +77,18 @@ export default class TableColumn extends React.Component<any,any>{
         let DetailTemplateColumnToggleProps = {
             element: element,
             detailTemplateToggleSelectedElements: detailTemplateToggleSelectedElements,
-            detailTemplateOpenAll: detailTemplateOpenAll,
             detailTemplateSelectedElements : detailTemplateSelectedElements
         }
 
+        let CheckBoxColumnProps = {
+            element : element,
+            selectedElements : selectedElements,
+            toggleSelectedElements: toggleSelectedElements
+        }
+
         return (
-            <tr className="r-TableColumn">
+            <tr className="r-TableColumn" onClick={rowIsSelectable && !checkable ? this.toggleSelectedElements.bind(this, element)  : null}>
+                {checkable ? <CheckboxColumn {...CheckBoxColumnProps} /> : null }
                 {detailTemplate ? <DetailTemplateColumnToggle {...DetailTemplateColumnToggleProps} /> : null }
                 {TableDataArray.map(createList)}
             </tr>

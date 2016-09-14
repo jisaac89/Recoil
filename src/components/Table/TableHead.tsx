@@ -4,6 +4,7 @@ import * as classNames from 'classnames';
 import {arraysEqual} from '../Utils';
 
 import Button from '../Button/Button';
+import Checkbox from '../Checkbox/Checkbox';
 
 class DetailTemplateHeadToggle extends React.Component<any, any>{
     detailTemplateToggleAll(dataSource) {
@@ -19,11 +20,26 @@ class DetailTemplateHeadToggle extends React.Component<any, any>{
     }
 }
 
+class CheckboxHead extends React.Component<any,any>{
+    selectAll(dataSource) {
+        this.props.selectAll(dataSource);
+    }
+    render() {
+        let props = this.props;
+        
+        return (
+            <th width={25} >
+                <Checkbox onChange={this.selectAll.bind(this, props.dataSource)} size='small' checked={arraysEqual(props.dataSource, props.selectedElements)}/>
+            </th>
+        )
+    }
+};
+
 export default class TableHead extends React.Component<any,any>{
 
     render() {
         
-        let {detailTemplate, columns, hideHeader, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements} = this.props;
+        let {detailTemplate, columns, hideHeader, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements} = this.props;
         let columnHeadArray = [];
         
         columns.map((key) => {
@@ -40,10 +56,17 @@ export default class TableHead extends React.Component<any,any>{
             detailTemplateSelectedElements: detailTemplateSelectedElements
         }
 
+        let checkboxHeadProps = {
+            selectAll : selectAll,
+            selectedElements : selectedElements,
+            dataSource : dataSource
+        }
+
         if(!hideHeader) {
             return (
                 <thead>
                     <tr>
+                        {checkable ? <CheckboxHead {...checkboxHeadProps} /> : null}
                         {detailTemplate ? <DetailTemplateHeadToggle {...detailTemplateHeadProps} /> : null}
                         {columnHeadArray}
                     </tr>

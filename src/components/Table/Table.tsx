@@ -23,6 +23,12 @@ interface ITableProps {
     page ? : number;
     // 
     detailTemplateSelectedElements ? : Array<any>;
+
+    selectedElements ? : Array<any>;
+
+    rowIsSelectable ? : boolean;
+
+    checkable ? : boolean;
 }
 
 interface ITableState {
@@ -30,6 +36,7 @@ interface ITableState {
     type ?: string;
 
     detailTemplateSelectedElements? : any;
+    selectedElements? : any;
 }
 
 export default class Table extends React.Component<ITableProps,any>{
@@ -43,6 +50,7 @@ export default class Table extends React.Component<ITableProps,any>{
             page: props.page || 0,
 
             detailTemplateSelectedElements : props.detailTemplateSelectedElements || [],
+            selectedElements : props.selectedElements || []
         }
     }
 
@@ -96,7 +104,41 @@ export default class Table extends React.Component<ITableProps,any>{
         const self = this;
         let {detailTemplateSelectedElements} = self.state;
 
-        let selectedElementsArray = detailTemplateSelectedElements;
+        let detailTemplateSelectedElementsArray = detailTemplateSelectedElements;
+
+        if (detailTemplateSelectedElementsArray.includes(element)) {
+            for(let i=0; i < detailTemplateSelectedElementsArray.length; i++) {
+                if(detailTemplateSelectedElementsArray[i] === element)
+                {
+                    detailTemplateSelectedElementsArray.splice(i,1);
+
+                    self.setState({
+                        detailTemplateSelectedElements : detailTemplateSelectedElementsArray
+                    })
+                }
+            }
+        } else {
+            detailTemplateSelectedElementsArray.push(element);
+            
+            self.setState({
+                detailTemplateSelectedElements : detailTemplateSelectedElementsArray
+            })
+        }
+    }
+
+    selectAll(dataSource) {
+        let {selectedElements} = this.state;
+
+        this.setState({
+            selectedElements: arraysEqual(dataSource, selectedElements) ? [] : dataSource
+        })
+    }
+
+    toggleSelectedElements(element) {
+        const self = this;
+        let {selectedElements} = self.state;
+
+        let selectedElementsArray = selectedElements;
 
         if (selectedElementsArray.includes(element)) {
             for(let i=0; i < selectedElementsArray.length; i++) {
@@ -105,7 +147,7 @@ export default class Table extends React.Component<ITableProps,any>{
                     selectedElementsArray.splice(i,1);
 
                     self.setState({
-                        detailTemplateSelectedElements : selectedElementsArray
+                        selectedElements : selectedElementsArray
                     })
                 }
             }
@@ -113,7 +155,7 @@ export default class Table extends React.Component<ITableProps,any>{
             selectedElementsArray.push(element);
             
             self.setState({
-                detailTemplateSelectedElements : selectedElementsArray
+                selectedElements : selectedElementsArray
             })
         }
     }
@@ -122,8 +164,8 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, hideHeader} = props;
-        let {columns, dataSource, page, pageSize, detailTemplateSelectedElements} = self.state;
+        let {detailTemplate, hideHeader, rowIsSelectable, checkable} = props;
+        let {columns, dataSource, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         let columnsArray;
 
@@ -175,14 +217,25 @@ export default class Table extends React.Component<ITableProps,any>{
             columns: columnsArray,
             hideHeader: hideHeader,
             detailTemplate: detailTemplate,
-            detailTemplateSelectedElements: detailTemplateSelectedElements
+            detailTemplateSelectedElements: detailTemplateSelectedElements,
+            selectedElements : selectedElements,
+            checkable: checkable
         }
         
         return (
             <div className="r-Table">
                 <table>
-                    <TableHead {...tableProps} detailTemplateToggleAll={this.detailTemplateToggleAll.bind(this)} />
-                    <TableBody {...tableProps} detailTemplateToggleSelectedElements={this.detailTemplateToggleSelectedElements.bind(this)}/>
+                    <TableHead 
+                        {...tableProps} 
+                        detailTemplateToggleAll={this.detailTemplateToggleAll.bind(this)}
+                        selectAll={this.selectAll.bind(this)} 
+                        />
+                    <TableBody 
+                        {...tableProps} 
+                        rowIsSelectable={rowIsSelectable}
+                        toggleSelectedElements={this.toggleSelectedElements.bind(this)}
+                        detailTemplateToggleSelectedElements={this.detailTemplateToggleSelectedElements.bind(this)}
+                        />
                 </table>
             </div>
         )
