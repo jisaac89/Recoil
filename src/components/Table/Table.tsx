@@ -15,6 +15,10 @@ interface ITableProps {
     detailTemplate? : any;
     // toggle if the table header should show
     hideHeader ? : boolean;
+    // how many rows to show
+    pageSize ? : number;
+    // current page index
+    page ? : number;
 }
 
 interface ITableState {
@@ -25,12 +29,14 @@ interface ITableState {
 
 export default class Table extends React.Component<ITableProps,any>{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         
         this.state = {
             dataSource : [],
-            detailTemplateOpenAll: false
+            detailTemplateOpenAll: false,
+            pageSize: props.pageSize || 10,
+            page: props.page || 0
         }
     }
 
@@ -83,9 +89,11 @@ export default class Table extends React.Component<ITableProps,any>{
         const self = this;
         const props = self.props;
         let {detailTemplate, hideHeader} = props;
-        let {columns, dataSource, detailTemplateOpenAll} = self.state;
+        let {columns, dataSource, detailTemplateOpenAll, page, pageSize} = self.state;
 
         let columnsArray;
+
+        // if columns props doesnt exist then automatically create columns
 
         if (props.columns) {
             columnsArray = props.columns;
@@ -105,8 +113,31 @@ export default class Table extends React.Component<ITableProps,any>{
             }
         }
 
+        // create the rendered page
+
+        let renderedPage = [];
+        let numberPerPage, numberOfPages, renderedDataSource;
+
+        if (pageSize) {
+            numberPerPage = pageSize;
+            numberOfPages = Math.ceil(dataSource.length / (pageSize));
+        } else {
+            numberPerPage = pageSize;
+            numberOfPages = Math.ceil(dataSource.length / (pageSize));
+        }
+
+        let begin = ((page) * numberPerPage);
+        let end = begin + numberPerPage;
+        let pageList = dataSource.slice(begin, end);
+
+        pageList.map((item, index) => {
+            renderedPage.push(item);
+        })
+
+        // 
+
         let tableProps = {
-            dataSource: dataSource,
+            dataSource: renderedPage,
             columns: columnsArray,
             hideHeader: hideHeader,
             detailTemplate: detailTemplate,
