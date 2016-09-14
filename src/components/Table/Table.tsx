@@ -3,6 +3,8 @@ import * as classNames from 'classnames';
 
 import './Table.less';
 
+import {arraysEqual} from '../Utils';
+
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 
@@ -19,12 +21,15 @@ interface ITableProps {
     pageSize ? : number;
     // current page index
     page ? : number;
+    // 
+    detailTemplateSelectedElements ? : Array<any>;
 }
 
 interface ITableState {
     dataSource ?: any;
     type ?: string;
-    detailTemplateOpenAll? : boolean;
+
+    detailTemplateSelectedElements? : any;
 }
 
 export default class Table extends React.Component<ITableProps,any>{
@@ -34,9 +39,10 @@ export default class Table extends React.Component<ITableProps,any>{
         
         this.state = {
             dataSource : [],
-            detailTemplateOpenAll: false,
             pageSize: props.pageSize || 10,
-            page: props.page || 0
+            page: props.page || 0,
+
+            detailTemplateSelectedElements : props.detailTemplateSelectedElements || [],
         }
     }
 
@@ -78,10 +84,38 @@ export default class Table extends React.Component<ITableProps,any>{
 
     }
 
-    openDetailTemplateHeadToggle() {
+    detailTemplateToggleAll(dataSource) {
+        let {detailTemplateSelectedElements} = this.state;
+
         this.setState({
-            detailTemplateOpenAll : !this.state.detailTemplateOpenAll
+            detailTemplateSelectedElements: arraysEqual(dataSource, detailTemplateSelectedElements) ? [] : dataSource
         })
+    }
+
+    detailTemplateToggleSelectedElements(element) {
+        const self = this;
+        let {detailTemplateSelectedElements} = self.state;
+
+        let selectedElementsArray = detailTemplateSelectedElements;
+
+        if (selectedElementsArray.includes(element)) {
+            for(let i=0; i < selectedElementsArray.length; i++) {
+                if(selectedElementsArray[i] === element)
+                {
+                    selectedElementsArray.splice(i,1);
+
+                    self.setState({
+                        detailTemplateSelectedElements : selectedElementsArray
+                    })
+                }
+            }
+        } else {
+            selectedElementsArray.push(element);
+            
+            self.setState({
+                detailTemplateSelectedElements : selectedElementsArray
+            })
+        }
     }
 
     render() {
@@ -89,7 +123,7 @@ export default class Table extends React.Component<ITableProps,any>{
         const self = this;
         const props = self.props;
         let {detailTemplate, hideHeader} = props;
-        let {columns, dataSource, detailTemplateOpenAll, page, pageSize} = self.state;
+        let {columns, dataSource, page, pageSize, detailTemplateSelectedElements} = self.state;
 
         let columnsArray;
 
@@ -134,21 +168,21 @@ export default class Table extends React.Component<ITableProps,any>{
             renderedPage.push(item);
         })
 
-        // 
+        // assign the props
 
         let tableProps = {
             dataSource: renderedPage,
             columns: columnsArray,
             hideHeader: hideHeader,
             detailTemplate: detailTemplate,
-            detailTemplateOpenAll : detailTemplateOpenAll
+            detailTemplateSelectedElements: detailTemplateSelectedElements
         }
         
         return (
             <div className="r-Table">
                 <table>
-                    <TableHead {...tableProps} openDetailTemplateHeadToggle={this.openDetailTemplateHeadToggle.bind(this)} />
-                    <TableBody {...tableProps}/>
+                    <TableHead {...tableProps} detailTemplateToggleAll={this.detailTemplateToggleAll.bind(this)} />
+                    <TableBody {...tableProps} detailTemplateToggleSelectedElements={this.detailTemplateToggleSelectedElements.bind(this)}/>
                 </table>
             </div>
         )

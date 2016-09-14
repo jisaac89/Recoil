@@ -1,15 +1,29 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import {arraysEqual} from '../Utils';
+
 import Button from '../Button/Button';
 
-const DetailTemplateHeadToggle = (props) => <th width={25}><Button icon={props.detailTemplateOpenAll ? 'minus' : 'plus'} onClick={props.openDetailTemplateHeadToggle} simple size="small"  /></th>;
+class DetailTemplateHeadToggle extends React.Component<any, any>{
+    detailTemplateToggleAll(dataSource) {
+        this.props.detailTemplateToggleAll(dataSource);
+    }
+    render(){
+        let {props} = this;
+        return (
+            <th width={25}>
+                <Button icon={arraysEqual(props.dataSource, props.detailTemplateSelectedElements) ? 'minus' : 'plus'} onClick={this.detailTemplateToggleAll.bind(this, props.dataSource)} simple size="small"  />
+            </th>
+        )
+    }
+}
 
 export default class TableHead extends React.Component<any,any>{
 
     render() {
         
-        let {detailTemplate, columns, hideHeader, openDetailTemplateHeadToggle, detailTemplateOpenAll} = this.props;
+        let {detailTemplate, columns, hideHeader, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements} = this.props;
         let columnHeadArray = [];
         
         columns.map((key) => {
@@ -21,8 +35,9 @@ export default class TableHead extends React.Component<any,any>{
         })
 
         let detailTemplateHeadProps = {
-            openDetailTemplateHeadToggle : openDetailTemplateHeadToggle,
-            detailTemplateOpenAll: detailTemplateOpenAll
+            detailTemplateToggleAll : detailTemplateToggleAll,
+            dataSource : dataSource,
+            detailTemplateSelectedElements: detailTemplateSelectedElements
         }
 
         if(!hideHeader) {
