@@ -13,9 +13,9 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
         let props = this.props;
         
         return (
-            <th width={25}>
+            <td width={25}>
                 <Button simple size="small" onClick={this.detailTemplateToggleSelectedElements.bind(this, props.element)} icon={props.detailTemplateSelectedElements.includes(props.element) ? 'minus' : 'plus'} />
-            </th>
+            </td>
         )
     }
 };
@@ -28,9 +28,9 @@ class CheckboxColumn extends React.Component<any,any>{
         let props = this.props;
         
         return (
-            <th width={25}>
+            <td width={25}>
                 <Checkbox onChange={this.toggleSelectedElements.bind(this, props.element)} size='small' checked={props.selectedElements.includes(props.element)}/>
-            </th>
+            </td>
         )
     }
 };
