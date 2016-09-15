@@ -262,6 +262,7 @@ export default class Table extends React.Component<ITableProps,any>{
         let footerProps = {
             currentPage : page,
             numberOfPages : numberOfPages,
+            numberPerPage : numberPerPage,
             nextPage : this.nextPage.bind(this),
             previousPage: this.previousPage.bind(this),
             firstPage : this.firstPage.bind(this),
@@ -271,6 +272,7 @@ export default class Table extends React.Component<ITableProps,any>{
         
         return (
             <div className="r-Table">
+                <TableFooter {...footerProps} />
                 <table>
                     <TableHead 
                         {...tableProps} 

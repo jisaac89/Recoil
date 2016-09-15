@@ -59,6 +59,7 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
               {paginationPartial}
               <Button size="small" disabled={this.props.currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.props.nextPage} icon="step-forward"></Button>
               <Button size="small" disabled={this.props.currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, this.props.numberOfPages)} icon="fast-forward"></Button>
+              <Dropdown material size="small" title={"Page Size " + this.props.numberPerPage} dataSource={['5', '10', '15']} />
             </Toolbar>
           </div>
         )
