@@ -344,15 +344,23 @@ export default class Table extends React.Component<ITableProps,any>{
             onPageChange: onPageChange
         }
         
-        return (
-            <div className="r-Table">
-                <TableFooter {...footerProps} />
-                <table>
-                    <TableHead {...tableProps} {...headProps} />
-                    <TableBody {...tableProps} {...bodyProps} />
-                </table>
-                <TableFooter {...footerProps} />
-            </div>
-        )
+        if (columnsArray.length) {
+            return (
+                <div className="r-Table">
+                    <TableFooter {...footerProps} />
+                    <table>
+                        <TableHead {...tableProps} {...headProps} />
+                        <TableBody {...tableProps} {...bodyProps} />
+                    </table>
+                    <TableFooter {...footerProps} />
+                </div>
+            )
+        } else {
+            return (
+                <div className="p10 block text-center">
+                    <small><strong>Table</strong> - No columns defined.</small>
+                </div>
+            )
+        };
     }
 }
