@@ -7,6 +7,7 @@ import {arraysEqual} from '../Utils';
 
 import TableHead from './TableHead';
 import TableBody from './TableBody';
+import TableFooter from './TableFooter';
 
 interface ITableProps {
     // initial dataSource loaded as prop
@@ -31,6 +32,7 @@ interface ITableProps {
     checkable ? : boolean;
 
     detailTemplateHideToggle? : boolean;
+    
 }
 
 interface ITableState {
@@ -162,6 +164,38 @@ export default class Table extends React.Component<ITableProps,any>{
         }
     }
 
+
+    firstPage() {
+        this.setState({
+            page: 0
+        })
+    }
+
+    previousPage() {
+        this.setState({
+            page: this.state.page -= 1
+        })
+    }
+
+    nextPage() {
+        this.setState({
+            page: this.state.page += 1
+        })
+    }
+
+    lastPage(numberOfPages) {
+        this.setState({
+            page: numberOfPages - 1
+        })
+    }
+
+    gotoPage(i) {
+        this.setState({
+            page: i
+        })
+    }
+
+
     render() {
 
         const self = this;
@@ -224,6 +258,16 @@ export default class Table extends React.Component<ITableProps,any>{
             checkable: checkable,
             detailTemplateHideToggle: detailTemplateHideToggle
         }
+
+        let footerProps = {
+            currentPage : page,
+            numberOfPages : numberOfPages,
+            nextPage : this.nextPage.bind(this),
+            previousPage: this.previousPage.bind(this),
+            firstPage : this.firstPage.bind(this),
+            gotoPage: this.gotoPage.bind(this),
+            lastPage: this.lastPage.bind(this),
+        }
         
         return (
             <div className="r-Table">
@@ -240,6 +284,7 @@ export default class Table extends React.Component<ITableProps,any>{
                         detailTemplateToggleSelectedElements={this.detailTemplateToggleSelectedElements.bind(this)}
                         />
                 </table>
+                <TableFooter {...footerProps} />
             </div>
         )
     }
