@@ -22,6 +22,7 @@ export default class TableBody extends React.Component<any,any>{
             detailTemplateOpenAll, 
             detailTemplateToggleSelectedElements, 
             detailTemplateSelectedElements,
+            detailTemplateHideToggle,
 
             toggleSelectedElements,
             rowIsSelectable,
@@ -43,6 +44,7 @@ export default class TableBody extends React.Component<any,any>{
                     detailTemplateOpenAll : detailTemplateOpenAll,
                     detailTemplateToggleSelectedElements: detailTemplateToggleSelectedElements,
                     detailTemplateSelectedElements: detailTemplateSelectedElements,
+                    detailTemplateHideToggle: detailTemplateHideToggle,
                     rowIsSelectable: rowIsSelectable,
                     selectedElements: selectedElements,
                     checkable: checkable

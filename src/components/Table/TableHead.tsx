@@ -39,7 +39,7 @@ export default class TableHead extends React.Component<any,any>{
 
     render() {
         
-        let {detailTemplate, columns, hideHeader, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements} = this.props;
+        let {detailTemplate, columns, detailTemplateHideToggle, hideHeader, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements} = this.props;
         let columnHeadArray = [];
         
         columns.map((key) => {
@@ -67,7 +67,7 @@ export default class TableHead extends React.Component<any,any>{
                 <thead>
                     <tr>
                         {checkable ? <CheckboxHead {...checkboxHeadProps} /> : null}
-                        {detailTemplate ? <DetailTemplateHeadToggle {...detailTemplateHeadProps} /> : null}
+                        {detailTemplate && !detailTemplateHideToggle ? <DetailTemplateHeadToggle {...detailTemplateHeadProps} /> : null}
                         {columnHeadArray}
                     </tr>
                 </thead>

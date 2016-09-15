@@ -29,6 +29,8 @@ interface ITableProps {
     rowIsSelectable ? : boolean;
 
     checkable ? : boolean;
+
+    detailTemplateHideToggle? : boolean;
 }
 
 interface ITableState {
@@ -164,7 +166,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, hideHeader, rowIsSelectable, checkable} = props;
+        let {detailTemplate, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable} = props;
         let {columns, dataSource, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         let columnsArray;
@@ -219,7 +221,8 @@ export default class Table extends React.Component<ITableProps,any>{
             detailTemplate: detailTemplate,
             detailTemplateSelectedElements: detailTemplateSelectedElements,
             selectedElements : selectedElements,
-            checkable: checkable
+            checkable: checkable,
+            detailTemplateHideToggle: detailTemplateHideToggle
         }
         
         return (
