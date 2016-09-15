@@ -39,15 +39,19 @@ export default class TableHead extends React.Component<any,any>{
 
     render() {
         
-        let {detailTemplate, columns, detailTemplateHideToggle, hideHeader, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements} = this.props;
+        let {detailTemplate, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements} = this.props;
         let columnHeadArray = [];
         
         columns.map((key) => {
-            columnHeadArray.push(
-                <th width={key.width} key={key.name}>
-                    {key.title || key.name}
-                </th>
-            )
+            if (hideColumns && hideColumns.includes(key.name || key.title)) {
+                return null;
+            } else {
+                columnHeadArray.push(
+                    <th width={key.width} key={key.name}>
+                        {key.title || key.name}
+                    </th>
+                )
+            }
         })
 
         let detailTemplateHeadProps = {

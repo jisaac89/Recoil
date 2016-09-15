@@ -58,6 +58,7 @@ export default class TableColumn extends React.Component<any,any>{
             toggleSelectedElements,
             selectedElements,
             rowIsSelectable,
+            hideColumns,
             
             checkable
         } = props;
@@ -71,7 +72,7 @@ export default class TableColumn extends React.Component<any,any>{
 
         let createList = (value, key) => {
             return (
-                <TableData element={element} key={key} value={value} column={columns[key]} />
+                <TableData hideColumns={hideColumns} element={element} key={key} value={value} column={columns[key]} />
             )
         }
 

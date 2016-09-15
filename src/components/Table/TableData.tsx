@@ -9,6 +9,7 @@ interface ITableDataProps {
     renderChild? : any;
     column? : any;
     element? : any;
+    hideColumns? : any;
 }
 
 interface ITableDataState {
@@ -52,12 +53,17 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
         const self = this;
         let state = self.state;
         let {type} = state;
-        let {value, column, element} = self.props;
+        let {value, column, element, hideColumns} = self.props;
 
-        return (
-            <td width={column.width}>
-                {column.template ? column.template(value, element) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
-            </td>
-        )
+
+        if (hideColumns && hideColumns.includes(column.name || column.title)) {
+            return null;
+        } else {
+            return (
+                <td width={column.width}>
+                    {column.template ? column.template(value, element) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
+                </td>
+            )
+        }
     }
 }

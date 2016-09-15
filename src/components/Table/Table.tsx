@@ -33,6 +33,8 @@ interface ITableProps {
 
     detailTemplateHideToggle? : boolean;
     
+    hideColumns? : any;
+    
 }
 
 interface ITableState {
@@ -200,7 +202,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable} = props;
+        let {detailTemplate, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns} = props;
         let {columns, dataSource, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         let columnsArray;
@@ -256,7 +258,8 @@ export default class Table extends React.Component<ITableProps,any>{
             detailTemplateSelectedElements: detailTemplateSelectedElements,
             selectedElements : selectedElements,
             checkable: checkable,
-            detailTemplateHideToggle: detailTemplateHideToggle
+            detailTemplateHideToggle: detailTemplateHideToggle,
+            hideColumns: hideColumns
         }
 
         let footerProps = {
