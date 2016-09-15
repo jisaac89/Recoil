@@ -209,6 +209,43 @@ export default class Table extends React.Component<ITableProps,any>{
         })
     }
 
+    sortCollection(dataSource, key, sortType) {
+        const self = this;
+
+        let sortOrder;
+
+        let sortedDataSource = dataSource.sort(function (a, b) {
+            switch (typeof a[key]) {
+                case ('string'):
+                    let itemPrev = a[key].toLowerCase();
+                    let itemNext = b[key].toLowerCase();
+                    if (itemPrev < itemNext) //string asc
+                        return -1
+                    if (itemPrev > itemNext)
+                        return 1
+                    break;
+                case ('number'):
+                    return a[key] - b[key];
+                default:
+            }
+        })
+
+        if (sortType === 'asc') {
+            sortOrder = sortedDataSource;
+        } else {
+            sortOrder = sortedDataSource.reverse();
+        }
+
+        self.setState({
+            dataSource: sortOrder,
+            page: 0
+        })
+    }
+
+    toggleSorting(key, sortType) {
+        const self = this;
+        self.sortCollection(self.state.dataSource, key, sortType);
+    }
 
     render() {
 
@@ -296,7 +333,9 @@ export default class Table extends React.Component<ITableProps,any>{
             gotoPage: this.gotoPage.bind(this),
             lastPage: this.lastPage.bind(this),
             changePageSize: this.changePageSize.bind(this),
-            pageSizerOptions: pageSizerOptions
+            pageSizerOptions: pageSizerOptions,
+            dataSource: dataSource,
+            pageSize: pageSize
         }
         
         return (

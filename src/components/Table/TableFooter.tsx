@@ -15,6 +15,8 @@ export interface ITableFooterProps {
   lastPage ? : any;
   previousPage ? : any;
   pageSizerOptions? : any;
+  dataSource ? : any;
+  pageSize ? : any;
 }
 
 export default class TableFooter extends React.Component<ITableFooterProps, {}>{
@@ -34,15 +36,31 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
 
     const self = this;
 
+    let props = self.props;
+
+    let {
+      currentPage,
+      firstPage,
+      previousPage,
+      nextPage,
+      lastPage,
+      gotoPage,
+      pageSize,
+      pageSizerOptions,
+      numberOfPages,
+      numberPerPage,
+      dataSource
+    } = props;
+
     let paginationPartial = [];
 
     for (let i = 0; i < self.props.numberOfPages; i++) {
       if (
-        self.props.currentPage === i - 1 ||
-        self.props.currentPage === i ||
-        self.props.currentPage === i + 1) {
+        currentPage === i - 1 ||
+        currentPage === i ||
+        currentPage === i + 1) {
         paginationPartial.push(
-          <Button size="small" tabIndex={-1} theme={self.props.currentPage === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} key={i}>
+          <Button size="small" tabIndex={-1} theme={currentPage === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} key={i}>
             {i+1}
           </Button>
         )
@@ -54,13 +72,14 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
     } else {
         return (
           <div className="r-TableFooter">
-            <Toolbar flush noRadius>
-              <Button size="small" disabled={this.props.currentPage === 0} tabIndex={-1} onClick={this.props.firstPage} icon="fast-backward"></Button>
-              <Button size="small" disabled={this.props.currentPage === 0} tabIndex={-1} onClick={this.props.previousPage} icon="step-backward"></Button>
+            <Toolbar block flush noRadius>
+              <Button size="small" disabled={currentPage === 0} tabIndex={-1} onClick={firstPage} icon="fast-backward"></Button>
+              <Button size="small" disabled={currentPage === 0} tabIndex={-1} onClick={previousPage} icon="step-backward"></Button>
               {paginationPartial}
-              <Button size="small" disabled={this.props.currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.props.nextPage} icon="step-forward"></Button>
-              <Button size="small" disabled={this.props.currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, this.props.numberOfPages)} icon="fast-forward"></Button>
-              <Dropdown rowIsSelectable onChange={this.onSelected.bind(this)} material size="small" title={"Page Size " + this.props.numberPerPage} dataSource={this.props.pageSizerOptions || ['5', '10', '15']} />
+              <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
+              <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages)} icon="fast-forward"></Button>
+              <Dropdown rowIsSelectable onChange={this.onSelected.bind(this)} material size="small" title={"Page Size " + numberPerPage} dataSource={pageSizerOptions || ['5', '10', '15']} />
+              <Button simple right size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (currentPage + 1) * pageSize + '' + (' of ' + dataSource.length + ' items')}</Button>
             </Toolbar>
           </div>
         )
@@ -68,5 +87,3 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
 
   }
 }
-
-// <Dropdown from="top left" onSelected={this.onSelected.bind(this)} title="Page Size" type="selection" data={['5', '10', '15']} />
