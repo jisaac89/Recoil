@@ -28,7 +28,8 @@ export default class TableBody extends React.Component<any,any>{
             rowIsSelectable,
 
             checkable,
-            hideColumns
+            hideColumns,
+            onRowSelect
 
         } = props;
 
@@ -49,7 +50,8 @@ export default class TableBody extends React.Component<any,any>{
                     rowIsSelectable: rowIsSelectable,
                     selectedElements: selectedElements,
                     checkable: checkable,
-                    hideColumns : hideColumns
+                    hideColumns : hideColumns,
+                    onRowSelect
                 }
 
                 columnArray.push(

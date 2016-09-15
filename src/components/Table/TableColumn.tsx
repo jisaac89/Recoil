@@ -41,6 +41,10 @@ export default class TableColumn extends React.Component<any,any>{
         this.props.toggleSelectedElements(element);
     }
 
+    onRowSelect(element) {
+        this.props.onRowSelect(element);
+    }
+
     render() {
 
         const self = this;
@@ -60,7 +64,8 @@ export default class TableColumn extends React.Component<any,any>{
             rowIsSelectable,
             hideColumns,
             
-            checkable
+            checkable,
+            onRowSelect
         } = props;
 
         let TableDataArray = []
@@ -89,7 +94,7 @@ export default class TableColumn extends React.Component<any,any>{
         }
 
         return (
-            <tr className="r-TableColumn" onClick={rowIsSelectable && !checkable ? this.toggleSelectedElements.bind(this, element)  : null}>
+            <tr className="r-TableColumn" onClick={rowIsSelectable && !checkable ? this.toggleSelectedElements.bind(this, element)  : null || (onRowSelect ? this.onRowSelect.bind(this, element) : null)}>
                 {checkable ? <CheckboxColumn {...CheckBoxColumnProps} /> : null }
                 {detailTemplate && !detailTemplateHideToggle ? <DetailTemplateColumnToggle {...DetailTemplateColumnToggleProps} /> : null }
                 {TableDataArray.map(createList)}

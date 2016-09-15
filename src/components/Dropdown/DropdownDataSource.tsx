@@ -20,7 +20,7 @@ export default class DropdownDataSource extends React.Component<IDropdownDataSou
         const self = this;
         const props = self.props;
 
-        return props.open ? <Table dataSource={props.dataSource} /> : null
+        return props.open ? <Table onRowSelect={this.onRowSelect.bind(this)} selectedElements={this.props.selected} dataSource={props.dataSource} /> : null
     }
 }
 

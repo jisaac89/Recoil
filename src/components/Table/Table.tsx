@@ -36,6 +36,8 @@ interface ITableProps {
     hideColumns? : any;
 
     onRowSelect ? : any;
+
+    pageSizerOptions? : any;
     
 }
 
@@ -195,7 +197,15 @@ export default class Table extends React.Component<ITableProps,any>{
 
     gotoPage(i) {
         this.setState({
-            page: i
+            page: i,
+            pageSize: this.state.pageSize,
+        })
+    }
+
+    changePageSize(pageSize) {
+        this.setState({
+            pageSize: pageSize,
+            page: 0
         })
     }
 
@@ -204,7 +214,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect} = props;
+        let {detailTemplate, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {columns, dataSource, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         let columnsArray;
@@ -242,8 +252,8 @@ export default class Table extends React.Component<ITableProps,any>{
             numberOfPages = Math.ceil(dataSource.length / (pageSize));
         }
 
-        let begin = ((page) * numberPerPage);
-        let end = begin + numberPerPage;
+        let begin = ((page) * parseInt(numberPerPage));
+        let end = begin + parseInt(numberPerPage);
         let pageList = dataSource.slice(begin, end);
 
         pageList.map((item, index) => {
@@ -285,6 +295,8 @@ export default class Table extends React.Component<ITableProps,any>{
             firstPage : this.firstPage.bind(this),
             gotoPage: this.gotoPage.bind(this),
             lastPage: this.lastPage.bind(this),
+            changePageSize: this.changePageSize.bind(this),
+            pageSizerOptions: pageSizerOptions
         }
         
         return (

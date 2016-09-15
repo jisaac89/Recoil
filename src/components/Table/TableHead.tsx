@@ -43,13 +43,13 @@ export default class TableHead extends React.Component<any,any>{
         let columnHeadArray = [];
         
         columns.map((key) => {
-            let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(key.name || key.title);
+            let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(key.title ? key.title : key.name);
 
             if (hideColumnsArrayIncludesEitherNameOrTitle) {
                 return null;
             } else {
                 columnHeadArray.push(
-                    <th width={key.width} key={key.name}>
+                    <th width={key.width} key={key.name || key.title}>
                         {key.title || key.name}
                     </th>
                 )

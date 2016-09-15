@@ -55,14 +55,14 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
         let {type} = state;
         let {value, column, element, hideColumns} = self.props;
 
-        let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(column.name || column.title);
+        let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(column.title ? column.title : column.name);
 
         if (hideColumnsArrayIncludesEitherNameOrTitle) {
             return null;
         } else {
             return (
                 <td width={column.width}>
-                    {column.template ? column.template(value, element) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
+                    {column.template ? column.template(column.name ? value : element) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
                 </td>
             )
         }

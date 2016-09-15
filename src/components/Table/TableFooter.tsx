@@ -14,6 +14,7 @@ export interface ITableFooterProps {
   numberPerPage ? : number;
   lastPage ? : any;
   previousPage ? : any;
+  pageSizerOptions? : any;
 }
 
 export default class TableFooter extends React.Component<ITableFooterProps, {}>{
@@ -22,7 +23,7 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
   }
 
   onSelected(item) {
-    this.props.changePageSize(item);
+    this.props.changePageSize(item._Array);
   }
 
   lastPage(numberOfPages) {
@@ -59,7 +60,7 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
               {paginationPartial}
               <Button size="small" disabled={this.props.currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.props.nextPage} icon="step-forward"></Button>
               <Button size="small" disabled={this.props.currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, this.props.numberOfPages)} icon="fast-forward"></Button>
-              <Dropdown material size="small" title={"Page Size " + this.props.numberPerPage} dataSource={['5', '10', '15']} />
+              <Dropdown rowIsSelectable onChange={this.onSelected.bind(this)} material size="small" title={"Page Size " + this.props.numberPerPage} dataSource={this.props.pageSizerOptions || ['5', '10', '15']} />
             </Toolbar>
           </div>
         )
