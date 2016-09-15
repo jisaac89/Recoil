@@ -34,6 +34,8 @@ interface ITableProps {
     detailTemplateHideToggle? : boolean;
     
     hideColumns? : any;
+
+    onRowSelect ? : any;
     
 }
 
@@ -202,7 +204,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns} = props;
+        let {detailTemplate, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect} = props;
         let {columns, dataSource, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         let columnsArray;
@@ -262,6 +264,18 @@ export default class Table extends React.Component<ITableProps,any>{
             hideColumns: hideColumns
         }
 
+        let headProps = {
+            detailTemplateToggleAll: this.detailTemplateToggleAll.bind(this),
+            selectAll: this.selectAll.bind(this) 
+        }
+
+        let bodyProps = {
+            rowIsSelectable:rowIsSelectable,
+            toggleSelectedElements:this.toggleSelectedElements.bind(this),
+            detailTemplateToggleSelectedElements:this.detailTemplateToggleSelectedElements.bind(this),
+            onRowSelect : onRowSelect
+        }
+
         let footerProps = {
             currentPage : page,
             numberOfPages : numberOfPages,
@@ -277,17 +291,8 @@ export default class Table extends React.Component<ITableProps,any>{
             <div className="r-Table">
                 <TableFooter {...footerProps} />
                 <table>
-                    <TableHead 
-                        {...tableProps} 
-                        detailTemplateToggleAll={this.detailTemplateToggleAll.bind(this)}
-                        selectAll={this.selectAll.bind(this)} 
-                        />
-                    <TableBody 
-                        {...tableProps} 
-                        rowIsSelectable={rowIsSelectable}
-                        toggleSelectedElements={this.toggleSelectedElements.bind(this)}
-                        detailTemplateToggleSelectedElements={this.detailTemplateToggleSelectedElements.bind(this)}
-                        />
+                    <TableHead {...tableProps} {...headProps} />
+                    <TableBody {...tableProps} {...bodyProps} />
                 </table>
                 <TableFooter {...footerProps} />
             </div>
