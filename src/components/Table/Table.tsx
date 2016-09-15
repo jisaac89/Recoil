@@ -38,6 +38,9 @@ interface ITableProps {
     onRowSelect ? : any;
 
     pageSizerOptions? : any;
+
+    onPageSizeChange? : any;
+    onPageChange? : any;
     
 }
 
@@ -207,6 +210,8 @@ export default class Table extends React.Component<ITableProps,any>{
             pageSize: pageSize,
             page: 0
         })
+
+        this.props.onPageSizeChange ? this.props.onPageSizeChange(pageSize) : null;
     }
 
     sortCollection(dataSource, key, sortType) {
@@ -251,7 +256,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
+        let {detailTemplate, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {columns, dataSource, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         let columnsArray;
@@ -335,7 +340,8 @@ export default class Table extends React.Component<ITableProps,any>{
             changePageSize: this.changePageSize.bind(this),
             pageSizerOptions: pageSizerOptions,
             dataSource: dataSource,
-            pageSize: pageSize
+            pageSize: pageSize,
+            onPageChange: onPageChange
         }
         
         return (

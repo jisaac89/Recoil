@@ -17,11 +17,13 @@ export interface ITableFooterProps {
   pageSizerOptions? : any;
   dataSource ? : any;
   pageSize ? : any;
+  onPageChange? : any;
 }
 
 export default class TableFooter extends React.Component<ITableFooterProps, {}>{
   gotoPage(i) {
     this.props.gotoPage(i);
+    this.props.onPageChange ? this.props.onPageChange(i + 1) : null
   }
 
   onSelected(item) {
