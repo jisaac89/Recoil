@@ -1850,7 +1850,7 @@ hr {
 	.r-Wizard .r-Wizard__track .r-WizardSlide {
 		background: @nightMode-background;
 	}
-	.r-Grid {
+	.r-Table {
 		border-top: 1px solid #2b2b2b;
 	}
     .r-ModalContent{
@@ -1926,21 +1926,25 @@ hr {
 	tbody.r-Grid__Body > .r-Grid__Row.e-selected {
 		background: #07233c !important;
 	}
-	tbody.r-Grid__Body > tr {
+	.r-TableColumn {
 		background: #181b1f;
 		border-bottom: 1px solid #121212;
+		
 	}
-	tbody.r-Grid__Body > tr:nth-child(4n+1) {
+	.r-Table td{
+		color: #888 !important;
+	}
+	.r-TableColumn:nth-child(4n+1) {
 		background: #23272D !important;
 	}
 	.r-Grid__Header > tr > th > a {
 		color: #cdcdcd;
 	}
-	.r-Grid__Table {
+	.r-Table > table {
 		background: #131313;
 		color: rgba(210, 210, 210, 0.64);
 	}
-	tbody.r-Grid__Body > tr:hover {
+	.r-TableColumn:hover {
 		cursor: pointer !important;
 		background: #14253c !important;
 	}
