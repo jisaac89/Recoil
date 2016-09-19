@@ -3,11 +3,12 @@ import * as classNames from 'classnames';
 
 import './Table.less';
 
-import {arraysEqual} from '../Utils';
+import {arraysEqual, search} from '../Utils';
 
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
+import TableSearch from './TableSearch';
 
 interface ITableProps {
     // initial dataSource loaded as prop
@@ -43,6 +44,9 @@ interface ITableProps {
     onPageChange? : any;
 
     sortable ? : boolean;
+
+    searchableKeys? : any;
+    searchTitle? : string;
     
 }
 
@@ -52,6 +56,8 @@ interface ITableState {
 
     detailTemplateSelectedElements? : any;
     selectedElements? : any;
+
+    searchedItems? : any;
 }
 
 export default class Table extends React.Component<ITableProps,any>{
@@ -65,7 +71,9 @@ export default class Table extends React.Component<ITableProps,any>{
             page: props.page || 0,
 
             detailTemplateSelectedElements : props.detailTemplateSelectedElements || [],
-            selectedElements : props.selectedElements || []
+            selectedElements : props.selectedElements || [],
+            
+            searchedItems: []
         }
     }
 
@@ -254,6 +262,16 @@ export default class Table extends React.Component<ITableProps,any>{
         self.sortCollection(self.state.dataSource, key, sortType);
     }
 
+    filterItems(term, keys) {
+        const self = this;
+        let state = self.state;
+
+        self.setState({
+            searchedItems: search(state.dataSource, term, keys),
+            page: 0 
+        })
+    }
+
     render() {
 
         const self = this;
@@ -286,19 +304,26 @@ export default class Table extends React.Component<ITableProps,any>{
         // create the rendered page
 
         let renderedPage = [];
-        let numberPerPage, numberOfPages, renderedDataSource;
+        let numberPerPage, numberOfPages, renderedDataSource, activeRows;
+
+
+        if (this.state.searchedItems.length > 0) {
+            activeRows = this.state.searchedItems;
+        } else {
+            activeRows = dataSource
+        }
 
         if (pageSize) {
             numberPerPage = pageSize;
-            numberOfPages = Math.ceil(dataSource.length / (pageSize));
+            numberOfPages = Math.ceil(activeRows.length / (pageSize));
         } else {
             numberPerPage = pageSize;
-            numberOfPages = Math.ceil(dataSource.length / (pageSize));
+            numberOfPages = Math.ceil(activeRows.length / (pageSize));
         }
 
         let begin = ((page) * parseInt(numberPerPage));
         let end = begin + parseInt(numberPerPage);
-        let pageList = dataSource.slice(begin, end);
+        let pageList = activeRows.slice(begin, end);
 
         pageList.map((item, index) => {
             renderedPage.push(item);
@@ -347,11 +372,18 @@ export default class Table extends React.Component<ITableProps,any>{
             pageSize: pageSize,
             onPageChange: onPageChange
         }
+
+        let tableSearchProps = {
+            filterItems : this.filterItems.bind(this),
+            searchableKeys : this.props.searchableKeys,
+            searchTitle : this.props.searchTitle
+        }
         
         if (columnsArray.length) {
             return (
                 <div className="r-Table">
                     <TableFooter {...footerProps} />
+                    <TableSearch {...tableSearchProps} />
                     <table>
                         <TableHead {...tableProps} {...headProps} />
                         <TableBody {...tableProps} {...bodyProps} />
