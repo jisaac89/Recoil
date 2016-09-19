@@ -37,6 +37,27 @@ class CheckboxHead extends React.Component<any,any>{
 
 export default class TableHead extends React.Component<any,any>{
 
+    constructor() {
+        super();
+        this.state = {
+        sortType: 'desc',
+        column: '',
+        columns: []
+        }
+    }
+
+    toggleSorting(columnName) {
+
+        const self = this;
+
+        this.setState({
+            sortType: this.state.sortType === 'desc' ? 'asc' : 'desc',
+            column : columnName
+        })
+
+        this.props.toggleSorting(columnName, self.state.sortType);
+    }
+
     render() {
         
         let {detailTemplate, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements} = this.props;
@@ -50,7 +71,7 @@ export default class TableHead extends React.Component<any,any>{
             } else {
                 columnHeadArray.push(
                     <th width={key.width} key={key.name || key.title}>
-                        {key.title || key.name}
+                        <Button className="p0" icon={this.state.column === (key.name || key.title )? 'sort-'+ this.state.sortType : null} size="small" simple iconLocation="right" onClick={this.toggleSorting.bind(this, key.name || key.title)}>{key.title || key.name}</Button>
                     </th>
                 )
             }
