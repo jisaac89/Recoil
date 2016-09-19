@@ -7,7 +7,7 @@ import Shrink from '../Shrink/Shrink';
 import Toolbar from '../Toolbar/Toolbar';
 import Input from '../Input/Input';
 import Emerge from '../Emerge/Emerge';
-import Grid from '../Grid/Grid';
+import Table from '../Table/Table';
 import SlideIn from '../SlideIn/SlideIn';
 
 export default class Shortcut extends React.Component<any,any>{
@@ -89,7 +89,7 @@ export default class Shortcut extends React.Component<any,any>{
                 )
               }
             })()}
-            <Grid dataSource={itemArray} open={this.state.showShortcut} columns={columns} onSelect={this.props.onChange} />
+            <Table dataSource={itemArray} columns={columns} onRowSelect={this.props.onChange} />
           </Layer>
         </SlideIn>
       </Layer>

@@ -33,6 +33,7 @@ interface P {
     pageSize? : number;
     outline? : boolean;
     simple?: boolean;
+    width? : string;
 }
 
 export interface State {
@@ -40,8 +41,15 @@ export interface State {
     selected?: Array<any>;
 }
 
+
 export default class DropdownComponent extends React.Component<P, State>{
     mouseIsDown: boolean;
+
+    
+    refs: {
+        [key: string]: (Element);
+        dropdown: (HTMLInputElement);
+    }
 
     public static defaultProps = {
         type: 'button',
@@ -53,6 +61,20 @@ export default class DropdownComponent extends React.Component<P, State>{
         this.state = {
             open : props.open || false,
             selected : props.selected || []
+        }
+    }
+    componentDidMount() {
+        document.addEventListener('click', this.handleDocumentClick.bind(this), false);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleDocumentClick.bind(this), false);
+    }
+    handleDocumentClick(e) {
+        var dropdown = this.refs.dropdown;
+        if (dropdown && !dropdown.contains(e.target)) {
+            this.setState({
+                open: false
+            })
         }
     }
     componentWillReceiveProps(nextProps) {
@@ -86,32 +108,6 @@ export default class DropdownComponent extends React.Component<P, State>{
         } else {
             return null;
         }
-    }
-
-    componentDidMount() {
-        window.addEventListener('mousedown', this.pageClick.bind(this), false);
-    }
-    componentWillUnmount(){
-        window.removeEventListener('mousedown', this.pageClick.bind(this), false);
-    }
-    pageClick(e) {
-        if (this.mouseIsDown) {
-            return;
-        }
-
-        this.setState({
-            open: false
-        });
-
-        this.props.onClose ? this.props.onClose() : null;
-    }
-
-    onMouseDown() {
-        this.mouseIsDown = true;
-    }
-
-    onMouseUp() {
-        this.mouseIsDown = false;
     }
 
     render() {
@@ -164,7 +160,7 @@ export default class DropdownComponent extends React.Component<P, State>{
         }  
 
         return (
-            <div onMouseDown={this.onMouseDown.bind(this)} onMouseUp={this.onMouseUp.bind(this)} className={dropdownClass}>
+            <div ref='dropdown' className={dropdownClass}>
                 {dropdownTypePartial}
                 {dropdownContentPartial}
             </div>

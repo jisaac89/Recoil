@@ -7,7 +7,7 @@ import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 import Layer from '../Layer/Layer';
 
-import Grid from '../Grid/Grid';
+import Table from '../Table/Table';
 import Tree from '../Tree/Tree';
 
 export default class TreeComponent extends React.Component<any, any>{

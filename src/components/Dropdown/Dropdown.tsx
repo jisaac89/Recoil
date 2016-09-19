@@ -31,6 +31,7 @@ interface P {
   pointer? : 'left' | 'right' | boolean;
   pageSize? : any;
   outline? : boolean;
+  width ?: string;
 }
 
 export default class Dropdown extends React.Component<P, any>{

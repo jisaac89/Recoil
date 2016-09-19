@@ -10,6 +10,7 @@ interface IDropdownWrapperProps {
     selected?: Array<any>;
     material?: boolean;
     open?: boolean;
+    width? : string;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
@@ -30,7 +31,7 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
     }
 
     return(
-      <div className="r-DropdownWrapper">
+      <div style={{width : this.props.width}} className="r-DropdownWrapper">
         {DropdownContent}
       </div>
     );

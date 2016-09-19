@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Selectable from '../Selectable/Selectable';
 
-import Grid from '../Grid/Grid';
 import Table from '../Table/Table';
 
 interface IDropdownDataSourceProps {

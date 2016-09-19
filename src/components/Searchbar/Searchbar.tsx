@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import Input from '../Input/Input';
-import Grid from '../Grid/Grid';
+import Table from '../Table/Table';
 import Open from '../Open/Open';
 
 import './Searchbar.less';
@@ -99,7 +99,7 @@ export default class Searchbar extends React.Component<ISearchbarProps, ISearchb
         <div className={searchbarClass}>
             <Input block onChange={this.onChange.bind(this)} placeholder="Search" />
             <Open if={this.state.open}>
-                <Grid hideHeader dataSource={this.state.filteredData} columns={this.props.columns} hideColumns={["_searchString"]} />
+                <Table hideHeader dataSource={this.state.filteredData} columns={this.props.columns} hideColumns={["_searchString"]} />
             </Open>
         </div>
     );

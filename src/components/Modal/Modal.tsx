@@ -28,6 +28,11 @@ export interface IModalState {
 export default class Modal extends React.Component<IModalProps, IModalState>{
   mouseIsDown: boolean;
 
+  refs: {
+      [key: string]: (Element);
+      modal: (HTMLInputElement);
+  }
+
   public static defaultProps = {
       type: 'button',
       dropDirection: 'down'
@@ -47,28 +52,18 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
       });
   }
   componentDidMount() {
-      window.addEventListener('mousedown', this.pageClick.bind(this), false);
+      document.addEventListener('click', this.handleDocumentClick.bind(this), false);
   }
-  componentWillUnmount(){
-      window.removeEventListener('mousedown', this.pageClick.bind(this), false);
+  componentWillUnmount() {
+      document.removeEventListener('click', this.handleDocumentClick.bind(this), false);
   }
-  pageClick(e) {
-      if (this.mouseIsDown) {
-          return;
+  handleDocumentClick(e) {
+      var modal = this.refs.modal;
+      if (modal && !modal.contains(e.target)) {
+          this.setState({
+              open: false
+          })
       }
-
-      this.setState({
-          open: false
-      });
-
-      this.props.onClose ? this.props.onClose() : null;
-  }
-  onMouseDown() {
-      this.mouseIsDown = true;
-  }
-
-  onMouseUp() {
-      this.mouseIsDown = false;
   }
   toggleMin() {
     this.setState({
@@ -104,18 +99,9 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
 
     let openProps;
 
-    if (this.state.open) {
-      openProps = {
-        onMouseDown: this.onMouseDown.bind(this),
-        onMouseUp: this.onMouseUp.bind(this)
-      }
-    } else {
-      openProps = null;
-    }
-
     return (
       <div className={modalWrapperClass}>
-        <div className={modalClass} style={props.style} {...openProps}>
+        <div ref={'modal'} className={modalClass} style={props.style}>
           <ModalHeader {...props}/>
           {props.open ? props.children : null}
         </div>
