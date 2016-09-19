@@ -12,11 +12,11 @@ import TableSearch from './TableSearch';
 
 interface ITableProps {
     // initial dataSource loaded as prop
-    dataSource :  any;
+    dataSource :  Array<any>;
     // columns defined by user
     columns? : Array<any>;
     // a detail template function that returns a view
-    detailTemplate? : any;
+    detailTemplate? : Function;
     // toggle if the table header should show
     hideHeader ? : boolean;
     // how many rows to show
@@ -31,21 +31,22 @@ interface ITableProps {
     rowIsSelectable ? : boolean;
 
     checkable ? : boolean;
+    onCheck ? : Function;
 
     detailTemplateHideToggle? : boolean;
     
-    hideColumns? : any;
+    hideColumns? : Array<any>;
 
-    onRowSelect ? : any;
+    onRowSelect ? : Function;
 
-    pageSizerOptions? : any;
+    pageSizerOptions? : Array<number>;
 
-    onPageSizeChange? : any;
-    onPageChange? : any;
+    onPageSizeChange? : Function;
+    onPageChange? : Function;
 
     sortable ? : boolean;
 
-    searchableKeys? : any;
+    searchableKeys? : Array<any>;
     searchTitle? : string;
     
 }
@@ -180,6 +181,8 @@ export default class Table extends React.Component<ITableProps,any>{
             self.setState({
                 selectedElements : selectedElementsArray
             })
+
+            self.props.onCheck(element);
         }
     }
 
