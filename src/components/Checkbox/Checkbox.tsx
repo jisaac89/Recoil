@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button from '../Button/Button';
+import * as classNames from 'classnames';
 
 import './Checkbox.less';
 
@@ -59,13 +60,19 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     let state = self.state;
     let {checked} = state;
 
+    let checkboxClass = classNames(
+      'r-Checkbox',
+      {'disabled' : (props.disabled)}
+    )
+
     return (
         <Button
-          className="r-Checkbox"
+          className={checkboxClass}
           size={props.size}
           onClick={this.toggleChecked.bind(this)}
-          theme={checked ? 'primary' : 'default'}
+          theme={props.theme ? props.theme : checked ? 'primary' : 'default'}
           icon={props.icon}
+          disabled={props.disabled}
         >
         </Button>
     )

@@ -32,6 +32,7 @@ interface P {
   pageSize? : any;
   outline? : boolean;
   width ?: string;
+  pageSizerOptions? : Array<any>;
 }
 
 export default class Dropdown extends React.Component<P, any>{

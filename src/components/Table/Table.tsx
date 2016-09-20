@@ -16,7 +16,7 @@ interface ITableProps {
     // columns defined by user
     columns? : Array<any>;
     // a detail template function that returns a view
-    detailTemplate? : Function;
+    detailTemplate? : (event: React.MouseEvent) => void;
     // toggle if the table header should show
     hideHeader ? : boolean;
     // how many rows to show
@@ -31,18 +31,18 @@ interface ITableProps {
     rowIsSelectable ? : boolean;
 
     checkable ? : boolean;
-    onCheck ? : Function;
+    onCheck ? : (event: React.MouseEvent) => void;
 
     detailTemplateHideToggle? : boolean;
     
     hideColumns? : Array<any>;
 
-    onRowSelect ? : Function;
+    onRowSelect ? : (event: React.MouseEvent) => void;
 
-    pageSizerOptions? : Array<number>;
+    pageSizerOptions? : Array<any>;
 
-    onPageSizeChange? : Function;
-    onPageChange? : Function;
+    onPageSizeChange? : (event: React.MouseEvent) => void;
+    onPageChange? : (event: React.MouseEvent) => void;
 
     sortable ? : boolean;
 
@@ -94,7 +94,7 @@ export default class Table extends React.Component<ITableProps,any>{
         }
 
         if (Array.isArray(dataSource)) {
-            if (typeof dataSource[0] === 'string') {
+            if (typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number') {
                 let newDataSource = [];
 
                 dataSource.forEach(element => {
@@ -293,7 +293,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
             if (dataSource.length) {
                 if (Array.isArray(dataSource)) {
-                    if (typeof dataSource[0] === 'string') {
+                    if (typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number') {
                         columnsArray.push({name : '_Array'});
                     } else {
                         Object.keys(dataSource[0]).map((key) => {

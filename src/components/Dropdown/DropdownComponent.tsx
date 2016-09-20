@@ -34,6 +34,7 @@ interface P {
     outline? : boolean;
     simple?: boolean;
     width? : string;
+    pageSizerOptions? : any;
 }
 
 export interface State {

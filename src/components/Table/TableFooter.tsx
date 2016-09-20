@@ -5,19 +5,19 @@ import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 
 export interface ITableFooterProps {
-  gotoPage ? : any;
+  gotoPage ? : (event: React.MouseEvent) => void;
   currentPage ? : number;
-  changePageSize ? : any;
-  firstPage ? : any;
-  nextPage ? : any;
+  changePageSize ? : (event: React.MouseEvent) => void;
+  firstPage ? : (event: React.MouseEvent) => void;
+  nextPage ? : (event: React.MouseEvent) => void;
   numberOfPages ? : number;
   numberPerPage ? : number;
-  lastPage ? : any;
-  previousPage ? : any;
-  pageSizerOptions? : any;
-  dataSource ? : any;
-  pageSize ? : any;
-  onPageChange? : any;
+  lastPage ? : (event: React.MouseEvent) => void;
+  previousPage ? : (event: React.MouseEvent) => void;
+  dataSource ? : Array<any>;
+  pageSize ? : number;
+  onPageChange? : (event: React.MouseEvent) => void;
+  pageSizerOptions ? : Array<any>;
 }
 
 export default class TableFooter extends React.Component<ITableFooterProps, {}>{
@@ -80,7 +80,7 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
               {paginationPartial}
               <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
               <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages)} icon="fast-forward"></Button>
-              <Dropdown rowIsSelectable onChange={this.onSelected.bind(this)} material size="small" title={"Page Size " + numberPerPage} dataSource={pageSizerOptions || ['5', '10', '15']} />
+              <Dropdown rowIsSelectable onChange={this.onSelected.bind(this)} material size="small" title={"Page Size " + numberPerPage} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} />
               <Button simple right size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (currentPage + 1) * pageSize + '' + (' of ' + dataSource.length + ' items')}</Button>
             </Toolbar>
           </div>

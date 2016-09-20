@@ -93,7 +93,7 @@ export default class Toggle extends React.Component<any, any>{
       slideIndex = 0
     }
 
-    if (props.type === 'colors' && props.array && props.array.length > 2) {
+    if (props.type === 'colors' || props.type === 'strings' || props.type === 'numbers' && props.array && props.array.length > 2) {
       return (
         <div className={toggleClass}>
           {this.props.array.map(createList)}

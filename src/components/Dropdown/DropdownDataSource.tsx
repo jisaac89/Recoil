@@ -7,7 +7,8 @@ interface IDropdownDataSourceProps {
     onRowSelect?: (item: any) => void;
     selected?: any;
     open?: boolean;
-    dataSource? : any;
+    dataSource? : Array<any>;
+    pageSizerOptions ?: Array<any>;
 }
 
 export default class DropdownDataSource extends React.Component<IDropdownDataSourceProps, {}> {
@@ -19,7 +20,7 @@ export default class DropdownDataSource extends React.Component<IDropdownDataSou
         const self = this;
         const props = self.props;
 
-        return props.open ? <Table onRowSelect={this.onRowSelect.bind(this)} selectedElements={this.props.selected} dataSource={props.dataSource} /> : null
+        return props.open ? <Table onRowSelect={this.onRowSelect.bind(this)} selectedElements={this.props.selected} pageSizerOptions={props.pageSizerOptions} dataSource={props.dataSource} /> : null
     }
 }
 
