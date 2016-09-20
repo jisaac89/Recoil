@@ -16,7 +16,7 @@ interface P {
     toggleCpenOnRowSelect? : boolean;
     open? : boolean;
     selected? : Array<any>;
-    rowIsSelectable?: boolean;
+    rowIsSelectable?: any;
     block?: boolean;
     right?: boolean;
     left?: boolean;
@@ -102,7 +102,7 @@ export default class DropdownComponent extends React.Component<P, State>{
             this.setState({
                 selected : [item]
             })
-            this.toggleOpen();
+            this.props.rowIsSelectable === 'single' ? this.toggleOpen() : null
         }
         else if (this.props.onRowSelect) {
             this.props.onRowSelect(item);

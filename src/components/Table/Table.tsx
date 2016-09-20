@@ -28,7 +28,7 @@ interface ITableProps {
 
     selectedElements ? : Array<any>;
 
-    rowIsSelectable ? : boolean;
+    rowIsSelectable ? : any;
 
     checkable ? : boolean;
     onCheck ? : (event: React.MouseEvent) => void;
@@ -161,8 +161,15 @@ export default class Table extends React.Component<ITableProps,any>{
     toggleSelectedElements(element) {
         const self = this;
         let {selectedElements} = self.state;
+        let {rowIsSelectable, onCheck} = self.props;
 
-        let selectedElementsArray = selectedElements;
+        let selectedElementsArray;
+
+        if (rowIsSelectable === 'single') {
+            selectedElementsArray = [];
+        } else {
+            selectedElementsArray = selectedElements;
+        }
 
         if (selectedElementsArray.includes(element)) {
             for(let i=0; i < selectedElementsArray.length; i++) {
@@ -182,7 +189,7 @@ export default class Table extends React.Component<ITableProps,any>{
                 selectedElements : selectedElementsArray
             })
 
-            self.props.onCheck(element);
+            onCheck ? onCheck(element) : null;
         }
     }
 

@@ -39,6 +39,7 @@ export default class TableColumn extends React.Component<any,any>{
 
     toggleSelectedElements(element) {
         this.props.toggleSelectedElements(element);
+        this.props.onRowSelect ? this.props.onRowSelect(element) : null;
     }
 
     onRowSelect(element) {

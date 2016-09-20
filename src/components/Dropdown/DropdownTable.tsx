@@ -9,6 +9,7 @@ interface IDropdownTableProps {
     open?: boolean;
     dataSource? : Array<any>;
     pageSizerOptions ?: Array<any>;
+    rowIsSelectable? : any;
 }
 
 export default class DropdownTable extends React.Component<IDropdownTableProps, {}> {
@@ -20,6 +21,6 @@ export default class DropdownTable extends React.Component<IDropdownTableProps, 
         const self = this;
         const props = self.props;
 
-        return <Table rowIsSelectable onRowSelect={this.onRowSelect.bind(this)} selectedElements={this.props.selected} pageSizerOptions={props.pageSizerOptions} dataSource={props.dataSource} />
+        return <Table rowIsSelectable={this.props.rowIsSelectable} onRowSelect={this.onRowSelect.bind(this)} selectedElements={this.props.selected} pageSizerOptions={props.pageSizerOptions} dataSource={props.dataSource} />
     }
 }

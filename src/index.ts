@@ -1,6 +1,5 @@
 export {default as Align} from './components/Align/Align';
 export {default as Button} from './components/Button/Button';
-export {default as Badge} from './components/Badge/Badge';
 export {default as Checkbox} from './components/Checkbox/Checkbox';
 export {default as Open} from './components/Open/Open';
 export {default as Dropdown} from './components/Dropdown/Dropdown';
@@ -18,7 +17,6 @@ export {default as Toggle} from './components/Toggle/Toggle';
 export {default as Toolbar} from './components/Toolbar/Toolbar';
 export {default as Transform} from './components/Transform/Transform';
 export {default as Wizard} from './components/Wizard/Wizard';
-// export {default as Shortcut} from './components/Shortcut/Shortcut';
 export {default as SlideIn} from './components/SlideIn/SlideIn';
 // export {default as Tree} from './components/Tree/Tree';
 export {default as Table} from './components/Table/Table';
