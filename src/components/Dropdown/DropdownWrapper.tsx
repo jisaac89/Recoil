@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Selectable from '../Selectable/Selectable';
 
-import DropdownDataSource from './DropdownDataSource';
+import DropdownTable from './DropdownTable';
 
 interface IDropdownWrapperProps {
     selectItem?: (item: any) => void;
@@ -25,7 +25,7 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
     let DropdownContent;
 
     if (props.dataSource) {
-      DropdownContent = <DropdownDataSource {...props} />;
+      DropdownContent = <DropdownTable {...props} />;
     } else {
       DropdownContent = props.children;
     }
