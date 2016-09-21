@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import DataSource from '../DataSource/DataSource';
+// import DataSource from '../DataSource/DataSource';
 import TreeComponent from './TreeComponent';
 
 import './Tree.less';
@@ -42,6 +42,6 @@ export default class Tree extends React.Component<P, any>{
     const self = this;
     const props = self.props;
 
-     return React.createElement(DataSource(<TreeComponent {...this.props} />))
+     return null
   }
 }
