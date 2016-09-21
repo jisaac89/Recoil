@@ -39,7 +39,7 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
 
     let wizardClass = classNames(
       'r-Wizard',
-      {'fill' : (props.fill)},
+      {'fill' : (props.fill)}
     );
 
     let createSlidesPartial = (item, index) => {

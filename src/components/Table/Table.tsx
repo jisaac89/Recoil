@@ -388,10 +388,15 @@ export default class Table extends React.Component<ITableProps,any>{
             searchableKeys : this.props.searchableKeys,
             searchTitle : this.props.searchTitle
         }
+
+        let tableClass = classNames(
+            'r-Table',
+            {'e-selectable' : (props.rowIsSelectable)}
+        )
         
         if (columnsArray.length) {
             return (
-                <div className="r-Table">
+                <div className={tableClass}>
                     <TableFooter {...footerProps} />
                     <TableSearch {...tableSearchProps} />
                     <table>

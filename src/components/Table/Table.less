@@ -37,6 +37,11 @@
 .r-TableColumn{
     background:white;
     border-bottom:1px solid #ccc;
+    transition: 300ms all ease-in;
+}
+
+.r-Table.e-selectable .r-TableColumn{
+    cursor: pointer;
 }
 
 .r-TableColumn:hover{
@@ -52,5 +57,5 @@
 }
 
 .r-Table>table>thead>tr>th{
-padding-top:0;
+    padding-top:0;
 }
