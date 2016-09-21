@@ -7,6 +7,8 @@ export interface IShrinkProps {
   fill ?  : boolean;
   className ? : any;
   children ? : any;
+  opacity ? : any;
+  scale ? : any;
 }
 
 export default class Shrink extends React.Component<IShrinkProps, {}>{
@@ -23,7 +25,10 @@ export default class Shrink extends React.Component<IShrinkProps, {}>{
     );
 
     return (
-      <div className={shrinkClass}>
+      <div className={shrinkClass} style={{
+        'transform' : props.if ? 'scale('+props.scale+')' || 'scale(.98)' : null,
+        opacity : props.if ?  props.opacity / 100 ||  5 / 100  : null
+      }}>
         {props.children}
       </div>
     );
