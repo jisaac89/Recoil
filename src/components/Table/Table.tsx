@@ -101,7 +101,7 @@ export default class Table extends React.Component<ITableProps,any>{
             })
         }
 
-        if (Array.isArray(dataSource) || Array.isArray(dataSource.slice())) {
+        if (dataSource instanceof Array) {
             if (typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number') {
                 let newDataSource = [];
 
@@ -307,7 +307,7 @@ export default class Table extends React.Component<ITableProps,any>{
             columnsArray = [];
 
             if (dataSource.length) {
-                if (Array.isArray(dataSource) || Array.isArray(dataSource.slice())) {
+                if (dataSource instanceof Array) {
                     if (typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number') {
                         columnsArray.push({name : '_Array'});
                     } else {
