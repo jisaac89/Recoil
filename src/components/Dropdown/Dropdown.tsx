@@ -38,6 +38,7 @@ interface P {
     width? : string;
     pageSizerOptions? : any;
     dataSource? : any;
+    hideHeader? : boolean;
 }
 
 export interface State {
