@@ -37,32 +37,41 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
       type: 'button',
       dropDirection: 'down'
   };
+
+  
   
   constructor(props){
     super(props);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.state = {
       min : false,
       open: props.open || false
     };
+    
   }
   componentWillReceiveProps(nextProps) {
+      const self = this;
       const state = this.state;
       this.setState({
           open : nextProps.open !== state.open ? nextProps.open : state.open
       });
-  }
-  componentDidMount() {
-      document.addEventListener('click', this.handleDocumentClick.bind(this), false);
+
+      if(nextProps.open) {
+        document.addEventListener('click', self.handleDocumentClick);
+      }
   }
   componentWillUnmount() {
-      document.removeEventListener('click', this.handleDocumentClick.bind(this), false);
+      document.removeEventListener('click', this.handleDocumentClick);
   }
   handleDocumentClick(e) {
+      const self = this;
       var modal = this.refs.modal;
-      if (modal && !modal.contains(e.target)) {
+      if (this.state.open && modal && !modal.contains(e.target)) {
           this.setState({
               open: false
           })
+          document.removeEventListener('click', self.handleDocumentClick);
+          self.props.onClose ? self.props.onClose() : null
       }
   }
   toggleMin() {

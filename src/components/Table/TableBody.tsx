@@ -35,7 +35,7 @@ export default class TableBody extends React.Component<any,any>{
 
         let columnArray = [];
 
-        if (Array.isArray(dataSource)) {
+        if (Array.isArray(dataSource) || Array.isArray(dataSource.slice())) {
             dataSource.map((element, key) => {
 
                 let columnProps = {

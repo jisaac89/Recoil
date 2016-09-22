@@ -80,12 +80,20 @@ export default class Table extends React.Component<ITableProps,any>{
 
     componentDidMount() {
         const self = this;
-        self.loadDataSource();
+        self.loadDataSource(this.props.dataSource);
     }
 
-    loadDataSource(){
+
+    componentWillReceiveProps(nextProps) {
         const self = this;
-        let {dataSource} = self.props;
+        if (nextProps.dataSource !== self.props.dataSource) {
+            self.loadDataSource(nextProps.dataSource);
+        }
+    }
+
+    loadDataSource(dataSource){
+        const self = this;
+        // let {dataSource} = self.props;
 
         let setDataSourceState = (dataSource) => {
             self.setState({
@@ -93,7 +101,7 @@ export default class Table extends React.Component<ITableProps,any>{
             })
         }
 
-        if (Array.isArray(dataSource)) {
+        if (Array.isArray(dataSource) || Array.isArray(dataSource.slice())) {
             if (typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number') {
                 let newDataSource = [];
 
@@ -299,7 +307,7 @@ export default class Table extends React.Component<ITableProps,any>{
             columnsArray = [];
 
             if (dataSource.length) {
-                if (Array.isArray(dataSource)) {
+                if (Array.isArray(dataSource) || Array.isArray(dataSource.slice())) {
                     if (typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number') {
                         columnsArray.push({name : '_Array'});
                     } else {
