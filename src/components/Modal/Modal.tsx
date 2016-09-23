@@ -111,7 +111,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
     return (
       <div className={modalWrapperClass}>
         <div ref={'modal'} className={modalClass} style={props.style}>
-          <ModalHeader {...props}/>
+          <ModalHeader {...props} min={this.state.min} toggleMin={this.toggleMin.bind(this)}/>
           {props.open ? props.children : null}
         </div>
       </div>

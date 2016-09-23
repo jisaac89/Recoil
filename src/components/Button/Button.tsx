@@ -37,6 +37,7 @@ export interface IButtonProps {
   scrollOffset? : any;
   scrollDuration?: number;
   ghost?: boolean;
+  required ? : boolean;
 }
 
 export interface IButtonState {
@@ -119,6 +120,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let buttonClass = classNames(
       'r-Button',
       {'simple' : (props.simple)},
+      {'e-required' : (props.required)},
       {'outline' : (props.outline)},
       {'block' : (props.block)},
       {'column' : (props.strech)},

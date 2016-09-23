@@ -284,7 +284,7 @@ textarea, input[type="text"], input[type="password"], input[type='number'] {
 }
 
 .error-message{
-  color:red !important;
+  color:@error-background !important;
 }
 
 .error-pane.e-open{
@@ -304,4 +304,8 @@ textarea, input[type="text"], input[type="password"], input[type='number'] {
 .r-Toolbar.no-border > .r-Input > .r-Input__container,
 .r-Toolbar.no-border > .r-Input{
  border-color: transparent !important;
+}
+
+.r-Input__container.e-required{
+  border: 1px dashed @error-background !important;  
 }

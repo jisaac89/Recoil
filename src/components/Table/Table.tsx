@@ -12,7 +12,7 @@ import TableSearch from './TableSearch';
 
 interface ITableProps {
     // initial dataSource loaded as prop
-    dataSource :  Array<any>;
+    dataSource :  Array<any> | Object;
     // columns defined by user
     columns? : Array<any>;
     // a detail template function that returns a view
@@ -414,12 +414,6 @@ export default class Table extends React.Component<ITableProps,any>{
                     <TableFooter {...footerProps} />
                 </div>
             )
-        } else {
-            return (
-                <div className="p10 block text-center">
-                    <small><strong>Table</strong> - No columns defined.</small>
-                </div>
-            )
-        };
+        } else return null;
     }
 }
