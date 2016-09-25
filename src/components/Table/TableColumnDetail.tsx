@@ -5,6 +5,9 @@ import Open from '../Open/Open';
 import Table from '../Table/Table';
 
 export default class TableColumnDetail extends React.Component<any,any>{
+    shouldComponentUpdate(){
+        return true;
+    }
     render() {
 
         const self = this;
@@ -15,8 +18,8 @@ export default class TableColumnDetail extends React.Component<any,any>{
             return (
                 <tr className="r-TableColumnDetail">
                     <td colSpan={columns.length + (checkable ? 1 : 0 ) + (detailTemplate ? 1 : 0 )}>
-                        <Open if={detailTemplateOpenAll || detailTemplateSelectedElements.includes(element)}>
-                            {detailTemplate(element)}
+                        <Open if={detailTemplateSelectedElements.includes(element) || detailTemplateOpenAll}>
+                            {self.props.detailTemplate(element)}
                         </Open>
                     </td>
                 </tr>

@@ -58,7 +58,7 @@ export default class TableSearch extends React.Component<any, any>{
 
     let searchPartial = () => {
       return (
-        <Toolbar block noRadius className="mb10 ps10">
+        <Toolbar block noRadius className="mb10">
           <Input 
             title={props.searchTitle} 
             onChange={this.updateSearch.bind(this)} 

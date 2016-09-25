@@ -48,6 +48,8 @@ interface ITableProps {
 
     searchableKeys? : Array<any>;
     searchTitle? : string;
+
+    className? : string;
     
 }
 
@@ -88,6 +90,11 @@ export default class Table extends React.Component<ITableProps,any>{
         const self = this;
         if (nextProps.dataSource !== self.props.dataSource) {
             self.loadDataSource(nextProps.dataSource);
+        }
+        if (nextProps.detailTemplateSelectedElements !== self.props.detailTemplateSelectedElements) {
+            this.setState({
+                detailTemplateSelectedElements: nextProps.detailTemplateSelectedElements
+            })
         }
     }
 
@@ -399,10 +406,11 @@ export default class Table extends React.Component<ITableProps,any>{
 
         let tableClass = classNames(
             'r-Table',
-            {'e-selectable' : (props.rowIsSelectable)}
+            {'e-selectable' : (props.rowIsSelectable)},
+            props.className
         )
         
-        if (columnsArray.length) {
+        if (renderedPage.length && columnsArray.length) {
             return (
                 <div className={tableClass}>
                     <TableFooter {...footerProps} />

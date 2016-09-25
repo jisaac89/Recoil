@@ -16,11 +16,7 @@ export interface IWizardProps {
 const WizardSlide : any = (props : any) => {
   return (
     <div className={props.className}>
-      {(()=>{
-        if (props.visible) {
-          return props.children;
-        }
-      })()}
+      {props.visible ? props.children : null}
     </div>
   );
 }
@@ -60,7 +56,7 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
       );
 
       return(
-        <WizardSlide visible={selected || forward || backward} className={wizardSlideClass} key={index}>
+        <WizardSlide visible={selected} className={wizardSlideClass} key={index}>
           {item}
         </WizardSlide>
       )
