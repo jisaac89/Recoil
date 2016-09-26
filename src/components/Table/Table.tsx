@@ -73,13 +73,19 @@ export default class Table extends React.Component<ITableProps,any>{
         this.state = {
             dataSource : [],
             pageSize: props.pageSize || 10,
-            page: props.page || 0,
+            page: props.page - 1 || 0,
 
             detailTemplateSelectedElements : props.detailTemplateSelectedElements || [],
             selectedElements : props.selectedElements || [],
             
             searchedItems: []
         }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            page: nextProps.page !== this.props.page ? nextProps.page : this.state.page
+        })
     }
 
     loadDataSource(data){
