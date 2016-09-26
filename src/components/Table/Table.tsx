@@ -50,6 +50,8 @@ interface ITableProps {
     searchTitle? : string;
 
     className? : string;
+
+    detailTemplateOpenOnRowSelect? : boolean;
     
 }
 
@@ -79,12 +81,6 @@ export default class Table extends React.Component<ITableProps,any>{
             searchedItems: []
         }
     }
-
-    // componentDidMount() {
-    //     const self = this;
-    //     self.loadDataSource(this.props.dataSource);
-    // }
-
 
     componentWillReceiveProps(nextProps) {
         const self = this;

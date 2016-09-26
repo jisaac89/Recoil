@@ -10,13 +10,13 @@ export let assign = Object.assign ? Object.assign : function(target: any, ...sou
 
 export function search (dataSource,term, keys) {
 
-  let queryResult = [];
+  let queryResult : any = [];
   
   if (term.length > 0) {
       dataSource.forEach(function(item){
         keys.forEach((key, index) => {
-            if(item[key].toLowerCase().indexOf(term.toLowerCase())!=-1){
-                if (queryResult[index] !== item) {
+            if(item[key].toString().toLowerCase().indexOf(term.toString().toLowerCase())!=-1){
+                if (!queryResult.includes(item)) {
                     queryResult.push(item);    
                 }
             }
