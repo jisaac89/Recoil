@@ -80,21 +80,21 @@ export default class Table extends React.Component<ITableProps,any>{
         }
     }
 
-    componentDidMount() {
-        const self = this;
-        self.loadDataSource(this.props.dataSource);
-    }
+    // componentDidMount() {
+    //     const self = this;
+    //     self.loadDataSource(this.props.dataSource);
+    // }
 
 
-    componentWillReceiveProps(nextProps) {
-        const self = this;
-            self.loadDataSource(nextProps.dataSource);
-            if(nextProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
-            this.setState({
-                detailTemplateSelectedElements : nextProps.detailTemplateSelectedElements
-            })
-        }
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     const self = this;
+    //         self.loadDataSource(nextProps.dataSource);
+    //         if(nextProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
+    //         this.setState({
+    //             detailTemplateSelectedElements : nextProps.detailTemplateSelectedElements
+    //         })
+    //     }
+    // }
 
     loadDataSource(data){
         const self = this;
@@ -109,9 +109,7 @@ export default class Table extends React.Component<ITableProps,any>{
                 let newDataSource = [];
 
                 data.forEach(element => {
-                    newDataSource.push({
-                        '_Array' : element
-                    })
+                    newDataSource.push(element)
                 });
 
                 setDataSourceState(newDataSource);
@@ -305,8 +303,16 @@ export default class Table extends React.Component<ITableProps,any>{
         let dataSource = this.loadDataSource(this.props.dataSource);
 
         let columnsArray;
+        let isArray = false;
 
         // if columns props doesnt exist then automatically create columns
+
+        if (dataSource instanceof Array) {
+            if (typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number') {
+                isArray = true;
+            } 
+        }
+
 
         if (props.columns) {
             columnsArray = props.columns;
@@ -365,7 +371,8 @@ export default class Table extends React.Component<ITableProps,any>{
             selectedElements : selectedElements,
             checkable: checkable,
             detailTemplateHideToggle: detailTemplateHideToggle,
-            hideColumns: hideColumns
+            hideColumns: hideColumns,
+            isArray: isArray
         }
 
         let headProps = {

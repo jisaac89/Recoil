@@ -10,6 +10,7 @@ interface ITableDataProps {
     column? : any;
     element? : any;
     hideColumns? : any;
+    isArray? : boolean;
 }
 
 interface ITableDataState {
@@ -53,11 +54,17 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
         const self = this;
         let state = self.state;
         let {type} = state;
-        let {value, column, element, hideColumns} = self.props;
+        let {value, column, element, hideColumns, isArray} = self.props;
 
         let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(column.title ? column.title : column.name);
 
-        if (type!== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
+        if (isArray) {
+            return (
+                <td width={column.width}>
+                    {element}
+                </td>
+            )           
+        } else if (type!== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
             return (
                 <td width={column.width}>
                     {column.template ? column.template(column.name ? value : element) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}

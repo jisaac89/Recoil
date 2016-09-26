@@ -66,7 +66,8 @@ export default class TableColumn extends React.Component<any,any>{
             hideColumns,
             
             checkable,
-            onRowSelect
+            onRowSelect,
+            isArray
         } = props;
 
         let TableDataArray = []
@@ -78,7 +79,7 @@ export default class TableColumn extends React.Component<any,any>{
 
         let createList = (value, key) => {
             return (
-                <TableData hideColumns={hideColumns} element={element} key={key} value={value} column={columns[key]} />
+                <TableData isArray={isArray} hideColumns={hideColumns} element={element} key={key} value={value} column={columns[key]} />
             )
         }
 
