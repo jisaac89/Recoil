@@ -86,15 +86,15 @@ export default class Table extends React.Component<ITableProps,any>{
     // }
 
 
-    // componentWillReceiveProps(nextProps) {
-    //     const self = this;
-    //         self.loadDataSource(nextProps.dataSource);
-    //         if(nextProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
-    //         this.setState({
-    //             detailTemplateSelectedElements : nextProps.detailTemplateSelectedElements
-    //         })
-    //     }
-    // }
+    componentWillReceiveProps(nextProps) {
+        const self = this;
+            self.loadDataSource(nextProps.dataSource);
+            if(nextProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
+            this.setState({
+                detailTemplateSelectedElements : nextProps.detailTemplateSelectedElements
+            })
+        }
+    }
 
     loadDataSource(data){
         const self = this;
@@ -288,7 +288,7 @@ export default class Table extends React.Component<ITableProps,any>{
         let state = self.state;
 
         self.setState({
-            searchedItems: search(state.dataSource, term, keys),
+            searchedItems: search(this.props.dataSource, term, keys),
             page: 0 
         })
     }
