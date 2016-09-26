@@ -82,16 +82,6 @@ export default class Table extends React.Component<ITableProps,any>{
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        const self = this;
-            self.loadDataSource(nextProps.dataSource);
-            if(nextProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
-            this.setState({
-                detailTemplateSelectedElements : nextProps.detailTemplateSelectedElements
-            })
-        }
-    }
-
     loadDataSource(data){
         const self = this;
         let dataSource = [];
@@ -293,7 +283,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, sortable, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
+        let {detailTemplate, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         let dataSource = this.loadDataSource(this.props.dataSource);
@@ -368,7 +358,8 @@ export default class Table extends React.Component<ITableProps,any>{
             checkable: checkable,
             detailTemplateHideToggle: detailTemplateHideToggle,
             hideColumns: hideColumns,
-            isArray: isArray
+            isArray: isArray,
+            detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect
         }
 
         let headProps = {
@@ -410,6 +401,7 @@ export default class Table extends React.Component<ITableProps,any>{
         let tableClass = classNames(
             'r-Table',
             {'e-selectable' : (props.rowIsSelectable)},
+            {'e-selectable' : (props.detailTemplateOpenOnRowSelect)},
             props.className
         )
         
