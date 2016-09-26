@@ -88,31 +88,27 @@ export default class Table extends React.Component<ITableProps,any>{
 
     componentWillReceiveProps(nextProps) {
         const self = this;
-        if (nextProps.dataSource !== self.props.dataSource) {
             self.loadDataSource(nextProps.dataSource);
-        }
-        if (nextProps.detailTemplateSelectedElements !== self.props.detailTemplateSelectedElements) {
+            if(nextProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
             this.setState({
-                detailTemplateSelectedElements: nextProps.detailTemplateSelectedElements
+                detailTemplateSelectedElements : nextProps.detailTemplateSelectedElements
             })
         }
     }
 
-    loadDataSource(dataSource){
+    loadDataSource(data){
         const self = this;
-        // let {dataSource} = self.props;
+        let dataSource = [];
 
-        let setDataSourceState = (dataSource) => {
-            self.setState({
-                dataSource : dataSource
-            })
+        let setDataSourceState = (data) => {
+            dataSource = data
         }
 
-        if (dataSource instanceof Array) {
-            if (typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number') {
+        if (data instanceof Array) {
+            if (typeof data[0] === 'string' || typeof data[0] === 'number') {
                 let newDataSource = [];
 
-                dataSource.forEach(element => {
+                data.forEach(element => {
                     newDataSource.push({
                         '_Array' : element
                     })
@@ -121,13 +117,15 @@ export default class Table extends React.Component<ITableProps,any>{
                 setDataSourceState(newDataSource);
                 
             } else {
-                setDataSourceState(dataSource);
+                setDataSourceState(data);
             }
-        } else if (typeof dataSource === 'object') {
-            setDataSourceState([dataSource]);
+        } else if (typeof data === 'object') {
+            setDataSourceState([data]);
         } else {
-            setDataSourceState(dataSource)
+            setDataSourceState(data)
         }
+
+        return dataSource;
 
     }
 
@@ -302,7 +300,9 @@ export default class Table extends React.Component<ITableProps,any>{
         const self = this;
         const props = self.props;
         let {detailTemplate, sortable, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
-        let {columns, dataSource, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
+        let {columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
+
+        let dataSource = this.loadDataSource(this.props.dataSource);
 
         let columnsArray;
 
