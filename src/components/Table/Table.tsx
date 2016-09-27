@@ -42,7 +42,7 @@ interface ITableProps {
     pageSizerOptions? : Array<any>;
 
     onPageSizeChange? : (event: React.MouseEvent) => void;
-    onPageChange? : (event: React.MouseEvent) => void;
+    onPageChange? : any;
 
     sortable ? : boolean;
 
