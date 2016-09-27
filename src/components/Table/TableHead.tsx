@@ -71,7 +71,7 @@ export default class TableHead extends React.Component<any,any>{
             } else {
                 columnHeadArray.push(
                     <th width={key.width} key={key.name || key.title}>
-                        <Button className="p0" icon={this.state.column === (key.name || key.title )? 'sort-'+ this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, key.name || key.title) : null}>{key.title || key.name}</Button>
+                        <Button className="p0" icon={this.state.column === (key.name || key.title) ? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>
                     </th>
                 )
             }

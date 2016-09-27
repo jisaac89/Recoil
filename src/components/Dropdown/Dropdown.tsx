@@ -41,6 +41,7 @@ interface P {
     hideHeader?: boolean;
     columns?: Array<any>;
     searchableKeys?: Array<any>;
+    sortable?: boolean;
 }
 
 export interface State {

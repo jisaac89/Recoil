@@ -11,7 +11,8 @@ export default class Align extends React.Component<any, any> {
     let alignClass = classNames(
       'r-Align',
       {'vertical' : (props.vertical)},
-      {'horizontal' : (!props.vertical)}
+      { 'horizontal': (!props.vertical) },
+      props.className
     );
 
     let createList = (element, key) => {

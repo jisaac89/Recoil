@@ -51,7 +51,11 @@ interface ITableProps {
 
     className? : string;
 
-    detailTemplateOpenOnRowSelect? : boolean;
+    detailTemplateOpenOnRowSelect?: boolean;
+
+    rowCount?: number;
+
+    hidePageSize?: boolean;
     
 }
 
@@ -73,7 +77,7 @@ export default class Table extends React.Component<ITableProps,any>{
         this.state = {
             dataSource : [],
             pageSize: props.pageSize || 10,
-            page: props.page - 1 || 0,
+            page: props.page || 0,
 
             detailTemplateSelectedElements : props.detailTemplateSelectedElements || [],
             selectedElements : props.selectedElements || [],
@@ -201,24 +205,28 @@ export default class Table extends React.Component<ITableProps,any>{
         this.setState({
             page: 0
         })
+        this.props.onPageChange ? this.props.onPageChange(0) : null
     }
 
     previousPage() {
         this.setState({
             page: this.state.page -= 1
-        })
+        });
+        this.props.onPageChange ? this.props.onPageChange(this.state.page - 1) : null;
     }
 
     nextPage() {
         this.setState({
             page: this.state.page += 1
         })
+        this.props.onPageChange ? this.props.onPageChange(this.state.page + 1) : null
     }
 
     lastPage(numberOfPages) {
         this.setState({
             page: numberOfPages - 1
         })
+        this.props.onPageChange ? this.props.onPageChange(numberOfPages - 1) : null
     }
 
     gotoPage(i) {
@@ -289,7 +297,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
+        let {detailTemplate, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         let dataSource = this.loadDataSource(this.props.dataSource);
@@ -336,9 +344,9 @@ export default class Table extends React.Component<ITableProps,any>{
             activeRows = dataSource
         }
 
-        if (pageSize) {
+        if (rowCount) {
             numberPerPage = pageSize;
-            numberOfPages = Math.ceil(activeRows.length / (pageSize));
+            numberOfPages = Math.ceil(rowCount / pageSize);
         } else {
             numberPerPage = pageSize;
             numberOfPages = Math.ceil(activeRows.length / (pageSize));
@@ -355,7 +363,7 @@ export default class Table extends React.Component<ITableProps,any>{
         // assign the props
 
         let tableProps = {
-            dataSource: renderedPage,
+            dataSource: rowCount ? dataSource : renderedPage,
             columns: columnsArray,
             hideHeader: hideHeader,
             detailTemplate: detailTemplate,
@@ -394,8 +402,10 @@ export default class Table extends React.Component<ITableProps,any>{
             changePageSize: this.changePageSize.bind(this),
             pageSizerOptions: pageSizerOptions,
             dataSource: dataSource,
-            pageSize: pageSize,
-            onPageChange: onPageChange
+            pageSize: this.props.pageSize,
+            onPageChange: onPageChange,
+            rowCount: rowCount,
+            hidePageSize: hidePageSize
         }
 
         let tableSearchProps = {
@@ -411,7 +421,7 @@ export default class Table extends React.Component<ITableProps,any>{
             props.className
         )
         
-        if (renderedPage.length && columnsArray.length) {
+        if ((renderedPage.length || dataSource.length) && columnsArray.length) {
             return (
                 <div className={tableClass}>
                     <TableFooter {...footerProps} />

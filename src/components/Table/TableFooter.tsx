@@ -17,13 +17,15 @@ export interface ITableFooterProps {
   dataSource ? : Array<any>;
   pageSize ? : number;
   onPageChange? : (event: React.MouseEvent) => void;
-  pageSizerOptions ? : Array<any>;
+  pageSizerOptions?: Array<any>;
+  hidePageSize?: boolean;
+  rowCount?: number;
 }
 
 export default class TableFooter extends React.Component<ITableFooterProps, {}>{
   gotoPage(i) {
     this.props.gotoPage(i);
-    this.props.onPageChange ? this.props.onPageChange(i + 1) : null
+    this.props.onPageChange ? this.props.onPageChange(i) : null
   }
 
   onSelected(item) {
@@ -51,7 +53,9 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
       pageSizerOptions,
       numberOfPages,
       numberPerPage,
-      dataSource
+      dataSource,
+      rowCount,
+      hidePageSize
     } = props;
 
     let paginationPartial = [];
@@ -63,11 +67,13 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
         currentPage === i + 1) {
         paginationPartial.push(
           <Button size="small" tabIndex={-1} theme={currentPage === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} key={i}>
-            {i+1}
+            {i}
           </Button>
         )
       }
     }
+
+    let dataSourceLength = rowCount || dataSource.length;
 
     if(this.props.numberOfPages === 1) {
       return null
@@ -80,8 +86,8 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
               {paginationPartial}
               <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
               <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages)} icon="fast-forward"></Button>
-              <Dropdown hideHeader rowIsSelectable="single" onChange={this.onSelected.bind(this)} material size="small" title={"Page Size " + numberPerPage} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} />
-              <Button simple right size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (currentPage + 1) * pageSize + '' + (' of ' + dataSource.length + ' items')}</Button>
+              {hidePageSize ? null : <Dropdown hideHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} />}
+              <Button simple right size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (currentPage + 1) * pageSize + '' + (' of ' + dataSourceLength + ' items')}</Button>
             </Toolbar>
           </div>
         )
