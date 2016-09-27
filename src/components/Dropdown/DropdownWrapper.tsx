@@ -5,12 +5,13 @@ import DropdownTable from './DropdownTable';
 
 interface IDropdownWrapperProps {
     selectItem?: (item: any) => void;
-    dataSource?: Array<any>;
+    dataSource?: Array<any> | Object;
     onRowSelect?: (item: any) => void;
     selected?: Array<any>;
     material?: boolean;
     open?: boolean;
-    width? : string;
+    width?: string;
+    searchableKeys?: Array<any>;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {

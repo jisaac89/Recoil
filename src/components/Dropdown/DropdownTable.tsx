@@ -7,10 +7,11 @@ interface IDropdownTableProps {
     onRowSelect?: (item: any) => void;
     selected?: any;
     open?: boolean;
-    dataSource? : Array<any>;
+    dataSource? : Array<any> | Object;
     pageSizerOptions ?: Array<any>;
     rowIsSelectable? : any;
-    hideHeader ? : boolean;
+    hideHeader?: boolean;
+    searchableKeys?: Array<any>;
 }
 
 export default class DropdownTable extends React.Component<IDropdownTableProps, {}> {

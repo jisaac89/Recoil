@@ -39,7 +39,8 @@ interface P {
     pageSizerOptions? : Array<Number>;
     dataSource?: Array<any> | Object;
     hideHeader?: boolean;
-    columns? : Array<any>;
+    columns?: Array<any>;
+    searchableKeys?: Array<any>;
 }
 
 export interface State {
