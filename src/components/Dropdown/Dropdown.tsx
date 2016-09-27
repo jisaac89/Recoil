@@ -16,7 +16,7 @@ interface P {
     toggleCpenOnRowSelect? : boolean;
     open? : boolean;
     selected? : Array<any>;
-    rowIsSelectable?: any;
+    rowIsSelectable?: string | boolean;
     block?: boolean;
     right?: boolean;
     left?: boolean;
@@ -36,9 +36,10 @@ interface P {
     outline? : boolean;
     simple?: boolean;
     width? : string;
-    pageSizerOptions? : any;
-    dataSource? : any;
-    hideHeader? : boolean;
+    pageSizerOptions? : Array<Number>;
+    dataSource?: Array<any> | Object;
+    hideHeader?: boolean;
+    columns? : Array<any>;
 }
 
 export interface State {
