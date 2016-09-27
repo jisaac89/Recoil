@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Selectable from '../Selectable/Selectable';
 
-import DropdownDataSource from './DropdownDataSource';
+import DropdownTable from './DropdownTable';
 
 interface IDropdownWrapperProps {
     selectItem?: (item: any) => void;
@@ -10,6 +10,7 @@ interface IDropdownWrapperProps {
     selected?: Array<any>;
     material?: boolean;
     open?: boolean;
+    width? : string;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
@@ -24,13 +25,13 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
     let DropdownContent;
 
     if (props.dataSource) {
-      DropdownContent = <DropdownDataSource {...props} />;
+      DropdownContent = <DropdownTable {...props} />;
     } else {
       DropdownContent = props.children;
     }
 
     return(
-      <div className="r-DropdownWrapper">
+      <div style={{width : this.props.width}} className="r-DropdownWrapper">
         {DropdownContent}
       </div>
     );

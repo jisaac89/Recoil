@@ -1,0 +1,61 @@
+@import '../../less/Global';
+
+.r-Table{
+    width:100%;
+}
+
+.r-Table > table {
+    width:100%;
+}
+
+.r-Table > table > thead{
+    text-align: left;
+}
+
+.r-Table > table > thead .r-Button{
+    text-align: left;
+    text-transform: uppercase;
+    font-size:13px;
+    font-weight: bold;
+}
+
+.r-Table > table > thead > tr > th,
+.r-TableColumn td{
+    padding:10px;
+}
+
+.r-Table td{
+    font-size: 14px;
+    font-weight: 300;
+    color: #585858;
+}
+
+.r-TableColumnSelectable > td{
+    position: relative;
+}
+
+.r-TableColumn{
+    background:white;
+    border-bottom:1px solid #ccc;
+    transition: 300ms all ease-in;
+}
+
+.r-Table.e-selectable .r-TableColumn{
+    cursor: pointer;
+}
+
+.r-TableColumn:hover{
+    background:#f2faff;
+}
+
+.r-TableColumnSelectable > td{
+    padding:0;
+}
+
+.r-TableFooter{
+    padding:10px;
+}
+
+// .r-Table>table>thead>tr>th{
+//     padding-top:0;
+// }

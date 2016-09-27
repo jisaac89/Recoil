@@ -28,47 +28,51 @@ export interface IModalState {
 export default class Modal extends React.Component<IModalProps, IModalState>{
   mouseIsDown: boolean;
 
+  refs: {
+      [key: string]: (Element);
+      modal: (HTMLInputElement);
+  }
+
   public static defaultProps = {
       type: 'button',
       dropDirection: 'down'
   };
+
+  
   
   constructor(props){
     super(props);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.state = {
       min : false,
       open: props.open || false
     };
+    
   }
   componentWillReceiveProps(nextProps) {
+      const self = this;
       const state = this.state;
       this.setState({
           open : nextProps.open !== state.open ? nextProps.open : state.open
       });
-  }
-  componentDidMount() {
-      window.addEventListener('mousedown', this.pageClick.bind(this), false);
-  }
-  componentWillUnmount(){
-      window.removeEventListener('mousedown', this.pageClick.bind(this), false);
-  }
-  pageClick(e) {
-      if (this.mouseIsDown) {
-          return;
+
+      if(nextProps.open) {
+        document.addEventListener('click', self.handleDocumentClick);
       }
-
-      this.setState({
-          open: false
-      });
-
-      this.props.onClose ? this.props.onClose() : null;
   }
-  onMouseDown() {
-      this.mouseIsDown = true;
+  componentWillUnmount() {
+      document.removeEventListener('click', this.handleDocumentClick);
   }
-
-  onMouseUp() {
-      this.mouseIsDown = false;
+  handleDocumentClick(e) {
+      const self = this;
+      var modal = this.refs.modal;
+      if (this.state.open && modal && !modal.contains(e.target)) {
+          this.setState({
+              open: false
+          })
+          document.removeEventListener('click', self.handleDocumentClick);
+          self.props.onClose ? self.props.onClose() : null
+      }
   }
   toggleMin() {
     this.setState({
@@ -104,19 +108,10 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
 
     let openProps;
 
-    if (this.state.open) {
-      openProps = {
-        onMouseDown: this.onMouseDown.bind(this),
-        onMouseUp: this.onMouseUp.bind(this)
-      }
-    } else {
-      openProps = null;
-    }
-
     return (
       <div className={modalWrapperClass}>
-        <div className={modalClass} style={props.style} {...openProps}>
-          <ModalHeader {...props}/>
+        <div ref={'modal'} className={modalClass} style={props.style}>
+          <ModalHeader {...props} min={this.state.min} toggleMin={this.toggleMin.bind(this)}/>
           {props.open ? props.children : null}
         </div>
       </div>

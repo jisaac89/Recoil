@@ -5,14 +5,26 @@ import './Shrink.less';
 export interface IShrinkProps {
   if ? : boolean;
   fill ?  : boolean;
-  className ? : any;
+  className ? : string;
   children ? : any;
+  opacity ? : number;
+  scale ? : number | string;
+  position ? : string;
 }
 
 export default class Shrink extends React.Component<IShrinkProps, {}>{
+
+  public static defaultProps = {
+      opacity: 5,
+      scale: .98,
+      position: 'relative'
+  };
+
   public render() {
     const self = this;
     const props = self.props;
+
+    let shrinkStyle;
 
     let shrinkClass = classNames(
       'r-Shrink',
@@ -22,8 +34,20 @@ export default class Shrink extends React.Component<IShrinkProps, {}>{
       props.className
     );
 
+    if (props.if) {
+      shrinkStyle = {
+        'transform' : 'scale('+props.scale+')',
+        opacity : props.opacity / 100,
+        position : props.position
+      }
+    } else {
+      shrinkStyle = {
+        position : props.position
+      }
+    };
+
     return (
-      <div className={shrinkClass}>
+      <div className={shrinkClass} style={shrinkStyle}>
         {props.children}
       </div>
     );

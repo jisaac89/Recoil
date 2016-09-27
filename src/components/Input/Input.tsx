@@ -35,6 +35,7 @@ export interface IInputProps {
   max ? : number;
   min ? : number;
   name?: string;
+  required? : boolean;
 }
 
 export interface IInputState {
@@ -219,6 +220,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       'flohide',
       'no-title',
       'e-advanced',
+      {'e-required':(props.required)},
       props.className
     );
 

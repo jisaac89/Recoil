@@ -1,39 +1,34 @@
 @import '../../less/Global';
 
-.r-Align,
-.r-align > .r-Align__column{
-  box-sizing:border-box;
-}
-
-.r-Align:before,
-.r-Align:after {
-    content: " ";
-    display: table;
-}
-
-.r-Align:after {
-    clear: both;
-}
-
-.r-Align > .r-Align__column{
-    position: relative;
-    height: 100%;
-}
-
-.r-Align > .r-Align__column:nth-child(1),
-.r-Align__column > .r-Align__column:nth-child(1){
-  margin-left:0 !important;
-}
-
-.r-Align > .r-Emerge{
-  width:100%;
-}
-
-.r-Align > .r-Emerge > .r-Align__column:nth-child(1){
-  margin-left:0 !important;
-}
-
 .r-Align{
-  width:100%;
+  display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
   height: 100%;
+	align-items: center;
+}
+
+.r-Align.vertical{
+  flex-direction: column !important;
+}
+
+.r-Align.horizontal > .fill-height:not(:last-child){
+  padding-right:0 !important;
+}
+
+.r-Align.vertical > .fill-height:not(:last-child){
+  padding-bottom:0 !important;
+}
+
+.fill-height{
+   flex: 1;
+   height: 100%;
+   width:100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

@@ -10,16 +10,13 @@ export interface IWizardProps {
   style ? : any;
   mobile? : boolean;
   animate? : boolean;
+  fill ? : boolean;
 }
 
 const WizardSlide : any = (props : any) => {
   return (
     <div className={props.className}>
-      {(()=>{
-        if (props.visible) {
-          return props.children;
-        }
-      })()}
+      {props.visible ? props.children : null}
     </div>
   );
 }
@@ -37,7 +34,8 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
     const props = self.props;
 
     let wizardClass = classNames(
-      'r-Wizard'
+      'r-Wizard',
+      {'fill' : (props.fill)}
     );
 
     let createSlidesPartial = (item, index) => {
@@ -53,6 +51,7 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
         {'e-forward' : (props.slideIndex < index)},
         {'e-vertical' : (props.vertical)},
         {'e-dont-animate' : (props.animate === false)},
+        
         props.className
       );
 

@@ -1,7 +1,7 @@
 @import '../../less/Global';
 
 .r-Wizard{
-  overflow: hidden !important;
+  // overflow: hidden !important;
 
   .r-Wizard__track{
     .transform(translateZ(0));
@@ -78,4 +78,9 @@
 
 .r-WizardSlide.e-vertical{
   box-shadow: none;
+}
+
+.r-Wizard.fill,
+.r-Wizard.fill > .r-Wizard__track {
+  height: 100%;
 }

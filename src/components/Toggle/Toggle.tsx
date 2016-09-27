@@ -93,7 +93,7 @@ export default class Toggle extends React.Component<any, any>{
       slideIndex = 0
     }
 
-    if (props.type === 'colors' && props.array && props.array.length > 2) {
+    if (props.type === 'colors' || props.type === 'strings' || props.type === 'numbers' && props.array && props.array.length > 2) {
       return (
         <div className={toggleClass}>
           {this.props.array.map(createList)}
@@ -106,13 +106,13 @@ export default class Toggle extends React.Component<any, any>{
           <input {...inputProps} />
           {this.props.label}
           {props.array && props.array.length === 2 || props.iconArray && props.iconArray.length === 2 ? 
-          <label className="r-Toggle__button">
+          <label className={"r-Toggle__button "+props.theme}>
             <Wizard slideIndex={slideIndex}>
               <div className="text-right">{props.array && props.array[0] || (props.iconArray[0] ? <i className={"fa fa-"+props.iconArray[0]} /> : null)}</div>
               <div className="text-white">{props.array && props.array[1] || (props.iconArray[1] ? <i className={"fa fa-"+props.iconArray[1]} /> : null)}</div>
             </Wizard>
           </label> : 
-          <label className="r-Toggle__button"></label>}
+          <label className={"r-Toggle__button "+props.theme}></label>}
         </div>
       )
     }

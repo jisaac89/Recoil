@@ -1,21 +1,21 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button from '../Button/Button';
+import * as classNames from 'classnames';
 
 import './Checkbox.less';
 
 export interface ICheckboxProps {
   checked? : boolean;
-  tristate? : boolean;
   disabled? : boolean;
   size? : "small" | "medium" | "large" | "xlarge";
   ghost? : boolean;
   theme? : 'primary' | 'error' | 'success' | 'default';
   icon? : string;
+  onChange? : any;
 }
 
 export interface ICheckboxState {
-  value? : number;
   checked? : boolean;
 }
 
@@ -23,42 +23,33 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
   constructor(props) {
     super(props);
     this.state = {
-      value : 0,
-      checked: false
+      checked: props.checked || false
     }
-  }
-
-  public componentDidMount() {
-    this.setState({
-      value: this.props.tristate ? 2 : this.props.checked ? 1 : 0,
-      checked : this.props.checked
-    })
   }
 
   public toggleChecked() {
     this.setState({
-      value : this.state.value === 0 ? 1 : 0,
       checked: !this.state.checked
     })
+
+    this.props.onChange(this.state.checked);
   }
 
   public notchecked() {
     this.setState({
-      value : 0,
       checked: false
     })
   }
 
   public checked() {
     this.setState({
-      value : 1,
       checked: true
     })
   }
-
-  public indeterminate() {
+  
+  componentWillReceiveProps(nextProps){
     this.setState({
-      value : 2
+      checked : nextProps.checked !== this.state.checked ? nextProps.checked : this.state.checked
     })
   }
 
@@ -67,17 +58,21 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     const self = this;
     const props = self.props;
     let state = self.state;
-    let {checked} = props;
-    let {value} = state;
+    let {checked} = state;
+
+    let checkboxClass = classNames(
+      'r-Checkbox',
+      {'disabled' : (props.disabled)}
+    )
 
     return (
         <Button
-          className="r-Checkbox"
+          className={checkboxClass}
           size={props.size}
-          progressiveClick={this.props.tristate ? [this.checked.bind(this), this.notchecked.bind(this)] : null}
           onClick={this.toggleChecked.bind(this)}
-          theme={value === 1 ? 'primary' : 'default'}
+          theme={props.theme ? props.theme : checked ? 'primary' : 'default'}
           icon={props.icon}
+          disabled={props.disabled}
         >
         </Button>
     )

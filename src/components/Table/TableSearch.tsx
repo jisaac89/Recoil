@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
 
-export default class GridSearch extends React.Component<any, any>{
+export default class TableSearch extends React.Component<any, any>{
     _throttleTimeout: any;
 
   public static defaultProps = {

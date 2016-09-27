@@ -15,7 +15,7 @@ export function search(dataSource, term, keys) {
     if (term.length > 0) {
         dataSource.forEach(function (item) {
             keys.forEach((key, index) => {
-                if (item[key].toLowerCase().indexOf(term.toLowerCase()) != -1) {
+                if (item[key].toString().toLowerCase().indexOf(term.toString().toLowerCase()) != -1) {
                     if (queryResult[index] !== item) {
                         queryResult.push(item);
                     }
@@ -51,4 +51,33 @@ export function ObjectAssignPolyfill() {
             };
         })();
     }
+
+}
+
+export function isType (value) {
+
+    let type;
+
+    if (Array.isArray(value)) {
+        type = 'array';
+    } else if (typeof value === 'object') {
+        type = 'object'
+    } else if (typeof value === 'string') {
+        type = 'string'
+    } else {
+        type = 'value'
+    }
+
+    return type;
+}
+
+export function arraysEqual(arr1, arr2){
+    if(arr1.length !== arr2.length)
+        return false;
+    for(var i = arr1.length; i--;) {
+        if(arr1[i] !== arr2[i])
+            return false;
+    }
+
+    return true;
 }
