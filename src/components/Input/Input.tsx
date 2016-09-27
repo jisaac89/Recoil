@@ -34,6 +34,7 @@ export interface IInputProps {
   maxLength? : number;
   max ? : number;
   min ? : number;
+  name?: string;
 }
 
 export interface IInputState {
@@ -104,7 +105,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   public onChange(value) {
 
     if (this.props.onChange) {
-      this.props.onChange(value.target.value);
+      this.props.onChange(value.target.value, value);
     } else {
       return null;
     }
@@ -180,16 +181,16 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     // switch input type depending on propType
     switch (props.type) {
       case 'password':
-        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
+          inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
         break;
       case 'text':
-        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
+          inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
         break;
       case 'number':
-        inputPartial = <input onKeyDown={self.limit.bind(self, props.maxLength)} max={props.max} min={props.min} maxLength={props.maxLength} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
+          inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength)} max={props.max} min={props.min} maxLength={props.maxLength} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
         break;
       case 'textarea':
-        inputPartial = <textarea rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;
+          inputPartial = <textarea name={props.name} rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;
         break;
       default:
     }
