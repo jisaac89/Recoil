@@ -67,7 +67,7 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
         currentPage === i + 1) {
         paginationPartial.push(
           <Button size="small" tabIndex={-1} theme={currentPage === i ? 'primary' : null} onClick={self.gotoPage.bind(self, i)} key={i}>
-            {i}
+            {i + 1}
           </Button>
         )
       }
