@@ -67,7 +67,7 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
         } else if (type!== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
             return (
                 <td width={column.width}>
-                    {column.template ? column.template(column.name ? value : element) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
+                    {column.template ? column.template(element) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
                 </td>
             )
         } return null;
