@@ -402,7 +402,7 @@ export default class Table extends React.Component<ITableProps,any>{
             changePageSize: this.changePageSize.bind(this),
             pageSizerOptions: pageSizerOptions,
             dataSource: dataSource,
-            pageSize: this.props.pageSize,
+            pageSize: pageSize,
             onPageChange: onPageChange,
             rowCount: rowCount,
             hidePageSize: hidePageSize
