@@ -63,6 +63,8 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
     for (let i = 0; i < self.props.numberOfPages; i++) {
       if (
         currentPage === i - 1 ||
+        currentPage === i - 2 ||
+        currentPage === i + 2 ||
         currentPage === i ||
         currentPage === i + 1) {
         paginationPartial.push(

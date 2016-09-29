@@ -11,6 +11,7 @@ export interface IWizardProps {
   mobile? : boolean;
   animate? : boolean;
   fill ? : boolean;
+  overflow? : boolean;
 }
 
 const WizardSlide : any = (props : any) => {
@@ -35,7 +36,8 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
 
     let wizardClass = classNames(
       'r-Wizard',
-      {'fill' : (props.fill)}
+      {'fill' : (props.fill)},
+      {'e-overflow': (props.overflow)}
     );
 
     let createSlidesPartial = (item, index) => {

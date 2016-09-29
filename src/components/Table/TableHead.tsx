@@ -55,12 +55,12 @@ export default class TableHead extends React.Component<any,any>{
             column : columnName
         })
 
-        this.props.toggleSorting(columnName, self.state.sortType);
+        self.props.onSort ? self.props.onSort(columnName, self.state.sortType) : self.props.toggleSorting(columnName, self.state.sortType);
     }
 
     render() {
         
-        let {detailTemplate, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements, sortable} = this.props;
+        let {detailTemplate,onSort, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements, sortable} = this.props;
         let columnHeadArray = [];
         
         columns.map((key) => {
