@@ -11,7 +11,6 @@ import DropdownWrapper from './DropdownWrapper';
 import './Dropdown.less';
 
 interface P {
-    onRowSelect?: Function;
     onClose?: Function;
     toggleCpenOnRowSelect? : boolean;
     open? : boolean;
@@ -101,15 +100,15 @@ export default class DropdownComponent extends React.Component<P, State>{
             this.props.onClose ? this.props.onClose() : null
     }
     onRowSelect(item){
-        this.props.onChange ? this.props.onChange(item) : null;
+        //this.props.onChange ? this.props.onChange(item) : null;
         if (this.props.rowIsSelectable) {
             this.setState({
                 selected : [item]
             })
             this.props.rowIsSelectable === 'single' ? this.toggleOpen() : null
         }
-        else if (this.props.onRowSelect) {
-            this.props.onRowSelect(item);
+        else if (this.props.onChange) {
+            this.props.onChange(item);
             this.toggleOpen();
         } else if (this.props.toggleCpenOnRowSelect) {
             this.toggleOpen();

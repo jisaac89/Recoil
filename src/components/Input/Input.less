@@ -69,7 +69,7 @@
 .r-Input.xlarge > .r-Input__container > small,
 .r-Input.xlarge > .r-Input__container > input
 {
-  font-size:25px;;
+  font-size:25px;
 }
 
 .r-Input.xlarge.checked .r-Input__container > small {
@@ -98,9 +98,6 @@ textarea {
   vertical-align: middle;
   -webkit-appearance: none;
   -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
   overflow: hidden;
   background: #fff;
   cursor: pointer !important;
@@ -308,4 +305,12 @@ textarea, input[type="text"], input[type="password"], input[type='number'] {
 
 .r-Input__container.e-required{
   border: 1px dashed @error-background !important;  
+}
+
+.r-Input__container.e-disabled{
+    cursor: not-allowed;
+    opacity: .50;
+    filter: alpha(opacity=65);
+    .box-shadow(0);
+    pointer-events: none;
 }

@@ -36,6 +36,7 @@ export interface IInputProps {
   min ? : number;
   name?: string;
   required? : boolean;
+  disabled? : boolean;
 }
 
 export interface IInputState {
@@ -216,6 +217,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       props.size,
       {'w100' : (props.block)},
       {'checked' : (this.state.checked)},
+      {'e-disabled' : (props.disabled)},
       'r-Input__container',
       'flohide',
       'no-title',
