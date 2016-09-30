@@ -234,7 +234,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       return (
         <div onMouseEnter={self.mouseOut.bind(self)} onMouseLeave={self.mouseOut.bind(self)} className={inputWrapperClass} style={props.style}>
             {errorInlinePartialTop}
-            <div className={inputClass}>
+            <div className={inputClassadvanced}>
                 {iconPartial}
                 <small>{props.title}</small>
                 {inputPartial}

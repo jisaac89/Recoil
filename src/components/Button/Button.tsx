@@ -78,7 +78,16 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickLength: props.progressiveClick.length
       })
     }
-  }
+
+   }
+
+    bringIntoView() {
+        // todo add smooth scrolling, events, scrolling obj
+         window.setTimeout(() => {
+            document.getElementById(this.props.scrollToId).scrollIntoView()
+         }, 350)
+     }
+    
 
   public onClick(event: React.MouseEvent) {
     const self = this;
@@ -88,6 +97,8 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         checked : true
       });
     }
+
+    this.props.scrollToId ? this.bringIntoView() : null;
   }
 
   public progressiveClick (arrayOfFunctions) {

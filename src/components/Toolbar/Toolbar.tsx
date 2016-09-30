@@ -31,6 +31,7 @@ export interface IToolbarProps {
   size? : "small" | "medium" | "large" | "xlarge";
   theme? : string;
   flex?: boolean;
+  id? : string;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{
@@ -62,7 +63,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
     );
 
     return (
-      <div ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
+      <div id={this.props.id} ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
         {props.children}
       </div>
     );

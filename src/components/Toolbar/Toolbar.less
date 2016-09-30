@@ -144,10 +144,10 @@
   bottom:1px !important;
 }
 
-.r-Toolbar.flush.vertical > .r-Button:not(':first-child'){
+/*.r-Toolbar.flush.vertical > .r-Button:not('.r-Button:first-child'){
   border-top:0;
   border-radius:0;
-}
+}*/
 
 .r-Toolbar.flush.vertical > .r-Button:last-child{
     border-bottom-right-radius:@default-border-radius;
@@ -281,4 +281,14 @@
 
 .r-Toolbar.tabs>.r-Button.small{
   margin-bottom:-1px !important;
+}
+
+.r-Toolbar.vertical > h1,
+.r-Toolbar.vertical > h2,
+.r-Toolbar.vertical > h3,
+.r-Toolbar.vertical > h4,
+.r-Toolbar.vertical > h5,
+.r-Toolbar.vertical > h6 {
+    margin-bottom:10px;
+    color:#999;
 }
