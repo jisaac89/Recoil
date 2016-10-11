@@ -257,39 +257,16 @@ export default class Table extends React.Component<ITableProps,any>{
     sortCollection(dataSource, key, sortType) {
         const self = this;
 
-        let sortOrder;
-
-        let sortedDataSource = dataSource.sort(function (a, b) {
-            switch (typeof a[key]) {
-                case ('string'):
-                    let itemPrev = a[key].toLowerCase();
-                    let itemNext = b[key].toLowerCase();
-                    if (itemPrev < itemNext) //string asc
-                        return -1
-                    if (itemPrev > itemNext)
-                        return 1
-                    break;
-                case ('number'):
-                    return a[key] - b[key];
-                default:
-            }
-        })
-
-        if (sortType === 'asc') {
-            sortOrder = sortedDataSource;
-        } else {
-            sortOrder = sortedDataSource.reverse();
-        }
-
         self.setState({
-            dataSource: sortOrder,
+            sortKey: key,
+            sortType : sortType,
             page: 0
         })
     }
 
-    toggleSorting(key, sortType) {
+    toggleSorting(dataSource, key, sortType) {
         const self = this;
-        self.sortCollection(self.state.dataSource, key, sortType);
+        self.sortCollection(dataSource, key, sortType);
     }
 
     filterItems(term, keys) {
@@ -309,7 +286,41 @@ export default class Table extends React.Component<ITableProps,any>{
         let {detailTemplate, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
-        let dataSource = this.loadDataSource(this.props.dataSource);
+        // sorting render
+
+        let dataSource;
+
+        if (this.state.sortType && this.state.sortKey) {
+            let sortOrder;
+            let key = self.state.sortKey;
+            let sortType = self.state.sortType;
+            
+            let sortedDataSource = self.loadDataSource(self.props.dataSource).sort(function (a, b) {
+                switch (typeof a[key]) {
+                    case ('string'):
+                        let itemPrev = a[key].toLowerCase();
+                        let itemNext = b[key].toLowerCase();
+                        if (itemPrev < itemNext) //string asc
+                            return -1
+                        if (itemPrev > itemNext)
+                            return 1
+                        break;
+                    case ('number'):
+                        return a[key] - b[key];
+                    default:
+                }
+            })
+
+            if (sortType === 'asc') {
+                sortOrder = sortedDataSource;
+            } else {
+                sortOrder = sortedDataSource.reverse();
+            }
+
+            dataSource = self.loadDataSource(sortOrder);
+        } else {
+            dataSource = self.loadDataSource(self.props.dataSource);
+        }
 
         let columnsArray;
         let isArray = false;
@@ -321,7 +332,6 @@ export default class Table extends React.Component<ITableProps,any>{
                 isArray = true;
             } 
         }
-
 
         if (props.columns) {
             columnsArray = props.columns;
