@@ -58,6 +58,8 @@ interface ITableProps {
     hidePageSize?: boolean;
 
     onSort ? : Function;
+    sortType? : "asc" | "desc";
+    sortKey? : string;
     
 }
 
@@ -67,7 +69,8 @@ interface ITableState {
 
     detailTemplateSelectedElements? : any;
     selectedElements? : any;
-
+    sortType ? : "asc" | "desc";
+    sortKey ? : string;
     searchedItems? : any;
 }
 
@@ -84,7 +87,9 @@ export default class Table extends React.Component<ITableProps,any>{
             detailTemplateSelectedElements : props.detailTemplateSelectedElements || [],
             selectedElements : props.selectedElements || [],
             
-            searchedItems: []
+            searchedItems: [],
+            sortType : props.sortType || null,
+            sortKey : props.sortKey || null
         }
     }
 
@@ -284,7 +289,7 @@ export default class Table extends React.Component<ITableProps,any>{
         const self = this;
         const props = self.props;
         let {detailTemplate, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
-        let {columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
+        let {sortType, sortKey, columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         // sorting render
 
@@ -400,7 +405,9 @@ export default class Table extends React.Component<ITableProps,any>{
             selectAll: this.selectAll.bind(this),
             sortable: sortable,
             toggleSorting: this.toggleSorting.bind(this),
-            onSort: onSort
+            onSort: onSort,
+            sortType : sortType,
+            sortKey: sortKey
         }
 
         let bodyProps = {

@@ -37,11 +37,11 @@ class CheckboxHead extends React.Component<any,any>{
 
 export default class TableHead extends React.Component<any,any>{
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-        sortType: 'desc',
-        column: '',
+        sortType: props.sortType || 'desc',
+        column: props.sortKey || '',
         columns: []
         }
     }

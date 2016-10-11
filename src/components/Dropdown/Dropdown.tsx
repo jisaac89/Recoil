@@ -20,7 +20,7 @@ interface P {
     right?: boolean;
     left?: boolean;
     className?: string;
-    type?: '' | 'button' | 'selection' | 'search';
+    type?: '' | 'button' | 'selection' | 'search' | 'input';
     title?: string | number;
     iconLocation?: 'left' | 'right';
     iconPointer? : 'left' | 'right' | 'up' | 'down';
