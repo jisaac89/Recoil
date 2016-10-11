@@ -106,6 +106,7 @@ export default class DropdownComponent extends React.Component<P, State>{
                 selected : [item]
             })
             this.props.rowIsSelectable === 'single' ? this.toggleOpen() : null
+            this.props.onChange ? this.props.onChange(item) : null;
         }
         else if (this.props.onChange) {
             this.props.onChange(item);
