@@ -18,12 +18,12 @@ class Notification extends React.Component<any, any>{
             self.setState({
                 view: 'hiding'
             })
-        }, 2000);
+        }, 5000);
         setTimeout(function() {
             self.setState({
                 view: 'removed'
             });
-        }, 3000);
+        }, 6000);
     }
     render() {
         const self = this;
@@ -41,7 +41,7 @@ class Notification extends React.Component<any, any>{
         
         if (this.state.view !== 'removed' ) {
             return (
-                <div className="w100 clearfix"><Button right theme={props.item.type ? props.item.type : ''} className={animationClass}>{props.item.title}</Button></div>
+                <div className="w100 clearfix p10"><Button right theme={props.item.type ? props.item.type : ''} className={animationClass}>{props.item.title}</Button></div>
             )
         } else {
             return null;
@@ -72,8 +72,13 @@ export default class Notifications extends React.Component<any, any>{
         let {dataSource} = this.state;
         let props = this.props;
 
+        let notificationClass = classNames(
+            'r-Notifications',
+            props.className
+        )
+
         return (
-            <div>
+            <div className={notificationClass}>
                 {dataSource.map((item, index) => {
                     return <Notification item={item} key={index} />;
                 })}

@@ -16,7 +16,7 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
         
         return (
             <td width={25}>
-                <Button simple size="small" onClick={!detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null} icon={props.detailTemplateSelectedElements.includes(props.element) ? 'minus' : 'plus'} />
+                <Button tabIndex={-1} simple size="small" onClick={!detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null} icon={props.detailTemplateSelectedElements.includes(props.element) ? 'minus' : 'plus'} />
             </td>
         )
     }
@@ -42,6 +42,7 @@ export default class TableColumn extends React.Component<any,any>{
     toggleSelectedElements(element) {
         this.props.toggleSelectedElements(element);
         this.props.onRowSelect ? this.props.onRowSelect(element) : null;
+        this.props.detailTemplateOpenOnRowSelect ? this.props.detailTemplateToggleSelectedElements(element) : null;
     }
 
     onRowSelect(element) {

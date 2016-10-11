@@ -144,6 +144,8 @@
   bottom:1px !important;
 }
 
+
+
 /*.r-Toolbar.flush.vertical > .r-Button:not('.r-Button:first-child'){
   border-top:0;
   border-radius:0;
@@ -176,6 +178,14 @@
   border-right:0;
   border-top-right-radius:0;
   border-bottom-right-radius:0;
+}
+
+.r-Toolbar.flush.horizontal > .r-Input:first-child,
+.r-Toolbar.flush.horizontal > r-Input:first-child > .r-Input__container > input[type='text'],
+.r-Toolbar.flush > .r-Input.r-Input__container:first-child > input[type='text'],
+.r-Toolbar.flush.horizontal > r-Input:first-child > input{
+  border-top-left-radius : @input-border-radius;
+  border-bottom-left-radius : @input-border-radius;
 }
 
 .r-Toolbar.flush.horizontal > .r-Button:nth-child(1),

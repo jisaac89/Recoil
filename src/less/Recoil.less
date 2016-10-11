@@ -1631,7 +1631,6 @@ h3 {
 .primary.simple {
 	background: transparent !important;
 	color: @primary-background !important;
-	border-color: @primary-background !important;
 }
 .light.simple {
 	color: #fff !important;
@@ -1646,12 +1645,10 @@ h3 {
 .error.simple {
 	background: transparent !important;
 	color: #f30 !important;
-	border-color: #f30 !important;
 }
 .success.simple {
 	background: transparent !important;
 	color: #3EBB27 !important;
-	border-color: #3EBB27 !important;
 }
 .error.simple:hover {
 	color: #f30 !important;
@@ -1863,7 +1860,7 @@ hr {
 	.light {
 		background: #131313;
 	}
-	.r-Button {
+	.r-Button:not(.simple) {
 		background: #333;
 		border-color: #222 !important;
 	}
@@ -2035,4 +2032,33 @@ hr {
 
 .background{
 	background-image:url('http://www.adorabletab.com/gallery/beautiful-nature/awesome-view.jpg');
+}
+
+.wiggle {
+  -webkit-animation: wiggle 3s linear infinite;
+  display:inline-block;
+}
+
+@keyframes wiggle {
+  0%, 7% {
+    -webkit-transform: rotateZ(0);
+  }
+  15% {
+    -webkit-transform: rotateZ(-3deg);
+  }
+  20% {
+    -webkit-transform: rotateZ(2deg);
+  }
+  25% {
+    -webkit-transform: rotateZ(-2deg);
+  }
+  30% {
+    -webkit-transform: rotateZ(1.5deg);
+  }
+  35% {
+    -webkit-transform: rotateZ(-1deg);
+  }
+  40%, 100% {
+    -webkit-transform: rotateZ(0);
+  }
 }

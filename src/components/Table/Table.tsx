@@ -135,9 +135,16 @@ export default class Table extends React.Component<ITableProps,any>{
 
     detailTemplateToggleSelectedElements(element) {
         const self = this;
+        let {rowIsSelectable} = this.props;
         let {detailTemplateSelectedElements} = self.state;
 
-        let detailTemplateSelectedElementsArray = detailTemplateSelectedElements;
+        let detailTemplateSelectedElementsArray;
+
+        if (rowIsSelectable === 'single') {
+            detailTemplateSelectedElementsArray = [];
+        } else {
+            detailTemplateSelectedElementsArray = detailTemplateSelectedElements;
+        }
 
         if (detailTemplateSelectedElementsArray.includes(element)) {
             for(let i=0; i < detailTemplateSelectedElementsArray.length; i++) {
