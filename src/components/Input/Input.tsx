@@ -11,10 +11,10 @@ export interface IInputProps {
   className? : string;
   type? : string;
   icon? : string;
-  title? : string | number;
-  placeholder? : string | number;
-  value ? : string | number;
-  defaultValue ? : string | number;
+  title? : string;
+  placeholder? : string;
+  value ? : string | string[];
+  defaultValue ? : string | string[];
   children? : any;
   style? : any;
   errorInline? : any;
@@ -42,7 +42,7 @@ export interface IInputProps {
 
 export interface IInputState {
   checked? : boolean;
-  inputValue? : string | number;
+  inputValue? : string | string[];
   mouseOut? : boolean;
 }
 

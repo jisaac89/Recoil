@@ -89,8 +89,6 @@ export default class TableHead extends React.Component<any,any>{
             dataSource : dataSource
         }
 
-        console.log(dataSource);
-
         let columnsExistAndDataSourceNotFlatArray = columns.length > 0 && columns[0].name !== '_Array';
 
         if(!hideHeader) {

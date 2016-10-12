@@ -21,7 +21,7 @@ interface P {
     left?: boolean;
     className?: string;
     type?: '' | 'button' | 'selection' | 'search' | 'input';
-    title?: string | number;
+    title?: string;
     iconLocation?: 'left' | 'right';
     iconPointer? : 'left' | 'right' | 'up' | 'down';
     dropDirection? : string;
