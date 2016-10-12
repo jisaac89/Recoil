@@ -97,6 +97,11 @@ export default class Table extends React.Component<ITableProps,any>{
         this.setState({
             page: nextProps.page !== this.props.page ? nextProps.page : this.state.page
         })
+        if (nextProps.dataSource) {
+            this.setState({
+                page: 0
+            })
+        }
     }
 
     loadDataSource(data){
