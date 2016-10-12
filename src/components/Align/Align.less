@@ -16,6 +16,11 @@
   flex-direction: column !important;
 }
 
+.r-Align.vertical>.fill-height{
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+
 .r-Align.horizontal > .fill-height:not(:last-child){
   padding-right:0 !important;
 }
@@ -44,4 +49,12 @@
 .r-Align.horizontal > .fill-height{
     padding-top:0 !important;
     padding-bottom:0 !important;
+}
+
+.r-Align.vertical > .fill-height:first-child{
+  padding-top:0 !important;
+}
+
+.r-Align.vertical > .fill-height:last-child{
+  padding-bottom:0 !important;
 }
