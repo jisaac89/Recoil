@@ -1716,38 +1716,38 @@ form {
 }
 @keyframes float {
 	from {
-		-webkit-transform: scale(1.0) translateY(0px) rotate3d(0, 0, 0, 0deg);
+		transform: scale(1.0) translateY(0px) rotate3d(0, 0, 0, 0deg);
 	}
 	to {
-		-webkit-transform: scale(1.014) translateY(-2px) rotate3d(0, 0, 1, 0.6deg);
+		transform: scale(1.014) translateY(-2px) rotate3d(0, 0, 1, 0.6deg);
 	}
 }
 .floatL {
 	position: relative;
-	-webkit-animation-duration: 1s;
-	-webkit-animation-name: floatL;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-timing-function: ease-in-out;
-	-webkit-animation-direction: alternate;
-	-webkit-animation-play-state: running;
+	animation-duration: 1s;
+	animation-name: floatL;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	animation-play-state: running;
 }
 .floatR {
 	position: relative;
-	-webkit-animation-duration: 1s;
-	-webkit-animation-name: floatL;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-timing-function: ease-in-out;
-	-webkit-animation-direction: alternate;
-	-webkit-animation-play-state: running;
+	animation-duration: 1s;
+	animation-name: floatL;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	animation-play-state: running;
 }
 .e-float {
 	position: relative;
-	-webkit-animation-duration: 1s;
-	-webkit-animation-name: float;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-timing-function: ease-in-out;
-	-webkit-animation-direction: alternate;
-	-webkit-animation-play-state: running;
+	animation-duration: 1s;
+	animation-name: float;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	animation-play-state: running;
 }
 .selected-header-wrapper {
 	z-index: 300000;
@@ -1936,9 +1936,9 @@ hr {
 	.r-Table td{
 		color: #888 !important;
 	}
-	.r-TableColumn:nth-child(4n+1) {
-		background: #23272D !important;
-	}
+	// .r-TableColumn:nth-child(4n+1) {
+	// 	background: #23272D !important;
+	// }
 	.r-Grid__Header > tr > th > a {
 		color: #cdcdcd;
 	}
@@ -2040,30 +2040,30 @@ hr {
 }
 
 .wiggle {
-  -webkit-animation: wiggle 3s linear infinite;
+  animation: wiggle 3s linear infinite;
   display:inline-block;
 }
 
 @keyframes wiggle {
   0%, 7% {
-    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
   }
   15% {
-    -webkit-transform: rotateZ(-3deg);
+    transform: rotateZ(-3deg);
   }
   20% {
-    -webkit-transform: rotateZ(2deg);
+    transform: rotateZ(2deg);
   }
   25% {
-    -webkit-transform: rotateZ(-2deg);
+    transform: rotateZ(-2deg);
   }
   30% {
-    -webkit-transform: rotateZ(1.5deg);
+    transform: rotateZ(1.5deg);
   }
   35% {
-    -webkit-transform: rotateZ(-1deg);
+    transform: rotateZ(-1deg);
   }
   40%, 100% {
-    -webkit-transform: rotateZ(0);
+    transform: rotateZ(0);
   }
 }
