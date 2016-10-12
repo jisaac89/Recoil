@@ -51,7 +51,7 @@ interface ITableProps {
 
     className? : string;
 
-    detailTemplateOpenOnRowSelect?: boolean;
+    detailTemplateOpenOnRowSelect?: boolean | "single";
 
     rowCount?: number;
 
@@ -140,34 +140,40 @@ export default class Table extends React.Component<ITableProps,any>{
 
     detailTemplateToggleSelectedElements(element) {
         const self = this;
-        let {rowIsSelectable} = this.props;
+        let {detailTemplateOpenOnRowSelect} = this.props;
         let {detailTemplateSelectedElements} = self.state;
 
-        let detailTemplateSelectedElementsArray;
+        let selectedElementsArray;
 
-        if (rowIsSelectable === 'single') {
-            detailTemplateSelectedElementsArray = [];
-        } else {
-            detailTemplateSelectedElementsArray = detailTemplateSelectedElements;
+        let setSelectedElementsState = (data) =>{
+            self.setState({
+                detailTemplateSelectedElements : data
+            })
         }
 
-        if (detailTemplateSelectedElementsArray.includes(element)) {
-            for(let i=0; i < detailTemplateSelectedElementsArray.length; i++) {
-                if(detailTemplateSelectedElementsArray[i] === element)
-                {
-                    detailTemplateSelectedElementsArray.splice(i,1);
-
-                    self.setState({
-                        detailTemplateSelectedElements : detailTemplateSelectedElementsArray
-                    })
-                }
-            }
+        if (detailTemplateOpenOnRowSelect === 'single') {
+            selectedElementsArray = detailTemplateSelectedElements.length ? [detailTemplateSelectedElements[0]] : [];
         } else {
-            detailTemplateSelectedElementsArray.push(element);
-            
-            self.setState({
-                detailTemplateSelectedElements : detailTemplateSelectedElementsArray
+            selectedElementsArray = detailTemplateSelectedElements;
+        }
+
+        if (selectedElementsArray.includes(element)) {
+            selectedElementsArray.map((data, key)=>{
+                if(data === element){
+                    selectedElementsArray.splice(key,1);
+                    setSelectedElementsState(selectedElementsArray)
+                }
             })
+        } else {
+            if (detailTemplateOpenOnRowSelect === 'single') {
+                selectedElementsArray = [];
+                selectedElementsArray.push(element);
+                setSelectedElementsState(selectedElementsArray)
+
+            } else {
+                selectedElementsArray.push(element);
+                setSelectedElementsState(selectedElementsArray)
+            }
         }
     }
 
@@ -444,7 +450,7 @@ export default class Table extends React.Component<ITableProps,any>{
         let tableClass = classNames(
             'r-Table',
             {'e-selectable' : (props.rowIsSelectable)},
-            {'e-selectable' : (props.detailTemplateOpenOnRowSelect)},
+            {'e-selectable' : (detailTemplateOpenOnRowSelect === true || detailTemplateOpenOnRowSelect === 'single')},
             props.className
         )
         
