@@ -97,7 +97,7 @@ export default class Table extends React.Component<ITableProps,any>{
         this.setState({
             page: nextProps.page !== this.props.page ? nextProps.page : this.state.page
         })
-        if (nextProps.dataSource) {
+        if (nextProps.dataSource && !nextProps.page) {
             this.setState({
                 page: 0
             })
