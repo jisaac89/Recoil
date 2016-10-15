@@ -21,7 +21,7 @@ class Open extends React.Component<IOpenProps, any>{
     super(); 
 
     this.state = {
-      height : 0,
+      height : props.if ? 'auto' : 0,
       open: props.if || false,
       render: props.if || false
     }

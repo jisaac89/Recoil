@@ -159,7 +159,7 @@ export default class Table extends React.Component<ITableProps,any>{
         if (detailTemplateOpenOnRowSelect === 'single') {
             selectedElementsArray = detailTemplateSelectedElements.length ? [detailTemplateSelectedElements[0]] : [];
         } else {
-            selectedElementsArray = detailTemplateSelectedElements;
+            selectedElementsArray = detailTemplateSelectedElements.slice();
         }
 
         if (selectedElementsArray.includes(element)) {
@@ -200,7 +200,7 @@ export default class Table extends React.Component<ITableProps,any>{
         if (rowIsSelectable === 'single') {
             selectedElementsArray = [];
         } else {
-            selectedElementsArray = selectedElements;
+            selectedElementsArray = selectedElements.slice();
         }
 
         if (selectedElementsArray.includes(element)) {
