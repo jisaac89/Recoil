@@ -12,7 +12,7 @@ export interface IInputProps {
   type? : string;
   icon? : string;
   title? : string;
-  placeholder? : string;
+  placeholder? : string | number;
   value ? : string | string[];
   defaultValue ? : string | string[];
   children? : any;
