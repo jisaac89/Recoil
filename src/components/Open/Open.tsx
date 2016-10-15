@@ -22,7 +22,8 @@ class Open extends React.Component<IOpenProps, any>{
 
     this.state = {
       height : 0,
-      open: props.if || false
+      open: props.if || false,
+      render: props.if || false
     }
   }
 
@@ -38,11 +39,12 @@ class Open extends React.Component<IOpenProps, any>{
     const self = this;
     if (this.refs.Open) {
       this.setState({
-        height : this.state.open ? this.refs.Open.children[0].clientHeight : 0
+        height : this.state.open ? this.refs.Open.children[0].clientHeight : 0,
+        render: true
       }, ()=>{
         setTimeout(()=>{
           self.setAuto();
-        }, 280);
+        }, this.refs.Open.children[0].clientHeight * 3);
       })
     }
   }
@@ -53,11 +55,14 @@ class Open extends React.Component<IOpenProps, any>{
       this.setState({
         height : this.state.height === 'auto' ? this.refs.Open.children[0].clientHeight : 0
       }, ()=>{
-        setTimeout(()=>{
-          self.setState({
-            height : 0
-          })
-        }, 50);
+        if (this.state.render) {
+          setTimeout(()=>{
+            self.setState({
+              height : 0,
+              render: false
+            })
+          }, 1);
+        }
       })
     }
   }
@@ -70,15 +75,6 @@ class Open extends React.Component<IOpenProps, any>{
       this.forceUpdate();
     }
   }
-
-
-  // sho
-
-  componentDidMount() {
-    console.log(this.refs.Open);
-    this.forceUpdate();
-  }
-
   render(){
      const self = this;
      const props = self.props;
@@ -96,7 +92,7 @@ class Open extends React.Component<IOpenProps, any>{
 
      return(
        <div ref="Open" className={OpenClass} style={{height : state.height}}>
-         <div>{props.children}</div>
+         <div>{state.render || state.open ? props.children : null}</div>
        </div>
      )
   }
