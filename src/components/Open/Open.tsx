@@ -44,7 +44,7 @@ class Open extends React.Component<IOpenProps, any>{
       }, ()=>{
         setTimeout(()=>{
           self.setAuto();
-        }, this.refs.Open.children[0].clientHeight * 3);
+        }, 300);
       })
     }
   }
@@ -61,7 +61,7 @@ class Open extends React.Component<IOpenProps, any>{
               height : 0,
               render: false
             })
-          }, 1);
+          }, 0);
         }
       })
     }
