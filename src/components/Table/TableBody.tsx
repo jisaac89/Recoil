@@ -62,6 +62,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
         } = props;
 
         let columnArray = [];
+        let key;
 
         if (dataSource instanceof Array) {
             dataSource.map((element, index) => {
@@ -83,17 +84,20 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                     isArray: isArray,
                     detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect
                 }
+                if (typeof element === 'string' || typeof element === 'number') {
+                    key = element;
+                } else {
+                    if (!element['_uniqueId']) {
+                        Object.defineProperty(element, '_uniqueId', {
+                            configurable: true,
+                            enumerable: false,
+                            writable: true,
+                            value: Math.floor(Math.random() * 100000)
+                        });
+                    }
 
-                if (!element['_uniqueId']) {
-                    Object.defineProperty(element, '_uniqueId', {
-                        configurable: true,
-                        enumerable: false,
-                        writable: true,
-                        value: Math.floor(Math.random() * 100000)
-                    });
+                    key = element['_uniqueId'];
                 }
-
-                let key = element['_uniqueId'];
                 let keySelectable = key + '_selectable';
                 let keyDetail = key + '_detail';
 
