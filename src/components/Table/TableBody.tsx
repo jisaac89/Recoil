@@ -28,8 +28,6 @@ export interface TableBodyProps {
     onRowSelect ? : (event: React.MouseEvent) => void;
     isArray?: boolean;
     detailTemplateOpenOnRowSelect ?: boolean | "single";
-
-    childKey ?: string;
 }
 
 export default class TableBody extends React.Component<TableBodyProps,any>{

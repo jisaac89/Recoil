@@ -5,21 +5,34 @@ import Button from '../Button/Button';
 
 import * as classNames from 'classnames';
 
-class Notification extends React.Component<any, any>{
+export interface NotificationItem {
+    title: string;
+    type?: 'success' | 'primary' | 'error' | 'default';
+}
+
+export interface NotificationProps {
+    item: NotificationItem;
+}
+
+export interface NotificationState {
+    view?: 'visible' | 'hiding' | 'removed';
+}
+
+class Notification extends React.Component<NotificationProps, NotificationState>{
     constructor() {
         super();
         this.state = {
-            view : 'visible'
+            view: 'visible'
         }
     }
     componentDidMount() {
         const self = this;
-        setTimeout(()=> {
+        setTimeout(() => {
             self.setState({
                 view: 'hiding'
-            })
+            });
         }, 5000);
-        setTimeout(function() {
+        setTimeout(() => {
             self.setState({
                 view: 'removed'
             });
@@ -36,22 +49,27 @@ class Notification extends React.Component<any, any>{
         } else if (this.state.view === 'hiding') {
             animationClass = 'animated fadeOutDown';
         } else {
-            animationClass = 'hide';
+            //animationClass = 'hide';
         }
-        
-        if (this.state.view !== 'removed' ) {
+
+        if (this.state.view !== 'removed') {
             return (
-                <div className="w100 clearfix p10"><Button right theme={props.item.type ? props.item.type : ''} className={animationClass}>{props.item.title}</Button></div>
-            )
+                <div className="w100 clearfix p10"><Button right theme={props.item.type ? props.item.type : 'default'} className={animationClass}>{props.item.title}</Button></div>
+            );
         } else {
             return null;
         }
     }
 }
 
-export default class Notifications extends React.Component<any, any>{
+export interface NotificationsProps {
+    dataSource: Array<any>;
+    className: string;
+}
 
-    constructor(props){
+export default class Notifications extends React.Component<NotificationsProps, any>{
+
+    constructor(props) {
         super(props);
         this.state = {
             dataSource: props.dataSource || []
@@ -68,7 +86,6 @@ export default class Notifications extends React.Component<any, any>{
     }
 
     render() {
-
         let {dataSource} = this.state;
         let props = this.props;
 
@@ -81,8 +98,8 @@ export default class Notifications extends React.Component<any, any>{
             <div className={notificationClass}>
                 {dataSource.map((item, index) => {
                     return <Notification item={item} key={index} />;
-                })}
+                }) }
             </div>
-        )
+        );
     }
 }
