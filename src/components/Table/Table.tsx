@@ -60,7 +60,6 @@ interface ITableProps {
     onSort ? : Function;
     sortType? : "asc" | "desc";
     sortKey? : string;
-    
 }
 
 interface ITableState {

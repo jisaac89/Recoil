@@ -5,7 +5,34 @@ import TableColumn from './TableColumn';
 import TableColumnDetail from './TableColumnDetail';
 import TableColumnSelectable from './TableColumnSelectable';
 
-export default class TableBody extends React.Component<any,any>{
+export interface TableBodyProps {
+    // initial dataSource loaded as prop
+    dataSource: Array<any> | Object;
+    // columns defined by user
+    columns?: Array<any>;
+    // a detail template function that returns a view
+    detailTemplate?: (event: React.MouseEvent) => void;
+
+    selectedElements?: Array<any>;
+
+    detailTemplateOpenAll?: any;
+    detailTemplateToggleSelectedElements?: any;
+    detailTemplateSelectedElements?: Array<any>;
+    detailTemplateHideToggle?: boolean;
+
+    toggleSelectedElements?: any;
+    rowIsSelectable?: any;
+
+    checkable?: boolean;
+    hideColumns ? : Array<any>;
+    onRowSelect ? : (event: React.MouseEvent) => void;
+    isArray?: boolean;
+    detailTemplateOpenOnRowSelect ?: boolean | "single";
+
+    childKey ?: string;
+}
+
+export default class TableBody extends React.Component<TableBodyProps,any>{
 
     render() {
 
@@ -32,37 +59,49 @@ export default class TableBody extends React.Component<any,any>{
             onRowSelect,
             isArray,
             detailTemplateOpenOnRowSelect
-
         } = props;
 
         let columnArray = [];
 
         if (dataSource instanceof Array) {
-            dataSource.map((element, key) => {
+            dataSource.map((element, index) => {
 
                 let columnProps = {
                     element: element,
                     columns: columns,
                     detailTemplate: detailTemplate,
-                    toggleSelectedElements : toggleSelectedElements,
-                    detailTemplateOpenAll : detailTemplateOpenAll,
+                    toggleSelectedElements: toggleSelectedElements,
+                    detailTemplateOpenAll: detailTemplateOpenAll,
                     detailTemplateToggleSelectedElements: detailTemplateToggleSelectedElements,
                     detailTemplateSelectedElements: detailTemplateSelectedElements,
                     detailTemplateHideToggle: detailTemplateHideToggle,
                     rowIsSelectable: rowIsSelectable,
                     selectedElements: selectedElements,
                     checkable: checkable,
-                    hideColumns : hideColumns,
+                    hideColumns: hideColumns,
                     onRowSelect,
                     isArray: isArray,
-                    detailTemplateOpenOnRowSelect:detailTemplateOpenOnRowSelect
+                    detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect
                 }
+
+                if (!element['_uniqueId']) {
+                    Object.defineProperty(element, '_uniqueId', {
+                        configurable: true,
+                        enumerable: false,
+                        writable: true,
+                        value: Math.floor(Math.random() * 100000)
+                    });
+                }
+
+                let key = element['_uniqueId'];
+                let keySelectable = key + '_selectable';
+                let keyDetail = key + '_detail';
 
                 columnArray.push(
                     [
                         [<TableColumn key={key} {...columnProps} />],
-                        [<TableColumnSelectable {...columnProps} />],
-                        [<TableColumnDetail {...columnProps} />]
+                        [<TableColumnSelectable key={keySelectable} {...columnProps} />],
+                        [<TableColumnDetail key={keyDetail} {...columnProps} />]
                     ]
                 )
             })
