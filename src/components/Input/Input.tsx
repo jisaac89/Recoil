@@ -42,7 +42,7 @@ export interface IInputProps {
 
 export interface IInputState {
   checked? : boolean;
-  inputValue? : string | string[];
+  value? : string | string[];
   mouseOut? : boolean;
 }
 
@@ -59,10 +59,24 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     super(props);
     this.state = {
       checked : false,
-      inputValue: props.value && props.value !== '' ? props.value : '',
+      value: this.setCurrentValue(),
       mouseOut: false
     };
   }
+
+  setCurrentValue(props = this.props) {
+      return props.value || props.defaultValue || '';
+  }
+
+  componentWillReceiveProps(nextProps) {
+      const props = this.props;
+      const valueIsChanging = nextProps.value !== props.value;
+      if (valueIsChanging || nextProps.defaultValue !== props.defaultValue) {
+          const value = this.setCurrentValue(nextProps);
+          valueIsChanging ? this.setState({ value }) : null;
+      }
+  }
+
   public componentDidMount() {
     const props = this.props;
     if (props.focusOnMount) {
@@ -90,7 +104,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     const self = this;
     this.setState({
       checked: self.props.advanced ? true : false,
-      inputValue:e.target.value
+      value:e.target.value
     });
   }
   public blur(){
@@ -160,7 +174,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
         textAreaScrollHeight = null;
       }
       // hide pencil if placholder present or input has value
-      if (!props.placeholder && !state.inputValue) {
+      if (!props.placeholder && !state.value) {
         pencilPartial = <i className="fa fa-pencil writing"></i>;
       } else {
         pencilPartial = null;
@@ -179,18 +193,30 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       } else {
         errorInlinePartialTop = null;
         errorInlinePartialBottom = null;
-      }
+    }
+
+    let valueProps;
+
+    if (props.defaultValue) {
+        valueProps = {
+            defaultValue: state.value
+        }
+    } else {
+        valueProps = {
+            value : state.value
+        }
+    }
 
     // switch input type depending on propType
     switch (props.type) {
       case 'password':
-          inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
+            inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength) } {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
         break;
       case 'text':
-          inputPartial = <input autoComplete={props.autoComplete} name={props.name} onKeyDown={self.limit.bind(self, props.maxLength)} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
+            inputPartial = <input autoComplete={props.autoComplete} name={props.name} onKeyDown={self.limit.bind(self, props.maxLength) } {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
         break;
       case 'number':
-          inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength)} max={props.max} min={props.min} maxLength={props.maxLength} value={props.value} defaultValue={props.defaultValue} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
+            inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength) } max={props.max} min={props.min} maxLength={props.maxLength} {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
         break;
       case 'textarea':
           inputPartial = <textarea name={props.name} rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;
