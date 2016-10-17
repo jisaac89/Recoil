@@ -42,9 +42,9 @@ class Open extends React.Component<IOpenProps, any>{
         height : this.state.open ? this.refs.Open.children[0].clientHeight : 0,
         render: true
       }, ()=>{
-        setTimeout(()=>{
-          self.setAuto();
-        }, 300);
+          setTimeout(() => {
+              self.setAuto();
+          }, 300);
       })
     }
   }
@@ -68,11 +68,10 @@ class Open extends React.Component<IOpenProps, any>{
   }
 
   setAuto() {
-    if(this.state.height > 0) {
+    if(this.refs.Open && this.state.height > 0) {
       this.setState({
         height : 'auto'
       })
-      this.forceUpdate();
     }
   }
   render(){
