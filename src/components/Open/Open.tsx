@@ -55,14 +55,19 @@ class Open extends React.Component<IOpenProps, any>{
       this.setState({
         height : this.state.height === 'auto' ? this.refs.Open.children[0].clientHeight : 0
       }, ()=>{
-        if (this.state.render) {
           setTimeout(()=>{
+        if (self.refs.Open && self.state.render) {
             self.setState({
-              height : 0,
-              render: false
-            })
-          }, 0);
+              height : 0
+            }, () => {
+                setTimeout(() => {
+                    self.setState({
+                        render: false
+                    })
+                }, 300)
+                })
         }
+          }, 1);
       })
     }
   }
@@ -82,7 +87,8 @@ class Open extends React.Component<IOpenProps, any>{
      let OpenClass = classNames(
         'r-Open',
         {'e-open': (props.if)},
-        {'e-close': (!props.if)},
+        { 'e-close': (!props.if) },
+        { 'e-auto': (state.height === 'auto') },
         {'parent': (props.parent)},
         {'child': (props.child)},
         {'fill': (props.fill)},

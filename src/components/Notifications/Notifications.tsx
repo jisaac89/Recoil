@@ -5,20 +5,22 @@ import Button from '../Button/Button';
 
 import * as classNames from 'classnames';
 
-export interface NotificationItem {
+export type NotificationType = 'success' | 'primary' | 'error' | 'default';
+
+export interface INotificationItem {
     title: string;
-    type?: 'success' | 'primary' | 'error' | 'default';
+    type?: NotificationType;
 }
 
-export interface NotificationProps {
-    item: NotificationItem;
+export interface INotificationProps {
+    item: INotificationItem;
 }
 
-export interface NotificationState {
+export interface INotificationState {
     view?: 'visible' | 'hiding' | 'removed';
 }
 
-class Notification extends React.Component<NotificationProps, NotificationState>{
+class Notification extends React.Component<INotificationProps, INotificationState>{
     constructor() {
         super();
         this.state = {
@@ -48,6 +50,8 @@ class Notification extends React.Component<NotificationProps, NotificationState>
             animationClass = 'animated fadeInUp';
         } else if (this.state.view === 'hiding') {
             animationClass = 'animated fadeOutDown';
+        } else {
+            //animationClass = 'hide';
         }
 
         if (this.state.view !== 'removed') {
@@ -60,12 +64,16 @@ class Notification extends React.Component<NotificationProps, NotificationState>
     }
 }
 
-export interface NotificationsProps {
-    dataSource: Array<any>;
+export interface INotificationsProps {
+    dataSource: INotificationItem[];
     className: string;
 }
 
-export default class Notifications extends React.Component<NotificationsProps, any>{
+export interface INotificationsState {
+    dataSource?: INotificationItem[];
+}
+
+export default class Notifications extends React.Component<INotificationsProps, INotificationsState>{
 
     constructor(props) {
         super(props);
@@ -75,11 +83,10 @@ export default class Notifications extends React.Component<NotificationsProps, a
     }
 
     componentWillReceiveProps(nextProps) {
-        const self = this;
         if (nextProps.dataSource != this.props.dataSource) {
-            self.setState({
+            this.setState({
                 dataSource: nextProps.dataSource
-            })
+            });
         }
     }
 
@@ -90,7 +97,7 @@ export default class Notifications extends React.Component<NotificationsProps, a
         let notificationClass = classNames(
             'r-Notifications',
             props.className
-        )
+        );
 
         return (
             <div className={notificationClass}>
