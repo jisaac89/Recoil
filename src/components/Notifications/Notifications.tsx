@@ -48,8 +48,6 @@ class Notification extends React.Component<NotificationProps, NotificationState>
             animationClass = 'animated fadeInUp';
         } else if (this.state.view === 'hiding') {
             animationClass = 'animated fadeOutDown';
-        } else {
-            //animationClass = 'hide';
         }
 
         if (this.state.view !== 'removed') {
