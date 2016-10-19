@@ -285,3 +285,42 @@ a, .r-Button{
 .r-Button.e-required{
   border: 1px dashed @error-background !important;  
 }
+
+
+
+
+
+
+
+
+.click-effect {
+	background: rgba( 255, 255, 255, 0 );
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+}
+
+.r-Button.animate{
+    -webkit-transform:scale(1.1);
+}
+
+.r-Button.animate .click-effect {
+	-webkit-animation: clickEffect 0.35s forwards ease-out;
+}
+
+@-webkit-keyframes clickEffect {
+  0% {
+  	transform: scale(0);
+    background-color: rgba( 255, 255, 255, 0 );
+  }
+  25% {
+    transform: scale(1);
+    background-color: rgba( 255, 255, 255, 0.5 );
+  }
+  100% {
+    transform: scale(1);
+    background-color: rgba( 255, 255, 255, 0 );
+  }
+}

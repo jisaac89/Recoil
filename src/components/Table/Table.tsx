@@ -59,7 +59,8 @@ interface ITableProps {
 
     onSort ? : Function;
     sortType? : "asc" | "desc";
-    sortKey? : string;
+    sortKey?: string;
+    showDataSourceLength?: boolean;
 }
 
 interface ITableState {
@@ -298,7 +299,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
+        let {detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {sortType, sortKey, columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         // sorting render
@@ -442,7 +443,8 @@ export default class Table extends React.Component<ITableProps,any>{
             pageSize: pageSize,
             onPageChange: onPageChange,
             rowCount: rowCount,
-            hidePageSize: hidePageSize
+            hidePageSize: hidePageSize,
+            showDataSourceLength: showDataSourceLength
         }
 
         let tableSearchProps = {
@@ -467,7 +469,6 @@ export default class Table extends React.Component<ITableProps,any>{
                         <TableHead {...tableProps} {...headProps} />
                         <TableBody {...tableProps} {...bodyProps} />
                     </table>
-                    <TableFooter {...footerProps} />
                 </div>
             )
         } else return null;
