@@ -38,7 +38,7 @@ export default class TableSearch extends React.Component<any, any>{
   }
 
   updateSearch (term) {
-    const searchTerm = term
+    const searchTerm = term;
     this.setState({
       searchTerm: searchTerm
     }, () => {
@@ -58,14 +58,17 @@ export default class TableSearch extends React.Component<any, any>{
 
     let searchPartial = () => {
       return (
-        <Toolbar block noRadius className="mb10">
+        <Toolbar flex flush block noRadius className="mb10">
           <Input 
             title={props.searchTitle} 
             onChange={this.updateSearch.bind(this)} 
             block
             type="text"
             size="small"
+            flex
+            value={this.state.searchTerm}
           />
+          <Button size="small" icon="times" onClick={this.updateSearch.bind(this, "")} />
         </Toolbar>
       )
     }

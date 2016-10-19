@@ -1,10 +1,31 @@
 @import '../../less/Global';
 
 .r-Open{
+  position:relative;
+  -webkit-transform-origin: top;
+	-o-transform-origin: top;
+	-ms-transform-origin: top;
+	transform-origin: top;
+  -webkit-transform: scaleY(1);
+  -o-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition: -webkit-transform 0.26s ease-out;
+  -o-transition: -o-transform 0.26s ease;
+  -ms-transition: -ms-transform 0.26s ease;
   transition: all 0.26s ease;
-  overflow:hidden;
+  height: auto;
 }
 
-.r-Open.e-auto{
-    overflow:visible;
+.r-Open.e-autoHeight{
+  height : auto !important;
+  max-height : none !important;
+}
+
+.r-Open.e-close{
+  height: 0;
+  -webkit-transform: scaleY(0);
+	-o-transform: scaleY(0);
+	-ms-transform: scaleY(0);
+	transform: scaleY(0);
 }

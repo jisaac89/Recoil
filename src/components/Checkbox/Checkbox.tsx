@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import Button from '../Button/Button';
+import Toolbar from '../Toolbar/Toolbar';
 import * as classNames from 'classnames';
 
 import './Checkbox.less';
@@ -13,6 +14,7 @@ export interface ICheckboxProps {
   theme? : 'primary' | 'error' | 'success' | 'default';
   icon? : string;
   onChange? : any;
+  title? : string;
 }
 
 export interface ICheckboxState {
@@ -32,7 +34,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
       checked: !this.state.checked
     })
 
-    this.props.onChange(this.state.checked);
+    this.props.onChange ? this.props.onChange(this.state.checked) : null;
   }
 
   public notchecked() {
@@ -65,16 +67,23 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
       {'disabled' : (props.disabled)}
     )
 
+    let checkboxProps = {
+      disabled:props.disabled,
+      size:props.size,
+      onClick:this.toggleChecked.bind(this),
+      theme: props.theme ? props.theme : checked ? 'primary' : 'default'
+    }
+
     return (
+      <Toolbar flush>
         <Button
           className={checkboxClass}
-          size={props.size}
-          onClick={this.toggleChecked.bind(this)}
-          theme={props.theme ? props.theme : checked ? 'primary' : 'default'}
           icon={props.icon}
-          disabled={props.disabled}
+          {...checkboxProps}
         >
         </Button>
+        {props.title ? <Button {...checkboxProps} simple>{props.title}</Button> : null}
+      </Toolbar>
     )
   }
 }
