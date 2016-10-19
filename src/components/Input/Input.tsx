@@ -11,8 +11,8 @@ export interface IInputProps {
   className? : string;
   type? : string;
   icon? : string;
-  title? : number | string;
-  placeholder? : number | string;
+  title? : string;
+  placeholder? : string;
   value ? : string | string[];
   defaultValue ? : string | string[];
   children? : any;
