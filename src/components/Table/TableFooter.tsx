@@ -20,6 +20,7 @@ export interface ITableFooterProps {
   pageSizerOptions?: Array<any>;
   hidePageSize?: boolean;
   rowCount?: number;
+  showDataSourceLength?: boolean;
 }
 
 export default class TableFooter extends React.Component<ITableFooterProps, {}>{
@@ -55,7 +56,8 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
       numberPerPage,
       dataSource,
       rowCount,
-      hidePageSize
+      hidePageSize,
+      showDataSourceLength
     } = props;
 
     let paginationPartial = [];
@@ -77,23 +79,25 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
 
     let dataSourceLength = rowCount || dataSource.length;
 
-    if(this.props.numberOfPages === 1) {
-      return null
-    } else {
-        return (
+      return (
           <div className="r-TableFooter">
-            <Toolbar block flush noRadius>
-              <Button size="small" disabled={currentPage === 0} tabIndex={-1} onClick={firstPage} icon="fast-backward"></Button>
-              <Button size="small" disabled={currentPage === 0} tabIndex={-1} onClick={previousPage} icon="step-backward"></Button>
-              {paginationPartial}
-              <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
-              <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages)} icon="fast-forward"></Button>
-              {hidePageSize ? null : <Dropdown hideHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} />}
-              <Button simple right size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (((currentPage + 1) * pageSize) > dataSourceLength ? dataSourceLength : (currentPage + 1) * pageSize) + '' + (' of ' + dataSourceLength + ' items')}</Button>
-            </Toolbar>
+              {(() => {
+                  if (this.props.numberOfPages !== 1) {
+                      return (
+                          <Toolbar flush noRadius className="p10">
+                              <Button size="small" disabled={currentPage === 0} tabIndex={-1} onClick={firstPage} icon="fast-backward"></Button>
+                              <Button size="small" disabled={currentPage === 0} tabIndex={-1} onClick={previousPage} icon="step-backward"></Button>
+                              {paginationPartial }
+                              <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
+                              <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages) } icon="fast-forward"></Button>
+                              {hidePageSize ? null : <Dropdown hideHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} /> }
+                          </Toolbar>
+                      )
+                  } else return null
+              })() }
+              {showDataSourceLength ? <Toolbar flush noRadius className="p10"><Button simple size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (((currentPage + 1) * pageSize) > dataSourceLength ? dataSourceLength : (currentPage + 1) * pageSize) + '' + (' of ' + dataSourceLength + ' row(s)') }</Button></Toolbar> : null}
           </div>
-        )
-    }
+      )
 
   }
 }

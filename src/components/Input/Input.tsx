@@ -37,7 +37,8 @@ export interface IInputProps {
   name?: string;
   required? : boolean;
   disabled? : boolean;
-  autoComplete? : string;
+  autoComplete?: string;
+  flex?: boolean;
 }
 
 export interface IInputState {
@@ -145,7 +146,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     let inputPartial, iconPartial, pencilPartial, textAreaScrollHeight, errorInlinePartialTop, errorInlinePartialBottom;
 
     let errorInlinePartial = () => {
-      if (props.errorInline && (props.errorDirection === 'top' || 'bottom') ) {
+      if (props.errorInline && (props.errorDirection === 'top' || 'bottom') && props.errorMessage) {
         return (
           <SlideIn from={props.errorDirection} if={!state.mouseOut && props.error} className="p5 h90 r-Layer light w100 error-pane h30px " >
             <div className="error-message">{props.errorMessage}</div>
@@ -227,30 +228,24 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     let inputWrapperClass = classNames(
       'r-Input',
       {'w100' : (props.block)},
-      {'checked' : (this.state.checked)},
+      { 'checked': (this.state.checked) },
+      { 'flex': (props.flex) },
       props.size,
       props.className
-    );
-
-    let inputClass = classNames(
-      'r-Input__container',
-      'flohide',
-      {'no-title':(!props.title)},
-      {'pt10' : (props.type === 'textarea')}
     );
 
     let inputClassadvanced = classNames(
       'r-Input',
       props.size,
+      props.advanced ? 'w100' : props.className,
       {'w100' : (props.block)},
       {'checked' : (this.state.checked)},
       {'e-disabled' : (props.disabled)},
+      {'e-required':(props.required)},
       'r-Input__container',
       'flohide',
       'no-title',
-      'e-advanced',
-      {'e-required':(props.required)},
-      props.className
+      'e-advanced'
     );
 
     if (!props.advanced) {
@@ -262,7 +257,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     } else {
       return (
         <div onMouseEnter={self.mouseOut.bind(self)} onMouseLeave={self.mouseOut.bind(self)} className={inputWrapperClass} style={props.style}>
-            {errorInlinePartialTop}
+            {props.errorMessage ? errorInlinePartialTop : null}
             <div className={inputClassadvanced}>
                 {iconPartial}
                 <small>{props.title}</small>
@@ -271,7 +266,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
                 <Selectable type={props.error ? 'error' : 'primary'} ghost={props.ghost} checked={self.state.checked} />
                 {errorInlinePartial()}
             </div>
-            {errorInlinePartialBottom}
+            {props.errorMessage ? errorInlinePartialBottom : null}
         </div>
       );
     }
