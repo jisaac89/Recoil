@@ -11,7 +11,7 @@ export interface ICheckboxProps {
   disabled? : boolean;
   size? : "small" | "medium" | "large" | "xlarge";
   ghost? : boolean;
-  theme? : 'primary' | 'error' | 'success' | 'default';
+  theme?: any;
   icon? : string;
   onChange? : any;
   title? : string;

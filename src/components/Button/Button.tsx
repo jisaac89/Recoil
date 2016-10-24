@@ -9,7 +9,7 @@ export interface IButtonProps {
   disabled?: boolean;
   block?: boolean;
   className? : string;
-  theme?: string;
+  theme?: any;
   icon? : string;
   href?: string;
   target?: string;
