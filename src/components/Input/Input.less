@@ -33,13 +33,17 @@
 }
 
 .r-Input.small > .r-Input__container > small + small {
-    left: 20px;
+    left: 25px;
     pointer-events: none;
     top: 5px;
 }
 
-.r-Input.small.checked .r-Input__container > small {
-    top: 0px !important;
+.r-Input.small.checked .r-Input__container>small {
+    top: -3px !important;
+    font-size: 9px;
+}
+.r-Input.small.checked .r-Input__container>input {
+    padding-top: 7px;
 }
 
 // large
@@ -160,7 +164,7 @@ textarea {
   border: 0;
   /*background-color: @input-background;*/
   outline: 0;
-  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
 }
 .no-title.r-Input__container > input {
   opacity: 1;
@@ -169,6 +173,7 @@ textarea {
 }
 .r-Input.checked .r-Input__container > input {
   opacity: 1;
+  padding-top: 5px;
 }
 
 .r-Input__container .r-Selectable__border-gray {
@@ -185,7 +190,8 @@ textarea {
 }
 
 .r-Input.checked .r-Input__container > small + small {
-  left: 15px;
+  left: 7px;
+  color: #333;
 }
 
 @keyframes writing {
