@@ -50,7 +50,7 @@ export interface IButtonState {
 }
 
 export default class Button extends React.Component<IButtonProps, IButtonState>{
-  
+  public refs: any;
   public static defaultProps = {
       active: true,
       disabled: false,
@@ -99,9 +99,9 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
           animate:true,
       }, () => {
           setTimeout(() => {
-              this.setState({
+              this.refs.button ? this.setState({
                   animate: false
-              });
+              }) : null;
           }, 100)});
       this.props.onClick(event);
     }

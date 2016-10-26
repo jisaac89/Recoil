@@ -39,7 +39,7 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
             this.setState({
                 type : 'Array'
             })
-        } else if (typeof value === 'object') {
+        } else if (typeof value === 'object' && value !== null) {
             this.setState({
                 type: 'Object'
             })
@@ -64,10 +64,10 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
                     {element}
                 </td>
             )           
-        } else if (type!== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
+        } else if (type !== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
             return (
                 <td width={column.width}>
-                    {column.template ? column.template(element) : type === 'Value' ? value : <Dropdown material dataSource={value} title={type} />}
+                    {column.template ? column.template(element) : type === 'Value' ? value.toString() : <Dropdown material dataSource={value} title={type} />}
                 </td>
             )
         } return null;
