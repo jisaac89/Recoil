@@ -64,7 +64,7 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
       )
     };
 
-    if (props.children) {
+    if (props.children.length > 1) {
       return(
         <div ref="r-Wizard" className={wizardClass} style={props.style}>
           <div ref='r-Wizard__track' className="r-Wizard__track">
@@ -73,7 +73,7 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
         </div>
       );
     } else{
-      return null;
+      return props.children;
     }
   }
 }
