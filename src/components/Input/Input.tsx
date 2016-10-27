@@ -25,7 +25,7 @@ export interface IInputProps {
   cols? : any;
   block? : any;
   autoExpand? : any;
-  onChange? : any;
+  onChange?: (value: any, event: React.FormEvent) => void;
   scrollHeight?: any;
   focusOnMount? : any;
   focusDelay? : any;
@@ -120,10 +120,9 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       mouseOut: ReactDOM.findDOMNode<HTMLInputElement>(inputDOM).onmouseout ? false : true
     });
   }
-  public onChange(value) {
-
+  public onChange(event: React.FormEvent) {
     if (this.props.onChange) {
-      this.props.onChange(value.target.value, value);
+      this.props.onChange((event.target as HTMLInputElement).value, event);
     } else {
       return null;
     }
@@ -240,8 +239,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       props.advanced ? 'w100' : props.className,
       {'w100' : (props.block)},
       {'checked' : (this.state.checked)},
-      {'e-disabled' : (props.disabled)},
-      {'e-required':(props.required)},
+      { 'e-disabled': (props.disabled) },
+      { 'e-required': (!props.disabled && props.required && !props.value) },
       'r-Input__container',
       'flohide',
       'no-title',

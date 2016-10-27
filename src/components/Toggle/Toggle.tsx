@@ -8,7 +8,29 @@ import Button from '../Button/Button';
 import Align from '../Align/Align';
 import Wizard from '../Wizard/Wizard';
 
-export default class Toggle extends React.Component<any, any>{
+export interface IToggleProps {
+    name?: string;
+    array?: Array<string | number>;
+    className?: string;
+    size?: any;
+    onChange?: (checked: boolean, event: React.FormEvent) => void;
+    iconArray?: Array<string>;
+    type?: string; // 'colors'
+    ghost?: boolean;
+    right?: boolean;
+    checked?: boolean;
+    selected?: any;
+    value?: string | string[];
+    label?: string | number;
+    theme?: any;
+}
+
+export interface IToggleState {
+    checked?: boolean;
+    selected?: any;
+}
+
+export default class Toggle extends React.Component<IToggleProps, IToggleState>{
   constructor(props) {
     super(props);
     this.state = {
@@ -23,11 +45,13 @@ export default class Toggle extends React.Component<any, any>{
     })
   }
 
-  onChange(e) {
-    const self = this;
-    self.setState({checked: e.target.checked});
-    if (self.props.onChange) {
-      self.props.onChange(e.target.checked);
+  onChange(event: React.FormEvent) {
+    var checked = (event.target as HTMLInputElement).checked;
+    this.setState({
+      checked: checked
+    });
+    if (this.props.onChange) {
+      this.props.onChange(checked, event);
     }
   }
 
