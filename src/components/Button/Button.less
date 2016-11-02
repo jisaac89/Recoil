@@ -30,6 +30,7 @@
   background:  @default--hover-background;
   color: @primary-background;
   border-color: @primary-background;
+  z-index: 2 !important;
 }
 
 .r-Button:focus{
@@ -286,13 +287,6 @@ a, .r-Button{
   border: 1px dashed @error-background !important;  
 }
 
-
-
-
-
-
-
-
 .click-effect {
 	background: rgba( 255, 255, 255, 0 );
 	position: absolute;
@@ -303,14 +297,14 @@ a, .r-Button{
 }
 
 .r-Button.animate{
-    -webkit-transform:scale(1.1);
+    transform:scale(1.1);
 }
 
 .r-Button.animate .click-effect {
-	-webkit-animation: clickEffect 0.35s forwards ease-out;
+	animation: clickEffect 0.35s forwards ease-out;
 }
 
-@-webkit-keyframes clickEffect {
+@keyframes clickEffect {
   0% {
   	transform: scale(0);
     background-color: rgba( 255, 255, 255, 0 );

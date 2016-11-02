@@ -126,7 +126,7 @@
 .r-Toolbar.flush > .r-Input:not(:last-child),
 .r-Toolbar.flush > .r-Input:not(:last-child) > .r-Input__container > input[type='text'],
 .r-Toolbar.flush > .r-Input.r-Input__container:not(:last-child) > input[type='text'] {
-  border-right:0;
+  // border-right:0;
   border-radius: 0;
 }
 
@@ -169,6 +169,7 @@
 .r-Toolbar.flush.horizontal > .r-Dropdown > .r-Button{
   margin-right:-1px;
   border-radius:0;
+  z-index: 1;
 }
 
 .r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1),
@@ -198,7 +199,7 @@
 .r-Toolbar.flush.horizontal > .r-Dropdown >.r-Button:last-child{
   border-top-right-radius:@default-border-radius;
   border-bottom-right-radius:@default-border-radius;
-  border-right:1px solid @standard-border;
+  // border-right:1px solid @standard-border;
 }
 
 // .r-Toolbar.tabs>.r-Button {
