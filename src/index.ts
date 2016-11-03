@@ -1,3 +1,4 @@
+export {default as App} from './components/App/App';
 export {default as Align} from './components/Align/Align';
 export {default as Button} from './components/Button/Button';
 export {default as Checkbox} from './components/Checkbox/Checkbox';
@@ -10,7 +11,6 @@ export {default as Layer} from './components/Layer/Layer';
 export {default as Loading} from './components/Loading/Loading';
 export {default as Modal} from './components/Modal/Modal';
 export {default as Notifications} from './components/Notifications/Notifications';
-// export {default as Searchbar} from './components/Searchbar/Searchbar';
 export {default as Selectable} from './components/Selectable/Selectable';
 export {default as Shrink} from './components/Shrink/Shrink';
 export {default as Toggle, IToggleProps, IToggleState} from './components/Toggle/Toggle';
@@ -18,7 +18,6 @@ export {default as Toolbar} from './components/Toolbar/Toolbar';
 export {default as Transform} from './components/Transform/Transform';
 export {default as Wizard} from './components/Wizard/Wizard';
 export {default as SlideIn} from './components/SlideIn/SlideIn';
-// export {default as Tree} from './components/Tree/Tree';
 export {default as Table} from './components/Table/Table';
 
 import './less/Recoil.less';

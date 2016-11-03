@@ -46,7 +46,6 @@ export interface IButtonState {
   progressiveClickLength? : number;
   clickCounter? : number;
   shiftCounter?: number;
-  animate?: boolean;
 }
 
 export default class Button extends React.Component<IButtonProps, IButtonState>{
@@ -67,8 +66,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       checked : false,
       progressiveClickIndex: 0,
       clickCounter: 0,
-      shiftCounter: 0,
-      animate: false
+      shiftCounter: 0
     };
   }
 
@@ -96,13 +94,8 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     if (this.props.onClick) {
       this.setState({
           checked: true,
-          animate:true,
-      }, () => {
-          setTimeout(() => {
-              this.refs.button ? this.setState({
-                  animate: false
-              }) : null;
-          }, 100)});
+          
+      });
       this.props.onClick(event);
     }
     this.props.scrollToId ? this.bringIntoView() : null;
@@ -149,7 +142,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       {'icon-left' :(props.iconLocation === 'left')},
       {'pull-right' :(props.right)},
       { 'pull-left': (props.left) },
-      { 'animate': (self.state.animate) },
       props.size,
       props.theme,
       props.className,
@@ -189,7 +181,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
             {loadingPartial}
             {props.children}
             {iconWrapperRight}
-            <div className="click-effect"></div>
           </button>
         );
     }
@@ -202,7 +193,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
             {props.children}
             {selectablePartial}
             {iconWrapperRight}
-            <div className="click-effect"></div>
           </button>
         );
     }

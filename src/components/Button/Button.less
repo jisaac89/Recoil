@@ -296,25 +296,10 @@ a, .r-Button{
 	top: 0;
 }
 
-.r-Button.animate{
-    transform:scale(1.1);
+.r-Button:active{
+    transform:scale(.95);
 }
 
-.r-Button.animate .click-effect {
-	animation: clickEffect 0.35s forwards ease-out;
-}
-
-@keyframes clickEffect {
-  0% {
-  	transform: scale(0);
-    background-color: rgba( 255, 255, 255, 0 );
-  }
-  25% {
-    transform: scale(1);
-    background-color: rgba( 255, 255, 255, 0.5 );
-  }
-  100% {
-    transform: scale(1);
-    background-color: rgba( 255, 255, 255, 0 );
-  }
+r-Button{
+   .transition(all 50ms ease-in) !important;
 }
