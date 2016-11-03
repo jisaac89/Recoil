@@ -60,7 +60,7 @@ export default class TableSearch extends React.Component<any, any>{
       return (
         <Toolbar flex flush block noRadius className="mb10">
           <Input 
-            title={props.searchTitle} 
+            placeholder={props.searchTitle} 
             onChange={this.updateSearch.bind(this)} 
             block
             type="text"

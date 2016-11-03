@@ -244,7 +244,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       { 'e-required': (!props.disabled && props.required && !props.value) },
       'r-Input__container',
       'flohide',
-      { 'no-title': (!props.title) },
+      { 'no-title': (!props.advanced && !props.title) },
       'e-advanced'
     );
 
@@ -256,7 +256,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       )
     } else {
       return (
-        <div onMouseEnter={self.mouseOut.bind(self)} onMouseLeave={self.mouseOut.bind(self)} className={inputWrapperClass} style={props.style}>
+        <div className={inputWrapperClass} style={props.style}>
             {props.errorMessage ? errorInlinePartialTop : null}
             <div className={inputClassadvanced}>
                 {iconPartial}
