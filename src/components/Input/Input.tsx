@@ -6,13 +6,13 @@ import SlideIn from '../SlideIn/SlideIn';
 import './Input.less';
 
 export interface IInputProps {
-  ghost?: boolean;
+  simple?: boolean;
   ref? : any;
   className? : string;
   type? : string;
   icon? : string;
-  title? : string | number;
-  placeholder? : string | number;
+  title? : string;
+  placeholder? : string;
   value ? : string | string[];
   defaultValue ? : string | string[];
   children? : any;
@@ -227,6 +227,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     let inputWrapperClass = classNames(
       'r-Input',
       {'w100' : (props.block)},
+      {'simple' : (props.simple)},
       { 'checked': (this.state.checked) },
       { 'flex': (props.flex) },
       props.size,
@@ -243,7 +244,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       { 'e-required': (!props.disabled && props.required && !props.value) },
       'r-Input__container',
       'flohide',
-      'no-title',
+      { 'no-title': (!props.title) },
       'e-advanced'
     );
 
@@ -262,7 +263,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
                 <small>{props.title}</small>
                 {inputPartial}
                 {pencilPartial}
-                <Selectable type={props.error ? 'error' : 'primary'} ghost={props.ghost} checked={self.state.checked} />
+                <Selectable type={props.error ? 'error' : 'primary'} ghost={props.simple} checked={self.state.checked} />
                 {errorInlinePartial()}
             </div>
             {props.errorMessage ? errorInlinePartialBottom : null}
