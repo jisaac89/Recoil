@@ -109,13 +109,6 @@
 //   outline:0;
 // }
 
-.spacing .r-Button {
-  margin-right: 5px;
-}
-
-.spacing .r-Button:last-child {
-  margin-right: 0px;
-}
 
 .text-center .r-Button span,
 .text-center .r-Button {
@@ -298,8 +291,6 @@ a, .r-Button{
 
 .r-Button:active{
     transform:scale(.95);
-}
-
-r-Button{
-   .transition(all 50ms ease-in) !important;
+    /*backface-visibility: hidden;    */
+    filter: blur(0);
 }

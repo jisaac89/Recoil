@@ -41,7 +41,11 @@
 .r-Input.small.checked .r-Input__container>small {
     top: -3px !important;
     font-size: 9px;
+    top: -2px!important;
+    font-size: 9px;
+    left: 7px;
 }
+
 .r-Input.small.checked .r-Input__container>input {
     padding-top: 7px;
 }
@@ -159,8 +163,10 @@ textarea {
 }
 
 .r-Input.checked .r-Input__container > small {
-  top: -1px;
-  font-size: 60%;
+    top: 0px;
+    font-size: 60%;
+    left: 7px;
+    color: #555;
 }
 .r-Input__container > input {
   z-index: 1;
@@ -208,7 +214,6 @@ textarea {
 
 .r-Input.checked .r-Input__container > small + small {
   left: 7px;
-  color: #333;
 }
 
 @keyframes writing {
@@ -305,6 +310,7 @@ textarea, input[type="text"], input[type="password"], input[type='number'] {
 
 .error-message{
   color:@error-background !important;
+  font-size:10px;
 }
 
 .error-pane.e-open{

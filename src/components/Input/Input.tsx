@@ -184,10 +184,10 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     // error directions
     if (!props.errorInline && props.error) {
         if (props.errorDirection === 'top') {
-          errorInlinePartialTop =   <div className="p5 border-bottom"><small className="error-message">{props.errorMessage}</small></div>;
+          errorInlinePartialTop =   <small className="error-message">{props.errorMessage}</small>;
           errorInlinePartialBottom = null;
         } else{
-          errorInlinePartialBottom =   <div className="p5"><small className="error-message">{props.errorMessage}</small></div>;
+          errorInlinePartialBottom =   <small className="error-message">{props.errorMessage}</small>;
           errorInlinePartialTop = null;
         }
       } else {
@@ -244,7 +244,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       { 'e-required': (!props.disabled && props.required && !props.value) },
       'r-Input__container',
       'flohide',
-      { 'no-title': (!props.advanced && !props.title) },
+      { 'no-title': (!props.title) },
+      {'simple' : (props.simple)},
       'e-advanced'
     );
 
