@@ -41,7 +41,11 @@
 .r-Input.small.checked .r-Input__container>small {
     top: -3px !important;
     font-size: 9px;
+    top: -2px!important;
+    font-size: 9px;
+    left: 7px;
 }
+
 .r-Input.small.checked .r-Input__container>input {
     padding-top: 7px;
 }
@@ -81,8 +85,16 @@
     font-size: 83%;
 }
 
+.r-Input.large.checked .r-Input__container > .writing {
+    top: 20px;
+}
+
 .r-Input.xlarge.checked .r-Input__container > .writing {
     top: 38px;
+}
+
+.r-Input.small.checked .r-Input__container > .writing {
+    font-size:95%;
 }
 
 .r-Input.xlarge > .r-Input__container > small + small {
@@ -151,8 +163,10 @@ textarea {
 }
 
 .r-Input.checked .r-Input__container > small {
-  top: -1px;
-  font-size: 60%;
+    top: 0px;
+    font-size: 60%;
+    left: 7px;
+    color: #555;
 }
 .r-Input__container > input {
   z-index: 1;
@@ -169,11 +183,20 @@ textarea {
 .no-title.r-Input__container > input {
   opacity: 1;
   color:@input-color !important;
-  padding-top: 0;
+  padding-top:0;
 }
 .r-Input.checked .r-Input__container > input {
   opacity: 1;
   /*padding-top: 5px;*/
+}
+
+.r-Input.simple input,
+.r-Input__container {
+    border-left: 0;
+    border-right: 0;
+    background: transparent;
+    border-top: 0;
+    border-radius: 0;
 }
 
 .r-Input__container .r-Selectable__border-gray {
@@ -191,7 +214,6 @@ textarea {
 
 .r-Input.checked .r-Input__container > small + small {
   left: 7px;
-  color: #333;
 }
 
 @keyframes writing {
@@ -288,6 +310,7 @@ textarea, input[type="text"], input[type="password"], input[type='number'] {
 
 .error-message{
   color:@error-background !important;
+  font-size:10px;
 }
 
 .error-pane.e-open{

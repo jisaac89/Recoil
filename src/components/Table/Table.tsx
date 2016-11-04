@@ -95,7 +95,8 @@ export default class Table extends React.Component<ITableProps,any>{
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            page: nextProps.page !== this.props.page ? nextProps.page : this.state.page
+            page: nextProps.page !== this.props.page ? nextProps.page : this.state.page,
+            selectedElements: nextProps.selectedElements
         })
         if (nextProps.dataSource && !nextProps.page) {
             this.setState({

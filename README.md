@@ -32,7 +32,7 @@ And of course big thanks to Twitter Bootstrap, Semantics UI, Apple and Google Ma
 ### NPM Module
 
 ```sh
-$ npm install react-recoil
+$ Latest version not out yet.
 ```
 
 Then include the following CSS files in your HTML:

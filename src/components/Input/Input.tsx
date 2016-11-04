@@ -6,13 +6,13 @@ import SlideIn from '../SlideIn/SlideIn';
 import './Input.less';
 
 export interface IInputProps {
-  ghost?: boolean;
+  simple?: boolean;
   ref? : any;
   className? : string;
   type? : string;
   icon? : string;
-  title? : string | number;
-  placeholder? : string | number;
+  title? : string;
+  placeholder? : string;
   value ? : string | string[];
   defaultValue ? : string | string[];
   children? : any;
@@ -184,10 +184,10 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     // error directions
     if (!props.errorInline && props.error) {
         if (props.errorDirection === 'top') {
-          errorInlinePartialTop =   <div className="p5 border-bottom"><small className="error-message">{props.errorMessage}</small></div>;
+          errorInlinePartialTop =   <small className="error-message">{props.errorMessage}</small>;
           errorInlinePartialBottom = null;
         } else{
-          errorInlinePartialBottom =   <div className="p5"><small className="error-message">{props.errorMessage}</small></div>;
+          errorInlinePartialBottom =   <small className="error-message">{props.errorMessage}</small>;
           errorInlinePartialTop = null;
         }
       } else {
@@ -227,6 +227,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     let inputWrapperClass = classNames(
       'r-Input',
       {'w100' : (props.block)},
+      {'simple' : (props.simple)},
       { 'checked': (this.state.checked) },
       { 'flex': (props.flex) },
       props.size,
@@ -243,7 +244,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       { 'e-required': (!props.disabled && props.required && !props.value) },
       'r-Input__container',
       'flohide',
-      'no-title',
+      { 'no-title': (!props.title) },
+      {'simple' : (props.simple)},
       'e-advanced'
     );
 
@@ -255,14 +257,14 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       )
     } else {
       return (
-        <div onMouseEnter={self.mouseOut.bind(self)} onMouseLeave={self.mouseOut.bind(self)} className={inputWrapperClass} style={props.style}>
+        <div className={inputWrapperClass} style={props.style}>
             {props.errorMessage ? errorInlinePartialTop : null}
             <div className={inputClassadvanced}>
                 {iconPartial}
                 <small>{props.title}</small>
                 {inputPartial}
                 {pencilPartial}
-                <Selectable type={props.error ? 'error' : 'primary'} ghost={props.ghost} checked={self.state.checked} />
+                <Selectable type={props.error ? 'error' : 'primary'} ghost={props.simple} checked={self.state.checked} />
                 {errorInlinePartial()}
             </div>
             {props.errorMessage ? errorInlinePartialBottom : null}
