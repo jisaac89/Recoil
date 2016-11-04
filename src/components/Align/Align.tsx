@@ -2,7 +2,15 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Align.less';
 
-export default class Align extends React.Component<any, any> {
+export interface IAlignProps {
+    vertical?: boolean;
+    className?: string;
+    columns?: Array<any>;
+    margin?: string;
+    children?: Array<any>;
+}
+
+export default class Align extends React.Component<IAlignProps, any> {
   render() {
 
     const self = this;
