@@ -14,7 +14,7 @@ export default class ModalHeader extends React.Component<any, any>{
         props.icon ? (iconPartial = <i className={'pull-left mt10 fa fa-'+props.icon}></i>) : null;
         props.fullScreen ? (fullScreenPartial = <Button className="pull-right " onClick={this.toggleMin.bind(this)} icon={this.props.min ? 'expand' : 'compress'} simple />) : null;
 
-        if (props.title) {
+        if (props.open && props.title) {
             return (
                 <div className="r-Modal__header p10 border-bottom clearfix">
                     <div>

@@ -56,8 +56,10 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
           open : nextProps.open !== state.open ? nextProps.open : state.open
       });
 
-      if(nextProps.open) {
-        document.addEventListener('click', self.handleDocumentClick);
+      if (nextProps.open) {
+          document.addEventListener('click', self.handleDocumentClick);
+      } else {
+          document.removeEventListener('click', self.handleDocumentClick);
       }
   }
   componentWillUnmount() {
@@ -69,8 +71,10 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
       if (this.state.open && modal && !modal.contains(e.target)) {
           this.setState({
               open: false
-          })
-          document.removeEventListener('click', self.handleDocumentClick);
+          }, () => {
+              document.removeEventListener('click', self.handleDocumentClick);
+              })
+          
           self.props.onClose ? self.props.onClose() : null
       }
   }

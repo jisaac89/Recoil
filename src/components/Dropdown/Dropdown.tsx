@@ -96,8 +96,11 @@ export default class DropdownComponent extends React.Component<P, State>{
             open : !this.state.open
         });
 
-        if (this.state.open)
+        if (this.state.open) {
             this.props.onClose ? this.props.onClose() : null
+        } else {
+            document.removeEventListener('click', this.handleDocumentClick.bind(this), false);
+        }
     }
     onRowSelect(item){
         //this.props.onChange ? this.props.onChange(item) : null;
