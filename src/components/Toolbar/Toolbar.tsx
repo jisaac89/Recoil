@@ -49,7 +49,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       {'no-radius' : (props.noRadius)},
       {'spacing' : (props.spacing)},
       {'w100' : (props.block)},
-      {'dblock' : (props.block)},
+      {'dblock' : (props.vertical && props.block)},
       {'pull-left' : (props.left)},
       {'pull-right' : (props.right)},
       {'w100': (props.fill)},
