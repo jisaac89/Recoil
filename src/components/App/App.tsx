@@ -2,7 +2,12 @@
 import * as classNames from 'classnames';
 import './App.less';
 
-export default class App extends React.Component<any, any> {
+export interface IAppProps {
+    nightmode ? : boolean;
+    className ? : Array<string>;
+}
+
+export default class App extends React.Component<IAppProps, any> {
     render() {
 
         const self = this;

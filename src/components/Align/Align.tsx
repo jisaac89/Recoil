@@ -16,9 +16,18 @@ export interface IAlignState {
 }
 
 const AlignChild = (props) => {
-      let {columns, vertical, widthArray, element, margin, index : key} = props;
+
+      let {columns, vertical, width, element, margin} = props;
+
+      let alignChildStyle = {
+        flex: columns ? 'none' : '1',
+        padding: margin, 
+        width: !vertical ? width+'%' : null, 
+        height: vertical ? width+'%' : null 
+      };
+
       return (
-        <div className="r-Align__Child" style={{flex: columns ? 'none' : '1',padding:margin, width: !vertical ? widthArray[key]+'%' : null, height: vertical ? widthArray[key]+'%' : null }}>
+        <div className="r-Align__Child" style={alignChildStyle}>
           {element}
         </div>
       )
@@ -40,7 +49,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
       this.alignColumns(nextProps.columns);
     }
   }
-  alignUpdate(widthArray, singleColumnLength, maxColumnsLength) {
+  alignUpdate(widthArray : Array<number>, singleColumnLength : number, maxColumnsLength : number) {
     this.setState({
       maxColumnsLength: maxColumnsLength
     }, ()=> {
@@ -48,7 +57,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
       this.setState({widthArray : widthArray});
     });
   }
-  alignColumns(columns) {
+  alignColumns(columns : Array<number>) {
     let widthArray = [];
     let maxColumnsLength = 0;
     if (columns) {
@@ -59,9 +68,8 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
     }
   }
   alignChildren(element : JSX.Element, key : string) {
-      let {columns, margin, vertical} = this.props;
       let props = this.props;
-      return <AlignChild key={key} index={key} element={element} widthArray={this.state.widthArray} {...props} />
+      return <AlignChild key={key} element={element} width={this.state.widthArray[key]} {...props} />
   }
   render() {
     const self = this;
