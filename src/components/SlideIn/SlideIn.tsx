@@ -61,7 +61,7 @@ export default class SlideIn extends React.Component<ISlideInProps, {}>{
 
     return(
       <div tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={slideInContainerStyle}>
-          {props.children}
+          {props.if ? props.children : null}
       </div>
     );
   }
