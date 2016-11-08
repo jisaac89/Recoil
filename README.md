@@ -1,6 +1,8 @@
 # Recoil
 
-NOT PRODUCTION READY
+Rapidly create React websites.
+
+![Alt text](https://media.giphy.com/media/3o6ZtoFIzzy7NXEBqg/source.gif "Recoil")
 
 Recoil is a front-end react powered framework.
 
