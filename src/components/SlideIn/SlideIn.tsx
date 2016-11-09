@@ -4,64 +4,47 @@ import './SlideIn.less';
 
 export interface ISlideInProps {
   if? : boolean;
-  fill? : any;
-  from? : any;
-  className? : any;
-  offset? : any;
-  onClick? : any;
-  children? : any;
+  fill? : boolean;
+  from? : 'left' | 'right' | 'top' | 'bottom';
+  className? : string;
+  offset? : number;
+  onClick? : () => void;
+  children? : Array<any>;
   fixed ? : boolean;
 }
 
-export default class SlideIn extends React.Component<ISlideInProps, {}>{
-
+export default class SlideIn extends React.Component<ISlideInProps, any>{
   constructor(props){
     super(props);
+    this.state = {
+     offset: props.offset || 0,
+     axis : props.from === 'left' || 'right' ? 'X' : 'Y',
+     slideInContainerStyle: null
+    }
+  }
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+        slideInContainerStyle : nextProps.if ? {transform : 'translate'+this.state.axis+'('+this.state.offset+')'} : null,
+        offset : nextProps.offset
+    });
   }
   render() {
     const self = this;
     const props = self.props;
-    let axis, slideInContainerStyle;
+    let {fill, fixed} = props;
 
     let slideInContainerClass = classNames(
       'r-SlideIn',
       {'e-open': (props.if)},
-      {'fill': (props.fill)},
-      {'fixed': (props.fixed)},
+      {'fill': (fill)},
+      {'fixed': (fixed)},
       props.className,
       props.from
     );
 
-    switch (props.from) {
-      case 'left' || 'right':
-        axis = 'X';
-        break;
-      case 'top' || 'bottom':
-        axis = 'Y';
-        break;
-      default:
-
-    }
-
-    let offset;
-
-    if (props.offset) {
-      offset = props.offset;
-    } else {
-      offset = '0px';
-    }
-
-    if (props.if) {
-      slideInContainerStyle = {
-        transform : 'translate'+axis+'('+offset+')'
-      };
-    } else {
-      slideInContainerStyle = null;
-    }
-
     return(
-      <div tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={slideInContainerStyle}>
-          {props.if ? props.children : null}
+      <div tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={this.state.slideInContainerStyle}>
+          {props.children}
       </div>
     );
   }
