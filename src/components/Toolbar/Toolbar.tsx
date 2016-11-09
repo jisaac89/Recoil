@@ -32,6 +32,7 @@ export interface IToolbarProps {
   theme? : string;
   flex?: boolean;
   id? : string;
+  disabled? : boolean;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{
@@ -60,6 +61,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       { 'tabs': (props.tabs) },
       { 'flex': (props.flex) },
       { 'breadcrumbs': (props.breadcrumbs) },
+      {'disabled': (props.disabled)},
       props.size,
       props.theme
     );

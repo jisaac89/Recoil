@@ -28,6 +28,7 @@ export interface ILayerProps {
   parent? : boolean;
   child? : boolean;
   dimensions?:any;
+  disabled? : boolean;
 }
 
 export default class Layer extends React.Component<ILayerProps, {}> {
@@ -69,6 +70,7 @@ export default class Layer extends React.Component<ILayerProps, {}> {
       {'pull-right': (props.right)},
       {'e-scroll-y': (props.scrollY)},
       {'e-scroll-x': (props.scrollX)},
+      {'disabled': (props.disabled)},
       {'fill': (props.fill)},
       {'parent': (props.parent)},
       {'child': (props.child)},
