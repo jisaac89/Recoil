@@ -474,6 +474,7 @@ export default class Table extends React.Component<ITableProps,any>{
                         <TableHead {...tableProps} {...headProps} />
                         <TableBody {...tableProps} {...bodyProps} />
                     </table>
+                    <TableFooter {...footerProps} hidePageSize />
                 </div>
             )
         } else return null;

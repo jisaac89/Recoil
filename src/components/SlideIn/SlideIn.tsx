@@ -35,9 +35,10 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
 
     let slideInContainerClass = classNames(
       'r-SlideIn',
-      {'e-open': (props.if)},
+      { 'e-open': (props.if) },
+      { 'e-relative': (!props.from) },
       {'fill': (fill)},
-      {'fixed': (fixed)},
+      {'e-fixed': (fixed)},
       props.className,
       props.from
     );

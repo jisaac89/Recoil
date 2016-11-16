@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import Button from '../Button/Button';
+import Toolbar from '../Toolbar/Toolbar';
 
 export default class ModalHeader extends React.Component<any, any>{
     toggleMin() {
@@ -12,18 +13,18 @@ export default class ModalHeader extends React.Component<any, any>{
         let iconPartial, fullScreenPartial;
 
         props.icon ? (iconPartial = <i className={'pull-left mt10 fa fa-'+props.icon}></i>) : null;
-        props.fullScreen ? (fullScreenPartial = <Button className="pull-right " onClick={this.toggleMin.bind(this)} icon={this.props.min ? 'expand' : 'compress'} simple />) : null;
+        props.fullScreen ? (fullScreenPartial = <Button className="pull-right " size="small" onClick={this.toggleMin.bind(this)} icon={this.props.min ? 'expand' : 'compress'} />) : null;
 
-        if (props.open && props.title) {
+        if (props.open && (props.title || props.fullScreen)) {
             return (
-                <div className="r-Modal__header p10 border-bottom clearfix">
-                    <div>
+                <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
+                    {props.title ? <div>
                         {iconPartial}
                         <h1 className="dinblock"> {props.title} </h1>
-                    </div>
-                    <Button simple className="pull-right" onClick={props.onClose} icon="times" />
+                    </div> : null}
+                    <Button size="small" className="pull-right" onClick={props.onClose} icon="times" />
                     {fullScreenPartial}
-                </div>
+                </Toolbar>
             );
         } else return null;
     }

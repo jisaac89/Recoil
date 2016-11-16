@@ -2,17 +2,6 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Layer.less';
 
-// window.requestAnimFrame = (function() {
-// 	return  window.requestAnimationFrame       || 
-// 		window.webkitRequestAnimationFrame || 
-// 		window.mozRequestAnimationFrame    || 
-// 		window.oRequestAnimationFrame      || 
-// 		window.msRequestAnimationFrame     || 
-// 		function(/* function */ callback, /* DOMElement */ element){
-// 			window.setTimeout(callback, 1000 / 60);
-// 		};
-// })();
-
 interface ObjectCtor extends ObjectConstructor {
     assign(target: any, ...sources: any[]): any;
 }
@@ -115,16 +104,6 @@ export default class Layer extends React.Component<ILayerProps, any> {
     this.refs.Layer ? this.scrollTo(element, animate) : null;
   }
 
-  // scrollTo(element, { offset, duration, easing }) {
-  //   const self = this;
-  //   this.animateScrollTop(element, { offset, duration, easing });
-  //   this.animateScrollLeft(element, { offset, duration, easing });
-
-  //   self.setState({
-  //     scrollToId: ''
-  //   })
-  // }
-
   scrollTo(element, { offset, duration, easing }) {
     const self = this;
     this.animateScrolling(element, { offset, duration, easing });
@@ -164,48 +143,6 @@ export default class Layer extends React.Component<ILayerProps, any> {
     this.refs.Layer.scrollTop = y;
     this.refs.Layer.scrollLeft = x;
   }
-
-  // animateScrollTop(element, { offset, duration, easing }) {
-  //   const self = this;
-  //   const start = this.getScrollTop();
-  //   const to = this.getOffsetTop(element) + offset;
-  //   const change = to - start;
-  //   const increment = 20;
-
-  //   function animate(elapsedTime) {
-  //     const elapsed = elapsedTime + increment;
-  //     const position = easing(null, elapsed, start, change, duration);
-  //     self.setScrollTop(position);
-  //     if (elapsed < duration) {
-  //       setTimeout(function() {
-  //         animate(elapsed);
-  //       }, increment);
-  //     }
-  //   }
-
-  //   animate(0);
-  // }
-
-  //   animateScrollLeft(element, { offset, duration, easing }) {
-  //   const self = this;
-  //   const start = this.getScrollLeft();
-  //   const to = this.getOffsetLeft(element) + offset;
-  //   const change = to - start;
-  //   const increment = 20;
-
-  //   function animate(elapsedTime) {
-  //     const elapsed = elapsedTime + increment;
-  //     const position = easing(null, elapsed, start, change, duration);
-  //     self.setScrollLeft(position);
-  //     if (elapsed < duration) {
-  //       setTimeout(function() {
-  //         animate(elapsed);
-  //       }, increment);
-  //     }
-  //   }
-
-  //   animate(0);
-  // }
 
   easeOutQuad(x, t, b, c, d) {
     return -c * (t /= d) * (t - 2) + b;
@@ -261,7 +198,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
     let layerClass = classNames(
       'r-Layer',
       { 'e-NightMode': (props.nightmode)},
-      {'flohide' : (props.overflow)},
+      {'flohide' : (props.overflow === false)},
       {'pull-left': (props.left)},
       {'pull-right': (props.right)},
       {'e-scroll-y': (props.scrollY)},
