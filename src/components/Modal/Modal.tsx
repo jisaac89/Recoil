@@ -38,8 +38,6 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
       dropDirection: 'down'
   };
 
-  
-  
   constructor(props){
     super(props);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
@@ -116,7 +114,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
       <div className={modalWrapperClass}>
         <div ref={'modal'} className={modalClass} style={props.style}>
           <ModalHeader {...props} min={this.state.min} toggleMin={this.toggleMin.bind(this)}/>
-          {props.open ? props.children : null}
+          {props.children}
         </div>
       </div>
     );
