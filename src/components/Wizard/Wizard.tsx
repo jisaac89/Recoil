@@ -43,7 +43,7 @@ export default class Wizard extends React.Component<IWizardProps, any>{
       showSlide: true,
       debouncing: false
     }
-    this.handleAnimate = this.debounce(this.handleAnimate,duration, true)
+    this.handleAnimate = this.debounce(this.handleAnimate,duration / 1.1, true)
 }
   debounce(func, wait, immediate) {
     const self = this;
