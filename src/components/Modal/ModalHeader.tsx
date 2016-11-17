@@ -12,8 +12,8 @@ export default class ModalHeader extends React.Component<any, any>{
         let props = this.props;
         let iconPartial, fullScreenPartial;
 
-        props.icon ? (iconPartial = <i className={'pull-left mt10 fa fa-'+props.icon}></i>) : null;
-        props.fullScreen ? (fullScreenPartial = <Button simple className="pull-right " size="small" onClick={this.toggleMin.bind(this)} icon={this.props.min ? 'expand' : 'compress'} />) : null;
+        props.icon ? (iconPartial = <i className={'pull-left mt10 fa fa-' + props.icon}></i>) : null;
+        props.fullScreen ? (fullScreenPartial = <Button simple className="pull-right " size="small" onClick={this.toggleMin.bind(this) } icon={this.props.min ? 'expand' : 'compress'} />) : null;
 
         if (props.open && (props.title || props.fullScreen)) {
             return (
