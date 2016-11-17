@@ -51,10 +51,10 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
       const self = this;
       const state = this.state;
       this.setState({
-          open : nextProps.open !== state.open ? nextProps.open : state.open
+          open : nextProps.open !== this.props.open ? nextProps.open : state.open
       });
 
-      if (nextProps.open) {
+      if (nextProps.open !== this.props.open) {
           document.addEventListener('click', self.handleDocumentClick);
       } else {
           document.removeEventListener('click', self.handleDocumentClick);
@@ -66,9 +66,9 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
   handleDocumentClick(e) {
       const self = this;
       var modal = this.refs.modal;
-      if (this.state.open && modal && !modal.contains(e.target)) {
+      if (this.state.open && modal) {
           this.setState({
-              open: false
+              open: true
           }, () => {
               document.removeEventListener('click', self.handleDocumentClick);
               })
