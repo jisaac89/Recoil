@@ -41,53 +41,11 @@ export default class Wizard extends React.Component<IWizardProps, any>{
       translate: '',
       animating: false,
       showSlide: true,
-      debouncing: false
+      renderSlide: true
     }
-    this.handleAnimate = this.debounce(this.handleAnimate,duration / 1.1, true)
-}
-  debounce(func, wait, immediate) {
-    const self = this;
-    var timeout;
-    return function() {
-      var context = this, args = arguments;
-      var later = function() {
-        timeout = null;
-        if (!immediate) {
-          self.setState({
-            debouncing : true,
-            showSlide:true
-          }, ()=>{
-            func.apply(context, args)
-          })
-        } else {
-          self.setState({
-            debouncing : false
-          }, ()=> {
-             !self.state.showSlide ? func.apply(context, args) : null
-          })
-        }
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) {
-          self.setState({
-            debouncing : false,
-            showSlide: false
-          }, ()=>{
-            func.apply(context, args)
-          })
-      } else {
-          self.setState({
-            debouncing : true,
-            showSlide: false
-          })
-      }
-    };
+    this.handleAnimate = this.debounce(this.handleAnimate,duration, true)
   }
-  easeOutQuad(x, t, b, c, d) {
-    return -c * (t /= d) * (t - 2) + b;
-  }
+
   componentWillReceiveProps(nextProps) {
     const self = this;
     let props = nextProps || self.props;
@@ -153,6 +111,9 @@ export default class Wizard extends React.Component<IWizardProps, any>{
   createSlidesPartial = (item, index) => {
     let props = this.props;
     let state = this.state;
+
+    let {translateSelected, renderSlide} = state;
+
     let wizardSlideClass = classNames(
       'r-WizardSlide',
       props.className
@@ -160,11 +121,54 @@ export default class Wizard extends React.Component<IWizardProps, any>{
 
     if (state.slideIndex === index){
       return(
-        <div style={{'WebkitTransform' : state.translateSelected}} className={wizardSlideClass} key={index}>
-          {!state.debouncing ? item : null}
+        <div style={{'transform' : translateSelected,'WebkitTransform' : translateSelected, 'MozTransform' : translateSelected}} className={wizardSlideClass} key={index}>
+          {renderSlide ? item : null}
         </div>
       )
     } else return null
+  }
+  debounce(func, wait, immediate) {
+    const self = this;
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) {
+          self.setState({
+            renderSlide : false,
+            showSlide:true
+          }, ()=>{
+            func.apply(context, args)
+          })
+        } else {
+          self.setState({
+            renderSlide : true
+          }, ()=> {
+             !self.state.showSlide ? func.apply(context, args) : null
+          })
+        }
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+          self.setState({
+            renderSlide : true,
+            showSlide: false
+          }, ()=>{
+            func.apply(context, args)
+          })
+      } else {
+          self.setState({
+            renderSlide : false,
+            showSlide: false
+          })
+      }
+    };
+  }
+  easeOutQuad(x, t, b, c, d) {
+    return -c * (t /= d) * (t - 2) + b;
   }
   render() {
 
@@ -178,9 +182,11 @@ export default class Wizard extends React.Component<IWizardProps, any>{
       {'e-overflow': (props.overflow)}
     );
 
+    let children = props.children;
+
     return(
       <div ref="Wizard" className={wizardClass} style={props.style}>
-        {props.children.length > 1 ? props.children.map(this.createSlidesPartial.bind(this)) : props.children}
+        {children.length > 1 ? children.map(this.createSlidesPartial.bind(this)) : children}
       </div>
     );
   }
