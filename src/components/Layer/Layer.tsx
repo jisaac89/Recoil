@@ -119,19 +119,30 @@ export default class Layer extends React.Component<ILayerProps, any> {
     const changeY = toY - startY;
     const increment = 20;
 
-    function animate(elapsedTime) {
+    function animate(elapsedTime, type) {
       const elapsed = elapsedTime + increment;
       const positionX = easing(null, elapsed, startX, changeX, duration);
       const positionY = easing(null, elapsed, startY, changeY, duration);
-      self.setScrolling(positionX, positionY);
+
+      let scrollY = type === 0;
+      let scrollX = type === 1;
+      let scroll = type === 2;
+
+      self.setScrolling(positionX, positionY, type);
       if (elapsed < duration) {
         setTimeout(function() {
-          animate(elapsed);
+          animate(elapsed, type);
         }, increment);
       }
     }
 
-    animate(0);
+    if (self.props.scrollY) {
+      animate(0, 0);
+    } else if(self.props.scrollX) {
+      animate(0, 1);
+    } else {
+      animate(0, 2);
+    }
 
     self.setState({
       scrollToId: ''
@@ -139,9 +150,9 @@ export default class Layer extends React.Component<ILayerProps, any> {
 
   }
 
-  setScrolling(x, y){
-    this.refs.Layer.scrollTop = y;
-    this.refs.Layer.scrollLeft = x;
+  setScrolling(x, y, type){
+    type === 0 || type === 2 ? this.refs.Layer.scrollTop = y : null;
+    type === 1 || type === 2 ? this.refs.Layer.scrollLeft = x : null;
   }
 
   easeOutQuad(x, t, b, c, d) {
@@ -152,22 +163,21 @@ export default class Layer extends React.Component<ILayerProps, any> {
     return this.refs.Layer.scrollTop || this.refs.Layer.scrollTop;
   }
 
+  getScrollLeft() {
+    return this.refs.Layer.scrollLeft || this.refs.Layer.scrollLeft;
+  }
+
   setScrollTop(position) {
     this.refs.Layer.scrollTop = position;
+  }
+
+  setScrollLeft(position) {
+    this.refs.Layer.scrollLeft = position;
   }
 
   getOffsetTop(element) {
     let top = element.getBoundingClientRect().top;
     return top + this.getScrollTop();
-  }
-
-
-  getScrollLeft() {
-    return this.refs.Layer.scrollLeft || this.refs.Layer.scrollLeft;
-  }
-
-  setScrollLeft(position) {
-    this.refs.Layer.scrollLeft = position;
   }
 
   getOffsetLeft(element) {

@@ -13,48 +13,116 @@ export interface IWizardProps {
   fill ? : boolean;
   overflow? : boolean;
   duration? : number;
+  beforeAnimate? : any;
+  afterAnimate?: any;
 }
 
 export default class Wizard extends React.Component<IWizardProps, any>{
+  
   public _beforeAnimate : any;
   public _afterAnimate : any;
   public _animate : any;
-   public _animateSlide : any;
+  public _animateSlide : any;
   
   public static defaultProps = {
     slideIndex: 0
   }
+
   constructor(props) {
     super(props);
-    this._beforeAnimate = props.beforeAnimate || function() {};
-    this._afterAnimate = props.afterAnimate || function() {};
-      const {
+    this._beforeAnimate = this.beforeAnimate || function() {};
+    this._afterAnimate = this.afterAnimate || function() {};
+    const {
       offset = 0, duration = props.duration || 400, easing = this.easeOutQuad
     } = props.animate || {};
     this._animateSlide = { offset, duration, easing };
     this.state = {
       slideIndex : props.slideIndex || 0,
-      translate: ''
+      translate: '',
+      animating: false,
+      showSlide: true,
+      debouncing: false
     }
+    this.handleAnimate = this.debounce(this.handleAnimate,duration, true)
 }
+  debounce(func, wait, immediate) {
+    const self = this;
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) {
+          self.setState({
+            debouncing : true,
+            showSlide:true
+          }, ()=>{
+            func.apply(context, args)
+          })
+        } else {
+          self.setState({
+            debouncing : false
+          }, ()=> {
+             !self.state.showSlide ? func.apply(context, args) : null
+          })
+        }
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) {
+          self.setState({
+            debouncing : false,
+            showSlide: false
+          }, ()=>{
+            func.apply(context, args)
+          })
+      } else {
+          self.setState({
+            debouncing : true,
+            showSlide: false
+          })
+      }
+    };
+  }
   easeOutQuad(x, t, b, c, d) {
     return -c * (t /= d) * (t - 2) + b;
   }
-  
   componentWillReceiveProps(nextProps) {
     const self = this;
-    nextProps.slideIndex < this.props.slideIndex ? this.handleAnimate(nextProps, 2) : null;
-    nextProps.slideIndex > this.props.slideIndex ? this.handleAnimate(nextProps, 1) : null;
+    let props = nextProps || self.props;
+    props.slideIndex < this.props.slideIndex ? this.handleAnimate(props, 2) : null;
+    props.slideIndex > this.props.slideIndex ? this.handleAnimate(props, 1) : null;
   }
   handleAnimate(props, n) {
     const self = this;
-    this._beforeAnimate();
-      self.setState({
-        slideIndex: props.slideIndex
-      }, ()=>{
-        self.animateSlide(n, props, this._animateSlide);
-      })
-    this._afterAnimate();
+    this._beforeAnimate(props.slideIndex, props, n);
+    this._afterAnimate(props.slideIndex);
+  }
+  beforeAnimate(slideIndex, props, n) {
+    this.props.beforeAnimate;
+    this.setState({
+      slideIndex: slideIndex,
+      showSlide: false
+    }, ()=>{
+      this.startAnimating(props, n)
+    })
+  }
+  startAnimating(props, n) {
+    const self = this;
+    this.setState({
+      animating: true,
+      showSlide: true
+    }, ()=>{
+      self.animateSlide(n, props, this._animateSlide);
+    })
+  }
+  afterAnimate(slideIndex) {
+    this.setState({
+      showSlide: true,
+      animating: false
+    })
+    this.props.afterAnimate;
   }
   animateSlide(n, props, { offset, duration, easing }) {
     const self = this;
@@ -66,7 +134,7 @@ export default class Wizard extends React.Component<IWizardProps, any>{
       const elapsed = elapsedTime + increment;
       const positionX = easing(null, elapsed, 100, -100, duration);
       const positionY = easing(null, elapsed, 0, changeX, duration);
-      self.setScrolling(positionX, n);
+      self.translateSlide(positionX, n);
       if (elapsed < duration) {
         setTimeout(function() {
           animate(elapsed, props);
@@ -76,12 +144,8 @@ export default class Wizard extends React.Component<IWizardProps, any>{
 
     animate(0, props);
 
-    self.setState({
-      scrollToId: ''
-    })
-
   }
-  setScrolling(x, n) {
+  translateSlide(x, n) {
     this.setState({
       translateSelected : n === 2 ? 'translate(-'+x+'%,0%)' : 'translate('+x+'%,0%)'
     })
@@ -94,10 +158,10 @@ export default class Wizard extends React.Component<IWizardProps, any>{
       props.className
     );
 
-    if (props.slideIndex === index){
+    if (state.slideIndex === index){
       return(
         <div style={{'WebkitTransform' : state.translateSelected}} className={wizardSlideClass} key={index}>
-          {item}
+          {!state.debouncing ? item : null}
         </div>
       )
     } else return null
