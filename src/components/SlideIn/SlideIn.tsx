@@ -11,23 +11,62 @@ export interface ISlideInProps {
   onClick? : () => void;
   children? : Array<any>;
   fixed ? : boolean;
+
+  beforeOpen ? : () => void;
+  afterOpen ? : () => void;
 }
 
 export default class SlideIn extends React.Component<ISlideInProps, any>{
+  
   constructor(props){
     super(props);
     this.state = {
      offset: props.offset || 0,
      axis : props.from === 'left' || 'right' ? 'X' : 'Y',
-     slideInContainerStyle: null
+     style: props.if ? {transform : 'translate'+(props.from === 'left' || 'right' ? 'X' : 'Y')+'('+props.offset+')'} : null,
+     showChildren: props.if
     }
   }
+
   componentWillReceiveProps(nextProps) {
-    this.setState({
-        slideInContainerStyle : nextProps.if ? {transform : 'translate'+this.state.axis+'('+this.state.offset+')'} : null,
-        offset : nextProps.offset
-    });
+    nextProps.if ? this.open() : this.close();
   }
+
+  open() {
+    this.beforeOpen();
+    this.afterOpen();
+  }
+
+  beforeOpen() {
+    this.props.beforeOpen ? this.props.beforeOpen() : null;
+    this.slideIn();
+  }
+
+  slideIn() {
+    this.setState({
+        style : {transform : 'translate'+this.state.axis+'('+this.state.offset+')'},
+    }, () => {
+        this.afterOpen();
+    })
+  }
+
+  afterOpen() {
+    this.setState({
+        showChildren: true
+    })
+  }
+
+  close() {
+    this.setState({
+        style: null
+    }, ()=> {
+      this.setState({
+        open: false,
+        showChildren: false
+      })
+    })
+  }
+
   render() {
     const self = this;
     const props = self.props;
@@ -44,8 +83,9 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
 
     return(
       <div tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={this.state.slideInContainerStyle}>
-          {props.children}
+          {this.state.showChildren ? props.children : null}
       </div>
     );
   }
+
 }

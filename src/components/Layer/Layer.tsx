@@ -29,6 +29,7 @@ export interface ILayerProps {
   child? : boolean;
   dimensions?:any;
   disabled? : boolean;
+  nightmode ? : boolean;
 }
 
 export default class Layer extends React.Component<ILayerProps, {}> {
@@ -68,6 +69,7 @@ export default class Layer extends React.Component<ILayerProps, {}> {
       {'flohide' : (props.overflow)},
       {'pull-left': (props.left)},
       {'pull-right': (props.right)},
+      {'e-NightMode': (props.nightmode)},
       {'e-scroll-y': (props.scrollY)},
       {'e-scroll-x': (props.scrollX)},
       {'disabled': (props.disabled)},

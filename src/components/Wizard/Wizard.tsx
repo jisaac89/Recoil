@@ -57,11 +57,13 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
         props.className
       );
 
-      return(
-        <WizardSlide visible={selected || forward || backward} className={wizardSlideClass} key={index}>
-          {item}
-        </WizardSlide>
-      )
+      if (selected || forward || backward) {
+        return(
+          <WizardSlide visible={selected || forward || backward} className={wizardSlideClass} key={index}>
+            {selected ? item : null}
+          </WizardSlide>
+        )
+      } else return null
     };
 
     if (props.children.length > 1) {
