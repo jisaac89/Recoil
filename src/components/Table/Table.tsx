@@ -449,6 +449,7 @@ export default class Table extends React.Component<ITableProps,any>{
             onPageChange: onPageChange,
             rowCount: rowCount,
             hidePageSize: hidePageSize,
+            hideHeader: hideHeader,
             showDataSourceLength: showDataSourceLength
         }
 

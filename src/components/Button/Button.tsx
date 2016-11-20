@@ -79,14 +79,9 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
    }
 
   public onClick(event: React.MouseEvent) {
-    const self = this;
-    if (this.props.onClick) {
-      this.setState({
-          checked: true,
-          
-      });
-      this.props.onClick(event);
-    }
+      const self = this;
+      event.stopPropagation();
+      this.props.onClick ? this.props.onClick(event) : null;
   }
 
   public progressiveClick (arrayOfFunctions) {

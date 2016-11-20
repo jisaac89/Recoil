@@ -21,6 +21,7 @@ export interface ITableFooterProps {
   hidePageSize?: boolean;
   rowCount?: number;
   showDataSourceLength?: boolean;
+  hideHeader?: boolean;
 }
 
 export default class TableFooter extends React.Component<ITableFooterProps, {}>{
@@ -57,7 +58,8 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
       dataSource,
       rowCount,
       hidePageSize,
-      showDataSourceLength
+      showDataSourceLength,
+      hideHeader
     } = props;
 
     let paginationPartial = [];
@@ -82,14 +84,14 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
       return (
           <div className="r-TableFooter">
               {(() => {
-                  if (this.props.numberOfPages !== 1) {
+                  if (numberOfPages !== 1) {
                       return (
                           <Toolbar flush noRadius className="p10">
                               <Button size="small" disabled={currentPage === 0} tabIndex={-1} onClick={firstPage} icon="fast-backward"></Button>
                               <Button size="small" disabled={currentPage === 0} tabIndex={-1} onClick={previousPage} icon="step-backward"></Button>
                               {paginationPartial }
-                              <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
-                              <Button size="small" disabled={currentPage === this.props.numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages) } icon="fast-forward"></Button>
+                              <Button size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
+                              <Button size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages) } icon="fast-forward"></Button>
                               {hidePageSize ? null : <Dropdown hideHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} /> }
                           </Toolbar>
                       )

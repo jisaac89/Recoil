@@ -35,7 +35,7 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
         const props = self.props;
         let {value} = props;
         
-        if (Array.isArray(value)) {
+        if (value instanceof Array) {
             this.setState({
                 type : 'Array'
             })
@@ -67,7 +67,7 @@ export default class TableData extends React.Component<ITableDataProps,ITableDat
         } else if (type !== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
             return (
                 <td width={column.width}>
-                    {column.template ? column.template(element) : type === 'Value' ? value.toString() : <Dropdown material dataSource={value} title={type} />}
+                    {column.template ? column.template(element) : type === 'Value' ? value ? value.toString() : null : <Dropdown material dataSource={value} title={type} />}
                 </td>
             )
         } return null;

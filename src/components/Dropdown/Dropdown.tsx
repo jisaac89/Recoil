@@ -28,7 +28,7 @@ interface P {
     material? : boolean;
     icon?: string;
     onChange ? : Function;
-    theme?: 'success' | 'primary' | 'error';
+    theme?: 'success' | 'primary' | 'error' | 'default';
     size? : 'small' | 'medium' | 'large' | 'xlarge';
     pointer? : 'left' | 'right' | boolean;
     pageSize? : number;
@@ -40,7 +40,12 @@ interface P {
     hideHeader?: boolean;
     columns?: Array<any>;
     searchableKeys?: Array<any>;
-    sortable?: boolean;
+    onSort? : any;
+    sortable?: any;
+    hidePageSize?: any;
+    rowCount?: any;
+    page?: any;
+    onPageChange?: any;
 }
 
 export interface State {
@@ -52,7 +57,6 @@ export interface State {
 export default class DropdownComponent extends React.Component<P, State>{
     mouseIsDown: boolean;
 
-    
     refs: {
         [key: string]: (Element);
         dropdown: (HTMLInputElement);
@@ -60,7 +64,8 @@ export default class DropdownComponent extends React.Component<P, State>{
 
     public static defaultProps = {
         type: 'button',
-        dropDirection: 'down'
+        dropDirection: 'down',
+        toggleCpenOnRowSelect: true
     };
 
     constructor(props) {
@@ -70,24 +75,9 @@ export default class DropdownComponent extends React.Component<P, State>{
             selected : props.selected || []
         }
     }
-    componentDidMount() {
-        document.addEventListener('click', this.handleDocumentClick.bind(this), false);
-    }
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleDocumentClick.bind(this), false);
-    }
-    handleDocumentClick(e) {
-        var dropdown = this.refs.dropdown;
-        if (dropdown && !dropdown.contains(e.target)) {
-            this.setState({
-                open: false
-            })
-        }
-    }
     componentWillReceiveProps(nextProps) {
         const state = this.state;
         this.setState({
-            open : nextProps.open !== state.open ? nextProps.open : state.open,
             selected : nextProps.selected !== this.state.selected ? nextProps.selected : this.state.selected
         });
     }
@@ -95,20 +85,14 @@ export default class DropdownComponent extends React.Component<P, State>{
         this.setState({
             open : !this.state.open
         });
-
-        if (this.state.open) {
-            this.props.onClose ? this.props.onClose() : null
-        } else {
-            document.removeEventListener('click', this.handleDocumentClick.bind(this), false);
-        }
     }
-    onRowSelect(item){
-        //this.props.onChange ? this.props.onChange(item) : null;
+    onRowSelect(item) {
+
         if (this.props.rowIsSelectable) {
             this.setState({
                 selected : [item]
             })
-            this.props.rowIsSelectable === 'single' ? this.toggleOpen() : null
+            this.props.rowIsSelectable === 'single' && this.props.toggleCpenOnRowSelect ? this.toggleOpen() : null
             this.props.onChange ? this.props.onChange(item) : null;
         }
         else if (this.props.onChange) {
