@@ -14,7 +14,8 @@ export interface ILayerProps {
   border? : boolean;
   overflow? : boolean;
   left? : boolean;
-  right? : boolean;
+  right?: boolean;
+  scroll?: boolean;
   scrollY? : boolean;
   scrollX? : boolean;
   fill? : boolean;
@@ -29,7 +30,8 @@ export interface ILayerProps {
   child? : boolean;
   dimensions?:any;
   disabled? : boolean;
-  nightmode ? : boolean;
+  nightmode?: boolean;
+  flex?: boolean;
 }
 
 export default class Layer extends React.Component<ILayerProps, {}> {
@@ -69,11 +71,13 @@ export default class Layer extends React.Component<ILayerProps, {}> {
       {'flohide' : (props.overflow)},
       {'pull-left': (props.left)},
       {'pull-right': (props.right)},
-      {'e-NightMode': (props.nightmode)},
+      { 'e-NightMode': (props.nightmode) },
+      { 'e-scroll': (props.scroll) },
       {'e-scroll-y': (props.scrollY)},
       {'e-scroll-x': (props.scrollX)},
-      {'disabled': (props.disabled)},
-      {'fill': (props.fill)},
+      { 'disabled': (props.disabled) },
+      { 'e-flex': (props.flex) },
+      {'e-fill': (props.fill)},
       {'parent': (props.parent)},
       {'child': (props.child)},
       borderClass,

@@ -30,7 +30,7 @@ export interface IButtonProps {
   iconPointer? : 'left' | 'right' | 'up' | 'down';
   loading?: boolean;
   iconLocation?: 'left' | 'right';
-  checkedTheme? : 'primary' | 'success' | 'error';
+  checkedTheme? : any;
   outline? : boolean;
   fill? : boolean;
   ghost?: boolean;

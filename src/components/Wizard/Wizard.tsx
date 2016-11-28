@@ -11,7 +11,8 @@ export interface IWizardProps {
   mobile? : boolean;
   animate? : boolean;
   fill ? : boolean;
-  overflow? : boolean;
+  overflow?: boolean;
+  flex?: boolean;
 }
 
 const WizardSlide : any = (props : any) => {
@@ -36,7 +37,8 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
 
     let wizardClass = classNames(
       'r-Wizard',
-      {'fill' : (props.fill)},
+      { 'e-fill': (props.fill) },
+      { 'e-flex': (props.flex) },
       {'e-overflow': (props.overflow)}
     );
 
@@ -57,13 +59,11 @@ export default class Wizard extends React.Component<IWizardProps, {}>{
         props.className
       );
 
-      if (selected || forward || backward) {
-        return(
+      return (
           <WizardSlide visible={selected || forward || backward} className={wizardSlideClass} key={index}>
-            {selected ? item : null}
+              {item}
           </WizardSlide>
-        )
-      } else return null
+      )
     };
 
     if (props.children.length > 1) {

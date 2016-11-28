@@ -20,6 +20,8 @@ interface IDropdownTableProps {
     page?: any;
     onPageChange?: any;
     pageSize?: any;
+    selectedElements?: Array<any>;
+    selectedKey?: string;
 }
 
 export default class DropdownTable extends React.Component<IDropdownTableProps, {}> {
@@ -35,7 +37,8 @@ export default class DropdownTable extends React.Component<IDropdownTableProps, 
             hideHeader={props.hideHeader || !props.columns}
             rowIsSelectable={this.props.rowIsSelectable}
             onRowSelect={this.onRowSelect.bind(this) }
-            selectedElements={this.props.selected}
+            selectedElements={this.props.selectedElements}
+            selectedKey={this.props.selectedKey}
             pageSizerOptions={props.pageSizerOptions}
             dataSource={props.dataSource}
             columns={props.columns}

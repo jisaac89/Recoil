@@ -1,8 +1,9 @@
 @import '../../less/Global';
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
     z-index: 30;
+    height:8px;
 }
  
 ::-webkit-scrollbar-track {
@@ -13,7 +14,7 @@
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
-    background:#666;
+    background:#e3e3e3;
 }
 
 .r-Layer{
@@ -23,6 +24,7 @@
   position: relative;
   color: @font-color;
   flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
 }
 
 .clearfix {
@@ -56,3 +58,10 @@
 .r-Layer.e-scroll-y{
     overflow-y:visible;
 }
+
+.r-Layer.e-scroll{
+    -webkit-overflow-scrolling: touch;
+    overflow-x:auto;
+    overflow-y:auto;
+}
+

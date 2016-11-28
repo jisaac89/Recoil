@@ -12,6 +12,8 @@ interface IDropdownWrapperProps {
     open?: boolean;
     width?: string;
     searchableKeys?: Array<any>;
+    selectedElements?: Array<any>;
+    selectedKey?: string;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {

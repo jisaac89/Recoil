@@ -28,7 +28,7 @@ class Open extends React.Component<IOpenProps, any>{
         {'e-close': (!props.if)},
         {'parent': (props.parent)},
         {'child': (props.child)},
-        {'fill': (props.fill)},
+        { 'e-fill': (props.fill) },
         props.className
      );
 

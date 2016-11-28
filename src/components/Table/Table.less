@@ -4,25 +4,30 @@
     width:100%;
 }
 
-.r-Table > table {
+.r-Table > .r-Layer > table {
     width:100%;
     border-spacing:0;
 }
 
-.r-Table > table > thead{
+.r-Table > .r-Layer > table > thead{
     text-align: left;
 }
 
-.r-Table > table > thead .r-Button{
-    text-align: left;
+.r-Table > .r-Layer > table > thead .r-Button{
     text-transform: uppercase;
-    font-size:13px;
-    font-weight: bold;
+    font-size: 12px;
+    font-weight: 600 !important;
+    color: #1995ff;
 }
 
-.r-Table > table > thead > tr > th,
+.r-Table > .r-Layer > table > thead > tr > th,
 .r-TableColumn td{
     padding:10px;
+}
+
+.r-Table>.r-Layer>table>thead>tr>th{
+    padding-top:0px;
+    padding-bottom:0px;
 }
 
 .r-Table td{
@@ -32,6 +37,7 @@
     color: #333;
     letter-spacing: .010em;
     font-weight: 400;
+    border-bottom: 1px solid #dfdfdf;
 }
 
 .r-TableColumnSelectable > td{
@@ -61,14 +67,14 @@
     padding:0;
 }
 
-/*.r-TableFooter{
-    padding:10px;
-}*/
-
 .r-TableFooter > .r-Toolbar > .r-Button{
   .transition(none) !important;
 }
 
-// .r-Table>table>thead>tr>th{
-//     padding-top:0;
-// }
+.r-Table.e-flex > .r-TableFooter:nth-child(1){
+  display:none;
+}
+
+.r-Table.e-flex > .r-TableFooter{
+  text-align:center !important;
+}

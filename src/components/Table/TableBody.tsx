@@ -27,7 +27,8 @@ export interface TableBodyProps {
     hideColumns ? : Array<any>;
     onRowSelect ? : (event: React.MouseEvent) => void;
     isArray?: boolean;
-    detailTemplateOpenOnRowSelect ?: boolean | "single";
+    detailTemplateOpenOnRowSelect?: boolean | "single";
+    selectedKey?: string;
 }
 
 export default class TableBody extends React.Component<TableBodyProps,any>{
@@ -56,7 +57,8 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
             hideColumns,
             onRowSelect,
             isArray,
-            detailTemplateOpenOnRowSelect
+            detailTemplateOpenOnRowSelect,
+            selectedKey
         } = props;
 
         let columnArray = [];
@@ -80,7 +82,8 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                     hideColumns: hideColumns,
                     onRowSelect,
                     isArray: isArray,
-                    detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect
+                    detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect,
+                    selectedKey: selectedKey
                 }
                 if (typeof element === 'string' || typeof element === 'number') {
                     key = element;

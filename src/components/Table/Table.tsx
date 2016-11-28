@@ -9,6 +9,7 @@ import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import TableSearch from './TableSearch';
+import Layer from '../Layer/Layer';
 
 interface ITableProps {
     // initial dataSource loaded as prop
@@ -61,6 +62,9 @@ interface ITableProps {
     sortType? : "asc" | "desc";
     sortKey?: string;
     showDataSourceLength?: boolean;
+
+    selectedKey?: string;
+    flex?: boolean;
 }
 
 interface ITableState {
@@ -198,7 +202,7 @@ export default class Table extends React.Component<ITableProps,any>{
     toggleSelectedElements(element) {
         const self = this;
         let {selectedElements} = self.state;
-        let {rowIsSelectable, onCheck} = self.props;
+        let {rowIsSelectable, onCheck, selectedKey} = self.props;
 
         let selectedElementsArray;
 
@@ -208,9 +212,9 @@ export default class Table extends React.Component<ITableProps,any>{
             selectedElementsArray = selectedElements.slice();
         }
 
-        if (selectedElementsArray.includes(element)) {
+        if (selectedElementsArray.includes(selectedKey ? element[selectedKey] : element)) {
             for(let i=0; i < selectedElementsArray.length; i++) {
-                if(selectedElementsArray[i] === element)
+                if (selectedElementsArray[i] === (selectedKey ? element[selectedKey] : element))
                 {
                     selectedElementsArray.splice(i,1);
 
@@ -220,13 +224,13 @@ export default class Table extends React.Component<ITableProps,any>{
                 }
             }
         } else {
-            selectedElementsArray.push(element);
+            selectedElementsArray.push(selectedKey ? element[selectedKey]: element);
             
             self.setState({
                 selectedElements : selectedElementsArray
             })
 
-            onCheck ? onCheck(element) : null;
+            onCheck ? onCheck(selectedKey ? element[selectedKey] : element) : null;
         }
     }
 
@@ -304,7 +308,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
+        let {selectedKey, detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {sortType, sortKey, columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         // sorting render
@@ -413,7 +417,8 @@ export default class Table extends React.Component<ITableProps,any>{
             detailTemplateHideToggle: detailTemplateHideToggle,
             hideColumns: hideColumns,
             isArray: isArray,
-            detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect
+            detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect,
+            selectedKey: selectedKey
         }
 
         let headProps = {
@@ -461,6 +466,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         let tableClass = classNames(
             'r-Table',
+            { 'e-flex': (props.flex) },
             {'e-selectable' : (props.rowIsSelectable)},
             {'e-selectable' : (detailTemplateOpenOnRowSelect === true || detailTemplateOpenOnRowSelect === 'single')},
             props.className
@@ -469,12 +475,14 @@ export default class Table extends React.Component<ITableProps,any>{
         if ((renderedPage.length || dataSource.length) && columnsArray.length) {
             return (
                 <div className={tableClass}>
-                    <TableFooter {...footerProps} />
                     <TableSearch {...tableSearchProps} />
-                    <table>
-                        <TableHead {...tableProps} {...headProps} />
-                        <TableBody {...tableProps} {...bodyProps} />
-                    </table>
+                    <TableFooter {...footerProps} hidePageSize />
+                    <Layer scroll fill>
+                        <table className="w100">
+                            <TableHead {...tableProps} {...headProps} />
+                            <TableBody {...tableProps} {...bodyProps} />
+                        </table>
+                    </Layer>
                     <TableFooter {...footerProps} hidePageSize />
                 </div>
             )

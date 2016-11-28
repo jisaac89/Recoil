@@ -11,7 +11,8 @@ export interface ITransformProps {
   delay ? : number;
   fill ? : boolean;
   axis ? : string;
-  children ? : any;
+  children?: any;
+  flex?: boolean;
 }
 
 export default class Transform extends React.Component<ITransformProps, {}> {
@@ -27,8 +28,8 @@ export default class Transform extends React.Component<ITransformProps, {}> {
       {'e-scale' : (props.type === 'scale')},
       {'e-scale' : (props.type === 'rotate')},
       {'e-active' : (props.if)},
-      {'w100' : (props.fill)},
-      {'h100' : (props.fill)},
+      { 'e-fill': (props.fill) },
+      { 'e-flex': (props.flex) },
       props.className
     );
 

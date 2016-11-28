@@ -14,7 +14,6 @@ interface P {
     onClose?: Function;
     toggleCpenOnRowSelect? : boolean;
     open? : boolean;
-    selected? : Array<any>;
     rowIsSelectable?: string | boolean;
     block?: boolean;
     right?: boolean;
@@ -28,7 +27,7 @@ interface P {
     material? : boolean;
     icon?: string;
     onChange ? : Function;
-    theme?: 'success' | 'primary' | 'error' | 'default';
+    theme?: 'success' | 'primary' | 'error' | 'default' | string;
     size? : 'small' | 'medium' | 'large' | 'xlarge';
     pointer? : 'left' | 'right' | boolean;
     pageSize? : number;
@@ -46,6 +45,10 @@ interface P {
     rowCount?: any;
     page?: any;
     onPageChange?: any;
+    selectedElements?: Array<any>;
+    selectedKey?: string;
+    required?: boolean;
+    checked?: boolean;
 }
 
 export interface State {
@@ -136,10 +139,13 @@ export default class DropdownComponent extends React.Component<P, State>{
                         iconLocation={props.iconLocation}
                         onClick={this.toggleOpen.bind(this)}
                         simple={props.simple}
-                        checked={this.state.open}
+                        outline={props.outline}
+                        checked={props.checked ? props.checked : this.state.open}
                         advanced
                         theme={props.theme}
                         pointer={props.pointer}
+                        required={props.required}
+                        checkedTheme={props.theme}
                     >
                         {props.title}
                     </Button>

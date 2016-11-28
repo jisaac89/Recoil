@@ -9,7 +9,8 @@ export interface IShrinkProps {
   children ? : any;
   opacity ? : number;
   scale ? : number | string;
-  position ? : string;
+  position?: string;
+  flex?: boolean;
 }
 
 export default class Shrink extends React.Component<IShrinkProps, {}>{
@@ -29,8 +30,8 @@ export default class Shrink extends React.Component<IShrinkProps, {}>{
     let shrinkClass = classNames(
       'r-Shrink',
       {'e-shrink': (props.if)},
-      {'h100': (props.fill)},
-      {'w100': (props.fill)},
+      {'e-fill': (props.fill)},
+      { 'e-flex': (props.flex) },
       props.className
     );
 
