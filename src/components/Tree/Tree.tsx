@@ -9,12 +9,20 @@ import Table from '../Table/Table';
 
 interface P {
  dataSource? : any; 
+ columns? : any;
+ parentKey? : string;
+ uniqueKey? : string;
 }
 
 export default class Tree extends React.Component<P, any>{
+
+  public static defaultProps = {
+      parentKey: 'parentKey',
+      uniqueKey: 'Id'
+  };
+
   constructor(props) {
     super(props);
-
     this.state = {
       array : props.dataSource,
       newArray : [], 
@@ -22,31 +30,25 @@ export default class Tree extends React.Component<P, any>{
       map: {}
     }
   }
-
   componentDidMount() {
     this.initArray(this.props.dataSource);
   }
-
   componentWillReceiveProps(nextProps) {
     this.initArray(nextProps.dataSource);
   }
-
   initArray(dataSource) {
-
+    let {columns, parentKey, uniqueKey} = this.props;
     let newArray = [];
-    let map = {};
-
+    let map = {}
 
     let createNodeTree = (item, index) =>{
-
       newArray.push({
         name: item.name,
-        Id: item.Id,
-        parentId: item.parentId,
+        Id: item[uniqueKey],
+        parentId: item[parentKey],
         children : []
       });
-
-      map[item.Id] = index;
+      map[item[uniqueKey]] = index;
     }
 
     dataSource.map(createNodeTree);
@@ -55,76 +57,44 @@ export default class Tree extends React.Component<P, any>{
       newArray : newArray,
       map: map
     }, () => {
-      this.updateRoots(dataSource)
+      this.updateRoots()
     })
   }
-
-  updateRoots(dataSource){
-
-    // let roots = this.state.roots;
+  updateRoots(){
+    let {columns, parentKey, uniqueKey} = this.props;
     let newArray = this.state.newArray;
     let map = this.state.map;
-
     let roots = [];
 
-    if (newArray.length === dataSource.length) {
+    if (newArray.length > 0) {
       for (let i = 0; i < newArray.length; i += 1) {
           let node = newArray[i];
-          let nodeData = dataSource[i];
-          node.children = [];
-          if (node.parentId !== 0) {
-              newArray[map[node.parentId]].children.push(node);
-          } else {
-              roots.push(node);
-          }
+          node.parentId !== 0 ? newArray[map[node.parentId]].children.push(node) : roots.push(node);
       }
-
       this.setState({roots: roots});
     } 
   }
-
+  detailTemplate(item) {
+    let {columns, parentKey, uniqueKey} = this.props;
+    return item.children.length > 0 ? item.children.map(this.childrenList.bind(this)) : <Table className="pl20" key={item[uniqueKey]} columns={columns} hideHeader dataSource={item.children} />;
+  }
+  childrenList(childNode, i){
+    let {columns, parentKey, uniqueKey} = this.props;
+    let container = [];
+    container.push(
+      <Table className="pl20" key={childNode.Id} columns={columns} hideHeader dataSource={childNode} {...childNode.children.length > 0 ? {detailTemplate : this.detailTemplate.bind(this)} : null} />
+    )
+    return <div className="container" key={childNode.Id}>{container}</div>
+  }
   render() {
     const self = this;
     const props = self.props;
+    let {columns} = props;
     let state = self.state;
+    let {roots} = state;
 
-    let {dataSource} = props;
-    let {newArray, roots, map} = state;
-
-    // console.log(roots);
-    console.log(map);
-
-        let detailTemplate = (item)=> {
-          if (item.children.length > 0) {
-            return item.children.map(childrenList);
-          } else {
-            return <Table className="pl20" key={item.Id} columns={[{name: 'name'}]} hideHeader dataSource={item.children} />
-          }
-        }
-
-            let childrenList = (itemi, i) =>{
-            let container = [];
-              if (itemi.children.length > 0){
-                container.push(
-                  <Table className="pl20" key={itemi.Id} columns={[{name: 'name'}]} hideHeader dataSource={itemi} detailTemplate={detailTemplate} />
-                )
-              } else {
-                container.push(<Table className="pl20" key={itemi.Id} columns={[{name: 'name'}]} hideHeader dataSource={itemi} />);
-              }
-
-              return <div className="container" key={itemi.Id}>{container}</div>
-            }
-    
-
-    let createTree = (item, index) => {
-
-        return item.parentId === 0 ? <Table key={item.Id} columns={[{name: 'name'}]} hideHeader dataSource={item} detailTemplate={detailTemplate} /> : null;
-    }
-
-     return (
-       <div ref={'tree'}>
-        {roots.map(createTree)}
-       </div>
-     )
+    return (
+      <Table className="r-Tree" dataSource={roots} columns={columns} detailTemplate={this.detailTemplate.bind(this)} />
+    )
   }
 }
