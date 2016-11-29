@@ -17,7 +17,7 @@ interface P {
 export default class Tree extends React.Component<P, any>{
 
   public static defaultProps = {
-      parentKey: 'parentKey',
+      parentKey: 'parentId',
       uniqueKey: 'Id'
   };
 
