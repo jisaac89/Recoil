@@ -14,6 +14,7 @@ export {default as Notifications} from './components/Notifications/Notifications
 export {default as Selectable} from './components/Selectable/Selectable';
 export {default as Shrink} from './components/Shrink/Shrink';
 export {default as Toggle, IToggleProps, IToggleState} from './components/Toggle/Toggle';
+export {default as Tree} from './components/Tree/Tree';
 export {default as Toolbar} from './components/Toolbar/Toolbar';
 export {default as Transform} from './components/Transform/Transform';
 export {default as Wizard} from './components/Wizard/Wizard';

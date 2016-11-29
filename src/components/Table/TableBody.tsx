@@ -105,7 +105,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                 columnArray.push(
                     [
                         [<TableColumn key={key} {...columnProps} />],
-                        [<TableColumnSelectable key={keySelectable} {...columnProps} />],
+                        [selectedElements.length > 0 ? <TableColumnSelectable key={keySelectable} {...columnProps} /> : null],
                         [<TableColumnDetail key={keyDetail} {...columnProps} />]
                     ]
                 )
