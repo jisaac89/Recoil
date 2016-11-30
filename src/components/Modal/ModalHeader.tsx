@@ -12,7 +12,7 @@ export default class ModalHeader extends React.Component<any, any>{
         return props.title ?
              <div>
                 {props.icon ? <i className={'pull-left mt10 fa fa-' + props.icon}></i> : null}
-                <h1 className="dinblock"> {props.title} </h1>
+                <h2 className="dinblock"> {props.title} </h2>
             </div> 
        : null
     }

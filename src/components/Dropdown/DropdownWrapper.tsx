@@ -14,6 +14,7 @@ interface IDropdownWrapperProps {
     searchableKeys?: Array<any>;
     selectedElements?: Array<any>;
     selectedKey?: string;
+    mobile? : boolean;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
@@ -34,7 +35,7 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
     }
 
     return(
-      <div style={{width : this.props.width}} className="r-DropdownWrapper">
+      <div style={!props.mobile ? {width : this.props.width} : {width: '100%'}} className={props.mobile ? "e-flex fill": "r-DropdownWrapper"}>
         {DropdownContent}
       </div>
     );

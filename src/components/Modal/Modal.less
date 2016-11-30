@@ -29,7 +29,7 @@
 }
 
 .r-Modal.e-show{
-  -webkit-transform:translate(0%, 0%);
+  transform:translate(0%, 0%);
 }
 
 .r-Modal.e-show.e-fullscreen {
@@ -50,6 +50,18 @@
 }
 .r-Modal.e-show{
     transform: scale(1) !important;
+}
+
+.r-Modal.mobile{
+    transform-origin: center center;
+    transform: scale(0) !important;
+}
+.r-Modal.mobile.e-show{
+    transform: scale(1) !important;
+}
+
+.r-Modal.mobile .r-Modal__header .r-Button:last-child{
+  display: none !important;
 }
 
 .r-Modal.e-float .r-ModalContent{
@@ -180,4 +192,8 @@
 
 .r-Modal__header{
     background: #fbfbfb;
+}
+
+.r-Modal__header h2{
+  font-size:90%;
 }

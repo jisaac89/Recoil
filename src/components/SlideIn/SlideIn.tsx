@@ -2,6 +2,11 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './SlideIn.less';
 
+
+import Layer from '../Layer/Layer';
+import Toolbar from '../Toolbar/Toolbar';
+import Button from '../Button/Button';
+
 export interface ISlideInProps {
   if? : boolean;
   fill? : boolean;
@@ -14,6 +19,10 @@ export interface ISlideInProps {
 
   beforeOpen ? : () => void;
   afterOpen ? : () => void;
+
+  title? : any;
+  icon? : any;
+  onClose ? : any;
 }
 
 export default class SlideIn extends React.Component<ISlideInProps, any>{
@@ -66,7 +75,15 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
       })
     })
   }
-
+    hasTitle() {
+        let props = this.props;
+        return props.title ?
+             <div>
+                {props.icon ? <i className={'pull-left mt10 fa fa-' + props.icon}></i> : null}
+                <h2 className="dinblock"> {props.title} </h2>
+            </div> 
+       : null
+    }
   render() {
     const self = this;
     const props = self.props;
@@ -74,8 +91,9 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
 
     let slideInContainerClass = classNames(
       'r-SlideIn',
+      'e-fill',
       {'e-open': (props.if)},
-      {'fill': (fill)},
+      {'e-fill': (fill)},
       {'fixed': (fixed)},
       props.className,
       props.from
@@ -83,7 +101,15 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
 
     return(
       <div tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={this.state.slideInContainerStyle}>
-          {this.state.showChildren ? props.children : null}
+          <Layer fill>
+            {props.onClose ? 
+            <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
+                {this.hasTitle()}
+                <Button simple size="small" className="pull-right" onClick={props.onClose} icon="times" />
+            </Toolbar>
+            : null}
+            {props.children}
+          </Layer>
       </div>
     );
   }

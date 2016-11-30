@@ -5,7 +5,7 @@ import Selectable from '../Selectable/Selectable';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
-
+import Portal from '../Portal/Portal';
 import DropdownWrapper from './DropdownWrapper';
 
 import './Dropdown.less';
@@ -49,6 +49,8 @@ interface P {
     selectedKey?: string;
     required?: boolean;
     checked?: boolean;
+
+    mobile?: boolean;
 }
 
 export interface State {
@@ -68,7 +70,9 @@ export default class DropdownComponent extends React.Component<P, State>{
     public static defaultProps = {
         type: 'button',
         dropDirection: 'down',
-        toggleCpenOnRowSelect: true
+        toggleCpenOnRowSelect: true,
+        title: 'Dropdown',
+        width: 300
     };
 
     constructor(props) {
@@ -160,11 +164,27 @@ export default class DropdownComponent extends React.Component<P, State>{
                 dropdownTypePartial = null;
         }  
 
-        return (
-            <div ref='dropdown' className={dropdownClass}>
-                {dropdownTypePartial}
-                {dropdownContentPartial}
-            </div>
-        )
+        function guidGenerator() {
+            var S4 = function() {
+            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+            };
+            return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+        }
+
+        if (!props.mobile) {
+            return (
+                <div ref='dropdown' className={dropdownClass}>
+                    {dropdownTypePartial}
+                    {dropdownContentPartial}
+                </div>
+            )
+        } else {
+            return (
+                <div ref='dropdown' className={dropdownClass}>
+                    {dropdownTypePartial}
+                    <Portal title={props.title} icon={props.icon} open={this.state.open} onClose={this.toggleOpen.bind(this)} portalId={guidGenerator()}>{dropdownContentPartial}</Portal>
+                </div>
+            )
+        }
     }
 }

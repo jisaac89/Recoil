@@ -21,6 +21,7 @@ export interface IModalProps {
 
     beforeOpen?: any;
     afterOpen?: any;
+    mobile ? :boolean;
 }
 
 export interface IModalState {
@@ -105,7 +106,8 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
             { 'ghost': (props.ghost) },
             { 'e-float': (props.float) },
             { 'e-fade': (props.effect === 'fade') },
-            { 'e-fullscreen': (self.state.fullScreen) }
+            { 'e-fullscreen': (self.state.fullScreen) },
+            {'mobile': props.mobile}
         );
 
         let modalClass = classNames(
