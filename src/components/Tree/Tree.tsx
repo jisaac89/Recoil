@@ -78,7 +78,7 @@ export default class Tree extends React.Component<P, any>{
   }
   detailTemplate(item) {
     let {columns, parentKey, uniqueKey} = this.props;
-    return item.children.length > 0 ? item.children.map(this.childrenList.bind(this)) : <Table className="pl20" key={item[uniqueKey]} columns={columns} hideHeader dataSource={item.children} />;
+    return item.children.length > 0 ? item.children.map(this.childrenList.bind(this)) : <Table className="ml20" key={item[uniqueKey]} columns={columns} hideHeader dataSource={item.children} />;
   }
   childrenList(childNode, i){
     let {columns, parentKey, uniqueKey} = this.props;
@@ -89,13 +89,14 @@ export default class Tree extends React.Component<P, any>{
           key={childNode.Id} 
           className={childNode.children.length > 0 ? "pl0" : "pl0"} 
           columns={columns} 
+          selectedKey={uniqueKey}
           selectedElements={this.props.selectedElements}
           detailTemplateSelectedElements={this.props.openedElements}
           dataSource={childNode} 
           {...childNode.children.length > 0 ? {detailTemplate : this.detailTemplate.bind(this)} : null} 
       />
     )
-    return <div className={childNode.parentId !== 0 ? "pl20" : "pl0"} key={childNode.Id}>{container}</div>
+    return <div className={childNode.parentId !== 0 ? "ml20" : "pl0"} key={childNode.Id}>{container}</div>
   }
   render() {
     const self = this;
