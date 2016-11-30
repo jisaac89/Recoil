@@ -26,7 +26,6 @@ export default class Tree extends React.Component<P, any>{
   constructor(props) {
     super(props);
     this.state = {
-      array : props.dataSource,
       newArray : [], 
       roots: [],
       map: {}
@@ -112,13 +111,3 @@ export default class Tree extends React.Component<P, any>{
     )
   }
 }
-
-      // <Table 
-      //   className="r-Tree" 
-      //   dataSource={roots} 
-      //   detailTemplate={this.detailTemplate.bind(this)} 
-      //   columns={columns} 
-      //   selectedElements={this.props.selectedElements}
-      //   detailTemplateSelectedElements={this.props.openedElements}
-      //   selectedKey={props.uniqueKey}
-      //   />
