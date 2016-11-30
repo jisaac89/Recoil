@@ -12,13 +12,13 @@ export default class TableColumnDetail extends React.Component<any,any>{
 
         const self = this;
         const props = self.props;
-        let {element, columns, detailTemplate, detailTemplateOpenAll, detailTemplateSelectedElements, checkable} = props;
+        let {element, columns, detailTemplate, detailTemplateOpenAll, detailTemplateSelectedElements, checkable, selectedKey} = props;
 
         if (detailTemplate) {
             return (
                 <tr className="r-TableColumnDetail">
                     <td colSpan={columns.length + (checkable ? 1 : 0 ) + (detailTemplate ? 1 : 0 )}>
-                        <Open if={detailTemplateSelectedElements.includes(element) || detailTemplateOpenAll}>
+                        <Open if={detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) || detailTemplateOpenAll}>
                             {self.props.detailTemplate(element)}
                         </Open>
                     </td>

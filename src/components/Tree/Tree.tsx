@@ -12,6 +12,8 @@ interface P {
  columns? : any;
  parentKey? : string;
  uniqueKey? : string;
+ selectedElements? : Array<any>;
+ openedElements? : Array<any>;
 }
 
 export default class Tree extends React.Component<P, any>{
@@ -82,19 +84,40 @@ export default class Tree extends React.Component<P, any>{
     let {columns, parentKey, uniqueKey} = this.props;
     let container = [];
     container.push(
-      <Table className="pl20" key={childNode.Id} columns={columns} hideHeader dataSource={childNode} {...childNode.children.length > 0 ? {detailTemplate : this.detailTemplate.bind(this)} : null} />
+      <Table 
+          hideHeader 
+          key={childNode.Id} 
+          className={childNode.children.length > 0 ? "pl0" : "pl0"} 
+          columns={columns} 
+          selectedElements={this.props.selectedElements}
+          detailTemplateSelectedElements={this.props.openedElements}
+          dataSource={childNode} 
+          {...childNode.children.length > 0 ? {detailTemplate : this.detailTemplate.bind(this)} : null} 
+      />
     )
-    return <div className="container" key={childNode.Id}>{container}</div>
+    return <div className={childNode.parentId !== 0 ? "pl20" : "pl0"} key={childNode.Id}>{container}</div>
   }
   render() {
     const self = this;
     const props = self.props;
-    let {columns} = props;
+    let {columns, selectedElements, openedElements, uniqueKey} = props;
     let state = self.state;
     let {roots} = state;
 
     return (
-      <Table className="r-Tree" dataSource={roots} columns={columns} detailTemplate={this.detailTemplate.bind(this)} />
+      <div>
+        {roots.map(this.childrenList.bind(this))}
+      </div>
     )
   }
 }
+
+      // <Table 
+      //   className="r-Tree" 
+      //   dataSource={roots} 
+      //   detailTemplate={this.detailTemplate.bind(this)} 
+      //   columns={columns} 
+      //   selectedElements={this.props.selectedElements}
+      //   detailTemplateSelectedElements={this.props.openedElements}
+      //   selectedKey={props.uniqueKey}
+      //   />

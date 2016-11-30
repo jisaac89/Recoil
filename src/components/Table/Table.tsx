@@ -154,7 +154,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
     detailTemplateToggleSelectedElements(element) {
         const self = this;
-        let {detailTemplateOpenOnRowSelect} = this.props;
+        let {detailTemplateOpenOnRowSelect, selectedKey} = this.props;
         let {detailTemplateSelectedElements} = self.state;
 
         let selectedElementsArray;
@@ -171,9 +171,9 @@ export default class Table extends React.Component<ITableProps,any>{
             selectedElementsArray = detailTemplateSelectedElements.slice();
         }
 
-        if (selectedElementsArray.includes(element)) {
+        if (selectedElementsArray.includes(selectedKey ? element[selectedKey] : element)) {
             selectedElementsArray.map((data, key)=>{
-                if(data === element){
+                if(data === selectedKey ? element[selectedKey] : element){
                     selectedElementsArray.splice(key,1);
                     setSelectedElementsState(selectedElementsArray)
                 }
@@ -181,11 +181,11 @@ export default class Table extends React.Component<ITableProps,any>{
         } else {
             if (detailTemplateOpenOnRowSelect === 'single') {
                 selectedElementsArray = [];
-                selectedElementsArray.push(element);
+                selectedElementsArray.push(selectedKey ? element[selectedKey] : element);
                 setSelectedElementsState(selectedElementsArray)
 
             } else {
-                selectedElementsArray.push(element);
+                selectedElementsArray.push(selectedKey ? element[selectedKey] : element);
                 setSelectedElementsState(selectedElementsArray)
             }
         }
