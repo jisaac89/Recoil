@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './SlideIn.less';
 
-
 import Layer from '../Layer/Layer';
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
@@ -22,7 +21,8 @@ export interface ISlideInProps {
 
   title? : any;
   icon? : any;
-  onClose ? : any;
+  onClose?: any;
+  mobile?: any;
 }
 
 export default class SlideIn extends React.Component<ISlideInProps, any>{
@@ -75,23 +75,13 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
       })
     })
   }
-    hasTitle() {
-        let props = this.props;
-        return props.title ?
-             <div>
-                {props.icon ? <i className={'pull-left mt10 fa fa-' + props.icon}></i> : null}
-                <h2 className="dinblock"> {props.title} </h2>
-            </div> 
-       : null
-    }
   render() {
     const self = this;
     const props = self.props;
-    let {fill, fixed} = props;
+    let {fill, fixed, mobile} = props;
 
     let slideInContainerClass = classNames(
       'r-SlideIn',
-      'e-fill',
       {'e-open': (props.if)},
       {'e-fill': (fill)},
       {'fixed': (fixed)},
@@ -101,17 +91,13 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
 
     return(
       <div tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={this.state.slideInContainerStyle}>
-          <Layer fill>
-            {props.onClose ? 
-            <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
-                {this.hasTitle()}
-                <Button simple size="small" className="pull-right" onClick={props.onClose} icon="times" />
-            </Toolbar>
-            : null}
+            {props.onClose ?
+                <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
+                    <Button simple size="small" className="pull-right" onClick={props.onClose} icon="times" />
+                </Toolbar>
+                : null}
             {props.children}
-          </Layer>
       </div>
     );
   }
-
 }

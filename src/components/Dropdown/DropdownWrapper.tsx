@@ -35,7 +35,7 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
     }
 
     return(
-      <div style={!props.mobile ? {width : this.props.width} : {width: '100%'}} className={props.mobile ? "e-flex fill": "r-DropdownWrapper"}>
+      <div style={!props.mobile ? {width : this.props.width} : {width: '100%', height: '100%'}} className={props.mobile ? "e-flex fill": "r-DropdownWrapper"}>
         {DropdownContent}
       </div>
     );
