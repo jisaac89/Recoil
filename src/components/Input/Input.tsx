@@ -47,6 +47,8 @@ export interface IInputState {
   mouseOut? : boolean;
 }
 
+React.createElement
+
 export default class Input extends React.Component<IInputProps, IInputState>{
 
   public state : IInputState;

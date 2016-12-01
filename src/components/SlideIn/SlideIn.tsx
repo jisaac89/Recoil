@@ -23,6 +23,7 @@ export interface ISlideInProps {
   icon? : any;
   onClose?: any;
   mobile?: any;
+  flex?: boolean;
 }
 
 export default class SlideIn extends React.Component<ISlideInProps, any>{
@@ -78,12 +79,13 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
   render() {
     const self = this;
     const props = self.props;
-    let {fill, fixed, mobile} = props;
+    let {fill, fixed, mobile,flex} = props;
 
     let slideInContainerClass = classNames(
       'r-SlideIn',
       {'e-open': (props.if)},
-      {'e-fill': (fill)},
+      { 'e-fill': (fill) },
+      { 'e-flex': (flex) },
       {'fixed': (fixed)},
       props.className,
       props.from

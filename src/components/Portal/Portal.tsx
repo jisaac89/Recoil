@@ -35,7 +35,7 @@ export default class Portal extends React.Component<P, any>{
     document.body.removeChild(this.portalElement);
   }
   componentDidUpdate() {
-      ReactDOM.render(<SlideIn onClose={this.props.onClose} title={this.props.title} icon={this.props.icon} className="z5" fixed from="bottom" fill={true} if={this.props.open} ><Layer flex fill theme="light">{this.props.children}</Layer></SlideIn>, this.portalElement);
+      ReactDOM.render(<SlideIn flex onClose={this.props.onClose} title={this.props.title} icon={this.props.icon} className="z5" fixed from="bottom" fill={true} if={this.props.open} ><Layer flex fill theme="light">{this.props.children}</Layer></SlideIn>, this.portalElement);
   }
   render(){return null}
 };
