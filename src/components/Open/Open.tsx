@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import './Open.less';
+import Layer from '../Layer/Layer';
 
 export interface IOpenProps {
   if? : boolean;
@@ -11,6 +12,7 @@ export interface IOpenProps {
   parent? : boolean;
   child? : boolean;
   fill? : boolean;
+  openToHeight? : string;
 }
 
 class Open extends React.Component<IOpenProps, any>{
@@ -32,9 +34,21 @@ class Open extends React.Component<IOpenProps, any>{
         props.className
      );
 
+     let hasStyle;
+
+     if(props.openToHeight) {
+       hasStyle = {height: props.openToHeight && props.if === true ? props.openToHeight : 0}
+     } else {
+      hasStyle = null;
+     }
+
      return(
-       <div ref="Open" className={OpenClass}>
-         {props.if ? props.children : null}
+       <div ref="Open" className={OpenClass} style={hasStyle}>
+        {props.openToHeight ? 
+          <Layer fill flex overflow scroll>
+            {props.if ? props.children : null}
+          </Layer>
+        : props.if ? props.children : null}
        </div>
      )
   }
