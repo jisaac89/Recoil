@@ -9,21 +9,33 @@ export default class ModalHeader extends React.Component<any, any>{
     }
     hasTitle() {
         let props = this.props;
-        return props.title ?
-             <div>
-                {props.icon ? <i className={'pull-left mt10 fa fa-' + props.icon}></i> : null}
-                <h2 className="dinblock"> {props.title} </h2>
+        let {icon, title} = props;
+        return title ?
+            <div>
+                {icon ? <i className={'pull-left mt10 fa fa-' + icon}></i> : null}
+                <h2 className="dinblock"> {title} </h2>
             </div> 
        : null
     }
+    menuTemplate() {
+        let props = this.props;
+        let {fullScreen, onClose} = props;
+        return (
+            <Toolbar size="small" right spacing>
+                <Button onClick={this.toggleFullScreen.bind(this) } icon={fullScreen ? 'expand' : 'compress'} />
+                <Button onClick={onClose} icon="times" theme="error"/>
+            </Toolbar>
+        )
+    }
     render() {
         let props = this.props;
-        if (props.open) {
+        let {open, fullScreen, onClose} = props;
+
+        if (open) {
             return (
-                <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
+                <Toolbar className="r-Modal__header">
                     {this.hasTitle.bind(this)}
-                    <Button simple size="small" className="pull-right" onClick={props.onClose} icon="times" />
-                    <Button simple className="pull-right " size="small" onClick={this.toggleFullScreen.bind(this) } icon={this.props.fullScreen ? 'expand' : 'compress'} />
+                    {this.menuTemplate()}
                 </Toolbar>
             );
         } else return null;

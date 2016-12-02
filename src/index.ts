@@ -1,4 +1,4 @@
-export {default as App} from './components/App/App';
+export {default as Recoil} from './components/Recoil/Recoil';
 export {default as Align} from './components/Align/Align';
 export {default as Button} from './components/Button/Button';
 export {default as Checkbox} from './components/Checkbox/Checkbox';

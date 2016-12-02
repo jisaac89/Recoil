@@ -10,6 +10,13 @@ import DropdownWrapper from './DropdownWrapper';
 
 import './Dropdown.less';
 
+function guidGenerator() {
+    var S4 = function() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
 interface P {
     onClose?: Function;
     toggleCpenOnRowSelect? : boolean;
@@ -162,13 +169,6 @@ export default class DropdownComponent extends React.Component<P, State>{
                 break;
             default:
                 dropdownTypePartial = null;
-        }  
-
-        function guidGenerator() {
-            var S4 = function() {
-            return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-            };
-            return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
         }
 
         if (!props.mobile) {
@@ -182,7 +182,7 @@ export default class DropdownComponent extends React.Component<P, State>{
             return (
                 <div ref='dropdown' className={dropdownClass}>
                     {dropdownTypePartial}
-                    <Portal title={props.title} icon={props.icon} open={this.state.open} onClose={this.toggleOpen.bind(this)} portalId={guidGenerator()}>{dropdownContentPartial}</Portal>
+                    <Portal portalType="SlideIn" title={props.title} icon={props.icon} open={this.state.open} onClose={this.toggleOpen.bind(this)} portalId={guidGenerator()}>{dropdownContentPartial}</Portal>
                 </div>
             )
         }

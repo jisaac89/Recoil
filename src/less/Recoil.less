@@ -1854,6 +1854,10 @@ hr {
 .shadow {
 	box-shadow: 0 0 20px #A5A5A5;
 }
+
+.e-NightMode::-webkit-scrollbar-thumb {
+    background: #000000 !important;
+    }
 .e-NightMode {
 	background: @nightMode-background !important;
 	/*.r-Wizard .r-Wizard__track .r-WizardSlide {
@@ -2105,3 +2109,25 @@ hr {
 	width: 100% !important;
 	height: 100% !important;
 }
+
+
+.e-scroll-y{
+    -webkit-overflow-scrolling: touch;
+    overflow-y:scroll;
+    overflow-y:visible;
+    overflow-x:hidden;
+}
+
+.e-scroll-x{
+    -webkit-overflow-scrolling: touch;
+    overflow-x:scroll;
+    overflow-y:hidden;
+}
+
+.e-scroll{
+    overflow:scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-x:auto;
+    overflow-y:auto;
+}
+

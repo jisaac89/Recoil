@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
+import Portal from '../Portal/Portal';
 import './Modal.less';
 
 import ModalHeader from './ModalHeader';
@@ -30,11 +31,18 @@ export interface IModalState {
     showChildren?: boolean;
 }
 
+function guidGenerator() {
+    var S4 = function() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+}
+
 export default class Modal extends React.Component<IModalProps, IModalState>{
 
     refs: {
         [key: string]: (Element);
-        modal: (HTMLInputElement);
+        Modal: (HTMLInputElement);
     }
 
     constructor(props) {
@@ -82,13 +90,21 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
         this.setState({
             open: false,
             showChildren: false
-        })
+        }) 
     }
 
     toggleFullScreen() {
         this.setState({
             fullScreen: !this.state.fullScreen
         })
+    }
+
+    closeModal() {
+        this.setState({
+            open: false,
+            showChildren: false
+        }) 
+        this.props.onClose ? this.props.onClose() : null;
     }
 
     render() {
@@ -115,15 +131,21 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
             props.className
         );
 
-        //this.state.open ? (body.className = ' flohide') : (body.className = '');
-        
         return (
-            <div className={modalWrapperClass}>
-                <div ref={'modal'} className={modalClass} style={props.style}>
-                    <ModalHeader {...props} fullScreen={this.state.fullScreen} toggleFullScreen={this.toggleFullScreen.bind(this) }/>
-                    {this.state.showChildren ? props.children : null}
+            <Portal portalType="Modal" open={this.state.open} portalId={guidGenerator()}>
+                <div className={modalWrapperClass}>
+                    <div ref='Modal' className={modalClass} style={props.style}>
+                        <ModalHeader 
+                            open={this.state.open}
+                            icon={this.props.icon} 
+                            title={this.props.title} 
+                            fullScreen={this.state.fullScreen} 
+                            toggleFullScreen={this.toggleFullScreen.bind(this) } 
+                            onClose={this.closeModal.bind(this)}/>
+                        {this.state.showChildren ? props.children : null}
+                    </div>
                 </div>
-            </div>
+            </Portal>
         );
     }
 }

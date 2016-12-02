@@ -1,12 +1,15 @@
 ﻿import * as React from 'react';
 import * as classNames from 'classnames';
-import './App.less';
+import './Recoil.less';
 
-export interface IAppProps {
+export interface IRecoilProps {
     nightmode ? : boolean;
     className?: Array<string>;
     overflow?: boolean;
     mobile?: boolean;
+    scroll? : boolean;
+    scrollX? : boolean;
+    scrollY? : boolean;
 }
 
 function delegate(el, evt, sel, handler) {
@@ -21,14 +24,14 @@ function delegate(el, evt, sel, handler) {
     });
 }
 
-export default class App extends React.Component<IAppProps, any> {
+export default class Recoil extends React.Component<IRecoilProps, any> {
 
     refs: any;
 
     constructor() {
         super();
         this.state = {
-            fixInput: false
+            inputIsFocused: false
         }
     }
     componentDidMount() {
@@ -43,12 +46,12 @@ export default class App extends React.Component<IAppProps, any> {
             
             delegate(self.refs.Recoil, "focusin", "input", function (event) {
                 self.setState({
-                    fixInput: true
+                    inputIsFocused: true
                 })
             });
             delegate(self.refs.Recoil, "focusout", "input", function (event) {
                 self.setState({
-                    fixInput: false
+                    inputIsFocused: false
                 })
             });
         }
@@ -60,16 +63,19 @@ export default class App extends React.Component<IAppProps, any> {
 
         let {nightmode, className} = props;
 
-        let appClass = classNames(
-            'r-App',
-            { 'e-NightMode': (props.nightmode) },
-            { 'flohide': (props.overflow) },
-            { 'e-fix-inputs': (this.state.fixInput) },
+        let RecoilClass = classNames(
+            'r-Recoil',
+            { 'e-NightMode': (props.nightmode)},
+            { 'flohide': (props.overflow)},
+            { 'e-scroll': (props.scroll)},
+            {'e-scroll-y': (props.scrollY)},
+            {'e-scroll-x': (props.scrollX)},
+            { 'e-inputIsFocused': (this.state.inputIsFocused)},
             props.className
         );
 
         return (
-            <div ref={'Recoil'} id={'Recoil'} className={appClass}>
+            <div ref={'Recoil'} id={'Recoil'} className={RecoilClass}>
                 {this.props.children}
             </div>
         );
