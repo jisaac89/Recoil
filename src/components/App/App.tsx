@@ -4,36 +4,53 @@ import './App.less';
 
 export interface IAppProps {
     nightmode ? : boolean;
-    className ? : Array<string>;
-    to ? : string;
+    className?: Array<string>;
+    overflow?: boolean;
+    mobile?: boolean;
+}
+
+function delegate(el, evt, sel, handler) {
+    el.addEventListener(evt, function (event) {
+        var t = event.target;
+        while (t && t !== this) {
+            if (t.matches(sel)) {
+                handler.call(t, event);
+            }
+            t = t.parentNode;
+        }
+    });
 }
 
 export default class App extends React.Component<IAppProps, any> {
-  public _animate : any;
-  public _beforeAnimate : any;
-  public _afterAnimate : any;
-  public _to : any;
 
-  constructor(props) {
-    super(props);
-    this._to = props.to && props.to.replace(/^#/, '') || '';
-    const {
-      offset = 0, duration = 400, easing = easeOutQuad
-    } = props.animate || {};
-    this._animate = { offset, duration, easing };
-    this._beforeAnimate = props.beforeAnimate || function() {};
-    this._afterAnimate = props.afterAnimate || function() {};
-  }
+    refs: any;
 
-    handleClick = (event) => {
-        this._beforeAnimate(event);
-        event.preventDefault();
-        animateScroll(this._to, this._animate);
-        this._afterAnimate(event);
+    constructor() {
+        super();
+        this.state = {
+            fixInput: false
+        }
+    }
+    componentDidMount() {
+        this.isMobile(this.props.mobile);
     }
     componentWillReceiveProps(nextProps) {
-        if (nextProps.to !== this.props.to) {
-            this.handleClick(event);
+        this.isMobile(nextProps.mobile);
+    }
+    isMobile(mobile) {
+        const self = this;
+        if (mobile) {
+            
+            delegate(self.refs.Recoil, "focusin", "input", function (event) {
+                self.setState({
+                    fixInput: true
+                })
+            });
+            delegate(self.refs.Recoil, "focusout", "input", function (event) {
+                self.setState({
+                    fixInput: false
+                })
+            });
         }
     }
     render() {
@@ -41,58 +58,20 @@ export default class App extends React.Component<IAppProps, any> {
         const self = this;
         const props = self.props;
 
+        let {nightmode, className} = props;
+
         let appClass = classNames(
             'r-App',
-            { 'e-NightMode': (props.nightmode)},
+            { 'e-NightMode': (props.nightmode) },
+            { 'flohide': (props.overflow) },
+            { 'e-fix-inputs': (this.state.fixInput) },
             props.className
         );
 
         return (
-            <div className={appClass}>
+            <div ref={'Recoil'} id={'Recoil'} className={appClass}>
                 {this.props.children}
             </div>
         );
     }
-}
-
-function animateScroll(id, animate) {
-  const element = id ? document.getElementById(id) : document.body;
-  scrollTo(element, animate);
-}
-
-function scrollTo(element, { offset, duration, easing }) {
-  const start = getScrollTop();
-  const to = getOffsetTop(element) + offset;
-  const change = to - start;
-  const increment = 20;
-
-  function animate(elapsedTime) {
-    const elapsed = elapsedTime + increment;
-    const position = easing(null, elapsed, start, change, duration);
-    setScrollTop(position);
-    if (elapsed < duration) {
-      setTimeout(function() {
-        animate(elapsed);
-      }, increment);
-    }
-  }
-
-  animate(0);
-}
-
-function easeOutQuad(x, t, b, c, d) {
-  return -c * (t /= d) * (t - 2) + b;
-}
-
-function getScrollTop() {
-  return document.documentElement.scrollTop || document.body.scrollTop;
-}
-
-function setScrollTop(position) {
-  document.documentElement.scrollTop = document.body.scrollTop = position;
-}
-
-function getOffsetTop(element) {
-  const { top } = element.getBoundingClientRect();
-  return top + getScrollTop();
 }

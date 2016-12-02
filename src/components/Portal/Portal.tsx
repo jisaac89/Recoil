@@ -11,7 +11,6 @@ import Modal from '../Modal/Modal';
 interface P {
     portalId?: any;
     portal? : any;
-    portalToId? :any;
     open?: boolean;
     onClose? : any;
     title? : any;
@@ -23,16 +22,17 @@ export default class Portal extends React.Component<P, any>{
   componentDidMount() {
     let p = this.props.portalId && document.getElementById(this.props.portalId);
     if (!p) {
+      let docfrag = document.createDocumentFragment();
       p = document.createElement('div');
       p.id = this.props.portalId;
-      
-      this.props.portalToId ? document.getElementById(this.props.portalToId).appendChild(p) : document.body.appendChild(p);
+      docfrag.appendChild(p);
+      document.getElementById('Recoil').appendChild(docfrag);
     }
     this.portalElement = p;
     this.componentDidUpdate();
   }
   componentWillUnmount() {
-    document.body.removeChild(this.portalElement);
+     document.getElementById('Recoil').removeChild(this.portalElement);
   }
   componentDidUpdate() {
       ReactDOM.render(<SlideIn flex onClose={this.props.onClose} title={this.props.title} icon={this.props.icon} className="z5" fixed from="bottom" fill={true} if={this.props.open} ><Layer flex fill theme="light">{this.props.children}</Layer></SlideIn>, this.portalElement);

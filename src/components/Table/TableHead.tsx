@@ -13,7 +13,7 @@ class DetailTemplateHeadToggle extends React.Component<any, any>{
     render(){
         let {props} = this;
         return (
-            <th width={25}>
+            <th width={25} className="r-Table__DetailTd">
                 <Button icon={arraysEqual(props.dataSource, props.detailTemplateSelectedElements) ? 'minus' : 'plus'} onClick={this.detailTemplateToggleAll.bind(this, props.dataSource)} simple size="small"  />
             </th>
         )
