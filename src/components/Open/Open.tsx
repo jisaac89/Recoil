@@ -9,8 +9,6 @@ export interface IOpenProps {
   className? : any;
   children? : any;
   overflow? : boolean;
-  parent? : boolean;
-  child? : boolean;
   fill? : boolean;
   openToHeight? : string;
 }
@@ -28,9 +26,7 @@ class Open extends React.Component<IOpenProps, any>{
         'r-Open',
         {'e-open': (props.if)},
         {'e-close': (!props.if)},
-        {'parent': (props.parent)},
-        {'child': (props.child)},
-        { 'e-fill': (props.fill) },
+        {'e-fill': (props.fill) },
         props.className
      );
 
