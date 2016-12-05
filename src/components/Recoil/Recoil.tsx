@@ -10,6 +10,8 @@ export interface IRecoilProps {
     scroll? : boolean;
     scrollX? : boolean;
     scrollY? : boolean;
+
+    onMobile? : any;
 }
 
 function delegate(el, evt, sel, handler) {
@@ -28,14 +30,24 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 
     refs: any;
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            inputIsFocused: false
+            inputIsFocused: false,
+            mobile: props.mobile || false
         }
     }
     componentDidMount() {
-        this.isMobile(this.props.mobile);
+        this.detectMobile();
+        
+    }
+    detectMobile(){
+        this.setState({
+            mobile : window.navigator.userAgent.match(/Android|iPad|iPhone|iPod/i) != null || window.screen.width <= 480
+        }, ()=>{
+            this.isMobile(this.state.mobile);
+            this.state.mobile ? this.props.onMobile(this.state.mobile) : null
+        })
     }
     componentWillReceiveProps(nextProps) {
         this.isMobile(nextProps.mobile);

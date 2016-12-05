@@ -56,7 +56,10 @@
   "license": "MIT",
   "author": "Joseph Isaac",
   "dependencies": {
-    "classnames": "^2.2.3"
+    "classnames": "^2.2.3",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "velocity-react": "^1.1.11"
   },
   "peerDependencies": {
     "react": "^15.0.2",
