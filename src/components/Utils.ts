@@ -1,12 +1,32 @@
 // simple flat search
+
+function branchIn(value, key, step?: number) {
+
+    let result = key.split('.'),
+        stepLength = result.length,
+        currentStep = step || 0,
+        letCurrentValue = value[result[currentStep]];
+
+    if (currentStep !== stepLength - 1) {
+        return branchIn(letCurrentValue, key, currentStep + 1);
+    } else {
+        return letCurrentValue;
+    }
+
+}
+
 export function search(dataSource, term, keys) {
 
     let queryResult = [];
 
+
+
     if (term.length > 0) {
         dataSource.forEach(function (item) {
             keys.forEach((key, index) => {
-                if (item[key].toString().toLowerCase().indexOf(term.toString().toLowerCase()) != -1) {
+                
+
+                if (branchIn(item, key) ? branchIn(item, key).toString().toLowerCase().indexOf(term.toString().toLowerCase()) != -1 : false) {
                     if (queryResult[index] !== item) {
                         queryResult.push(item);
                     }

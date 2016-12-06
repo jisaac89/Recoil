@@ -106,7 +106,7 @@ export default class Table extends React.Component<ITableProps,any>{
                 selectedElements: nextProps.selectedElements
             })
         }
-        if (nextProps.dataSource && !nextProps.page) {
+        if (nextProps.dataSource !== this.props.dataSource && !nextProps.page) {
             this.setState({
                 page: 0
             })
@@ -476,7 +476,7 @@ export default class Table extends React.Component<ITableProps,any>{
             return (
                 <div className={tableClass}>
                     <TableSearch {...tableSearchProps} />
-                    <TableFooter {...footerProps} hidePageSize />
+                    
                     <Layer scroll fill>
                         <table className="w100">
                             <TableHead {...tableProps} {...headProps} />

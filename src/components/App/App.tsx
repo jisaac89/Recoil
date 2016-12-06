@@ -1,17 +1,12 @@
 ﻿import * as React from 'react';
 import * as classNames from 'classnames';
-import './Recoil.less';
+import './App.less';
 
-export interface IRecoilProps {
+export interface IAppProps {
     nightmode ? : boolean;
     className?: Array<string>;
     overflow?: boolean;
     mobile?: boolean;
-    scroll? : boolean;
-    scrollX? : boolean;
-    scrollY? : boolean;
-
-    onMobile? : any;
 }
 
 function delegate(el, evt, sel, handler) {
@@ -26,28 +21,18 @@ function delegate(el, evt, sel, handler) {
     });
 }
 
-export default class Recoil extends React.Component<IRecoilProps, any> {
+export default class App extends React.Component<IAppProps, any> {
 
     refs: any;
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            inputIsFocused: false,
-            mobile: props.mobile || false
+            fixInput: false
         }
     }
     componentDidMount() {
-        this.detectMobile();
-        
-    }
-    detectMobile(){
-        this.setState({
-            mobile : window.navigator.userAgent.match(/Android|iPad|iPhone|iPod/i) != null || window.screen.width <= 480
-        }, ()=>{
-            this.isMobile(this.state.mobile);
-            this.state.mobile ? this.props.onMobile ? this.props.onMobile(this.state.mobile) : null : null
-        })
+        this.isMobile(this.props.mobile);
     }
     componentWillReceiveProps(nextProps) {
         this.isMobile(nextProps.mobile);
@@ -58,12 +43,12 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
             
             delegate(self.refs.Recoil, "focusin", "input", function (event) {
                 self.setState({
-                    inputIsFocused: true
+                    fixInput: true
                 })
             });
             delegate(self.refs.Recoil, "focusout", "input", function (event) {
                 self.setState({
-                    inputIsFocused: false
+                    fixInput: false
                 })
             });
         }
@@ -75,19 +60,16 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 
         let {nightmode, className} = props;
 
-        let RecoilClass = classNames(
-            'r-Recoil',
-            { 'e-NightMode': (props.nightmode)},
-            { 'flohide': (props.overflow)},
-            { 'e-scroll': (props.scroll)},
-            {'e-scroll-y': (props.scrollY)},
-            {'e-scroll-x': (props.scrollX)},
-            { 'e-inputIsFocused': (this.state.inputIsFocused)},
+        let appClass = classNames(
+            'r-App',
+            { 'e-NightMode': (props.nightmode) },
+            { 'flohide': (props.overflow) },
+            { 'e-fix-inputs': (this.state.fixInput) },
             props.className
         );
 
         return (
-            <div ref={'Recoil'} id={'Recoil'} className={RecoilClass}>
+            <div ref={'Recoil'} id={'Recoil'} className={appClass}>
                 {this.props.children}
             </div>
         );
