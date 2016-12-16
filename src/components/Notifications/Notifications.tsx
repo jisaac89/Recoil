@@ -10,6 +10,7 @@ export type NotificationType = 'success' | 'primary' | 'error' | 'default';
 export interface INotificationItem {
     title: string;
     type?: NotificationType;
+    id?: number;
 }
 
 export interface INotificationProps {
@@ -25,8 +26,9 @@ class Notification extends React.Component<INotificationProps, INotificationStat
         super();
         this.state = {
             view: 'visible'
-        }
+        };
     }
+
     componentDidMount() {
         const self = this;
         setTimeout(() => {
@@ -40,6 +42,7 @@ class Notification extends React.Component<INotificationProps, INotificationStat
             });
         }, 6000);
     }
+
     render() {
         const self = this;
         const props = self.props;
@@ -70,39 +73,22 @@ export interface INotificationsProps {
 }
 
 export interface INotificationsState {
-    dataSource?: INotificationItem[];
 }
 
 export default class Notifications extends React.Component<INotificationsProps, INotificationsState>{
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            dataSource: props.dataSource || []
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.dataSource != this.props.dataSource) {
-            this.setState({
-                dataSource: nextProps.dataSource
-            });
-        }
-    }
-
     render() {
-        let {dataSource} = this.state;
-        let props = this.props;
+        let {className, dataSource} = this.props;
 
         let notificationClass = classNames(
             'r-Notifications',
-            props.className
+            className
         );
 
         return (
             <div className={notificationClass}>
                 {dataSource.map((item, index) => {
-                    return <Notification item={item} key={index} />;
+                    return <Notification item={item} key={item.id || index} />;
                 }) }
             </div>
         );

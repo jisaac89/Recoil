@@ -2,6 +2,7 @@ import * as React from 'react';
 import Selectable from '../Selectable/Selectable';
 
 import Table from '../Table/Table';
+import Tree from '../Tree/Tree';
 
 interface IDropdownTableProps {
     onRowSelect?: (item: any) => void;
@@ -22,6 +23,8 @@ interface IDropdownTableProps {
     pageSize?: any;
     selectedElements?: Array<any>;
     selectedKey?: string;
+    searchTitle?: string;
+    tree?: boolean;
 }
 
 export default class DropdownTable extends React.Component<IDropdownTableProps, {}> {
@@ -33,7 +36,7 @@ export default class DropdownTable extends React.Component<IDropdownTableProps, 
         const self = this;
         const props = self.props;
 
-        return <Table
+        return props.tree !== true ? <Table
             hideHeader={props.hideHeader || !props.columns}
             rowIsSelectable={this.props.rowIsSelectable}
             onRowSelect={this.onRowSelect.bind(this) }
@@ -49,6 +52,15 @@ export default class DropdownTable extends React.Component<IDropdownTableProps, 
             rowCount={props.rowCount}
             page={props.page}
             onPageChange={props.onPageChange}
+            searchableKeys={props.searchableKeys}
+            searchTitle={props.searchTitle}
             />
+            : 
+            <Tree
+                dataSource={props.dataSource}
+                columns={props.columns}
+                selectedElements={this.props.selectedElements}
+                //onRowSelect={this.onRowSelect.bind(this) }
+                />
     }
 }

@@ -1860,10 +1860,15 @@ hr {
     }
 .e-NightMode {
 	background: @nightMode-background !important;
-	/*.r-Wizard .r-Wizard__track .r-WizardSlide {
-		background: @nightMode-background;
-	}*/
 
+    .r-Table>.r-Layer>table>thead {
+    background: #20262d !important;
+    }
+
+    .r-Dropdown__header {
+    border-bottom: 1px solid #171717 !important;
+    background: #20262d !important;
+}
 
 	.r-Input.checked .r-Input__container>small {
 		color: #8c8c8c;
@@ -1880,7 +1885,7 @@ hr {
         background:#171717;
     }
     .r-Modal__header{
-        background: #252535 !important;
+        background: #20262d !important;
         border-bottom: 1px solid #252535 !important;
     }
 	.dark {
@@ -1891,7 +1896,7 @@ hr {
 		background: #131313;
 	}
 	.r-Button:not(.simple) {
-		background: #333;
+		background: #20262d;
 		border-color: #222 !important;
 	}
 	.r-Dropdown .r-DropdownSelection, .r-Checkbox___back {
@@ -1917,9 +1922,9 @@ hr {
 	.border-top, .border-bottom, .border-left, .border-right {
 		border-color: #334;
 	}
-	.r-Button:hover, .r-Button:focus {
+	/*.r-Button:hover, .r-Button:focus {
 		background: transparent !important;
-	}
+	}*/
 	small {
 		color: #CECECE;
 	}
@@ -1928,8 +1933,11 @@ hr {
 		font-weight: normal;
 	}
 	h1{
-		color:white !important;
+		color:#d1d5da !important;
 	}
+    h4{
+        font-size:18px !important;
+    }
 	.text-error {
 		color: #F62D73 !important;
 	}
@@ -1949,7 +1957,7 @@ hr {
 	}
     button.r-Button.outline.primary {
         border-color: #1a619e!important;
-        background: #333333 !important;
+        background: #20262d !important;
         color: #adadad !important;
     }
 	.primary.simple:hover {
@@ -2140,3 +2148,5 @@ hr {
     small *{
         font-size:10px !important;
     }
+
+

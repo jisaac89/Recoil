@@ -45,7 +45,7 @@
 }
 
 .r-TableColumn{
-    background:white;
+    /*background:white;*/
     border-bottom:1px solid #ccc;
     transition: 300ms all ease-in;
 }
@@ -55,13 +55,17 @@
 }
 
 .r-TableColumn {
-    background: #f3f3f3;
+    /*background: #f3f3f3;*/
+}
+
+.r-TableColumn.checked{
+    background:#e3f2ff; 
 }
 
 
-.r-TableColumn:hover{
+/*.r-TableColumn:hover{
     background:#f2faff;
-}
+}*/
 
 .r-TableColumnSelectable > td{
     padding:0;
@@ -89,9 +93,16 @@
     padding: 0 !important;
 }
 
-.r-Table>.r-Layer>table>thead>tr>th, .r-TableColumn td {
+.r-TableColumn td {
     font-size:13px !important;
-    padding: 15px 10px;
+    padding: 10px;
+}
+.r-Table>.r-Layer>table>thead{
+    background:#edeff2;
+}
+.r-Table>.r-Layer>table>thead>tr>th{
+    font-size:13px !important;
+    padding: 5px 10px;
 }
 
 .r-TableColumn td{

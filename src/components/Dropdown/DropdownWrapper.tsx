@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Selectable from '../Selectable/Selectable';
-
+import Toolbar from '../Toolbar/Toolbar';
+import Button from '../Button/Button';
 import DropdownTable from './DropdownTable';
 
 interface IDropdownWrapperProps {
@@ -14,12 +15,32 @@ interface IDropdownWrapperProps {
     searchableKeys?: Array<any>;
     selectedElements?: Array<any>;
     selectedKey?: string;
-    mobile? : boolean;
+    mobile?: boolean;
+    toggleOpen?: any;
+    title?: string;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
   selectItem(item) {
     this.props.selectItem(item);
+    }
+  titleTemplate() {
+      let props = this.props;
+      let {title} = props;
+      return (
+          <Toolbar left>
+              <Button simple onClick={props.toggleOpen}>{title}</Button>
+          </Toolbar>
+      )
+  }
+  menuTemplate() {
+      let props = this.props;
+      let {toggleOpen} = props;
+      return (
+          <Toolbar right>
+              <Button className="ps15" simple icon="times" onClick={props.toggleOpen}/>
+          </Toolbar>
+      )
   }
   render() {
 
@@ -36,7 +57,15 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
 
     return(
       <div style={!props.mobile ? {width : this.props.width} : {width: '100%', height: '100%'}} className={props.mobile ? "e-flex fill": "r-DropdownWrapper"}>
-        {DropdownContent}
+            {!props.mobile ? 
+                <Toolbar block className="r-Dropdown__header" onClick={props.toggleOpen}>
+                    {this.titleTemplate()}
+                    {this.menuTemplate() }
+                </Toolbar>
+                : 
+                null
+            }
+            {DropdownContent}
       </div>
     );
   }

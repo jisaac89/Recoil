@@ -56,8 +56,9 @@ interface P {
     selectedKey?: string;
     required?: boolean;
     checked?: boolean;
-
+    searchTitle?: string;
     mobile?: boolean;
+    tree?: boolean;
 }
 
 export interface State {
@@ -113,7 +114,7 @@ export default class DropdownComponent extends React.Component<P, State>{
             this.props.onChange(item);
             this.toggleOpen();
         } else if (this.props.toggleCpenOnRowSelect) {
-            this.toggleOpen();
+            //this.toggleOpen();
         } else {
             return null;
         }
@@ -137,7 +138,7 @@ export default class DropdownComponent extends React.Component<P, State>{
             {'material' : (props.material)}
         );
 
-        let dropdownContentPartial = <DropdownWrapper {...props} onRowSelect={this.onRowSelect.bind(this)} selected={this.state.selected} open={state.open}>{props.children}</DropdownWrapper>;
+        let dropdownContentPartial = <DropdownWrapper {...props} toggleOpen={this.toggleOpen.bind(this)} onRowSelect={this.onRowSelect.bind(this)} selected={this.state.selected} open={state.open}>{props.children}</DropdownWrapper>;
 
         switch (props.type) {
             case 'button':

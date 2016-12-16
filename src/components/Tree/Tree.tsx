@@ -13,13 +13,15 @@ interface P {
  parentKey? : string;
  uniqueKey? : string;
  selectedElements? : Array<any>;
- openedElements? : Array<any>;
+ openedElements?: Array<any>;
+ selectedKey?: string;
+ onRowSelect?: any;
 }
 
 export default class Tree extends React.Component<P, any>{
 
   public static defaultProps = {
-      parentKey: 'parentId',
+      parentKey: 'ParentId',
       uniqueKey: 'Id'
   };
 
@@ -28,15 +30,18 @@ export default class Tree extends React.Component<P, any>{
     this.state = {
       newArray : [], 
       roots: [],
-      map: {}
+      map: {},
+      openedKeys: []
     }
   }
   componentDidMount() {
     this.initArray(this.props.dataSource);
   }
-  componentWillReceiveProps(nextProps) {
-    this.initArray(nextProps.dataSource);
-  }
+  //componentWillReceiveProps(nextProps) {
+  //    if (nextProps.selectedElements !== this.props.selectedElements){
+  //        this.openSelectedElements();
+  //    }
+  //}
   initArray(dataSource) {
     let {columns, parentKey, uniqueKey} = this.props;
     let newArray = [];
@@ -44,7 +49,7 @@ export default class Tree extends React.Component<P, any>{
 
     let createNodeTree = (item, index) =>{
       newArray.push({
-        name: item.name,
+        item: item,
         Id: item[uniqueKey],
         parentId: item[parentKey],
         children : []
@@ -72,15 +77,56 @@ export default class Tree extends React.Component<P, any>{
           let node = newArray[i];
           node.parentId !== 0 ? newArray[map[node.parentId]].children.push(node) : roots.push(node);
       }
-      this.setState({roots: roots});
+      this.setState({ roots: roots }, () => {
+          this.props.selectedElements ? this.openSelectedElements() : null;
+      });
     } 
+  }
+  openSelectedElements() {
+      let {selectedElements} = this.props;
+      let newArray = this.state.newArray;
+      let openedKeys = [];
+
+      let gotoParentAndPushKey = (selectedKeyIndex, node ? : any) => {
+          let currentSelectedKeyIndex = selectedKeyIndex || 0; 
+
+          let currentNode = node || newArray.filter(function (node) {
+              return node.Id === selectedElements[selectedKeyIndex];
+          })
+
+          let theNode = currentNode[0];
+
+          if (theNode && theNode.ParentId !== 0) {
+              openedKeys.push(theNode.parentId); 
+
+              let parentNode = newArray.filter(function (node) {
+                  return node.Id === theNode.parentId;
+              })
+
+              if (parentNode[0].parentId === 0) {
+                  return null
+              } else {
+                  return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
+              }
+              
+          } else {
+              openedKeys.push(theNode.Id);
+          }
+      }
+
+      gotoParentAndPushKey(0);
+
+      this.setState({
+          openedKeys: openedKeys
+      })
+
   }
   detailTemplate(item) {
     let {columns, parentKey, uniqueKey} = this.props;
     return item.children.length > 0 ? item.children.map(this.childrenList.bind(this)) : <Table className="ml20" key={item[uniqueKey]} columns={columns} hideHeader dataSource={item.children} />;
   }
   childrenList(childNode, i){
-    let {columns, parentKey, uniqueKey} = this.props;
+      let {columns, parentKey, uniqueKey, selectedKey, onRowSelect} = this.props;
     let container = [];
     container.push(
       <Table 
@@ -90,8 +136,9 @@ export default class Tree extends React.Component<P, any>{
           columns={columns} 
           selectedKey={uniqueKey}
           selectedElements={this.props.selectedElements}
-          detailTemplateSelectedElements={this.props.openedElements}
+          detailTemplateSelectedElements={this.state.openedKeys ? this.state.openedKeys : this.props.openedElements}
           dataSource={childNode} 
+          onRowSelect={onRowSelect}
           {...childNode.children.length > 0 ? {detailTemplate : this.detailTemplate.bind(this)} : null} 
       />
     )
@@ -105,7 +152,7 @@ export default class Tree extends React.Component<P, any>{
     let {roots} = state;
 
     return (
-      <div>
+      <div className="r-Tree">
         {roots.map(this.childrenList.bind(this))}
       </div>
     )
