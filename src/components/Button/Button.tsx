@@ -80,7 +80,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
   public onClick(event: React.MouseEvent) {
       const self = this;
-      event.stopPropagation();
+      // event.stopPropagation();
       this.props.onClick ? this.props.onClick(event) : null;
   }
 

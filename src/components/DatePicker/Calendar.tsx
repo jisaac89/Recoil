@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 
-import Align from '../Align/Align';
+import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
@@ -56,6 +56,12 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
+    setYear = (year) => {
+        this.setState({
+            year: Number(year)
+        });
+    }
+
     decreaseYear = () => {
         this.setState({
             year: this.state.year - 1
@@ -102,13 +108,28 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         return weeks;
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            date: nextProps.date,
+            year: nextProps.date.getFullYear(),
+            month: nextProps.date.getMonth()
+        })
+    }
+
     render() {
         var weeks = this.getWeeks(this.state.year, this.state.month);
+
+
+        availableYears(1989);
+
         return (
             <div className="r-Calendar">
                 <div>
+
                     <Toolbar flush block flex textCenter noRadius>
+
                         <Button onClick={this.decreaseMonth} icon="chevron-left" />
+                        <Button onClick={this.increaseMonth} icon="chevron-right" />
                         <Dropdown 
                             className="w100"
                             material 
@@ -120,50 +141,88 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                             pageSize={monthNames.length}
                             hideHeader
                         />
-                        <Button onClick={this.increaseMonth} icon="chevron-right" />
-                    </Toolbar>
-                    <Toolbar flush block flex textCenter noRadius>
-                        <Button onClick={this.decreaseYear} icon="chevron-left" />
-                        <Input flex className="text-center w100" value={this.state.year.toString()} />
-                        <Button onClick={this.increaseYear} icon="chevron-right" />
+                        <Dropdown 
+                            className="w100"
+                            material 
+                            block  
+                            title={this.state.year.toString()}
+                            selectedElements={[this.state.year]} 
+                            dataSource={availableYears(this.state.year)}
+                            onChange={this.setYear.bind(this)}
+                            pageSize={availableYears(this.state.year).length}
+                            hideHeader
+                        />
                     </Toolbar>
                 </div>
-                <table className="w100">
+                <Layer theme="light" className="r-Table h100">
+                <table className="w100 h100">
                     <thead>
                         <tr>
-                            <th className="p5">Sun</th>
-                            <th className="p5">Mon</th>
-                            <th className="p5">Tue</th>
-                            <th className="p5">Wed</th>
-                            <th className="p5">Thu</th>
-                            <th className="p5">Fri</th>
-                            <th className="p5">Sat</th>
+                            <th className="p5">Sunday</th>
+                            <th className="p5">Monday</th>
+                            <th className="p5">Tuesday</th>
+                            <th className="p5">Wednesday</th>
+                            <th className="p5">Thursday</th>
+                            <th className="p5">Friday</th>
+                            <th className="p5">Saturday</th>
                         </tr>
                     </thead>
-                    <tbody className="r-Calendar__body">
+                    <tbody className="r-Calendar__body h100">
                         {weeks.map((week, index, array) => {
                             return (
                                 <tr key={this.state.year + ' ' + this.state.month + ' ' + index}>
                                     {index === 0 && week.length < 7 ?
-                                        <td colSpan={7 - week.length}></td>
+                                        <td className="empty-date" colSpan={7 - week.length}></td>
                                         : undefined}
                                     {week.map((day, index, array) => {
-                                        var selected = this.props.date && this.props.date.getTime() === day.getTime();
+                                        let selected = this.props.date && this.props.date.getTime() === day.getTime();
                                         return (
-                                            <td className={selected ? 'selected-date' : undefined} key={this.state.year + ' ' + this.state.month + ' ' + index}>
-                                                <a className="p5" onClick={this.selectDay.bind(this, day) }>{day.getDate() }</a>
+                                            <td onClick={this.selectDay.bind(this, day) } className={selected ? 'selected-date' : undefined} key={this.state.year + ' ' + this.state.month + ' ' + index}>
+                                                <a className="p5" >{day.getDate() }</a>
                                             </td>
                                         );
                                     }) }
                                     {index > 0 && week.length < 7 ?
-                                        <td colSpan={7 - week.length}></td>
+                                        <td className="empty-date" colSpan={7 - week.length}></td>
                                         : undefined}
                                 </tr>
                             );
                         }) }
                     </tbody>
                 </table>
+                </Layer>
             </div>
         );
     }
+}
+
+                    // <Toolbar flush block flex textCenter noRadius>
+                    //     <Button onClick={this.decreaseMonth} icon="chevron-left" />
+
+                    //     <Button onClick={this.increaseMonth} icon="chevron-right" />
+                    // </Toolbar>
+
+
+function availableYears (year) {
+
+    let currentYear = year;
+    let index = 0;
+    let availableYearsArray = [];
+    let startYear = year - 2;
+    let endYear = year + 100;
+
+    function recursion(start, end) {
+        let currentYear = start;
+        let endYear = end;
+        if (currentYear < endYear){
+            availableYearsArray.push(currentYear);
+            recursion(currentYear + 1, endYear);
+        } else {
+            return null;
+        }
+         
+    }
+
+    recursion(startYear, endYear);
+    return availableYearsArray;
 }

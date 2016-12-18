@@ -2,6 +2,7 @@ import * as React from 'react';
 import Selectable from '../Selectable/Selectable';
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
+import Input from '../Input/Input';
 import DropdownTable from './DropdownTable';
 
 interface IDropdownWrapperProps {
@@ -19,6 +20,10 @@ interface IDropdownWrapperProps {
     toggleOpen?: any;
     title?: string;
     hideHeader? : boolean;
+    type?: string;
+
+    onChange ? : any;
+    
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
@@ -27,19 +32,26 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
     }
   titleTemplate() {
       let props = this.props;
-      let {title} = props;
-      return (
-          <Toolbar left>
-              <Button simple onClick={props.toggleOpen}>{title}</Button>
-          </Toolbar>
-      )
+      let {title, type, onChange} = props;
+
+      if (type === 'text') {
+        return (
+            <Input onChange={onChange} focusOnMount placeholder={title} block />
+        )
+      } else {
+        return (
+            <Toolbar left>
+                <Button simple onClick={props.toggleOpen}>{title}</Button>
+            </Toolbar>
+        )
+      }
   }
   menuTemplate() {
       let props = this.props;
-      let {toggleOpen} = props;
+      let {toggleOpen, hideHeader} = props;
       return (
-          <Toolbar right className={props.hideHeader ? "r-fixed" : ''}>
-              <Button className="ps15" simple icon="times" onClick={props.toggleOpen}/>
+          <Toolbar noRadius right className={props.hideHeader ? "r-fixed" : ''}>
+              <Button simple={hideHeader} icon="times" onClick={props.toggleOpen}/>
           </Toolbar>
       )
   }
@@ -59,7 +71,7 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
     return(
       <div style={!props.mobile ? {width : this.props.width} : {width: '100%', height: '100%'}} className={props.mobile ? "e-flex fill": "r-DropdownWrapper"}>
             {!props.mobile && !props.hideHeader ? 
-                <Toolbar block className="r-Dropdown__header" onClick={props.toggleOpen}>
+                <Toolbar  flush noRadius flex block className="r-Dropdown__header">
                     {this.titleTemplate()}
                     {this.menuTemplate() }
                 </Toolbar>

@@ -7,6 +7,7 @@ import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import Portal from '../Portal/Portal';
 import DropdownWrapper from './DropdownWrapper';
+import Toolbar from '../Toolbar/Toolbar';
 
 import './Dropdown.less';
 
@@ -26,7 +27,7 @@ interface P {
     right?: boolean;
     left?: boolean;
     className?: string;
-    type?: '' | 'button' | 'selection' | 'search' | 'input';
+    type?: '' | 'button' | 'selection' | 'search' | 'text';
     title?: string;
     iconLocation?: 'left' | 'right';
     iconPointer? : 'left' | 'right' | 'up' | 'down';
@@ -138,6 +139,7 @@ export default class DropdownComponent extends React.Component<P, State>{
         );
 
         let dropdownContentPartial = <DropdownWrapper {...props} toggleOpen={this.toggleOpen.bind(this)} onRowSelect={this.onRowSelect.bind(this)} selected={this.state.selected} open={state.open}>{props.children}</DropdownWrapper>;
+        let dropdownPortal = <Portal portalType="SlideIn" title={props.title} icon={props.icon} open={this.state.open} onClose={this.toggleOpen.bind(this)} portalId={guidGenerator()}>{dropdownContentPartial}</Portal>;
 
         switch (props.type) {
             case 'button':
@@ -164,27 +166,30 @@ export default class DropdownComponent extends React.Component<P, State>{
             case 'selection':
                 dropdownTypePartial = <Button block={props.block}>{props.title}</Button>;
                 break;
-            case 'input':
-                dropdownTypePartial = <Input block={props.block} type="text" placeholder={props.title} />
+            case 'text':
+                dropdownTypePartial = 
+                <Toolbar flush onClick={this.toggleOpen.bind(this)}>
+                    <Input
+                        block={props.block} 
+                        type="text" 
+                        placeholder={props.title} 
+                        size={props.size}
+                    />
+                    <Button
+                        icon={props.icon ? props.icon : "search"}
+                        size={props.size}
+                    /> 
+                </Toolbar>
                 break;
             default:
                 dropdownTypePartial = null;
         }
 
-        if (!props.mobile) {
-            return (
-                <div ref='dropdown' className={dropdownClass}>
-                    {dropdownTypePartial}
-                    {dropdownContentPartial}
-                </div>
-            )
-        } else {
-            return (
-                <div ref='dropdown' className={dropdownClass}>
-                    {dropdownTypePartial}
-                    <Portal portalType="SlideIn" title={props.title} icon={props.icon} open={this.state.open} onClose={this.toggleOpen.bind(this)} portalId={guidGenerator()}>{dropdownContentPartial}</Portal>
-                </div>
-            )
-        }
+        return (
+            <div ref='dropdown' className={dropdownClass}>
+                {dropdownTypePartial}
+                {!props.mobile ? dropdownContentPartial : dropdownPortal}
+            </div>
+        )
     }
 }
