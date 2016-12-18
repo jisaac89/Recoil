@@ -18,6 +18,7 @@ interface IDropdownWrapperProps {
     mobile?: boolean;
     toggleOpen?: any;
     title?: string;
+    hideHeader? : boolean;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
@@ -37,7 +38,7 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
       let props = this.props;
       let {toggleOpen} = props;
       return (
-          <Toolbar right>
+          <Toolbar right className={props.hideHeader ? "r-fixed" : ''}>
               <Button className="ps15" simple icon="times" onClick={props.toggleOpen}/>
           </Toolbar>
       )
@@ -57,11 +58,17 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
 
     return(
       <div style={!props.mobile ? {width : this.props.width} : {width: '100%', height: '100%'}} className={props.mobile ? "e-flex fill": "r-DropdownWrapper"}>
-            {!props.mobile ? 
+            {!props.mobile && !props.hideHeader ? 
                 <Toolbar block className="r-Dropdown__header" onClick={props.toggleOpen}>
                     {this.titleTemplate()}
                     {this.menuTemplate() }
                 </Toolbar>
+                : 
+                null
+            }
+
+            {!props.mobile && props.hideHeader ? 
+                this.menuTemplate()
                 : 
                 null
             }

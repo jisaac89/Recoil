@@ -8,6 +8,7 @@ export interface IAlignProps {
     columns?: Array<any>;
     margin?: string;
     children?: Array<any>;
+    fill ?: boolean;
 }
 
 export interface IAlignState {
@@ -74,13 +75,14 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
   render() {
     const self = this;
     const props = self.props;
-    let {vertical, children, className} = props;
+    let {vertical, children, className, fill} = props;
     let alignChildren = self.alignChildren.bind(self);
 
     let alignClass = classNames(
       'r-Align',
       {'e-vertical' : (vertical)},
       { 'e-horizontal': (!vertical)},
+      { 'e-fill': (fill)},
       className
     );
 

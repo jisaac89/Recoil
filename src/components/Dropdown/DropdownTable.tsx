@@ -5,7 +5,7 @@ import Table from '../Table/Table';
 import Tree from '../Tree/Tree';
 
 interface IDropdownTableProps {
-    onRowSelect?: (item: any) => void;
+    onRowSelect?: (item: any, index?: number) => void;
     selected?: any;
     open?: boolean;
     dataSource? : Array<any> | Object;
@@ -28,8 +28,8 @@ interface IDropdownTableProps {
 }
 
 export default class DropdownTable extends React.Component<IDropdownTableProps, {}> {
-    onRowSelect(item){
-        this.props.onRowSelect(item);
+    onRowSelect(item, index){
+        this.props.onRowSelect(item, index);
     }
     render() {
 

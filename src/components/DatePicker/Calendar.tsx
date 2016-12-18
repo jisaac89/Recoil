@@ -38,9 +38,9 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
-    selectMonth = (month) => {
+    selectMonth = (month, index) => {
         this.setState({
-            month: (month) % 12
+            month: (index) % 12
         });
     }
 
@@ -105,32 +105,42 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     render() {
         var weeks = this.getWeeks(this.state.year, this.state.month);
         return (
-            <div>
+            <div className="r-Calendar">
                 <div>
-                    <Toolbar flush block flex textCenter>
+                    <Toolbar flush block flex textCenter noRadius>
                         <Button onClick={this.decreaseMonth} icon="chevron-left" />
-                        <Dropdown className="w100" material block title={monthNames[this.state.month]} selectedElements={[monthNames[this.state.month]]} onChange={this.selectMonth.bind(this)} dataSource={monthNames} />
+                        <Dropdown 
+                            className="w100"
+                            material 
+                            block 
+                            title={monthNames[this.state.month]} 
+                            selectedElements={[monthNames[this.state.month]]} 
+                            onChange={this.selectMonth.bind(this)} 
+                            dataSource={monthNames}
+                            pageSize={monthNames.length}
+                            hideHeader
+                        />
                         <Button onClick={this.increaseMonth} icon="chevron-right" />
                     </Toolbar>
-                    <Toolbar flush block flex textCenter>
-                        <Button onClick={this.decreaseYear} icon="chevron-left" simple />
-                        <Input flex className="text-center" value={this.state.year.toString()} />
-                        <Button onClick={this.increaseYear} icon="chevron-right" simple />
+                    <Toolbar flush block flex textCenter noRadius>
+                        <Button onClick={this.decreaseYear} icon="chevron-left" />
+                        <Input flex className="text-center w100" value={this.state.year.toString()} />
+                        <Button onClick={this.increaseYear} icon="chevron-right" />
                     </Toolbar>
                 </div>
                 <table className="w100">
                     <thead>
                         <tr>
-                            <th className="p5">S</th>
-                            <th className="p5">M</th>
-                            <th className="p5">T</th>
-                            <th className="p5">W</th>
-                            <th className="p5">T</th>
-                            <th className="p5">F</th>
-                            <th className="p5">S</th>
+                            <th className="p5">Sun</th>
+                            <th className="p5">Mon</th>
+                            <th className="p5">Tue</th>
+                            <th className="p5">Wed</th>
+                            <th className="p5">Thu</th>
+                            <th className="p5">Fri</th>
+                            <th className="p5">Sat</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="r-Calendar__body">
                         {weeks.map((week, index, array) => {
                             return (
                                 <tr key={this.state.year + ' ' + this.state.month + ' ' + index}>

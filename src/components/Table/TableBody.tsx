@@ -81,6 +81,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                     checkable: checkable,
                     hideColumns: hideColumns,
                     onRowSelect,
+                    index: index,
                     isArray: isArray,
                     detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect,
                     selectedKey: selectedKey

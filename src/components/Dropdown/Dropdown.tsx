@@ -79,8 +79,7 @@ export default class DropdownComponent extends React.Component<P, State>{
         type: 'button',
         dropDirection: 'down',
         toggleCpenOnRowSelect: true,
-        title: 'Dropdown',
-        width: 300
+        title: 'Dropdown'
     };
 
     constructor(props) {
@@ -101,17 +100,17 @@ export default class DropdownComponent extends React.Component<P, State>{
             open : !this.state.open
         });
     }
-    onRowSelect(item) {
+    onRowSelect(item, index) {
 
         if (this.props.rowIsSelectable) {
             this.setState({
                 selected : [item]
             })
             this.props.rowIsSelectable === 'single' && this.props.toggleCpenOnRowSelect ? this.toggleOpen() : null
-            this.props.onChange ? this.props.onChange(item) : null;
+            this.props.onChange ? this.props.onChange(item, index) : null;
         }
         else if (this.props.onChange) {
-            this.props.onChange(item);
+            this.props.onChange(item, index);
             this.toggleOpen();
         } else if (this.props.toggleCpenOnRowSelect) {
             //this.toggleOpen();
