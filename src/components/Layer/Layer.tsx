@@ -28,7 +28,8 @@ export interface ILayerProps {
   scrollIf? : boolean;
   scroll? : boolean;
   flex? : any;
-  offset ? : number;
+  offset?: number;
+  shadow?: boolean;
 }
 
 export default class Layer extends React.Component<ILayerProps, any> {
@@ -210,7 +211,8 @@ export default class Layer extends React.Component<ILayerProps, any> {
       { 'e-flex': (props.flex) },
       {'e-fill': (props.fill)},
       {'parent': (props.parent)},
-      {'child': (props.child)},
+      { 'child': (props.child) },
+      { 'e-shadow': (props.shadow) },
       borderClass,
       props.theme,
       props.className

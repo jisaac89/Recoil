@@ -65,6 +65,8 @@ interface ITableProps {
 
     selectedKey?: string;
     flex?: boolean;
+
+    menuTemplate?: any;
 }
 
 interface ITableState {
@@ -308,7 +310,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {selectedKey, detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
+        let {selectedKey, menuTemplate, detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {sortType, sortKey, columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         // sorting render
@@ -476,7 +478,7 @@ export default class Table extends React.Component<ITableProps,any>{
             return (
                 <div className={tableClass}>
                     <TableSearch {...tableSearchProps} />
-                    
+                    {menuTemplate ? menuTemplate() : null}
                     <Layer scroll fill>
                         <table className="w100">
                             <TableHead {...tableProps} {...headProps} />
