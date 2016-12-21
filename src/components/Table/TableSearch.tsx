@@ -37,8 +37,15 @@ export default class TableSearch extends React.Component<any, any>{
     }
   }
 
-  updateSearch (term) {
-    const searchTerm = term;
+  updateSearch(term) {
+      let searchTerm;
+      
+      if (/\s+$/.test(term)) {
+          searchTerm = term.substring(0, term.length - 1);
+      } else {
+          searchTerm = term;
+      }
+
     this.setState({
       searchTerm: searchTerm
     }, () => {
@@ -54,7 +61,7 @@ export default class TableSearch extends React.Component<any, any>{
     const self = this;
     const props = self.props;
 
-    const {className, onChange, throttle, searchableKeys, value} = this.props
+    const {className, onChange, throttle, searchableKeys, value, focusOnMount} = this.props
 
     let searchPartial = () => {
       return (
@@ -67,6 +74,7 @@ export default class TableSearch extends React.Component<any, any>{
             size="small"
             flex
             value={this.state.searchTerm}
+            focusOnMount={focusOnMount}
           />
           <Button size="small" icon="times" onClick={this.updateSearch.bind(this, "")} />
         </Toolbar>

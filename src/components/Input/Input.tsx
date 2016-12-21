@@ -76,7 +76,10 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       const valueIsChanging = nextProps.value !== props.value;
       if (valueIsChanging || nextProps.defaultValue !== props.defaultValue) {
           const value = this.setCurrentValue(nextProps);
-          valueIsChanging ? this.setState({ value }) : null;
+          valueIsChanging ? this.setState({ value : value, checked: true }) : null;
+      }
+      if (nextProps.value.length) {
+          this.setState({ checked: true }) 
       }
   }
 
@@ -106,7 +109,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   public focus(e){
     const self = this;
     this.setState({
-      checked: self.props.advanced ? true : false,
+      checked: e.target.value ? true : false,
       value:e.target.value
     });
   }

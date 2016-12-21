@@ -23,7 +23,7 @@ interface IDropdownWrapperProps {
     type?: string;
 
     onChange ? : any;
-    
+    fixedClose?: boolean;
 }
 
 export default class DropdownWrapper extends React.Component<IDropdownWrapperProps, {}> {
@@ -48,10 +48,10 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
   }
   menuTemplate() {
       let props = this.props;
-      let {toggleOpen, hideHeader} = props;
+      let {toggleOpen, hideHeader, fixedClose, type} = props;
       return (
-          <Toolbar noRadius right className={props.hideHeader ? "r-fixed" : ''}>
-              <Button simple={hideHeader} icon="times" onClick={props.toggleOpen}/>
+          <Toolbar noRadius right className={props.fixedClose ? "r-fixed" : ''}>
+              <Button simple={type !== 'text'} icon="times" onClick={props.toggleOpen}/>
           </Toolbar>
       )
   }
@@ -70,8 +70,8 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
 
     return(
       <div style={!props.mobile ? {width : this.props.width} : {width: '100%', height: '100%'}} className={props.mobile ? "e-flex fill": "r-DropdownWrapper"}>
-            {!props.mobile && !props.hideHeader ? 
-                <Toolbar  flush noRadius flex block className="r-Dropdown__header">
+            {!props.mobile && !props.fixedClose ?
+                <Toolbar onClick={props.type !== 'text' ? props.toggleOpen : null} flex={props.type === 'text'}  flush noRadius block className="r-Dropdown__header">
                     {this.titleTemplate()}
                     {this.menuTemplate() }
                 </Toolbar>
@@ -79,7 +79,7 @@ export default class DropdownWrapper extends React.Component<IDropdownWrapperPro
                 null
             }
 
-            {!props.mobile && props.hideHeader ? 
+            {!props.mobile && props.fixedClose ? 
                 this.menuTemplate()
                 : 
                 null

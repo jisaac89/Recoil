@@ -1,0 +1,62 @@
+@import '../../less/Global';
+
+.r-Open{
+  position:relative;
+  -webkit-transform-origin: top;
+	-o-transform-origin: top;
+	-ms-transform-origin: top;
+	transform-origin: top;
+  -webkit-transform: scaleY(1);
+  -o-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+  -webkit-transition: -webkit-transform 0.26s ease-out;
+  -o-transition: -o-transform 0.26s ease;
+  -ms-transition: -ms-transform 0.26s ease;
+  transition: all 0.26s ease;
+  height: auto;
+  flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+}
+
+.r-Open.e-autoHeight{
+  height : auto !important;
+  max-height : none !important;
+}
+
+.r-Open.e-close{
+  height: 0;
+  -webkit-transform: scaleY(0);
+	-o-transform: scaleY(0);
+	-ms-transform: scaleY(0);
+	transform: scaleY(0);
+}
+
+.r-Stepper > .r-Align .r-Align__Child{
+    flex: 1 1 auto !important;
+}
+
+
+.r-Stepper > .r-Align .r-Align__Child:nth-child(even){
+    flex: 1 1 auto !important;
+    background: #1995ff;
+    height: 2px;
+    display: block;
+    width:10% !important;
+}
+
+.r-Stepper > h5{
+    margin-bottom:10px;
+}
+
+.r-Stepper > .r-Align.e-vertical .r-Align__Child:nth-child(even){
+    flex: 1 1 auto !important;
+    background: #1995ff;
+    height: 10px;
+    display: block;
+    width:3px !important;
+}
+
+.r-Stepper > .r-Align.e-vertical {
+    align-items: baseline;
+}

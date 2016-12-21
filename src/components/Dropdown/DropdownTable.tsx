@@ -60,7 +60,6 @@ export default class DropdownTable extends React.Component<IDropdownTableProps, 
                 dataSource={props.dataSource}
                 columns={props.columns}
                 selectedElements={this.props.selectedElements}
-                //onRowSelect={this.onRowSelect.bind(this) }
                 />
     }
 }

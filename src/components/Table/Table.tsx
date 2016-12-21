@@ -67,6 +67,9 @@ interface ITableProps {
     flex?: boolean;
 
     menuTemplate?: any;
+
+    focusOnMount?: any;
+    contentMaxHeight?: number;
 }
 
 interface ITableState {
@@ -77,7 +80,9 @@ interface ITableState {
     selectedElements? : any;
     sortType ? : "asc" | "desc";
     sortKey ? : string;
-    searchedItems? : any;
+    searchedItems?: any;
+
+
 }
 
 export default class Table extends React.Component<ITableProps,any>{
@@ -106,6 +111,11 @@ export default class Table extends React.Component<ITableProps,any>{
         if (nextProps.selectedElements) {
             this.setState({
                 selectedElements: nextProps.selectedElements
+            })
+        }
+        if (nextProps.detailTemplateSelectedElements) {
+            this.setState({
+                detailTemplateSelectedElements: nextProps.detailTemplateSelectedElements
             })
         }
         if (nextProps.dataSource !== this.props.dataSource && !nextProps.page) {
@@ -310,7 +320,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {selectedKey, menuTemplate, detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
+        let {selectedKey, contentMaxHeight, menuTemplate, focusOnMount, detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {sortType, sortKey, columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         // sorting render
@@ -463,7 +473,8 @@ export default class Table extends React.Component<ITableProps,any>{
         let tableSearchProps = {
             filterItems : this.filterItems.bind(this),
             searchableKeys : this.props.searchableKeys,
-            searchTitle : this.props.searchTitle
+            focusOnMount: this.props.focusOnMount,
+            searchTitle : this.props.searchTitle,
         }
 
         let tableClass = classNames(
@@ -479,8 +490,8 @@ export default class Table extends React.Component<ITableProps,any>{
                 <div className={tableClass}>
                     <TableSearch {...tableSearchProps} />
                     {menuTemplate ? menuTemplate() : null}
-                    <Layer scroll fill>
-                        <table className="w100">
+                    <Layer scroll fill style={contentMaxHeight ? {height : contentMaxHeight} : null}>
+                        <table className="w100" >
                             <TableHead {...tableProps} {...headProps} />
                             <TableBody {...tableProps} {...bodyProps} />
                         </table>

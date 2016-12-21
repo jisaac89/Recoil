@@ -139,7 +139,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                             onChange={this.selectMonth.bind(this)} 
                             dataSource={monthNames}
                             pageSize={monthNames.length}
-                            hideHeader
+                            fixedClose
                         />
                         <Dropdown 
                             className="w100"
@@ -150,7 +150,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                             dataSource={availableYears(this.state.year)}
                             onChange={this.setYear.bind(this)}
                             pageSize={availableYears(this.state.year).length}
-                            hideHeader
+                            fixedClose
                         />
                     </Toolbar>
                 </div>

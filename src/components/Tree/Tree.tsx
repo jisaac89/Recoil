@@ -6,6 +6,7 @@ import TreeComponent from './TreeComponent';
 
 import './Tree.less';
 import Table from '../Table/Table';
+import Layer from '../Layer/Layer';
 
 interface P {
  dataSource? : any; 
@@ -42,6 +43,12 @@ export default class Tree extends React.Component<P, any>{
   //        this.openSelectedElements();
   //    }
   //}
+
+  componentWillReceiveProps(nextProps) {
+      if (nextProps.dataSource !== this.props.dataSource){
+          this.initArray(nextProps.dataSource);
+      }
+  }
   initArray(dataSource) {
     let {columns, parentKey, uniqueKey} = this.props;
     let newArray = [];
@@ -72,15 +79,17 @@ export default class Tree extends React.Component<P, any>{
     let map = this.state.map;
     let roots = [];
 
-    if (newArray.length > 0) {
+    if (newArray.length === this.props.dataSource.length) {
       for (let i = 0; i < newArray.length; i += 1) {
           let node = newArray[i];
           node.parentId !== 0 ? newArray[map[node.parentId]].children.push(node) : roots.push(node);
       }
-      this.setState({ roots: roots }, () => {
-          this.props.selectedElements ? this.openSelectedElements() : null;
-      });
     } 
+
+    this.setState({ roots: roots }, () => {
+        this.props.selectedElements ? this.openSelectedElements() : null;
+    });
+
   }
   openSelectedElements() {
       let {selectedElements} = this.props;
@@ -129,7 +138,8 @@ export default class Tree extends React.Component<P, any>{
       let {columns, parentKey, uniqueKey, selectedKey, onRowSelect} = this.props;
     let container = [];
     container.push(
-      <Table 
+        <Table 
+           
           hideHeader 
           key={childNode.Id} 
           className={childNode.children.length > 0 ? "pl0" : "pl0"} 
@@ -147,14 +157,16 @@ export default class Tree extends React.Component<P, any>{
   render() {
     const self = this;
     const props = self.props;
-    let {columns, selectedElements, openedElements, uniqueKey} = props;
+    let {dataSource, columns, selectedElements, openedElements, uniqueKey} = props;
     let state = self.state;
     let {roots} = state;
 
-    return (
-      <div className="r-Tree">
-        {roots.map(this.childrenList.bind(this))}
-      </div>
-    )
+    if (roots.length) {
+        return (
+            <div className="r-Tree">
+                {roots.map(this.childrenList.bind(this)) }
+            </div>
+        )
+    } else return null;
   }
 }
