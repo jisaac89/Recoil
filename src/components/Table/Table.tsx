@@ -11,13 +11,16 @@ import TableFooter from './TableFooter';
 import TableSearch from './TableSearch';
 import Layer from '../Layer/Layer';
 
+import {IColumn} from './IColumn';
+export {IColumn}
+
 interface ITableProps {
     // initial dataSource loaded as prop
     dataSource :  Array<any> | Object;
     // columns defined by user
-    columns? : Array<any>;
+    columns?: Array<IColumn>;
     // a detail template function that returns a view
-    detailTemplate? : (event: React.MouseEvent) => void;
+    detailTemplate?: (element: any) => JSX.Element;
     // toggle if the table header should show
     hideHeader ? : boolean;
     // how many rows to show
@@ -264,8 +267,10 @@ export default class Table extends React.Component<ITableProps,any>{
     nextPage() {
         this.setState({
             page: this.state.page += 1
+        }, () => {
+            this.props.onPageChange ? this.props.onPageChange(this.state.page) : null
         })
-        this.props.onPageChange ? this.props.onPageChange(this.state.page + 1) : null
+        
     }
 
     lastPage(numberOfPages) {

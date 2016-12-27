@@ -5,13 +5,15 @@ import TableColumn from './TableColumn';
 import TableColumnDetail from './TableColumnDetail';
 import TableColumnSelectable from './TableColumnSelectable';
 
+import {IColumn} from './IColumn';
+
 export interface TableBodyProps {
     // initial dataSource loaded as prop
     dataSource: Array<any> | Object;
     // columns defined by user
-    columns?: Array<any>;
+    columns?: Array<IColumn>;
     // a detail template function that returns a view
-    detailTemplate?: (event: React.MouseEvent) => void;
+    detailTemplate?: (element: any) => JSX.Element;
 
     selectedElements?: Array<any>;
 

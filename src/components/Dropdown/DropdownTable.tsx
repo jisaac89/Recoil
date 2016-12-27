@@ -3,6 +3,7 @@ import Selectable from '../Selectable/Selectable';
 
 import Table from '../Table/Table';
 import Tree from '../Tree/Tree';
+import {IColumn} from '../Table/IColumn';
 
 interface IDropdownTableProps {
     onRowSelect?: (item: any, index?: number) => void;
@@ -13,7 +14,7 @@ interface IDropdownTableProps {
     rowIsSelectable? : any;
     hideHeader?: boolean;
     searchableKeys?: Array<any>;
-    columns?: Array<any>;
+    columns?: Array<IColumn>;
     onSort?: any;
     sortable?: any;
     hidePageSize?: any;

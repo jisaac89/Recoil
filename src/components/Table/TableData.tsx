@@ -3,11 +3,12 @@ import * as classNames from 'classnames';
 
 import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
+import {IColumn} from './IColumn';
 
 interface ITableDataProps {
     value ?: Array<any>;
     renderChild? : any;
-    column? : any;
+    column?: IColumn;
     element? : any;
     hideColumns? : any;
     isArray? : boolean;

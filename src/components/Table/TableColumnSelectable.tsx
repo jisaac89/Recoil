@@ -2,7 +2,18 @@ import * as React from 'react';
 
 import Selectable from '../Selectable/Selectable';
 
-export default class TableColumnSelectable extends React.Component<any,any>{
+import {IColumn} from './IColumn';
+
+export interface ITableColumnSelectableProps {
+    columns?: IColumn[];
+    detailTemplate?: (element: any) => JSX.Element;
+    selectedElements?: any[];
+    element?: any;
+    checkable?: boolean;
+    selectedKey?: string;
+}
+
+export default class TableColumnSelectable extends React.Component<ITableColumnSelectableProps,any>{
     render() {
         const self = this;
         let {columns, detailTemplate, selectedElements, element, checkable, selectedKey} = self.props;

@@ -6,6 +6,8 @@ import {arraysEqual} from '../Utils';
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 
+import {IColumn} from './IColumn';
+
 class DetailTemplateHeadToggle extends React.Component<any, any>{
     detailTemplateToggleAll(dataSource) {
         this.props.detailTemplateToggleAll(dataSource);
@@ -35,7 +37,25 @@ class CheckboxHead extends React.Component<any,any>{
     }
 };
 
-export default class TableHead extends React.Component<any,any>{
+export interface ITableHeadProps {
+    toggleSorting?: (dataSource: any, key: string, sortType: any) => void;
+    detailTemplateToggleAll?: (dataSource: any) => void;
+    selectAll?: (dataSource: any) => void;
+
+    dataSource: Array<any> | Object;
+    columns?: Array<IColumn>;
+    hideHeader?: boolean;
+    hideColumns?: Array<any>;
+    checkable?: boolean;
+    onSort?: Function;
+    selectedElements?: Array<any>;
+    sortable?: boolean;
+    detailTemplate?: (element: any) => JSX.Element;
+    detailTemplateSelectedElements?: Array<any>;
+    detailTemplateHideToggle?: boolean;
+}
+
+export default class TableHead extends React.Component<ITableHeadProps,any>{
 
     constructor(props) {
         super(props);

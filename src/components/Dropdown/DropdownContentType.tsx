@@ -83,6 +83,7 @@ export default class DropdownContentType extends React.Component<any, any>{
             columns,
             onRowSelect,
             selectedElements,
+            selectedKey,
             //
         }
 

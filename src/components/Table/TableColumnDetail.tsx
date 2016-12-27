@@ -4,7 +4,19 @@ import * as classNames from 'classnames';
 import Open from '../Open/Open';
 import Table from '../Table/Table';
 
-export default class TableColumnDetail extends React.Component<any,any>{
+import {IColumn} from './IColumn';
+
+export interface ITableColumnDetailProps {
+    element?: any;
+    columns?: IColumn[];
+    detailTemplate?: (element: any) => JSX.Element;
+    detailTemplateOpenAll?: any;
+    detailTemplateSelectedElements?: any[];
+    checkable?: boolean;
+    selectedKey?: string;
+}
+
+export default class TableColumnDetail extends React.Component<ITableColumnDetailProps,any>{
     shouldComponentUpdate(){
         return true;
     }

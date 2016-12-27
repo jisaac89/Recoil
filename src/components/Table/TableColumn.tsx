@@ -4,6 +4,7 @@ import * as classNames from 'classnames';
 import TableData from './TableData';
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
+import {IColumn} from './IColumn';
 
 class DetailTemplateColumnToggle extends React.Component<any,any>{
     detailTemplateToggleSelectedElements(element) {
@@ -37,7 +38,27 @@ class CheckboxColumn extends React.Component<any,any>{
     }
 };
 
-export default class TableColumn extends React.Component<any,any>{
+export interface ITableColumnProps {
+    element?: any;
+    columns?: IColumn[];
+    toggleSelectedElements?: any;
+    rowIsSelectable?: any;
+    selectedElements?: Array<any>;
+    checkable?: boolean;
+    hideColumns?: Array<any>;
+    onRowSelect?: (element: any, index: number, event?: React.MouseEvent) => void;
+    selectedKey?: string;
+    index ?: number;
+    isArray: boolean;
+    detailTemplateOpenOnRowSelect?: boolean | "single";
+    detailTemplate?: (element: any) => JSX.Element;
+    detailTemplateOpenAll?: any;
+    detailTemplateToggleSelectedElements?: any;
+    detailTemplateSelectedElements?: Array<any>;
+    detailTemplateHideToggle?: boolean;
+}
+
+export default class TableColumn extends React.Component<ITableColumnProps,any>{
 
     toggleSelectedElements(element, index) {
         this.props.toggleSelectedElements(element);

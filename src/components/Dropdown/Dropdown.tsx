@@ -9,6 +9,8 @@ import Portal from '../Portal/Portal';
 import DropdownWrapper from './DropdownWrapper';
 import Toolbar from '../Toolbar/Toolbar';
 
+import {IColumn} from '../Table/IColumn';
+
 import './Dropdown.less';
 
 function guidGenerator() {
@@ -45,7 +47,7 @@ interface P {
     pageSizerOptions?: Array<Number>;
     dataSource?: Array<any> | Object;
     hideHeader?: boolean;
-    columns?: Array<any>;
+    columns?: Array<IColumn>;
     searchableKeys?: Array<any>;
     onSort?: any;
     sortable?: any;

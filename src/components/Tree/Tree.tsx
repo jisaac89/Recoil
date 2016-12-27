@@ -105,7 +105,7 @@ export default class Tree extends React.Component<P, any>{
 
           let theNode = currentNode[0];
 
-          if (theNode && theNode.ParentId !== 0) {
+          if (theNode && theNode.parentId !== 0) {
               openedKeys.push(theNode.parentId); 
 
               let parentNode = newArray.filter(function (node) {
