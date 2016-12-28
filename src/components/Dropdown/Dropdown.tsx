@@ -64,6 +64,7 @@ interface P {
     tree?: boolean;
 
     fixedClose?: boolean;
+    onOpen?: any;
 }
 
 export interface State {
@@ -97,13 +98,15 @@ export default class DropdownComponent extends React.Component<P, State>{
     componentWillReceiveProps(nextProps) {
         const state = this.state;
         this.setState({
-            open: nextProps.open !== this.props.open ? nextProps.open : this.props.open,
+            open: nextProps.open !== undefined ? nextProps.open : this.props.open,
             selected: nextProps.selected !== this.state.selected ? nextProps.selected : this.state.selected
         });
     }
     toggleOpen() {
         this.setState({
             open: !this.state.open
+        }, () => {
+            this.props.onOpen ? this.props.onOpen(this.state.open) : null;
         });
     }
     onRowSelect(item, index) {

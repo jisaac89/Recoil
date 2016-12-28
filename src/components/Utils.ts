@@ -1,6 +1,6 @@
 // simple flat search
 
-function branchIn(value, key, step?: number) {
+export function branchIn(value, key, step?: number) {
 
     let result = key.split('.'),
         stepLength = result.length,

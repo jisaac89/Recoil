@@ -31,6 +31,7 @@ export interface TableBodyProps {
     isArray?: boolean;
     detailTemplateOpenOnRowSelect?: boolean | "single";
     selectedKey?: string;
+    filterRow?: any;
 }
 
 export default class TableBody extends React.Component<TableBodyProps,any>{
@@ -60,7 +61,8 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
             onRowSelect,
             isArray,
             detailTemplateOpenOnRowSelect,
-            selectedKey
+            selectedKey,
+            filterRow
         } = props;
 
         let columnArray = [];
@@ -105,13 +107,26 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                 let keySelectable = key + '_selectable';
                 let keyDetail = key + '_detail';
 
-                columnArray.push(
-                    [
-                        [<TableColumn key={key} {...columnProps} />],
-                        [selectedElements.length > 0 ? <TableColumnSelectable key={keySelectable} {...columnProps} /> : null],
-                        [<TableColumnDetail key={keyDetail} {...columnProps} />]
-                    ]
-                )
+                if (filterRow) {
+                    let filteredElement = filterRow(element);
+                    if (filteredElement === false) {
+                        columnArray.push(
+                            [
+                                [<TableColumn key={key} {...columnProps} />],
+                                [selectedElements.length > 0 ? <TableColumnSelectable key={keySelectable} {...columnProps} /> : null],
+                                [<TableColumnDetail key={keyDetail} {...columnProps} />]
+                            ]
+                        )
+                    } else return null;
+                } else {
+                    columnArray.push(
+                        [
+                            [<TableColumn key={key} {...columnProps} />],
+                            [selectedElements.length > 0 ? <TableColumnSelectable key={keySelectable} {...columnProps} /> : null],
+                            [<TableColumnDetail key={keyDetail} {...columnProps} />]
+                        ]
+                    )
+                }
             })
         }
 

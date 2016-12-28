@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import './Table.less';
 
-import {arraysEqual, search} from '../Utils';
+import {arraysEqual, search, branchIn} from '../Utils';
 
 import TableHead from './TableHead';
 import TableBody from './TableBody';
@@ -73,6 +73,8 @@ interface ITableProps {
 
     focusOnMount?: any;
     contentMaxHeight?: number;
+
+    filterRow?: any;
 }
 
 interface ITableState {
@@ -102,7 +104,7 @@ export default class Table extends React.Component<ITableProps,any>{
             selectedElements : props.selectedElements || [],
             
             searchedItems: [],
-            sortType : props.sortType || null,
+            sortType: props.sortType || "asc",
             sortKey : props.sortKey || null
         }
     }
@@ -299,8 +301,10 @@ export default class Table extends React.Component<ITableProps,any>{
     sortCollection(dataSource, key, sortType) {
         const self = this;
 
+        let sortKey = this.props.sortKey ? this.props.sortKey : key;
+
         self.setState({
-            sortKey: key,
+            sortKey: sortKey,
             sortType : sortType,
             page: 0
         })
@@ -325,7 +329,7 @@ export default class Table extends React.Component<ITableProps,any>{
 
         const self = this;
         const props = self.props;
-        let {selectedKey, contentMaxHeight, menuTemplate, focusOnMount, detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
+        let {selectedKey, filterRow, contentMaxHeight, menuTemplate, focusOnMount, detailTemplate, showDataSourceLength, onSort, hidePageSize, rowCount, sortable,detailTemplateOpenOnRowSelect, onPageChange, hideHeader, detailTemplateHideToggle, rowIsSelectable, checkable, hideColumns, onRowSelect, pageSizerOptions} = props;
         let {sortType, sortKey, columns, page, pageSize, detailTemplateSelectedElements, selectedElements} = self.state;
 
         // sorting render
@@ -338,17 +342,19 @@ export default class Table extends React.Component<ITableProps,any>{
             let sortType = self.state.sortType;
             
             let sortedDataSource = self.loadDataSource(self.props.dataSource).sort(function (a, b) {
-                switch (typeof a[key]) {
+                let aKey = branchIn(a, key);
+                let bKey = branchIn(b, key);
+                switch (typeof aKey) {
                     case ('string'):
-                        let itemPrev = a[key].toLowerCase();
-                        let itemNext = b[key].toLowerCase();
+                        let itemPrev = aKey.toLowerCase();
+                        let itemNext = bKey.toLowerCase();
                         if (itemPrev < itemNext) //string asc
                             return -1
                         if (itemPrev > itemNext)
                             return 1
                         break;
                     case ('number'):
-                        return a[key] - b[key];
+                        return aKey - bKey;
                     default:
                 }
             })
@@ -435,7 +441,8 @@ export default class Table extends React.Component<ITableProps,any>{
             hideColumns: hideColumns,
             isArray: isArray,
             detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect,
-            selectedKey: selectedKey
+            selectedKey: selectedKey,
+            filterRow: filterRow
         }
 
         let headProps = {
