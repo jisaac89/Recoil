@@ -13,7 +13,7 @@ export interface IToggleProps {
     array?: Array<string | number>;
     className?: string;
     size?: any;
-    onChange?: (checked: boolean, event: React.FormEvent) => void;
+    onChange?: (checked: boolean, event: React.FormEvent<any>) => void;
     iconArray?: Array<string>;
     type?: string; // 'colors'
     ghost?: boolean;
@@ -45,7 +45,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     })
   }
 
-  onChange(event: React.FormEvent) {
+  onChange(event: React.FormEvent<any>) {
     var checked = (event.target as HTMLInputElement).checked;
     this.setState({
       checked: checked

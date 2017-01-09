@@ -7,7 +7,7 @@ export interface IAlignProps {
     className?: string;
     columns?: Array<any>;
     margin?: string;
-    children?: Array<any>;
+    children?: any;
     fill ?: boolean;
 }
 

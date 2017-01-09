@@ -23,7 +23,7 @@ function guidGenerator() {
     return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
 
-interface IDropdownProps extends IButtonProps, ITableProps {
+export interface IDropdownProps extends IButtonProps, ITableProps {
     title?: string;
     type?: string;
     material?: boolean;

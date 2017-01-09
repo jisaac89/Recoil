@@ -6,9 +6,8 @@ import Selectable from '../Selectable/Selectable';
 import Input from '../Input/Input';
 import Layer from '../Layer/Layer';
 import SlideIn from '../SlideIn/SlideIn';
-import Modal from '../Modal/Modal';
 
-interface P {
+export interface IPortalProps {
     portalId?: any;
     portal? : any;
     open?: boolean;
@@ -18,7 +17,7 @@ interface P {
     portalType? : string;
 }
 
-export default class Portal extends React.Component<P, any>{
+export default class Portal extends React.Component<IPortalProps, any>{
 
   public static defaultProps = {
       portalType: 'SlideIn'
@@ -49,5 +48,3 @@ export default class Portal extends React.Component<P, any>{
   }
   render(){return null}
 };
-
-    // ReactDOM.render(<Modal mobile fullScreen onClose={this.props.onClose} open={this.props.open} {...this.props}>{this.props.children}</Modal>, this.portalElement);

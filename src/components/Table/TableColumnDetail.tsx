@@ -8,10 +8,10 @@ import {IColumn} from './IColumn';
 
 export interface ITableColumnDetailProps {
     element?: any;
-    columns?: IColumn[];
+    columns?: any;
     detailTemplate?: (element: any) => JSX.Element;
     detailTemplateOpenAll?: any;
-    detailTemplateSelectedElements?: any[];
+    detailTemplateSelectedElements?: any;
     checkable?: boolean;
     selectedKey?: string;
 }

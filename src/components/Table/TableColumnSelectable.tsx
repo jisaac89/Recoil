@@ -7,7 +7,7 @@ import {IColumn} from './IColumn';
 export interface ITableColumnSelectableProps {
     columns?: IColumn[];
     detailTemplate?: (element: any) => JSX.Element;
-    selectedElements?: any[];
+    selectedElements?: any;
     element?: any;
     checkable?: boolean;
     selectedKey?: string;

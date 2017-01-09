@@ -11,7 +11,7 @@ export interface IDataSourceProps extends ITableProps {
     columns?: Array<any>;
 }
 
-const DataSource = (Component) =>
+const DataSource : any = (Component) =>
     class Enhance extends React.Component<IDataSourceProps, any> {
 
         constructor(props) {

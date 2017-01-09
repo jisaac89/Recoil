@@ -35,12 +35,12 @@ export interface ITableProps {
     selectedElements ? : Array<any>;
     rowIsSelectable ? : any;
     checkable ? : boolean;
-    onCheck ? : (event: React.MouseEvent) => void;
+    onCheck ? : (event: React.MouseEvent<any>) => void;
     detailTemplateHideToggle? : boolean;
     hideColumns? : Array<any>;
-    onRowSelect ? : (event: React.MouseEvent) => void;
+    onRowSelect ? : (event: React.MouseEvent<any>) => void;
     pageSizerOptions? : Array<any>;
-    onPageSizeChange? : (event: React.MouseEvent) => void;
+    onPageSizeChange? : (event: React.MouseEvent<any>) => void;
     onPageChange? : any;
     sortable ? : boolean;
     searchableKeys? : Array<any>;

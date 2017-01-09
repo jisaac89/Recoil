@@ -7,18 +7,18 @@ import Dropdown from '../Dropdown/Dropdown';
 import Pager from '../Pager/Pager';
 
 export interface ITableFooterProps {
-  gotoPage ? : (event: React.MouseEvent) => void;
+  gotoPage ? : (event: React.MouseEvent<any>) => void;
   currentPage ? : number;
-  changePageSize ? : (event: React.MouseEvent) => void;
-  firstPage ? : (event: React.MouseEvent) => void;
-  nextPage ? : (event: React.MouseEvent) => void;
+  changePageSize ? : (event: React.MouseEvent<any>) => void;
+  firstPage ? : (event: React.MouseEvent<any>) => void;
+  nextPage ? : (event: React.MouseEvent<any>) => void;
   numberOfPages ? : number;
   numberPerPage ? : number;
-  lastPage ? : (event: React.MouseEvent) => void;
-  previousPage ? : (event: React.MouseEvent) => void;
+  lastPage ? : (event: React.MouseEvent<any>) => void;
+  previousPage ? : (event: React.MouseEvent<any>) => void;
   dataSource ? : Array<any>;
   pageSize ? : number;
-  onPageChange? : (event: React.MouseEvent) => void;
+  onPageChange? : (event: React.MouseEvent<any>) => void;
   pageSizerOptions?: Array<any>;
   hidePageSize?: boolean;
   rowCount?: number;

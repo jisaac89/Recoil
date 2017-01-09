@@ -27,7 +27,7 @@ export interface TableBodyProps {
 
     checkable?: boolean;
     hideColumns ? : Array<any>;
-    onRowSelect ? : (event: React.MouseEvent) => void;
+    onRowSelect ? : (event: React.MouseEvent<any>) => void;
     isArray?: boolean;
     detailTemplateOpenOnRowSelect?: boolean | "single";
     selectedKey?: string;

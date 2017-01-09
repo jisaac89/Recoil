@@ -23,7 +23,7 @@ export interface IButtonProps {
   submit? : boolean;
   style? : any;
   checked? : boolean;
-  onClick? : (event: React.MouseEvent) => void;
+  onClick? : (event: React.MouseEvent<any>) => void;
   tabIndex? : number;
   progressiveClick? : any;
   advanced?: boolean;
@@ -78,7 +78,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
    }
 
-  public onClick(event: React.MouseEvent) {
+  public onClick(event: React.MouseEvent<any>) {
       const self = this;
       // event.stopPropagation();
       this.props.onClick ? this.props.onClick(event) : null;

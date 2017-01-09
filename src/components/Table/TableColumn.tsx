@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import {IColumn} from './IColumn';
 
-interface ITableDataProps {
+export interface ITableDataProps {
     value ?: Array<any>;
     renderChild? : any;
     column?: IColumn;
@@ -14,7 +14,7 @@ interface ITableDataProps {
     isArray? : boolean;
 }
 
-interface ITableDataState {
+export interface ITableDataState {
     type ?: string;
 }
 

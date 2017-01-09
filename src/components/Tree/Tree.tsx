@@ -1,14 +1,10 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-// import DataSource from '../DataSource/DataSource';
-
 import './Tree.less';
 import Table from '../Table/Table';
-import Layer from '../Layer/Layer';
-import TreeRow from './TreeRow';
 
-interface P {
+export interface ITreeProps {
  dataSource? : any; 
  columns? : any;
  parentKey? : string;
@@ -20,7 +16,7 @@ interface P {
  filterOpenDetailTemplate?: any;
 }
 
-export default class Tree extends React.Component<P, any>{
+export default class Tree extends React.Component<ITreeProps, any>{
 
   public static defaultProps = {
       parentKey: 'ParentId',

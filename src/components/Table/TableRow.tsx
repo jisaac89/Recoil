@@ -50,10 +50,10 @@ export interface ITableColumnProps {
     columns?: IColumn[];
     toggleSelectedElements?: any;
     rowIsSelectable?: any;
-    selectedElements?: Array<any>;
+    selectedElements?: any;
     checkable?: boolean;
     hideColumns?: Array<any>;
-    onRowSelect?: (element: any, index: number, event?: React.MouseEvent) => void;
+    onRowSelect?: (element: any, index: number, event?: React.MouseEvent<any>) => void;
     selectedKey?: string;
     index ?: number;
     isArray: boolean;
@@ -63,7 +63,6 @@ export interface ITableColumnProps {
     detailTemplateToggleSelectedElements?: any;
     detailTemplateSelectedElements?: Array<any>;
     detailTemplateHideToggle?: boolean;
-
     filterOpenDetailTemplate?: any;
 }
 

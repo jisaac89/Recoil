@@ -43,9 +43,9 @@ export interface ITableHeadProps {
     selectAll?: (dataSource: any) => void;
 
     dataSource: Array<any> | Object;
-    columns?: Array<IColumn>;
+    columns?: Array<any>;
     hideHeader?: boolean;
-    hideColumns?: Array<any>;
+    hideColumns?: any;
     checkable?: boolean;
     onSort?: Function;
     selectedElements?: Array<any>;
