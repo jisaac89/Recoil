@@ -53,6 +53,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
     public static defaultProps = {
         type: 'children',
         contentMaxHeight: 200,
+        material: true
     };
 
     constructor(props) {

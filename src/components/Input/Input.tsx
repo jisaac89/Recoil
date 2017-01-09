@@ -78,7 +78,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
           const value = this.setCurrentValue(nextProps);
           valueIsChanging ? this.setState({ value : value, checked: true }) : null;
       }
-      if (nextProps.value.length) {
+      if (nextProps.value && nextProps.value.length) {
           this.setState({ checked: true }) 
       }
   }
