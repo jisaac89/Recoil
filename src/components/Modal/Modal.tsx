@@ -132,7 +132,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
         );
 
         return (
-            <Portal portalType="Modal" open={this.state.open} portalId={guidGenerator()}>
+            <Portal portalType="SlideIn" open={this.state.open} portalId={guidGenerator()}>
                 <div className={modalWrapperClass}>
                     <div ref='Modal' className={modalClass} style={props.style}>
                         <ModalHeader 

@@ -12,14 +12,12 @@ import TableSearch from './TableSearch';
 import Layer from '../Layer/Layer';
 import Toolbar from '../Toolbar/Toolbar';
 
-import DataSource from '../DataSource/DataSource';
-
 import {IColumn} from './IColumn';
 export {IColumn}
 
-export interface ITableProps {
+interface ITableProps {
     // initial dataSource loaded as prop
-    dataSource ?:  Array<any>;
+    dataSource: any;
     // columns defined by user
     columns?: Array<IColumn>;
     // a detail template function that returns a view
@@ -32,59 +30,202 @@ export interface ITableProps {
     page ? : number;
     // 
     detailTemplateSelectedElements ? : Array<any>;
+
     selectedElements ? : Array<any>;
+
     rowIsSelectable ? : any;
+
     checkable ? : boolean;
     onCheck ? : (event: React.MouseEvent) => void;
+
     detailTemplateHideToggle? : boolean;
+    
     hideColumns? : Array<any>;
+
     onRowSelect ? : (event: React.MouseEvent) => void;
+
     pageSizerOptions? : Array<any>;
+
     onPageSizeChange? : (event: React.MouseEvent) => void;
     onPageChange? : any;
+
     sortable ? : boolean;
+
     searchableKeys? : Array<any>;
     searchTitle? : string;
+
     className? : string;
+
     detailTemplateOpenOnRowSelect?: boolean | "single";
+
     rowCount?: number;
+
     hidePageSize?: boolean;
+
     onSort ? : Function;
     sortType? : "asc" | "desc";
     sortKey?: string;
     showDataSourceLength?: boolean;
+
     selectedKey?: string;
     flex?: boolean;
+
     menuTemplate?: any;
+
     focusOnMount?: any;
     contentMaxHeight?: number;
+
     filterRow?: any;
     filterOpenDetailTemplate?: any;
-    toggleSorting?: any;
-    toggleSelectedElements?: any;
-    selectAll?: any;
-    previousPage?: any;
+
     nextPage?: any;
-    gotoPage?: any;
+    previousPage?: any;
     firstPage?: any;
     lastPage?: any;
-    detailTemplateToggleSelectedElements?: any;
+    gotoPage?: any;
+    toggleSorting?: any;
     changePageSize?: any;
-    isArray?: any;
-    numberOfPages?: any;
-    numberPerPage?: any;
-    activeRows?: any;
-    filteredItems?: any;
-    detailTemplateToggleAll?: any;
-    searchTerm?: any;
     filterItems?: any;
+    activeRows?: any;
+    isArray?: any;
+    numberOfPages?: number;
+    numberPerPage?: any;
 }
 
 interface ITableState {
+    dataSource?: any;
+    columns?: any;
+    isArray?: any;
+    type?: string;
 
+    page?: number;
+    pageSize?: number;
+
+    detailTemplateSelectedElements? : any;
+    selectedElements? : any;
+    sortType ? : "asc" | "desc";
+    sortKey ? : string;
+    searchedItems?: any;
+    searchTerm?: string;
+    numberOfPages?: any;
+    numberPerPage?: any;
+    activeRows?: any;
 }
 
-class Table extends React.Component<ITableProps, ITableState>{
+export default class Table extends React.Component<ITableProps, ITableState>{
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            // table selected options
+            detailTemplateSelectedElements: props.detailTemplateSelectedElements || [],
+            selectedElements: props.selectedElements || [],
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.selectedElements) {
+            this.setState({
+                selectedElements: nextProps.selectedElements
+            })
+        }
+        if (nextProps.detailTemplateSelectedElements) {
+            this.setState({
+                detailTemplateSelectedElements: nextProps.detailTemplateSelectedElements
+            })
+        }
+    }
+    
+    detailTemplateToggleAll(dataSource) {
+        let {detailTemplateSelectedElements} = this.state;
+
+        this.setState({
+            detailTemplateSelectedElements: arraysEqual(dataSource, detailTemplateSelectedElements) ? [] : dataSource
+        })
+    }
+
+    detailTemplateToggleSelectedElements(element) {
+        const self = this;
+        let {detailTemplateOpenOnRowSelect, selectedKey} = this.props;
+        let {detailTemplateSelectedElements} = self.state;
+
+        let selectedElementsArray;
+
+        let setSelectedElementsState = (data) => {
+            self.setState({
+                detailTemplateSelectedElements: data
+            })
+        }
+
+        if (detailTemplateOpenOnRowSelect === 'single') {
+            selectedElementsArray = detailTemplateSelectedElements.length ? [detailTemplateSelectedElements[0]] : [];
+        } else {
+            selectedElementsArray = detailTemplateSelectedElements.slice();
+        }
+
+        if (selectedElementsArray.includes(selectedKey ? element[selectedKey] : element)) {
+            selectedElementsArray.map((data, key) => {
+                if (data === selectedKey ? element[selectedKey] : element) {
+                    selectedElementsArray.splice(key, 1);
+                    setSelectedElementsState(selectedElementsArray)
+                }
+            })
+        } else {
+            if (detailTemplateOpenOnRowSelect === 'single') {
+                selectedElementsArray = [];
+                selectedElementsArray.push(selectedKey ? element[selectedKey] : element);
+                setSelectedElementsState(selectedElementsArray)
+
+            } else {
+                selectedElementsArray.push(selectedKey ? element[selectedKey] : element);
+                setSelectedElementsState(selectedElementsArray)
+            }
+        }
+    }
+
+    selectAll(dataSource) {
+        let {selectedElements} = this.state;
+
+        this.setState({
+            selectedElements: arraysEqual(dataSource, selectedElements) ? [] : dataSource
+        })
+    }
+
+    toggleSelectedElements(element) {
+        const self = this;
+        let {selectedElements} = self.state;
+        let {rowIsSelectable, onCheck, selectedKey} = self.props;
+
+        let selectedElementsArray;
+
+        if (rowIsSelectable === 'single') {
+            selectedElementsArray = [];
+        } else {
+            selectedElementsArray = selectedElements.slice();
+        }
+
+        if (selectedElementsArray.includes(selectedKey ? element[selectedKey] : element)) {
+            for (let i = 0; i < selectedElementsArray.length; i++) {
+                if (selectedElementsArray[i] === (selectedKey ? element[selectedKey] : element)) {
+                    selectedElementsArray.splice(i, 1);
+
+                    self.setState({
+                        selectedElements: selectedElementsArray
+                    })
+                }
+            }
+        } else {
+            selectedElementsArray.push(selectedKey ? element[selectedKey] : element);
+
+            self.setState({
+                selectedElements: selectedElementsArray
+            })
+
+            onCheck ? onCheck(selectedKey ? element[selectedKey] : element) : null;
+        }
+    }
+
     render() {
 
         const self = this;
@@ -92,6 +233,11 @@ class Table extends React.Component<ITableProps, ITableState>{
 
         let {
             selectedKey,
+            nextPage,
+            previousPage,
+            firstPage,
+            lastPage,
+            gotoPage,
             filterOpenDetailTemplate,
             filterRow,
             contentMaxHeight,
@@ -112,34 +258,20 @@ class Table extends React.Component<ITableProps, ITableState>{
             hideColumns,
             onRowSelect,
             pageSizerOptions,
-            sortType,
-            sortKey,
+            dataSource,
             columns,
+            activeRows,
+            isArray,
+            sortKey,
+            sortType,
             page,
             pageSize,
-            detailTemplateSelectedElements,
-            selectedElements,
-            isArray,
             numberOfPages,
             numberPerPage,
-            dataSource,
-            activeRows,
-            toggleSelectedElements,
-            selectAll,
-            previousPage,
-            nextPage,
-            gotoPage,
-            firstPage,
-            lastPage,
-            detailTemplateToggleSelectedElements,
-            changePageSize,
-            toggleSorting,
-            filteredItems,
-            filterItems,
-            detailTemplateToggleAll,
-            searchTerm
         } = props;
-        
+
+        let {detailTemplateSelectedElements, selectedElements} = self.state;
+
         // assign the props
 
         let tableProps = {
@@ -160,10 +292,10 @@ class Table extends React.Component<ITableProps, ITableState>{
         }
 
         let headProps = {
-            detailTemplateToggleAll: detailTemplateToggleAll,
-            selectAll: selectAll,
+            detailTemplateToggleAll: this.detailTemplateToggleAll.bind(this),
+            selectAll: this.selectAll.bind(this),
             sortable: sortable,
-            toggleSorting: toggleSorting,
+            toggleSorting: this.props.toggleSorting,
             onSort: onSort,
             sortType : sortType,
             sortKey: sortKey
@@ -171,8 +303,8 @@ class Table extends React.Component<ITableProps, ITableState>{
 
         let bodyProps = {
             rowIsSelectable:rowIsSelectable,
-            toggleSelectedElements: toggleSelectedElements,
-            detailTemplateToggleSelectedElements: detailTemplateToggleSelectedElements,
+            toggleSelectedElements:this.toggleSelectedElements.bind(this),
+            detailTemplateToggleSelectedElements:this.detailTemplateToggleSelectedElements.bind(this),
             onRowSelect : onRowSelect
         }
 
@@ -180,12 +312,12 @@ class Table extends React.Component<ITableProps, ITableState>{
             currentPage : page,
             numberOfPages : numberOfPages,
             numberPerPage : numberPerPage,
-            nextPage: nextPage,
-            previousPage: previousPage,
-            firstPage: firstPage,
-            gotoPage: gotoPage,
-            lastPage: lastPage,
-            changePageSize: changePageSize,
+            nextPage: this.props.nextPage,
+            previousPage: this.props.previousPage,
+            firstPage: this.props.firstPage,
+            gotoPage: this.props.gotoPage,
+            lastPage: this.props.lastPage,
+            changePageSize: this.props.changePageSize,
             pageSizerOptions: pageSizerOptions,
             dataSource: dataSource,
             pageSize: pageSize,
@@ -197,7 +329,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         }
 
         let tableSearchProps = {
-            filterItems: filterItems,
+            filterItems : this.props.filterItems,
             searchableKeys : this.props.searchableKeys,
             focusOnMount: this.props.focusOnMount,
             searchTitle : this.props.searchTitle,
@@ -211,7 +343,7 @@ class Table extends React.Component<ITableProps, ITableState>{
             props.className
         )
 
-        let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
+        let nothingMatchesSearchCriteria = this.state.searchTerm !== '' && activeRows.length === 0;
         
         if ((activeRows.length || dataSource.length) && columns.length) {
             return (
@@ -235,5 +367,3 @@ class Table extends React.Component<ITableProps, ITableState>{
         } else return null;
     }
 }
-
-export default DataSource(<Table />);

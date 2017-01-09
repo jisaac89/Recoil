@@ -103,12 +103,8 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     let slideIndex;
 
     let inputProps = {
-      type:"checkbox",
-      className:"r-Toggle__input",
-      name:this.props.name,
-      checked:this.state.checked,
-      onChange:this.onChange.bind(this),
-      value:this.props.value
+        className: this.state.checked ? "r-Toggle__input checked" : "r-Toggle__input",
+      onClick:this.onChange.bind(this)
     }
 
     if (state.checked) {
@@ -127,7 +123,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     else {
       return(
         <div className={toggleClass}>
-          <input {...inputProps} />
+          <div {...inputProps} />
           {this.props.label}
           {props.array && props.array.length === 2 || props.iconArray && props.iconArray.length === 2 ? 
           <label className={"r-Toggle__button "+props.theme}>

@@ -9,7 +9,6 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import Portal from '../Portal/Portal';
-import DropdownWrapper from './DropdownWrapper';
 import Toolbar from '../Toolbar/Toolbar';
 
 import DropdownContentType from './DropdownContentType';
@@ -50,7 +49,11 @@ export default class DropdownContent extends React.Component<any, any>{
             searchableKeys,
             searchTitle,
             contentMaxHeight,
-            onRowSelect
+            onRowSelect,
+            filterOpenDetailTemplate,
+            portalId,
+            mobile,
+            sortKey
             //
         } = props;
 
@@ -82,15 +85,24 @@ export default class DropdownContent extends React.Component<any, any>{
             searchableKeys,
             searchTitle,
             contentMaxHeight,
-            onRowSelect
+            onRowSelect,
+            filterOpenDetailTemplate,
+            sortKey
             //
         }
 
-        return (
-            <div className="r-DropdownWrapper">
-                <DropdownHeader {...dropdownHeaderProps} />
-                <DropdownContentType {...dropdownContentTypeProps} />
-            </div>
-        )
+
+        let dropdownPortal = <Portal portalType="SlideIn" title={props.title} icon={props.icon} open={open} onClose={onClose} portalId={portalId}><DropdownContentType {...dropdownContentTypeProps} /></Portal>;
+
+        if (mobile) {
+            return dropdownPortal;
+        } else {
+            return (
+                <div className="r-DropdownWrapper">
+                    <DropdownHeader {...dropdownHeaderProps} />
+                    <DropdownContentType {...dropdownContentTypeProps} />
+                </div>
+            )
+        }
     }
 }

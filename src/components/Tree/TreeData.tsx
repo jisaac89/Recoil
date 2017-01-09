@@ -18,7 +18,7 @@ interface ITableDataState {
     type ?: string;
 }
 
-export default class TableColumn extends React.Component<ITableDataProps,ITableDataState>{
+export default class TableData extends React.Component<ITableDataProps,ITableDataState>{
 
     constructor(){
         super();
@@ -60,17 +60,9 @@ export default class TableColumn extends React.Component<ITableDataProps,ITableD
         let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(column.title ? column.title : column.name);
 
         if (isArray) {
-            return (
-                <td width={column.width}>
-                    {element}
-                </td>
-            )           
+            return element;   
         } else if (type !== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
-            return (
-                <td width={column.width}>
-                    {column.template ? column.template(element) : type === 'Value' ? value ? value.toString() : null : <Dropdown material dataSource={value} title={type} />}
-                </td>
-            )
+            return column.template ? column.template(element) : type === 'Value' ? value ? value.toString() : null : <Dropdown material dataSource={value} title={type} />
         } return null;
     }
 }

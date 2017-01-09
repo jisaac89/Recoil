@@ -9,7 +9,6 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import Portal from '../Portal/Portal';
-import DropdownWrapper from './DropdownWrapper';
 import Toolbar from '../Toolbar/Toolbar';
 
 import Table from '../Table/Table';
@@ -46,7 +45,9 @@ export default class DropdownContentType extends React.Component<any, any>{
             searchableKeys,
             searchTitle,
             contentMaxHeight,
-            onRowSelect
+            onRowSelect,
+            filterOpenDetailTemplate,
+            sortKey
             //
         } = props;
 
@@ -64,7 +65,6 @@ export default class DropdownContentType extends React.Component<any, any>{
             pageSizerOptions,
             columns,
             onSort,
-            sortable,
             hidePageSize,
             pageSize,
             rowCount,
@@ -73,7 +73,10 @@ export default class DropdownContentType extends React.Component<any, any>{
             searchableKeys,
             searchTitle,
             contentMaxHeight,
-            onRowSelect
+            onRowSelect,
+            filterOpenDetailTemplate,
+            sortKey,
+            sortable
             //
         }
 
@@ -84,6 +87,7 @@ export default class DropdownContentType extends React.Component<any, any>{
             onRowSelect,
             selectedElements,
             selectedKey,
+            filterOpenDetailTemplate
             //
         }
 

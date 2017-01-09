@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import TableRow from './TableRow';
-import TableDetail from './TableDetail';
-import TableSelectable from './TableSelectable';
+import TreeColumn from './TreeColumn';
+import TreeColumnDetail from './TreeColumnDetail';
 
 import {IColumn} from './IColumn';
 
@@ -32,7 +31,6 @@ export interface TableBodyProps {
     detailTemplateOpenOnRowSelect?: boolean | "single";
     selectedKey?: string;
     filterRow?: any;
-    filterOpenDetailTemplate?: any;
 }
 
 export default class TableBody extends React.Component<TableBodyProps,any>{
@@ -63,8 +61,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
             isArray,
             detailTemplateOpenOnRowSelect,
             selectedKey,
-            filterRow,
-            filterOpenDetailTemplate
+            filterRow
         } = props;
 
         let columnArray = [];
@@ -90,8 +87,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                     index: index,
                     isArray: isArray,
                     detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect,
-                    selectedKey: selectedKey,
-                    filterOpenDetailTemplate: filterOpenDetailTemplate
+                    selectedKey: selectedKey
                 }
                 if (typeof element === 'string' || typeof element === 'number') {
                     key = element;
@@ -109,25 +105,32 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                 }
                 let keySelectable = key + '_selectable';
                 let keyDetail = key + '_detail';
-                let filteredElement;
 
-                filterRow ? filteredElement = filterRow(element) : filteredElement = false; 
-                if (filteredElement === false) {
+                if (filterRow) {
+                    let filteredElement = filterRow(element);
+                    if (filteredElement === false) {
+                        columnArray.push(
+                            [
+                                [<TreeColumn key={key} {...columnProps} />],
+                                [<TreeColumnDetail key={keyDetail} {...columnProps} />]
+                            ]
+                        )
+                    } else return null;
+                } else {
                     columnArray.push(
                         [
-                            [<TableRow key={key} {...columnProps} />],
-                            [selectedElements.length > 0 ? <TableSelectable key={keySelectable} {...columnProps} /> : null],
-                            [<TableDetail key={keyDetail} {...columnProps} />]
+                            [<TreeColumn key={key} {...columnProps} />],
+                            [<TreeColumnDetail key={keyDetail} {...columnProps} />]
                         ]
                     )
-                } else return null;
+                }
             })
         }
 
         return (
-            <tbody>
+            <div>
                 {columnArray}            
-            </tbody>
+            </div>
         )
     }
 }

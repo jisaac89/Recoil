@@ -9,7 +9,6 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Layer from '../Layer/Layer';
 import Portal from '../Portal/Portal';
-import DropdownWrapper from './DropdownWrapper';
 import Toolbar from '../Toolbar/Toolbar';
 
 

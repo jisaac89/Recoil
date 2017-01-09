@@ -21,7 +21,7 @@ const AlignChild = (props) => {
       let {columns, vertical, width, element, margin} = props;
 
       let alignChildStyle = {
-        flex: columns ? 'none' : '1',
+        flex: columns || vertical ? 'none' : '1',
         padding: margin, 
         width: !vertical ? width+'%' : null, 
         height: vertical ? width+'%' : null 

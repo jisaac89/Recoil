@@ -4,7 +4,7 @@
   position: relative;
 }
 
-.r-Toggle__input:checked + .r-Toggle__button {
+.r-Toggle__input.checked + .r-Toggle__button {
     background: @primary-background;
 }
 
@@ -64,7 +64,7 @@
     height: 100%;
 }
 
-.r-Toggle__input:checked + .r-Toggle__button:after {
+.r-Toggle__input.checked + .r-Toggle__button:after {
     left: 100%;
     transform: translateX(-30px)
 }
@@ -104,7 +104,7 @@
   overflow: hidden;
 }
 
-.r-Toggle__input:checked + .r-Toggle__button:after {
+.r-Toggle__input.checked + .r-Toggle__button:after {
     border-radius: 2em;
     background: #fff;
   }
