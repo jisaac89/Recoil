@@ -31,6 +31,11 @@ export interface IToggleState {
 }
 
 export default class Toggle extends React.Component<IToggleProps, IToggleState>{
+
+  public static defaultProps = {
+      checked: false
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,12 +51,11 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
   }
 
   onChange(event: React.FormEvent<any>) {
-    var checked = (event.target as HTMLInputElement).checked;
     this.setState({
-      checked: checked
+      checked: !this.state.checked
     });
     if (this.props.onChange) {
-      this.props.onChange(checked, event);
+      this.props.onChange(this.state.checked, event);
     }
   }
 
@@ -104,7 +108,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
 
     let inputProps = {
         className: this.state.checked ? "r-Toggle__input checked" : "r-Toggle__input",
-      onClick:this.onChange.bind(this)
+        onClick:this.onChange.bind(this)
     }
 
     if (state.checked) {
@@ -123,7 +127,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     else {
       return(
         <div className={toggleClass}>
-          <div {...inputProps} />
+          <input {...inputProps} />
           {this.props.label}
           {props.array && props.array.length === 2 || props.iconArray && props.iconArray.length === 2 ? 
           <label className={"r-Toggle__button "+props.theme}>
