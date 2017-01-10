@@ -2,7 +2,7 @@
   "name": "react-recoil",
   "url": "http://reactrecoil.com/",
   "homepage": "http://reactrecoil.com/",
-  "version": "0.4.4",
+  "version": "0.4.50",
   "description": "",
   "scripts": {
     "prepublish": "tsc && webpack --config webpack.config.js",
