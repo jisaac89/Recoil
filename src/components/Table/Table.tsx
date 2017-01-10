@@ -79,6 +79,7 @@ export interface ITableProps {
     searchTerm?: any;
     filterItems?: any;
     title?: string;
+    hideFooter? : boolean;
 }
 
 interface ITableState {
@@ -145,7 +146,8 @@ class Table extends React.Component<ITableProps, ITableState>{
             filterItems,
             detailTemplateToggleAll,
             searchTerm,
-            title
+            title,
+            hideFooter
         } = props;
         
         // assign the props
@@ -238,7 +240,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                                 </table>
                         }
                     </Layer>
-                    {nothingMatchesSearchCriteria ? null : <TableFooter {...footerProps} hidePageSize />}
+                    {nothingMatchesSearchCriteria || hideFooter ? null : <TableFooter {...footerProps} hidePageSize />}
                 </div>
             )
         } else return null;

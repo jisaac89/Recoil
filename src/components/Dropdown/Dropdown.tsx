@@ -53,7 +53,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
     public static defaultProps = {
         type: 'children',
         contentMaxHeight: 200,
-        material: true
+        material: true,
+        hideFooter: true
     };
 
     constructor(props) {
@@ -153,7 +154,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             onChange,
             filterOpenDetailTemplate,
             mobile,
-            sortKey
+            sortKey,
+            hideFooter
         } = props;
 
         let buttonProps = {
@@ -204,7 +206,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             onRowSelect: this.onRowSelect.bind(this),
             filterOpenDetailTemplate,
             mobile,
-            sortKey
+            sortKey,
+            hideFooter
             //
         }
 

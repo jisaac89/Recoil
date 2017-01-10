@@ -47,7 +47,8 @@ export default class DropdownContentType extends React.Component<any, any>{
             contentMaxHeight,
             onRowSelect,
             filterOpenDetailTemplate,
-            sortKey
+            sortKey,
+            hideFooter
             //
         } = props;
 
@@ -66,7 +67,7 @@ export default class DropdownContentType extends React.Component<any, any>{
             columns,
             onSort,
             hidePageSize,
-            pageSize,
+            pageSize : pageSize ? pageSize : dataSource ? dataSource.length : pageSize,
             rowCount,
             page,
             onPageChange,
@@ -76,7 +77,8 @@ export default class DropdownContentType extends React.Component<any, any>{
             onRowSelect,
             filterOpenDetailTemplate,
             sortKey,
-            sortable
+            sortable,
+            hideFooter
             //
         }
 

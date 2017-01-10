@@ -53,7 +53,8 @@ export default class DropdownContent extends React.Component<any, any>{
             filterOpenDetailTemplate,
             portalId,
             mobile,
-            sortKey
+            sortKey,
+            hideFooter
             //
         } = props;
 
@@ -87,7 +88,8 @@ export default class DropdownContent extends React.Component<any, any>{
             contentMaxHeight,
             onRowSelect,
             filterOpenDetailTemplate,
-            sortKey
+            sortKey,
+            hideFooter
             //
         }
 
