@@ -67,22 +67,26 @@ export default class Layer extends React.Component<ILayerProps, any> {
 
   componentWillReceiveProps(nextProps) {
     const self = this;
-    this.canLayerAnimateScroll(nextProps);
+    if (nextProps.scrollIf && this.state.scrollToId === '') {
+      this.canLayerAnimateScroll(nextProps);
+    };
   }
   
   componentDidMount(){
-    this.canLayerAnimateScroll(this.props);
+    if (this.props.scrollIf && this.state.scrollToId === '') {
+      this.canLayerAnimateScroll(this.props);
+    }
   }
 
   canLayerAnimateScroll(props){
       let propss = props || this.props
       const self = this;
-      if (propss.scrollIf && this.state.scrollToId === '') {
+      
             setTimeout(()=>{
               let element  = document.getElementById(propss.scrollToId);
               element && element.getBoundingClientRect() ? self.handleScroll(propss.scrollToId) : null;
             }, 0)
-      };
+
   }
 
   handleScroll = (to) => {

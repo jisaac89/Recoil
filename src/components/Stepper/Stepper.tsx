@@ -36,7 +36,7 @@ class Stepper extends React.Component<IStepperProps, any>{
      let createList = (item, index) => {
          if (index === props.children.length -1) {
              itemArray.push(
-                 <Shrink key={index} opacity={50} if={index > props.stepIndex}>
+                 <Shrink key={index} opacity={50} scale={1} if={index > props.stepIndex}>
                      <div>
                          {item}
                      </div>
@@ -44,12 +44,12 @@ class Stepper extends React.Component<IStepperProps, any>{
              )
          } else {
              itemArray.push(
-                 <Shrink key={index} opacity={50} if={index > props.stepIndex}>
+                 <Shrink key={index} opacity={50} scale={1} if={index > props.stepIndex}>
                      <div>
                          {item}
                      </div>
                  </Shrink>,
-                 <Shrink key={index} opacity={50} if={index > props.stepIndex}>
+                 <Shrink key={index} opacity={50} scale={1} if={index > props.stepIndex}>
                      <div className="flex-step">
                      </div>
                  </Shrink>
