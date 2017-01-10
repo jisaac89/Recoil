@@ -4,37 +4,18 @@ Rapidly create React websites.
 
 ![Alt text](https://media.giphy.com/media/3o6ZtoFIzzy7NXEBqg/source.gif "Recoil")
 
-Recoil is a front-end react powered framework.
-
-  - Built for rapid development.
-  - Advanced versions of default controls, e.g Button, Input
-  - Developed with Typescript.
+Recoil is a react powered UI framework.
 
 > The main goal of Recoil was to build a front end framework that allows developers to rapidly create mobile
 > first web applications
 
 ### Version
-0.4.51
-
-A lot of the components are still at the early stages of development.
-
-### Tech
-
-Recoil uses a number of awesome open source projects to work properly:
-
-* [React]
-* [Typescript]
-* [classNames]
-* [Font Awesome]
-* [Animate.css]
-* [Normalize.css]
-
-And of course big thanks to Twitter Bootstrap, Semantics UI, Apple and Google Material UI for design inspirations!
+0.4.53
 
 ### NPM Module
 
 ```sh
-$ Latest version not out yet.
+npm install react-recoil --save-dev
 ```
 
 Then include the following CSS files in your HTML:
