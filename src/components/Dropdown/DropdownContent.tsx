@@ -54,7 +54,8 @@ export default class DropdownContent extends React.Component<any, any>{
             portalId,
             mobile,
             sortKey,
-            hideFooter
+            hideFooter,
+            hideDropdownHeader
             //
         } = props;
 
@@ -101,7 +102,7 @@ export default class DropdownContent extends React.Component<any, any>{
         } else {
             return (
                 <div className="r-DropdownWrapper">
-                    <DropdownHeader {...dropdownHeaderProps} />
+                    {hideDropdownHeader ? null : <DropdownHeader {...dropdownHeaderProps} /> }
                     <DropdownContentType {...dropdownContentTypeProps} />
                 </div>
             )

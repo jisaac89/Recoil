@@ -34,6 +34,7 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     open?: boolean;
     onOpen?: any;
     onClose?: any;
+    hideDropdownHeader?: boolean;
 }
 
 export interface State {
@@ -155,7 +156,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             filterOpenDetailTemplate,
             mobile,
             sortKey,
-            hideFooter
+            hideFooter,
+            hideDropdownHeader
         } = props;
 
         let buttonProps = {
@@ -207,7 +209,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             filterOpenDetailTemplate,
             mobile,
             sortKey,
-            hideFooter
+            hideFooter,
+            hideDropdownHeader
             //
         }
 

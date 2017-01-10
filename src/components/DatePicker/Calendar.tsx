@@ -109,11 +109,13 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            date: nextProps.date,
-            year: nextProps.date.getFullYear(),
-            month: nextProps.date.getMonth()
-        })
+        if(nextProps.date !== this.props.date){
+            this.setState({
+                date: nextProps.date,
+                year: nextProps.date.getFullYear(),
+                month: nextProps.date.getMonth()
+            })
+        }
     }
 
     render() {
@@ -139,7 +141,8 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                             onChange={this.selectMonth.bind(this)} 
                             dataSource={monthNames}
                             pageSize={monthNames.length}
-                            fixedClose
+                            hideHeader
+                            hideDropdownHeader
                         />
                         <Dropdown 
                             className="w100"
@@ -150,21 +153,22 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                             dataSource={availableYears(this.state.year)}
                             onChange={this.setYear.bind(this)}
                             pageSize={availableYears(this.state.year).length}
-                            fixedClose
+                            hideHeader
+                            hideDropdownHeader
                         />
                     </Toolbar>
                 </div>
                 <Layer theme="light" className="r-Table h100">
-                <table className="w100 h100">
+                <table className="w100">
                     <thead>
                         <tr>
-                            <th className="p5">Sunday</th>
-                            <th className="p5">Monday</th>
-                            <th className="p5">Tuesday</th>
-                            <th className="p5">Wednesday</th>
-                            <th className="p5">Thursday</th>
-                            <th className="p5">Friday</th>
-                            <th className="p5">Saturday</th>
+                            <th className="p5">Sun</th>
+                            <th className="p5">Mon</th>
+                            <th className="p5">Tue</th>
+                            <th className="p5">Wed</th>
+                            <th className="p5">Thu</th>
+                            <th className="p5">Fri</th>
+                            <th className="p5">Sat</th>
                         </tr>
                     </thead>
                     <tbody className="r-Calendar__body h100">
@@ -178,7 +182,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                                         let selected = this.props.date && this.props.date.getTime() === day.getTime();
                                         return (
                                             <td onClick={this.selectDay.bind(this, day) } className={selected ? 'selected-date' : undefined} key={this.state.year + ' ' + this.state.month + ' ' + index}>
-                                                <a className="p5" >{day.getDate() }</a>
+                                                <a>{day.getDate() }</a>
                                             </td>
                                         );
                                     }) }
