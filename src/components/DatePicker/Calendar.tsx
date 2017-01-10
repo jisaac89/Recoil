@@ -128,7 +128,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
             <div className="r-Calendar">
                 <div>
 
-                    <Toolbar flush block flex textCenter noRadius>
+                    <Toolbar flush block flex noRadius>
 
                         <Button onClick={this.decreaseMonth} icon="chevron-left" />
                         <Button onClick={this.increaseMonth} icon="chevron-right" />
