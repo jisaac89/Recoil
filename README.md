@@ -10,7 +10,7 @@ Recoil is a react powered UI framework.
 > first web applications
 
 ### Version
-0.4.53
+0.4.54
 
 ### NPM Module
 
