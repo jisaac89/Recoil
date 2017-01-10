@@ -24,6 +24,7 @@ export interface ITableFooterProps {
   rowCount?: number;
   showDataSourceLength?: boolean;
   hideHeader?: boolean;
+  title? : string;
 }
 
 export default class TableFooter extends React.Component<ITableFooterProps, {}>{
@@ -49,7 +50,8 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
       rowCount,
       hidePageSize,
       showDataSourceLength,
-      hideHeader
+      hideHeader,
+      title
     } = props;
 
      

@@ -123,7 +123,7 @@ export default class Pager extends React.Component<ITableFooterProps, {}>{
                       )
                   } else return null
               })() }
-              {showDataSourceLength ? <Toolbar flush noRadius className="p10"><Button simple size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (((currentPage + 1) * pageSize) > dataSourceLength ? dataSourceLength : (currentPage + 1) * pageSize) + '' + (' of ' + dataSourceLength + props.title) }</Button></Toolbar> : null}
+              {showDataSourceLength ? <Toolbar flush noRadius className="p10"><Button simple size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (((currentPage + 1) * pageSize) > dataSourceLength ? dataSourceLength : (currentPage + 1) * pageSize) + '' + (' of ' + dataSourceLength + ' ' + props.title) }</Button></Toolbar> : null}
           </div>
       )
 

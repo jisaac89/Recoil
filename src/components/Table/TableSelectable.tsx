@@ -18,14 +18,12 @@ export default class TableSelectable extends React.Component<ITableColumnSelecta
         const self = this;
         let {columns, detailTemplate, selectedElements, element, checkable, selectedKey} = self.props;
         
-        if (detailTemplate || selectedElements) {
-            return (
-                <tr className="r-TableColumnSelectable">
-                    <td colSpan={columns.length + (checkable ? 1 : 0 ) + (detailTemplate ? 1 : 0 )}>
-                        <Selectable checked={selectedElements.includes(selectedKey ? element[selectedKey] : element)} />
-                    </td>
-                </tr>
-            )
-        } else return null;
+        return (
+            <tr className="r-TableColumnSelectable">
+                <td colSpan={columns.length + (checkable ? 1 : 0 ) + (detailTemplate ? 1 : 0 )}>
+                    <Selectable checked={selectedElements.includes(selectedKey ? element[selectedKey] : element)} />
+                </td>
+            </tr>
+        )
     }
 }

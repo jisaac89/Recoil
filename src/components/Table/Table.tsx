@@ -78,6 +78,7 @@ export interface ITableProps {
     detailTemplateToggleAll?: any;
     searchTerm?: any;
     filterItems?: any;
+    title?: string;
 }
 
 interface ITableState {
@@ -85,6 +86,12 @@ interface ITableState {
 }
 
 class Table extends React.Component<ITableProps, ITableState>{
+
+    public static defaultProps = {
+        showDataSourceLength: true,
+        title: 'items'
+    }
+
     render() {
 
         const self = this;
@@ -137,7 +144,8 @@ class Table extends React.Component<ITableProps, ITableState>{
             filteredItems,
             filterItems,
             detailTemplateToggleAll,
-            searchTerm
+            searchTerm,
+            title
         } = props;
         
         // assign the props
@@ -193,7 +201,8 @@ class Table extends React.Component<ITableProps, ITableState>{
             rowCount: rowCount,
             hidePageSize: hidePageSize,
             hideHeader: hideHeader,
-            showDataSourceLength: showDataSourceLength
+            showDataSourceLength: showDataSourceLength,
+            title: title
         }
 
         let tableSearchProps = {
