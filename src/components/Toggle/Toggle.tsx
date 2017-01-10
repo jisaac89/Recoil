@@ -127,7 +127,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     else {
       return(
         <div className={toggleClass}>
-          <input {...inputProps} />
+          <input type="checkbox" {...inputProps} />
           {this.props.label}
           {props.array && props.array.length === 2 || props.iconArray && props.iconArray.length === 2 ? 
           <label className={"r-Toggle__button "+props.theme}>
