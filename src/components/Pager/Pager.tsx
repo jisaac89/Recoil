@@ -126,7 +126,7 @@ export default class Pager extends React.Component<ITableFooterProps, {}>{
                               {this.renderPager(currentPage, numberOfPages, pagerSize ? pagerSize : 5) }
                               <Button block size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
                               <Button block size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages) } icon="fast-forward"></Button>
-                              {hidePageSize ? null : <Dropdown hideHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} /> }
+                              {hidePageSize ? null : <Dropdown block hideHeader hideDropdownHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} /> }
                           </Toolbar>
                       )
                   } else return null
