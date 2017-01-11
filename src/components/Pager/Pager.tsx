@@ -23,9 +23,12 @@ export interface ITableFooterProps {
   showDataSourceLength?: boolean;
   hideHeader?: boolean;
   title?: string;
+  pagerSize? : any;
+  className?: any;
 }
 
 export default class Pager extends React.Component<ITableFooterProps, {}>{
+
   gotoPage(i) {
     this.props.gotoPage(i);
     this.props.onPageChange ? this.props.onPageChange(i) : null
@@ -100,22 +103,27 @@ export default class Pager extends React.Component<ITableFooterProps, {}>{
       hidePageSize,
       showDataSourceLength,
       hideHeader,
-      title
+      title,
+      pagerSize
     } = props;
 
     let paginationPartial = [];
 
-    let dataSourceLength = rowCount || dataSource.length;
+    let dataSourceLength;
+
+    if (rowCount || dataSource && dataSource.length){
+        dataSourceLength = rowCount || dataSource.length;
+    }
 
       return (
           <div className="r-Pager">
               {(() => {
                   if (numberOfPages !== 1) {
                       return (
-                          <Toolbar flex textCenter flush block noRadius className="p10">
+                          <Toolbar flex textCenter flush block noRadius className={props.className}>
                               <Button block size="small" disabled={currentPage === 0} tabIndex={-1} onClick={firstPage} icon="fast-backward"></Button>
                               <Button block size="small" disabled={currentPage === 0} tabIndex={-1} onClick={previousPage} icon="step-backward"></Button>
-                              {this.renderPager(currentPage, numberOfPages, 5) }
+                              {this.renderPager(currentPage, numberOfPages, pagerSize ? pagerSize : 5) }
                               <Button block size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
                               <Button block size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages) } icon="fast-forward"></Button>
                               {hidePageSize ? null : <Dropdown hideHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} /> }
@@ -123,7 +131,7 @@ export default class Pager extends React.Component<ITableFooterProps, {}>{
                       )
                   } else return null
               })() }
-              {showDataSourceLength ? <Toolbar flush noRadius className="p10"><Button simple size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (((currentPage + 1) * pageSize) > dataSourceLength ? dataSourceLength : (currentPage + 1) * pageSize) + '' + (' of ' + dataSourceLength + ' ' + props.title) }</Button></Toolbar> : null}
+              {showDataSourceLength ? <Toolbar flush noRadius className={props.className}><Button simple size="small">{((currentPage + 1) * pageSize) - pageSize + 1 + ' - ' + (((currentPage + 1) * pageSize) > dataSourceLength ? dataSourceLength : (currentPage + 1) * pageSize) + '' + (' of ' + dataSourceLength + ' ' + props.title) }</Button></Toolbar> : null}
           </div>
       )
 
