@@ -240,7 +240,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                                 </table>
                         }
                     </Layer>
-                    {nothingMatchesSearchCriteria || hideFooter ? null : <TableFooter {...footerProps} hidePageSize />}
+                    {nothingMatchesSearchCriteria || hideFooter ? null : <TableFooter {...footerProps}/>}
                 </div>
             )
         } else return null;

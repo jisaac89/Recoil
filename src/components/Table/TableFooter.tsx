@@ -56,7 +56,7 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
 
      
       return (
-          <Pager {...props} />
+          <Pager className="p10" {...props} />
       )
 
   }

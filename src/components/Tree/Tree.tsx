@@ -138,11 +138,10 @@ export default class Tree extends React.Component<ITreeProps, any>{
           dataSource={childNode.children} 
           detailTemplate={this.renderChildren.bind(this) }
           filterOpenDetailTemplate={filterOpenDetailTemplate}
-
+          hidePageSize
           selectedKey={uniqueKey}
           selectedElements={this.props.selectedElements}
           detailTemplateSelectedElements={this.state.openedKeys}
-          //onRowSelect={onRowSelect}
       />
       )
   }
@@ -162,11 +161,10 @@ export default class Tree extends React.Component<ITreeProps, any>{
                     dataSource={roots}
                     detailTemplate={this.renderChildren.bind(this) }
                     filterOpenDetailTemplate={filterOpenDetailTemplate}
-
+                    hidePageSize
                     selectedKey={uniqueKey}
                     selectedElements={this.props.selectedElements}
                     detailTemplateSelectedElements={this.state.openedKeys}
-                    //onRowSelect={onRowSelect}
                     />
                     
             </div>
