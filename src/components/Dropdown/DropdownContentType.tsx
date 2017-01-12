@@ -26,6 +26,7 @@ export default class DropdownContentType extends React.Component<any, any>{
         let {
             type,
             children,
+            open,
             // Table
             dataSource,
             focusOnMount,
@@ -107,6 +108,6 @@ export default class DropdownContentType extends React.Component<any, any>{
                 dropdownTypePartial = children;
         }
 
-        return dropdownTypePartial;
+        return open ? dropdownTypePartial : null;
     }
 }

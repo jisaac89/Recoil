@@ -68,6 +68,7 @@ export default class DropdownContent extends React.Component<any, any>{
         let dropdownContentTypeProps = {
             type,
             children,
+            open,
             // Table
             dataSource,
             focusOnMount,

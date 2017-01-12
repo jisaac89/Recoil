@@ -133,18 +133,18 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
 
         return (
             <Portal portalType="SlideIn" open={this.state.open} portalId={guidGenerator()}>
-                <div className={modalWrapperClass}>
+                {this.state.showChildren ? <div className={modalWrapperClass}>
                     <div ref='Modal' className={modalClass} style={props.style}>
-                        <ModalHeader 
+                        <ModalHeader
                             open={this.state.open}
-                            icon={this.props.icon} 
-                            title={this.props.title} 
-                            fullScreen={this.state.fullScreen} 
-                            toggleFullScreen={this.toggleFullScreen.bind(this) } 
-                            onClose={this.closeModal.bind(this)}/>
-                        {this.state.showChildren ? props.children : null}
+                            icon={this.props.icon}
+                            title={this.props.title}
+                            fullScreen={this.state.fullScreen}
+                            toggleFullScreen={this.toggleFullScreen.bind(this)}
+                            onClose={this.closeModal.bind(this)} />
+                        {props.children}
                     </div>
-                </div>
+                </div> : null}
             </Portal>
         );
     }
