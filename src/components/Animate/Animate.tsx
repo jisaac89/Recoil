@@ -9,8 +9,6 @@ export interface IAnimateProps {
 
 export interface IAnimateState {
   animationTitle ?: null | string;
-  currentX ?: number;
-  currentY ?: number;
   currentPosition ?: any;
   playing ? : boolean; 
   animations? : any;
@@ -24,8 +22,7 @@ class AnimateElement extends React.Component<any, any> {
   constructor(){
     super();
     this.state = {
-      currentX : 0,
-      currentY: 0
+      currentPosition: []
     }
   }
   componentDidMount(){
