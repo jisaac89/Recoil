@@ -27,7 +27,7 @@ export interface TableBodyProps {
 
     checkable?: boolean;
     hideColumns ? : Array<any>;
-    onRowSelect ? : (event: React.MouseEvent<any>) => void;
+    onRowSelect ? : (element ? : Array<any>, key ? : any, selectedElements?: any, id? : any) => void;   
     isArray?: boolean;
     detailTemplateOpenOnRowSelect?: boolean | "single";
     selectedKey?: string;
@@ -115,7 +115,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                 if (filteredElement === false) {
                     columnArray.push(
                         [
-                            [<TableRow key={key} {...columnProps} />],
+                            [<TableRow key={key} id={key} {...columnProps} />],
                             [<TableSelectable key={keySelectable} {...columnProps} />],
                             [<TableDetail key={keyDetail} {...columnProps} />]
                         ]

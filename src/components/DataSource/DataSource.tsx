@@ -314,7 +314,7 @@ const DataSource : any = (Component) =>
             })
         }
 
-        toggleSelectedElements(element) {
+        toggleSelectedElements(element, index, id) {
             const self = this;
             let {selectedElements} = self.state;
             let {rowIsSelectable, onCheck, selectedKey} = self.props;
@@ -334,6 +334,8 @@ const DataSource : any = (Component) =>
 
                         self.setState({
                             selectedElements: selectedElementsArray
+                        },()=>{
+                            this.props.onRowSelect(selectedKey ? element[selectedKey] : element, index, selectedElementsArray, id.toString());
                         })
                     }
                 }
@@ -342,6 +344,8 @@ const DataSource : any = (Component) =>
 
                 self.setState({
                     selectedElements: selectedElementsArray
+                },()=>{
+                    this.props.onRowSelect(selectedKey ? element[selectedKey] : element, index, selectedElementsArray, id.toString());
                 })
 
                 onCheck ? onCheck(selectedKey ? element[selectedKey] : element) : null;

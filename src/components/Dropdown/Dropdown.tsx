@@ -62,7 +62,9 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         super(props);
         this.state = {
             dropdownIsOpen: false,
-            type: props.dataSource && props.type !== 'tree' ? "table" : props.type
+            type: props.dataSource && props.type !== 'tree' ? "table" : props.type,
+            selectedElements: props.selectedElements || [],
+            scrollToId: ''
         }
     }
 
@@ -99,12 +101,23 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             })
         
     }
-    onRowSelect(element, index) {
+    onRowSelect(element, index, selectedElements, id) {
         let {rowIsSelectable } = this.props;
-        if (rowIsSelectable === 'single') {
-            this.closeDropdown();
-        }
-        this.props.onChange ? this.props.onChange(element, index) : null
+
+        this.setState({
+            selectedElements : selectedElements
+        }, ()=>{
+            if (rowIsSelectable === 'single') {
+
+                this.setState({
+                    scrollToId : id
+                })
+
+                this.closeDropdown();
+            }
+            this.props.onChange ? this.props.onChange(element, index, selectedElements, id) : null;
+        })
+
     }
     render() {
         const self = this;
@@ -191,7 +204,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             focusOnMount,
             hideHeader,
             rowIsSelectable,
-            selectedElements,
+            selectedElements: this.state.selectedElements,
             selectedKey,
             pageSizerOptions,
             columns,
@@ -210,7 +223,9 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             mobile,
             sortKey,
             hideFooter,
-            hideDropdownHeader
+            hideDropdownHeader,
+            scrollToId: this.state.scrollToId,
+            scrollIf: this.state.dropdownIsOpen
             //
         }
 

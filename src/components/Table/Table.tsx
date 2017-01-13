@@ -38,7 +38,7 @@ export interface ITableProps {
     onCheck ? : (event: React.MouseEvent<any>) => void;
     detailTemplateHideToggle? : boolean;
     hideColumns? : Array<any>;
-    onRowSelect ? : (event: React.MouseEvent<any>) => void;
+    onRowSelect ? : (element ? : Array<any>, key ? : any, selectedElements?: any, id? : any) => void;
     pageSizerOptions? : Array<any>;
     onPageSizeChange? : (event: React.MouseEvent<any>) => void;
     onPageChange? : any;
@@ -80,6 +80,8 @@ export interface ITableProps {
     filterItems?: any;
     title?: string;
     hideFooter? : boolean;
+    scrollToId ? : any;
+    scrollIf?  : any;
 }
 
 interface ITableState {
@@ -147,7 +149,9 @@ class Table extends React.Component<ITableProps, ITableState>{
             detailTemplateToggleAll,
             searchTerm,
             title,
-            hideFooter
+            hideFooter,
+            scrollToId,
+            scrollIf
         } = props;
         
         // assign the props
@@ -229,7 +233,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                 <div className={tableClass}>
                     <TableSearch {...tableSearchProps} />
                     {menuTemplate ? menuTemplate() : null}
-                    <Layer scroll fill style={contentMaxHeight ? {height : contentMaxHeight} : null}>
+                    <Layer scroll scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? {height : contentMaxHeight} : null}>
                         {
                             nothingMatchesSearchCriteria ?
                                 <Toolbar block textCenter className="p10">Nothing matches search criteria...</Toolbar>

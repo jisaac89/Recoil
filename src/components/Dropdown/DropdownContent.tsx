@@ -55,7 +55,9 @@ export default class DropdownContent extends React.Component<any, any>{
             mobile,
             sortKey,
             hideFooter,
-            hideDropdownHeader
+            hideDropdownHeader,
+            scrollToId,
+            scrollIf
             //
         } = props;
 
@@ -91,7 +93,9 @@ export default class DropdownContent extends React.Component<any, any>{
             onRowSelect,
             filterOpenDetailTemplate,
             sortKey,
-            hideFooter
+            hideFooter,
+            scrollToId,
+            scrollIf
             //
         }
 

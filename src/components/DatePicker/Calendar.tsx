@@ -137,7 +137,8 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                             material 
                             block 
                             title={monthNames[this.state.month]} 
-                            selectedElements={[monthNames[this.state.month]]} 
+                            selectedElements={[monthNames[this.state.month]]}
+                            rowIsSelectable="single"
                             onChange={this.selectMonth.bind(this)} 
                             dataSource={monthNames}
                             pageSize={monthNames.length}
@@ -151,6 +152,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                             title={this.state.year.toString()}
                             selectedElements={[this.state.year]} 
                             dataSource={availableYears(this.state.year)}
+                            rowIsSelectable="single"
                             onChange={this.setYear.bind(this)}
                             pageSize={availableYears(this.state.year).length}
                             hideHeader

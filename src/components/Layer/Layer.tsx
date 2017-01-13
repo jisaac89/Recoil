@@ -67,13 +67,13 @@ export default class Layer extends React.Component<ILayerProps, any> {
 
   componentWillReceiveProps(nextProps) {
     const self = this;
-    if (nextProps.scrollIf && this.state.scrollToId === '') {
+    if (nextProps.scrollIf && nextProps.scrollToId !== this.props.scrollToId) {
       this.canLayerAnimateScroll(nextProps);
     };
   }
   
   componentDidMount(){
-    if (this.props.scrollIf && this.state.scrollToId === '') {
+    if (this.props.scrollIf && this.props.scrollToId !== '') {
       this.canLayerAnimateScroll(this.props);
     }
   }
@@ -84,33 +84,33 @@ export default class Layer extends React.Component<ILayerProps, any> {
       
             setTimeout(()=>{
               let element  = document.getElementById(propss.scrollToId);
-              element && element.getBoundingClientRect() ? self.handleScroll(propss.scrollToId) : null;
+              element && element.getBoundingClientRect() ? self.handleScroll(propss.scrollToId, element.offsetTop) : null;
             }, 0)
 
   }
 
-  handleScroll = (to) => {
+  handleScroll = (to, top) => {
       const self = this;
       self._beforeAnimate();
       self.setState({
         scrollToId: to
       }, ()=>{
-        self.animateScroll(self.state.scrollToId, this._animate);
+        self.animateScroll(self.state.scrollToId, this._animate, top);
       })
       self._afterAnimate();
   }
 
-  animateScroll(id, animate) {
+  animateScroll(id, animate, top) {
     const element = id ? document.getElementById(id) : this.refs.Layer;
-    this.refs.Layer ? this.scrollTo(element, animate) : null;
+    this.refs.Layer ? this.scrollTo(element, animate, top) : null;
   }
 
-  scrollTo(element, { offset, duration, easing }) {
+  scrollTo(element, { offset, duration, easing }, top) {
     const self = this;
-    this.animateScrolling(element, { offset, duration, easing });
+    this.animateScrolling(element, { offset, duration, easing }, top);
   }
 
-  animateScrolling(element, { offset, duration, easing }) {
+  animateScrolling(element, { offset, duration, easing }, top) {
     const self = this;
     const startX = this.getScrollLeft();
     const startY = this.getScrollTop();
@@ -121,7 +121,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
     const increment = 20;
 
 
-    scrollTo(startY, this.refs.Layer, toY, duration);
+    scrollTo(startY, this.refs.Layer, top, duration);
 
       self.setState({
         scrollToId: ''
