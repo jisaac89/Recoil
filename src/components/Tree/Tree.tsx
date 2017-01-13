@@ -33,14 +33,15 @@ export default class Tree extends React.Component<ITreeProps, any>{
     }
   }
   componentDidMount() {
-    this.initArray(this.props.dataSource);
+      this.initArray(this.props.dataSource);
+
+      if (this.props.selectedElements && this.props.selectedElements.length > 0) {
+          this.openSelectedElements(this.props.selectedElements);
+      }
   }
   componentWillReceiveProps(nextProps) {
-      //if (nextProps.dataSource !== this.props.dataSource){
-      //    this.initArray(nextProps.dataSource);
-      //}
 
-      if (nextProps.selectedElements) {
+      if (nextProps.selectedElements && nextProps.selectedElements.length > 0) {
           this.openSelectedElements(nextProps.selectedElements);
       }
   }
@@ -84,7 +85,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
     } 
 
     this.setState({ roots: roots }, () => {
-        this.props.selectedElements ? this.openSelectedElements(this.props.selectedElements) : null;
+        this.props.selectedElements && this.props.selectedElements.length > 0 ? this.openSelectedElements(this.props.selectedElements) : null;
     });
 
   }
@@ -114,9 +115,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
                   return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
               }
               
-          } else {
-              openedKeys.push(theNode.Id);
-          }
+          } 
       }
 
       gotoParentAndPushKey(0);

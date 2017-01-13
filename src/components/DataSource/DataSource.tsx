@@ -335,7 +335,7 @@ const DataSource : any = (Component) =>
                         self.setState({
                             selectedElements: selectedElementsArray
                         },()=>{
-                            this.props.onRowSelect(selectedKey ? element[selectedKey] : element, index, selectedElementsArray, id.toString());
+                            this.props.onRowSelect(element, index, selectedElementsArray, id.toString());
                         })
                     }
                 }
@@ -345,7 +345,7 @@ const DataSource : any = (Component) =>
                 self.setState({
                     selectedElements: selectedElementsArray
                 },()=>{
-                    this.props.onRowSelect(selectedKey ? element[selectedKey] : element, index, selectedElementsArray, id.toString());
+                    this.props.onRowSelect(element, index, selectedElementsArray, id.toString());
                 })
 
                 onCheck ? onCheck(selectedKey ? element[selectedKey] : element) : null;

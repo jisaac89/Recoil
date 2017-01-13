@@ -79,6 +79,13 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                 dropdownIsOpen: nextProps.open
             })
         }
+
+        if (nextProps.selectedElements !== this.state.selectedElements) {
+            this.setState({
+                selectedElements: nextProps.selectedElements
+            })
+        }
+
         if (this.props.type === 'tree' && this.props.selectedElements && nextProps.selectedElements.length !== this.props.selectedElements.length) {
             this.closeDropdown();
         }
