@@ -23,7 +23,7 @@ export {default as Wizard} from './components/Wizard/Wizard';
 export {default as SlideIn} from './components/SlideIn/SlideIn';
 export {default as Stepper} from './components/Stepper/Stepper';
 export {default as Table, ITableProps, IColumn} from './components/Table/Table';
-export {default as TimePicker} from './components/TimePicker/TimePicker';
+//export {default as TimePicker} from './components/TimePicker/TimePicker';
 export {default as Portal} from './components/Portal/Portal';
 
 import './less/Recoil.less';
