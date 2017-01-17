@@ -318,7 +318,7 @@ const DataSource : any = (Component) =>
             const self = this;
             let {selectedElements} = self.state;
             let {rowIsSelectable, onCheck, selectedKey} = self.props;
-
+            let selectedElement = selectedKey ? element[selectedKey] : element;
             let selectedElementsArray;
 
             if (rowIsSelectable === 'single') {
@@ -327,28 +327,28 @@ const DataSource : any = (Component) =>
                 selectedElementsArray = selectedElements.slice();
             }
 
-            if (selectedElementsArray.includes(selectedKey ? element[selectedKey] : element)) {
+            if (selectedElementsArray.includes(selectedElement)) {
                 for (let i = 0; i < selectedElementsArray.length; i++) {
-                    if (selectedElementsArray[i] === (selectedKey ? element[selectedKey] : element)) {
+                    if (selectedElementsArray[i] === (selectedElement)) {
                         selectedElementsArray.splice(i, 1);
 
                         self.setState({
                             selectedElements: selectedElementsArray
                         },()=>{
-                            this.props.onRowSelect(element, index, selectedElementsArray, id.toString());
+                            this.props.onRowSelect(element, index, selectedElementsArray);
                         })
                     }
                 }
             } else {
-                selectedElementsArray.push(selectedKey ? element[selectedKey] : element);
+                selectedElementsArray.push(selectedElement);
 
                 self.setState({
                     selectedElements: selectedElementsArray
                 },()=>{
-                    this.props.onRowSelect(element, index, selectedElementsArray, id.toString());
+                    this.props.onRowSelect(element, index, selectedElementsArray);
                 })
 
-                onCheck ? onCheck(selectedKey ? element[selectedKey] : element) : null;
+                onCheck ? onCheck(selectedElement) : null;
             }
         }
 

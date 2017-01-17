@@ -89,7 +89,7 @@ export interface ITableColumnProps {
 export default class TableRow extends React.Component<ITableColumnProps,any>{
 
     toggleSelectedElements(element, index) {
-        this.props.rowIsSelectable ? this.props.toggleSelectedElements(element, index, this.props.id) : null;
+        this.props.rowIsSelectable ? this.props.toggleSelectedElements(element, index) : null;
         !this.props.rowIsSelectable && this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
         this.props.detailTemplateOpenOnRowSelect ? this.props.detailTemplateToggleSelectedElements(element) : null;
     }
@@ -158,7 +158,6 @@ export default class TableRow extends React.Component<ITableColumnProps,any>{
         
         return (
             <tr 
-                id={props.id}
                 className={selectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'r-TableColumn checked' : 'r-TableColumn'} 
                 onClick={rowIsSelectable && !checkable ? this.toggleSelectedElements.bind(this, element, index) : null || (onRowSelect || detailTemplateOpenOnRowSelect ? this.onRowSelect.bind(this, element, index) : null) }
             >

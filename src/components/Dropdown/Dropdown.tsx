@@ -35,6 +35,7 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     onOpen?: any;
     onClose?: any;
     hideDropdownHeader?: boolean;
+    titleKey?: string;
 }
 
 export interface State {
@@ -64,8 +65,24 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             dropdownIsOpen: false,
             type: props.dataSource && props.type !== 'tree' ? "table" : props.type,
             selectedElements: props.selectedElements || [],
-            scrollToId: ''
+            scrollToId: '',
+            title : props.title || ''
         }
+    }
+
+    componentDidMount(){
+        if (this.state.selectedElements.length > 0 && this.props.rowIsSelectable === 'single') {
+            this.setTitle(this.props);
+            this.setState({
+                scrollToId : this.state.selectedElements[0][this.props.selectedKey]
+            })
+        }
+    }
+
+    setTitle(props) {
+        this.setState({
+            title: props.selectedKey ? this.state.selectedElements[0] : this.state.title
+        })   
     }
 
     componentWillReceiveProps(nextProps) {
@@ -84,6 +101,10 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             this.setState({
                 selectedElements: nextProps.selectedElements
             })
+
+            if (nextProps.rowIsSelectable === 'single') {
+                this.setTitle(nextProps);
+            }
         }
 
         if (this.props.type === 'tree' && this.props.selectedElements && nextProps.selectedElements.length !== this.props.selectedElements.length) {
@@ -106,6 +127,12 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             () => {
                 this.props.onOpen ? this.props.onOpen(true) : null;
             })
+
+        if (this.state.selectedElements.length > 0 && this.props.rowIsSelectable === 'single') {
+            this.setState({
+                scrollToId : this.state.selectedElements[0]
+            })
+        }
         
     }
     onRowSelect(element, index, selectedElements, id) {
@@ -119,6 +146,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                 this.setState({
                     scrollToId : id
                 })
+
+                this.setTitle(this.props);
 
                 this.closeDropdown();
             }
@@ -249,7 +278,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
 
         return (
             <div ref='dropdown' className={dropdownClass}>
-                <Button {...buttonProps}>{title}</Button>
+                <Button {...buttonProps}>{this.state.title}</Button>
                 <DropdownContent {...dropdownPortalProps} />
             </div>
         )
