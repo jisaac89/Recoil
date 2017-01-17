@@ -70,18 +70,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         }
     }
 
-    componentDidMount(){
-        if (this.state.selectedElements.length > 0 && this.props.rowIsSelectable === 'single') {
-            this.setTitle(this.props);
-        }
-    }
-
-    setTitle(props) {
-        this.setState({
-            title: props.selectedKey ? this.state.selectedElements[0] : this.state.title
-        })   
-    }
-
     componentWillReceiveProps(nextProps) {
         if (nextProps.type !== this.props.type) {
             this.setState({
@@ -98,10 +86,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             this.setState({
                 selectedElements: nextProps.selectedElements
             })
-
-            if (nextProps.rowIsSelectable === 'single') {
-                this.setTitle(nextProps);
-            }
         }
 
         if (this.props.type === 'tree' && this.props.selectedElements && nextProps.selectedElements.length !== this.props.selectedElements.length) {
@@ -137,8 +121,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                 this.setState({
                     scrollToId : id
                 })
-
-                this.setTitle(this.props);
 
                 this.closeDropdown();
             }
@@ -269,7 +251,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
 
         return (
             <div ref='dropdown' className={dropdownClass}>
-                <Button {...buttonProps}>{this.state.title}</Button>
+                <Button {...buttonProps}>{title}</Button>
                 <DropdownContent {...dropdownPortalProps} />
             </div>
         )
