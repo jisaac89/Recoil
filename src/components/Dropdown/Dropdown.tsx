@@ -119,7 +119,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             if (rowIsSelectable === 'single') {
 
                 this.setState({
-                    scrollToId : id
+                    scrollToId : this.props.selectedKey ? element[this.props.titleKey ? this.props.titleKey : this.props.selectedKey] : null
                 })
 
                 this.closeDropdown();
