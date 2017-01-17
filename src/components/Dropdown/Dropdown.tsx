@@ -73,9 +73,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
     componentDidMount(){
         if (this.state.selectedElements.length > 0 && this.props.rowIsSelectable === 'single') {
             this.setTitle(this.props);
-            this.setState({
-                scrollToId : this.state.selectedElements[0][this.props.selectedKey]
-            })
         }
     }
 
@@ -127,12 +124,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             () => {
                 this.props.onOpen ? this.props.onOpen(true) : null;
             })
-
-        if (this.state.selectedElements.length > 0 && this.props.rowIsSelectable === 'single') {
-            this.setState({
-                scrollToId : this.state.selectedElements[0]
-            })
-        }
         
     }
     onRowSelect(element, index, selectedElements, id) {
