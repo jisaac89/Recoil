@@ -51,7 +51,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
 
   constructor(props) {
     super(props);
-    this._scrollToId = props.scrollToId && props.scrollToId !== '' && props.scrollToId.replace(/^#/, '') || '';
+    this._scrollToId = props.scrollToId && props.scrollToId !== '' && props.scrollToId.toString().replace(/^#/, '') || '';
     const {
       offset = props.offset || 0, duration = 400, easing = this.easeOutQuad
     } = props.animate || {};
