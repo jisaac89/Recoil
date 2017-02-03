@@ -86,6 +86,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
 
     this.setState({ roots: roots }, () => {
         this.props.selectedElements && this.props.selectedElements.length > 0 ? this.openSelectedElements(this.props.selectedElements) : null;
+        this.props.openedElements && this.props.openedElements.length > 0 ? this.openedElements(this.props.openedElements) : null;
     });
 
   }
@@ -126,6 +127,43 @@ export default class Tree extends React.Component<ITreeProps, any>{
 
   }
 
+  openedElements(selectedElements) {
+      let newArray = this.state.newArray;
+      let openedKeys = [];
+
+      let gotoParentAndPushKey = (selectedKeyIndex, node?: any) => {
+          let currentSelectedKeyIndex = selectedKeyIndex || 0;
+
+          let currentNode = node || newArray.filter(function (node) {
+              return node.Id === selectedElements[selectedKeyIndex];
+          })
+
+          let theNode = currentNode[0];
+
+          if (theNode && theNode.parentId !== 0) {
+              openedKeys.push(theNode.parentId);
+
+              let parentNode = newArray.filter(function (node) {
+                  return node.Id === theNode.parentId;
+              })
+
+              if (parentNode[0].parentId === 0) {
+                  return null
+              } else {
+                  return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
+              }
+
+          }
+      }
+
+      gotoParentAndPushKey(0);
+
+      this.setState({
+          openedKeys: openedKeys
+      })
+
+  }
+
   renderChildren(childNode) {
       let {columns, parentKey, uniqueKey, filterOpenDetailTemplate, openedElements, selectedElements, onRowSelect} = this.props;
       return (
@@ -140,7 +178,8 @@ export default class Tree extends React.Component<ITreeProps, any>{
           hidePageSize
           selectedKey={uniqueKey}
           selectedElements={this.props.selectedElements}
-          detailTemplateSelectedElements={this.state.openedKeys}
+          detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
+          pageSize={childNode.children.length}
       />
       )
   }
@@ -153,7 +192,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
 
     if (roots.length) {
         return (
-            <div className="r-Tree">
+            <div className="r-Tree e-scroll-y">
                 <Table
                     hideHeader
                     columns={columns} 
@@ -163,7 +202,8 @@ export default class Tree extends React.Component<ITreeProps, any>{
                     hidePageSize
                     selectedKey={uniqueKey}
                     selectedElements={this.props.selectedElements}
-                    detailTemplateSelectedElements={this.state.openedKeys}
+                    detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
+                    pageSize={roots.length}
                     />
                     
             </div>

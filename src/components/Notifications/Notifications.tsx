@@ -2,6 +2,7 @@ import * as React from 'react';
 import './Notifications.less';
 
 import Button from '../Button/Button';
+import Toolbar from '../Toolbar/Toolbar';
 
 import * as classNames from 'classnames';
 
@@ -59,7 +60,7 @@ class Notification extends React.Component<INotificationProps, INotificationStat
 
         if (this.state.view !== 'removed') {
             return (
-                <div className="w100 clearfix p10"><Button right theme={props.item.type ? props.item.type : 'default'} className={animationClass}>{props.item.title}</Button></div>
+                <Toolbar size="large" block textCenter className="p10"><Button theme={props.item.type ? props.item.type : 'default'} className={animationClass}>{props.item.title}</Button></Toolbar>
             );
         } else {
             return null;

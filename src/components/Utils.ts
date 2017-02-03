@@ -15,6 +15,33 @@ export function branchIn(value, key, step?: number) {
 
 }
 
+export function setValue(object, key, value, step?: number, currentBranch? : any, evalString?: any) {
+
+    let currentEvalString = evalString || '';
+
+    let result = key.split('.'),
+        stepLength = result.length,
+        currentStep = step || 0,
+        currentValue = currentBranch ? currentBranch[result[currentStep]] : object[result[currentStep]];
+
+    if (currentStep !== stepLength - 1) {
+
+        
+        if (currentStep === 0) {
+            currentEvalString += "object['" + result[currentStep] + "']";
+        } else {
+            currentEvalString += "['" + result[currentStep] + "']";
+        }
+        return setValue(object, key, value, currentStep + 1, currentValue, currentEvalString);
+    } else {
+        let a = value;
+        eval(currentEvalString + " = " + a);
+
+        return object;
+    }
+
+}
+
 export function search(dataSource, term, keys) {
 
     let queryResult = [];

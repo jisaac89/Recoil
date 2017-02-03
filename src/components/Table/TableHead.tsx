@@ -28,10 +28,12 @@ class CheckboxHead extends React.Component<any,any>{
     }
     render() {
         let props = this.props;
+
+        let {hideCheckAll} = props;
         
         return (
             <th width={25} >
-                <Checkbox onChange={this.selectAll.bind(this, props.dataSource)} size='small' checked={arraysEqual(props.dataSource, props.selectedElements)}/>
+                {!hideCheckAll ? <Checkbox onChange={this.selectAll.bind(this, props.dataSource)} size='small' checked={arraysEqual(props.dataSource, props.selectedElements)} /> : null}
             </th>
         )
     }
@@ -54,6 +56,7 @@ export interface ITableHeadProps {
     detailTemplateSelectedElements?: Array<any>;
     detailTemplateHideToggle?: boolean;
     sortKey?: any;
+    hideCheckAll?: boolean;
 }
 
 export default class TableHead extends React.Component<ITableHeadProps,any>{
@@ -83,7 +86,7 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
 
     render() {
         
-        let {detailTemplate,onSort, sortKey, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements, sortable} = this.props;
+        let {detailTemplate, onSort, hideCheckAll, sortKey, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements, sortable} = this.props;
         let columnHeadArray = [];
         
         columns.map((key) => {
@@ -109,7 +112,8 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
         let checkboxHeadProps = {
             selectAll : selectAll,
             selectedElements : selectedElements,
-            dataSource : dataSource
+            dataSource: dataSource,
+            hideCheckAll: hideCheckAll
         }
 
         let columnsExistAndDataSourceNotFlatArray = columns.length > 0 && columns[0].name !== '_Array';

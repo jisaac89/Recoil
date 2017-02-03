@@ -12,6 +12,8 @@ import TableSearch from './TableSearch';
 import Layer from '../Layer/Layer';
 import Toolbar from '../Toolbar/Toolbar';
 
+import Loading from '../Loading/Loading';
+
 import DataSource from '../DataSource/DataSource';
 
 import {IColumn} from './IColumn';
@@ -34,7 +36,8 @@ export interface ITableProps {
     detailTemplateSelectedElements ? : Array<any>;
     selectedElements ? : Array<any>;
     rowIsSelectable ? : any;
-    checkable ? : boolean;
+    checkable?: boolean;
+    hideCheckAll?: boolean;
     onCheck ? : (event: React.MouseEvent<any>) => void;
     detailTemplateHideToggle? : boolean;
     hideColumns? : Array<any>;
@@ -81,7 +84,8 @@ export interface ITableProps {
     title?: string;
     hideFooter? : boolean;
     scrollToId ? : any;
-    scrollIf?  : any;
+    scrollIf?: any;
+    loading?: boolean;
 }
 
 interface ITableState {
@@ -151,7 +155,9 @@ class Table extends React.Component<ITableProps, ITableState>{
             title,
             hideFooter,
             scrollToId,
-            scrollIf
+            scrollIf,
+            loading,
+            hideCheckAll
         } = props;
         
         // assign the props
@@ -180,7 +186,8 @@ class Table extends React.Component<ITableProps, ITableState>{
             toggleSorting: toggleSorting,
             onSort: onSort,
             sortType : sortType,
-            sortKey: sortKey
+            sortKey: sortKey,
+            hideCheckAll: hideCheckAll
         }
 
         let bodyProps = {
@@ -228,7 +235,10 @@ class Table extends React.Component<ITableProps, ITableState>{
 
         let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
         
-        if ((activeRows.length || dataSource.length) && columns.length) {
+        if (loading) {
+            return <Loading />
+        }
+        else if ((activeRows.length || dataSource.length) && columns.length) {
             return (
                 <div className={tableClass}>
                     <TableSearch {...tableSearchProps} />

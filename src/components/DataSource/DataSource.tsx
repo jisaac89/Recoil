@@ -47,7 +47,10 @@ const DataSource : any = (Component) =>
 
             this.setState({
                 page: nextProps.page !== this.props.page ? nextProps.page : this.state.page,
+                pageSize: nextProps.pageSize !== this.props.pageSize ? nextProps.pageSize : this.state.pageSize,
+                rowCount: nextProps.rowCount !== this.props.rowCount ? nextProps.rowCount : this.state.rowCount,
             })
+
             if (nextProps.selectedElements) {
                 this.setState({
                     selectedElements: nextProps.selectedElements
@@ -335,7 +338,7 @@ const DataSource : any = (Component) =>
                         self.setState({
                             selectedElements: selectedElementsArray
                         },()=>{
-                            this.props.onRowSelect(element, index, selectedElementsArray);
+                            this.props.onRowSelect ? this.props.onRowSelect(element, index, selectedElementsArray) : null;
                         })
                     }
                 }
@@ -345,7 +348,7 @@ const DataSource : any = (Component) =>
                 self.setState({
                     selectedElements: selectedElementsArray
                 },()=>{
-                    this.props.onRowSelect(element, index, selectedElementsArray);
+                    this.props.onRowSelect ? this.props.onRowSelect(element, index, selectedElementsArray) : null;
                 })
 
                 onCheck ? onCheck(selectedElement) : null;
