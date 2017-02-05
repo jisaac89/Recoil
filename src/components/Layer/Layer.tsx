@@ -81,12 +81,13 @@ export default class Layer extends React.Component<ILayerProps, any> {
   canLayerAnimateScroll(props){
       let propss = props || this.props
       const self = this;
-      
             setTimeout(()=>{
               let element  = document.getElementById(propss.scrollToId);
-              element && element.getBoundingClientRect() ? self.handleScroll(propss.scrollToId, element.offsetTop) : null;
-            }, 0)
-
+              if (element && element.getBoundingClientRect()) {
+                let box = element.getBoundingClientRect();
+                self.handleScroll(propss.scrollToId, element.offsetTop)
+              } else return null;
+            }, 0);
   }
 
   handleScroll = (to, top) => {

@@ -13,15 +13,27 @@
     font-size:10px;
 }
 .r-Calendar__body td{
-    text-align: left;
+    text-align: center;
     padding:10px;
     border-bottom: 1px solid #ccc !important;
+    font-size: 14px;
+    line-height: 1.6em;
+    margin: 0;
+    color: #a7a7a7 !important;
+}
+
+.r-Table td.month-header {
+    color: #8e8e8e !important;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: left !important;
 }
 
 .r-Calendar__body td.selected-date,
 .r-Calendar__body td.selected-date a{
     background:#1995FF;
-    color:white;
+    color:white !important;
 }
 
 .empty-date{
@@ -48,4 +60,8 @@ span.event-multiday-start { margin-right: -4px;  }
 span.event-multiday-finish { margin-left: -4px;  }
 
 span.event-ghost { background-color:transparent; }
+
+.r-Dropdown .r-Calendar-Scroll{
+    height: 270px !important;
+}
 

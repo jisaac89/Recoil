@@ -4,7 +4,7 @@ import './Recoil.less';
 
 export interface IRecoilProps {
     nightmode ? : boolean;
-    className?: Array<string>;
+    className?: string;
     overflow?: boolean;
     mobile?: boolean;
     scroll? : boolean;

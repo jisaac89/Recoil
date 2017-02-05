@@ -39,6 +39,7 @@ export interface IInputProps {
   disabled? : boolean;
   autoComplete?: string;
   flex?: boolean;
+  disableKeys?: any;
 }
 
 export interface IInputState {
@@ -46,8 +47,6 @@ export interface IInputState {
   value? : string | string[];
   mouseOut? : boolean;
 }
-
-React.createElement
 
 export default class Input extends React.Component<IInputProps, IInputState>{
 
@@ -126,11 +125,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     });
   }
   public onChange(event: React.FormEvent<any>) {
-    if (this.props.onChange) {
-      this.props.onChange((event.target as HTMLInputElement).value, event);
-    } else {
-      return null;
-    }
+    this.props.onChange ? this.props.onChange((event.target as HTMLInputElement).value, event) : null;
+    this.inputValue((event.target as HTMLInputElement).value, event);
   }
 
   limit(max) {
@@ -139,6 +135,23 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     if(inputDOM.value.length > maxLength) {
         inputDOM.value = inputDOM.value.substr(0, maxLength);
     } 
+  }
+
+  inputValue(value, event){
+    this.setState({
+      value : value
+    }, ()=>{
+      if (this.props.maxLength){
+        this.limit(this.props.maxLength);
+      }
+      if (this.props.disableKeys){
+        this.disableKeys(value, event);
+      }
+    })
+  }
+
+  disableKeys(value, event){
+    console.log(this.state.value);
   }
 
   render(){
@@ -215,13 +228,13 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     // switch input type depending on propType
     switch (props.type) {
       case 'password':
-            inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength) } {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
+            inputPartial = <input name={props.name} {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
         break;
       case 'text':
-            inputPartial = <input autoComplete={props.autoComplete} name={props.name} onKeyDown={self.limit.bind(self, props.maxLength) } {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
+            inputPartial = <input autoComplete={props.autoComplete} name={props.name} {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
         break;
       case 'number':
-            inputPartial = <input name={props.name} onKeyDown={self.limit.bind(self, props.maxLength) } max={props.max} min={props.min} maxLength={props.maxLength} {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
+            inputPartial = <input name={props.name} max={props.max} min={props.min} maxLength={props.maxLength} {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
         break;
       case 'textarea':
           inputPartial = <textarea name={props.name} rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;

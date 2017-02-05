@@ -6,9 +6,14 @@ import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
 import Input from '../Input/Input';
 
+import Months from './Months';
+import DaysHeader from './DaysHeader';
+import SelectMonth from './SelectMonth';
+import SelectYear from './SelectYear';
+
 type Month = 'January' | 'February' | 'March' | 'April' | 'May' | 'June' | 'July' | 'August' | 'September' | 'October' | 'November' | 'December';
 
-var monthNames: Month[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+let monthNames: Month[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
 export interface ICalendarProps {
     date?: Date;
@@ -24,7 +29,7 @@ export interface ICalendarState {
 export default class Calendar extends React.Component<ICalendarProps, ICalendarState> {
     constructor(props?: ICalendarProps) {
         super(props);
-        var date = this.props.date || new Date(Date.now());
+        let date = props.date || new Date(Date.now());
         this.state = {
             year: date.getFullYear(),
             month: date.getMonth(),
@@ -32,15 +37,25 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         };
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.date !== this.props.date){
+            this.setState({
+                date: nextProps.date,
+                year: nextProps.date.getFullYear(),
+                month: nextProps.date.getMonth()
+            })
+        }
+    }    
+
     increaseMonth = () => {
         this.setState({
-            month: (this.state.month + 1) % 12
+            month: this.state.month === 12 ? 1 : this.state.month + 1
         });
     }
 
     selectMonth = (month, index) => {
         this.setState({
-            month: (index) % 12
+            month: index + 1
         });
     }
 
@@ -56,7 +71,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
-    setYear = (year) => {
+    selectYear = (year) => {
         this.setState({
             year: Number(year)
         });
@@ -68,18 +83,18 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
-    selectDay = (day) => {
+    selectDay(day) {
         if (this.props.onSelect) {
             this.props.onSelect(day);
         }
     }
 
     getDays(year: number, month: number) {
-        var firstDay = new Date(year, month, 1);
-        var lastDay = new Date(year, month + 1, 0);
+        let firstDay = new Date(year, month, 1);
+        let lastDay = new Date(year, month + 1, 0);
 
-        var days = [firstDay];
-        for (var index = 2, length = lastDay.getDate(); index < length; index++) {
+        let days = [firstDay];
+        for (let index = 2, length = lastDay.getDate(); index < length; index++) {
             days.push(new Date(year, month, index));
         }
         days.push(lastDay);
@@ -88,10 +103,10 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     }
 
     getWeeks(year: number, month: number) {
-        var days = this.getDays(year, month);
+        let days = this.getDays(year, month);
 
-        var weeks: Date[][] = [];
-        var week: Date[];
+        let weeks: Date[][] = [];
+        let week: Date[];
 
         if (days[0].getDay() !== 0) {
             week = [];
@@ -108,127 +123,168 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         return weeks;
     }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.date !== this.props.date){
-            this.setState({
-                date: nextProps.date,
-                year: nextProps.date.getFullYear(),
-                month: nextProps.date.getMonth()
-            })
-        }
-    }
-
     render() {
-        var weeks = this.getWeeks(this.state.year, this.state.month);
 
+        const self = this;
 
-        availableYears(1989);
+        let {year, month, date} = self.state;
+
+        let week = this.getWeeks(year, month),
+            Jan = this.getWeeks(year, 1),
+            Feb = this.getWeeks(year, 2),
+            Mar = this.getWeeks(year, 3),
+            Apr = this.getWeeks(year, 4),
+            May = this.getWeeks(year, 5),
+            Jun = this.getWeeks(year, 6),
+            Jul = this.getWeeks(year, 7),
+            Aug = this.getWeeks(year, 8),
+            Sep = this.getWeeks(year, 9),
+            Oct = this.getWeeks(year, 10),
+            Nov = this.getWeeks(year, 11),
+            Dec = this.getWeeks(year, 12)
 
         return (
-            <div className="r-Calendar">
-                <div>
-
-                    <Toolbar flush block flex noRadius>
-
-                        <Button onClick={this.decreaseMonth} icon="chevron-left" />
-                        <Button onClick={this.increaseMonth} icon="chevron-right" />
-                        <Dropdown 
-                            className="w100"
-                            material 
-                            block 
-                            title={monthNames[this.state.month]} 
-                            selectedElements={[monthNames[this.state.month]]}
-                            rowIsSelectable="single"
-                            onChange={this.selectMonth.bind(this)} 
-                            dataSource={monthNames}
-                            pageSize={monthNames.length}
-                            hideHeader
-                            hideDropdownHeader
-                        />
-                        <Dropdown 
-                            className="w100"
-                            material 
-                            block  
-                            title={this.state.year.toString()}
-                            selectedElements={[this.state.year]} 
-                            dataSource={availableYears(this.state.year)}
-                            rowIsSelectable="single"
-                            onChange={this.setYear.bind(this)}
-                            pageSize={availableYears(this.state.year).length}
-                            hideHeader
-                            hideDropdownHeader
-                        />
-                    </Toolbar>
-                </div>
-                <Layer theme="light" className="r-Table h100">
-                <table className="w100">
-                    <thead>
-                        <tr>
-                            <th className="p5">Sun</th>
-                            <th className="p5">Mon</th>
-                            <th className="p5">Tue</th>
-                            <th className="p5">Wed</th>
-                            <th className="p5">Thu</th>
-                            <th className="p5">Fri</th>
-                            <th className="p5">Sat</th>
-                        </tr>
-                    </thead>
-                    <tbody className="r-Calendar__body h100">
-                        {weeks.map((week, index, array) => {
-                            return (
-                                <tr key={this.state.year + ' ' + this.state.month + ' ' + index}>
-                                    {index === 0 && week.length < 7 ?
-                                        <td className="empty-date" colSpan={7 - week.length}></td>
-                                        : undefined}
-                                    {week.map((day, index, array) => {
-                                        let selected = this.props.date && this.props.date.getTime() === day.getTime();
-                                        return (
-                                            <td onClick={this.selectDay.bind(this, day) } className={selected ? 'selected-date' : undefined} key={this.state.year + ' ' + this.state.month + ' ' + index}>
-                                                <a>{day.getDate() }</a>
-                                            </td>
-                                        );
-                                    }) }
-                                    {index > 0 && week.length < 7 ?
-                                        <td className="empty-date" colSpan={7 - week.length}></td>
-                                        : undefined}
-                                </tr>
-                            );
-                        }) }
-                    </tbody>
-                </table>
+            <Layer flex className="r-Calendar">
+                <Toolbar flush block flex noRadius>
+                    <Button onClick={this.decreaseMonth} icon="chevron-left" />
+                    <Button onClick={this.increaseMonth} icon="chevron-right" />
+                    <SelectMonth 
+                        month={month}
+                        monthNames={monthNames}
+                        selectMonth={this.selectMonth.bind(this)}
+                    />
+                    <SelectYear 
+                        year={year}
+                        monthNames={monthNames}
+                        selectYear={this.selectYear.bind(this)}
+                    />
+                </Toolbar>
+                <Layer flex theme="light" className="r-Table h100">
+                    <DaysHeader />
+                    <Layer className="r-Calendar-Scroll" fill flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
+                        <div id={"1"}>
+                            <Months
+                                title={monthNames[0]}   
+                                year={year}
+                                month={1}
+                                currentMonth={Jan}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"2"}>
+                            <Months
+                                title={monthNames[1]}   
+                                year={year}
+                                month={2}
+                                currentMonth={Feb}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"3"}>
+                            <Months
+                                title={monthNames[2]}   
+                                year={year}
+                                month={3}
+                                currentMonth={Mar}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"4"}>
+                            <Months
+                                title={monthNames[3]}   
+                                year={year}
+                                month={4}
+                                currentMonth={Apr}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"5"}>
+                            <Months
+                                title={monthNames[4]}   
+                                year={year}
+                                month={5}
+                                currentMonth={May}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>
+                        <div id={"6"}>
+                            <Months
+                                title={monthNames[5]}   
+                                year={year}
+                                month={6}
+                                currentMonth={Jun}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"7"}>
+                            <Months
+                                title={monthNames[6]}   
+                                year={year}
+                                month={7}
+                                currentMonth={Jul}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"8"}>
+                            <Months
+                                title={monthNames[7]}   
+                                year={year}
+                                month={8}
+                                currentMonth={Aug}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"9"}>
+                            <Months
+                                title={monthNames[8]}   
+                                year={year}
+                                month={9}
+                                currentMonth={Sep}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"10"}>                    
+                            <Months
+                                title={monthNames[9]}   
+                                year={year}
+                                month={10}
+                                currentMonth={Oct}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"11"}>
+                            <Months
+                                title={monthNames[10]}   
+                                year={year}
+                                month={11}
+                                currentMonth={Nov}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />
+                        </div>  
+                        <div id={"12"}>
+                            <Months
+                                title={monthNames[11]}   
+                                year={year}
+                                month={12}
+                                currentMonth={Dec}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                            />    
+                        </div>                                                                                                                                                                                                                 
+                    </Layer>
                 </Layer>
-            </div>
+            </Layer>
         );
     }
-}
-
-                    // <Toolbar flush block flex textCenter noRadius>
-                    //     <Button onClick={this.decreaseMonth} icon="chevron-left" />
-
-                    //     <Button onClick={this.increaseMonth} icon="chevron-right" />
-                    // </Toolbar>
-
-
-function availableYears (year) {
-
-    let currentYear = year;
-    let index = 0;
-    let availableYearsArray = [];
-    let startYear = year - 2;
-    let endYear = year + 100;
-
-    function recursion(start, end) {
-        let currentYear = start;
-        let endYear = end;
-        if (currentYear < endYear){
-            availableYearsArray.push(currentYear);
-            recursion(currentYear + 1, endYear);
-        } else {
-            return null;
-        }
-         
-    }
-
-    recursion(startYear, endYear);
-    return availableYearsArray;
 }
