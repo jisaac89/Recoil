@@ -131,7 +131,19 @@ textarea {
 
 .r-Input__container input[type='text'],
 .r-Input__container input[type='number'],
-.r-Input__container input[type='password'] {
+.r-Input__container input[type='password'],
+.r-Input__container input[type="color"],
+.r-Input__container input[type="date"],
+.r-Input__container input[type="datetime"],
+.r-Input__container input[type="datetime-local"],
+.r-Input__container input[type="email"],
+.r-Input__container input[type="month"],
+.r-Input__container input[type="number"],
+.r-Input__container input[type="range"],
+.r-Input__container input[type="week"],
+.r-Input__container input[type="tel"],
+.r-Input__container input[type="time"],
+.r-Input__container input[type="url"] {
   border: 1px solid @input-border-color;
   width:100%;
   height: 100%;
@@ -303,7 +315,8 @@ textarea {
   opacity: 1;
 }
 
-textarea, input[type="text"], input[type="password"], input[type='number'] {
+textarea, 
+input{
   font-size: 13px;
   background-clip: padding-box;
   -webkit-appearance: none;

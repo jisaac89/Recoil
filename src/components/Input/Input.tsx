@@ -161,8 +161,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   }
   
   onKeyDown(a, b){
-    this.props.disableKeys.length ? this.disableKeys(a.key, a.target.value, a) : null; 
-    console.log(a.target.value);
+    this.props.disableKeys ? this.disableKeys(a.key, a.target.value, a) : null; 
   }
 
   render(){
@@ -250,22 +249,6 @@ export default class Input extends React.Component<IInputProps, IInputState>{
 
     // switch input type depending on propType
     switch (props.type) {
-      case 'password':
-            inputPartial = 
-              <input 
-                {...valueProps} 
-                {...inputProps}
-                type="password"
-              />;
-        break;
-      case 'text':
-            inputPartial = 
-              <input 
-                {...valueProps} 
-                {...inputProps}
-                type="text"
-              />;
-        break;
       case 'number':
             inputPartial = 
               <input 
@@ -280,6 +263,12 @@ export default class Input extends React.Component<IInputProps, IInputState>{
           inputPartial = <textarea name={props.name} rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;
         break;
       default:
+          inputPartial = 
+            <input 
+              {...valueProps} 
+              {...inputProps}
+              type={props.type}
+            />;
     }
 
     let inputWrapperClass = classNames(
