@@ -108,8 +108,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   public focus(e){
     const self = this;
     this.setState({
-      checked: e.target.value ? true : false,
-      value:e.target.value
+      checked: e.target.value ? true : false
     });
   }
   public blur(){
@@ -125,7 +124,6 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     });
   }
   public onChange(event: React.FormEvent<any>) {
-    this.props.onChange ? this.props.onChange((event.target as HTMLInputElement).value, event) : null;
     this.inputValue((event.target as HTMLInputElement).value, event);
   }
 
@@ -138,20 +136,33 @@ export default class Input extends React.Component<IInputProps, IInputState>{
   }
 
   inputValue(value, event){
+    this.setValue(value, event);
+  }
+
+  setValue(value, event){
     this.setState({
       value : value
     }, ()=>{
-      if (this.props.maxLength){
-        this.limit(this.props.maxLength);
-      }
-      if (this.props.disableKeys){
-        this.disableKeys(value, event);
-      }
-    })
+      // this.props.maxLength ? this.limit(this.props.maxLength) : null;
+      this.props.onChange ? this.props.onChange(value, event) : null;
+    })    
+
+
+    
   }
 
-  disableKeys(value, event){
-    console.log(this.state.value);
+  disableKeys(keys, value, event){
+    let currentValue = this.state.value;
+    if (this.props.disableKeys.includes(keys)){
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }
+  }
+  
+  onKeyDown(a, b){
+    this.props.disableKeys.length ? this.disableKeys(a.key, a.target.value, a) : null; 
+    console.log(a.target.value);
   }
 
   render(){
@@ -225,16 +236,45 @@ export default class Input extends React.Component<IInputProps, IInputState>{
         }
     }
 
+    let inputProps = {
+      onKeyPress: this.onKeyDown.bind(this),
+      autoComplete: props.autoComplete,
+      name:props.name,
+      ref:'refInput',
+      onInput:this.focus.bind(this),
+      onChange:this.onChange.bind(this),
+      onBlur:this.blur.bind(this) ,
+      onFocus:this.focus.bind(this),
+      placeholder:!props.advanced? props.title? props.title : props.placeholder: props.placeholder
+    }
+
     // switch input type depending on propType
     switch (props.type) {
       case 'password':
-            inputPartial = <input name={props.name} {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='password' />;
+            inputPartial = 
+              <input 
+                {...valueProps} 
+                {...inputProps}
+                type="password"
+              />;
         break;
       case 'text':
-            inputPartial = <input autoComplete={props.autoComplete} name={props.name} {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='text' />;
+            inputPartial = 
+              <input 
+                {...valueProps} 
+                {...inputProps}
+                type="text"
+              />;
         break;
       case 'number':
-            inputPartial = <input name={props.name} max={props.max} min={props.min} maxLength={props.maxLength} {...valueProps} ref='refInput' onInput={this.focus.bind(this)} onChange={this.onChange.bind(this)} onBlur={this.blur.bind(this)}  onFocus={this.focus.bind(this)} placeholder={!props.advanced? props.title? props.title : props.placeholder: props.placeholder} type='number' />;
+            inputPartial = 
+              <input 
+                {...valueProps} 
+                {...inputProps}
+                max={props.max}
+                min={props.min}
+                type="number"
+              />;
         break;
       case 'textarea':
           inputPartial = <textarea name={props.name} rows={props.rows} cols={props.cols} ref="refInput"   style={{height : textAreaScrollHeight}}  onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)}  onChange={this.focus.bind(this)} ></textarea>;
