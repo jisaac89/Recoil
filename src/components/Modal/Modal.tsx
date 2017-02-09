@@ -22,7 +22,9 @@ export interface IModalProps {
 
     beforeOpen?: any;
     afterOpen?: any;
-    mobile ? :boolean;
+    mobile?: boolean;
+    hideFullScreenButton?: boolean;
+    hideCloseButton?: boolean;
 }
 
 export interface IModalState {
@@ -141,7 +143,10 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
                             title={this.props.title}
                             fullScreen={this.state.fullScreen}
                             toggleFullScreen={this.toggleFullScreen.bind(this)}
-                            onClose={this.closeModal.bind(this)} />
+                            onClose={this.closeModal.bind(this)}
+                            hideFullScreenButton={props.hideFullScreenButton}
+                            hideCloseButton={props.hideCloseButton}
+                            />
                         {props.children}
                     </div>
                 </div> : null}

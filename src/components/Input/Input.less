@@ -9,6 +9,7 @@
 
 .r-Input *{
   .transition(all 200ms ease-in);
+  font-family:@font-family;
 }
 
 
@@ -317,7 +318,7 @@ textarea {
 
 textarea, 
 input{
-  font-size: 13px;
+  /*font-size: 13px;*/
   background-clip: padding-box;
   -webkit-appearance: none;
 }
@@ -367,3 +368,8 @@ input{
 .r-Input.text-center > input{
   text-align: center;
 }
+
+::-webkit-input-placeholder { text-transform:capitalize !important; }
+::-moz-placeholder { text-transform:capitalize !important; } /* firefox 19+ */
+:-ms-input-placeholder { text-transform:capitalize !important; } /* ie */
+input:-moz-placeholder { text-transform:capitalize !important; }
