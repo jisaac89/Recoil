@@ -73,7 +73,7 @@ export default class Pager extends React.Component<ITableFooterProps, {}>{
       var pagers = [];
       for (var index = firstPager; index <= lastPager; index++) {
           pagers.push(
-              <Button block size="small" tabIndex={-1} advanced checked={currentPage === index ? true : false} onClick={gotoPage.bind(self, index) } key={index}>
+              <Button simple block size="small" tabIndex={-1} advanced checked={currentPage === index ? true : false} onClick={gotoPage.bind(self, index) } key={index}>
                   {index + 1}
               </Button>
           );
@@ -121,12 +121,12 @@ export default class Pager extends React.Component<ITableFooterProps, {}>{
                   if (numberOfPages !== 1) {
                       return (
                           <Toolbar flex textCenter flush block noRadius className={props.className}>
-                              <Button block size="small" disabled={currentPage === 0} tabIndex={-1} onClick={firstPage} icon="fast-backward"></Button>
-                              <Button block size="small" disabled={currentPage === 0} tabIndex={-1} onClick={previousPage} icon="step-backward"></Button>
+                              <Button simple block size="small" disabled={currentPage === 0} tabIndex={-1} onClick={firstPage} icon="fast-backward"></Button>
+                              <Button simple block size="small" disabled={currentPage === 0} tabIndex={-1} onClick={previousPage} icon="step-backward"></Button>
                               {this.renderPager(currentPage, numberOfPages, pagerSize ? pagerSize : 5) }
-                              <Button block size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
-                              <Button block size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages) } icon="fast-forward"></Button>
-                              {hidePageSize ? null : <Dropdown block hideHeader hideDropdownHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} /> }
+                              <Button simple block size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={nextPage} icon="step-forward"></Button>
+                              <Button simple block size="small" disabled={currentPage === numberOfPages - 1} tabIndex={-1} onClick={this.lastPage.bind(this, numberOfPages) } icon="fast-forward"></Button>
+                              {hidePageSize ? null : <Dropdown simple block hideHeader hideDropdownHeader rowIsSelectable="single" onChange={this.onSelected.bind(this) } material size="small" title={"Page Size " + pageSize} pageSizerOptions={pageSizerOptions} dataSource={pageSizerOptions || ['5', '10', '15']} /> }
                           </Toolbar>
                       )
                   } else return null
