@@ -24,6 +24,7 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
         
         return (
             <td 
+                onClick={!detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null} 
                 className="r-Table__DetailTd" 
                 width={25}>
                 {filterOpenDetailTemplate? 
@@ -32,16 +33,15 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
                         tabIndex={-1} 
                         simple 
                         size="small" 
-                        onClick={!detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null} 
-                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'minus' : 'plus'} 
+                        
+                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-up'} 
                     /> 
                     : null : 
                      <Button 
                         tabIndex={-1} 
                         simple 
-                        size="small" 
-                        onClick={!detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null} 
-                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'minus' : 'plus'} 
+                        size="small"  
+                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-up'} 
                     />
                 }
             </td>

@@ -93,11 +93,14 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
 
     return(
       <div tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={this.state.slideInContainerStyle}>
-            {props.onClose ?
-                <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
-                    <Button simple size="small" className="pull-right" onClick={props.onClose} icon="times" />
-                </Toolbar>
-                : null}
+            {props.title || props.onClose ? <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
+                {props.title ?
+                    <Button simple size="small">{this.props.title}</Button>
+                    : null}
+                {props.onClose ?
+                        <Button simple size="small" right onClick={props.onClose} icon="times" />
+                    : null}
+            </Toolbar> : null}
             {props.children}
       </div>
     );

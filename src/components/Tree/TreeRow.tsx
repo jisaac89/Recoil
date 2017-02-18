@@ -442,7 +442,7 @@ export default class Table extends React.Component<ITableProps, ITableState>{
 
     previousPage() {
         this.setState({
-            page: this.state.page -= 1
+            page: this.state.page - 1
         }, () => {
             this.renderActiveRows(this.state.dataSource);
         })
@@ -451,7 +451,7 @@ export default class Table extends React.Component<ITableProps, ITableState>{
 
     nextPage() {
         this.setState({
-            page: this.state.page += 1
+            page: this.state.page + 1
         }, () => {
             this.renderActiveRows(this.state.dataSource);
             this.props.onPageChange ? this.props.onPageChange(this.state.page) : null

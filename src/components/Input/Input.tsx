@@ -240,8 +240,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       autoComplete: props.autoComplete,
       name:props.name,
       ref:'refInput',
-      onInput:this.focus.bind(this),
-      onChange:this.onChange.bind(this),
+      onChange:this.focus.bind(this),
+      onInput:this.onChange.bind(this),
       onBlur:this.blur.bind(this) ,
       onFocus:this.focus.bind(this),
       placeholder:!props.advanced? props.title? props.title : props.placeholder: props.placeholder

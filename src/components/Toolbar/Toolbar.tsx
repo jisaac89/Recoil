@@ -59,7 +59,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       {'no-border': (props.noBorder)},
       props.className,
       { 'tabs': (props.tabs) },
-      { 'flex': (props.flex) },
+      { 'e-flex-row': (props.flex) },
       { 'breadcrumbs': (props.breadcrumbs) },
       {'disabled': (props.disabled)},
       props.size,

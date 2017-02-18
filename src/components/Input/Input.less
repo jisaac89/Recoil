@@ -352,8 +352,11 @@ input{
 }
 
 .r-Input__container.e-required{
-  border: 1px dashed @error-background !important;  
+  border: 1px dashed @error-background !important; 
+  border-radius : @default-border-radius;
 }
+
+
 
 .r-Input__container.e-disabled{
     cursor: not-allowed;
@@ -375,3 +378,7 @@ input{
 ::-moz-placeholder { text-transform:capitalize !important; } /* firefox 19+ */
 :-ms-input-placeholder { text-transform:capitalize !important; } /* ie */
 input:-moz-placeholder { text-transform:capitalize !important; }
+
+.r-Input__container.e-required > input{
+    border: 1px solid transparent !important;
+}

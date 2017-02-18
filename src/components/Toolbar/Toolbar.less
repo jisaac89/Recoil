@@ -83,6 +83,7 @@
 
 .r-Toolbar.vertical.spacing > .r-Button,
 .r-Toolbar.vertical.spacing > .r-Dropdown,
+.r-Toolbar.vertical.spacing > .r-Open.e-open,
 .r-Toolbar.vertical.spacing > .r-Emerge > .r-Button{
   margin-bottom:10px;
 }
@@ -320,6 +321,7 @@
 .r-Toolbar.vertical > h2,
 .r-Toolbar.vertical > h3,
 .r-Toolbar.vertical > h4,
+.r-Toolbar.vertical > .r-Open.e-open > h4,
 .r-Toolbar.vertical > h5,
 .r-Toolbar.vertical > h6 {
     margin: 10px 0;
@@ -353,3 +355,10 @@
 /*.e-form h4 + *{
     margin-bottom:10px !important;
 }*/
+
+.r-Toolbar.e-flex-row{
+    flex-direction:row !important;
+}
+.r-Toolbar.e-flex-row > *{
+    -ms-flex: 1 1 auto;
+}

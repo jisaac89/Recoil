@@ -41,6 +41,11 @@ export default class Tree extends React.Component<ITreeProps, any>{
   }
   componentWillReceiveProps(nextProps) {
 
+
+      if (nextProps.dataSource.length !== this.props.dataSource.length) {
+          this.initArray(nextProps.dataSource);
+      }
+
       if (nextProps.selectedElements && nextProps.selectedElements.length > 0) {
           this.openSelectedElements(nextProps.selectedElements);
       }

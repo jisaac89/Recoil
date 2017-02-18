@@ -83,6 +83,7 @@ export default class Notifications extends React.Component<INotificationsProps, 
 
         let notificationClass = classNames(
             'r-Notifications',
+            'dblock',
             className
         );
 
