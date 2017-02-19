@@ -2,9 +2,7 @@
 
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
-import Input from '../Input/Input';
 
 import Months from './Months';
 import DaysHeader from './DaysHeader';
@@ -37,7 +35,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         };
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps:ICalendarProps) {
         if(nextProps.date !== this.props.date){
             this.setState({
                 date: nextProps.date,
@@ -53,9 +51,10 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
-    selectMonth = (month, index) => {
+    selectMonth = (month: number) => {
+        console.log(month);
         this.setState({
-            month: index + 1
+            month: month + 1
         });
     }
 
@@ -71,7 +70,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
-    selectYear = (year) => {
+    selectYear = (year: number) => {
         this.setState({
             year: Number(year)
         });
@@ -83,7 +82,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
-    selectDay(day) {
+    selectDay(day: any) {
         if (this.props.onSelect) {
             this.props.onSelect(day);
         }
@@ -123,14 +122,13 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         return weeks;
     }
 
-    render() {
+    render(): JSX.Element {
 
         const self = this;
 
         let {year, month, date} = self.state;
 
-        let week = this.getWeeks(year, month),
-            Jan = this.getWeeks(year, 1),
+        let Jan = this.getWeeks(year, 1),
             Feb = this.getWeeks(year, 2),
             Mar = this.getWeeks(year, 3),
             Apr = this.getWeeks(year, 4),

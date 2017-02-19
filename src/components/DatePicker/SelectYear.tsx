@@ -5,8 +5,6 @@ import Dropdown from '../Dropdown/Dropdown';
 export default class SelectYear extends React.Component<any, any> {
     render() {
 
-        const self = this;
-
         let {year, selectYear} = this.props;
 
         return (
@@ -28,24 +26,20 @@ export default class SelectYear extends React.Component<any, any> {
 }
 
 
-function availableYears (year) {
-
-    let currentYear = year;
-    let index = 0;
-    let availableYearsArray = [];
+function availableYears (year: number) {
+    let availableYearsArray: Array<any> = [];
     let startYear = year - 2;
     let endYear = year + 100;
 
-    function recursion(start, end) {
+    function recursion(start: number, end : number) : any {
         let currentYear = start;
         let endYear = end;
         if (currentYear < endYear){
             availableYearsArray.push(currentYear);
             recursion(currentYear + 1, endYear);
         } else {
-            return null;
+            return false;
         }
-         
     }
 
     recursion(startYear, endYear);

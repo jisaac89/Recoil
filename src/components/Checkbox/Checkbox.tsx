@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 import * as classNames from 'classnames';
@@ -22,7 +21,7 @@ export interface ICheckboxState {
 }
 
 export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState>{
-  constructor(props) {
+  constructor(props : ICheckboxProps) {
     super(props);
     this.state = {
       checked: props.checked || false
@@ -49,7 +48,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     })
   }
   
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps : ICheckboxProps){
     this.setState({
       checked : nextProps.checked !== this.state.checked ? nextProps.checked : this.state.checked
     })

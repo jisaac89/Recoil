@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './SlideIn.less';
 
-import Layer from '../Layer/Layer';
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 
@@ -15,10 +14,8 @@ export interface ISlideInProps {
   onClick? : () => void;
   children? : Array<any>;
   fixed ? : boolean;
-
   beforeOpen ? : () => void;
   afterOpen ? : () => void;
-
   title? : any;
   icon? : any;
   onClose?: any;
@@ -28,7 +25,7 @@ export interface ISlideInProps {
 
 export default class SlideIn extends React.Component<ISlideInProps, any>{
   
-  constructor(props){
+  constructor(props : ISlideInProps){
     super(props);
     this.state = {
      offset: props.offset || 0,
@@ -38,7 +35,7 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps : ISlideInProps) {
     nextProps.if ? this.open() : this.close();
   }
 
@@ -79,7 +76,7 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
   render() {
     const self = this;
     const props = self.props;
-    let {fill, fixed, mobile,flex} = props;
+    let {fill, fixed,flex} = props;
 
     let slideInContainerClass = classNames(
       'r-SlideIn',

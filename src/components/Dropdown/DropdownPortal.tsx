@@ -1,15 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 import * as ReactDOM from 'react-dom';
-
-import SlideIn from '../SlideIn/SlideIn';
-
-import Selectable from '../Selectable/Selectable';
-import Input from '../Input/Input';
-import Button from '../Button/Button';
-import Layer from '../Layer/Layer';
-import Portal from '../Portal/Portal';
-import Toolbar from '../Toolbar/Toolbar';
 
 
 import DropdownContent from './DropdownContent';
@@ -18,9 +8,9 @@ import './Dropdown.less';
 
 export default class DropdownPortal extends React.Component<any, any>{
 
-    portalElement = null;
+    portalElement : HTMLElement = null;
 
-    constructor(props) {
+    constructor(props :any) {
         super(props);
         this.state = {
             position: null
@@ -139,5 +129,5 @@ export default class DropdownPortal extends React.Component<any, any>{
                 {...dropdownContentProps}
              />, this.portalElement);
     }
-    render() { return null }
+    render() : JSX.Element { return null }
 }

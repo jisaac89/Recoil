@@ -14,7 +14,7 @@ export interface IRecoilProps {
     onMobile? : any;
 }
 
-function delegate(el, evt, sel, handler) {
+function delegate(el : HTMLElement, evt : any, sel : any, handler : any) {
     el.addEventListener(evt, function (event) {
         var t = event.target;
         while (t && t !== this) {
@@ -30,7 +30,7 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 
     refs: any;
 
-    constructor(props) {
+    constructor(props : IRecoilProps) {
         super(props);
         this.state = {
             inputIsFocused: false,
@@ -49,19 +49,19 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
             this.state.mobile ? this.props.onMobile ? this.props.onMobile(this.state.mobile) : null : null
         })
     }
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: IRecoilProps) {
         this.isMobile(nextProps.mobile);
     }
-    isMobile(mobile) {
+    isMobile(mobile : boolean) {
         const self = this;
         if (mobile) {
             
-            delegate(self.refs.Recoil, "focusin", "input", function (event) {
+            delegate(self.refs.Recoil, "focusin", "input", function () {
                 self.setState({
                     inputIsFocused: true
                 })
             });
-            delegate(self.refs.Recoil, "focusout", "input", function (event) {
+            delegate(self.refs.Recoil, "focusout", "input", function () {
                 self.setState({
                     inputIsFocused: false
                 })
@@ -72,8 +72,6 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 
         const self = this;
         const props = self.props;
-
-        let {nightmode, className} = props;
 
         let RecoilClass = classNames(
             'r-Recoil',

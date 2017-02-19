@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 import TableRow from './TableRow';
 import TableDetail from './TableDetail';
@@ -67,7 +66,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
             filterOpenDetailTemplate
         } = props;
 
-        let columnArray = [];
+        let columnArray : Array<any> = [];
         let key;
 
         if (dataSource instanceof Array) {

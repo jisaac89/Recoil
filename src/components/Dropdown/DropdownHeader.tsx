@@ -1,14 +1,5 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
-import * as ReactDOM from 'react-dom';
-
-import SlideIn from '../SlideIn/SlideIn';
-
-import Selectable from '../Selectable/Selectable';
-import Input from '../Input/Input';
 import Button from '../Button/Button';
-import Layer from '../Layer/Layer';
-import Portal from '../Portal/Portal';
 import Toolbar from '../Toolbar/Toolbar';
 
 import './Dropdown.less';

@@ -3,9 +3,7 @@ import * as React from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 
 export default class SelectMonth extends React.Component<any, any> {
-    render() {
-
-        const self = this;
+    render() : JSX.Element {
 
         let {month, selectMonth, monthNames} = this.props;
 

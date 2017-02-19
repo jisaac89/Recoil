@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 
@@ -29,7 +28,7 @@ export default class ModalHeader extends React.Component<any, any>{
     }
     render() {
         let props = this.props;
-        let {open, fullScreen, onClose, hideFullScreen, hideCloseButton} = props;
+        let {open, hideCloseButton} = props;
 
         if (open && !hideCloseButton && !hideCloseButton) {
             return (

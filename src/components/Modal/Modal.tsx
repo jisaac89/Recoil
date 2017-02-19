@@ -1,7 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import Button from '../Button/Button';
-import Layer from '../Layer/Layer';
 import Portal from '../Portal/Portal';
 import './Modal.less';
 
@@ -19,7 +17,6 @@ export interface IModalProps {
     title?: string;
     onClose?: any;
     children?: any;
-
     beforeOpen?: any;
     afterOpen?: any;
     mobile?: boolean;
@@ -47,7 +44,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
         Modal: (HTMLInputElement);
     }
 
-    constructor(props) {
+    constructor(props : IModalProps) {
         super(props);
         this.state = {
             fullScreen: props.fullScreen || false,
@@ -60,7 +57,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
         this.props.open ? this.open() : this.close();
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps : IModalProps) {
         nextProps.open ? this.open() : this.close();
     }
  
@@ -113,10 +110,6 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
 
         const self = this;
         const props = self.props;
-
-        let iconPartial;
-        let fullScreenPartial;
-        //let body = document.querySelectorAll('body')[0];
 
         let modalWrapperClass = classNames(
             'r-Modal',

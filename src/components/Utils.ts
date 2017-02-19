@@ -1,6 +1,6 @@
 // simple flat search
 
-export function branchIn(value, key, step?: number) {
+export function branchIn(value : Array<any>, key : string, step?: number) : any {
 
     let result = key.split('.'),
         stepLength = result.length,
@@ -15,44 +15,38 @@ export function branchIn(value, key, step?: number) {
 
 }
 
-export function setValue(object, key, value, step?: number, currentBranch? : any, evalString?: any) {
+// export function setValue(object : Array<any>, key : string, value , step?: number, currentBranch? : any, evalString?: any) : any {
 
-    let currentEvalString = evalString || '';
+//     let currentEvalString = evalString || '';
 
-    let result = key.split('.'),
-        stepLength = result.length,
-        currentStep = step || 0,
-        currentValue = currentBranch ? currentBranch[result[currentStep]] : object[result[currentStep]];
+//     let result = key.split('.'),
+//         stepLength = result.length,
+//         currentStep = step || 0,
+//         currentValue = currentBranch ? currentBranch[result[currentStep]] : object[result[currentStep]];
 
-    if (currentStep !== stepLength - 1) {
+//     if (currentStep !== stepLength - 1) {
 
         
-        if (currentStep === 0) {
-            currentEvalString += "object['" + result[currentStep] + "']";
-        } else {
-            currentEvalString += "['" + result[currentStep] + "']";
-        }
-        return setValue(object, key, value, currentStep + 1, currentValue, currentEvalString);
-    } else {
-        let a = value;
-        eval(currentEvalString + " = " + a);
+//         if (currentStep === 0) {
+//             currentEvalString += "object['" + result[currentStep] + "']";
+//         } else {
+//             currentEvalString += "['" + result[currentStep] + "']";
+//         }
+//         return setValue(object, key, value, currentStep + 1, currentValue, currentEvalString);
+//     } else {
+//         let a = value;
+//         eval(currentEvalString + " = " + a);
 
-        return object;
-    }
+//         return object;
+//     }
 
-}
+// }
 
-export function search(dataSource, term, keys) {
-
-    let queryResult = [];
-
-
-
+export function search(dataSource: Array<any>, term: string, keys: Array<any>) {
+    let queryResult : Array<any> = [];
     if (term.length > 0) {
         dataSource.forEach(function (item) {
             keys.forEach((key, index) => {
-                
-
                 if (branchIn(item, key) ? branchIn(item, key).toString().toLowerCase().indexOf(term.toString().toLowerCase()) != -1 : false) {
                     if (queryResult[index] !== item) {
                         queryResult.push(item);
@@ -61,11 +55,10 @@ export function search(dataSource, term, keys) {
             });
         });
     }
-
     return queryResult;
 }
 
-export function isType(value) {
+export function isType(value: any) {
     var type;
 
     if (value instanceof Array) {
@@ -87,7 +80,7 @@ export function isType(value) {
     return type;
 }
 
-export function getType(value) {
+export function getType(value : any) {
     var type = typeof value;
     if (type === 'object' && value instanceof Array) {
         type = 'array';
@@ -95,7 +88,7 @@ export function getType(value) {
     return type;
 }
 
-export function arraysEqual(arr1, arr2) {
+export function arraysEqual(arr1 : any, arr2 : any) {
     if (arr1.length !== arr2.length)
         return false;
     for (var i = arr1.length; i--;) {

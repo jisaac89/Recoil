@@ -3,8 +3,6 @@ import * as classNames from 'classnames';
 
 import './Table.less';
 
-import {arraysEqual, search, branchIn} from '../Utils';
-
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
@@ -110,7 +108,6 @@ class Table extends React.Component<ITableProps, ITableState>{
             filterRow,
             contentMaxHeight,
             menuTemplate,
-            focusOnMount,
             detailTemplate,
             showDataSourceLength,
             onSort,
@@ -148,7 +145,6 @@ class Table extends React.Component<ITableProps, ITableState>{
             detailTemplateToggleSelectedElements,
             changePageSize,
             toggleSorting,
-            filteredItems,
             filterItems,
             detailTemplateToggleAll,
             searchTerm,

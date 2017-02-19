@@ -30,14 +30,14 @@ export default class Wizard extends React.Component<IWizardProps, any>{
   public static defaultProps = {
     slideIndex: 0
   }
-  constructor(props) {
+  constructor(props : IWizardProps) {
     super(props);
     this.state = {
       slideIndex : props.slideIndex || 0
     }
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps: IWizardProps){
     if(nextProps.slideIndex !== this.state.slideIndex){
       this.gotoSlideIndex(nextProps.slideIndex);
     }
@@ -62,7 +62,7 @@ export default class Wizard extends React.Component<IWizardProps, any>{
       {'e-overflow': (props.overflow)}
     );
 
-    let createSlidesPartial = (item, index) => {
+    let createSlidesPartial = (item : Array<any>, index : string | number) => {
 
       let selected = state.slideIndex === index;
       let forward = index === state.slideIndex + 1;

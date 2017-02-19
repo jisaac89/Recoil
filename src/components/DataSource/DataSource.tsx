@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 import {arraysEqual, search, branchIn} from '../Utils';
 
@@ -11,10 +10,10 @@ export interface IDataSourceProps extends ITableProps {
     columns?: Array<any>;
 }
 
-const DataSource : any = (Component) =>
+const DataSource : any = (Component : JSX.Element) =>
     class Enhance extends React.Component<IDataSourceProps, any> {
 
-        constructor(props) {
+        constructor(props : IDataSourceProps) {
             super(props);
 
             this.state = {
@@ -41,9 +40,9 @@ const DataSource : any = (Component) =>
             }
         }
 
-        componentWillReceiveProps(nextProps) {
+        componentWillReceiveProps(nextProps : IDataSourceProps) {
 
-            let {dataSource, sortable, sortKey} = nextProps;
+            let {dataSource, sortKey} = nextProps;
 
             this.setState({
                 page: nextProps.page !== this.props.page ? nextProps.page : this.state.page,
@@ -85,7 +84,7 @@ const DataSource : any = (Component) =>
             dataSource.length ? self.loadDataSource(dataSource) : null;
         }
 
-        loadDataSource(dataSource) {
+        loadDataSource(dataSource : Array<any>) {
             const self = this;
 
             let dataSourceIsObject = typeof dataSource === 'object';
@@ -97,7 +96,7 @@ const DataSource : any = (Component) =>
             let {sortType} = this.state;
 
 
-            let setDataSourceState = (dataSource, isArray) => {
+            let setDataSourceState = (dataSource : Array<any>, isArray : boolean) => {
                 updatedDataSource = dataSource;
                 self.setState({
                     dataSource: dataSource,
@@ -116,7 +115,7 @@ const DataSource : any = (Component) =>
 
             if (dataSourceIsArray) {
                 if (dataSourceIsArrayOfStingsOrNumbers) {
-                    let newDataSource = [];
+                    let newDataSource: Array<any> = [];
 
                     dataSource.forEach(element => {
                         newDataSource.push(element)
@@ -134,15 +133,15 @@ const DataSource : any = (Component) =>
             }
         }
 
-        sortDataSource(dataSource, sortType, sortKey) {
+        sortDataSource(dataSource: Array<any>, sortType: string, sortKey: string) {
             const self = this;
 
             let {searchedItems, searchTerm} = self.state;
 
-            let sortOrderSearchedItems;
-            let sortOrderDataSource;
+            let sortOrderSearchedItems: Array<any>;
+            let sortOrderDataSource: Array<any>;
 
-            let sort = (dataSource) => {
+            let sort = (dataSource: Array<any>) => {
                 return dataSource.sort(function (a, b) {
                     let aKey = branchIn(a, sortKey);
                     let bKey = branchIn(b, sortKey);
@@ -158,7 +157,9 @@ const DataSource : any = (Component) =>
                         case ('number'):
                             return aKey - bKey;
                         default:
+                            return null;
                     }
+                    return null;
                 })
             }
 
@@ -187,7 +188,7 @@ const DataSource : any = (Component) =>
 
         }
 
-        defineColumns(dataSource) {
+        defineColumns(dataSource: Array<any>) {
             const self = this;
             const props = self.props;
             let state = self.state;
@@ -195,7 +196,7 @@ const DataSource : any = (Component) =>
             let {columns} = props;
             let {isArray} = state;
 
-            let columnsArray;
+            let columnsArray: Array<any>;
 
             // columns are defined
             if (columns) {
@@ -219,12 +220,12 @@ const DataSource : any = (Component) =>
             })
         }
 
-        renderActiveRows(dataSource) {
+        renderActiveRows(dataSource: Array<any>) {
             const self = this;
             const props = self.props;
             let {rowCount} = props;
 
-            let activeRows = [];
+            let activeRows : Array<any> = [];
 
             let numberPerPage, numberOfPages, renderedPage;
 
@@ -253,7 +254,7 @@ const DataSource : any = (Component) =>
             let end = begin + parseInt(numberPerPage);
             let pageList = renderedPage.slice(begin, end);
 
-            pageList.map((item, index) => {
+            pageList.map((item: Array<any>) => {
                 activeRows.push(item);
             })
 
@@ -262,7 +263,7 @@ const DataSource : any = (Component) =>
             });
         }
 
-        detailTemplateToggleAll(dataSource) {
+        detailTemplateToggleAll(dataSource: Array<any>) {
             let {detailTemplateSelectedElements} = this.state;
 
             this.setState({
@@ -270,14 +271,14 @@ const DataSource : any = (Component) =>
             })
         }
 
-        detailTemplateToggleSelectedElements(element) {
+        detailTemplateToggleSelectedElements(element: Array<any>) {
             const self = this;
             let {detailTemplateOpenOnRowSelect, selectedKey} = this.props;
             let {detailTemplateSelectedElements} = self.state;
 
-            let selectedElementsArray;
+            let selectedElementsArray: any;
 
-            let setSelectedElementsState = (data) => {
+            let setSelectedElementsState = (data: Array<any>) => {
                 self.setState({
                     detailTemplateSelectedElements: data
                 })
@@ -290,7 +291,7 @@ const DataSource : any = (Component) =>
             }
 
             if (selectedElementsArray.includes(selectedKey ? element[selectedKey] : element)) {
-                selectedElementsArray.map((data, key) => {
+                selectedElementsArray.map((data: string, key : string | number) => {
                     if (data === selectedKey ? element[selectedKey] : element) {
                         selectedElementsArray.splice(key, 1);
                         setSelectedElementsState(selectedElementsArray)
@@ -309,7 +310,7 @@ const DataSource : any = (Component) =>
             }
         }
 
-        selectAll(dataSource) {
+        selectAll(dataSource: Array<any>) {
             let {selectedElements} = this.state;
 
             this.setState({
@@ -317,12 +318,12 @@ const DataSource : any = (Component) =>
             })
         }
 
-        toggleSelectedElements(element, index, id) {
+        toggleSelectedElements(element: Array<any>, index: string | number) {
             const self = this;
             let {selectedElements} = self.state;
             let {rowIsSelectable, onCheck, selectedKey} = self.props;
             let selectedElement = selectedKey ? element[selectedKey] : element;
-            let selectedElementsArray;
+            let selectedElementsArray: any;
 
             if (rowIsSelectable === 'single') {
                 selectedElementsArray = [];
@@ -383,7 +384,7 @@ const DataSource : any = (Component) =>
 
         }
 
-        lastPage(numberOfPages) {
+        lastPage(numberOfPages : number) {
             this.setState({
                 page: numberOfPages - 1
             }, () => {
@@ -392,7 +393,7 @@ const DataSource : any = (Component) =>
             this.props.onPageChange ? this.props.onPageChange(numberOfPages - 1) : null
         }
 
-        gotoPage(i) {
+        gotoPage(i : number) {
             this.setState({
                 page: i,
                 pageSize: this.state.pageSize,
@@ -401,7 +402,7 @@ const DataSource : any = (Component) =>
             })
         }
 
-        changePageSize(pageSize) {
+        changePageSize(pageSize : any) {
             this.setState({
                 pageSize: pageSize,
                 page: 0
@@ -412,7 +413,7 @@ const DataSource : any = (Component) =>
             this.props.onPageSizeChange ? this.props.onPageSizeChange(pageSize) : null;
         }
 
-        sortCollection(dataSource, key, sortType) {
+        sortCollection(dataSource: Array<any>, key: string, sortType : string) {
             const self = this;
 
             let sortKey = this.props.sortKey ? this.props.sortKey : key;
@@ -421,16 +422,16 @@ const DataSource : any = (Component) =>
                 sortKey: sortKey,
                 sortType: sortType
             }, () => {
-                self.sortDataSource(this.state.dataSource, sortType, sortKey);
+                self.sortDataSource(dataSource, sortType, sortKey);
             })
         }
 
-        toggleSorting(dataSource, key, sortType) {
+        toggleSorting(dataSource: Array<any>, key: string, sortType: string) {
             const self = this;
             self.sortCollection(dataSource, key, sortType);
         }
 
-        filterItems(term, keys) {
+        filterItems(term: string, keys: Array<any>) {
             const self = this;
             let state = self.state;
 
@@ -448,10 +449,7 @@ const DataSource : any = (Component) =>
 
             const self = this;
             const props = self.props;
-            let {selectedKey, onSort, rowCount, detailTemplateOpenOnRowSelect, onPageChange, rowIsSelectable, pageSizerOptions} = props;
-            let {sortType, sortKey, columns, page, pageSize, detailTemplateSelectedElements, selectedElements, isArray, numberOfPages, numberPerPage, dataSource, activeRows} = self.state;
-
-            let nothingMatchesSearchCriteria = self.state.searchTerm !== '' && activeRows.length === 0;
+            let {columns, dataSource, activeRows} = self.state;
 
             let renderedObject = {
                 // methods

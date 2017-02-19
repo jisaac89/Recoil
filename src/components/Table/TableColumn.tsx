@@ -1,7 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
-
-import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import {IColumn} from './IColumn';
 

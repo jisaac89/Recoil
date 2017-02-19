@@ -1,13 +1,8 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import * as classNames from 'classnames';
 import './Stepper.less';
-import Layer from '../Layer/Layer';
 
 import Align from '../Align/Align';
 import Shrink from '../Shrink/Shrink';
-
-import Button from '../Button/Button';
 
 export interface IStepperProps {
     title?: string;
@@ -24,16 +19,10 @@ class Stepper extends React.Component<IStepperProps, any>{
   render(){
      const self = this;
      const props = self.props;
-     const state = self.state;
 
-     let stepperClass = classNames(
-        'r-Stepper',
-        props.className
-     );
+     let itemArray : Array<any> = [];
 
-     let itemArray = [];
-
-     let createList = (item, index) => {
+     let createList = (item : Array<any>, index: string | number) => {
          if (index === props.children.length -1) {
              itemArray.push(
                  <Shrink key={index} opacity={50} scale={1} if={index > props.stepIndex}>

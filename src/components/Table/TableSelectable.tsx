@@ -1,8 +1,5 @@
 import * as React from 'react';
-
 import Selectable from '../Selectable/Selectable';
-
-import {IColumn} from './IColumn';
 
 export interface ITableColumnSelectableProps {
     columns?: any;

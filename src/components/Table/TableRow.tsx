@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 import TableColumn from './TableColumn';
 import Button from '../Button/Button';
@@ -9,7 +8,7 @@ import {IColumn} from './IColumn';
 import {branchIn} from '../Utils';
 
 class DetailTemplateColumnToggle extends React.Component<any,any>{
-    detailTemplateToggleSelectedElements(element) {
+    detailTemplateToggleSelectedElements(element : Array<any>) {
         this.props.detailTemplateToggleSelectedElements(element);
     }
     render() {
@@ -50,7 +49,7 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
 };
 
 class CheckboxColumn extends React.Component<any,any>{
-    toggleSelectedElements(element) {
+    toggleSelectedElements(element: Array<any>) {
         this.props.toggleSelectedElements(element);
     }
     render() {
@@ -72,9 +71,9 @@ export interface ITableColumnProps {
     selectedElements?: any;
     checkable?: boolean;
     hideColumns?: Array<any>;
-    onRowSelect?: (element: any, index: number, event?: React.MouseEvent<any>) => void;
+    onRowSelect?: (element: any, index: number | string, event?: React.MouseEvent<any>) => void;
     selectedKey?: string;
-    index ?: number;
+    index ?: number | string;
     isArray: boolean;
     detailTemplateOpenOnRowSelect?: boolean | "single";
     detailTemplate?: (element: any) => JSX.Element;
@@ -88,13 +87,13 @@ export interface ITableColumnProps {
 
 export default class TableRow extends React.Component<ITableColumnProps,any>{
 
-    toggleSelectedElements(element, index) {
+    toggleSelectedElements(element: Array<any>, index: string | number) {
         this.props.rowIsSelectable ? this.props.toggleSelectedElements(element, index) : null;
         !this.props.rowIsSelectable && this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
         this.props.detailTemplateOpenOnRowSelect ? this.props.detailTemplateToggleSelectedElements(element) : null;
     }
 
-    onRowSelect(element, index) {
+    onRowSelect(element: Array<any>, index: string | number) {
         this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
         this.props.detailTemplateOpenOnRowSelect ? this.props.detailTemplateToggleSelectedElements(element) : null;
     }
@@ -107,17 +106,14 @@ export default class TableRow extends React.Component<ITableColumnProps,any>{
         let {
             element, 
             columns,
-            id,
             detailTemplate, 
             detailTemplateToggleSelectedElements, 
             detailTemplateSelectedElements,
             detailTemplateHideToggle,
-            
             toggleSelectedElements,
             selectedElements,
             rowIsSelectable,
             hideColumns,
-            
             checkable,
             onRowSelect,
             isArray,
@@ -135,7 +131,7 @@ export default class TableRow extends React.Component<ITableColumnProps,any>{
             columnsValueArray.push(key ? branchIn(element, key) : element[key]);
         }
 
-        let createColumnValue = (value, key) => {
+        let createColumnValue = (value : Array<any>, key : string | number) => {
             return (
                 <TableColumn isArray={isArray} hideColumns={hideColumns} element={element} key={key} value={value} column={columns[key]} />
             )

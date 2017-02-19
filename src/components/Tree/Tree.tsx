@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 import './Tree.less';
 import Table from '../Table/Table';
@@ -23,7 +22,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
       uniqueKey: 'Id'
   };
 
-  constructor(props) {
+  constructor(props : ITreeProps) {
     super(props);
     this.state = {
       newArray : [], 
@@ -39,7 +38,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
           this.openSelectedElements(this.props.selectedElements);
       }
   }
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps : ITreeProps) {
 
 
       if (nextProps.dataSource.length !== this.props.dataSource.length) {
@@ -50,12 +49,12 @@ export default class Tree extends React.Component<ITreeProps, any>{
           this.openSelectedElements(nextProps.selectedElements);
       }
   }
-  initArray(dataSource) {
-    let {columns, parentKey, uniqueKey} = this.props;
-    let newArray = [];
+  initArray(dataSource : Array<any>) {
+    let {parentKey, uniqueKey} = this.props;
+    let newArray : Array<any> = [];
     let map = {}
 
-    let createNodeTree = (item, index) =>{
+    let createNodeTree = (item : Array<any>, index : string | number) =>{
       newArray.push({
         item: item,
         Id: item[uniqueKey],
@@ -77,7 +76,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
     })
   }
   updateRoots(){
-    let {columns, parentKey, uniqueKey} = this.props;
+
     let newArray = this.state.newArray;
     let map = this.state.map;
     let roots = [];
@@ -95,14 +94,14 @@ export default class Tree extends React.Component<ITreeProps, any>{
     });
 
   }
-  openSelectedElements(selectedElements) {
+  openSelectedElements(selectedElements : Array<any>) {
       let newArray = this.state.newArray;
-      let openedKeys = [];
+      let openedKeys : Array<any> = [];
 
-      let gotoParentAndPushKey = (selectedKeyIndex, node ? : any) => {
+      let gotoParentAndPushKey = (selectedKeyIndex : any, node ? : any) : any => {
           let currentSelectedKeyIndex = selectedKeyIndex || 0; 
 
-          let currentNode = node || newArray.filter(function (node) {
+          let currentNode = node || newArray.filter(function (node : any) {
               return node.Id === selectedElements[selectedKeyIndex];
           })
 
@@ -111,7 +110,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
           if (theNode && theNode.parentId !== 0) {
               openedKeys.push(theNode.parentId); 
 
-              let parentNode = newArray.filter(function (node) {
+              let parentNode = newArray.filter(function (node : any) {
                   return node.Id === theNode.parentId;
               })
 
@@ -132,14 +131,14 @@ export default class Tree extends React.Component<ITreeProps, any>{
 
   }
 
-  openedElements(selectedElements) {
+  openedElements(selectedElements : Array<any>) {
       let newArray = this.state.newArray;
-      let openedKeys = [];
+      let openedKeys : Array<any> = [];
 
-      let gotoParentAndPushKey = (selectedKeyIndex, node?: any) => {
+      let gotoParentAndPushKey = (selectedKeyIndex : any, node?: any) : any => {
           let currentSelectedKeyIndex = selectedKeyIndex || 0;
 
-          let currentNode = node || newArray.filter(function (node) {
+          let currentNode = node || newArray.filter(function (node : any) {
               return node.Id === selectedElements[selectedKeyIndex];
           })
 
@@ -148,7 +147,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
           if (theNode && theNode.parentId !== 0) {
               openedKeys.push(theNode.parentId);
 
-              let parentNode = newArray.filter(function (node) {
+              let parentNode = newArray.filter(function (node : any) {
                   return node.Id === theNode.parentId;
               })
 
@@ -169,8 +168,8 @@ export default class Tree extends React.Component<ITreeProps, any>{
 
   }
 
-  renderChildren(childNode) {
-      let {columns, parentKey, uniqueKey, filterOpenDetailTemplate, openedElements, selectedElements, onRowSelect} = this.props;
+  renderChildren(childNode: any) {
+      let {columns, uniqueKey, filterOpenDetailTemplate, openedElements} = this.props;
       return (
         <Table 
           hideHeader 
@@ -191,7 +190,7 @@ export default class Tree extends React.Component<ITreeProps, any>{
   render() {
     const self = this;
     const props = self.props;
-    let {dataSource, columns, selectedElements, openedElements, uniqueKey, filterOpenDetailTemplate, onRowSelect} = props;
+    let {columns, openedElements, uniqueKey, filterOpenDetailTemplate} = props;
     let state = self.state;
     let {roots} = state;
 

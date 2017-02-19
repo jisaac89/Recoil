@@ -36,19 +36,6 @@ export default class Emerge extends React.Component<IEmergeProps, {}> {
         {'floshow': (props.overflow)}
       );
 
-      let itemClass = classNames(
-        'r-Emerge',
-        {'e-enter' : (props.if)}
-      );
-
-      let createItems = (item, index) => {
-        return (
-          <div className={itemClass} style={{animationDelay  : ((index+1)*props.delay)+'ms'}} key={index}>
-            {item}
-          </div>
-        );
-      };
-
       let newChildren = React.Children.map(this.props.children, (child : any) => {
         let exit, enter;
 
@@ -72,11 +59,11 @@ export default class Emerge extends React.Component<IEmergeProps, {}> {
           child.props.className
         );
 
-        let newStyle = {
+        let newStyle : any = {
           animationDelay  : ((index++)*props.delay)+'ms'
         };
 
-        function merge_options(obj1,obj2){
+        function merge_options(obj1 : Array<any>,obj2 : Array<any>){
             let obj3 = {};
             for (let attrname in obj1) { obj3[attrname] = obj1[attrname]; }
             for (let attrname in obj2) { obj3[attrname] = obj2[attrname]; }

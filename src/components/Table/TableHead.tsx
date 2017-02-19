@@ -1,15 +1,12 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 import {arraysEqual} from '../Utils';
 
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 
-import {IColumn} from './IColumn';
-
 class DetailTemplateHeadToggle extends React.Component<any, any>{
-    detailTemplateToggleAll(dataSource) {
+    detailTemplateToggleAll(dataSource :Array<any>) {
         this.props.detailTemplateToggleAll(dataSource);
     }
     render(){
@@ -23,7 +20,7 @@ class DetailTemplateHeadToggle extends React.Component<any, any>{
 }
 
 class CheckboxHead extends React.Component<any,any>{
-    selectAll(dataSource) {
+    selectAll(dataSource : Array<any>) {
         this.props.selectAll(dataSource);
     }
     render() {
@@ -43,7 +40,6 @@ export interface ITableHeadProps {
     toggleSorting?: (dataSource: any, key: string, sortType: any) => void;
     detailTemplateToggleAll?: (dataSource: any) => void;
     selectAll?: (dataSource: any) => void;
-
     dataSource: Array<any> | Object;
     columns?: Array<any>;
     hideHeader?: boolean;
@@ -57,11 +53,12 @@ export interface ITableHeadProps {
     detailTemplateHideToggle?: boolean;
     sortKey?: any;
     hideCheckAll?: boolean;
+    sortType? : string;
 }
 
 export default class TableHead extends React.Component<ITableHeadProps,any>{
 
-    constructor(props) {
+    constructor(props : ITableHeadProps) {
         super(props);
         this.state = {
         sortType: props.sortType || 'desc',
@@ -70,7 +67,7 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
         }
     }
 
-    toggleSorting(dataSource, columnName) {
+    toggleSorting(dataSource : Array<any>, columnName : string) {
 
         const self = this;
 
@@ -86,8 +83,8 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
 
     render() {
         
-        let {detailTemplate, onSort, hideCheckAll, sortKey, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements, sortable} = this.props;
-        let columnHeadArray = [];
+        let {detailTemplate, hideCheckAll, sortKey, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements, sortable} = this.props;
+        let columnHeadArray : Array<any> = [];
         
         columns.map((key) => {
             let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(key.title ? key.title : key.name);
@@ -115,8 +112,6 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
             dataSource: dataSource,
             hideCheckAll: hideCheckAll
         }
-
-        let columnsExistAndDataSourceNotFlatArray = columns.length > 0 && columns[0].name !== '_Array';
 
         if(!hideHeader) {
             return (

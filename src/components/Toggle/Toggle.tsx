@@ -1,11 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import './Toggle.less';
-
-import Selectable from '../Selectable/Selectable';
-import Layer from '../Layer/Layer';
-import Button from '../Button/Button';
-import Align from '../Align/Align';
 import Wizard from '../Wizard/Wizard';
 
 export interface IToggleProps {
@@ -36,7 +31,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
       checked: false
   };
 
-  constructor(props) {
+  constructor(props : IToggleProps) {
     super(props);
     this.state = {
       checked: props.checked || false,
@@ -44,7 +39,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps : IToggleProps) {
     this.setState({
       checked : nextProps.checked
     })
@@ -59,7 +54,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     }
   }
 
-  changeSelected(item) {
+  changeSelected(item : Array<any>) {
     this.setState({selected: item});
   }
   render(){
@@ -80,7 +75,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
       props.className
     );
 
-    let createList = (item, index) => {
+    let createList = (item : any, index : number) => {
 
       let itemClass = classNames(
         'r-Toggle__item',

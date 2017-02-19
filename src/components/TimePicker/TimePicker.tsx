@@ -1,11 +1,6 @@
 ﻿import * as React from 'react';
-
-import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
-import Input from '../Input/Input';
-
-import * as classNames from 'classnames';
 
 export interface IDatePickerProps {
     mask?: string;
@@ -16,7 +11,7 @@ export interface IDatePickerProps {
 
 export default class TimePicker extends React.Component<IDatePickerProps, any>{
 
-    constructor(props) {
+    constructor(props : IDatePickerProps) {
         super(props);
         var time = this.props.time || new Date(Date.now()).getTime();
         this.state = {
@@ -24,21 +19,20 @@ export default class TimePicker extends React.Component<IDatePickerProps, any>{
         }
     }
     
-    onSelect = (time) => {
+    onSelect = (time : any) => {
         this.setState({
             time : time
         })
         this.props.onSelect ? this.props.onSelect(time) : null;
     }
 
-    onChange = (value) => { 
+    onChange = (value : any) => { 
         this.setState({
             time : new Date(value).getTime()
         })
     }
 
     render() {
-        let {date} = this.state;
         return (
             <Toolbar flex flush>
                 <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'HH'} dataSource={hours} />
@@ -51,10 +45,6 @@ export default class TimePicker extends React.Component<IDatePickerProps, any>{
 
 let hours = [
     1,2,3,4,5,6,7,8,9,10,11,12
-]
-
-let hoursType = [
-    'AM', 'PM'
 ]
 
 let secondsMinutes = [

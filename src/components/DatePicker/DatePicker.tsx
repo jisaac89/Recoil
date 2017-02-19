@@ -1,11 +1,7 @@
 ﻿import * as React from 'react';
 import './DatePicker.less';
 
-import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
-import Input from '../Input/Input';
-
-import * as classNames from 'classnames';
 
 import Calendar, {ICalendarProps, ICalendarState} from './Calendar';
 export {Calendar, ICalendarProps, ICalendarState};
@@ -34,7 +30,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
         this.props.onSelect ? this.props.onSelect(date) : null;
     }
 
-    onChange = (value) => { 
+    onChange = (value : string) => { 
         this.setState({
             date : new Date(value)
         })
@@ -54,20 +50,6 @@ function getDateFormatted(date: Date) {
     var dd = date.getDate();
     var mm = date.getMonth() + 1; //January is 0!
     var yyyy = date.getFullYear();
-
-    var day = dd < 10 ? '0' + dd : '' + dd;
-    var month = mm < 10 ? '0' + mm : '' + mm;
-    return month + '/' + day + '/' + yyyy;
-}
-
-
-function convertFormattedDate(date) {
-
-    let splitDate = date.split('/');
-
-    var dd = splitDate[0].getDate();
-    var mm = splitDate[1].getMonth() + 1; //January is 0!
-    var yyyy = splitDate[2].getFullYear();
 
     var day = dd < 10 ? '0' + dd : '' + dd;
     var month = mm < 10 ? '0' + mm : '' + mm;

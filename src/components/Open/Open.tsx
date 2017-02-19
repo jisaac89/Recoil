@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import './Open.less';
 import Layer from '../Layer/Layer';
@@ -20,7 +19,6 @@ class Open extends React.Component<IOpenProps, any>{
   render(){
      const self = this;
      const props = self.props;
-     const state = self.state;
 
      let OpenClass = classNames(
         'r-Open',

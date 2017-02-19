@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {findDOMNode} from 'react-dom';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
 
@@ -79,12 +78,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
    }
 
   public onClick(event: React.MouseEvent<any>) {
-      const self = this;
-      // event.stopPropagation();
       this.props.onClick ? this.props.onClick(event) : null;
   }
 
-  public progressiveClick (arrayOfFunctions) {
+  public progressiveClick () {
     const self = this;
     const array = this.props.progressiveClick;
     let state = self.state;
@@ -109,7 +106,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     const self = this;
     const props = self.props;
 
-    let buttonType;
+    let buttonType : string;
 
     let buttonClass = classNames(
       'r-Button',

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import './Fixed.less';
 
@@ -20,7 +19,6 @@ export default class Fixed extends React.Component<any, any> {
     }
 
     componentDidMount() {
-        const self = this;
         var svg = this.refs.fixedNode;
         document.body.addEventListener("scroll", this.handleShortcuts.bind(this), true)
         this.setState({
@@ -44,7 +42,7 @@ export default class Fixed extends React.Component<any, any> {
     const self = this;
     const props = self.props;
 
-    let {node, fixed} = self.state;
+    let {fixed} = self.state;
     let fixedClass = classNames(
         'r-Fixed',
         {'e-fixed' :  (fixed === true)}

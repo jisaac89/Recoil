@@ -29,30 +29,25 @@ export interface ITableFooterProps {
 
 export default class Pager extends React.Component<ITableFooterProps, {}>{
 
-  gotoPage(i) {
+  gotoPage(i: any) {
     this.props.gotoPage(i);
     this.props.onPageChange ? this.props.onPageChange(i) : null
   }
 
-  onSelected(item) {
+  onSelected(item : any) {
     this.props.changePageSize(item);
   }
 
-  lastPage(numberOfPages) {
+  lastPage(numberOfPages : React.MouseEvent<any>) {
     this.props.lastPage(numberOfPages);
   }
 
-  renderPager(page, pageCount, pagerSize) {
+  renderPager(page: number, pageCount: number, pagerSize: number) {
 
       const self = this;
 
       let {
           currentPage,
-          firstPage,
-          previousPage,
-          nextPage,
-          lastPage,
-          pageSize,
           gotoPage
       } = this.props;
 
@@ -92,22 +87,14 @@ export default class Pager extends React.Component<ITableFooterProps, {}>{
       firstPage,
       previousPage,
       nextPage,
-      lastPage,
-      gotoPage,
       pageSize,
       pageSizerOptions,
       numberOfPages,
-      numberPerPage,
       dataSource,
       rowCount,
       hidePageSize,
-      showDataSourceLength,
-      hideHeader,
-      title,
       pagerSize
     } = props;
-
-    let paginationPartial = [];
 
     let dataSourceLength;
 

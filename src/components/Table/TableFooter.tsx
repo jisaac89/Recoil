@@ -1,9 +1,5 @@
 import * as React from 'react';
 
-import Toolbar from '../Toolbar/Toolbar';
-import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
-
 import Pager from '../Pager/Pager';
 
 export interface ITableFooterProps {
@@ -32,32 +28,11 @@ export default class TableFooter extends React.Component<ITableFooterProps, {}>{
   render() {
 
     const self = this;
-
     let props = self.props;
 
-    let {
-      currentPage,
-      firstPage,
-      previousPage,
-      nextPage,
-      lastPage,
-      gotoPage,
-      pageSize,
-      pageSizerOptions,
-      numberOfPages,
-      numberPerPage,
-      dataSource,
-      rowCount,
-      hidePageSize,
-      showDataSourceLength,
-      hideHeader,
-      title
-    } = props;
-
-     
-      return (
-          <Pager className="p10" {...props} />
-      )
+    return (
+        <Pager className="p10" {...props} />
+    )
 
   }
 }

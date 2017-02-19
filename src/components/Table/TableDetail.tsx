@@ -1,10 +1,6 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 import Open from '../Open/Open';
-import Table from '../Table/Table';
-
-import {IColumn} from './IColumn';
 
 export interface ITableColumnDetailProps {
     element?: any;

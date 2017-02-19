@@ -1,9 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as classNames from 'classnames';
-
-import Selectable from '../Selectable/Selectable';
-import Input from '../Input/Input';
 import Layer from '../Layer/Layer';
 import SlideIn from '../SlideIn/SlideIn';
 
@@ -23,7 +19,7 @@ export default class Portal extends React.Component<IPortalProps, any>{
       portalType: 'SlideIn'
   };
 
-  portalElement = null;
+  portalElement : HTMLElement = null;
   componentDidMount() {
     let p = this.props.portalId && document.getElementById(this.props.portalId);
     if (!p) {
@@ -46,5 +42,5 @@ export default class Portal extends React.Component<IPortalProps, any>{
         ReactDOM.render(<SlideIn flex onClose={this.props.onClose} title={this.props.title} icon={this.props.icon} className="r-Portal z5" fixed from="bottom" fill={true} if={this.props.open} ><Layer flex fill theme="light">{this.props.children}</Layer></SlideIn>, this.portalElement);
      }
   }
-  render(){return null}
+  render(): JSX.Element {return null}
 };

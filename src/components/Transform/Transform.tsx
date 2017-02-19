@@ -19,7 +19,6 @@ export default class Transform extends React.Component<ITransformProps, {}> {
   public render() {
     const self = this;
     const props = self.props;
-    let state = self.state;
     let transformStyle;
 
     let transformClass = classNames(

@@ -30,6 +30,7 @@ export interface ILayerProps {
   flex? : any;
   offset?: number;
   shadow?: boolean;
+  animate?: any;
 }
 
 export default class Layer extends React.Component<ILayerProps, any> {
@@ -49,7 +50,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
     scrollIf: false
   };
 
-  constructor(props) {
+  constructor(props : ILayerProps) {
     super(props);
     this._scrollToId = props.scrollToId && props.scrollToId !== '' && props.scrollToId.toString().replace(/^#/, '') || '';
     const {
@@ -65,8 +66,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    const self = this;
+  componentWillReceiveProps(nextProps : ILayerProps) {
     if (nextProps.scrollIf && nextProps.scrollToId !== this.props.scrollToId) {
       this.canLayerAnimateScroll(nextProps);
     };
@@ -78,81 +78,53 @@ export default class Layer extends React.Component<ILayerProps, any> {
     }
   }
 
-  canLayerAnimateScroll(props){
+  canLayerAnimateScroll(props : ILayerProps){
       let propss = props || this.props
       const self = this;
             setTimeout(()=>{
               let element  = document.getElementById(propss.scrollToId);
               if (element && element.getBoundingClientRect()) {
-                let box = element.getBoundingClientRect();
                 self.handleScroll(propss.scrollToId, element.offsetTop)
               } else return null;
             }, 0);
   }
 
-  handleScroll = (to, top) => {
+  handleScroll = (to: string, top : number) => {
       const self = this;
       self._beforeAnimate();
       self.setState({
         scrollToId: to
       }, ()=>{
-        self.animateScroll(self.state.scrollToId, this._animate, top);
+        self.animateScroll(this._animate, top);
       })
       self._afterAnimate();
   }
 
-  animateScroll(id, animate, top) {
-    const element = id ? document.getElementById(id) : this.refs.Layer;
-    this.refs.Layer ? this.scrollTo(element, animate, top) : null;
+  animateScroll(animate:any, top: number) {
+    this.refs.Layer ? this.scrollTo(animate.duration, top) : null;
   }
 
-  scrollTo(element, { offset, duration, easing }, top) {
-    const self = this;
-    this.animateScrolling(element, { offset, duration, easing }, top);
+  scrollTo(duration: number, top: number) {
+    this.animateScrolling(duration, top);
   }
 
-  animateScrolling(element, { offset, duration, easing }, top) {
+  animateScrolling(duration: number, top: number) {
     const self = this;
-    const startX = this.getScrollLeft();
     const startY = this.getScrollTop();
-    const toX = this.getOffsetLeft(element) + offset;
-    const toY = this.getOffsetTop(element) + offset;
-    const changeX = toX - startX;
-    const changeY = toY - startY;
-    const increment = 20;
 
 
     scrollTo(startY, this.refs.Layer, top, duration);
-
       self.setState({
         scrollToId: ''
       })
-    // function animate(elapsedTime) {
-    //   const elapsed = elapsedTime + increment;
-    //   const positionX = easing(null, elapsed, startX, changeX, duration);
-    //   const positionY = easing(null, elapsed, startY, changeY, duration);
-    //   self.setScrolling(positionX, positionY);
-    //   if (elapsed < duration) {
-    //     window['requestInterval'](function() {
-    //       animate(elapsed);
-    //     }, increment);
-    //   }
-    // }
-
-    // // requestTick();
-
-    // animate(0);
-
-
-
   }
 
-  setScrolling(x, y){
+  setScrolling(x: number, y: number){
     this.refs.Layer.scrollTop = y;
     this.refs.Layer.scrollLeft = x;
   }
 
-  easeOutQuad(x, t, b, c, d) {
+  easeOutQuad(t: number, b: number, c: number, d: number) {
     return -c * (t /= d) * (t - 2) + b;
   }
 
@@ -160,11 +132,11 @@ export default class Layer extends React.Component<ILayerProps, any> {
     return this.refs.Layer.scrollTop || this.refs.Layer.scrollTop;
   }
 
-  setScrollTop(position) {
+  setScrollTop(position : number) {
     this.refs.Layer.scrollTop = position;
   }
 
-  getOffsetTop(element) {
+  getOffsetTop(element: HTMLElement) {
     let top = element.getBoundingClientRect().top;
     return top + this.getScrollTop();
   }
@@ -174,11 +146,11 @@ export default class Layer extends React.Component<ILayerProps, any> {
     return this.refs.Layer.scrollLeft || this.refs.Layer.scrollLeft;
   }
 
-  setScrollLeft(position) {
+  setScrollLeft(position : number) {
     this.refs.Layer.scrollLeft = position;
   }
 
-  getOffsetLeft(element) {
+  getOffsetLeft(element : HTMLElement) {
     let left = element.getBoundingClientRect().left;
     return left + this.getScrollLeft();
   }
@@ -231,15 +203,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
   }
 }
 
-interface ObjectCtor extends ObjectConstructor {
-    assign(target: any, ...sources: any[]): any;
-}
-declare var Object: ObjectCtor;
-export let assign = Object.assign ? Object.assign : function(target: any, ...sources: any[]): any {
-        return;
-};
-
-Math['easeInOutQuad'] = function (t, b, c, d) {
+Math['easeInOutQuad'] = function (t: number, b: number, c: number, d: number) {
   t /= d/2;
   if (t < 1) {
     return c/2*t*t + b
@@ -248,12 +212,12 @@ Math['easeInOutQuad'] = function (t, b, c, d) {
   return -c/2 * (t*(t-2) - 1) + b;
 };
 
-Math['easeInCubic'] = function(t, b, c, d) {
+Math['easeInCubic'] = function(t: number, b: number, c: number, d: number) {
   var tc = (t/=d)*t*t;
   return b+c*(tc);
 };
 
-Math['inOutQuintic'] = function(t, b, c, d) {
+Math['inOutQuintic'] = function(t: number, b: number, c: number, d: number) {
   var ts = (t/=d)*t,
   tc = ts*t;
   return b+c*(6*tc*ts + -15*ts*ts + 10*tc);
@@ -261,12 +225,12 @@ Math['inOutQuintic'] = function(t, b, c, d) {
 
 
 var requestAnimFrame = (function(){
-  return  window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function( callback ){ window.setTimeout(callback, 1000 / 60); };
+  return  window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function( callback : any ){ window.setTimeout(callback, 1000 / 60); };
 })();
 
-function scrollTo(scrollTop, element, to, duration) {
+function scrollTo(scrollTop : number, element : any, to : number, duration : number) {
 
-  function move(amount) {
+  function move(amount : number) {
     element.scrollTop = amount;
   }
   function position() {

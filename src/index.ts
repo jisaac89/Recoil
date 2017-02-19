@@ -1,4 +1,3 @@
-export {default as Animate} from './components/Animate/Animate';
 export {default as Recoil} from './components/Recoil/Recoil';
 export {default as Align} from './components/Align/Align';
 export {default as Button, IButtonProps, IButtonState} from './components/Button/Button';

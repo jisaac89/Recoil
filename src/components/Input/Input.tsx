@@ -70,7 +70,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       return props.value || props.defaultValue || '';
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps(nextProps : IInputProps) {
       const props = this.props;
       const valueIsChanging = nextProps.value !== props.value;
       if (valueIsChanging || nextProps.defaultValue !== props.defaultValue) {
@@ -105,8 +105,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       }, focusDelay);
     }(inputDOM));
   }
-  public focus(e){
-    const self = this;
+  public focus(e: any){
     this.setState({
       checked: e.target.value ? true : false
     });
@@ -123,11 +122,11 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       mouseOut: ReactDOM.findDOMNode<HTMLInputElement>(inputDOM).onmouseout ? false : true
     });
   }
-  public onChange(event: React.FormEvent<any>) {
-    this.inputValue((event.target as HTMLInputElement).value, event);
+  public onChange(event: any) {
+    this.inputValue(event.target.value, event);
   }
 
-  limit(max) {
+  limit(max : number) {
     let inputDOM = ReactDOM.findDOMNode<HTMLInputElement>(this.refs['refInput']);
     let maxLength = max - 1;
     if(inputDOM.value.length > maxLength) {
@@ -135,33 +134,30 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     } 
   }
 
-  inputValue(value, event){
+  inputValue(value : Array<any>, event: React.FormEvent<any>){
     this.setValue(value, event);
   }
 
-  setValue(value, event){
+  setValue(value : Array<any>, event: React.FormEvent<any>){
     this.setState({
       value : value
     }, ()=>{
       // this.props.maxLength ? this.limit(this.props.maxLength) : null;
       this.props.onChange ? this.props.onChange(value, event) : null;
-    })    
-
-
-    
+    })
   }
 
-  disableKeys(keys, value, event){
-    let currentValue = this.state.value;
+  disableKeys(keys : Array<any>, event : any){
     if (this.props.disableKeys.includes(keys)){
       event.preventDefault();
       event.stopPropagation();
       return false;
     }
+    return true;
   }
   
-  onKeyDown(a, b){
-    this.props.disableKeys ? this.disableKeys(a.key, a.target.value, a) : null; 
+  onKeyDown(a : any){
+    this.props.disableKeys ? this.disableKeys(a.key, a) : null; 
   }
 
   render(){

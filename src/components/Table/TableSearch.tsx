@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Input from '../Input/Input';
 import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
 
 export default class TableSearch extends React.Component<any, any>{
@@ -19,26 +18,21 @@ export default class TableSearch extends React.Component<any, any>{
       onChange () {}
   };
 
-  constructor (props) {
+  constructor (props : any) {
     super(props);
     this.state = {
       searchTerm: props.value || ''
     }
   }
   
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps : any) {
     if (nextProps.value && nextProps.value !== this.props.value) {
-      const e = {
-        target: {
-          value: nextProps.value
-        }
-      }
-      this.updateSearch(e)
+      this.updateSearch(nextProps.value)
     }
   }
 
-  updateSearch(term) {
-      let searchTerm;
+  updateSearch(term : string) {
+      let searchTerm : string;
       
       if (/\s+$/.test(term)) {
           searchTerm = term.substring(0, term.length - 1);
@@ -61,7 +55,7 @@ export default class TableSearch extends React.Component<any, any>{
     const self = this;
     const props = self.props;
 
-    const {className, onChange, throttle, searchableKeys, value, focusOnMount} = this.props
+    const {focusOnMount} = this.props
 
     let searchPartial = () => {
       return (

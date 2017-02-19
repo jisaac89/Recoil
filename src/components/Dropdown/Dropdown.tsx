@@ -1,19 +1,12 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 
-import Selectable from '../Selectable/Selectable';
-import Input from '../Input/Input';
 import Button from '../Button/Button';
 import {IButtonProps} from '../Button/Button';
 import {ITableProps} from '../Table/Table';
-import Layer from '../Layer/Layer';
-import Portal from '../Portal/Portal';
-import Toolbar from '../Toolbar/Toolbar';
 
 import './Dropdown.less';
 
-import DropdownPortal from './DropdownPortal';
 import DropdownContent from './DropdownContent';
 
 function guidGenerator() {
@@ -59,7 +52,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         hideFooter: true
     };
 
-    constructor(props) {
+    constructor(props: IDropdownProps) {
         super(props);
         this.state = {
             dropdownIsOpen: false,
@@ -70,7 +63,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         }
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: IDropdownProps) {
         if (nextProps.type !== this.props.type) {
             this.setState({
                 type: nextProps.type
@@ -110,7 +103,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             })
         
     }
-    onRowSelect(element, index, selectedElements, id) {
+    onRowSelect(element: Array<any>, index: string | number, selectedElements: Array<any>, id: string) {
         let {rowIsSelectable } = this.props;
 
         this.setState({
@@ -128,7 +121,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         })
 
     }
-    render() {
+    render() : JSX.Element  {
         const self = this;
         const props = self.props;
         let state = self.state;
@@ -136,12 +129,10 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         let {
             title,
             // Button props
-            block,
             icon,
             size,
             iconPointer,
             iconLocation,
-            onClick,
             simple,
             outline,
             checked,
@@ -152,14 +143,12 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             checkedTheme,
             //
             children,
-            type,
 
             // Table
             dataSource,
             focusOnMount,
             hideHeader,
             rowIsSelectable,
-            selectedElements,
             selectedKey,
             pageSizerOptions,
             columns,
@@ -173,8 +162,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             searchableKeys,
             searchTitle,
             contentMaxHeight,
-            onRowSelect,
-            onChange,
             filterOpenDetailTemplate,
             mobile,
             sortKey,
