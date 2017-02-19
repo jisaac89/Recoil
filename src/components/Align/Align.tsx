@@ -77,7 +77,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
     }
   }
   alignChildren(element : JSX.Element, key : string) {
-      let {columns, margin} = this.props;
+      let {columns, margin, vertical} = this.props;
       return (
         <AlignChild 
           key={key} 
@@ -85,6 +85,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
           width={this.state.widthArray[key]} 
           columns={columns}
           margin={margin}
+          vertical={vertical}
           />
       )
   }
