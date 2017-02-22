@@ -3,215 +3,228 @@ import * as React from 'react';
 import './Tree.less';
 import Table from '../Table/Table';
 
-export interface ITreeProps {
- dataSource? : any; 
- columns? : any;
- parentKey? : string;
- uniqueKey? : string;
- selectedElements? : Array<any>;
- openedElements?: Array<any>;
- selectedKey?: string;
- onRowSelect?: any;
- filterOpenDetailTemplate?: any;
+export interface ITreeItem<T, U> {
+    item: T;
+    Id: U,
+    parentId: U,
+    children: T[];
 }
 
-export default class Tree extends React.Component<ITreeProps, any>{
+export interface ITreeItemHash<T> {
+    [index: string]: ITreeItem<T, any>;
+}
 
-  public static defaultProps = {
-      parentKey: 'ParentId',
-      uniqueKey: 'Id'
-  };
+export interface ITreeProps {
+    dataSource?: any;
+    columns?: any;
+    parentKey?: string;
+    uniqueKey?: string;
+    selectedElements?: Array<any>;
+    openedElements?: Array<any>;
+    selectedKey?: string;
+    onRowSelect?: any;
+    filterOpenDetailTemplate?: any;
+}
 
-  constructor(props : ITreeProps) {
-    super(props);
-    this.state = {
-      newArray : [], 
-      roots: [],
-      map: {},
-      openedKeys: []
-    }
-  }
-  componentDidMount() {
-      this.initArray(this.props.dataSource);
+export interface ITreeState {
+    treeItems?: ITreeItem<any, any>[];
+    treeItemHash?: ITreeItemHash<any>;
+    roots?: ITreeItem<any, any>[];
+    openedKeys?: string[];
+}
 
-      if (this.props.selectedElements && this.props.selectedElements.length > 0) {
-          this.openSelectedElements(this.props.selectedElements);
-      }
-  }
-  componentWillReceiveProps(nextProps : ITreeProps) {
+export default class Tree extends React.Component<ITreeProps, ITreeState>{
 
+    public static defaultProps = {
+        parentKey: 'ParentId',
+        uniqueKey: 'Id'
+    };
 
-      if (nextProps.dataSource.length !== this.props.dataSource.length) {
-          this.initArray(nextProps.dataSource);
-      }
-
-      if (nextProps.selectedElements && nextProps.selectedElements.length > 0) {
-          this.openSelectedElements(nextProps.selectedElements);
-      }
-  }
-  initArray(dataSource : Array<any>) {
-    let {parentKey, uniqueKey} = this.props;
-    let newArray : Array<any> = [];
-    let map = {}
-
-    let createNodeTree = (item : Array<any>, index : string | number) =>{
-      newArray.push({
-        item: item,
-        Id: item[uniqueKey],
-        parentId: item[parentKey],
-        children : []
-      });
-      map[item[uniqueKey]] = index;
+    constructor(props: ITreeProps) {
+        super(props);
+        this.state = {
+            treeItems: [],
+            roots: [],
+            treeItemHash: {},
+            openedKeys: []
+        }
     }
 
-    if (dataSource.length) {
-        dataSource.map(createNodeTree);
+    componentDidMount() {
+        this.initArray(this.props.dataSource);
+
+        if (this.props.selectedElements && this.props.selectedElements.length > 0) {
+            this.openSelectedElements(this.props.selectedElements);
+        }
     }
 
-    this.setState({
-      newArray : newArray,
-      map: map
-    }, () => {
-      this.updateRoots()
-    })
-  }
-  updateRoots(){
+    componentWillReceiveProps(nextProps: ITreeProps) {
+        if (nextProps.dataSource.length !== this.props.dataSource.length) {
+            this.initArray(nextProps.dataSource);
+        }
 
-    let newArray = this.state.newArray;
-    let map = this.state.map;
-    let roots = [];
+        if (nextProps.selectedElements && nextProps.selectedElements.length > 0) {
+            this.openSelectedElements(nextProps.selectedElements);
+        }
+    }
 
-    if (newArray.length === this.props.dataSource.length) {
-      for (let i = 0; i < newArray.length; i += 1) {
-          let node = newArray[i];
-          node.parentId !== 0 ? newArray[map[node.parentId]].children.push(node) : roots.push(node);
-      }
-    } 
+    initArray<T>(dataSource: Array<T>) {
+        let {parentKey, uniqueKey} = this.props;
 
-    this.setState({ roots: roots }, () => {
-        this.props.selectedElements && this.props.selectedElements.length > 0 ? this.openSelectedElements(this.props.selectedElements) : null;
-        this.props.openedElements && this.props.openedElements.length > 0 ? this.openedElements(this.props.openedElements) : null;
-    });
+        let treeItems: Array<ITreeItem<T, any>> = [];
+        let treeItemHash: ITreeItemHash<T> = {};
+        if (dataSource.length) {
+            dataSource.forEach((item: T) => {
+                let treeItem: ITreeItem<T, any> = {
+                    item: item,
+                    Id: item[uniqueKey],
+                    parentId: item[parentKey],
+                    children: []
+                };
+                treeItems.push(treeItem);
+                treeItemHash[item[uniqueKey]] = treeItem;
+            });
+        }
 
-  }
-  openSelectedElements(selectedElements : Array<any>) {
-      let newArray = this.state.newArray;
-      let openedKeys : Array<any> = [];
+        this.setState({
+            treeItems: treeItems,
+            treeItemHash: treeItemHash
+        }, () => {
+            this.updateRoots();
+        });
+    }
 
-      let gotoParentAndPushKey = (selectedKeyIndex : any, node ? : any) : any => {
-          let currentSelectedKeyIndex = selectedKeyIndex || 0; 
+    updateRoots() {
+        let treeItems = this.state.treeItems;
+        let treeItemHash = this.state.treeItemHash;
+        let roots = [];
 
-          let currentNode = node || newArray.filter(function (node : any) {
-              return node.Id === selectedElements[selectedKeyIndex];
-          })
+        if (treeItems.length === this.props.dataSource.length) {
+            for (let i = 0; i < treeItems.length; i += 1) {
+                let node = treeItems[i];
+                let parent = treeItemHash[node.parentId];
+                parent ? parent.children.push(node) : roots.push(node);
+            }
+        }
 
-          let theNode = currentNode[0];
+        this.setState({ roots: roots }, () => {
+            this.props.selectedElements && this.props.selectedElements.length > 0 ? this.openSelectedElements(this.props.selectedElements) : null;
+            this.props.openedElements && this.props.openedElements.length > 0 ? this.openedElements(this.props.openedElements) : null;
+        });
+    }
 
-          if (theNode && theNode.parentId !== 0) {
-              openedKeys.push(theNode.parentId); 
+    openSelectedElements(selectedElements: Array<any>) {
+        let treeItems = this.state.treeItems;
+        let openedKeys: Array<any> = [];
 
-              let parentNode = newArray.filter(function (node : any) {
-                  return node.Id === theNode.parentId;
-              })
+        let gotoParentAndPushKey = (selectedKeyIndex: any, node?: any): any => {
+            let currentSelectedKeyIndex = selectedKeyIndex || 0;
 
-              if (parentNode[0].parentId === 0) {
-                  return null
-              } else {
-                  return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
-              }
-              
-          } 
-      }
+            let currentNode = node || treeItems.filter(function (node: any) {
+                return node.Id === selectedElements[selectedKeyIndex];
+            });
 
-      gotoParentAndPushKey(0);
+            let theNode = currentNode[0];
 
-      this.setState({
-          openedKeys: openedKeys
-      })
+            if (theNode && theNode.parentId !== 0) {
+                openedKeys.push(theNode.parentId);
 
-  }
+                let parentNode = treeItems.filter(function (node: any) {
+                    return node.Id === theNode.parentId;
+                });
 
-  openedElements(selectedElements : Array<any>) {
-      let newArray = this.state.newArray;
-      let openedKeys : Array<any> = [];
+                if (parentNode[0].parentId === 0) {
+                    return null
+                } else {
+                    return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
+                }
+            }
+        }
 
-      let gotoParentAndPushKey = (selectedKeyIndex : any, node?: any) : any => {
-          let currentSelectedKeyIndex = selectedKeyIndex || 0;
+        gotoParentAndPushKey(0);
 
-          let currentNode = node || newArray.filter(function (node : any) {
-              return node.Id === selectedElements[selectedKeyIndex];
-          })
+        this.setState({
+            openedKeys: openedKeys
+        });
+    }
 
-          let theNode = currentNode[0];
+    openedElements(selectedElements: Array<any>) {
+        let treeItems = this.state.treeItems;
+        let openedKeys: Array<any> = [];
 
-          if (theNode && theNode.parentId !== 0) {
-              openedKeys.push(theNode.parentId);
+        let gotoParentAndPushKey = (selectedKeyIndex: any, node?: any): any => {
+            let currentSelectedKeyIndex = selectedKeyIndex || 0;
 
-              let parentNode = newArray.filter(function (node : any) {
-                  return node.Id === theNode.parentId;
-              })
+            let currentNode = node || treeItems.filter(function (node: any) {
+                return node.Id === selectedElements[selectedKeyIndex];
+            });
 
-              if (parentNode[0].parentId === 0) {
-                  return null
-              } else {
-                  return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
-              }
+            let theNode = currentNode[0];
 
-          }
-      }
+            if (theNode && theNode.parentId !== 0) {
+                openedKeys.push(theNode.parentId);
 
-      gotoParentAndPushKey(0);
+                let parentNode = treeItems.filter(function (node: any) {
+                    return node.Id === theNode.parentId;
+                });
 
-      this.setState({
-          openedKeys: openedKeys
-      })
+                if (parentNode[0].parentId === 0) {
+                    return null
+                } else {
+                    return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
+                }
+            }
+        }
 
-  }
+        gotoParentAndPushKey(0);
 
-  renderChildren(childNode: any) {
-      let {columns, uniqueKey, filterOpenDetailTemplate, openedElements} = this.props;
-      return (
-        <Table 
-          hideHeader 
-          key={childNode.Id} 
-          className={"pl20"} 
-          columns={columns} 
-          dataSource={childNode.children} 
-          detailTemplate={this.renderChildren.bind(this) }
-          filterOpenDetailTemplate={filterOpenDetailTemplate}
-          hidePageSize
-          selectedKey={uniqueKey}
-          selectedElements={this.props.selectedElements}
-          detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
-          pageSize={childNode.children.length}
-      />
-      )
-  }
-  render() {
-    const self = this;
-    const props = self.props;
-    let {columns, openedElements, uniqueKey, filterOpenDetailTemplate} = props;
-    let state = self.state;
-    let {roots} = state;
+        this.setState({
+            openedKeys: openedKeys
+        });
+    }
 
-    if (roots.length) {
+    renderChildren(childNode: any) {
+        let {columns, uniqueKey, filterOpenDetailTemplate, openedElements} = this.props;
         return (
-            <div className="r-Tree e-scroll-y">
-                <Table
-                    hideHeader
-                    columns={columns} 
-                    dataSource={roots}
-                    detailTemplate={this.renderChildren.bind(this) }
-                    filterOpenDetailTemplate={filterOpenDetailTemplate}
-                    hidePageSize
-                    selectedKey={uniqueKey}
-                    selectedElements={this.props.selectedElements}
-                    detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
-                    pageSize={roots.length}
-                    />
-                    
-            </div>
-        )
-    } else return null;
-  }
+            <Table
+                hideHeader
+                key={childNode.Id}
+                className={"pl20"}
+                columns={columns}
+                dataSource={childNode.children}
+                detailTemplate={this.renderChildren.bind(this)}
+                filterOpenDetailTemplate={filterOpenDetailTemplate}
+                hidePageSize
+                selectedKey={uniqueKey}
+                selectedElements={this.props.selectedElements}
+                detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
+                pageSize={childNode.children.length}
+                />
+        );
+    }
+
+    render() {
+        let {columns, openedElements, uniqueKey, filterOpenDetailTemplate} = this.props;
+        let {roots} = this.state;
+
+        if (roots.length) {
+            return (
+                <div className="r-Tree e-scroll-y">
+                    <Table
+                        hideHeader
+                        columns={columns}
+                        dataSource={roots}
+                        detailTemplate={this.renderChildren.bind(this)}
+                        filterOpenDetailTemplate={filterOpenDetailTemplate}
+                        hidePageSize
+                        selectedKey={uniqueKey}
+                        selectedElements={this.props.selectedElements}
+                        detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
+                        pageSize={roots.length}
+                        />
+
+                </div>
+            );
+        } else return null;
+    }
 }
