@@ -70,7 +70,7 @@ export interface ITableColumnProps {
     rowIsSelectable?: any;
     selectedElements?: any;
     checkable?: boolean;
-    hideColumns?: Array<any>;
+    hideColumns?: Array<string>;
     onRowSelect?: (element: any, index: number | string, event?: React.MouseEvent<any>) => void;
     selectedKey?: string;
     index ?: number | string;

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
 import Open from '../Open/Open';
-
+import {IColumn} from './IColumn';
 export interface ITableColumnDetailProps {
-    element?: any;
-    columns?: any;
+    element?: JSX.Element;
+    columns?: Array<IColumn>;
     detailTemplate?: (element: any) => JSX.Element;
-    detailTemplateOpenAll?: any;
+    detailTemplateOpenAll?: boolean;
     detailTemplateSelectedElements?: any;
     checkable?: boolean;
     selectedKey?: string;

@@ -4,37 +4,36 @@ import Selectable from '../Selectable/Selectable';
 import './Button.less';
 
 export interface IButtonProps {
-  active?: boolean;
-  disabled?: boolean;
-  block?: boolean;
+  children? : any;
+  progressiveClick? : Array<Function>;
+  style? : Object;
+  onClick? : (event: React.MouseEvent<any>) => void;
+  theme?: 'primary' | 'success' | 'error' | 'default';
+  pointer? : 'left' | 'right' | boolean;
+  size? : 'small' | 'medium' | 'large' | 'xlarge';
+  iconPointer? : 'left' | 'right' | 'up' | 'down';
+  iconLocation?: 'left' | 'right';
+  checkedTheme? : 'primary' | 'success' | 'error' | 'default';
   className? : string;
-  theme?: any;
   icon? : string;
   href?: string;
   target?: string;
+  id? : string;
+  block?: boolean;
+  disabled?: boolean;
   simple? : boolean;
   strech? : boolean;
-  children? : boolean;
-  pointer? : 'left' | 'right' | boolean;
+  outline? : boolean;
   right? : boolean;
   left? : boolean;
-  size? : 'small' | 'medium' | 'large' | 'xlarge';
   submit? : boolean;
-  style? : any;
   checked? : boolean;
-  onClick? : (event: React.MouseEvent<any>) => void;
   tabIndex? : number;
-  progressiveClick? : any;
   advanced?: boolean;
-  iconPointer? : 'left' | 'right' | 'up' | 'down';
   loading?: boolean;
-  iconLocation?: 'left' | 'right';
-  checkedTheme? : any;
-  outline? : boolean;
   fill? : boolean;
   ghost?: boolean;
   required ? : boolean;
-  id? : string;
 }
 
 export interface IButtonState {
@@ -46,9 +45,13 @@ export interface IButtonState {
 }
 
 export default class Button extends React.Component<IButtonProps, IButtonState>{
-  public refs: any;
+ 
+  public refs: {
+    [key: string]: (Element);
+    button: (HTMLButtonElement);
+  }
+
   public static defaultProps = {
-      active: true,
       disabled: false,
       block: false,
       advanced: false,
@@ -77,7 +80,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
    }
 
-  public onClick(event: React.MouseEvent<any>) {
+  public onClick(event: React.MouseEvent<MouseEvent>) {
       this.props.onClick ? this.props.onClick(event) : null;
   }
 

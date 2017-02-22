@@ -4,12 +4,12 @@ import Layer from '../Layer/Layer';
 import SlideIn from '../SlideIn/SlideIn';
 
 export interface IPortalProps {
-    portalId?: any;
-    portal? : any;
+    portalId?: string;
+    portal? : JSX.Element;
     open?: boolean;
-    onClose? : any;
-    title? : any;
-    icon? : any;
+    onClose? : ()=> void;
+    title? : string;
+    icon? : string;
     portalType? : string;
 }
 

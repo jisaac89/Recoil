@@ -15,35 +15,8 @@ export function branchIn(value : Array<any>, key : string, step?: number) : any 
 
 }
 
-// export function setValue(object : Array<any>, key : string, value , step?: number, currentBranch? : any, evalString?: any) : any {
-
-//     let currentEvalString = evalString || '';
-
-//     let result = key.split('.'),
-//         stepLength = result.length,
-//         currentStep = step || 0,
-//         currentValue = currentBranch ? currentBranch[result[currentStep]] : object[result[currentStep]];
-
-//     if (currentStep !== stepLength - 1) {
-
-        
-//         if (currentStep === 0) {
-//             currentEvalString += "object['" + result[currentStep] + "']";
-//         } else {
-//             currentEvalString += "['" + result[currentStep] + "']";
-//         }
-//         return setValue(object, key, value, currentStep + 1, currentValue, currentEvalString);
-//     } else {
-//         let a = value;
-//         eval(currentEvalString + " = " + a);
-
-//         return object;
-//     }
-
-// }
-
 export function search(dataSource: Array<any>, term: string, keys: Array<any>) {
-    let queryResult : Array<any> = [];
+    let queryResult : Array<Object> = [];
     if (term.length > 0) {
         dataSource.forEach(function (item) {
             keys.forEach((key, index) => {
@@ -80,7 +53,7 @@ export function isType(value: any) {
     return type;
 }
 
-export function getType(value : any) {
+export function getType<T>(value : Array<T>) {
     var type = typeof value;
     if (type === 'object' && value instanceof Array) {
         type = 'array';
@@ -88,7 +61,7 @@ export function getType(value : any) {
     return type;
 }
 
-export function arraysEqual(arr1 : any, arr2 : any) {
+export function arraysEqual(arr1 : Array<Object>, arr2 : Array<Object>) {
     if (arr1.length !== arr2.length)
         return false;
     for (var i = arr1.length; i--;) {

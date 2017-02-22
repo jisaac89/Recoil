@@ -2,7 +2,11 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Fixed.less';
 
-export default class Fixed extends React.Component<any, any> {
+export interface IFixedProps {
+    children?: any;
+}
+
+export default class Fixed extends React.Component<IFixedProps, any> {
 
     refs: {
         [key: string]: (Element);

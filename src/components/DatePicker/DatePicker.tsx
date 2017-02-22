@@ -30,16 +30,16 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
         this.props.onSelect ? this.props.onSelect(date) : null;
     }
 
-    onChange = (value : string) => { 
-        this.setState({
-            date : new Date(value)
-        })
-    }
-
     render() {
         let {date} = this.state;
         return (
-            <Dropdown mobile={this.props.mobile} onChange={this.onChange.bind(this)} icon="calendar" type="text" material title={getDateFormatted(this.state.date)}>
+            <Dropdown 
+                icon="calendar" 
+                type="text" 
+                material 
+                title={getDateFormatted(this.state.date)}
+                mobile={true}
+            >
                 <Calendar date={date} onSelect={this.onSelect} />
             </Dropdown>
         );

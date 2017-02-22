@@ -3,11 +3,12 @@ import * as React from 'react';
 import {arraysEqual, search, branchIn} from '../Utils';
 
 import {ITableProps} from '../Table/Table';
+import {IColumn} from './IColumn';
 
 export interface IDataSourceProps extends ITableProps {
     // initial dataSource loaded as prop
-    dataSource?: Array<any>;
-    columns?: Array<any>;
+    dataSource?: Array<Object> | Array<number> | Array<string>;
+    columns?: Array<IColumn>;
 }
 
 const DataSource : any = (Component : JSX.Element) =>
@@ -84,7 +85,7 @@ const DataSource : any = (Component : JSX.Element) =>
             dataSource.length ? self.loadDataSource(dataSource) : null;
         }
 
-        loadDataSource(dataSource : Array<any>) {
+        loadDataSource<T>(dataSource : Array<T>) {
             const self = this;
 
             let dataSourceIsObject = typeof dataSource === 'object';
@@ -96,7 +97,7 @@ const DataSource : any = (Component : JSX.Element) =>
             let {sortType} = this.state;
 
 
-            let setDataSourceState = (dataSource : Array<any>, isArray : boolean) => {
+            let setDataSourceState = (dataSource : Array<T> | Array<Array<T>>, isArray : boolean) => {
                 updatedDataSource = dataSource;
                 self.setState({
                     dataSource: dataSource,
@@ -115,7 +116,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
             if (dataSourceIsArray) {
                 if (dataSourceIsArrayOfStingsOrNumbers) {
-                    let newDataSource: Array<any> = [];
+                    let newDataSource: Array<T> = [];
 
                     dataSource.forEach(element => {
                         newDataSource.push(element)

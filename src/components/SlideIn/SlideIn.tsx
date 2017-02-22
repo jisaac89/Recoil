@@ -6,9 +6,9 @@ import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 
 export interface ISlideInProps {
-  if? : boolean;
+  if : boolean;
   fill? : boolean;
-  from? : 'left' | 'right' | 'top' | 'bottom';
+  from : 'left' | 'right' | 'top' | 'bottom';
   className? : string;
   offset? : number;
   onClick? : () => void;
@@ -16,10 +16,10 @@ export interface ISlideInProps {
   fixed ? : boolean;
   beforeOpen ? : () => void;
   afterOpen ? : () => void;
-  title? : any;
-  icon? : any;
-  onClose?: any;
-  mobile?: any;
+  title? : string;
+  icon? : string;
+  onClose?: () => void;
+  mobile?: boolean;
   flex?: boolean;
 }
 

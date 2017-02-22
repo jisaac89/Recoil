@@ -5,11 +5,11 @@ import './Wizard.less';
 import Pager from '../Pager/Pager';
 
 export interface IWizardProps {
-  slideIndex ? : number;
+  slideIndex : number;
+  children ?: any;
   vertical ? : boolean;
-  className ? : any;
-  children ? : any;
-  style ? : any;
+  className ? : string;
+  style ? : Object;
   mobile? : boolean;
   animate? : boolean;
   fill ? : boolean;

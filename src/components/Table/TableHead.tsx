@@ -5,6 +5,8 @@ import {arraysEqual} from '../Utils';
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 
+import {IColumn} from './IColumn';
+
 class DetailTemplateHeadToggle extends React.Component<any, any>{
     detailTemplateToggleAll(dataSource :Array<any>) {
         this.props.detailTemplateToggleAll(dataSource);
@@ -41,7 +43,7 @@ export interface ITableHeadProps {
     detailTemplateToggleAll?: (dataSource: any) => void;
     selectAll?: (dataSource: any) => void;
     dataSource: Array<any> | Object;
-    columns?: Array<any>;
+    columns?: Array<IColumn>;
     hideHeader?: boolean;
     hideColumns?: any;
     checkable?: boolean;
@@ -93,7 +95,7 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
                 return null;
             } else {
                 columnHeadArray.push(
-                    <th width={key.width} key={key.name || key.title || key}>
+                    <th width={key.width} key={key.name || key.title}>
                         <Button className="p0" icon={sortable && (key.name === sortKey || key.title === sortKey)? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>
                     </th>
                 )

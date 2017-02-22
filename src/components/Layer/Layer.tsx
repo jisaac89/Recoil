@@ -12,34 +12,37 @@ export interface ILayerProps {
   fill? : boolean;
   theme? : string;
   children? : any;
-  className? : any;
-  style? : any;
+  className? : string;
+  style? : Object;
   onClick?: () => void;
   block? : boolean;
-  key? : any;
+  key? : string | number;
   parent? : boolean;
   child? : boolean;
-  dimensions?:any;
+  dimensions?:{height: string, width : string, zIndex: number};
   disabled? : boolean;
-  scrollToId?: any;
-  beforeAnimate? : any;
-  afterAnimate ? : any;
+  scrollToId?: string;
+  beforeAnimate? : () => void;
+  afterAnimate ? : () => void;
   nightmode? : boolean;
   scrollIf? : boolean;
   scroll? : boolean;
-  flex? : any;
+  flex? : boolean;
   offset?: number;
   shadow?: boolean;
-  animate?: any;
+  animate?: Array<any>;
 }
 
 export default class Layer extends React.Component<ILayerProps, any> {
 
   public _animate : any;
-  public _beforeAnimate : any;
-  public _afterAnimate : any;
-  public _scrollToId : any;
-  public refs : any;
+  public _beforeAnimate : () => void;
+  public _afterAnimate : () => void;
+  public _scrollToId : string;
+  public refs: {
+    [key: string]: (Element);
+    Layer: (HTMLElement);
+  }
 
   public static defaultProps = {
     overflow: false,
@@ -100,7 +103,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
       self._afterAnimate();
   }
 
-  animateScroll(animate:any, top: number) {
+  animateScroll(animate:{duration: number}, top: number) {
     this.refs.Layer ? this.scrollTo(animate.duration, top) : null;
   }
 
@@ -225,10 +228,10 @@ Math['inOutQuintic'] = function(t: number, b: number, c: number, d: number) {
 
 
 var requestAnimFrame = (function(){
-  return  window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function( callback : any ){ window.setTimeout(callback, 1000 / 60); };
+  return  window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function( callback : ()=> void ){ window.setTimeout(callback, 1000 / 60); };
 })();
 
-function scrollTo(scrollTop : number, element : any, to : number, duration : number) {
+function scrollTo(scrollTop : number, element : HTMLElement, to : number, duration : number) {
 
   function move(amount : number) {
     element.scrollTop = amount;

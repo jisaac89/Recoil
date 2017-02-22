@@ -12,26 +12,22 @@ export interface TableBodyProps {
     // columns defined by user
     columns?: Array<IColumn>;
     // a detail template function that returns a view
-    detailTemplate?: (element: any) => JSX.Element;
-
+    detailTemplate?: (element: Array<any>) => JSX.Element;
     selectedElements?: Array<any>;
-
-    detailTemplateOpenAll?: any;
-    detailTemplateToggleSelectedElements?: any;
+    detailTemplateOpenAll?: boolean;
+    detailTemplateToggleSelectedElements?: boolean;
     detailTemplateSelectedElements?: Array<any>;
     detailTemplateHideToggle?: boolean;
-
-    toggleSelectedElements?: any;
-    rowIsSelectable?: any;
-
+    toggleSelectedElements?: Array<any>;
+    rowIsSelectable?: boolean | string;
     checkable?: boolean;
     hideColumns ? : Array<any>;
-    onRowSelect ? : (element ? : Array<any>, key ? : any, selectedElements?: any, id? : any) => void;   
+    onRowSelect ? : (element ? : Array<any>, key ? : string | number, selectedElements?: Array<any> | Object, id? : string | number) => void;   
     isArray?: boolean;
     detailTemplateOpenOnRowSelect?: boolean | "single";
     selectedKey?: string;
-    filterRow?: any;
-    filterOpenDetailTemplate?: any;
+    filterRow?: (item : Object) => void;
+    filterOpenDetailTemplate?: (item : Object) => void;
 }
 
 export default class TableBody extends React.Component<TableBodyProps,any>{

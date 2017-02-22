@@ -5,14 +5,14 @@ import './Align.less';
 export interface IAlignProps {
     vertical?: boolean;
     className?: string;
-    columns?: Array<any>;
+    columns?: Array<number>;
     margin?: string;
     children?: any;
     fill ?: boolean;
 }
 
 export interface IAlignChildProps{
-  columns ?: Array<any>;
+  columns ?: Array<number>;
   vertical ?: boolean; 
   width ?: number;
   element ?: JSX.Element; 
@@ -20,7 +20,7 @@ export interface IAlignChildProps{
 }
 
 export interface IAlignState {
-  widthArray ?: Array<any>;
+  widthArray ?: Array<number>;
   maxColumnsLength ?: number;
 }
 

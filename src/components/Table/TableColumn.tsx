@@ -4,10 +4,9 @@ import {IColumn} from './IColumn';
 
 export interface ITableDataProps {
     value ?: Array<any>;
-    renderChild? : any;
     column?: IColumn;
     element? : any;
-    hideColumns? : any;
+    hideColumns? : Array<string>;
     isArray? : boolean;
 }
 

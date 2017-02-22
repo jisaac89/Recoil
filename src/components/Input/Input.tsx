@@ -7,7 +7,7 @@ import './Input.less';
 
 export interface IInputProps {
   simple?: boolean;
-  ref? : any;
+  ref? : string;
   className? : string;
   type? : string;
   icon? : string;
@@ -16,19 +16,19 @@ export interface IInputProps {
   value ? : string | string[];
   defaultValue ? : string | string[];
   children? : any;
-  style? : any;
-  errorInline? : any;
-  errorDirection? : any;
-  error? : any;
-  errorMessage? : any;
-  rows? : any;
-  cols? : any;
-  block? : any;
-  autoExpand? : any;
+  style? : Object;
+  errorInline? : boolean;
+  errorDirection? : "left" | "top" | "right" | "bottom";
+  error? : boolean;
+  errorMessage? : string;
+  rows? : number;
+  cols? : number;
+  block? : boolean;
+  autoExpand? : boolean;
   onChange?: (value: any, event: React.FormEvent<any>) => void;
-  scrollHeight?: any;
-  focusOnMount? : any;
-  focusDelay? : any;
+  scrollHeight?: number;
+  focusOnMount? : boolean;
+  focusDelay? : number;
   size? : string;
   advanced? : boolean;
   maxLength? : number;
@@ -39,7 +39,7 @@ export interface IInputProps {
   disabled? : boolean;
   autoComplete?: string;
   flex?: boolean;
-  disableKeys?: any;
+  disableKeys?: Array<string>;
 }
 
 export interface IInputState {
@@ -122,8 +122,9 @@ export default class Input extends React.Component<IInputProps, IInputState>{
       mouseOut: ReactDOM.findDOMNode<HTMLInputElement>(inputDOM).onmouseout ? false : true
     });
   }
-  public onChange(event: any) {
-    this.inputValue(event.target.value, event);
+  public onChange(event: React.KeyboardEvent<HTMLInputElement>) {
+    // ts issues
+    this.inputValue((event.target as HTMLInputElement).value, event);
   }
 
   limit(max : number) {
@@ -134,11 +135,11 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     } 
   }
 
-  inputValue(value : Array<any>, event: React.FormEvent<any>){
+  inputValue(value : string, event: React.FormEvent<any>){
     this.setValue(value, event);
   }
 
-  setValue(value : Array<any>, event: React.FormEvent<any>){
+  setValue(value : string, event: React.FormEvent<any>){
     this.setState({
       value : value
     }, ()=>{
@@ -147,8 +148,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     })
   }
 
-  disableKeys(keys : Array<any>, event : any){
-    if (this.props.disableKeys.includes(keys)){
+  disableKeys(key : string, event : any){
+    if (this.props.disableKeys.includes(key)){
       event.preventDefault();
       event.stopPropagation();
       return false;

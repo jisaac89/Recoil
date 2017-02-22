@@ -7,22 +7,22 @@ export interface IToggleProps {
     name?: string;
     array?: Array<string | number>;
     className?: string;
-    size?: any;
-    onChange?: (checked: boolean, event: React.FormEvent<any>) => void;
+    size? : 'small' | 'medium' | 'large' | 'xlarge';
+    onChange?: (checked: boolean, event: React.FormEvent<HTMLInputElement>) => void;
     iconArray?: Array<string>;
     type?: string; // 'colors'
     ghost?: boolean;
     right?: boolean;
     checked?: boolean;
-    selected?: any;
+    selected?: Array<Object>;
     value?: string | string[];
     label?: string | number;
-    theme?: any;
+    theme?: 'primary' | 'success' | 'error' | 'default';
 }
 
 export interface IToggleState {
     checked?: boolean;
-    selected?: any;
+    selected?: Array<Object>;
 }
 
 export default class Toggle extends React.Component<IToggleProps, IToggleState>{
@@ -35,7 +35,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     super(props);
     this.state = {
       checked: props.checked || false,
-      selected: props.selected || false
+      selected: props.selected || []
     }
   }
 

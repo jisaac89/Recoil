@@ -4,38 +4,38 @@ import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 
-export interface ITableFooterProps {
-  gotoPage ? : (event: React.MouseEvent<any>) => void;
+export interface IPagerProps {
+  gotoPage ? : (pageNumber: number , event?: React.MouseEvent<HTMLElement>) => void;
   currentPage ? : number;
-  changePageSize ? : (event: React.MouseEvent<any>) => void;
+  changePageSize ? : (pageSizeAmount: number , event?: React.MouseEvent<HTMLElement>) => void;
   firstPage ? : (event: React.MouseEvent<any>) => void;
   nextPage ? : (event: React.MouseEvent<any>) => void;
   numberOfPages ? : number;
   numberPerPage ? : number;
   lastPage ? : (event: React.MouseEvent<any>) => void;
   previousPage ? : (event: React.MouseEvent<any>) => void;
-  dataSource ? : Array<any>;
+  dataSource ? : Array<Object>;
   pageSize ? : number;
-  onPageChange? : (event: React.MouseEvent<any>) => void;
-  pageSizerOptions?: Array<any>;
+  onPageChange? : (pageNumber : number, event?: React.MouseEvent<any>) => void;
+  pageSizerOptions?: Array<number>;
   hidePageSize?: boolean;
   rowCount?: number;
   showDataSourceLength?: boolean;
   hideHeader?: boolean;
   title?: string;
-  pagerSize? : any;
-  className?: any;
+  pagerSize? : number;
+  className?: string;
 }
 
-export default class Pager extends React.Component<ITableFooterProps, {}>{
+export default class Pager extends React.Component<IPagerProps, {}>{
 
-  gotoPage(i: any) {
-    this.props.gotoPage(i);
-    this.props.onPageChange ? this.props.onPageChange(i) : null
+  gotoPage(pageNumber: number) {
+    this.props.gotoPage(pageNumber);
+    this.props.onPageChange ? this.props.onPageChange(pageNumber) : null
   }
 
-  onSelected(item : any) {
-    this.props.changePageSize(item);
+  onSelected(pageSizeAmount : number) {
+    this.props.changePageSize(pageSizeAmount);
   }
 
   lastPage(numberOfPages : React.MouseEvent<any>) {

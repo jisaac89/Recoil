@@ -12,12 +12,12 @@ export interface IToolbarProps {
   left?: boolean;
   right?: boolean;
   fill?: boolean;
-  className?: any;
-  style?: any;
+  className?: string;
+  style?: Object;
   children?: any;
   flush ? : boolean;
   noBorder? : boolean;
-  onClick? : any;
+  onClick? : (event : React.MouseEvent<HTMLElement>) => void;
   tabs?: boolean;
   breadcrumbs?: boolean;
   size? : "small" | "medium" | "large" | "xlarge";

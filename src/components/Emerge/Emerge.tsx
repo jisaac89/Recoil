@@ -10,7 +10,7 @@ export interface IEmergeProps {
   overflow? : boolean;
   children? : any;
   className? : string;
-  style? : any;
+  style? : Array<string>;
 }
 
 export default class Emerge extends React.Component<IEmergeProps, {}> {

@@ -10,9 +10,9 @@ export interface ICheckboxProps {
   disabled? : boolean;
   size? : "small" | "medium" | "large" | "xlarge";
   ghost? : boolean;
-  theme?: any;
+  theme?: 'primary' | 'success' | 'error' | 'default';
   icon? : string;
-  onChange? : any;
+  onChange? : (value: boolean, event?: React.MouseEvent<MouseEvent>) => void;
   title? : string;
 }
 

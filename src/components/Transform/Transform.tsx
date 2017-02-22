@@ -4,14 +4,14 @@ import './Transform.less';
 
 export interface ITransformProps {
   type? : string;
-  className ? : any;
-  if ? : boolean;
+  className ? : string;
+  if  : boolean;
   push ? : string;
-  amount ? : string;
+  amount : string;
   delay ? : number;
   fill ? : boolean;
   axis ? : string;
-  children?: any;
+  children ?: any;
   flex?: boolean;
 }
 

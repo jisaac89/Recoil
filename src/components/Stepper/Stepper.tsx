@@ -7,7 +7,7 @@ import Shrink from '../Shrink/Shrink';
 export interface IStepperProps {
     title?: string;
     className?: string;
-    stepIndex?: number;
+    stepIndex: number;
     children?: any;
     vertical?: boolean;
 }

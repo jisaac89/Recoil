@@ -4,8 +4,8 @@ import './Open.less';
 import Layer from '../Layer/Layer';
 
 export interface IOpenProps {
-  if? : boolean;
-  className? : any;
+  if : boolean;
+  className? : string;
   children? : any;
   overflow? : boolean;
   fill? : boolean;

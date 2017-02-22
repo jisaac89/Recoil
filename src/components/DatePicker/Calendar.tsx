@@ -51,10 +51,10 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
-    selectMonth = (month: number) => {
-        console.log(month);
+    selectMonth = (...Args) => {
+        let monthIndex = Args[1];
         this.setState({
-            month: month + 1
+            month: monthIndex + 1
         });
     }
 
@@ -157,7 +157,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                         selectYear={this.selectYear.bind(this)}
                     />
                 </Toolbar>
-                <Layer flex theme="light" className="r-Table h100">
+                <Layer flex theme="light">
                     <DaysHeader />
                     <Layer className="r-Calendar-Scroll" fill flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
                         <div id={"1"}>

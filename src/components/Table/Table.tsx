@@ -19,11 +19,11 @@ export {IColumn}
 
 export interface ITableProps {
     // initial dataSource loaded as prop
-    dataSource ?:  Array<any>;
+    dataSource ?:  Array<Object> | Array<number> | Array<string>;
     // columns defined by user
     columns?: Array<IColumn>;
     // a detail template function that returns a view
-    detailTemplate?: (element: any) => JSX.Element;
+    detailTemplate?: (element: Array<Object>) => JSX.Element;
     // toggle if the table header should show
     hideHeader ? : boolean;
     // how many rows to show
@@ -31,17 +31,17 @@ export interface ITableProps {
     // current page index
     page ? : number;
     // 
-    detailTemplateSelectedElements ? : Array<any>;
-    selectedElements ? : Array<any>;
-    rowIsSelectable ? : any;
+    detailTemplateSelectedElements ? : Array<Object>;
+    selectedElements ? : Array<Object>;
+    rowIsSelectable ? : boolean | 'single' | 'multi';
     checkable?: boolean;
     hideCheckAll?: boolean;
-    onCheck ? : (event: React.MouseEvent<any>) => void;
+    onCheck ? : (event: React.MouseEvent<HTMLInputElement>) => void;
     detailTemplateHideToggle? : boolean;
-    hideColumns? : Array<any>;
-    onRowSelect ? : (element ? : Array<any>, key ? : any, selectedElements?: any, id? : any) => void;
-    pageSizerOptions? : Array<any>;
-    onPageSizeChange? : (event: React.MouseEvent<any>) => void;
+    hideColumns? : Array<string>;
+    onRowSelect ? : (element ? : Array<Object>, key ? : string | number, selectedElements?: Array<Object>, id? : string) => void;
+    pageSizerOptions? : Array<number>;
+    onPageSizeChange? : (event: React.MouseEvent<HTMLElement>) => void;
     onPageChange? : any;
     sortable ? : boolean;
     searchableKeys? : Array<any>;
@@ -224,7 +224,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         let tableClass = classNames(
             'r-Table',
             { 'e-flex': (props.flex) },
-            {'e-selectable' : (props.rowIsSelectable)},
+            {'e-selectable' : (!!props.rowIsSelectable)},
             {'e-selectable' : (detailTemplateOpenOnRowSelect === true || detailTemplateOpenOnRowSelect === 'single')},
             props.className
         )

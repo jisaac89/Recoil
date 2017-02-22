@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 
 export interface ILoadingProps {
   children ? : any;
-  if? : boolean;
+  if ?: boolean;
   className? : string;
   src? : string;
   size? : 'small' | 'medium' | 'large' | 'xlarge';

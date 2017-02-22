@@ -21,12 +21,12 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     type?: string;
     material?: boolean;
     dropDirection?: string;
-    onChange?: any;
+    onChange ? : (element ? : Array<Object>, key ? : string | number, selectedElements?: Array<Object>, id? : string) => void;
     fixedClose?: boolean;
     mobile?: boolean;
     open?: boolean;
-    onOpen?: any;
-    onClose?: any;
+    onOpen?: (boolean: boolean)=> void;
+    onClose?: (boolean: boolean)=> void;
     hideDropdownHeader?: boolean;
     titleKey?: string;
 }
