@@ -146,7 +146,11 @@
 .r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container,
 .r-Toolbar.flush > .r-Button + .r-Input:last-child,
 .r-Toolbar.flush > .r-Button + .r-Input:last-child > .r-Input__container > input[type='text'],
-.r-Toolbar.flush > .r-Button + .r-Input.r-Input__container:last-child > input[type='text']{
+.r-Toolbar.flush > .r-Button + .r-Input.r-Input__container:last-child > input[type='text'],
+.r-Toolbar.flush > .r-Dropdown + .r-Input:last-child > .r-Input__container,
+.r-Toolbar.flush > .r-Dropdown + .r-Input:last-child,
+.r-Toolbar.flush > .r-Dropdown + .r-Input:last-child > .r-Input__container > input[type='text'],
+.r-Toolbar.flush > .r-Dropdown + .r-Input.r-Input__container:last-child > input{
   border-bottom-left-radius:0;
   border-top-left-radius: 0;
 }
@@ -198,10 +202,11 @@
 .r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1),
 .r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1) input,
 .r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1),
-.r-Toolbar.flush.horizontal > .r-Input:nth-child(1) > input{
+.r-Toolbar.flush.horizontal > .r-Input:nth-child(1) > input,
+.r-Toolbar.flush.horizontal > .r-Dropdown > .r-Button{
   border-right:0;
   border-top-right-radius:0;
-  border-bottom-right-radius:0;
+  border-bottom-right-radius:0; 
 }
 
 .r-Toolbar.flush.horizontal > .r-Input:first-child,

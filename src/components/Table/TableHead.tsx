@@ -88,14 +88,14 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
         let {detailTemplate, hideCheckAll, sortKey, columns, detailTemplateHideToggle, hideHeader,hideColumns, detailTemplateToggleAll, dataSource, detailTemplateSelectedElements, selectAll, checkable, selectedElements, sortable} = this.props;
         let columnHeadArray : Array<any> = [];
         
-        columns.map((key) => {
+        columns.map((key, index) => {
             let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(key.title ? key.title : key.name);
 
             if (hideColumnsArrayIncludesEitherNameOrTitle) {
                 return null;
             } else {
                 columnHeadArray.push(
-                    <th width={key.width} key={key.name || key.title}>
+                    <th width={key.width} key={index}>
                         <Button className="p0" icon={sortable && (key.name === sortKey || key.title === sortKey)? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>
                     </th>
                 )

@@ -51,7 +51,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         });
     }
 
-    selectMonth = (...Args) => {
+    selectMonth = (...Args : Array<any>) => {
         let monthIndex = Args[1];
         this.setState({
             month: monthIndex + 1
