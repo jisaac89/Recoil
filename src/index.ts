@@ -1,3 +1,19 @@
+export interface IRecoil{
+    size?: "small" | "large" | "xlarge" | "default";
+    theme?: "primary" | "success" | "error" | "bronze" | "silver" | "gold" | "default" | "light" | "night";
+    className?: string;
+    flex?: boolean;
+    fill?: boolean;
+    disabled?: boolean;
+    checked?: boolean;
+    loading?:boolean;
+    simple?: boolean;
+    outline?: boolean;
+    tabIndex?: number;
+    id?: string;
+    children?: any;
+}
+
 export {default as Recoil} from './components/Recoil/Recoil';
 export {default as Align} from './components/Align/Align';
 export {default as Button, IButtonProps, IButtonState} from './components/Button/Button';

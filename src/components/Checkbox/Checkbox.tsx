@@ -5,12 +5,9 @@ import * as classNames from 'classnames';
 
 import './Checkbox.less';
 
-export interface ICheckboxProps {
-  checked? : boolean;
-  disabled? : boolean;
-  size? : "small" | "medium" | "large" | "xlarge";
-  ghost? : boolean;
-  theme?: 'primary' | 'success' | 'error' | 'default';
+import {IRecoil} from '../../index';
+
+export interface ICheckboxProps extends IRecoil{
   icon? : string;
   onChange? : (value: boolean, event?: React.MouseEvent<MouseEvent>) => void;
   title? : string;

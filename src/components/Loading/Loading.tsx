@@ -4,14 +4,13 @@ import './Loading.less';
 
 import Button from '../Button/Button';
 
-export interface ILoadingProps {
+import {IRecoil} from '../../index';
+
+export interface ILoadingProps extends IRecoil {
   children ? : any;
   if ?: boolean;
-  className? : string;
   src? : string;
-  size? : 'small' | 'medium' | 'large' | 'xlarge';
   title? : string;
-  theme?: 'success' | 'primary' | 'error' | 'default';
   width?: number;
   height?: number;
 }

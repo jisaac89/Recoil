@@ -2,7 +2,9 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Toolbar.less';
 
-export interface IToolbarProps {
+import {IRecoil} from '../../index';
+
+export interface IToolbarProps extends IRecoil{
   border?: boolean;
   vertical?: boolean;
   textCenter?: boolean;
@@ -11,20 +13,12 @@ export interface IToolbarProps {
   block?: boolean;
   left?: boolean;
   right?: boolean;
-  fill?: boolean;
-  className?: string;
   style?: Object;
-  children?: any;
   flush ? : boolean;
   noBorder? : boolean;
   onClick? : (event : React.MouseEvent<HTMLElement>) => void;
   tabs?: boolean;
   breadcrumbs?: boolean;
-  size? : "small" | "medium" | "large" | "xlarge";
-  theme? : string;
-  flex?: boolean;
-  id? : string;
-  disabled? : boolean;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{

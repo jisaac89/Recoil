@@ -3,21 +3,19 @@ import * as classNames from 'classnames';
 import './Toggle.less';
 import Wizard from '../Wizard/Wizard';
 
-export interface IToggleProps {
+import {IRecoil} from '../../index';
+
+export interface IToggleProps extends IRecoil {
     name?: string;
     array?: Array<string | number>;
-    className?: string;
-    size? : 'small' | 'medium' | 'large' | 'xlarge';
     onChange?: (checked: boolean, event: React.FormEvent<HTMLInputElement>) => void;
     iconArray?: Array<string>;
     type?: string; // 'colors'
     ghost?: boolean;
     right?: boolean;
-    checked?: boolean;
     selected?: Array<Object>;
     value?: string | string[];
     label?: string | number;
-    theme?: 'primary' | 'success' | 'error' | 'default';
 }
 
 export interface IToggleState {

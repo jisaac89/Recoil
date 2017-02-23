@@ -2,17 +2,15 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import './Layer.less';
 
-export interface ILayerProps {
+import {IRecoil} from '../../index';
+
+export interface ILayerProps extends IRecoil{
   border? : boolean;
   overflow? : boolean;
   left? : boolean;
   right? : boolean;
   scrollY? : boolean;
   scrollX? : boolean;
-  fill? : boolean;
-  theme? : string;
-  children? : any;
-  className? : string;
   style? : Object;
   onClick?: () => void;
   block? : boolean;
@@ -20,14 +18,12 @@ export interface ILayerProps {
   parent? : boolean;
   child? : boolean;
   dimensions?:{height: string, width : string, zIndex: number};
-  disabled? : boolean;
   scrollToId?: string;
   beforeAnimate? : () => void;
   afterAnimate ? : () => void;
   nightmode? : boolean;
   scrollIf? : boolean;
   scroll? : boolean;
-  flex? : boolean;
   offset?: number;
   shadow?: boolean;
   animate?: Array<any>;

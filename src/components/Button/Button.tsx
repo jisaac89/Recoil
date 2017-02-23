@@ -3,35 +3,25 @@ import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
 
-export interface IButtonProps {
-  children? : any;
+import {IRecoil} from '../../index';
+
+export interface IButtonProps extends IRecoil{
   progressiveClick? : Array<Function>;
   style? : Object;
   onClick? : (event: React.MouseEvent<any>) => void;
-  theme?: 'primary' | 'success' | 'error' | 'default';
   pointer? : 'left' | 'right' | boolean;
-  size? : 'small' | 'medium' | 'large' | 'xlarge';
   iconPointer? : 'left' | 'right' | 'up' | 'down';
   iconLocation?: 'left' | 'right';
   checkedTheme? : 'primary' | 'success' | 'error' | 'default';
-  className? : string;
   icon? : string;
   href?: string;
   target?: string;
-  id? : string;
   block?: boolean;
-  disabled?: boolean;
-  simple? : boolean;
   strech? : boolean;
-  outline? : boolean;
   right? : boolean;
   left? : boolean;
   submit? : boolean;
-  checked? : boolean;
-  tabIndex? : number;
   advanced?: boolean;
-  loading?: boolean;
-  fill? : boolean;
   ghost?: boolean;
   required ? : boolean;
 }

@@ -5,17 +5,16 @@ import Selectable from '../Selectable/Selectable';
 import SlideIn from '../SlideIn/SlideIn';
 import './Input.less';
 
-export interface IInputProps {
-  simple?: boolean;
+import {IRecoil} from '../../index';
+
+export interface IInputProps extends IRecoil {
   ref? : string;
-  className? : string;
   type? : string;
   icon? : string;
   title? : string;
   placeholder? : string;
   value ? : string | string[];
   defaultValue ? : string | string[];
-  children? : any;
   style? : Object;
   errorInline? : boolean;
   errorDirection? : "left" | "top" | "right" | "bottom";
@@ -29,16 +28,13 @@ export interface IInputProps {
   scrollHeight?: number;
   focusOnMount? : boolean;
   focusDelay? : number;
-  size? : string;
   advanced? : boolean;
   maxLength? : number;
   max ? : number;
   min ? : number;
   name?: string;
   required? : boolean;
-  disabled? : boolean;
   autoComplete?: string;
-  flex?: boolean;
   disableKeys?: Array<string>;
 }
 
