@@ -3,6 +3,7 @@ import './Notifications.less';
 
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
+import Open from '../Open/Open';
 
 import * as classNames from 'classnames';
 
@@ -41,7 +42,7 @@ class Notification extends React.Component<INotificationProps, INotificationStat
             self.setState({
                 view: 'removed'
             });
-        }, 6000);
+        }, 20000);
     }
 
     render() {
@@ -53,18 +54,16 @@ class Notification extends React.Component<INotificationProps, INotificationStat
         if (this.state.view === 'visible') {
             animationClass = 'animated fadeInUp';
         } else if (this.state.view === 'hiding') {
-            animationClass = 'animated fadeOutDown';
+            animationClass = 'animated';
         } else {
             //animationClass = 'hide';
         }
 
-        if (this.state.view !== 'removed') {
-            return (
-                <Toolbar size="large" block textCenter className="p10"><Button theme={props.item.type ? props.item.type : 'default'} className={animationClass}>{props.item.title}</Button></Toolbar>
+        return (
+            <Open if={this.state.view === 'visible'} openToHeight={'70px'}>
+                <Toolbar size="large" block textCenter className="p10 w100"><Button block theme={props.item.type ? props.item.type : 'default'} className={animationClass}>{props.item.title}</Button></Toolbar>
+             </Open>
             );
-        } else {
-            return null;
-        }
     }
 }
 

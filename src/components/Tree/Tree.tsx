@@ -24,6 +24,7 @@ export interface ITreeProps {
     selectedKey?: string;
     onRowSelect?: any;
     filterOpenDetailTemplate?: any;
+    onMount?: any;
 }
 
 export interface ITreeState {
@@ -51,7 +52,7 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
     }
 
     componentDidMount() {
-        this.initArray(this.props.dataSource);
+        this.initArray(this.props.dataSource, true);
 
         if (this.props.selectedElements && this.props.selectedElements.length > 0) {
             this.openSelectedElements(this.props.selectedElements);
@@ -60,7 +61,7 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
 
     componentWillReceiveProps(nextProps: ITreeProps) {
         if (nextProps.dataSource.length !== this.props.dataSource.length) {
-            this.initArray(nextProps.dataSource);
+            this.initArray(nextProps.dataSource, false);
         }
 
         if (nextProps.selectedElements && nextProps.selectedElements.length > 0) {
@@ -68,7 +69,7 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
         }
     }
 
-    initArray<T>(dataSource: Array<T>) {
+    initArray<T>(dataSource: Array<T>, bool : boolean) {
         let {parentKey, uniqueKey} = this.props;
 
         let treeItems: Array<ITreeItem<T, any>> = [];
@@ -91,7 +92,12 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
             treeItemHash: treeItemHash
         }, () => {
             this.updateRoots();
-        });
+            });
+
+        if (bool) {
+            //console.log(treeItems);
+            this.props.onMount ? this.props.onMount(treeItems) : null
+        }
     }
 
     updateRoots() {

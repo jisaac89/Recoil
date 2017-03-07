@@ -22,6 +22,7 @@ export interface IModalProps {
     mobile?: boolean;
     hideFullScreenButton?: boolean;
     hideCloseButton?: boolean;
+    hideHeader?: boolean;
 }
 
 export interface IModalState {
@@ -130,16 +131,18 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
             <Portal portalType="SlideIn" open={this.state.open} portalId={guidGenerator()}>
                 {this.state.showChildren ? <div className={modalWrapperClass}>
                     <div ref='Modal' className={modalClass} style={props.style}>
-                        <ModalHeader
-                            open={this.state.open}
-                            icon={this.props.icon}
-                            title={this.props.title}
-                            fullScreen={this.state.fullScreen}
-                            toggleFullScreen={this.toggleFullScreen.bind(this)}
-                            onClose={this.closeModal.bind(this)}
-                            hideFullScreenButton={props.hideFullScreenButton}
-                            hideCloseButton={props.hideCloseButton}
-                            />
+                        {!props.hideHeader ? 
+                            <ModalHeader
+                                open={this.state.open}
+                                icon={this.props.icon}
+                                title={this.props.title}
+                                fullScreen={this.state.fullScreen}
+                                toggleFullScreen={this.toggleFullScreen.bind(this)}
+                                onClose={this.closeModal.bind(this)}
+                                hideFullScreenButton={props.hideFullScreenButton}
+                                hideCloseButton={props.hideCloseButton}
+                                />
+                            : null}
                         {props.children}
                     </div>
                 </div> : null}

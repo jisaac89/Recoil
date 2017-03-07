@@ -33,14 +33,14 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
                         simple 
                         size="small" 
                         
-                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-up'} 
+                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-right'} 
                     /> 
                     : null : 
                      <Button 
                         tabIndex={-1} 
                         simple 
                         size="small"  
-                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-up'} 
+                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-right'} 
                     />
                 }
             </td>
