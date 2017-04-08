@@ -84,6 +84,9 @@ export interface ITableProps {
     scrollToId ? : any;
     scrollIf?: any;
     loading?: boolean;
+    searchValue?: string;
+    searchFilter?: any;
+    onSearchChange?: (term: string) => void;
 }
 
 interface ITableState {
@@ -103,6 +106,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         const props = self.props;
 
         let {
+            searchValue,
             selectedKey,
             filterOpenDetailTemplate,
             filterRow,
@@ -153,7 +157,8 @@ class Table extends React.Component<ITableProps, ITableState>{
             scrollToId,
             scrollIf,
             loading,
-            hideCheckAll
+            hideCheckAll,
+            onSearchChange
         } = props;
         
         // assign the props
@@ -218,7 +223,9 @@ class Table extends React.Component<ITableProps, ITableState>{
             filterItems: filterItems,
             searchableKeys : this.props.searchableKeys,
             focusOnMount: this.props.focusOnMount,
-            searchTitle : this.props.searchTitle,
+            searchTitle: this.props.searchTitle,
+            value: searchValue,
+            onSearchChange: onSearchChange
         }
 
         let tableClass = classNames(

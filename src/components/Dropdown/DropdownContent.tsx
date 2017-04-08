@@ -46,8 +46,10 @@ export default class DropdownContent extends React.Component<any, any>{
             hideFooter,
             hideDropdownHeader,
             scrollToId,
-            scrollIf
+            scrollIf,
             //
+            parentId,
+            hideRoot
         } = props;
 
         let dropdownHeaderProps = {
@@ -84,8 +86,10 @@ export default class DropdownContent extends React.Component<any, any>{
             sortKey,
             hideFooter,
             scrollToId,
-            scrollIf
+            scrollIf,
             //
+            parentId,
+            hideRoot
         }
 
 

@@ -15,7 +15,7 @@ export function branchIn(value : Array<any>, key : string, step?: number) : any 
 
 }
 
-export function search(dataSource: Array<any>, term: string, keys: Array<any>) {
+export function search(dataSource: Array<any>, term: string, keys: Array<any>, fn?: (dataSource ?: Array<any>, term? : string, keys ?: Array<string>)=> void) {
     let queryResult : Array<Object> = [];
     if (term.length > 0) {
         dataSource.forEach(function (item) {
@@ -28,7 +28,12 @@ export function search(dataSource: Array<any>, term: string, keys: Array<any>) {
             });
         });
     }
-    return queryResult;
+    
+    if(fn){
+        return fn(dataSource, term);
+    } else{
+        return queryResult;
+    }
 }
 
 export function isType(value: any) {
@@ -54,7 +59,7 @@ export function isType(value: any) {
 }
 
 export function getType<T>(value : Array<T>) {
-    var type = typeof value;
+    var type: string = typeof value;
     if (type === 'object' && value instanceof Array) {
         type = 'array';
     }

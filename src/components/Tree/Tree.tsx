@@ -25,6 +25,8 @@ export interface ITreeProps {
     onRowSelect?: any;
     filterOpenDetailTemplate?: any;
     onMount?: any;
+    parentId?: any;
+    hideRoot?: boolean;
 }
 
 export interface ITreeState {
@@ -132,14 +134,14 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
 
             let theNode = currentNode[0];
 
-            if (theNode && theNode.parentId !== 0) {
+            if (theNode && (theNode.parentId !== 0 || theNode.parentId !== this.props.parentId)) {
                 openedKeys.push(theNode.parentId);
 
                 let parentNode = treeItems.filter(function (node: any) {
                     return node.Id === theNode.parentId;
                 });
 
-                if (parentNode[0].parentId === 0) {
+                if (theNode.parentId === 0 || theNode.parentId === this.props.parentId) {
                     return null
                 } else {
                     return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
@@ -167,14 +169,14 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
 
             let theNode = currentNode[0];
 
-            if (theNode && theNode.parentId !== 0) {
+            if (theNode && (theNode.parentId !== 0 || theNode.parentId !== this.props.parentId)) {
                 openedKeys.push(theNode.parentId);
 
                 let parentNode = treeItems.filter(function (node: any) {
                     return node.Id === theNode.parentId;
                 });
 
-                if (parentNode[0].parentId === 0) {
+                if (theNode.parentId === 0 || theNode.parentId === this.props.parentId) {
                     return null
                 } else {
                     return gotoParentAndPushKey(currentSelectedKeyIndex, parentNode);
@@ -209,28 +211,51 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
         );
     }
 
+    renderChildrenWithoutParent(childNode: any) {
+        let {columns, uniqueKey, filterOpenDetailTemplate, openedElements} = this.props;
+        return (
+            <Table
+                hideHeader
+                key={childNode.Id}
+                columns={columns}
+                dataSource={childNode.children}
+                detailTemplate={this.renderChildren.bind(this)}
+                filterOpenDetailTemplate={filterOpenDetailTemplate}
+                hidePageSize
+                selectedKey={uniqueKey}
+                selectedElements={this.props.selectedElements}
+                detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
+                pageSize={childNode.children.length}
+                />
+        );
+    }
+
     render() {
-        let {columns, openedElements, uniqueKey, filterOpenDetailTemplate} = this.props;
+        let {columns, openedElements, uniqueKey, filterOpenDetailTemplate, hideRoot} = this.props;
         let {roots} = this.state;
 
         if (roots.length) {
-            return (
-                <div className="r-Tree e-scroll-y">
-                    <Table
-                        hideHeader
-                        columns={columns}
-                        dataSource={roots}
-                        detailTemplate={this.renderChildren.bind(this)}
-                        filterOpenDetailTemplate={filterOpenDetailTemplate}
-                        hidePageSize
-                        selectedKey={uniqueKey}
-                        selectedElements={this.props.selectedElements}
-                        detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
-                        pageSize={roots.length}
-                        />
+            if (hideRoot) {
+                return this.renderChildrenWithoutParent(roots[0]);
+            } else {
+                return (
+                    <div className="r-Tree e-scroll-y">
+                        <Table
+                            hideHeader
+                            columns={columns}
+                            dataSource={roots}
+                            detailTemplate={this.renderChildren.bind(this)}
+                            filterOpenDetailTemplate={filterOpenDetailTemplate}
+                            hidePageSize
+                            selectedKey={uniqueKey}
+                            selectedElements={this.props.selectedElements}
+                            detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
+                            pageSize={roots.length}
+                            />
 
-                </div>
-            );
+                    </div>
+                );
+            }
         } else return null;
     }
 }

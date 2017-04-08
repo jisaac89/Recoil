@@ -3,7 +3,6 @@ import './Notifications.less';
 
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
-import Open from '../Open/Open';
 
 import * as classNames from 'classnames';
 
@@ -59,11 +58,7 @@ class Notification extends React.Component<INotificationProps, INotificationStat
             //animationClass = 'hide';
         }
 
-        return (
-            <Open if={this.state.view === 'visible'} openToHeight={'70px'}>
-                <Toolbar size="large" block textCenter className="p10 w100"><Button block theme={props.item.type ? props.item.type : 'default'} className={animationClass}>{props.item.title}</Button></Toolbar>
-             </Open>
-            );
+        return this.state.view === 'visible' ? <Toolbar block textCenter className="p10 w100"><Button block theme={props.item.type ? props.item.type : 'default'} className={animationClass}>{props.item.title}</Button></Toolbar> : null
     }
 }
 

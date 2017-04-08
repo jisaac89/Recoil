@@ -24,6 +24,12 @@ export default class TableSearch extends React.Component<any, any>{
       searchTerm: props.value || ''
     }
   }
+
+  componentDidMount() {
+      if (this.props.value) {
+          this.updateSearch(this.props.value);
+      }
+  }
   
   componentWillReceiveProps (nextProps : any) {
     if (nextProps.value && nextProps.value !== this.props.value) {
@@ -46,7 +52,11 @@ export default class TableSearch extends React.Component<any, any>{
       if (this._throttleTimeout) {
         clearTimeout(this._throttleTimeout)
       }
-      this._throttleTimeout = setTimeout(() => this.props.filterItems(searchTerm, this.props.searchableKeys), this.props.throttle)
+      this._throttleTimeout = setTimeout(() => {
+        this.props.filterItems(searchTerm, this.props.searchableKeys);
+        this.props.onSearchChange ? this.props.onSearchChange(searchTerm) : null;
+      }, this.props.throttle)
+
     })
   }
 

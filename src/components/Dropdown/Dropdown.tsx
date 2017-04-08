@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 
 import Button from '../Button/Button';
 import {IButtonProps} from '../Button/Button';
-import {ITableProps} from '../Table/Table';
+import { ITableProps } from '../Table/Table';
 
 import './Dropdown.less';
 
@@ -29,6 +29,10 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     onClose?: (boolean: boolean)=> void;
     hideDropdownHeader?: boolean;
     titleKey?: string;
+    disabled?: boolean;
+
+    parentId?: any;
+    hideRoot?: boolean;
 }
 
 export interface State {
@@ -141,6 +145,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             pointer,
             required,
             checkedTheme,
+            disabled,
+            parentId,
             //
             children,
 
@@ -166,7 +172,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             mobile,
             sortKey,
             hideFooter,
-            hideDropdownHeader
+            hideDropdownHeader,
+            hideRoot
         } = props;
 
         let buttonProps = {
@@ -182,6 +189,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             theme,
             pointer,
             required,
+            disabled,
             checkedTheme,
             onClick: this.openDropdown.bind(this)
         }
@@ -221,8 +229,10 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             hideFooter,
             hideDropdownHeader,
             scrollToId: this.state.scrollToId,
-            scrollIf: this.state.dropdownIsOpen
+            scrollIf: this.state.dropdownIsOpen,
             //
+            parentId: parentId,
+            hideRoot : hideRoot
         }
 
         let dropdownClass = classNames(

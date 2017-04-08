@@ -74,6 +74,10 @@ const DataSource : any = (Component : JSX.Element) =>
                     dataSource.length ? this.loadDataSource(dataSource) : null;
                 }
             }
+
+            if (nextProps.searchValue !== this.props.searchValue) {
+                this.filterItems(nextProps.searchValue, nextProps.searchableKeys);
+            }
         }
 
         componentDidMount() {
@@ -262,6 +266,8 @@ const DataSource : any = (Component : JSX.Element) =>
             this.setState({
                 activeRows: activeRows
             });
+
+            //this.props.searchValue ? this.filterItems(this.props.searchValue, this.props.searchableKeys) : null;
         }
 
         detailTemplateToggleAll(dataSource: Array<any>) {
@@ -437,7 +443,7 @@ const DataSource : any = (Component : JSX.Element) =>
             let state = self.state;
 
             self.setState({
-                searchedItems: search(state.dataSource, term, keys),
+                searchedItems: search(state.dataSource, term, keys, self.props.searchFilter),
                 searchTerm: term,
                 page: 0
             }, () => {
