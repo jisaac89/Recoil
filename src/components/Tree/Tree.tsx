@@ -27,6 +27,7 @@ export interface ITreeProps {
     onMount?: any;
     parentId?: any;
     hideRoot?: boolean;
+    hideChildren?: boolean;
 }
 
 export interface ITreeState {
@@ -212,26 +213,30 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
     }
 
     renderChildrenWithoutParent(childNode: any) {
-        let {columns, uniqueKey, filterOpenDetailTemplate, openedElements} = this.props;
-        return (
-            <Table
-                hideHeader
-                key={childNode.Id}
-                columns={columns}
-                dataSource={childNode.children}
-                detailTemplate={this.renderChildren.bind(this)}
-                filterOpenDetailTemplate={filterOpenDetailTemplate}
-                hidePageSize
-                selectedKey={uniqueKey}
-                selectedElements={this.props.selectedElements}
-                detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
-                pageSize={childNode.children.length}
-                />
-        );
+        let {columns, uniqueKey, filterOpenDetailTemplate, openedElements, hideChildren} = this.props;
+        if (!hideChildren) {
+            return (
+                <Table
+                    hideHeader
+                    key={childNode.Id}
+                    columns={columns}
+                    dataSource={childNode.children}
+                    detailTemplate={this.renderChildren.bind(this)}
+                    filterOpenDetailTemplate={filterOpenDetailTemplate}
+                    hidePageSize
+                    selectedKey={uniqueKey}
+                    selectedElements={this.props.selectedElements}
+                    detailTemplateSelectedElements={this.state.openedKeys.concat(openedElements)}
+                    pageSize={childNode.children.length}
+                    />
+            );
+        } else {
+            return null;
+        }
     }
 
     render() {
-        let {columns, openedElements, uniqueKey, filterOpenDetailTemplate, hideRoot} = this.props;
+        let {columns, openedElements, uniqueKey, filterOpenDetailTemplate, hideRoot, hideChildren} = this.props;
         let {roots} = this.state;
 
         if (roots.length) {
@@ -244,7 +249,7 @@ export default class Tree extends React.Component<ITreeProps, ITreeState>{
                             hideHeader
                             columns={columns}
                             dataSource={roots}
-                            detailTemplate={this.renderChildren.bind(this)}
+                            detailTemplate={!hideChildren ? this.renderChildren.bind(this) : null}
                             filterOpenDetailTemplate={filterOpenDetailTemplate}
                             hidePageSize
                             selectedKey={uniqueKey}
