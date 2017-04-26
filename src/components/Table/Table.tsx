@@ -9,7 +9,8 @@ import TableFooter from './TableFooter';
 import TableSearch from './TableSearch';
 import Layer from '../Layer/Layer';
 import Toolbar from '../Toolbar/Toolbar';
-
+import Button from '../Button/Button';
+import Emerge from '../Emerge/Emerge';
 import Loading from '../Loading/Loading';
 
 import DataSource from '../DataSource/DataSource';
@@ -236,12 +237,12 @@ class Table extends React.Component<ITableProps, ITableState>{
             props.className
         )
 
-        let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
         
         if (loading) {
             return <Loading />
         }
         else if ((activeRows.length || dataSource.length) && columns.length) {
+        let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
             return (
                 <div className={tableClass}>
                     <TableSearch {...tableSearchProps} />
@@ -260,7 +261,15 @@ class Table extends React.Component<ITableProps, ITableState>{
                     {nothingMatchesSearchCriteria || hideFooter ? null : <TableFooter {...footerProps}/>}
                 </div>
             )
-        } else return null;
+        } else {
+            return (
+                <Emerge className="e-fill">
+                    <Toolbar block textCenter className="ptb20">
+                        <Button block size="large" simple>No items found</Button>
+                    </Toolbar>
+                </Emerge>
+            )
+        }
     }
 }
 

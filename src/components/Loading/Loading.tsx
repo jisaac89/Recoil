@@ -33,7 +33,6 @@ export default class Loading extends React.Component<ILoadingProps, ILoadingStat
 
     let loadingClass = classNames(
       'r-Loading',
-      'floatL',
       'loader',
       props.className
     )

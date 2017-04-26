@@ -2,13 +2,17 @@ import * as React from 'react';
 
 import {arraysEqual, search, branchIn} from '../Utils';
 
-import {ITableProps} from '../Table/Table';
+import { ITableProps } from '../Table/Table';
+import Emerge from '../Emerge/Emerge';
+import Toolbar from '../Toolbar/Toolbar';
+import Button from '../Button/Button';
 import {IColumn} from './IColumn';
 
 export interface IDataSourceProps extends ITableProps {
     // initial dataSource loaded as prop
     dataSource?: Array<Object> | Array<number> | Array<string>;
     columns?: Array<IColumn>;
+    emptyText: string;
 }
 
 const DataSource : any = (Component : JSX.Element) =>
@@ -457,6 +461,7 @@ const DataSource : any = (Component : JSX.Element) =>
             const self = this;
             const props = self.props;
             let {columns, dataSource, activeRows} = self.state;
+            let {emptyText} = props;
 
             let renderedObject = {
                 // methods
@@ -483,7 +488,15 @@ const DataSource : any = (Component : JSX.Element) =>
                 const updatedComponent = React.cloneElement(Component, newProps, Component.props);
                 // only if a dataSource exists return the new element - else return original
                 return dataSource.length ? updatedComponent : Component;
-            } else return null;
+            } else {
+                return (
+                    <Emerge className="e-fill">
+                        <Toolbar block textCenter className="ptb20">
+                            <Button block size="large" simple>{emptyText}</Button>
+                        </Toolbar>
+                    </Emerge>
+                )
+            }
         }
 };
 
