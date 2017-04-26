@@ -23,6 +23,7 @@ export interface IModalProps {
     hideFullScreenButton?: boolean;
     hideCloseButton?: boolean;
     hideHeader?: boolean;
+    overflow?: boolean;
 }
 
 export interface IModalState {
@@ -119,7 +120,8 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
             { 'e-float': (props.float) },
             { 'e-fade': (props.effect === 'fade') },
             { 'e-fullscreen': (self.state.fullScreen) },
-            {'mobile': props.mobile}
+            { 'mobile': props.mobile },
+            { 'flohide': (props.overflow) },
         );
 
         let modalClass = classNames(
