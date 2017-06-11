@@ -109,7 +109,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
     }
 
     render() {
-
+         
         const self = this;
         const props = self.props;
 

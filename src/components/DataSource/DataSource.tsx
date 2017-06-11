@@ -288,7 +288,7 @@ const DataSource : any = (Component : JSX.Element) =>
             let {detailTemplateSelectedElements} = self.state;
 
             let selectedElementsArray: any;
-
+             
             let setSelectedElementsState = (data: Array<any>) => {
                 self.setState({
                     detailTemplateSelectedElements: data
@@ -297,6 +297,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
             if (detailTemplateOpenOnRowSelect === 'single') {
                 selectedElementsArray = detailTemplateSelectedElements.length ? [detailTemplateSelectedElements[0]] : [];
+                self.props.detailTemplateOnOpen ? self.props.detailTemplateOnOpen(element) : null;
             } else {
                 selectedElementsArray = detailTemplateSelectedElements.slice();
             }
@@ -461,7 +462,7 @@ const DataSource : any = (Component : JSX.Element) =>
             const self = this;
             const props = self.props;
             let {columns, dataSource, activeRows} = self.state;
-            let {emptyText} = props;
+            //let {emptyText} = props;
 
             let renderedObject = {
                 // methods
@@ -492,9 +493,9 @@ const DataSource : any = (Component : JSX.Element) =>
                 return (
                     <Emerge className="e-fill">
                         <Toolbar block textCenter className="ptb20">
-                            <Button block size="large" simple>{emptyText}</Button>
-                        </Toolbar>
-                    </Emerge>
+                            <Button block size="large" simple>{props.emptyText}</Button>
+                        </Toolbar> 
+                    </Emerge>  
                 )
             }
         }
