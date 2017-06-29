@@ -65,8 +65,6 @@ export default class Wizard extends React.Component<IWizardProps, any>{
     let createSlidesPartial = (item : Array<any>, index : string | number) => {
 
       let selected = state.slideIndex === index;
-      let forward = index === state.slideIndex + 1;
-      let backward = index === state.slideIndex - 1;
 
       let wizardSlideClass = classNames(
         'r-WizardSlide',
@@ -80,11 +78,11 @@ export default class Wizard extends React.Component<IWizardProps, any>{
       );
 
       return (
-          <WizardSlide visible={selected || forward || backward} className={wizardSlideClass} key={index}>
+          <WizardSlide visible={selected} className={wizardSlideClass} key={index}>
               {item}
           </WizardSlide>
       )
-    };
+    }; 
 
     if (props.children.length > 1) {
       return(

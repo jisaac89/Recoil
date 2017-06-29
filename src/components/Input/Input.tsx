@@ -20,7 +20,7 @@ export interface IInputProps extends IRecoil {
     errorInline?: boolean;
     errorDirection?: "left" | "top" | "right" | "bottom";
     error?: boolean;
-    errorMessage?: string;
+    errorMessage?: string | JSX.Element;
     rows?: number;
     cols?: number;
     block?: boolean;

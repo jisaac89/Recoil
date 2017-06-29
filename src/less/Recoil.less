@@ -1684,11 +1684,18 @@ h3 {
 		clear: both;
 	}
 }
+
+iframe{
+    overflow:hidden !important;
+} 
+
+.iframe{
+    border:0 !important;
+}
 a {
 	color: @link-color;
 	text-decoration: none;
 	cursor: pointer;
-    font-size: 15px;
     letter-spacing: .010em;
     line-height: 1.6em;
     margin: 0;
@@ -2143,8 +2150,12 @@ hr {
 .e-fill {
 	width: 100% !important;
 	height: 100% !important;
+    flex: 1 1 auto !important;
 }
 
+.e-light{
+    background:white;
+}
 
 .e-scroll-y{
     -webkit-overflow-scrolling: touch;

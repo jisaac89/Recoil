@@ -70,12 +70,12 @@ const DataSource : any = (Component : JSX.Element) =>
                 this.sortDataSource(dataSource, this.state.sortType, sortKey);
             } else {
                 if (nextProps.dataSource && !nextProps.page) {
-                    this.setState({
-                        page: 0
-                    })
-                    dataSource.length ? this.loadDataSource(dataSource) : null;
+                    //this.setState({
+                    //    page: 0
+                    //})
+                    dataSource.length ? this.loadDataSource(dataSource) : this.loadDataSource([]);
                 } else {
-                    dataSource.length ? this.loadDataSource(dataSource) : null;
+                    dataSource.length ? this.loadDataSource(dataSource) : this.loadDataSource([]);
                 }
             }
 
@@ -90,7 +90,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
             let {dataSource} = props;
 
-            dataSource.length ? self.loadDataSource(dataSource) : null;
+            dataSource.length ? self.loadDataSource(dataSource) : self.loadDataSource([]);
         }
 
         loadDataSource<T>(dataSource : Array<T>) {
@@ -378,12 +378,14 @@ const DataSource : any = (Component : JSX.Element) =>
         }
 
         previousPage() {
-            this.setState({
-                page: this.state.page -= 1
-            }, () => {
-                this.renderActiveRows(this.state.dataSource);
-            })
             this.props.onPageChange ? this.props.onPageChange(this.state.page - 1) : null;
+            if (!this.props.serverSide) {
+                this.setState({
+                    page: this.state.page -= 1
+                }, () => {
+                    this.renderActiveRows(this.state.dataSource);
+                })
+            }
         }
 
         nextPage() {

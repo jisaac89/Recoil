@@ -141,6 +141,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             outline,
             checked,
             advanced,
+            loading,
             theme,
             pointer,
             required,
@@ -189,6 +190,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             theme,
             pointer,
             required,
+            loading,
             disabled,
             checkedTheme,
             onClick: this.openDropdown.bind(this)

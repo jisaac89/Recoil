@@ -19,9 +19,9 @@ export function search(dataSource: Array<any>, term: string, keys: Array<any>, f
     let queryResult : Array<Object> = [];
     if (term.length > 0) {
         dataSource.forEach(function (item) {
-            keys.forEach((key, index) => {
+            keys.forEach((key) => {
                 if (branchIn(item, key) ? branchIn(item, key).toString().toLowerCase().indexOf(term.toString().toLowerCase()) != -1 : false) {
-                    if (queryResult[index] !== item) {
+                    if (!queryResult.includes(item)) {
                         queryResult.push(item);
                     }
                 }

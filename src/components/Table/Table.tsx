@@ -90,7 +90,9 @@ export interface ITableProps {
     searchValue?: string;
     searchFilter?: any;
     onSearchChange?: (term: string) => void;
-}
+    headerTemplate?: () => void;
+    serverSide?: boolean;
+} 
 
 interface ITableState {
 
@@ -161,13 +163,16 @@ class Table extends React.Component<ITableProps, ITableState>{
             scrollIf,
             loading,
             hideCheckAll,
-            onSearchChange
+            onSearchChange,
+            headerTemplate,
+            serverSide
         } = props;
 
         // assign the props
 
         let tableProps = {
-            dataSource: rowCount ? dataSource : activeRows,
+            dataSource: dataSource,
+            activeRows: activeRows,
             columns: columns,
             hideHeader: hideHeader,
             detailTemplate: detailTemplate,
@@ -180,7 +185,8 @@ class Table extends React.Component<ITableProps, ITableState>{
             detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect,
             selectedKey: selectedKey,
             filterRow: filterRow,
-            filterOpenDetailTemplate: filterOpenDetailTemplate
+            filterOpenDetailTemplate: filterOpenDetailTemplate,
+            serverSide
         }
 
         let headProps = {
@@ -242,13 +248,14 @@ class Table extends React.Component<ITableProps, ITableState>{
         if (loading) {
             return <Loading />
         }
-        else if ((activeRows.length || dataSource.length) && columns.length) {
+        else if ((!!dataSource && dataSource.length) && !!columns && columns.length) {
             let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
             return (
                 <div id={props.id} className={tableClass}>
+                    {headerTemplate ? headerTemplate : null}
                     <TableSearch {...tableSearchProps} />
                     {menuTemplate ? menuTemplate() : null}
-                    <Layer scroll theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
+                    <Layer scrollY theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
                         {
                             nothingMatchesSearchCriteria ?
                                 <Toolbar block textCenter className="p10 ptb20"><small>Nothing matches search criteria...</small></Toolbar>

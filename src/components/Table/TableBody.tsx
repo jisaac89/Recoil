@@ -7,6 +7,7 @@ import TableSelectable from './TableSelectable';
 import {IColumn} from './IColumn';
 
 export interface TableBodyProps {
+    activeRows: any;
     // initial dataSource loaded as prop
     dataSource: Array<any> | Object;
     // columns defined by user
@@ -27,7 +28,8 @@ export interface TableBodyProps {
     detailTemplateOpenOnRowSelect?: boolean | "single";
     selectedKey?: string;
     filterRow?: (item : Object) => void;
-    filterOpenDetailTemplate?: (item : Object) => void;
+    filterOpenDetailTemplate?: (item: Object) => void;
+    serverSide?: boolean;
 }
 
 export default class TableBody extends React.Component<TableBodyProps,any>{
@@ -38,12 +40,12 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
         const props = self.props;
         
         let {
-            dataSource, 
             columns, 
             detailTemplate,
-
+            activeRows,
             selectedElements,
-
+            dataSource,
+            serverSide,
             detailTemplateOpenAll, 
             detailTemplateToggleSelectedElements, 
             detailTemplateSelectedElements,
@@ -65,8 +67,16 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
         let columnArray : Array<any> = [];
         let key;
 
-        if (dataSource instanceof Array) {
-            dataSource.map((element, index) => {
+        let data;
+
+        if (serverSide) {
+            data = dataSource;
+        } else {
+            data = activeRows;
+        }
+         
+        if (data instanceof Array) {
+            data.map((element, index) => {
 
                 let columnProps = {
                     element: element,
