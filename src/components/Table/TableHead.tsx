@@ -96,7 +96,7 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
             } else {
                 columnHeadArray.push(
                     <th width={key.width} key={index}>
-                        <Button className="p0" icon={sortable && (key.name === sortKey || key.title === sortKey)? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>
+                        {key.titleTemplate ? key.titleTemplate() : <Button className="p0" icon={sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>}
                     </th>
                 )
             }

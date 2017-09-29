@@ -1,5 +1,25 @@
 // simple flat search
 
+export function debounce(func: Function, wait: number, immediate?: boolean) {
+    var timeout: number;
+    var self = {};
+    return function () {
+        var args = arguments;
+        var later = () => {
+            timeout = null;
+            if (!immediate) {
+                func.apply(self, args);
+            }
+        };
+        var callNow = immediate && !timeout;
+        window.clearTimeout(timeout);
+        timeout = window.setTimeout(later, wait);
+        if (callNow) {
+            func.apply(self, args);
+        }
+    };
+}
+
 export function branchIn(value : Array<any>, key : string, step?: number) : any {
 
     let result = key.split('.'),

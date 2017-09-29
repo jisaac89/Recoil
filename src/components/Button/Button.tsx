@@ -130,10 +130,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let selectablePartial = <Selectable type={props.checkedTheme} checked={props.checked ? true : false}></Selectable>;
     let iconPartial = (props.icon && !props.loading ? <i className={'fa fa-'+props.icon}></i> : null );
-    let loadingPartial = (props.loading ? <i className={'fa fa-circle-o-notch fa-spin'+ (props.children ? ' mr5' : '')}></i> : null );
+    let loadingPartial = (props.loading ? <i className={'fa fa-circle-o-notch fa-spin'+ (props.children ? ' mr10' : '')}></i> : null );
     let animatedIcon = (props.iconPointer && !props.loading ? <i className={"icon-pointer fa fa-caret-"+props.iconPointer} ></i> : null );
-    let iconWrapperRight = (props.icon && props.iconLocation === 'right' ? <div className={'icon-pointer-'+props.iconPointer+ " ml10 icon-wrapper " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
-    let iconWrapperLeft = (props.icon && props.iconLocation === 'left' ? <div className={'icon-pointer-'+props.iconPointer+" icon-wrapper " + (props.children ? "mr5" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
+    let iconWrapperRight = (props.icon && props.iconLocation === 'right' ? <div className={'icon-pointer-'+props.iconPointer+ " ml10 icon-wrapper " + (props.children ? "mr10" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
+    let iconWrapperLeft = (props.icon && props.iconLocation === 'left' ? <div className={'icon-pointer-'+props.iconPointer+" icon-wrapper " + (props.children ? "mr10" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
 
     let linkButton = () => {
       return (
@@ -143,7 +143,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
           {props.children}
           {selectablePartial}
           {iconWrapperRight}
-        </a>
+        </a> 
       )
     }
 

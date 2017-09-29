@@ -25,6 +25,7 @@ export interface IModalProps {
     hideHeader?: boolean;
     overflow?: boolean;
     fill?: boolean;
+    closeId?: string;
 }
 
 export interface IModalState {
@@ -145,6 +146,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
                                 onClose={this.closeModal.bind(this)}
                                 hideFullScreenButton={props.hideFullScreenButton}
                                 hideCloseButton={props.hideCloseButton}
+                                closeId={props.closeId}
                                 />
                             : null}
                         {props.children}
