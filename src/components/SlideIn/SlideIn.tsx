@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import './SlideIn.less';
 
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';

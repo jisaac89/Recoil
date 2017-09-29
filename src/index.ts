@@ -41,4 +41,4 @@ export {default as Table, ITableProps, IColumn} from './components/Table/Table';
 export {default as TimePicker} from './components/TimePicker/TimePicker';
 export {default as Portal} from './components/Portal/Portal';
 
-import './less/Recoil.less';
+import './index.less';

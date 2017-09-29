@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import './Tree.less';
 import Table from '../Table/Table';
 
 export interface ITreeItem<T, U> {
