@@ -57,7 +57,7 @@ module.exports = {
         }]
     },
     resolve: {
-        extensions: ["", ".webpack.js", ".web.js", ".js", ".ts", ".tsx"]
+        extensions: [".webpack.js", ".web.js", ".js", ".ts", ".tsx"]
     },
     node: {
         fs: "empty"
