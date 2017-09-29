@@ -26,7 +26,6 @@ export interface ILayerProps extends IRecoil{
   scroll? : boolean;
   offset?: number;
   shadow?: boolean;
-  animate?: Array<any>;
 }
 
 export default class Layer extends React.Component<ILayerProps, any> {
@@ -52,9 +51,11 @@ export default class Layer extends React.Component<ILayerProps, any> {
   constructor(props : ILayerProps) {
     super(props);
     this._scrollToId = props.scrollToId && props.scrollToId !== '' && props.scrollToId.toString().replace(/^#/, '') || '';
-    const {
-      offset = props.offset || 0, duration = 400, easing = this.easeOutQuad
-    } = props.animate || {};
+
+    let offset = props.offset || 0,
+          duration = 400,
+          easing = this.easeOutQuad;
+    
     this._animate = { offset, duration, easing };
     this._beforeAnimate = props.beforeAnimate || function() {};
     this._afterAnimate = props.afterAnimate || function() {};

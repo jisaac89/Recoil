@@ -8,7 +8,11 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "outDir": "dist",
-    "lib":["es2016", "dom"] 
+    "lib": [
+      "es2016",
+      "es6",
+      "dom"
+    ]
   },
   "exclude": [
     "dist",

@@ -12,7 +12,7 @@ export interface ISlideInProps {
   className? : string;
   offset? : number;
   onClick? : () => void;
-  children? : Array<any>;
+  children? : any;
   fixed ? : boolean;
   beforeOpen ? : () => void;
   afterOpen ? : () => void;

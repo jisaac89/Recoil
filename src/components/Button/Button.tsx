@@ -137,7 +137,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let linkButton = () => {
       return (
-        <a href={props.href} id={props.id} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
+        <a href={props.href} id={props.id} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} className={buttonClass} style={props.style}>
           {iconWrapperLeft}
           {loadingPartial}
           {props.children}
@@ -149,7 +149,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let simpleButton = () => {
         return (
-          <button id={props.id} ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
+          <button id={props.id} ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
             {iconWrapperLeft}
             {loadingPartial}
             {props.children}
@@ -160,7 +160,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let defaultButton = () => {
         return (
-          <button id={props.id} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} target={props.target} className={buttonClass} style={props.style}>
+          <button id={props.id} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
             {iconWrapperLeft}
             {loadingPartial}
             {props.children}
