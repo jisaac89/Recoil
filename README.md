@@ -1,5 +1,7 @@
 # Recoil
 
+[![npm version](https://badge.fury.io/js/%40cubex%2Frecoil.svg)](https://badge.fury.io/js/%40cubex%2Frecoil)
+
 Rapidly create React websites.
 
 ![Alt text](https://media.giphy.com/media/3o6ZtoFIzzy7NXEBqg/source.gif "Recoil")
@@ -9,52 +11,66 @@ Recoil is a react powered UI framework.
 > The main goal of Recoil was to build a front end framework that allows developers to rapidly create mobile
 > first web applications
 
-### Version
-0.4.54
-
 ### NPM Module
 
-```sh
-npm install react-recoil --save-dev
-```
+If you're using npm, you'll need to set up your project to build recoil.  Assuming you're using Webpack, first install
+
+    npm install css-loader less less-loader style-loader --save-dev
+
+Then in your Webpack configuration, include in the `loaders` array
+
+In the `loaders` array, add
+
+```` JavaScript
+{
+    test: /\.less$/,
+    loader: 'style-loader!css-loader!less-loader'
+}
+````
 
 Then include the following CSS files in your HTML:
 
-```sh
-$ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
-$ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-$ <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' rel='stylesheet' type='text/css'>
-$ <link href='  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css' rel='stylesheet' type='text/css' />
-```
+```` html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' rel='stylesheet' type='text/css'>
+<link href='  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css' rel='stylesheet' type='text/css' />
+````
+
+In order to add the styles, you'll need to include in one file of your project
+
+```` TypeScript
+import '@cubex/recoil/less/index/.less';
+````
 
 Now, on your project you can destructure the components you want.
 
-```sh
-import {Toolbar, Button} from 'react-recoil';
-```
+```` TypeScript
+import { Toolbar, Button } from '@cubex/recoil';
+````
 
 An example of how to use them in your app.
 
-```sh
+```` TypeScript
 <Toolbar spacing block>
   <Button icon="home" />
   <Button icon="user">
     Users
   </Button>
 </Toolbar>
-```
+````
 
 ### Documentation
 
-```sh
-$ git clone https://github.com/jisaac89/recoil.git
-$ cd recoil
-$ npm install
-$ npm install typings -g
-$ npm run typings install
-$ cd doc
-$ npm start
-```
+````
+git clone https://github.com/cubex30/recoil.git
+cd recoil
+npm install
+npm install typings -g
+npm run typings install
+cd doc
+npm start
+````
 
 ### Videos
 

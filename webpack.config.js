@@ -5,12 +5,13 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     devtool: 'eval',
     entry: {
+        'bundle': path.resolve(__dirname, 'src/bundle.ts'),
         'docs': path.resolve(__dirname, 'docs/index.tsx')
     },
     output: {
         library: '[name]',
         libraryTarget: 'var',
-        filename: './dist/bundle/[name].js'
+        filename: './bundle/[name].js'
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({

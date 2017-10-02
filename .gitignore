@@ -1,8 +1,9 @@
-node_modules
+node_modules/
 npm-debug.log
 .DS_Store
 typings
-dist
+dist/
+bundle/
 
 *.d.ts
 *.log

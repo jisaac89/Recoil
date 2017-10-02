@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../../src/index';
 
-interface ITutorialViewProps {
+export interface ITutorialViewProps {
   description : string;
   Id : string;
   toggleModal ? : any;

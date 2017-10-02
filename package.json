@@ -18,7 +18,7 @@
     "lib": "src/"
   },
   "scripts": {
-    "prepublishOnly": "tsc --declaration && webpack --config webpack.config.js",
+    "prepublishOnly": "tsc --declaration",
     "lint": "eslint src",
     "tsc": "tsc",
     "build": "webpack --config webpack.config.js --progress",

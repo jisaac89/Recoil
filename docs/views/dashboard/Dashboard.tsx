@@ -3,11 +3,11 @@ import {observer} from 'mobx-react';
 import {appState} from '../../state/_Store';
 import {Align, Button, Toolbar, Table, Checkbox, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../../src/index';
 
-interface P {
+export interface P {
     children: React.ReactChild
 }
 
-interface S {}
+export interface S {}
 
 @observer
 export default class Dashboard extends React.Component<P,S>{
