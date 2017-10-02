@@ -11,7 +11,7 @@ module.exports = {
         library: 'ReactRecoil',
         libraryTarget: 'umd',
         path: path.join(__dirname, 'dist'),
-        filename: 'index.js',
+        filename: 'bundle.js',
         publicPath: 'dist'
     },
     externals: {

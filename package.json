@@ -18,10 +18,11 @@
     "lib": "src/"
   },
   "scripts": {
-    "prepublishOnly": "tsc && webpack --config webpack.config.js",
+    "prepublishOnly": "tsc --declaration && webpack --config webpack.config.js",
     "lint": "eslint src",
     "tsc": "tsc",
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js --progress",
+    "watch": "webpack --config webpack.config.js --watch --progress"
   },
   "dependencies": {
     "classnames": "2.2.5"
