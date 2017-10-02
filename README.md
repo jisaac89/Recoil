@@ -11,15 +11,13 @@ Recoil is a react powered UI framework.
 > The main goal of Recoil was to build a front end framework that allows developers to rapidly create mobile
 > first web applications
 
-### NPM Module
+## NPM Module
 
 If you're using npm, you'll need to set up your project to build recoil.  Assuming you're using Webpack, first install
 
     npm install css-loader less less-loader style-loader --save-dev
 
 Then in your Webpack configuration, include in the `loaders` array
-
-In the `loaders` array, add
 
 ```` JavaScript
 {
@@ -33,8 +31,8 @@ Then include the following CSS files in your HTML:
 ```` html
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' rel='stylesheet' type='text/css'>
-<link href='  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css' rel='stylesheet' type='text/css' />
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' />
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css' />
 ````
 
 In order to add the styles, you'll need to include in one file of your project
@@ -53,14 +51,14 @@ An example of how to use them in your app.
 
 ```` TypeScript
 <Toolbar spacing block>
-  <Button icon="home" />
-  <Button icon="user">
-    Users
-  </Button>
+    <Button icon="home" />
+    <Button icon="user">
+        Users
+    </Button>
 </Toolbar>
 ````
 
-### Documentation
+## Documentation
 
 ````
 git clone https://github.com/cubex30/recoil.git
@@ -72,7 +70,7 @@ cd doc
 npm start
 ````
 
-### Videos
+## Videos
 
 Helpful videos on how to use each component can be found here:
 
@@ -95,21 +93,13 @@ Helpful videos on how to use each component can be found here:
 * [Transform]
 * [Wizard]
 
-### Todos
+## Todos
 
  - Write Tests
  - Rethink Github Save
  - Add Code Comments
  - Rename Door to Open
  - Rename Pane to SlideIn
-
-License
-----
-
-MIT
-
-
-**Aw Yea**
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
