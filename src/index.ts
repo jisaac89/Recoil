@@ -1,6 +1,6 @@
 export interface IRecoil{
     size?: "small" | "large" | "xlarge" | "default";
-    theme?: "primary" | "success" | "error" | "bronze" | "silver" | "gold" | "default" | "light" | "night";
+    theme?: "primary" | "success" | "error" | "bronze" | "silver" | "gold" | "default" | "light" | "night" | "dark";
     className?: string;
     flex?: boolean;
     fill?: boolean;
