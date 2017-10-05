@@ -60,15 +60,16 @@ An example of how to use them in your app.
 
 ## Documentation
 
+First run these commands
+
 ````
 git clone https://github.com/cubex30/recoil.git
 cd recoil
 npm install
-npm install typings -g
-npm run typings install
-cd doc
-npm start
+npm run build
 ````
+
+Then open `recoil/docs/index.html` in your browser.
 
 ## Videos
 
