@@ -3,11 +3,9 @@
   "version": "0.5.2",
   "description": "Powerful react powered front-end framework.",
   "author": "Joseph Isaac <josephisaac89@gmail.com>",
-  "url": "http://reactrecoil.com/",
-  "homepage": "http://reactrecoil.com/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jisaac89/recoil.git"
+    "url": "https://github.com/cubex30/recoil.git"
   },
   "license": "MIT",
   "main": "dist/src/index.js",
