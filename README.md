@@ -10,15 +10,14 @@ Recoil is a react powered UI framework.
 > first web applications
 
 ### Version
-0.4.54
+0.5.2
 
 ### NPM Module
-
 
 To build Recoil's documentation, clone it from GitHub.
 
 ```sh
-git clone https://github.com/Cubex30/recoil.git
+git clone https://github.com/jisaac89/recoil.git
 ```
 
 Then install the npm dependencies
