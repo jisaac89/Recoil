@@ -17,7 +17,7 @@ export interface ILayerProps extends IRecoil{
   key? : string | number;
   parent? : boolean;
   child? : boolean;
-  dimensions?:{height: string, width : string, zIndex: number};
+  dimensions?:[ string, string, number];
   scrollToId?: string;
   beforeAnimate? : () => void;
   afterAnimate ? : () => void;
@@ -26,6 +26,7 @@ export interface ILayerProps extends IRecoil{
   scroll? : boolean;
   offset?: number;
   shadow?: boolean;
+  flexCenter?: boolean;
 }
 
 export default class Layer extends React.Component<ILayerProps, any> {
@@ -190,6 +191,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
       {'parent': (props.parent)},
       { 'child': (props.child) },
       { 'e-shadow': (props.shadow) },
+      { 'e-flex-center': (props.flexCenter) },
       borderClass,
       props.theme,
       props.className

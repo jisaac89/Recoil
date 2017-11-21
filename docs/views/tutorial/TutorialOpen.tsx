@@ -81,13 +81,13 @@ export default class TutorialOpen extends React.Component<any,any>{
       return (
         <div>
           <h3>Default</h3>
-          <Layer className="ptb20">
+          <Layer className="pt20">
             <Layer>
-              <Button className="mb10" checked={this.state.doorIsOpen} onClick={this.toggleOpenIsOpen.bind(this)}>Toggle Open Open</Button>
-              <Open if={this.state.doorIsOpen}>
-                <Layer theme="light" className="p10">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </Layer>
+              <Toggle className="mb20" checked={this.state.doorIsOpen} onChange={this.toggleOpenIsOpen.bind(this)} array={['Closed', 'Open']}/>
+              <Open if={this.state.doorIsOpen} openToHeight={'201px'}>
+              <Layer flexCenter dimensions={['200px', '200px', 1]} theme="dark" className="p10">
+                Opened!
+              </Layer>
               </Open>
             </Layer>
           </Layer>

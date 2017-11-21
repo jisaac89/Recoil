@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../../src/index';
 import TutorialView from './TutorialView';
-const ChecboxProperties = [
+const RecoilProperties = [
   {
     name :'checked',
     type: 'boolean',
@@ -54,52 +54,16 @@ export default class TutorialRecoil extends React.Component<any,any>{
     let example = () => {
       return (
         <div>
-            <h3>Default</h3>
-            <Layer className="ptb20">
-              <Layer className="p10 light">
-                <Checkbox title={'Select All'} />
-                <Checkbox size="small" title={'Check All'} />
-              </Layer>
-            </Layer>
-
-            <h3>Checked</h3>
-            <Layer className="ptb20">
-              <Layer className="p10 light">
-                <Checkbox checked />
-              </Layer>
-            </Layer>
-
-            <h3>Sizes</h3>
-            <Layer className="ptb20">
-              <Layer className="p10 light">
-                <Toolbar spacing>
-                  <Checkbox size="small" />
-                  <Checkbox />
-                  <Checkbox size="large" />
-                  <Checkbox size="xlarge" />
-                </Toolbar>
-              </Layer>
-            </Layer>
-
-            <h3>Themes</h3>
-            <Layer className="ptb20">
-              <Layer className="p10 light">
-                <Toolbar spacing>
-                  <Checkbox theme="primary" />
-                  <Checkbox theme="error" />
-                  <Checkbox theme="success" />
-                </Toolbar>
-              </Layer>
-            </Layer>
+           
         </div>
       )
     }
 
     return (
       <TutorialView 
-        description="The Checkbox component is an advanced version of the standard input type='checkbox' control."
-        Id="Checkbox"
-        columnData={ChecboxProperties}
+        description="The Recoil component."
+        Id="Recoil"
+        columnData={RecoilProperties}
         examples={example}
         scrollIf={props.scrollIf}
         scrollToId={props.scrollToId}

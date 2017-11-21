@@ -29,7 +29,8 @@ export default class TutorialLayer extends React.Component<any,any>{
 
     this.state = {
       showProps : true,
-      showVideo: false
+      showVideo: false,
+      isFlexed: false
     }
   }
 
@@ -47,6 +48,12 @@ export default class TutorialLayer extends React.Component<any,any>{
     })
   }
 
+  toggleFlex(){
+    this.setState({
+      isFlexed : !this.state.isFlexed
+    })
+  }
+
   render() {
 
     const self = this;
@@ -61,11 +68,35 @@ export default class TutorialLayer extends React.Component<any,any>{
     let example = () => {
       return (
         <div>
+            <h3 className="pb20">Default</h3>
             <Layer className="p10 dark">
               <Layer theme="light" className="p10">
-                This is a Layer
+                
               </Layer>
             </Layer>
+
+            <h3 className="ptb20">Filled Layer</h3>
+            <Layer className="p10 dark" dimensions={['300px', '300px', 1]}>
+              <Layer theme="light" fill className="p10">
+                
+              </Layer>
+            </Layer>
+
+            <h3 className="ptb20">Flex Layer</h3>
+            <Checkbox icon={'check'} checked={state.isFlexed} title={'Flex and Fill Children'} onChange={this.toggleFlex.bind(this)} />
+            <Layer className="p10 mt20 dark" dimensions={['300px', '300px', 1]}>
+              <Layer theme="light" fill flex={state.isFlexed} className="p10">
+                <Layer flexCenter={state.isFlexed} theme="dark" fill={state.isFlexed} className="p10">
+                  A
+                </Layer>
+                <Layer flexCenter={state.isFlexed} theme="dark" fill={state.isFlexed} className="p10">
+                  B
+                </Layer>
+                <Layer flexCenter={state.isFlexed} theme="dark" fill={state.isFlexed} className="p10">
+                  C
+                </Layer>
+              </Layer>
+            </Layer>            
         </div>
       )
     }
