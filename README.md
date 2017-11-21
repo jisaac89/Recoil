@@ -14,20 +14,26 @@ Recoil is a react powered UI framework.
 
 ### NPM Module
 
-```sh
-npm install react-recoil --save-dev
-```
 
-Then include the following CSS files in your HTML:
+To build Recoil's documentation, clone it from GitHub.
 
 ```sh
-$ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
-$ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-$ <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' rel='stylesheet' type='text/css'>
-$ <link href='  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css' rel='stylesheet' type='text/css' />
+git clone https://github.com/Cubex30/recoil.git
 ```
 
-Now, on your project you can destructure the components you want.
+Then install the npm dependencies
+
+```sh
+npm install
+```
+Then run the project
+
+```sh
+npm run watch
+```
+Launch the documentation in your browser. It should be located at recoil/docs/index.html.
+
+Now, on your project you can include the components you want.
 
 ```sh
 import {Toolbar, Button} from 'react-recoil';
@@ -42,18 +48,6 @@ An example of how to use them in your app.
     Users
   </Button>
 </Toolbar>
-```
-
-### Documentation
-
-```sh
-$ git clone https://github.com/jisaac89/recoil.git
-$ cd recoil
-$ npm install
-$ npm install typings -g
-$ npm run typings install
-$ cd doc
-$ npm start
 ```
 
 ### Videos
