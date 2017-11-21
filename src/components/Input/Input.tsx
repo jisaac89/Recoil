@@ -25,6 +25,7 @@ export interface IInputProps extends IRecoil {
     cols?: number;
     block?: boolean;
     autoExpand?: boolean;
+    onBlur?: (value: any, event: React.FormEvent<any>) => void;
     onChange?: (value: any, event: React.FormEvent<any>) => void;
     scrollHeight?: number;
     focusOnMount?: boolean;
@@ -38,6 +39,7 @@ export interface IInputProps extends IRecoil {
     autoComplete?: string;
     disableKeys?: Array<string>;
     inputSize?: number;
+    inputId?: any;
 }
 
 export interface IInputState {
@@ -105,13 +107,17 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     }
     public focus(e: any) {
         this.setState({
-            checked: e.target.value ? true : false
+            checked: true
         });
     }
-    public blur() {
+    public blur(event: React.MouseEvent<HTMLInputElement>) {
         let inputDOM = this.refs['refInput'];
+        let value = (event.target as HTMLInputElement).value;
         this.setState({
-            checked: ReactDOM.findDOMNode<HTMLInputElement>(inputDOM).value !== '' ? true : false
+            checked: ReactDOM.findDOMNode<HTMLInputElement>(inputDOM).value !== '' ? true : false,
+            value: value
+        }, () => {
+            this.props.onBlur ? this.props.onBlur(value, event) : null;
         });
     }
     public mouseOut() {
@@ -182,7 +188,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
         // if input has icon then show it
 
         if (props.icon) {
-            iconPartial = <small><i className={'fa fa-' + props.icon}></i> </small>;
+            iconPartial = <small><i className={'fa fa-'+props.icon}></i></small>;
         } else {
             iconPartial = null;
         }
@@ -198,7 +204,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
             }
             // hide pencil if placholder present or input has value
             if (!props.placeholder && !state.value) {
-                pencilPartial = <i className="fa fa-pencil writing"></i>;
+                pencilPartial = null;
             } else {
                 pencilPartial = null;
             }
@@ -252,14 +258,16 @@ export default class Input extends React.Component<IInputProps, IInputState>{
                         max={props.max}
                         min={props.min}
                         type="number"
+                        id={props.inputId}
                     />;
                 break;
             case 'textarea':
-                inputPartial = <textarea name={props.name} rows={props.rows} cols={props.cols} ref="refInput" style={{ height: textAreaScrollHeight }} onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)} onChange={this.focus.bind(this)} ></textarea>;
+                inputPartial = <textarea id={props.inputId} name={props.name} rows={props.rows} cols={props.cols} ref="refInput" style={{ height: textAreaScrollHeight }} onFocus={this.focus.bind(this)} onBlur={this.blur.bind(this)} onChange={this.focus.bind(this)} ></textarea>;
                 break;
             default:
                 inputPartial =
                     <input
+                        id={props.inputId}
                         {...valueProps}
                         {...inputProps}
                         type={props.type}

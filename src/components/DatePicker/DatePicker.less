@@ -50,11 +50,11 @@
  .r-Calendar th { text-transform: uppercase; font-size:9px; font-weight:500; letter-spacing: 1px; }
 
  .r-Calendar td { 
-     width: 14.285%; 
-     transition: all 0.3s;  
-     color: rgba(255,255,255,0.6); 
-     font-weight: 400; 
-     vertical-align: initial; 
+    width: 14.285%; 
+    transition: all 0.3s;  
+    color: rgba(255,255,255,0.6); 
+    font-weight: 400;
+    vertical-align: middle;
 }
 
 .r-Calendar td:hover{
@@ -87,6 +87,10 @@ span.event-ghost { background-color:transparent; }
     .r-Calendar__body td.select-date{
         color:white !important;
     }
+}
+
+.r-Calendar-Scroll{
+    overflow: hidden !important;
 }
 
 .r-Calendar-Scroll > div{

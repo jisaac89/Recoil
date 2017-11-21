@@ -40,7 +40,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
                 title={getDateFormatted(this.state.date)}
                 mobile={true}
             >
-                <Calendar date={date} onSelect={this.onSelect} />
+                <Calendar inDropdown={true} date={date} onSelect={this.onSelect} />
             </Dropdown>
         );
     }

@@ -14,7 +14,7 @@ class DetailTemplateHeadToggle extends React.Component<any, any>{
     render(){
         let {props} = this;
         return (
-            <th width={25} className="r-Table__DetailTd">
+            <th style={{width : "25"}} className="r-Table__DetailTd text-center">
                 <Button icon={arraysEqual(props.dataSource, props.detailTemplateSelectedElements) ? 'chevron-down' : 'chevron-right'} onClick={this.detailTemplateToggleAll.bind(this, props.dataSource)} simple size="small"  />
             </th>
         )
@@ -31,7 +31,7 @@ class CheckboxHead extends React.Component<any,any>{
         let {hideCheckAll} = props;
         
         return (
-            <th width={25} >
+            <th style={{width : "25px"}} >
                 {!hideCheckAll ? <Checkbox onChange={this.selectAll.bind(this, props.dataSource)} size='small' checked={arraysEqual(props.dataSource, props.selectedElements)} /> : null}
             </th>
         )
@@ -95,8 +95,8 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
                 return null;
             } else {
                 columnHeadArray.push(
-                    <th width={key.width} key={index}>
-                        <Button className="p0" icon={sortable && (key.name === sortKey || key.title === sortKey)? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>
+                    <th style={{width : key.width}} key={index}>
+                        {key.titleTemplate ? key.titleTemplate() : <Button className="p0" icon={sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>}
                     </th>
                 )
             }

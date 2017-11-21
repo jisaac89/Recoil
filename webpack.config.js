@@ -4,29 +4,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'eval',
-    entry: [
-        path.resolve(__dirname, 'src/index.ts')
-    ],
-    output: {
-        library: 'ReactRecoil',
-        libraryTarget: 'umd',
-        path: path.join(__dirname, 'dist'),
-        filename: 'index.js',
-        publicPath: 'dist'
+    entry: {
+        'bundle': path.resolve(__dirname, 'src/bundle.ts'),
+        'docs': path.resolve(__dirname, 'docs/index.tsx')
     },
-    externals: {
-        react: {
-            root: 'React',
-            commonjs2: 'react',
-            commonjs: 'react',
-            amd: 'react'
-        },
-        'react-dom': {
-            root: 'ReactDOM',
-            commonjs2: 'react-dom',
-            commonjs: 'react-dom',
-            amd: 'react-dom'
-        }
+    output: {
+        library: '[name]',
+        libraryTarget: 'var',
+        filename: './bundle/[name].js'
     },
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
@@ -46,7 +31,7 @@ module.exports = {
         loaders: [{
             test: /\.tsx?$/,
             loader: 'ts-loader',
-            include: /src/
+            include: [/src/, /docs/]
         }, {
             test: /\.less$/,
             loader: 'style-loader!css-loader!less-loader'
@@ -57,7 +42,7 @@ module.exports = {
         }]
     },
     resolve: {
-        extensions: ["", ".webpack.js", ".web.js", ".js", ".ts", ".tsx"]
+        extensions: [".webpack.js", ".web.js", ".js", ".ts", ".tsx"]
     },
     node: {
         fs: "empty"

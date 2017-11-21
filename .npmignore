@@ -1,6 +1,9 @@
 node_modules/
 typings
 src/
+docs/
+dist/docs/
+bundle/
 .vscode
 *.log
 *.tgz

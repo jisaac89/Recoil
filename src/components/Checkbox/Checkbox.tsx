@@ -60,7 +60,8 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
 
     let checkboxClass = classNames(
       'r-Checkbox',
-      {'disabled' : (props.disabled)}
+      {'disabled' : (props.disabled)},
+      {'e-checked' : (this.state.checked)}
     )
 
     let checkboxProps = {

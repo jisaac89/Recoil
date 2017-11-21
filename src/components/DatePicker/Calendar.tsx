@@ -16,6 +16,8 @@ let monthNames: Month[] = ['January', 'February', 'March', 'April', 'May', 'June
 export interface ICalendarProps {
     date?: Date;
     onSelect?: (date: Date) => any;
+    calendarHeight?: string;
+    inDropdown?: boolean;
 }
 
 export interface ICalendarState {
@@ -25,6 +27,12 @@ export interface ICalendarState {
 }
 
 export default class Calendar extends React.Component<ICalendarProps, ICalendarState> {
+
+    public static defaultProps = {
+        calendarHeight: '400px',
+        inDropdown: false
+    }
+
     constructor(props?: ICalendarProps) {
         super(props);
         let date = props.date || new Date(Date.now());
@@ -127,6 +135,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         const self = this;
 
         let {year, month, date} = self.state;
+        let {calendarHeight, inDropdown} = self.props;
 
         let Jan = this.getWeeks(year, 1),
             Feb = this.getWeeks(year, 2),
@@ -159,7 +168,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                 </Toolbar>
                 <Layer flex theme="light">
                     <DaysHeader />
-                    <Layer className="r-Calendar-Scroll" fill flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
+                    <Layer style={{height: inDropdown ? '100%' : calendarHeight}} className="r-Calendar-Scroll"  flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
                         <div id={"1"}>
                             <Months
                                 title={monthNames[0]}   

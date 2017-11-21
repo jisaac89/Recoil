@@ -25,7 +25,7 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
             <td 
                 onClick={!detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null} 
                 className="r-Table__DetailTd" 
-                width={25}>
+                style={{width : "25"}}>
                 {filterOpenDetailTemplate? 
                     filterOpenDetailTemplate(element) === true ?  
                     <Button 
@@ -56,7 +56,7 @@ class CheckboxColumn extends React.Component<any,any>{
         let props = this.props;
         
         return (
-            <td width={25}>
+            <td style={{width : "25"}}>
                 <Checkbox onChange={this.toggleSelectedElements.bind(this, props.element)} size='small' checked={props.selectedElements.includes(props.element)}/>
             </td>
         )
