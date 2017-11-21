@@ -1,11 +1,11 @@
 {
-  "name": "@cubex/recoil",
+  "name": "react-recoil",
   "version": "0.5.2",
   "description": "Powerful react powered front-end framework.",
   "author": "Joseph Isaac <josephisaac89@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cubex30/recoil.git"
+    "url": "https://github.com/jisaac89/recoil.git"
   },
   "license": "MIT",
   "main": "dist/src/index.js",
@@ -17,7 +17,6 @@
   },
   "scripts": {
     "prepublishOnly": "tsc --declaration",
-    "lint": "eslint src",
     "tsc": "tsc",
     "build": "webpack --config webpack.config.js --progress",
     "watch": "webpack --config webpack.config.js --watch --progress"
