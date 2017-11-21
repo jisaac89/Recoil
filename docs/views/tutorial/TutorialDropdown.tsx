@@ -112,7 +112,6 @@ export default class TutorialDropdown extends React.Component<any,any>{
         <div>
           <h3>Default</h3>
           <div className="ptb20">
-            <Layer className="p10 light">
               <Dropdown 
                 className='w200px' 
                 rowIsSelectable="single" 
@@ -120,13 +119,14 @@ export default class TutorialDropdown extends React.Component<any,any>{
                 hideHeader
                 dataSource={days}
                 hidePageSize
+                dropDirection="top"
+                icon="calendar"
+                iconPointer="down"
               />
-            </Layer>
           </div>
 
           <h3>Material</h3>
           <div className="ptb20">
-            <Layer className="p10 light">
               <Dropdown 
                 className='w200px' 
                 rowIsSelectable="single" 
@@ -135,38 +135,31 @@ export default class TutorialDropdown extends React.Component<any,any>{
                 dataSource={months}
                 hidePageSize 
               />
-            </Layer>
           </div>
 
           <h3>Multi Select Mobile Dropdown</h3>
           <div className="ptb20">
-            <Layer className="p10 light">
-              <Dropdown mobile={true} className='w200px' icon="star" rowIsSelectable title="Select Users" dataSource={users} columns={[{name:'name'}]} searchableKeys={["name"]} searchTitle="Find Users" />
-            </Layer>
+              <Dropdown mobile={true} className='w200px' icon="users" iconPointer="down" rowIsSelectable title="Select Users" dataSource={users} columns={[{name:'name'}]} searchableKeys={["name"]} searchTitle="Find Users" />
           </div>
 
           <h3>Custom Content</h3>
           <p>To add custom content to a dropdown, just include it as a child of the component.</p>
           <div className="ptb20">
-            <Layer className="p10 light">
               <Dropdown className='w200px' title="Custom Content">
                 <div className="w100 p10">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </div>
               </Dropdown>
-            </Layer>
           </div>
 
           <h3>Advanced Dropdown</h3>
           <p>The example below shows a drop down with the block prop and a <strong>from</strong> prop with the value <strong>top left</strong> and a <strong>contentClass</strong> props of <strong>w300px</strong>.</p>
           <div className="ptb20">
-            <Layer className="p10 light">
               <Dropdown block icon="eye" title="Advanced Dropdown">
                 <div className="w100 p10">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </div>
               </Dropdown>
-            </Layer>
           </div>
         </div>
       )
