@@ -1,6 +1,5 @@
 ﻿import * as React from 'react';
 import * as classNames from 'classnames';
-import './Recoil.less';
 
 export interface IRecoilProps {
     nightmode ? : boolean;

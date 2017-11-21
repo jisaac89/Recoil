@@ -4,8 +4,6 @@ import Portal from '../Portal/Portal';
 import DropdownContentType from './DropdownContentType';
 import DropdownHeader from './DropdownHeader';
 
-import './Dropdown.less';
-
 export default class DropdownContent extends React.Component<any, any>{
     render() {
 

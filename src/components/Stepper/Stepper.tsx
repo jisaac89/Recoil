@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './Stepper.less';
 
 import Align from '../Align/Align';
 import Shrink from '../Shrink/Shrink';

@@ -3,8 +3,6 @@ import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 import * as classNames from 'classnames';
 
-import './Checkbox.less';
-
 import {IRecoil} from '../../index';
 
 export interface ICheckboxProps extends IRecoil{

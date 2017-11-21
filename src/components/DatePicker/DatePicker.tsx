@@ -1,5 +1,4 @@
 ﻿import * as React from 'react';
-import './DatePicker.less';
 
 import Dropdown from '../Dropdown/Dropdown';
 

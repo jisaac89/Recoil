@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import './SlideIn.less';
 
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
@@ -12,7 +11,7 @@ export interface ISlideInProps {
   className? : string;
   offset? : number;
   onClick? : () => void;
-  children? : Array<any>;
+  children? : any;
   fixed ? : boolean;
   beforeOpen ? : () => void;
   afterOpen ? : () => void;
