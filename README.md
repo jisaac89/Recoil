@@ -1,6 +1,6 @@
 # Recoil
 
-[![npm version](https://badge.fury.io/js/%40cubex%2Frecoil.svg)](https://badge.fury.io/js/%40cubex%2Frecoil)
+[![npm version](https://badge.fury.io/js/react-recoil.svg)](https://badge.fury.io/js/react-recoil)
 
 Rapidly create React websites.
 
@@ -38,13 +38,13 @@ Then include the following CSS files in your HTML:
 In order to add the styles, you'll need to include in one file of your project
 
 ```` TypeScript
-import '@cubex/recoil/less/index/.less';
+import 'react-recoil/less/index/.less';
 ````
 
 Now, on your project you can destructure the components you want.
 
 ```` TypeScript
-import { Toolbar, Button } from '@cubex/recoil';
+import { Toolbar, Button } from 'react-recoil';
 ````
 
 An example of how to use them in your app.

@@ -5,7 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     devtool: 'eval',
     entry: {
-        'bundle': path.resolve(__dirname, 'src/bundle.ts'),
+        'styles': path.resolve(__dirname, 'src/styles.ts'),
         'docs': path.resolve(__dirname, 'docs/index.tsx')
     },
     output: {
@@ -25,7 +25,8 @@ module.exports = {
             'process.env': {
                 'NODE_ENV': JSON.stringify('production')
             }
-        })
+        }),
+        new ExtractTextPlugin("./bundle/[name].css")
     ],
     module: {
         loaders: [{
@@ -34,8 +35,13 @@ module.exports = {
             include: [/src/, /docs/]
         }, {
             test: /\.less$/,
-            loader: 'style-loader!css-loader!less-loader'
-
+            loader: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: [
+                    'css-loader',
+                    'less-loader'
+                ]
+            })
         }, {
             test: /\.json$/,
             loader: 'json-loader'

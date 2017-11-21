@@ -1559,16 +1559,15 @@ h3 {
 	max-width: 800px;
 }
 p {
-	font-size: 15px;
-	font-weight: 400;
-	letter-spacing: 0.010em;
-	line-height: 1.6em;
+    font-size: 18px;
+    line-height: 1.58;
+    letter-spacing: -.004em;
 	margin: 0;
-	color: @font-color;
+	color: @font-color-light;
 }
 h1 {
 	font-size: 20px;
-	color: @font-color-light;
+	color: @font-color;
 	display: block;
 	font-weight: 200;
 }
@@ -1611,14 +1610,15 @@ h4 {
 	line-height: 55px;
 }
 h2 {
-	font-size: 20px;
-	font-weight: 500;
+	font-size: 30px;
+    margin-left: -1.88px;
+    line-height: 1.15;
+    letter-spacing: -.015em;
 	color: @font-color;
-	line-height: 16px;
 }
 h3 {
 	font-weight: normal;
-	color: @font-color-light;
+	color: @font-color;
 	font-size: 18px;
 }
 .t0 {
@@ -1895,7 +1895,7 @@ hr {
     .r-Dropdown__header {
     border-bottom: 1px solid #171717 !important;
     background: #20262d !important;
-}
+	}
 
 	.r-Input.checked .r-Input__container>small {
 		color: #8c8c8c;
@@ -2068,6 +2068,18 @@ hr {
 	.empty-date{
     	background:#20262d; 
 	} 
+
+	.r-TableColumnDetail {
+    	background: #20262e !important;
+	}
+
+	.r-Checkbox i{
+		color: #909090 !important;
+	}
+
+	.r-Checkbox.e-checked i{
+		color: white !important;
+	}
 } 
 #root {
 	height: 100%;
@@ -2111,7 +2123,7 @@ hr {
 }
 
 .wiggle {
-  animation: wiggle 3s linear infinite;
+  animation: wiggle 1s linear infinite;
   display:inline-block;
 }
 
@@ -2192,12 +2204,9 @@ hr {
 		vertical-align: middle;
 	}
 
-    small *{
-        font-size:10px !important;
-    }
-
-
-
+    // small *{
+    //     font-size:10px !important;
+    // }
 
     .cursor-pointer{
         cursor:pointer!important;
