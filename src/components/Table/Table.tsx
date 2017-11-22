@@ -270,7 +270,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                                     </Toolbar>
                                 </Emerge>
                                 :
-                                <table className="w100" >
+                                <table  className="w100" >
                                     <TableHead {...tableProps} {...headProps} />
                                     <TableBody {...tableProps} {...bodyProps} />
                                 </table>

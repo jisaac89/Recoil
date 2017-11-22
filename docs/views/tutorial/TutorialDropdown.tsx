@@ -123,6 +123,7 @@ export default class TutorialDropdown extends React.Component<any,any>{
                 dropDirection="top"
                 icon="calendar"
                 iconPointer="down"
+                selectedKey={'name'}
               />
           </div>
 
@@ -135,6 +136,7 @@ export default class TutorialDropdown extends React.Component<any,any>{
                 hideHeader 
                 dataSource={months}
                 hidePageSize 
+                selectedKey={'name'}
               />
           </div>
 
