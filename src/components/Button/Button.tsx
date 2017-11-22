@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 import './Button.less';
@@ -25,6 +26,7 @@ export interface IButtonProps extends IRecoil{
   ghost?: boolean;
   required ? : boolean;
   id?: string;
+  shortcut? : string;
 }
 
 export interface IButtonState {
@@ -32,7 +34,7 @@ export interface IButtonState {
   progressiveClickIndex? : number;
   progressiveClickLength? : number;
   clickCounter? : number;
-  shiftCounter?: number;
+  showShortcut?: boolean;
 }
 
 export default class Button extends React.Component<IButtonProps, IButtonState>{
@@ -57,7 +59,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       checked : false,
       progressiveClickIndex: 0,
       clickCounter: 0,
-      shiftCounter: 0
+      showShortcut : false
     };
   }
 
@@ -68,6 +70,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       this.setState({
         progressiveClickLength: props.progressiveClick.length
       })
+    }
+    if (props.shortcut) {
+       window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
+       window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
     }
    }
 
@@ -92,6 +98,26 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       self.setState({
         progressiveClickIndex: 1
       })
+    }
+  }
+
+  public startShortcutListener(e) {
+     const context = this;
+     const props = context.props;
+     let state = context.state;
+     const refButton = ReactDOM.findDOMNode<HTMLElement>(context.refs["button"]);
+     context.setState({
+       showShortcut : e.shiftKey ? true : false
+     })
+     if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase()) {
+       refButton.click();
+     }
+  }
+
+  public componentWillUnmount() {
+    if (this.props.shortcut) {
+      window.removeEventListener("keydown", null, false);
+      window.removeEventListener("keyup", null, false);
     }
   }
 
@@ -129,19 +155,25 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       buttonType = 'button';
     }
 
+    let showTooltip = () => {
+      if (this.state.showShortcut) {
+        return <div className="animated text-center fadeIn w100">{this.props.shortcut}</div>;
+      }
+    }
+
     let selectablePartial = <Selectable type={props.checkedTheme} checked={props.checked ? true : false}></Selectable>;
     let iconPartial = (props.icon && !props.loading ? <i className={'fa fa-'+props.icon}></i> : null );
     let loadingPartial = (props.loading ? <i className={'fa fa-circle-o-notch fa-spin'+ (props.children ? ' mr10' : '')}></i> : null );
     let animatedIcon = (props.iconPointer && !props.loading ? <i className={"icon-pointer fa fa-caret-"+props.iconPointer} ></i> : null );
-    let iconWrapperRight = (props.icon && props.iconLocation === 'right' ? <div className={'icon-pointer-'+props.iconPointer+ " ml10 icon-wrapper " + (props.children ? "mr10" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
-    let iconWrapperLeft = (props.icon && props.iconLocation === 'left' ? <div className={'icon-pointer-'+props.iconPointer+" icon-wrapper " + (props.children ? "mr10" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
+    let iconWrapperRight = (props.icon && props.iconLocation === 'right' && !this.state.showShortcut ? <div className={'icon-pointer-'+props.iconPointer+ " ml10 icon-wrapper " + (props.children ? "mr10" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
+    let iconWrapperLeft = (props.icon && props.iconLocation === 'left' && !this.state.showShortcut ? <div className={'icon-pointer-'+props.iconPointer+" icon-wrapper " + (props.children ? "mr10" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
 
     let linkButton = () => {
       return (
         <a href={props.href} id={props.id} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)}  className={buttonClass} style={props.style}>
           {iconWrapperLeft}
           {loadingPartial}
-          {props.children}
+          {!this.state.showShortcut ? props.children : showTooltip()}
           {selectablePartial}
           {iconWrapperRight}
         </a> 
@@ -153,7 +185,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
           <button id={props.id} ref="button" tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
             {iconWrapperLeft}
             {loadingPartial}
-            {props.children}
+            {!this.state.showShortcut ? props.children : showTooltip()}
             {iconWrapperRight}
           </button>
         );
@@ -164,8 +196,8 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
           <button id={props.id} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
             {iconWrapperLeft}
             {loadingPartial}
-            {props.children}
-            {selectablePartial}
+            {!this.state.showShortcut ? props.children : showTooltip()}
+            {selectablePartial} 
             {iconWrapperRight}
           </button>
         );

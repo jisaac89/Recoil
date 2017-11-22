@@ -148,6 +148,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             checkedTheme,
             disabled,
             parentId,
+            shortcut,
             //
             children,
 
@@ -179,6 +180,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
 
         let buttonProps = {
             block: true,
+            shortcut,
             icon,
             size,
             iconPointer,

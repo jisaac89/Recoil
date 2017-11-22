@@ -124,6 +124,7 @@ export default class TutorialDropdown extends React.Component<any,any>{
                 icon="calendar"
                 iconPointer="down"
                 selectedKey={'name'}
+                shortcut={'a'}
               />
           </div>
 
@@ -137,12 +138,13 @@ export default class TutorialDropdown extends React.Component<any,any>{
                 dataSource={months}
                 hidePageSize 
                 selectedKey={'name'}
+                shortcut={'g'}
               />
           </div>
 
           <h3>Multi Select Mobile Dropdown</h3>
           <div className="ptb20">
-              <Dropdown mobile={true} className='w200px' icon="users" iconPointer="down" rowIsSelectable title="Select Users" dataSource={users} columns={[{name:'name'}]} searchableKeys={["name"]} searchTitle="Find Users" />
+              <Dropdown shortcut={"u"} focusOnMount mobile={true} className='w200px' icon="users" iconPointer="down" rowIsSelectable title="Select Users" dataSource={users} columns={[{name:'name'}]} searchableKeys={["name"]} searchTitle="Find Users" />
           </div>
 
           <h3>Custom Content</h3>

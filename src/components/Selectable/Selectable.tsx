@@ -27,7 +27,7 @@ class Selectable extends React.Component<ISelectableProps, {}> {
       {'checked' : (props.checked)}
     );
 
-    return <div className={selectableClass}></div>;
+    return <div tabIndex={-1} className={selectableClass}></div>;
   }
 }
 

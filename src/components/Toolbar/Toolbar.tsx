@@ -54,7 +54,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
     );
 
     return (
-      <div id={this.props.id} ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
+      <div tab-index={-1} id={this.props.id} ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
         {props.children}
       </div>
     );

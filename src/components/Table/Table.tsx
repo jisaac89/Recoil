@@ -261,7 +261,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                     {headerTemplate ? headerTemplate : null}
                     <TableSearch {...tableSearchProps} />
                     {menuTemplate ? menuTemplate() : null}
-                    <Layer scrollY theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
+                    <Layer tabIndex={-1} scrollY theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
                         {
                             nothingMatchesSearchCriteria ?
                                 <Emerge className="e-fill">
@@ -270,7 +270,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                                     </Toolbar>
                                 </Emerge>
                                 :
-                                <table  className="w100" >
+                                <table tab-index={-1}  className="w100" >
                                     <TableHead {...tableProps} {...headProps} />
                                     <TableBody {...tableProps} {...bodyProps} />
                                 </table>

@@ -310,7 +310,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
             return (
                 <div id={props.id} className={inputWrapperClass} style={props.style}>
                     {props.errorMessage ? errorInlinePartialTop : null}
-                    <div className={inputClassadvanced}>
+                    <div tab-index={-1} className={inputClassadvanced}>
                         {iconPartial}
                         <small>{props.title}</small>
                         {inputPartial}

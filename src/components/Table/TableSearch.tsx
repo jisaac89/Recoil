@@ -69,7 +69,7 @@ export default class TableSearch extends React.Component<any, any>{
 
     let searchPartial = () => {
       return (
-        <Toolbar theme="light" flex flush block noRadius className="p5 table-search">
+        <Toolbar tabIndex={-1} theme="light" flex flush block noRadius className="p5 table-search">
           <Input 
             placeholder={props.searchTitle} 
             onChange={this.updateSearch.bind(this)} 
@@ -79,8 +79,9 @@ export default class TableSearch extends React.Component<any, any>{
             flex
             value={this.state.searchTerm}
             focusOnMount={focusOnMount}
+            tabIndex={-1}
           />
-          <Button size="small" icon="times" onClick={this.updateSearch.bind(this, "")} />
+          <Button tabIndex={-1} size="small" icon="times" onClick={this.updateSearch.bind(this, "")} />
         </Toolbar>
       )
     }

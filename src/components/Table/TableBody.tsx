@@ -135,7 +135,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
 
         return (
             <tbody 
-                tab-index={0}
+                tab-index={-1}
             >
                 {columnArray}            
             </tbody>

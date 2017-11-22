@@ -19,7 +19,7 @@ export default class DropdownHeader extends React.Component<any, any>{
         let props = this.props;
         let {onClose} = props;
         return (
-            <Button tabIndex={-1} simple right icon="times" onClick={onClose}/>
+            <Button shortcut={'x'} tabIndex={-1} simple right icon="times" onClick={onClose}/>
         )
     }
     render() {

@@ -22,9 +22,9 @@ export default class ModalHeader extends React.Component<any, any>{
         return (
             <Toolbar size="small" right spacing>
                 {!props.hideFullScreenButton ? <Button onClick={this.toggleFullScreen.bind(this)} icon={fullScreen ? 'expand' : 'compress'} /> : null}
-                {!props.hideCloseButton ? <Button id={this.props.closeId} onClick={onClose} icon="times" theme="error" /> : null}
+                {!props.hideCloseButton ? <Button shortcut={"x"} id={this.props.closeId} onClick={onClose} icon="times" theme="error" /> : null}
             </Toolbar>
-        )
+        ) 
     }
     render() {
         let props = this.props;
