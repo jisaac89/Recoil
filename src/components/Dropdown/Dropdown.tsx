@@ -28,7 +28,6 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     hideDropdownHeader?: boolean;
     titleKey?: string;
     disabled?: boolean;
-
     parentId?: any;
     hideRoot?: boolean;
 }

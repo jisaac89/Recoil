@@ -84,24 +84,20 @@ export default class TutorialEmerge extends React.Component<any,any>{
     ]
     let example = () => {
       return (
-        <div>
-            <Layer className="p10 light">
-              <Emerge delay={300} if={props.if}>
-                <Button className="mr10">
-                  A
-                </Button>
-                <Button className="mr10">
-                  B
-                </Button>
-                <Button className="mr10">
-                  C
-                </Button>
-                <Button className="">
-                  D
-                </Button>
-              </Emerge>
-            </Layer>
-        </div>
+        <Emerge delay={300} if={props.if}>
+          <Button className="mr10">
+            A
+          </Button>
+          <Button className="mr10">
+            B
+          </Button>
+          <Button className="mr10">
+            C
+          </Button>
+          <Button className="">
+            D
+          </Button>
+        </Emerge>
       )
     }
 

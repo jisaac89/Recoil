@@ -30,7 +30,8 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
 
     public static defaultProps = {
         calendarHeight: '400px',
-        inDropdown: false
+        inDropdown: false,
+        date : new Date(Date.now())
     }
 
     constructor(props?: ICalendarProps) {

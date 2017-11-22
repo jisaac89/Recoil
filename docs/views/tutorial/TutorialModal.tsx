@@ -65,7 +65,8 @@ export default class TutorialModal extends React.Component<any,any>{
     this.state = {
       showProps : true,
       showVideo: false,
-      showModal: false
+      showModal: false,
+      showModalFullScreen: false
     }
   }
 
@@ -86,6 +87,22 @@ export default class TutorialModal extends React.Component<any,any>{
   openModal() {
     this.setState({
       showModal: true
+    }, ()=>{
+      this.props.toggleModal(this.state.showModal);
+    })
+  }
+
+  openModalFullScreen() {
+    this.setState({
+      showModalFullScreen: true
+    }, ()=>{
+      this.props.toggleModal(this.state.showModal);
+    })
+  }
+
+  closeModalFullScreen() {
+    this.setState({
+      showModalFullScreen: false
     }, ()=>{
       this.props.toggleModal(this.state.showModal);
     })
@@ -113,7 +130,8 @@ export default class TutorialModal extends React.Component<any,any>{
     let example = () => {
       return (
         <div>
-            <Layer className="ptb10">
+           <h3 className="pb20">Default</h3>
+            <Layer className="pb20">
               <Button theme="primary" onClick={this.openModal.bind(this)}>Show Modal</Button>
             </Layer>
           <Modal open={this.state.showModal} onClose={this.closeModal.bind(this)}>
@@ -122,6 +140,19 @@ export default class TutorialModal extends React.Component<any,any>{
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
               <Button onClick={this.closeModal.bind(this)}>Close Modal</Button>
+            </Layer>
+          </Modal>
+
+          <h3 className="pb20">Fullscreen Modal</h3>
+            <Layer>
+              <Button theme="primary" onClick={this.openModalFullScreen.bind(this)}>Open Fullscreen Modal</Button>
+            </Layer>
+          <Modal fullScreen={true} hideFullScreenButton open={this.state.showModalFullScreen} onClose={this.closeModalFullScreen.bind(this)}>
+            <Layer className="p10">
+              <p className="mb10">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </p>
+              <Button onClick={this.closeModalFullScreen.bind(this)}>Close Modal</Button>
             </Layer>
           </Modal>
         </div>

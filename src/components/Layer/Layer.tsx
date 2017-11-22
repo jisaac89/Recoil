@@ -16,7 +16,7 @@ export interface ILayerProps extends IRecoil{
   key? : string | number;
   parent? : boolean;
   child? : boolean;
-  dimensions?:{height: string, width : string, zIndex: number};
+  dimensions?:[ string, string, number];
   scrollToId?: string;
   beforeAnimate? : () => void;
   afterAnimate ? : () => void;
@@ -25,6 +25,7 @@ export interface ILayerProps extends IRecoil{
   scroll? : boolean;
   offset?: number;
   shadow?: boolean;
+  flexCenter?: boolean;
 }
 
 export default class Layer extends React.Component<ILayerProps, any> {
@@ -189,6 +190,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
       {'parent': (props.parent)},
       { 'child': (props.child) },
       { 'e-shadow': (props.shadow) },
+      { 'e-flex-center': (props.flexCenter) },
       borderClass,
       props.theme,
       props.className
@@ -224,7 +226,7 @@ Math['inOutQuintic'] = function(t: number, b: number, c: number, d: number) {
 
 
 var requestAnimFrame = (function(){
-  return  window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function( callback : ()=> void ){ window.setTimeout(callback, 1000 / 60); };
+  return  window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function( callback : ()=> void ){ window.setTimeout(callback, 2000 / 60); };
 })();
 
 function scrollTo(scrollTop : number, element : HTMLElement, to : number, duration : number) {
@@ -238,13 +240,13 @@ function scrollTo(scrollTop : number, element : HTMLElement, to : number, durati
   var start = position(),
     change = to - start,
     currentTime = 0,
-    increment = 20;
+    increment = 10;
   duration = (typeof(duration) === 'undefined') ? 500 : duration;
   var animateScroll = function() {
     // increment the time
     currentTime += increment;
     // find the value with the quadratic in-out easing function
-    var val = Math['easeInOutQuad'](currentTime, start, change, duration);
+    var val = Math['easeInCubic'](currentTime, start, change, duration);
     // move the document.body
     move(val);
     // do the animation unless its over
