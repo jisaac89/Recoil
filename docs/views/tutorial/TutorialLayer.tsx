@@ -131,8 +131,18 @@ export default class TutorialLayer extends React.Component<any, any>{
                 </Layer>
               </Transform>
             </Layer>
-            <Layer className="ml10 dinblock p10 dark" dimensions={['100%', '300px', 1]}>
+            <Layer overflow className="ml10 dinblock p10 dark" dimensions={['100%', '300px', 1]}>
               <Transform fill flex={state.isFlexed} if={state.showNotify} push={'top'} amount={'50px'}>
+                  
+                  <SlideIn from={'top'} className="h50px w100" if={this.state.showNotify}>
+                    <Layer flex fill flexCenter theme="dark" className="pt10">
+                      <Layer flex fill flexCenter theme="light">
+                          Notifcations
+                      </Layer>
+                    </Layer>
+                  </SlideIn>
+
+
                 <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
                   <Transform fill flex={state.isFlexed} if={state.showSidebar} push={'right'} amount={'100px'}>
 

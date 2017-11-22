@@ -130,6 +130,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         let state = self.state;
 
         let {
+            id,
             title,
             // Button props
             icon,
@@ -196,6 +197,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         }
 
         let dropdownPortalProps = {
+            id,
             title,
             icon,
             children,
@@ -248,7 +250,11 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         );
 
         return (
-            <div ref='dropdown' className={dropdownClass}>
+            <div 
+                id={id} 
+                ref='dropdown' 
+                className={dropdownClass}
+            >
                 <Button {...buttonProps}>{title}</Button>
                 <DropdownContent {...dropdownPortalProps} />
             </div>

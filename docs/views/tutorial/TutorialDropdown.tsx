@@ -113,6 +113,7 @@ export default class TutorialDropdown extends React.Component<any,any>{
           <h3>Default</h3>
           <div className="ptb20">
               <Dropdown 
+                id={"SelectDay"}
                 className='w200px' 
                 rowIsSelectable="single" 
                 title="Select Day"

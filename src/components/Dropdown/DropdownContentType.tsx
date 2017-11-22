@@ -13,6 +13,7 @@ export default class DropdownContentType extends React.Component<any, any>{
         const props = self.props;
 
         let {
+            id,
             children,
             open,
             // Table
@@ -50,6 +51,8 @@ export default class DropdownContentType extends React.Component<any, any>{
 
         let tableProps = {
             // Table
+            id,
+            portal : true,
             dataSource,
             focusOnMount,
             hideHeader,

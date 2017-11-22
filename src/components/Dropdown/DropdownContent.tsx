@@ -13,6 +13,7 @@ export default class DropdownContent extends React.Component<any, any>{
         const props = self.props;
 
         let {
+            id,
             open,
             title,
             icon,
@@ -59,6 +60,7 @@ export default class DropdownContent extends React.Component<any, any>{
         }
 
         let dropdownContentTypeProps = {
+            id,
             type,
             children,
             open,

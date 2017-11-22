@@ -24,6 +24,7 @@ export interface IButtonProps extends IRecoil{
   advanced?: boolean;
   ghost?: boolean;
   required ? : boolean;
+  id?: string;
 }
 
 export interface IButtonState {

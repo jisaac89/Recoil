@@ -19,6 +19,7 @@ export interface IToolbarProps extends IRecoil{
   onClick? : (event : React.MouseEvent<HTMLElement>) => void;
   tabs?: boolean;
   breadcrumbs?: boolean;
+  id?: string;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{

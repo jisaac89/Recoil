@@ -20,6 +20,7 @@ export { IColumn }
 
 export interface ITableProps {
     id?: string;
+    portal?: boolean;
     // initial dataSource loaded as prop
     dataSource?: Array<Object> | Array<number> | Array<string>;
     // columns defined by user
@@ -102,7 +103,8 @@ class Table extends React.Component<ITableProps, ITableState>{
 
     public static defaultProps = {
         showDataSourceLength: true,
-        title: 'items'
+        title: 'items',
+        portal: false
     }
 
     render() {
@@ -165,7 +167,9 @@ class Table extends React.Component<ITableProps, ITableState>{
             hideCheckAll,
             onSearchChange,
             headerTemplate,
-            serverSide
+            serverSide,
+            id,
+            portal
         } = props;
 
         // assign the props
@@ -186,7 +190,9 @@ class Table extends React.Component<ITableProps, ITableState>{
             selectedKey: selectedKey,
             filterRow: filterRow,
             filterOpenDetailTemplate: filterOpenDetailTemplate,
-            serverSide
+            serverSide,
+            id,
+            portal
         }
 
         let headProps = {
@@ -251,7 +257,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         else if ((!!dataSource && dataSource.length) && !!columns && columns.length) {
             let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
             return (
-                <div id={props.id} className={tableClass}>
+                <div id={props.id ? portal ? props.id + '-portal' : props.id : null} className={tableClass}>
                     {headerTemplate ? headerTemplate : null}
                     <TableSearch {...tableSearchProps} />
                     {menuTemplate ? menuTemplate() : null}

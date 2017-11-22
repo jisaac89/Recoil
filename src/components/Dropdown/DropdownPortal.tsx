@@ -66,6 +66,7 @@ export default class DropdownPortal extends React.Component<any, any>{
         const props = self.props;
 
         let {
+            id,
             open,
             title,
             onClose,
@@ -95,6 +96,7 @@ export default class DropdownPortal extends React.Component<any, any>{
         } = props;
 
         let dropdownContentProps = {
+            id,
             open,
             title,
             icon,

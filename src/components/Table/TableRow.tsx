@@ -120,8 +120,8 @@ export default class TableRow extends React.Component<ITableColumnProps,any>{
             detailTemplateOpenOnRowSelect,
             selectedKey,
             index,
-            filterOpenDetailTemplate
-
+            filterOpenDetailTemplate,
+            id
         } = props;
 
         let columnsValueArray = []
@@ -153,7 +153,7 @@ export default class TableRow extends React.Component<ITableColumnProps,any>{
         }
         
         return (
-            <tr 
+            <tr  
                 className={selectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'r-TableColumn checked' : 'r-TableColumn'} 
                 onClick={rowIsSelectable && !checkable ? this.toggleSelectedElements.bind(this, element, index) : null || (onRowSelect || detailTemplateOpenOnRowSelect ? this.onRowSelect.bind(this, element, index) : null) }
             >
