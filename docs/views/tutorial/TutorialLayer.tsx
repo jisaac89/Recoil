@@ -30,7 +30,9 @@ export default class TutorialLayer extends React.Component<any,any>{
     this.state = {
       showProps : true,
       showVideo: false,
-      isFlexed: false
+      isFlexed: false,
+      contentClosed: false,
+      showSidebar: false
     }
   }
 
@@ -51,6 +53,18 @@ export default class TutorialLayer extends React.Component<any,any>{
   toggleFlex(){
     this.setState({
       isFlexed : !this.state.isFlexed
+    })
+  }
+
+  toggleContentClosed(){
+    this.setState({
+      contentClosed : !this.state.contentClosed
+    })
+  }
+
+  toggleSidebar(){
+    this.setState({
+      showSidebar : !this.state.showSidebar
     })
   }
 
@@ -83,20 +97,72 @@ export default class TutorialLayer extends React.Component<any,any>{
             </Layer>
 
             <h3 className="ptb20">Flex Layer</h3>
-            <Checkbox icon={'check'} checked={state.isFlexed} title={'Flex and Fill Children'} onChange={this.toggleFlex.bind(this)} />
-            <Layer className="p10 mt20 dark" dimensions={['300px', '300px', 1]}>
-              <Layer theme="light" fill flex={state.isFlexed} className="p10">
-                <Layer flexCenter={state.isFlexed} theme="dark" fill={state.isFlexed} className="p10">
-                  A
+            <Checkbox icon={'check'} checked={state.isFlexed} title={'Fill Children'} onChange={this.toggleFlex.bind(this)} />
+            <Checkbox icon={'eye'} checked={state.contentClosed} title={'Hide Content'} onChange={this.toggleContentClosed.bind(this)} />
+            <Checkbox icon={'star'} checked={state.showSidebar} title={'Show Sidebar'} onChange={this.toggleSidebar.bind(this)} />
+
+            <Align className="mt20">
+              <Layer className="p10 dark dinblock" dimensions={['100%', '300px', 1]}>
+                <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
+
+                  <Transform fill flex={state.isFlexed} if={state.showSidebar} push={'left'} amount={'100px'}>
+                    
+                    <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
+                      Header
+                    </Layer>
+
+                    <Open openToHeight={!this.state.isFlexed ? '42px' :'83.33px'} if={!this.state.contentClosed}>
+                      <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
+                        Content
+                      </Layer>
+                    </Open>
+
+                    <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10">
+                      Footer
+                    </Layer>
+                  
+                  </Transform>
+
+                  <SlideIn from={'left'} className="h100 w100px" if={this.state.showSidebar}>
+                      <Layer flex fill flexCenter theme="dark" className="pr10">
+                        <Layer flex fill flexCenter theme="light">
+                          
+                        </Layer>          
+                      </Layer>
+                  </SlideIn>
+
                 </Layer>
-                <Layer flexCenter={state.isFlexed} theme="dark" fill={state.isFlexed} className="p10">
-                  B
+              </Layer>  
+              <Layer className="ml10 dinblock p10 dark" dimensions={['100%', '300px', 1]}>
+                <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
+
+                  <Transform fill flex={state.isFlexed} if={state.showSidebar} push={'right'} amount={'100px'}>
+
+                    <Open openToHeight={!this.state.isFlexed ? '38px' :'205px'} if={!this.state.contentClosed}>
+                      <Layer flex border flexCenter theme="dark" fill={state.isFlexed} className="p10">
+                        Content
+                      </Layer>
+                    </Open>
+
+                    <Layer border dimensions={['100%',state.contentClosed && state.isFlexed ? '100%' : '38px', 1]} flexCenter theme="dark" className="p10 mt5">
+                      Footer
+                    </Layer>
+
+                  </Transform>
+
+                  <SlideIn from={'right'} className="h100 w100px" if={this.state.showSidebar}>
+                      <Layer flex fill flexCenter theme="dark" className="pl10">
+                        <Layer flex fill flexCenter theme="light">
+                          
+                        </Layer> 
+                      </Layer>
+                  </SlideIn>
+
                 </Layer>
-                <Layer flexCenter={state.isFlexed} theme="dark" fill={state.isFlexed} className="p10">
-                  C
-                </Layer>
-              </Layer>
-            </Layer>            
+              </Layer>    
+
+            </Align>
+
         </div>
       )
     }
