@@ -22,9 +22,9 @@ const ButtonProperties = [
     description: 'Add a list of class names.'
   },
   {
-    name :'type',
+    name :'theme',
     type: 'string',
-    options: 'primary, secondary',
+    options: 'primary | success | error | default',
     description: 'Template type for the button.'
   },
   {
@@ -46,10 +46,10 @@ const ButtonProperties = [
     description: 'Add a target attribute to the button.'
   },
   {
-    name :'ghost',
+    name :'simple',
     type: 'boolean',
     options: 'true, false',
-    description: 'Switch to the ghost template mode.'
+    description: 'Switch to the simple template mode.'
   },
   {
     name :'strech',
@@ -173,16 +173,16 @@ export default class TutorialButton extends React.Component<any,any>{
               </Toolbar>
             </Layer>
 
-            <h3>Adding Icons</h3>
-            <p>To add an icon to a button, just add an icon prop to it. Icon's are taken from font-awesome, you can omit the fa fa-, for example below it would be a Button compoent with a icon prop of "star"</p>
-            <Layer className="ptb20">
+            <h3 className="pb20">Adding Icons</h3>
+            <p className="pb20">To add an icon to a button, just add an icon prop to it. Icon's are taken from font-awesome, you can omit the fa fa-, for example below it would be a Button compoent with a icon prop of "star"</p>
+            <Layer className="pb20">
               <Toolbar spacing className='mr10'>
                 <Button icon="star">Button with an icon</Button>
                 <Button icon="home" theme="primary"></Button>
               </Toolbar>
             </Layer>
 
-            <Layer className="ptb20">
+            <Layer className="pb20">
               <Toolbar flush>
                 <Button theme="success" icon="fast-backward"></Button>
                 <Button theme="success" icon="backward"></Button>
@@ -190,7 +190,7 @@ export default class TutorialButton extends React.Component<any,any>{
               </Toolbar>
             </Layer>
 
-            <Layer className="ptb20">
+            <Layer className="pb20">
               <Toolbar flush noRadius noBorder>
                 <Button icon="stop"></Button>
                 <Button icon="forward"></Button>
@@ -198,28 +198,28 @@ export default class TutorialButton extends React.Component<any,any>{
               </Toolbar>
             </Layer>
 
-            <h3>Sizes</h3>
+            <h3 className="pb20">Sizes</h3>
             <p>Buttons come in a few sizes, small, default, large and xlarge.</p>
             <Layer className="ptb20">
               <Toolbar spacing vertical={props.mobile}>
-                <Button size="small">Small Button</Button>
+                <Button size="small">Small</Button>
                 <Button>Default</Button>
-                <Button size="large">Large Button</Button>
-                <Button size="xlarge">Extra Large Button</Button>
+                <Button size="large">Large</Button>
+                <Button size="xlarge">Extra Large</Button>
               </Toolbar>
             </Layer>
 
-            <h3>States</h3>
-            <p>Buttons can have different states. You can pass a <strong>disbaled</strong>,<strong>ghost</strong> or <strong>checked</strong> props to a Button.</p>
+            <h3 className="pb20">States</h3>
+            <p>Buttons can have different states. You can pass a <strong>checked</strong>,<strong>disabled</strong> or <strong>simple</strong> prop..</p>
             <Layer className="ptb20">
               <Toolbar spacing vertical={props.mobile}>
-                <Button checked advanced>Checked Button</Button>
-                <Button disabled>Disabled Button</Button>
-                <Button simple>Ghost Button</Button>
+                <Button checked advanced>Checked</Button>
+                <Button disabled>Disabled</Button>
+                <Button simple>Simple</Button>
               </Toolbar>
             </Layer>
 
-            <h3>Pointer</h3>
+            <h3 className="mb20">Pointer</h3>
             <p>The <strong>pointer</strong> prop accepts a direction either <strong>left</strong> or <strong>right</strong>.</p>
             <Layer className="ptb20">
               <Toolbar spacing>
@@ -228,7 +228,7 @@ export default class TutorialButton extends React.Component<any,any>{
               </Toolbar>
             </Layer>
 
-            <h3>Links</h3>
+            <h3 className="mb20">Links</h3>
             <p>You can convert any Button component to a Link by adding the <strong>href</strong> prop to it.</p>
             <Layer className="ptb20">
               <Toolbar spacing>
@@ -241,7 +241,7 @@ export default class TutorialButton extends React.Component<any,any>{
 
     return (
       <TutorialView 
-        description="The Button component is an advanced version of the standard default button control."
+        description="The Button component is an updated version of the standard default button control."
         Id="Button"
         columnData={ButtonProperties}
         examples={example}

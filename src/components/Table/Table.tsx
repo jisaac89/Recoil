@@ -256,7 +256,11 @@ class Table extends React.Component<ITableProps, ITableState>{
                     <Layer scrollY theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
                         {
                             nothingMatchesSearchCriteria ?
-                                <Toolbar block textCenter className="p10 ptb20"><small>Nothing matches search criteria...</small></Toolbar>
+                                <Emerge className="e-fill">
+                                    <Toolbar block textCenter className="p10 ptb20">
+                                        <small>Nothing matches search criteria...</small>
+                                    </Toolbar>
+                                </Emerge>
                                 :
                                 <table className="w100" >
                                     <TableHead {...tableProps} {...headProps} />

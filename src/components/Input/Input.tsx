@@ -24,6 +24,7 @@ export interface IInputProps extends IRecoil {
     cols?: number;
     block?: boolean;
     autoExpand?: boolean;
+    onBlur?: (value: any, event: React.FormEvent<any>) => void;
     onChange?: (value: any, event: React.FormEvent<any>) => void;
     scrollHeight?: number;
     focusOnMount?: boolean;
@@ -105,13 +106,17 @@ export default class Input extends React.Component<IInputProps, IInputState>{
     }
     public focus(e: any) {
         this.setState({
-            checked: e.target.value ? true : false
+            checked: true
         });
     }
-    public blur() {
+    public blur(event: React.MouseEvent<HTMLInputElement>) {
         let inputDOM = this.refs['refInput'];
+        let value = (event.target as HTMLInputElement).value;
         this.setState({
-            checked: ReactDOM.findDOMNode<HTMLInputElement>(inputDOM).value !== '' ? true : false
+            checked: ReactDOM.findDOMNode<HTMLInputElement>(inputDOM).value !== '' ? true : false,
+            value: value
+        }, () => {
+            this.props.onBlur ? this.props.onBlur(value, event) : null;
         });
     }
     public mouseOut() {
@@ -182,7 +187,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
         // if input has icon then show it
 
         if (props.icon) {
-            iconPartial = <small><i className={'fa fa-' + props.icon}></i> </small>;
+            iconPartial = <small><i className={'fa fa-'+props.icon}></i></small>;
         } else {
             iconPartial = null;
         }

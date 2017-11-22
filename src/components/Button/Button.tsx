@@ -136,7 +136,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let linkButton = () => {
       return (
-        <a href={props.href} id={props.id} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} className={buttonClass} style={props.style}>
+        <a href={props.href} id={props.id} target={props.target} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)}  className={buttonClass} style={props.style}>
           {iconWrapperLeft}
           {loadingPartial}
           {props.children}

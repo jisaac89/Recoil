@@ -57,8 +57,7 @@ export default class TutorialCheckbox extends React.Component<any,any>{
             <h3>Default</h3>
             <Layer className="ptb20">
               <Layer className="p10 light">
-                <Checkbox title={'Select All'} />
-                <Checkbox size="small" title={'Check All'} />
+                <Checkbox icon="check" title={'Select All'} />
               </Layer>
             </Layer>
 
@@ -74,9 +73,9 @@ export default class TutorialCheckbox extends React.Component<any,any>{
               <Layer className="p10 light">
                 <Toolbar spacing>
                   <Checkbox size="small" />
-                  <Checkbox />
+                  <Checkbox icon={'star'} />
                   <Checkbox size="large" />
-                  <Checkbox size="xlarge" />
+                  <Checkbox icon={'users'} size="xlarge" />
                 </Toolbar>
               </Layer>
             </Layer>
@@ -87,7 +86,7 @@ export default class TutorialCheckbox extends React.Component<any,any>{
                 <Toolbar spacing>
                   <Checkbox theme="primary" />
                   <Checkbox theme="error" />
-                  <Checkbox theme="success" />
+                  <Checkbox icon={'star'} theme="success" />
                 </Toolbar>
               </Layer>
             </Layer>

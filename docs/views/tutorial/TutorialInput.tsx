@@ -135,7 +135,7 @@ export default class TutorialInput extends React.Component<any,any>{
             <Toolbar vertical spacing>
               <Input size="small" advanced type="text" title="First Name" onChange={this.setonChange.bind(this)} block />
               <Input advanced type="text" title="Last Name" onChange={this.setonChange.bind(this)} block />
-              <Input simple size="large" advanced type="text" icon="search" title="Search Users" onChange={this.setonChange.bind(this)} block />
+              <Input size="large" advanced type="text" icon="user" title="Search Users" onChange={this.setonChange.bind(this)} block />
               <Input size="xlarge" advanced type="text" title="Email" onChange={this.setonChange.bind(this)} block />
             </Toolbar>
           </Layer>

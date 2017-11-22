@@ -71,8 +71,8 @@ export default class TutorialView extends React.Component<ITutorialViewProps,any
     ]
 
     return(
-      <Layer theme="light" className="pl50">
-        <small><strong>Values:</strong> {item.type}</small><br/>
+      <Layer className="pl20 p10">
+        <small><strong>Value:</strong> {item.type}</small><br/>
         <small><strong>Description:</strong> {item.description}</small>
       </Layer>
     )
@@ -89,48 +89,35 @@ export default class TutorialView extends React.Component<ITutorialViewProps,any
     ]
     
     return (
-      <Layer fill offset={-100} flex scrollY scrollIf={props.scrollIf} scrollToId={props.scrollToId}>
-          <div className="p10">
 
-          <Layer className="ptb10">
-            <h2 id={props.Id} className="pb10">Description</h2>
+      <Layer fill offset={-100} flex scrollY scrollIf={props.scrollIf} scrollToId={props.scrollToId}>
+          <div className="mobile-version p50">
+
+          <Layer>
+            <h2 id={props.Id} className="pb20">Description</h2>
             <p>{props.description}</p>
           </Layer>
 
-          <Layer className="ptb10">
-            <h2 className="pb10">Examples</h2>
-            <Layer className="ptb10">
-              {props.examples ? props.examples() : null}
-            </Layer>
+          <Layer className="pt20">
+            <h2 className="pb20">Examples</h2>
+            {props.examples ? props.examples() : null}
           </Layer>
 
-          <Layer className="ptb10">
-            <h2 className="pb10">Props</h2>
-              <Layer className="ptb10">
-                <Table 
-                  sortable 
-                  columns={columns}
-                  dataSource={props.columnData}
-                  detailTemplate={this.detailTemplate.bind(this)}
-                  pageSize={props.columnData.length}
-                />
-              </Layer>
-          </Layer>
-
-
-
+              <h2 className="ptb20">Props</h2>
+              <Table 
+                sortable 
+                columns={columns}
+                dataSource={props.columnData}
+                detailTemplate={this.detailTemplate.bind(this)}
+                pageSize={props.columnData.length}
+                detailTemplateSelectedElements={props.columnData}
+                detailTemplateHideToggle
+                searchableKeys={['name']}
+                searchTitle={'Filter by property name.'}
+              />
         </div>
       </Layer>
+
     )
   }
 }
-
-  // <Layer className="ptb10">
-  //   <h2 className="pb10">Video</h2>
-  //   <Button checked={this.state.showVideo} onClick={this.toggleShowVideo.bind(this)}>Toggle Video Tutorial</Button>
-  //   <Open if={this.state.showVideo}>
-  //     <Layer className="ptb10">
-  //       {props.video ? props.video : 'Coming soon...'}
-  //     </Layer>
-  //   </Open>
-  // </Layer>

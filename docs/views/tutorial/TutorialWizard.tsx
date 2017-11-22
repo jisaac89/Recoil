@@ -60,7 +60,7 @@ export default class TutorialWizard extends React.Component<any,any>{
       return (
         <div>
             <h3>Default</h3>
-            <Layer className="h300px p20 mb10" theme="dark">
+            <Layer className="h300px p20 pb0 mb10" theme="dark">
               <Wizard paginate fill slideIndex={this.state.slideIndex}>
                 <Layer fill theme="light" className="p20">1</Layer>
                 <Layer fill theme="light" className="p20">2</Layer>
@@ -69,7 +69,7 @@ export default class TutorialWizard extends React.Component<any,any>{
             </Layer>
 
             <h3 className="pt20 pb10">Vertical</h3>
-            <Layer className="h300px p20 mb10" theme="dark">
+            <Layer className="h300px p20 pb0 mb10" theme="dark">
               <Wizard paginate vertical fill slideIndex={this.state.slideIndex2}>
                 <Layer fill theme="light" className="p20">1</Layer>
                 <Layer fill theme="light" className="p20">2</Layer>

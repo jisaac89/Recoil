@@ -55,12 +55,9 @@ export default class TutorialDatePicker extends React.Component<any,any>{
       return (
         <div>
             <h3>Default</h3>
-            <Layer className="ptb20">
-              <Layer className="p10 light">
+            <Layer className="pt20">
                 <DatePicker mobile={props.mobile} />
-              </Layer>
             </Layer>
-
         </div>
       )
     }

@@ -56,9 +56,7 @@ export default class TutorialCalendar extends React.Component<any,any>{
         <div>
             <h3>Default</h3>
             <Layer className="ptb20">
-              <Layer className="p10 light">
                 <Calendar />
-              </Layer>
             </Layer>
         </div>
       )

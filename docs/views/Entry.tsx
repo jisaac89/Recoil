@@ -93,7 +93,7 @@ export default class App extends React.Component<any, any> {
                 <hr />  
               </Layer>
             </SlideIn>
-            <Layer fill overflow className="ps5 ptb50 z4">
+            <Layer fill overflow className="ps5 pt50 z4">
               <Wizard fill flex slideIndex={slideIndex}>
                 <TutorialAlign  />
                 <TutorialButton mobile={mobile}></TutorialButton>
