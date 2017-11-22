@@ -79,7 +79,7 @@ export default class App extends React.Component<any, any> {
 
     let {showModal, showMenu, nightmode, slideIndex, mobile} = this.state;
     return (
-      <Recoil nightmode={nightmode} onMobile={this.toggleMobile.bind(this)}>
+      <Recoil overflow nightmode={nightmode} onMobile={this.toggleMobile.bind(this)}>
         <Shrink fill if={showModal}>
           <Transform type={mobile ? "translate" : null} push={!mobile ? 'left' : null} axis={'X'} flex fill if={this.state.showMenu} amount="300px" >
             <SlideIn className='z5' if={!showModal} from={'top'}>
@@ -131,6 +131,7 @@ export default class App extends React.Component<any, any> {
         </Shrink>
         <SlideIn if={this.state.showMenu} from="left" className={mobile ? "w300px h100" : "w300px h100 pt50"}>
           <Layer fill nightmode scrollY className="p10">
+            <Button shortcut={'C'} block className="text-center mb10">Component List</Button>
             <Table
               dataSource={SampleData}
               pageSize={SampleData.length}
