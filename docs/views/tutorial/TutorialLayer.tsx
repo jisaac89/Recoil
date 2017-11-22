@@ -100,7 +100,7 @@ export default class TutorialLayer extends React.Component<any, any>{
           </Toolbar>
 
           <Align className="mt20">
-            <Layer className="p10 dark dinblock" dimensions={['100%', '300px', 1]}>
+            <Layer overflow className="p10 dark dinblock" dimensions={['100%', '300px', 1]}>
               <Transform fill flex={state.isFlexed} if={state.showNotify} push={'bottom'} amount={'50px'}>
                 <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
 
@@ -129,13 +129,22 @@ export default class TutorialLayer extends React.Component<any, any>{
                   </SlideIn>
 
                 </Layer>
+
+                <SlideIn from={'bottom'} className="h50px w100" if={this.state.showNotify}>
+                    <Layer flex fill flexCenter theme="dark" className="pb10 ps10">
+                      <Layer flex fill flexCenter theme="light">
+                          Notifcations
+                      </Layer>
+                    </Layer>
+                  </SlideIn>
+
               </Transform>
             </Layer>
             <Layer overflow className="ml10 dinblock p10 dark" dimensions={['100%', '300px', 1]}>
               <Transform fill flex={state.isFlexed} if={state.showNotify} push={'top'} amount={'50px'}>
                   
                   <SlideIn from={'top'} className="h50px w100" if={this.state.showNotify}>
-                    <Layer flex fill flexCenter theme="dark" className="pt10">
+                    <Layer flex fill flexCenter theme="dark" className="pt10 ps10">
                       <Layer flex fill flexCenter theme="light">
                           Notifcations
                       </Layer>
