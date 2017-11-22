@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {Align, Recoil, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../src/index';
+import { Align, Recoil, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink } from '../../src/index';
 
 import TutorialButton from './tutorial/TutorialButton';
 import TutorialAlign from './tutorial/TutorialAlign';
@@ -37,39 +37,46 @@ export default class App extends React.Component<any, any> {
       slideIndex: 0,
       showMenu: true,
       showModal: false,
-      nightmode: false
+      nightmode: false,
+      showDocs: false
     }
   }
 
   toggleMenu() {
     this.setState({
-      showMenu : !this.state.showMenu
+      showMenu: !this.state.showMenu
+    })
+  }
+
+  toggleDocs() {
+    this.setState({
+      showDocs: !this.state.showDocs
     })
   }
 
   toggleNightMode() {
     this.setState({
-      nightmode : !this.state.nightmode,
+      nightmode: !this.state.nightmode,
     })
   }
 
-  toggleModal(){
-      this.setState({
-        showModal :!this.state.showModal,
-        showMenu :  this.state.mobile ? false : !this.state.showMenu
-      })
+  toggleModal() {
+    this.setState({
+      showModal: !this.state.showModal,
+      showMenu: this.state.mobile ? false : !this.state.showMenu
+    })
   }
 
-  toggleMobile(isMobile){
+  toggleMobile(isMobile) {
     this.setState({
       mobile: isMobile,
-      showMenu:false
+      showMenu: false
     })
   }
 
   gotoSlideIndex(item) {
     this.setState({
-      slideIndex : item.index,
+      slideIndex: item.index,
       showMenu: this.state.mobile ? false : true,
       showModal: false
     })
@@ -77,7 +84,7 @@ export default class App extends React.Component<any, any> {
 
   render() {
 
-    let {showModal, showMenu, nightmode, slideIndex, mobile} = this.state;
+    let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
     return (
       <Recoil overflow nightmode={nightmode} onMobile={this.toggleMobile.bind(this)}>
         <Shrink fill if={showModal}>
@@ -86,16 +93,17 @@ export default class App extends React.Component<any, any> {
               <Layer fill theme="light">
                 <Toolbar size="small" block className="p10 border-bottom">
                   {this.state.mobile ? <Button simple icon="bars" onClick={this.toggleMenu.bind(this)} /> : null}
-                  <h1 className="dinblock">Recoil</h1>
+                  <h1 className="dinblock"><strong>Recoil</strong> <small>0.5.3</small></h1>
                   <Button href="https://www.github.com/jisaac89/recoil" theme="error" right icon="github">github</Button>
+                  <Button shortcut="h" onClick={this.toggleDocs.bind(this)} right icon="download" className="mr5"></Button>
                   <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} right icon="moon-o" className="mr5"></Button>
                 </Toolbar>
-                <hr />  
+                <hr />
               </Layer>
             </SlideIn>
             <Layer fill overflow className="ps5 pt50 z4">
               <Wizard fill flex slideIndex={slideIndex}>
-                <TutorialAlign  />
+                <TutorialAlign />
                 <TutorialButton mobile={mobile}></TutorialButton>
                 <TutorialCalendar mobile={mobile}></TutorialCalendar>
                 <TutorialCheckbox ></TutorialCheckbox>
@@ -117,7 +125,7 @@ export default class App extends React.Component<any, any> {
                 <TutorialToolbar></TutorialToolbar>
                 <TutorialTransform></TutorialTransform>
                 <TutorialWizard></TutorialWizard>
-              </Wizard>    
+              </Wizard>
             </Layer>
             <SlideIn className='z5' if={!showModal && showMenu === false && showModal === false} from={'bottom'}>
               <Layer fill nightmode>
@@ -135,7 +143,7 @@ export default class App extends React.Component<any, any> {
             <Table
               dataSource={SampleData}
               pageSize={SampleData.length}
-              columns={[{name: 'name'}]}
+              columns={[{ name: 'name' }]}
               hideHeader
               onRowSelect={this.gotoSlideIndex.bind(this)}
               selectedElements={[this.state.slideIndex]}
@@ -144,6 +152,41 @@ export default class App extends React.Component<any, any> {
               searchTitle="Find a Component, e.g Table..."
             />
           </Layer>
+        </SlideIn>
+
+
+        <SlideIn className="z5" if={!this.state.showDocs} from="bottom" fill>
+
+          <Layer flexCenter theme="light" className="p10" fill>
+            
+              <h2 className="pb20">React Recoil <small>0.5.3</small></h2>
+
+              <Toolbar spacing className="pb20 dinblock">
+                <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o" ></Button>
+                <Button onClick={this.toggleDocs.bind(this)} className="ps40" theme="primary" icon="star" iconPointer="down">
+                  View Component List
+                </Button>
+                <Button href="https://www.github.com/jisaac89/recoil" icon="github"></Button>
+              </Toolbar>
+
+              <Layer>
+                <small>To build Recoil's documentation, clone it from GitHub. </small><br/>
+                <small><strong>git clone https://github.com/jisaac89/recoil.git</strong> </small><br/><br/>
+                
+
+                <small>Then cd into project </small><br/>
+                <small><strong> cd recoil</strong></small><br/><br/>
+
+
+                <small>Then install the npm dependencies </small><br/>
+                <small><strong> npm install</strong></small><br/><br/>
+                <small>Then run the project </small><br/>
+
+                <small><strong>npm run watch</strong></small><br/><br/>
+                <small>Launch the documentation in your browser. It should be located at <br/><strong>recoil/docs/index.html</strong></small>
+              </Layer>
+          </Layer>
+
         </SlideIn>
       </Recoil>
     )
