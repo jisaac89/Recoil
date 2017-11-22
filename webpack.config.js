@@ -5,7 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     devtool: 'eval',
     entry: {
-        'styles': path.resolve(__dirname, 'src/styles.ts'),
+        'styles': path.resolve(__dirname, 'docs/styles.ts'),
         'docs': path.resolve(__dirname, 'docs/index.tsx')
     },
     output: {
