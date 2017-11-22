@@ -46,6 +46,14 @@ export default class Transform extends React.Component<ITransformProps, {}> {
         transformStyle = {
           paddingLeft : props.amount
         };
+      } else if (props.push === 'top') {
+        transformStyle = {
+          paddingTop : props.amount
+        };
+      } else if (props.push === 'bottom') {
+        transformStyle = {
+          paddingBottom : props.amount
+        };
       }
     } else {
       transformStyle = {
