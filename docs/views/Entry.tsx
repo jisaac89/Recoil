@@ -88,7 +88,7 @@ export default class App extends React.Component<any, any> {
                   {this.state.mobile ? <Button simple icon="bars" onClick={this.toggleMenu.bind(this)} /> : null}
                   <h1 className="dinblock">Recoil</h1>
                   <Button href="https://www.github.com/jisaac89/recoil" theme="error" right icon="github">github</Button>
-                  <Button onClick={this.toggleNightMode.bind(this)} right icon="moon-o" className="mr5"></Button>
+                  <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} right icon="moon-o" className="mr5"></Button>
                 </Toolbar>
                 <hr />  
               </Layer>

@@ -110,7 +110,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
        showShortcut : e.shiftKey ? true : false
      })
      if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase()) {
-       refButton.click();
+       refButton.focus();
      }
   }
 

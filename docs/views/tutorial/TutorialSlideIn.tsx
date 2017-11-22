@@ -88,7 +88,7 @@ export default class TutorialSlideIn extends React.Component<any,any>{
         <div>
           <Layer className="ptb10">
               <Layer overflow className="p10 dark text-center w100 h200px">
-                <Button onClick={this.toggleSlideIn.bind(this)}>Toggle SlideIn</Button>
+                <Button shortcut="s" onClick={this.toggleSlideIn.bind(this)}>Toggle SlideIn</Button>
                 <SlideIn from='bottom' if={this.state.paneOpen}>
                   <Layer className="light text-center p10">
                     <Toolbar flush spacing>
