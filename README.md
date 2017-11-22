@@ -63,7 +63,7 @@ An example of how to use them in your app.
 First run these commands
 
 ````
-git clone https://github.com/cubex30/recoil.git
+git clone https://github.com/jisaac89/recoil.git
 cd recoil
 npm install
 npm run build
