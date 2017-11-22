@@ -159,8 +159,8 @@ export default class App extends React.Component<any, any> {
 
           <Layer flexCenter theme="light" className="p10" fill>
             
-              <h2 className="pb20">React Recoil <small>0.5.3</small></h2>
-
+              <h2><a href="https://www.github.com/jisaac89/recoil">Recoil</a> <small>0.5.3</small></h2>
+              <p className="ptb20">A <a href="https://reactjs.org/">React</a> powered front-end framework written in <a href="https://www.typescriptlang.org/">Typescript</a>.</p>
               <Toolbar spacing className="pb20 dinblock">
                 <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o" ></Button>
                 <Button onClick={this.toggleDocs.bind(this)} className="ps40" theme="primary" icon="star" iconPointer="down">
