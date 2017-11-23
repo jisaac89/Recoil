@@ -73,7 +73,6 @@ export default class Wizard extends React.Component<IWizardProps, any>{
         {'e-forward' : (state.slideIndex < index)},
         {'e-vertical' : (props.vertical)},
         {'e-dont-animate' : (props.animate === false)},
-        
         props.className
       );
 

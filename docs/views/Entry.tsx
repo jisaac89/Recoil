@@ -38,7 +38,8 @@ export default class App extends React.Component<any, any> {
       showMenu: true,
       showModal: false,
       nightmode: false,
-      showDocs: false
+      showDocs: false,
+      showInstructions: false
     }
   }
 
@@ -47,6 +48,12 @@ export default class App extends React.Component<any, any> {
       showMenu: !this.state.showMenu
     })
   }
+
+  toggleInstructions() {
+    this.setState({
+      showInstructions: !this.state.showInstructions
+    })
+  } 
 
   toggleDocs() {
     this.setState({
@@ -131,8 +138,8 @@ export default class App extends React.Component<any, any> {
             <SlideIn className='z5' if={!showModal && showMenu === false && showModal === false} from={'bottom'}>
               <Layer fill nightmode>
                 <Toolbar textCenter flex spacing block className="p10 border-top">
-                  {SampleData[slideIndex - 1] ? <Button tabIndex={-1} block onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex - 1])}>{SampleData[slideIndex - 1].name}</Button> : null}
-                  {SampleData[slideIndex + 1] ? <Button tabIndex={-1} block right onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex + 1])}>{SampleData[slideIndex + 1].name}</Button> : null}
+                  {SampleData[slideIndex - 1] ? <Button iconLocation="left" icon="caret-left" tabIndex={-1} block onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex - 1])}>{SampleData[slideIndex - 1].name}</Button> : null}
+                  {SampleData[slideIndex + 1] ? <Button iconLocation="right" icon="caret-right" tabIndex={-1} block right onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex + 1])}>{SampleData[slideIndex + 1].name}</Button> : null}
                 </Toolbar>
               </Layer>
             </SlideIn>
@@ -170,33 +177,34 @@ export default class App extends React.Component<any, any> {
               <Button tabIndex={-1} href="https://www.github.com/jisaac89/recoil" icon="github"></Button>
             </Toolbar>
 
-            <Layer tabIndex={-1} className="p10 text-center center-width">
+              <Layer tabIndex={-1} className="p10 text-center center-width">
+                <Emerge delay={1000} if={!this.state.showDocs}>
+                <div>
+                  <small>clone recoil from github</small><br />
+                  <small><strong>git clone https://github.com/jisaac89/recoil.git</strong> </small><br /><br />
+                </div>
+  
+                <div>
+                  <small>cd into project </small><br />
+                  <small><strong> cd recoil</strong></small><br /><br />
+                </div>
 
-              <div>
-                <small>clone recoil from github</small><br />
-                <small><strong>git clone https://github.com/jisaac89/recoil.git</strong> </small><br /><br />
-              </div>
- 
-              <div>
-                <small>cd into project </small><br />
-                <small><strong> cd recoil</strong></small><br /><br />
-              </div>
+                <div>
+                  <small>install the npm dependencies </small><br />
+                  <small><strong> npm install</strong></small><br /><br />
+                </div>
 
-              <div>
-                <small>install the npm dependencies </small><br />
-                <small><strong> npm install</strong></small><br /><br />
-              </div>
+                <div>
+                  <small>run the project</small><br />
+                  <small><strong>npm run watch</strong></small><br /><br />
+                </div>
 
-              <div>
-                <small>run the project</small><br />
-                <small><strong>npm run watch</strong></small><br /><br />
-              </div>
-
-              <div>
-                <small>documentation located at <br />
-                  <strong>recoil/docs/index.html</strong></small>
-              </div>
-            </Layer>
+                <div>
+                  <small>documentation located at <br />
+                    <strong>recoil/docs/index.html</strong></small>
+                </div>
+                </Emerge>
+              </Layer>
           </Layer>
 
         </SlideIn>
