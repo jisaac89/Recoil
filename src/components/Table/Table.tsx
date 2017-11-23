@@ -61,7 +61,7 @@ export interface ITableProps {
     selectedKey?: string;
     flex?: boolean;
     menuTemplate?: any;
-    focusOnMount?: any;
+    focusOnMount?: boolean;
     contentMaxHeight?: number;
     filterRow?: any;
     filterOpenDetailTemplate?: any;
@@ -169,10 +169,11 @@ class Table extends React.Component<ITableProps, ITableState>{
             headerTemplate,
             serverSide,
             id,
-            portal
+            portal,
+            focusOnMount 
         } = props;
 
-        // assign the props
+        // assign the props 
 
         let tableProps = {
             dataSource: dataSource,
@@ -237,7 +238,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         let tableSearchProps = {
             filterItems: filterItems,
             searchableKeys: this.props.searchableKeys,
-            focusOnMount: this.props.focusOnMount,
+            focusOnMount,
             searchTitle: this.props.searchTitle,
             value: searchValue,
             onSearchChange: onSearchChange

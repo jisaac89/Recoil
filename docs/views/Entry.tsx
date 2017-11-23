@@ -87,6 +87,7 @@ export default class App extends React.Component<any, any> {
     let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
     return (
       <Recoil overflow nightmode={nightmode} onMobile={this.toggleMobile.bind(this)}>
+        <Layer fill overflow>
         <Shrink fill if={showModal}>
           <Transform type={mobile ? "translate" : null} push={!mobile ? 'left' : null} axis={'X'} flex fill if={showMenu} amount="300px" >
             <SlideIn className='z5' if={!showModal} from={'top'}>
@@ -130,8 +131,8 @@ export default class App extends React.Component<any, any> {
             <SlideIn className='z5' if={!showModal && showMenu === false && showModal === false} from={'bottom'}>
               <Layer fill nightmode>
                 <Toolbar textCenter flex spacing block className="p10 border-top">
-                  {SampleData[slideIndex - 1] ? <Button block onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex - 1])}>{SampleData[slideIndex - 1].name}</Button> : null}
-                  {SampleData[slideIndex + 1] ? <Button block right onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex + 1])}>{SampleData[slideIndex + 1].name}</Button> : null}
+                  {SampleData[slideIndex - 1] ? <Button tabIndex={-1} block onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex - 1])}>{SampleData[slideIndex - 1].name}</Button> : null}
+                  {SampleData[slideIndex + 1] ? <Button tabIndex={-1} block right onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex + 1])}>{SampleData[slideIndex + 1].name}</Button> : null}
                 </Toolbar>
               </Layer>
             </SlideIn>
@@ -153,29 +154,29 @@ export default class App extends React.Component<any, any> {
             />
           </Layer>
         </SlideIn>
+        </Layer>
 
+        <SlideIn  className="z5" if={!this.state.showDocs} from="bottom" fill>
 
-        <SlideIn className="z5" if={!this.state.showDocs} from="bottom" fill>
+          <Layer tabIndex={-1} flexCenter theme="light" className="p10" fill>
 
-          <Layer flexCenter theme="light" className="p10" fill>
-
-            <h2><a href="https://www.github.com/jisaac89/recoil">Recoil</a> <small>0.5.3</small></h2>
-            <p className="ptb20">A <a href="https://reactjs.org/">React</a> powered front-end framework written in <a href="https://www.typescriptlang.org/">Typescript</a>.</p>
+            <h2><a tabIndex={-1} href="https://www.github.com/jisaac89/recoil">Recoil</a> <small>0.5.3</small></h2>
+            <p className="ptb20">A <a tabIndex={-1} href="https://reactjs.org/">React</a> powered front-end framework written in <a tabIndex={-1} href="https://www.typescriptlang.org/">Typescript</a>.</p>
             <Toolbar spacing className="pb20 dinblock">
-              <Button shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o" ></Button>
-              <Button onClick={this.toggleDocs.bind(this)} className="ps40" theme="primary" icon="star" iconPointer="down">
+              <Button tabIndex={-1} shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o" ></Button>
+              <Button tabIndex={-1} onClick={this.toggleDocs.bind(this)} className="ps40" theme="primary" icon="star" iconPointer="down"> 
                 Components
                 </Button>
-              <Button href="https://www.github.com/jisaac89/recoil" icon="github"></Button>
+              <Button tabIndex={-1} href="https://www.github.com/jisaac89/recoil" icon="github"></Button>
             </Toolbar>
 
-            <Layer className="p10 text-center center-width">
+            <Layer tabIndex={-1} className="p10 text-center center-width">
 
               <div>
                 <small>clone recoil from github</small><br />
                 <small><strong>git clone https://github.com/jisaac89/recoil.git</strong> </small><br /><br />
               </div>
-
+ 
               <div>
                 <small>cd into project </small><br />
                 <small><strong> cd recoil</strong></small><br /><br />
