@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 import SlideIn from '../SlideIn/SlideIn';
+import './Input.less';
 
 import { IRecoil } from '../../index';
 
@@ -309,7 +310,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
             return (
                 <div id={props.id} className={inputWrapperClass} style={props.style}>
                     {props.errorMessage ? errorInlinePartialTop : null}
-                    <div className={inputClassadvanced}>
+                    <div tab-index={-1} className={inputClassadvanced}>
                         {iconPartial}
                         <small>{props.title}</small>
                         {inputPartial}

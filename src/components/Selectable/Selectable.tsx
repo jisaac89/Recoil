@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Selectable.less';
 
 export interface ISelectableProps {
   checked? : boolean;
@@ -26,7 +27,7 @@ class Selectable extends React.Component<ISelectableProps, {}> {
       {'checked' : (props.checked)}
     );
 
-    return <div className={selectableClass}></div>;
+    return <div tabIndex={-1} className={selectableClass}></div>;
   }
 }
 

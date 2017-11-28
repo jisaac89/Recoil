@@ -4,6 +4,8 @@ import * as ReactDOM from 'react-dom';
 
 import DropdownContent from './DropdownContent';
 
+import './Dropdown.less';
+
 export default class DropdownPortal extends React.Component<any, any>{
 
     portalElement : HTMLElement = null;
@@ -64,6 +66,7 @@ export default class DropdownPortal extends React.Component<any, any>{
         const props = self.props;
 
         let {
+            id,
             open,
             title,
             onClose,
@@ -93,6 +96,7 @@ export default class DropdownPortal extends React.Component<any, any>{
         } = props;
 
         let dropdownContentProps = {
+            id,
             open,
             title,
             icon,

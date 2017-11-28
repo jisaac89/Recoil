@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Toolbar.less';
 
 import {IRecoil} from '../../index';
 
@@ -18,6 +19,7 @@ export interface IToolbarProps extends IRecoil{
   onClick? : (event : React.MouseEvent<HTMLElement>) => void;
   tabs?: boolean;
   breadcrumbs?: boolean;
+  id?: string;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{
@@ -52,7 +54,7 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
     );
 
     return (
-      <div id={this.props.id} ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
+      <div tab-index={-1} id={this.props.id} ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
         {props.children}
       </div>
     );

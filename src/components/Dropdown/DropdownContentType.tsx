@@ -4,6 +4,8 @@ import Table from '../Table/Table';
 import Tree from '../Tree/Tree';
 import Calendar from '../DatePicker/Calendar';
 
+import './Dropdown.less';
+
 export default class DropdownContentType extends React.Component<any, any>{
     render() {
 
@@ -11,6 +13,7 @@ export default class DropdownContentType extends React.Component<any, any>{
         const props = self.props;
 
         let {
+            id,
             children,
             open,
             // Table
@@ -48,6 +51,8 @@ export default class DropdownContentType extends React.Component<any, any>{
 
         let tableProps = {
             // Table
+            id,
+            portal : true,
             dataSource,
             focusOnMount,
             hideHeader,

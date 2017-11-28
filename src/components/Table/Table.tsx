@@ -1,6 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import './Table.less';
+
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
@@ -18,6 +20,7 @@ export { IColumn }
 
 export interface ITableProps {
     id?: string;
+    portal?: boolean;
     // initial dataSource loaded as prop
     dataSource?: Array<Object> | Array<number> | Array<string>;
     // columns defined by user
@@ -58,7 +61,7 @@ export interface ITableProps {
     selectedKey?: string;
     flex?: boolean;
     menuTemplate?: any;
-    focusOnMount?: any;
+    focusOnMount?: boolean;
     contentMaxHeight?: number;
     filterRow?: any;
     filterOpenDetailTemplate?: any;
@@ -100,7 +103,8 @@ class Table extends React.Component<ITableProps, ITableState>{
 
     public static defaultProps = {
         showDataSourceLength: true,
-        title: 'items'
+        title: 'items',
+        portal: false
     }
 
     render() {
@@ -163,10 +167,13 @@ class Table extends React.Component<ITableProps, ITableState>{
             hideCheckAll,
             onSearchChange,
             headerTemplate,
-            serverSide
+            serverSide,
+            id,
+            portal,
+            focusOnMount 
         } = props;
 
-        // assign the props
+        // assign the props 
 
         let tableProps = {
             dataSource: dataSource,
@@ -184,7 +191,9 @@ class Table extends React.Component<ITableProps, ITableState>{
             selectedKey: selectedKey,
             filterRow: filterRow,
             filterOpenDetailTemplate: filterOpenDetailTemplate,
-            serverSide
+            serverSide,
+            id,
+            portal
         }
 
         let headProps = {
@@ -229,7 +238,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         let tableSearchProps = {
             filterItems: filterItems,
             searchableKeys: this.props.searchableKeys,
-            focusOnMount: this.props.focusOnMount,
+            focusOnMount,
             searchTitle: this.props.searchTitle,
             value: searchValue,
             onSearchChange: onSearchChange
@@ -249,11 +258,11 @@ class Table extends React.Component<ITableProps, ITableState>{
         else if ((!!dataSource && dataSource.length) && !!columns && columns.length) {
             let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
             return (
-                <div id={props.id} className={tableClass}>
+                <div id={props.id ? portal ? props.id + '-portal' : props.id : null} className={tableClass}>
                     {headerTemplate ? headerTemplate : null}
                     <TableSearch {...tableSearchProps} />
                     {menuTemplate ? menuTemplate() : null}
-                    <Layer scrollY theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
+                    <Layer tabIndex={-1} scrollY theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
                         {
                             nothingMatchesSearchCriteria ?
                                 <Emerge className="e-fill">
@@ -262,7 +271,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                                     </Toolbar>
                                 </Emerge>
                                 :
-                                <table className="w100" >
+                                <table tab-index={-1}  className="w100" >
                                     <TableHead {...tableProps} {...headProps} />
                                     <TableBody {...tableProps} {...bodyProps} />
                                 </table>

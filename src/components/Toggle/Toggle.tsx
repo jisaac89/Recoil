@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Toggle.less';
 import Wizard from '../Wizard/Wizard';
 
 import {IRecoil} from '../../index';

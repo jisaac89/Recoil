@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Fixed.less';
 
 export interface IFixedProps {
     children?: any;

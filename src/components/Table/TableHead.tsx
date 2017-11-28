@@ -96,7 +96,7 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
             } else {
                 columnHeadArray.push(
                     <th style={{width : key.width}} key={index}>
-                        {key.titleTemplate ? key.titleTemplate() : <Button className="p0" icon={sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>}
+                        {key.titleTemplate ? key.titleTemplate() : <Button tabIndex={-1} className="p0" icon={sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : null} size="small" simple iconLocation="right" onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}>{key.hideHeader ? null : (key.title || key.name)}</Button>}
                     </th>
                 )
             }
@@ -117,7 +117,7 @@ export default class TableHead extends React.Component<ITableHeadProps,any>{
 
         if(!hideHeader) {
             return (
-                <thead>
+                <thead tab-index={-1}>
                     <tr>
                         {checkable ? <CheckboxHead {...checkboxHeadProps} /> : null}
                         {detailTemplate && !detailTemplateHideToggle ? <DetailTemplateHeadToggle {...detailTemplateHeadProps} /> : null}

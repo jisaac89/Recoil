@@ -4,6 +4,8 @@ import Portal from '../Portal/Portal';
 import DropdownContentType from './DropdownContentType';
 import DropdownHeader from './DropdownHeader';
 
+import './Dropdown.less';
+
 export default class DropdownContent extends React.Component<any, any>{
     render() {
 
@@ -11,6 +13,7 @@ export default class DropdownContent extends React.Component<any, any>{
         const props = self.props;
 
         let {
+            id,
             open,
             title,
             icon,
@@ -57,6 +60,7 @@ export default class DropdownContent extends React.Component<any, any>{
         }
 
         let dropdownContentTypeProps = {
+            id,
             type,
             children,
             open,

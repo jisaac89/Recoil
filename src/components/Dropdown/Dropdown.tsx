@@ -5,6 +5,8 @@ import Button from '../Button/Button';
 import {IButtonProps} from '../Button/Button';
 import { ITableProps } from '../Table/Table';
 
+import './Dropdown.less';
+
 import DropdownContent from './DropdownContent';
 
 function guidGenerator() {
@@ -128,6 +130,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         let state = self.state;
 
         let {
+            id,
             title,
             // Button props
             icon,
@@ -145,6 +148,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             checkedTheme,
             disabled,
             parentId,
+            shortcut,
             //
             children,
 
@@ -176,6 +180,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
 
         let buttonProps = {
             block: true,
+            shortcut,
             icon,
             size,
             iconPointer,
@@ -194,6 +199,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         }
 
         let dropdownPortalProps = {
+            id,
             title,
             icon,
             children,
@@ -246,7 +252,11 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         );
 
         return (
-            <div ref='dropdown' className={dropdownClass}>
+            <div 
+                id={id} 
+                ref='dropdown' 
+                className={dropdownClass}
+            >
                 <Button {...buttonProps}>{title}</Button>
                 <DropdownContent {...dropdownPortalProps} />
             </div>

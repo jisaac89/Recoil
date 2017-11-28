@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Avatar.less';
 
 export interface IAvatarProps{
   src ?: 'string';

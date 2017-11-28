@@ -7,6 +7,8 @@ import TableSelectable from './TableSelectable';
 import {IColumn} from './IColumn';
 
 export interface TableBodyProps {
+    id?: string;
+    portal?: boolean;
     activeRows: any;
     // initial dataSource loaded as prop
     dataSource: Array<any> | Object;
@@ -53,7 +55,8 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
 
             toggleSelectedElements,
             rowIsSelectable,
-
+            id,
+            portal,
             checkable,
             hideColumns,
             onRowSelect,
@@ -96,7 +99,8 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                     isArray: isArray,
                     detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect,
                     selectedKey: selectedKey,
-                    filterOpenDetailTemplate: filterOpenDetailTemplate
+                    filterOpenDetailTemplate: filterOpenDetailTemplate,
+                    id
                 }
                 if (typeof element === 'string' || typeof element === 'number') {
                     key = element;
@@ -130,7 +134,9 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
         }
 
         return (
-            <tbody>
+            <tbody 
+                tab-index={-1}
+            >
                 {columnArray}            
             </tbody>
         )

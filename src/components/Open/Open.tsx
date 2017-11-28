@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Open.less';
 import Layer from '../Layer/Layer';
 
 export interface IOpenProps {

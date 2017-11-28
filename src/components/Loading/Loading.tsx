@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Loading.less';
 
 import Button from '../Button/Button';
 

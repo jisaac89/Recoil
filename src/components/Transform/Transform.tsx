@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Transform.less';
 
 export interface ITransformProps {
   type? : string;
@@ -44,6 +45,14 @@ export default class Transform extends React.Component<ITransformProps, {}> {
       } else if (props.push === 'left') {
         transformStyle = {
           paddingLeft : props.amount
+        };
+      } else if (props.push === 'top') {
+        transformStyle = {
+          paddingTop : props.amount
+        };
+      } else if (props.push === 'bottom') {
+        transformStyle = {
+          paddingBottom : props.amount
         };
       }
     } else {

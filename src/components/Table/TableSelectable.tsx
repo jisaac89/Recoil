@@ -16,7 +16,7 @@ export default class TableSelectable extends React.Component<ITableColumnSelecta
         let {columns, detailTemplate, selectedElements, element, checkable, selectedKey} = self.props;
         
         return (
-            <tr className="r-TableColumnSelectable">
+            <tr tabIndex={-1} className="r-TableColumnSelectable">
                 <td colSpan={columns.length + (checkable ? 1 : 0 ) + (detailTemplate ? 1 : 0 )}>
                     <Selectable checked={selectedElements.includes(selectedKey ? element[selectedKey] : element)} />
                 </td>

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Wizard.less';
 
 import Pager from '../Pager/Pager';
 
@@ -72,7 +73,6 @@ export default class Wizard extends React.Component<IWizardProps, any>{
         {'e-forward' : (state.slideIndex < index)},
         {'e-vertical' : (props.vertical)},
         {'e-dont-animate' : (props.animate === false)},
-        
         props.className
       );
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Notifications.less';
 
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';

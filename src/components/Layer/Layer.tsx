@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './Layer.less';
 
 import {IRecoil} from '../../index';
 
@@ -197,7 +198,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
     );
 
     return(
-      <div ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, props.style)}>
+      <div tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, props.style)}>
         {props.children}
       </div>
     );

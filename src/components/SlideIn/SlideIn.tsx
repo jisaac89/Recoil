@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import './SlideIn.less';
 
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
@@ -94,7 +95,7 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
                     <Button simple size="small">{this.props.title}</Button>
                     : null}
                 {props.onClose ?
-                        <Button simple size="small" right onClick={props.onClose} icon="times" />
+                        <Button shortcut={"x"} simple size="small" right onClick={props.onClose} icon="times" />
                     : null}
             </Toolbar> : null}
             {props.children}
