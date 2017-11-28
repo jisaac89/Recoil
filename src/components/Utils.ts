@@ -1,16 +1,16 @@
 // simple flat search
 
-type ExtendedFunction0<T> = (...args: any[]) => T;
-type ExtendedFunction1<T, U> = (arg0: T) => U;
-type ExtendedFunction2<T, U, V> = (arg0: T, arg1: U) => V;
-type ExtendedFunction3<T, U, V, W> = (arg0: T, arg1: U, arg2: V) => W;
-type ExtendedFunction4<T, U, V, W, X> = (arg0: T, arg1: U, arg2: V, arg3: W) => X;
+export type ExtendedFunction0<T> = (...args: any[]) => T;
+export type ExtendedFunction1<T, U> = (arg0: T) => U;
+export type ExtendedFunction2<T, U, V> = (arg0: T, arg1: U) => V;
+export type ExtendedFunction3<T, U, V, W> = (arg0: T, arg1: U, arg2: V) => W;
+export type ExtendedFunction4<T, U, V, W, X> = (arg0: T, arg1: U, arg2: V, arg3: W) => X;
 
-type ExtendedPromise0<T> = () => Promise<T>;
-type ExtendedPromise1<T, U> = (arg0: T) => Promise<U>;
-type ExtendedPromise2<T, U, V> = (arg0: T, arg1: U) => Promise<V>;
-type ExtendedPromise3<T, U, V, W> = (arg0: T, arg1: U, arg2: V) => Promise<W>;
-type ExtendedPromise4<T, U, V, W, X> = (arg0: T, arg1: U, arg2: V, arg3: W) => Promise<X>;
+export type ExtendedPromise0<T> = () => Promise<T>;
+export type ExtendedPromise1<T, U> = (arg0: T) => Promise<U>;
+export type ExtendedPromise2<T, U, V> = (arg0: T, arg1: U) => Promise<V>;
+export type ExtendedPromise3<T, U, V, W> = (arg0: T, arg1: U, arg2: V) => Promise<W>;
+export type ExtendedPromise4<T, U, V, W, X> = (arg0: T, arg1: U, arg2: V, arg3: W) => Promise<X>;
 
 export function debounce<T>(func: ExtendedFunction0<T>, wait: number, immediate?: boolean): () => void;
 export function debounce<T, U>(func: ExtendedFunction1<T, U>, wait: number, immediate?: boolean): (arg0: T) => void;
