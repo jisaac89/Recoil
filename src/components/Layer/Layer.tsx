@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import './Layer.less';
 
 import {IRecoil} from '../../index';
 

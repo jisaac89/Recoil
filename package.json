@@ -10,7 +10,6 @@
   "license": "MIT",
   "main": "dist/src/index.js",
   "typings": "dist/src/index.d.ts",
-  "jsnext:main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "directories": {
     "lib": "src/"

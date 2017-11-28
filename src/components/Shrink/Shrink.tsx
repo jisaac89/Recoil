@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import './Shrink.less';
 
 export interface IShrinkProps {
   if ? : boolean;

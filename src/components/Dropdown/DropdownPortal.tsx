@@ -1,10 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-
 import DropdownContent from './DropdownContent';
-
-import './Dropdown.less';
 
 export default class DropdownPortal extends React.Component<any, any>{
 

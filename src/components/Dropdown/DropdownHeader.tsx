@@ -2,8 +2,6 @@ import * as React from 'react';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 
-import './Dropdown.less';
-
 export default class DropdownHeader extends React.Component<any, any>{
     titleTemplate() {
         const self = this;
