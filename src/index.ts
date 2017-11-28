@@ -1,5 +1,5 @@
 export interface IRecoil{
-    size?: "small" | "large" | "xlarge" | "default";
+    size?: "small" | "large" | "xlarge" |  "xxlarge"  | "default";
     theme?: "primary" | "success" | "error" | "bronze" | "silver" | "gold" | "default" | "light" | "night" | "dark";
     className?: string;
     flex?: boolean;

@@ -55,9 +55,10 @@ export default class TutorialLoading extends React.Component<any,any>{
     let example = () => {
       return (
         <div>
-          <Loading if={true} />
-          <Loading size={'large'} if={true} />
-          <Loading size={"xlarge"} if={true} />        
+          <Loading if={true} icon="check" />
+          <Loading size={'large'} icon="users" if={true} />
+          <Loading size={"xlarge"} icon="star" if={true} /> 
+          <Loading size={"xxlarge"} icon="lock" if={true} />             
         </div>
       )
     }
