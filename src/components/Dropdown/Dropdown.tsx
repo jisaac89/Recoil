@@ -5,8 +5,6 @@ import Button from '../Button/Button';
 import {IButtonProps} from '../Button/Button';
 import { ITableProps } from '../Table/Table';
 
-import './Dropdown.less';
-
 import DropdownContent from './DropdownContent';
 
 function guidGenerator() {

@@ -3,7 +3,6 @@ import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 import SlideIn from '../SlideIn/SlideIn';
-import './Input.less';
 
 import { IRecoil } from '../../index';
 

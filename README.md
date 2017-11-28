@@ -38,7 +38,7 @@ Then include the following CSS files in your HTML:
 In order to add the styles, you'll need to include in one file of your project
 
 ```` TypeScript
-import 'react-recoil/less/index/.less';
+import 'react-recoil/src/index.less';
 ````
 
 Now, on your project you can destructure the components you want.

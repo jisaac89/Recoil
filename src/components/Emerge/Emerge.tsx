@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import './Emerge.less';
 
 export interface IEmergeProps {
   if? : boolean;

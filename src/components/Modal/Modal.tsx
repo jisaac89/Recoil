@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import Portal from '../Portal/Portal';
-import './Modal.less';
 
 import ModalHeader from './ModalHeader';
 
