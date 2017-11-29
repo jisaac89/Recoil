@@ -19,6 +19,7 @@ export interface IToolbarProps extends IRecoil{
   tabs?: boolean;
   breadcrumbs?: boolean;
   id?: string;
+  form?: boolean;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}>{
@@ -52,10 +53,18 @@ export default class Toolbar extends React.Component<IToolbarProps, {}>{
       props.theme
     );
 
-    return (
-      <div tab-index={-1} id={this.props.id} ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
-        {props.children}
-      </div>
-    );
+    if (props.form) {
+      return (
+        <form tab-index={-1} id={this.props.id} ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
+          {props.children}
+        </form>
+      );
+    } else {
+      return (
+        <div tab-index={-1} id={this.props.id} ref="toolbar" style={Object.assign({}, props.style)} className={toolbarClass} onClick={this.props.onClick}>
+          {props.children}
+        </div>
+      );
+    }
   }
 }

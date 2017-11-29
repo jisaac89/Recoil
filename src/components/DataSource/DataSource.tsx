@@ -494,7 +494,7 @@ const DataSource : any = (Component : JSX.Element) =>
             } else {
                 return (
                     <Emerge className="e-fill">
-                        <Toolbar block textCenter className="ptb20">
+                        <Toolbar block textCenter>
                             <Button block size="large" simple>{props.emptyText}</Button>
                         </Toolbar> 
                     </Emerge>  
