@@ -151,6 +151,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             children,
 
             // Table
+            disableSelectedElements,
             dataSource,
             focusOnMount,
             hideHeader,
@@ -207,6 +208,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             position: state.position,
             type: state.type,
             // Table
+            disableSelectedElements,
             dataSource,
             focusOnMount,
             hideHeader,

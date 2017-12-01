@@ -3,6 +3,7 @@ import * as React from 'react';
 import TableColumn from './TableColumn';
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
+import Shrink from '../Shrink/Shrink';
 import {IColumn} from './IColumn';
 
 import {branchIn} from '../Utils';
@@ -18,7 +19,8 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
             detailTemplateOpenOnRowSelect,
             element,
             selectedKey,
-            filterOpenDetailTemplate
+            filterOpenDetailTemplate,
+            selectedElements
         } = props;
         
         return (
@@ -26,23 +28,25 @@ class DetailTemplateColumnToggle extends React.Component<any,any>{
                 onClick={!detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null} 
                 className="r-Table__DetailTd" 
                 style={{width : "25"}}>
+                
                 {filterOpenDetailTemplate? 
                     filterOpenDetailTemplate(element) === true ?  
-                    <Button 
-                        tabIndex={-1} 
-                        simple 
-                        size="small" 
-                        
-                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-right'} 
-                    /> 
+                        <Button 
+                            tabIndex={-1} 
+                            simple 
+                            size="small" 
+                            
+                            icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-right'} 
+                        /> 
                     : null : 
-                     <Button 
-                        tabIndex={-1} 
-                        simple 
-                        size="small"  
-                        icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-right'} 
-                    />
+                        <Button 
+                            tabIndex={-1} 
+                            simple 
+                            size="small"  
+                            icon={props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'chevron-down' : 'chevron-right'} 
+                        />
                 }
+                
             </td>
         )
     }
@@ -83,6 +87,7 @@ export interface ITableColumnProps {
     detailTemplateHideToggle?: boolean;
     filterOpenDetailTemplate?: any;
     id ? :any;
+    disableSelectedElements?: Array<any>;
 }
 
 export default class TableRow extends React.Component<ITableColumnProps,any>{
@@ -121,7 +126,8 @@ export default class TableRow extends React.Component<ITableColumnProps,any>{
             selectedKey,
             index,
             filterOpenDetailTemplate,
-            id
+            id,
+            disableSelectedElements
         } = props;
 
         let columnsValueArray = []
@@ -151,13 +157,25 @@ export default class TableRow extends React.Component<ITableColumnProps,any>{
             selectedElements : selectedElements,
             toggleSelectedElements: toggleSelectedElements
         }
+
+        let disabled =  disableSelectedElements.includes(selectedKey ? element[selectedKey] : element);
         
         return (
             <tr  
                 tab-index={-1}
-                className={selectedElements.includes(selectedKey ? element[selectedKey] : element) ? 'r-TableColumn checked' : 'r-TableColumn'} 
-                onClick={rowIsSelectable && !checkable ? this.toggleSelectedElements.bind(this, element, index) : null || (onRowSelect || detailTemplateOpenOnRowSelect ? this.onRowSelect.bind(this, element, index) : null) }
-            >
+                className={selectedElements.includes(selectedKey ? element[selectedKey] : element) ? disableSelectedElements ? 'r-TableColumn disabled' :  'r-TableColumn checked' : 'r-TableColumn'} 
+                onClick={
+                    rowIsSelectable && !checkable ? 
+                        this.toggleSelectedElements.bind(this, element, index) 
+                        : null 
+                        || 
+                        (onRowSelect || detailTemplateOpenOnRowSelect ? 
+                            this.onRowSelect.bind(this, element, index) 
+                            : null) 
+                        }
+                >
+                
+                
                 {checkable ? <CheckboxColumn {...CheckBoxColumnProps} /> : null }
                 {detailTemplate && !detailTemplateHideToggle? <DetailTemplateColumnToggle {...DetailTemplateColumnToggleProps} /> : null }
                 {columnsValueArray.map(createColumnValue)}

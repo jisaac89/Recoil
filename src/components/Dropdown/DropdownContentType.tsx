@@ -15,6 +15,7 @@ export default class DropdownContentType extends React.Component<any, any>{
             children,
             open,
             // Table
+            disableSelectedElements,
             dataSource,
             focusOnMount,
             hideHeader,
@@ -49,6 +50,7 @@ export default class DropdownContentType extends React.Component<any, any>{
 
         let tableProps = {
             // Table
+            disableSelectedElements,
             id,
             portal : true,
             dataSource,

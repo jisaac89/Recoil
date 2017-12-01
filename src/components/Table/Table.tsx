@@ -91,6 +91,7 @@ export interface ITableProps {
     onSearchChange?: (term: string) => void;
     headerTemplate?: () => void;
     serverSide?: boolean;
+    disableSelectedElements?: Array<any>;
 } 
 
 interface ITableState {
@@ -111,6 +112,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         const props = self.props;
 
         let {
+            disableSelectedElements,
             searchValue,
             selectedKey,
             filterOpenDetailTemplate,
@@ -191,7 +193,8 @@ class Table extends React.Component<ITableProps, ITableState>{
             filterOpenDetailTemplate: filterOpenDetailTemplate,
             serverSide,
             id,
-            portal
+            portal,
+            disableSelectedElements
         }
 
         let headProps = {

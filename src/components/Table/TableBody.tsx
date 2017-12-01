@@ -4,6 +4,9 @@ import TableRow from './TableRow';
 import TableDetail from './TableDetail';
 import TableSelectable from './TableSelectable';
 
+
+import Shrink from '../Shrink/Shrink';
+
 import {IColumn} from './IColumn';
 
 export interface TableBodyProps {
@@ -32,6 +35,7 @@ export interface TableBodyProps {
     filterRow?: (item : Object) => void;
     filterOpenDetailTemplate?: (item: Object) => void;
     serverSide?: boolean;
+    disableSelectedElements?: Array<any>;
 }
 
 export default class TableBody extends React.Component<TableBodyProps,any>{
@@ -52,7 +56,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
             detailTemplateToggleSelectedElements, 
             detailTemplateSelectedElements,
             detailTemplateHideToggle,
-
+            disableSelectedElements,
             toggleSelectedElements,
             rowIsSelectable,
             id,
@@ -100,7 +104,8 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                     detailTemplateOpenOnRowSelect: detailTemplateOpenOnRowSelect,
                     selectedKey: selectedKey,
                     filterOpenDetailTemplate: filterOpenDetailTemplate,
-                    id
+                    id,
+                    disableSelectedElements
                 }
                 if (typeof element === 'string' || typeof element === 'number') {
                     key = element;
