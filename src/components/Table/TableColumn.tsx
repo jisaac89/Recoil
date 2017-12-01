@@ -54,7 +54,7 @@ export default class TableColumn extends React.Component<ITableDataProps,ITableD
         const self = this;
         let state = self.state;
         let {type} = state;
-        let {value, column, element, hideColumns, isArray, selectedElements, disableSelected, selectedKey} = self.props;
+        let {value, column, element, hideColumns, isArray} = self.props;
 
         let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(column.title ? column.title : column.name);
 
