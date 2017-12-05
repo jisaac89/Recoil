@@ -41,6 +41,7 @@ export interface IGridProps {
     selectedKey?: string;
     activeRows?: any;
     rows?: any;
+    margin ?: string;
 }
 
 interface IGridState {
@@ -65,9 +66,9 @@ class Grid extends React.Component<IGridProps, IGridState>{
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.rows.length !== this.props.rows.length) {
+        if (nextProps.rows !== this.props.rows) {
             this.setState({
-                update: true,
+                update: false,
                 rows: nextProps.rows
             }, ()=>{
                 this.convertDataSourceToGridRows(this.state.rows);
@@ -141,7 +142,7 @@ class Grid extends React.Component<IGridProps, IGridState>{
                 <Layer fill>
                     {this.state.gridRows.map((element, index) =>{
                         return(
-                            <Align style={{height : element.height}} columns={element.columns} key={index}>
+                            <Align margin={this.props.margin} style={{height : element.height, marginBottom: this.props.margin}} columns={element.columns} key={index}>
                                 {element.data.map((item,i)=>{
                                     return (
                                         <Layer fill key={i}>
