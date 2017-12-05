@@ -138,7 +138,7 @@ class Grid extends React.Component<IGridProps, IGridState>{
 
         if(!this.state.update) {
             return (
-                <div>
+                <Layer fill>
                     {this.state.gridRows.map((element, index) =>{
                         return(
                             <Align style={{height : element.height}} columns={element.columns} key={index}>
@@ -152,7 +152,7 @@ class Grid extends React.Component<IGridProps, IGridState>{
                             </Align>
                         )
                     })}
-                </div>
+                </Layer>
             )
         } else return null;
     }
