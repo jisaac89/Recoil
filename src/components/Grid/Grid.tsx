@@ -145,7 +145,7 @@ class Grid extends React.Component<IGridProps, IGridState>{
 
         if(!this.state.update) {
             return (
-                <Layer fill>
+                <Layer flex fill>
                     {this.state.gridRows.map((element, index) =>{
                         return(
                             <Align margin={this.props.margin} style={{height : element.height, marginBottom: this.props.margin}} columns={element.columns} key={index}>

@@ -205,10 +205,12 @@
 .r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1),
 .r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1) input,
 .r-Toolbar.flush.horizontal > .r-Input > .r-Input__container:nth-child(1),
-.r-Toolbar.flush.horizontal > .r-Input:nth-child(1) > input{
+.r-Toolbar.flush.horizontal > .r-Input:nth-child(1) > input,
+.r-Toolbar.flush.horizontal > .r-Dropdown:nth-child(1){
   border-right:0;
   border-top-right-radius:0;
   border-bottom-right-radius:0; 
+  
 }
 
 .r-Toolbar.flush.horizontal > .r-Input:first-child,
@@ -225,12 +227,17 @@
   border-bottom-left-radius:@default-border-radius;
 }
 
-.r-Toolbar.flush.horizontal > .r-Button:last-child,
-.r-Toolbar.flush.horizontal > .r-Dropdown >.r-Button:last-child{
+.r-Toolbar.flush.horizontal > .r-Button:last-child{
   border-top-right-radius:@default-border-radius;
   border-bottom-right-radius:@default-border-radius;
   margin-right: 0;
   // border-right:1px solid @standard-border;
+}
+
+.r-Toolbar.flush.horizontal > .r-Dropdown >.r-Button:last-child{
+    border-top-right-radius:0;
+    border-bottom-right-radius:0;
+    margin-right: 0;
 }
 
 // .r-Toolbar.tabs>.r-Button {
