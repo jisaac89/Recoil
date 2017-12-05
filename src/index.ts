@@ -23,6 +23,7 @@ export {default as DatePicker, IDatePickerProps, Calendar, ICalendarProps, ICale
 export {default as Dropdown} from './components/Dropdown/Dropdown';
 export {default as Emerge} from './components/Emerge/Emerge';
 export {default as Fixed} from './components/Fixed/Fixed';
+export {default as Grid} from './components/Grid/Grid';
 export {default as Input, IInputProps, IInputState} from './components/Input/Input';
 export {default as Layer} from './components/Layer/Layer';
 export {default as Loading} from './components/Loading/Loading';

@@ -8,6 +8,7 @@ export interface IAlignProps {
     margin?: string;
     children?: any;
     fill ?: boolean;
+    style ?: any;
 }
 
 export interface IAlignChildProps{
@@ -103,8 +104,8 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
     );
 
     return (
-      <div className={alignClass}>
-        {children.map(alignChildren)}
+      <div style={this.props.style} className={alignClass}>
+        {children.length > 1 ? children.map(alignChildren) : this.props.children}
       </div>
     );
   }
