@@ -45,6 +45,8 @@ export interface IGridProps {
 
 interface IGridState {
     gridRows: any;
+    rows: any;
+    update: boolean;
 }
 
 class Grid extends React.Component<IGridProps, IGridState>{
@@ -52,15 +54,29 @@ class Grid extends React.Component<IGridProps, IGridState>{
     constructor(props) {
         super(props);
         this.state = {
-            gridRows: []
+            rows: props.rows || null,
+            gridRows: [],
+            update: false
         }
     }
 
     componentDidMount() {
-        this.convertDataSourceToGridRows()
+        this.convertDataSourceToGridRows(this.props.rows)
     }
 
-    convertDataSourceToGridRows(index?: number, indexRow?: number, indexColumn?: number, currentArray?: Array<any>, arrayIndex?: any) {
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.rows.length !== this.props.rows.length) {
+            this.setState({
+                update: true,
+                rows: nextProps.rows
+            }, ()=>{
+                this.convertDataSourceToGridRows(this.state.rows);
+            })
+            
+        }
+    }
+
+    convertDataSourceToGridRows(r : any, index?: number, indexRow?: number, indexColumn?: number, currentArray?: Array<any>, arrayIndex?: any) {
 
         let { activeRows, rows } = this.props;
 
@@ -91,26 +107,27 @@ class Grid extends React.Component<IGridProps, IGridState>{
                     data: [], 
                     height: currentRow.height, 
                     columns: columns,
-                    template: currentRow.template(currentElement)
+                    rowIndex: [currentRowIndex]
                 })
                 
                 array[arrayRowIndex].data.push(currentElement);
-                this.convertDataSourceToGridRows(currentElementIndex+1, currentRowIndex, currentColumnIndex+1, array, arrayRowIndex);
+                this.convertDataSourceToGridRows(rows, currentElementIndex+1, currentRowIndex, currentColumnIndex+1, array, arrayRowIndex);
             } else if (currentColumnIndex < totalColumnsCount){
                 array[arrayRowIndex].data.push(currentElement);
-                this.convertDataSourceToGridRows(currentElementIndex+1, currentRowIndex, currentColumnIndex+1, array, arrayRowIndex);
+                this.convertDataSourceToGridRows(rows, currentElementIndex+1, currentRowIndex, currentColumnIndex+1, array, arrayRowIndex);
             } else {
                 if (currentRowIndex < totalRowsCount - 1){
-                    this.convertDataSourceToGridRows(currentElementIndex, currentRowIndex+1, 0, array, arrayRowIndex+1);
+                    this.convertDataSourceToGridRows(rows, currentElementIndex, currentRowIndex+1, 0, array, arrayRowIndex+1);
                 } else{
-                    this.convertDataSourceToGridRows(currentElementIndex, 0, 0, array, arrayRowIndex+1);
+                    this.convertDataSourceToGridRows(rows, currentElementIndex, 0, 0, array, arrayRowIndex+1);
                 }
             }
 
         }
 
         this.setState({
-            gridRows : array
+            gridRows : array,
+            update: false
         }, ()=>{
             console.log(this.state.gridRows);
         })
@@ -119,23 +136,25 @@ class Grid extends React.Component<IGridProps, IGridState>{
 
     render() {
 
-        return (
-            <div>
-                {this.state.gridRows.map((element, index) =>{
-                    return(
-                        <Align style={{height : element.height}} columns={element.columns} key={index}>
-                            {element.data.map((item,i)=>{
-                                return (
-                                    <Layer fill key={i}>
-                                        {element.template}
-                                    </Layer>
-                                )
-                            })}
-                        </Align>
-                    )
-                })}
-            </div>
-        )
+        if(!this.state.update) {
+            return (
+                <div>
+                    {this.state.gridRows.map((element, index) =>{
+                        return(
+                            <Align style={{height : element.height}} columns={element.columns} key={index}>
+                                {element.data.map((item,i)=>{
+                                    return (
+                                        <Layer fill key={i}>
+                                            {this.state.rows[element.rowIndex].template(item)}
+                                        </Layer>
+                                    )
+                                })}
+                            </Align>
+                        )
+                    })}
+                </div>
+            )
+        } else return null;
     }
 }
 
