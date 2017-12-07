@@ -1,6 +1,9 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import {OOCSS} from '../OOCSS/OOCSS';
+
+
 import {IRecoil} from '../../index';
 
 export interface ILayerProps extends IRecoil{
@@ -28,7 +31,7 @@ export interface ILayerProps extends IRecoil{
   flexCenter?: boolean;
 }
 
-export default class Layer extends React.Component<ILayerProps, any> {
+class Layer extends React.Component<ILayerProps, any> {
 
   public _animate : any;
   public _beforeAnimate : () => void;
@@ -45,7 +48,8 @@ export default class Layer extends React.Component<ILayerProps, any> {
     left: false,
     right: false,
     border: '',
-    scrollIf: false
+    scrollIf: false,
+    flexCenter: false
   };
 
   constructor(props : ILayerProps) {
@@ -197,7 +201,7 @@ export default class Layer extends React.Component<ILayerProps, any> {
     );
 
     return(
-      <div tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, props.style)}>
+      <div tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={props.style}>
         {props.children}
       </div>
     );
@@ -256,3 +260,6 @@ function scrollTo(scrollTop : number, element : HTMLElement, to : number, durati
   };
   animateScroll();
 }
+
+
+export default OOCSS()(Layer);

@@ -89,8 +89,8 @@ const DataSource : any = (Component : JSX.Element) =>
             const props = self.props;
 
             let {dataSource} = props;
-
-            dataSource.length ? self.loadDataSource(dataSource) : self.loadDataSource([]);
+            
+            Object.keys(dataSource).length ? self.loadDataSource(dataSource) : self.loadDataSource([]);
         }
 
         loadDataSource<T>(dataSource : Array<T>) {

@@ -92,6 +92,7 @@ export interface ITableProps {
     headerTemplate?: () => void;
     serverSide?: boolean;
     disableSelectedElements?: Array<any>;
+    scrollY?: boolean;
 } 
 
 interface ITableState {
@@ -103,7 +104,8 @@ class Table extends React.Component<ITableProps, ITableState>{
     public static defaultProps = {
         showDataSourceLength: true,
         title: 'items',
-        portal: false
+        portal: false,
+        disableSelectedElements: []
     }
 
     render() {
@@ -263,7 +265,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                     {headerTemplate ? headerTemplate : null}
                     <TableSearch {...tableSearchProps} />
                     {menuTemplate ? menuTemplate() : null}
-                    <Layer tabIndex={-1} scrollY theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
+                    <Layer tabIndex={-1} scrollY={scrollY} theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
                         {
                             nothingMatchesSearchCriteria ?
                                 <Emerge className="e-fill">

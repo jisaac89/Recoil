@@ -67,7 +67,7 @@ export default class TableColumn extends React.Component<ITableDataProps,ITableD
         } else if (type !== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
             return ( 
                 <td tabIndex={-1} id={value ? value.toString() : null} style={{width : column.width}}>
-                    {column.template ? column.template(element) : type === 'Value' ? <Button size='small' simple>{value}</Button> ? <Button size='small' simple>{value.toString()}</Button> : null : <Dropdown material dataSource={value} title={type} />}
+                    {column.template ? column.template(element) : type === 'Value' ? <Button size='small' simple>{value}</Button> ? <Button size='small' simple>{value.toString()}</Button> : null : <Dropdown className="r-Table-Dropdown" material dataSource={value} title={type} />}
                 </td>
             )
         } return null;
