@@ -149,7 +149,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
             Sep = this.getWeeks(year, 9),
             Oct = this.getWeeks(year, 10),
             Nov = this.getWeeks(year, 11),
-            Dec = this.getWeeks(year, 12)
+            Dec = this.getWeeks(year, 12);
 
         return (
             <Layer flex className="r-Calendar">
@@ -169,7 +169,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                 </Toolbar>
                 <Layer flex theme="light">
                     <DaysHeader />
-                    <Layer style={{height: inDropdown ? '100%' : calendarHeight}} className="r-Calendar-Scroll"  flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
+                    <Layer style={{height:  calendarHeight}} className="r-Calendar-Scroll"  flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
                         <div id={"1"}>
                             <Months
                                 title={monthNames[0]}   
@@ -183,12 +183,12 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                         <div id={"2"}>
                             <Months
                                 title={monthNames[1]}   
-                                year={year}
-                                month={2}
+                                year={year} 
+                                month={2} 
                                 currentMonth={Feb}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
-                            />
+                            /> 
                         </div>  
                         <div id={"3"}>
                             <Months

@@ -201,7 +201,7 @@ class Layer extends React.Component<ILayerProps, any> {
     );
 
     return(
-      <div tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={props.style}>
+      <div tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, props.style)}>
         {props.children}
       </div>
     );

@@ -86,8 +86,7 @@ export const OOCSS = () => (Component) => {
 
             render(): JSX.Element {
                 // Render all your added markup
-                console.log(this.state);
-                return <Component {...this.props} style={this.state.style} />;
+                return <Component {...this.props} style={Object.assign({},this.state.style, this.props.style)} />;
             }
         };
 

@@ -105,7 +105,8 @@ class Table extends React.Component<ITableProps, ITableState>{
         showDataSourceLength: true,
         title: 'items',
         portal: false,
-        disableSelectedElements: []
+        disableSelectedElements: [],
+        scrollY : true
     }
 
     render() {
@@ -265,7 +266,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                     {headerTemplate ? headerTemplate : null}
                     <TableSearch {...tableSearchProps} />
                     {menuTemplate ? menuTemplate() : null}
-                    <Layer tabIndex={-1} scrollY={scrollY} theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
+                    <Layer tabIndex={-1} scrollY={true} theme="light" scrollToId={scrollToId} scrollIf={scrollIf} fill style={contentMaxHeight ? { height: contentMaxHeight } : null}>
                         {
                             nothingMatchesSearchCriteria ?
                                 <Emerge className="e-fill">

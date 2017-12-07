@@ -76,7 +76,8 @@ export default class DropdownContentType extends React.Component<any, any>{
             sortable,
             hideFooter,
             scrollToId,
-            scrollIf
+            scrollIf,
+            scrollY : true
             //
         }
 
