@@ -3,24 +3,90 @@ import { Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard
 
 import TutorialView from './TutorialView';
 const LayerProperties = [
-  { name: 'border', type: '', options: '', description: '' },
-  { name: 'overflow', type: '', options: '', description: '' },
-  { name: 'left', type: '', options: '', description: '' },
-  { name: 'right', type: '', options: '', description: '' },
-  { name: 'scrollY', type: '', options: '', description: '' },
-  { name: 'scrollX', type: '', options: '', description: '' },
-  { name: 'fill', type: '', options: '', description: '' },
-  { name: 'type', type: '', options: '', description: '' },
-  { name: 'children', type: '', options: '', description: '' },
-  { name: 'className', type: '', options: '', description: '' },
-  { name: 'style', type: '', options: '', description: '' },
-  { name: 'onClick', type: '', options: '', description: '' },
-  { name: 'block', type: '', options: '', description: '' },
-  { name: 'key', type: '', options: '', description: '' },
-  { name: 'align', type: '', options: '', description: '' },
-  { name: 'flex', type: '', options: '', description: '' },
-  { name: 'flow', type: '', options: '', description: '' },
-  { name: 'justify', type: '', options: '', description: '' }
+  { 
+    name: 'border', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Adds a border to the layer' 
+  },
+  { 
+    name: 'overflow', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Toggle if the elements on this layer should overflow.' 
+  },
+  { 
+    name: 'left', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Float the element left' 
+  },
+  { 
+    name: 'right', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Float the element right' 
+  },
+  { 
+    name: 'scrollY', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Set a scrollbar on the y axis' 
+  },
+  { 
+    name: 'scrollX', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Set a scrollbar on the x axis' 
+  },
+  { 
+    name: 'style', 
+    type: 'Object', 
+    options: '', 
+    description: 'Add a style object' 
+  },
+  { 
+    name: 'onClick', 
+    type: 'function', 
+    options: '', 
+    description: 'Trigger an even once the layer is clicked.' 
+  },
+  { 
+    name: 'block', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Float the element left' 
+  },
+  { 
+    name: 'dimensions', 
+    type: '[width, height, zIndex]', 
+    options: '', 
+    description: 'Easily set a width, height and z-index' 
+  },
+  { 
+    name: 'scrollIf', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Layer will start scroll if returns true' 
+  },
+  { 
+    name: 'scrollToId', 
+    type: 'string', 
+    options: '', 
+    description: 'ID to scroll to once "scrollIf" is set to true.' 
+  },
+  { 
+    name: 'flex', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Layer and its direct descandedts will be set to flex.' 
+  },
+  { 
+    name: 'flexCenter', 
+    type: 'boolean', 
+    options: '', 
+    description: 'Will perfect center (horizontally and vertically) the child contents.' 
+  },
 ]
 
 export default class TutorialLayer extends React.Component<any, any>{
@@ -99,89 +165,9 @@ export default class TutorialLayer extends React.Component<any, any>{
             <Checkbox size="small" checked={state.showNotify} title={'Show Notifcations'} onChange={this.toggleNotify.bind(this)} />
           </Toolbar>
 
-          <Align className="mt20">
-            <Layer overflow className="p10 dark dinblock" dimensions={['100%', '300px', 1]}>
-              <Transform fill flex={state.isFlexed} if={state.showNotify} push={'bottom'} amount={'50px'}>
-                <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
+          <Layer border className="p30">
 
-                  <Transform fill flex={state.isFlexed} if={state.showSidebar} push={'left'} amount={'100px'}>
-                    <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
-                      Header
-                    </Layer>
-
-                    <Open openToHeight={!this.state.isFlexed ? '42px' : '83.33px'} if={!this.state.contentClosed}>
-                      <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
-                        Content
-                      </Layer>
-                    </Open>
-
-                    <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10">
-                      Footer
-                    </Layer>
-                  </Transform>
-
-                  <SlideIn from={'left'} className="h100 w100px" if={this.state.showSidebar}>
-                    <Layer flex fill flexCenter theme="dark" className="pr10">
-                      <Layer flex fill flexCenter theme="light">
-
-                      </Layer>
-                    </Layer>
-                  </SlideIn>
-
-                </Layer>
-
-                <SlideIn from={'bottom'} className="h50px w100" if={this.state.showNotify}>
-                    <Layer flex fill flexCenter theme="dark" className="pb10 ps10">
-                      <Layer flex fill flexCenter theme="light">
-                          Notifcations
-                      </Layer>
-                    </Layer>
-                  </SlideIn>
-
-              </Transform>
-            </Layer>
-            <Layer overflow className="ml10 dinblock p10 dark" dimensions={['100%', '300px', 1]}>
-              <Transform fill flex={state.isFlexed} if={state.showNotify} push={'top'} amount={'50px'}>
-                  
-                  <SlideIn from={'top'} className="h50px w100" if={this.state.showNotify}>
-                    <Layer flex fill flexCenter theme="dark" className="pt10 ps10">
-                      <Layer flex fill flexCenter theme="light">
-                          Notifcations
-                      </Layer>
-                    </Layer>
-                  </SlideIn>
-
-
-                <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
-                  <Transform fill flex={state.isFlexed} if={state.showSidebar} push={'right'} amount={'100px'}>
-
-                    <Open openToHeight={!this.state.isFlexed ? '38px' : state.showNotify ? '172px' : '210px'} if={!this.state.contentClosed}>
-                      <Layer flex border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
-                        Content
-                      </Layer>
-                    </Open>
-
-                    <Layer border dimensions={['100%', state.contentClosed && state.isFlexed ? '100%' : '38px', 1]} flexCenter theme="dark" className="p10">
-                      Footer
-                    </Layer>
-
-                  </Transform>
-
-                  <SlideIn from={'right'} className="h100 w100px" if={this.state.showSidebar}>
-                    <Layer flex fill flexCenter theme="dark" className="pl10">
-                      <Layer flex fill flexCenter theme="light">
-
-                      </Layer>
-                    </Layer>
-                  </SlideIn>
-
-                </Layer>
-
-              </Transform>
-
-            </Layer>
-
-          </Align>
+          </Layer>
 
           <h3 className="ptb20">Default</h3>
           

@@ -15,7 +15,6 @@ export interface ILayerProps extends IRecoil{
   scrollX? : boolean;
   style? : Object;
   onClick?: () => void;
-  block? : boolean;
   key? : string | number;
   parent? : boolean;
   child? : boolean;
@@ -28,6 +27,7 @@ export interface ILayerProps extends IRecoil{
   scroll? : boolean;
   offset?: number;
   shadow?: boolean;
+  flex?: boolean;
   flexCenter?: boolean;
 }
 
@@ -161,13 +161,6 @@ class Layer extends React.Component<ILayerProps, any> {
   render() {
     const self = this;
     const props = self.props;
-    let borderClass;
-
-    if (props.border) {
-      borderClass = 'border'+props.border;
-    } else {
-      borderClass = null;
-    }
 
     let dimensionStyle;
 
@@ -195,7 +188,7 @@ class Layer extends React.Component<ILayerProps, any> {
       { 'child': (props.child) },
       { 'e-shadow': (props.shadow) },
       { 'e-flex-center': (props.flexCenter) },
-      borderClass,
+      { 'border-all': (props.border) },
       props.theme,
       props.className
     );
