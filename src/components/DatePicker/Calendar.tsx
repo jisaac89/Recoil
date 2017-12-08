@@ -151,7 +151,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
             Nov = this.getWeeks(year, 11),
             Dec = this.getWeeks(year, 12);
 
-        let setHeight = inDropdown ? {height:  '100%'} : {height:  calendarHeight};: 
+        let setHeight = inDropdown ? {height:  '100%'} : {height:  calendarHeight};
 
         return (
             <Layer flex className="r-Calendar">

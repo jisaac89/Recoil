@@ -72,8 +72,8 @@ export default class TutorialView extends React.Component<ITutorialViewProps,any
 
     return(
       <Layer className="pl20 p10">
-        <small><strong>Value:</strong> {item.type}</small><br/>
-        <small><strong>Description:</strong> {item.description}</small>
+        <p><small>Value: {item.type}</small></p>
+        <p>{item.description}</p>
       </Layer>
     )
   }
@@ -85,7 +85,7 @@ export default class TutorialView extends React.Component<ITutorialViewProps,any
     let state = self.state;
 
     const columns = [
-      {name: 'name'}
+      {name: 'name', template: (data)=> {return <h3 className="ptb20">{data.name}</h3>}}
     ]
     
     return (
@@ -95,7 +95,6 @@ export default class TutorialView extends React.Component<ITutorialViewProps,any
 
           <Layer>
             <h2 id={props.Id} className="pb20">Description</h2>
-            <p>{props.description}</p>
           </Layer>
 
           <Layer className="pt20">
