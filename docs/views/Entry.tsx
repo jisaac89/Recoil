@@ -84,7 +84,7 @@ export default class App extends React.Component<any, any> {
   gotoSlideIndex(item) {
     this.setState({
       slideIndex: item.index,
-      showMenu: true ? false : true,
+      showMenu: this.state.mobile ? false : true,
       showModal: false
     })
   }
@@ -100,7 +100,7 @@ export default class App extends React.Component<any, any> {
             <SlideIn className='z5' if={!showModal} from={'top'}>
               <Layer fill theme="light">
                 <Toolbar size="small" block className="p10 border-bottom">
-                  {true ? <Button simple icon={showMenu ? "times" :"bars"} onClick={this.toggleMenu.bind(this)} /> : null}
+                  {mobile ? <Button simple icon={showMenu ? "times" :"bars"} onClick={this.toggleMenu.bind(this)} /> : null}
                   <h1 className="dinblock"><strong>Recoil</strong> <small>0.5.3</small></h1>
                   <Button href="https://www.github.com/jisaac89/recoil" theme="error" right icon="github">github</Button>
                   <Button simple shortcut="h" onClick={this.toggleDocs.bind(this)} right icon="download" className="mr5"></Button>
@@ -145,7 +145,7 @@ export default class App extends React.Component<any, any> {
             </SlideIn>
           </Transform>
         </Shrink>
-        <SlideIn if={this.state.showMenu} from="left" className={mobile ? "w300px h100" : "w300px h100 pt50"}>
+        <SlideIn if={this.state.showMenu && !showModal} from="left" className={mobile ? "w300px h100" : "w300px h100 pt50"}>
           <Layer fill nightmode scrollY className="p10">
             <Button shortcut={'C'} block className="text-center mb10">Component List</Button>
             <Table
