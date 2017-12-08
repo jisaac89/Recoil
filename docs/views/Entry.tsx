@@ -34,11 +34,11 @@ export default class App extends React.Component<any, any> {
     super();
 
     this.state = {
-      slideIndex: 8,
-      showMenu: false,
+      slideIndex: 0,
+      showMenu: true,
       showModal: false,
       nightmode: false,
-      showDocs: true,
+      showDocs: false,
       showInstructions: false
     }
   }
