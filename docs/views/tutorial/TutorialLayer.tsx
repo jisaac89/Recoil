@@ -86,7 +86,7 @@ const LayerProperties = [
     type: 'boolean', 
     options: '', 
     description: 'Will perfect center (horizontally and vertically) the child contents.' 
-  },
+  }
 ]
 
 export default class TutorialLayer extends React.Component<any, any>{
@@ -165,9 +165,89 @@ export default class TutorialLayer extends React.Component<any, any>{
             <Checkbox size="small" checked={state.showNotify} title={'Show Notifcations'} onChange={this.toggleNotify.bind(this)} />
           </Toolbar>
 
-          <Layer border className="p30">
+          <Align className="mt20">
+            <Layer overflow className="p10 dark dinblock" dimensions={['100%', '300px', 1]}>
+              <Transform fill flex={state.isFlexed} if={state.showNotify} push={'bottom'} amount={'50px'}>
+                <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
 
-          </Layer>
+                  <Transform fill flex={state.isFlexed} if={state.showSidebar} push={'left'} amount={'100px'}>
+                    <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
+                      Header
+                    </Layer>
+
+                    <Open openToHeight={!this.state.isFlexed ? '42px' : '83.33px'} if={!this.state.contentClosed}>
+                      <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
+                        Content
+                      </Layer>
+                    </Open>
+
+                    <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10">
+                      Footer
+                    </Layer>
+                  </Transform>
+
+                  <SlideIn from={'left'} className="h100 w100px" if={this.state.showSidebar}>
+                    <Layer flex fill flexCenter theme="dark" className="pr10">
+                      <Layer flex fill flexCenter theme="light">
+
+                      </Layer>
+                    </Layer>
+                  </SlideIn>
+
+                </Layer>
+
+                <SlideIn from={'bottom'} className="h50px w100" if={this.state.showNotify}>
+                    <Layer flex fill flexCenter theme="dark" className="pb10 ps10">
+                      <Layer flex fill flexCenter theme="light">
+                          Notifcations
+                      </Layer>
+                    </Layer>
+                  </SlideIn>
+
+              </Transform>
+            </Layer>
+            <Layer overflow className="ml10 dinblock p10 dark" dimensions={['100%', '300px', 1]}>
+              <Transform fill flex={state.isFlexed} if={state.showNotify} push={'top'} amount={'50px'}>
+                  
+                  <SlideIn from={'top'} className="h50px w100" if={this.state.showNotify}>
+                    <Layer flex fill flexCenter theme="dark" className="pt10 ps10">
+                      <Layer flex fill flexCenter theme="light">
+                          Notifcations
+                      </Layer>
+                    </Layer>
+                  </SlideIn>
+
+
+                <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
+                  <Transform fill flex={state.isFlexed} if={state.showSidebar} push={'right'} amount={'100px'}>
+
+                    <Open openToHeight={!this.state.isFlexed ? '38px' : state.showNotify ? '172px' : '210px'} if={!this.state.contentClosed}>
+                      <Layer flex border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
+                        Content
+                      </Layer>
+                    </Open>
+
+                    <Layer border dimensions={['100%', state.contentClosed && state.isFlexed ? '100%' : '38px', 1]} flexCenter theme="dark" className="p10">
+                      Footer
+                    </Layer>
+
+                  </Transform>
+
+                  <SlideIn from={'right'} className="h100 w100px" if={this.state.showSidebar}>
+                    <Layer flex fill flexCenter theme="dark" className="pl10">
+                      <Layer flex fill flexCenter theme="light">
+
+                      </Layer>
+                    </Layer>
+                  </SlideIn>
+
+                </Layer>
+
+              </Transform>
+
+            </Layer>
+
+          </Align>
 
           <h3 className="ptb20">Default</h3>
           

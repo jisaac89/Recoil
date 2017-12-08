@@ -151,6 +151,8 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
             Nov = this.getWeeks(year, 11),
             Dec = this.getWeeks(year, 12);
 
+        let setHeight = inDropdown ? {height:  '100%'} : {height:  calendarHeight};: 
+
         return (
             <Layer flex className="r-Calendar">
                 <Toolbar flush block flex noRadius>
@@ -169,7 +171,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                 </Toolbar>
                 <Layer flex theme="light">
                     <DaysHeader />
-                    <Layer style={{height:  calendarHeight}} className="r-Calendar-Scroll"  flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
+                    <Layer style={setHeight} className="r-Calendar-Scroll"  flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
                         <div id={"1"}>
                             <Months
                                 title={monthNames[0]}   
