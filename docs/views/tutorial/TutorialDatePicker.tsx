@@ -22,7 +22,9 @@ export default class TutorialDatePicker extends React.Component<any,any>{
 
     this.state = {
       showProps : true,
-      showVideo: false
+      showVideo: false,
+      from : null,
+      to: null
     }
   }
 
@@ -37,6 +39,18 @@ export default class TutorialDatePicker extends React.Component<any,any>{
     this.setState({
       showProps: false,
       showVideo: this.state.showVideo ? false : true
+    })
+  }
+
+  selectFrom(day){
+    this.setState({
+      from: day
+    })
+  }
+
+  selectTo(day){
+    this.setState({
+      to: day
     })
   }
 
@@ -58,9 +72,9 @@ export default class TutorialDatePicker extends React.Component<any,any>{
             <Layer className="pt20">
                 <Toolbar>
                   <Button simple>From:</Button>
-                  <DatePicker mobile={props.mobile} />
+                  <DatePicker onSelect={this.selectFrom.bind(this)} selectedDay={this.state.from} mobile={props.mobile} />
                   <Button simple>To:</Button>
-                  <DatePicker mobile={props.mobile} />
+                  <DatePicker onSelect={this.selectTo.bind(this)} selectedDay={this.state.to} mobile={props.mobile} />
                 </Toolbar>
             </Layer>
         </div>

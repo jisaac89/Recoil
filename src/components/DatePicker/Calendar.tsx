@@ -97,6 +97,9 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     selectDay(day: any) {
         if (this.props.onSelect) {
             this.props.onSelect(day);
+            this.setState({
+                selectedDay: day
+            })
         }
     }
 

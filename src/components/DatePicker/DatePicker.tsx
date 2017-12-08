@@ -10,6 +10,7 @@ export interface IDatePickerProps {
     date?: Date | string;
     onSelect? : (date: Date) => void;
     mobile? : boolean;
+    selectedDay?: Date;
 }
 
 export default class DatePicker extends React.Component<IDatePickerProps, any>{
@@ -39,7 +40,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
                 title={getDateFormatted(this.state.date)}
                 mobile={true}
             >
-                <Calendar inDropdown={true} date={date} onSelect={this.onSelect} />
+                <Calendar selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
             </Dropdown>
         );
     }
