@@ -3,7 +3,7 @@ import * as React from 'react';
 export default class Months extends React.Component<any, any> {
     render() {
 
-        let {year, month, currentMonth, date, title} = this.props;
+        let {year, month, currentMonth, date, title, selectedDay} = this.props;
 
         if (currentMonth) {
             return (
@@ -19,7 +19,8 @@ export default class Months extends React.Component<any, any> {
                                                 <td className="empty-date" colSpan={7 - week.length}></td>
                                                 : undefined}
                                             {week.map((day: any, index: any) => {
-                                                let selected = date && date.getTime() === day.getTime();
+                                                let selected = selectedDay.toDateString() == day.toDateString();
+
                                                 return (
                                                     <td onClick={this.props.selectDay.bind(this, day) } className={selected ? 'selected-date' : undefined} key={year + ' ' + month + ' ' + index}>
                                                         {day.getDate() }

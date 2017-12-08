@@ -18,12 +18,14 @@ export interface ICalendarProps {
     onSelect?: (date: Date) => any;
     calendarHeight?: string;
     inDropdown?: boolean;
+    selectedDay?: Date;
 }
 
 export interface ICalendarState {
     month?: number;
     year?: number;
     date?: Date;
+    selectedDay?: Date;
 }
 
 export default class Calendar extends React.Component<ICalendarProps, ICalendarState> {
@@ -40,7 +42,8 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
         this.state = {
             year: date.getFullYear(),
             month: date.getMonth(),
-            date: date
+            date: date,
+            selectedDay: props.selectedDay || new Date(Date.now()) 
         };
     }
 
@@ -56,14 +59,14 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
 
     increaseMonth = () => {
         this.setState({
-            month: this.state.month === 12 ? 1 : this.state.month + 1
+            month: this.state.month === 11 ? 0 : this.state.month + 1
         });
     }
 
     selectMonth = (...Args : Array<any>) => {
         let monthIndex = Args[1];
         this.setState({
-            month: monthIndex + 1
+            month: monthIndex
         });
     }
 
@@ -135,21 +138,21 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
 
         const self = this;
 
-        let {year, month, date} = self.state;
+        let {year, month, date, selectedDay} = self.state;
         let {calendarHeight, inDropdown} = self.props;
 
-        let Jan = this.getWeeks(year, 1),
-            Feb = this.getWeeks(year, 2),
-            Mar = this.getWeeks(year, 3),
-            Apr = this.getWeeks(year, 4),
-            May = this.getWeeks(year, 5),
-            Jun = this.getWeeks(year, 6),
-            Jul = this.getWeeks(year, 7),
-            Aug = this.getWeeks(year, 8),
-            Sep = this.getWeeks(year, 9),
-            Oct = this.getWeeks(year, 10),
-            Nov = this.getWeeks(year, 11),
-            Dec = this.getWeeks(year, 12);
+        let Jan = this.getWeeks(year, 0),
+            Feb = this.getWeeks(year, 1),
+            Mar = this.getWeeks(year, 2),
+            Apr = this.getWeeks(year, 3),
+            May = this.getWeeks(year, 4),
+            Jun = this.getWeeks(year, 5),
+            Jul = this.getWeeks(year, 6),
+            Aug = this.getWeeks(year, 7),
+            Sep = this.getWeeks(year, 8),
+            Oct = this.getWeeks(year, 9),
+            Nov = this.getWeeks(year, 10),
+            Dec = this.getWeeks(year, 11);
 
         let setHeight = inDropdown ? {height:  '100%'} : {height:  calendarHeight};
 
@@ -171,125 +174,137 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                 </Toolbar>
                 <Layer flex theme="light">
                     <DaysHeader />
-                    <Layer style={setHeight} className="r-Calendar-Scroll"  flex scrollY scrollIf={!!this.state.month} scrollToId={this.state.month.toString()}>
-                        <div id={"1"}>
+                    <Layer style={setHeight} className="r-Calendar-Scroll"  flex scrollY scrollIf={this.state.month.toString().length} scrollToId={this.state.month.toString()}>
+                        <div id="0">
                             <Months
                                 title={monthNames[0]}   
                                 year={year}
-                                month={1}
+                                month={0}
                                 currentMonth={Jan}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
                             />
                         </div>  
-                        <div id={"2"}>
+                        <div id={"1"}>
                             <Months
                                 title={monthNames[1]}   
                                 year={year} 
-                                month={2} 
+                                month={1} 
                                 currentMonth={Feb}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
                             /> 
                         </div>  
-                        <div id={"3"}>
+                        <div id={"2"}>
                             <Months
                                 title={monthNames[2]}   
                                 year={year}
-                                month={3}
+                                month={2}
                                 currentMonth={Mar}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
+                            />
+                        </div>  
+                        <div id={"3"}>
+                            <Months
+                                title={monthNames[3]}   
+                                year={year}
+                                month={3}
+                                currentMonth={Apr}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                                selectedDay={selectedDay}
                             />
                         </div>  
                         <div id={"4"}>
                             <Months
-                                title={monthNames[3]}   
-                                year={year}
-                                month={4}
-                                currentMonth={Apr}
-                                selectDay={this.selectDay.bind(this)}
-                                date={date}
-                            />
-                        </div>  
-                        <div id={"5"}>
-                            <Months
                                 title={monthNames[4]}   
                                 year={year}
-                                month={5}
+                                month={4}
                                 currentMonth={May}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
                             />
                         </div>
-                        <div id={"6"}>
+                        <div id={"5"}>
                             <Months
                                 title={monthNames[5]}   
                                 year={year}
-                                month={6}
+                                month={5}
                                 currentMonth={Jun}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
+                            />
+                        </div>  
+                        <div id={"6"}>
+                            <Months
+                                title={monthNames[6]}   
+                                year={year}
+                                month={6}
+                                currentMonth={Jul}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                                selectedDay={selectedDay}
                             />
                         </div>  
                         <div id={"7"}>
                             <Months
-                                title={monthNames[6]}   
+                                title={monthNames[7]}   
                                 year={year}
                                 month={7}
-                                currentMonth={Jul}
+                                currentMonth={Aug}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
                             />
                         </div>  
                         <div id={"8"}>
                             <Months
-                                title={monthNames[7]}   
-                                year={year}
-                                month={8}
-                                currentMonth={Aug}
-                                selectDay={this.selectDay.bind(this)}
-                                date={date}
-                            />
-                        </div>  
-                        <div id={"9"}>
-                            <Months
                                 title={monthNames[8]}   
                                 year={year}
-                                month={9}
+                                month={8}
                                 currentMonth={Sep}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
                             />
                         </div>  
-                        <div id={"10"}>                    
+                        <div id={"9"}>                    
                             <Months
                                 title={monthNames[9]}   
                                 year={year}
-                                month={10}
+                                month={9}
                                 currentMonth={Oct}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
+                            />
+                        </div>  
+                        <div id={"10"}>
+                            <Months
+                                title={monthNames[10]}   
+                                year={year}
+                                month={10}
+                                currentMonth={Nov}
+                                selectDay={this.selectDay.bind(this)}
+                                date={date}
+                                selectedDay={selectedDay}
                             />
                         </div>  
                         <div id={"11"}>
                             <Months
-                                title={monthNames[10]}   
-                                year={year}
-                                month={11}
-                                currentMonth={Nov}
-                                selectDay={this.selectDay.bind(this)}
-                                date={date}
-                            />
-                        </div>  
-                        <div id={"12"}>
-                            <Months
                                 title={monthNames[11]}   
                                 year={year}
-                                month={12}
+                                month={11}
                                 currentMonth={Dec}
                                 selectDay={this.selectDay.bind(this)}
                                 date={date}
+                                selectedDay={selectedDay}
                             />    
                         </div>                                                                                                                                                                                                                 
                     </Layer>

@@ -12,8 +12,8 @@ export default class SelectMonth extends React.Component<any, any> {
                 className="w100"
                 material 
                 block 
-                title={monthNames[month - 1]} 
-                selectedElements={[monthNames[month - 1]]}
+                title={monthNames[month]} 
+                selectedElements={[monthNames[month]]}
                 rowIsSelectable="single"
                 onChange={selectMonth} 
                 dataSource={monthNames}

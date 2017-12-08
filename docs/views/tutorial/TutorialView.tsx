@@ -95,6 +95,7 @@ export default class TutorialView extends React.Component<ITutorialViewProps,any
 
           <Layer>
             <h2 id={props.Id} className="pb20">Description</h2>
+            <p>{props.description}</p>
           </Layer>
 
           <Layer className="pt20">
