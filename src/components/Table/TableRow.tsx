@@ -163,7 +163,7 @@ export default class TableRow extends React.Component<ITableColumnProps,any>{
         return (
             <tr  
                 tab-index={-1}
-                className={selectedElements.includes(selectedKey ? element[selectedKey] : element) ? disableSelectedElements ? 'r-TableColumn disabled' :  'r-TableColumn checked' : 'r-TableColumn'} 
+                className={selectedElements.includes(selectedKey ? element[selectedKey] : element) ? disableSelectedElements.length ? 'r-TableColumn disabled' :  'r-TableColumn checked' : 'r-TableColumn'} 
                 onClick={
                     rowIsSelectable && !checkable ? 
                         this.toggleSelectedElements.bind(this, element, index) 
