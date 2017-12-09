@@ -59,7 +59,7 @@ export default class TutorialToolbar extends React.Component<any,any>{
     let example = () => {
       return (
         <div>
-<Layer className="ptb10">
+          <Layer className="ptb10">
               <Layer className="p10 light">
                 <Toolbar disabled flush block>
                   <Button icon="user" />
@@ -71,11 +71,18 @@ export default class TutorialToolbar extends React.Component<any,any>{
                   <Input placeholder="Find Users" />
                   <Button icon="times" />
                 </Toolbar>
-                <Toolbar flush block className="mt10">
+                <Toolbar spacing block className="mt10">
                   <Button simple icon="user" />
                   <Input simple placeholder="Find Users" />
                   <Button simple icon="times" />
                 </Toolbar>
+
+                <Toolbar flush  block className="mt10">
+                  <Button size="large"  icon="user" />
+                  <Input size="large"  placeholder="Find Users" />
+                  <Button size="large"  icon="times" />
+                </Toolbar>
+          
                 <Toolbar vertical block spacing className="mt10 w300px">
                   <Button block>Menu Item 1</Button>
                   <Button block>Menu Item 2</Button>
