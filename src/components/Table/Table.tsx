@@ -92,7 +92,7 @@ export interface ITableProps {
     headerTemplate?: () => void;
     serverSide?: boolean;
     disableSelectedElements?: Array<any>;
-    scrollY?: boolean;
+    fill?: boolean;
 } 
 
 interface ITableState {
@@ -251,6 +251,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         let tableClass = classNames(
             'r-Table',
             { 'e-flex': (props.flex) },
+            { 'e-fill': (props.fill) },
             { 'e-selectable': (!!props.rowIsSelectable) },
             { 'e-selectable': (detailTemplateOpenOnRowSelect === true || detailTemplateOpenOnRowSelect === 'single') },
             props.className

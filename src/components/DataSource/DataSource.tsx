@@ -18,6 +18,10 @@ export interface IDataSourceProps extends ITableProps {
 const DataSource : any = (Component : JSX.Element) =>
     class Enhance extends React.Component<IDataSourceProps, any> {
 
+        public static defaultProps = {
+            emptyText: 'dataSource is empty'
+        }
+
         constructor(props : IDataSourceProps) {
             super(props);
 
@@ -90,7 +94,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
             let {dataSource} = props;
             
-            Object.keys(dataSource).length ? self.loadDataSource(dataSource) : self.loadDataSource([]);
+            dataSource && Object.keys(dataSource).length ? self.loadDataSource(dataSource) : self.loadDataSource([]);
         }
 
         loadDataSource<T>(dataSource : Array<T>) {
@@ -208,19 +212,21 @@ const DataSource : any = (Component : JSX.Element) =>
             let columnsArray: Array<any>;
 
             // columns are defined
-            if (columns) {
-                columnsArray = columns;
-            }
-            // else automatically create them
-            else {
-                columnsArray = [];
-
-                if (isArray) {
-                    columnsArray.push({ name: '_Array' });
-                } else {
-                    Object.keys(dataSource[0]).map((key) => {
-                        columnsArray.push({ name: key })
-                    })
+            if (dataSource.length > 0){
+                if (columns) {
+                    columnsArray = columns;
+                }
+                // else automatically create them
+                else {
+                    columnsArray = [];
+    
+                    if (isArray) {
+                        columnsArray.push({ name: '_Array' });
+                    } else {
+                        Object.keys(dataSource[0]).map((key) => {
+                            columnsArray.push({ name: key })
+                        })
+                    }
                 }
             }
 
