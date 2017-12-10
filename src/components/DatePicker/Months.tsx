@@ -20,8 +20,6 @@ export default class Months extends React.Component<any, any> {
                                                 : undefined}
                                             {week.map((day: any, index: any) => {
                                                 let selected = selectedDay.toDateString() == day.toDateString();
-                                                console.log(selectedDay.toDateString());
-                                                console.log(day.toDateString());
                                                 return (
                                                     <td onClick={this.props.selectDay.bind(this, day) } className={selected ? 'selected-date' : undefined} key={year + ' ' + month + ' ' + index}>
                                                         {day.getDate() }

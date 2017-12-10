@@ -8,7 +8,6 @@ let shorcut = {
 
 class _$ {
 
-
     currentClass : string;
     styleObject : any;
 
@@ -68,7 +67,7 @@ class _$ {
     }
 
     shiftMeasurement = function(measurements) {
-        console.log(this);
+        // console.log(this);
     }
     // m, mr
     returnStrongestMatch = function(keysExistinClass: string[], idx ?: number, currentStrongest?: string) {
