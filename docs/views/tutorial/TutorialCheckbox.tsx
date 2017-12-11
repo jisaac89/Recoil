@@ -74,6 +74,20 @@ export default class TutorialCheckbox extends React.Component<any,any>{
                 </Toolbar>
             </Layer>
 
+            <h3>Disabled</h3>
+            <Layer className="ptb20">
+                <Toolbar spacing>
+                  <Checkbox disabled icon={'star'} />
+                </Toolbar>
+            </Layer>
+
+            <h3>Loading</h3>
+            <Layer className="ptb20">
+                <Toolbar spacing>
+                  <Checkbox size="large" loading={true} disabled icon={'star'} />
+                </Toolbar>
+            </Layer>
+
             <h3>Themes</h3>
             <Layer className="ptb20">
                 <Toolbar spacing>

@@ -9,6 +9,7 @@ export interface ICheckboxProps extends IRecoil{
   icon? : string;
   onChange? : (value: boolean, event?: React.MouseEvent<MouseEvent>) => void;
   title? : string;
+  loading?: boolean;
 }
 
 export interface ICheckboxState {
@@ -64,6 +65,7 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
 
     let checkboxProps = {
       disabled:props.disabled,
+      loading: props.loading,
       size:props.size,
       onClick:this.toggleChecked.bind(this),
       theme: props.theme ? props.theme : checked ? 'primary' : 'default'

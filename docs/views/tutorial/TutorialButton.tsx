@@ -216,6 +216,7 @@ export default class TutorialButton extends React.Component<any,any>{
                 <Button checked advanced>Checked</Button>
                 <Button disabled>Disabled</Button>
                 <Button simple>Simple</Button>
+                <Button loading={true}>Loading...</Button>
               </Toolbar>
             </Layer>
 
@@ -233,6 +234,15 @@ export default class TutorialButton extends React.Component<any,any>{
             <Layer className="ptb20">
               <Toolbar spacing>
                 <Button icon="github" href='https//www.github.com/jisaac89/recoil'>Recoil Github</Button>
+              </Toolbar>
+            </Layer>
+
+            <h3 className="mb20">Toolbar</h3>
+            <Layer className="ptb20">
+              <Toolbar flex textCenter flush className="w300px">
+                <Button icon="users"></Button>
+                <Button block href='https//www.github.com/jisaac89/recoil'>John Doe</Button>
+                <Button theme="error" icon="times"></Button>
               </Toolbar>
             </Layer>
         </div>

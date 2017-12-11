@@ -59,7 +59,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             dropdownIsOpen: false,
             type: props.dataSource && props.type !== 'tree' ? "table" : props.type,
             selectedElements: props.selectedElements || [],
-            scrollToId: '',
+            scrollToId: props.scrollToId || '',
             title : props.title || ''
         }
     }
@@ -75,7 +75,11 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                 dropdownIsOpen: nextProps.open
             })
         }
-
+        if (nextProps.scrollToId !== this.state.scrollToId) {
+            this.setState({
+                scrollToId: nextProps.scrollToId
+            })
+        }
         if (nextProps.selectedElements !== this.state.selectedElements) {
             this.setState({
                 selectedElements: nextProps.selectedElements

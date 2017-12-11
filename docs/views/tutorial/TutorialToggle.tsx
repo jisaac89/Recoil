@@ -123,7 +123,14 @@ export default class TutorialCard extends React.Component<any,any>{
               <p>With props iconArray passed with an array value of <strong>['times', 'check']</strong>.</p>
               <Toggle iconArray={['times', 'check']} className="mt10" />
             </Layer>
-
+            <Layer className="pb20">
+              <p>Disabled.</p>
+              <Toggle disabled iconArray={['times', 'check']} className="mt10" />
+            </Layer>
+            <Layer className="pb20">
+              <p>Loading.</p>
+              <Toggle loading iconArray={['times', 'check']} className="mt10" />
+            </Layer>
             <h3>Toggle Numbers</h3>
             <Layer className="ptb20">
               <Toolbar spacing>

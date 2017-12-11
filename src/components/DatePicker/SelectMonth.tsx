@@ -20,6 +20,7 @@ export default class SelectMonth extends React.Component<any, any> {
                 pageSize={monthNames.length}
                 hideHeader
                 hideDropdownHeader
+                scrollToId={monthNames[month]}
             />
         );
     }

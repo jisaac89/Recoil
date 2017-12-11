@@ -1,6 +1,7 @@
 ﻿import * as React from 'react';
 
 import Dropdown from '../Dropdown/Dropdown';
+import Layer from '../Layer/Layer';
 
 import Calendar, {ICalendarProps, ICalendarState} from './Calendar';
 export {Calendar, ICalendarProps, ICalendarState};
@@ -32,15 +33,18 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
 
     render() {
         let {date} = this.state;
+        let {mobile} = this.props;
         return (
             <Dropdown 
                 icon="calendar" 
                 type="text" 
                 material 
                 title={getDateFormatted(this.state.date)}
-                mobile={true}
+                mobile={mobile}
             >
-                <Calendar selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
+                <Layer>
+                    <Calendar selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
+                </Layer>
             </Dropdown>
         );
     }
