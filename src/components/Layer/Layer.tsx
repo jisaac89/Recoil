@@ -29,6 +29,8 @@ export interface ILayerProps extends IRecoil{
   shadow?: boolean;
   flex?: boolean;
   flexCenter?: boolean;
+  onScroll?: any;
+  id?: string;
 }
 
 class Layer extends React.Component<ILayerProps, any> {
@@ -194,7 +196,7 @@ class Layer extends React.Component<ILayerProps, any> {
     );
 
     return(
-      <div tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, props.style)}>
+      <div id={props.id} onScroll={this.props.onScroll} tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, props.style)}>
         {props.children}
       </div>
     );
