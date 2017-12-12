@@ -71,10 +71,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickLength: props.progressiveClick.length
       })
     }
-    if (props.shortcut) {
-       window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
-       window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
-    }
+    // if (props.shortcut) {
+    //    window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
+    //    window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
+    // }
    }
 
   public onClick(event: React.MouseEvent<MouseEvent>) {
@@ -114,12 +114,12 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
      }
   }
 
-  public componentWillUnmount() {
-    if (this.props.shortcut) {
-      window.removeEventListener("keydown", null, false);
-      window.removeEventListener("keyup", null, false);
-    }
-  }
+  // public componentWillUnmount() {
+  //   if (this.props.shortcut) {
+  //     window.removeEventListener("keydown", null, false);
+  //     window.removeEventListener("keyup", null, false);
+  //   }
+  // }
 
   render() {
 

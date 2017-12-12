@@ -104,8 +104,8 @@ export default class App extends React.Component<any, any> {
                   {mobile ? <Button simple icon={showMenu ? "times" :"bars"} onClick={this.toggleMenu.bind(this)} /> : null}
                   <h1 className="dinblock"><strong>Recoil</strong> <small>0.5.3</small></h1>
                   <Button href="https://www.github.com/jisaac89/recoil" theme="error" right icon="github">github</Button>
-                  <Button simple shortcut="h" onClick={this.toggleDocs.bind(this)} right icon="download" className="mr5"></Button>
-                  <Button simple shortcut="n" onClick={this.toggleNightMode.bind(this)} right icon="moon-o"></Button>
+                  <Button simple onClick={this.toggleDocs.bind(this)} right icon="download" className="mr5"></Button>
+                  <Button simple onClick={this.toggleNightMode.bind(this)} right icon="moon-o"></Button>
                 </Toolbar>
                 <hr />
               </Layer>
@@ -149,7 +149,7 @@ export default class App extends React.Component<any, any> {
         </Shrink>
         <SlideIn if={this.state.showMenu && !showModal} from="left" className={mobile ? "w300px h100" : "w300px h100 pt50"}>
           <Layer fill nightmode scrollY className="p10">
-            <Button shortcut={'C'} block className="text-center mb10">Component List</Button>
+            <Button block className="text-center mb10">Component List</Button>
             <Table
               dataSource={SampleData}
               pageSize={SampleData.length}
@@ -172,7 +172,7 @@ export default class App extends React.Component<any, any> {
             <h2><a tabIndex={-1} href="https://www.github.com/jisaac89/recoil">Recoil</a> <small>0.5.3</small></h2>
             <p className="ptb20">A <a tabIndex={-1} href="https://reactjs.org/">React</a> powered front-end framework written in <a tabIndex={-1} href="https://www.typescriptlang.org/">Typescript</a>.</p>
             <Toolbar spacing className="pb20 dinblock">
-              <Button tabIndex={-1} shortcut="n" onClick={this.toggleNightMode.bind(this)} icon="moon-o" ></Button>
+              <Button tabIndex={-1} onClick={this.toggleNightMode.bind(this)} icon="moon-o" ></Button>
               <Button tabIndex={-1} onClick={this.toggleDocs.bind(this)} className="ps40" theme="primary" icon="star" iconPointer="down"> 
                 Components
                 </Button>
