@@ -6,7 +6,7 @@ let shorcut = {
     't' : 'top'
 }
 
-class _$ {
+export class _$ {
 
     currentClass : string;
     styleObject : any;

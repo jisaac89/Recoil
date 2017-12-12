@@ -6,7 +6,7 @@ import Toolbar from '../Toolbar/Toolbar';
 
 import {branchIn} from '../Utils';
 
-interface ITagsProps {
+export interface ITagsProps {
     dataSource?: any;
     branchIn?: any;
     onRemove?: any;

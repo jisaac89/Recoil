@@ -3,7 +3,6 @@ import * as classNames from 'classnames';
 
 import {OOCSS} from '../OOCSS/OOCSS';
 
-
 import {IRecoil} from '../../index';
 
 export interface ILayerProps extends IRecoil{
@@ -33,7 +32,7 @@ export interface ILayerProps extends IRecoil{
   id?: string;
 }
 
-class Layer extends React.Component<ILayerProps, any> {
+export class Layer extends React.Component<ILayerProps, any> {
 
   public _animate : any;
   public _beforeAnimate : () => void;

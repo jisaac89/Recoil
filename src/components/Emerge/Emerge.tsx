@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import 'intersection-observer';
 import Observer from 'react-intersection-observer';
 
 export interface IEmergeProps {
@@ -19,7 +18,7 @@ export default class Emerge extends React.Component<IEmergeProps, {}> {
     public static defaultProps = {
       if: true,
       enter : 'fadeInUp',
-      exit : 'fadeOutDown',
+      exit : 'fadeOutDown', 
       delay: 300,
       overflow: false
     }

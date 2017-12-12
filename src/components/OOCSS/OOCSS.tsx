@@ -3,13 +3,9 @@ import * as React from 'react';
 import {allowedKeys, allowedValues, allowedMeasurements} from './Allowed';
 import {stepThrough} from './StepThrough';
 
-// State of the HOC you need to compute the InjectedProps
-interface State {
-    style?: Object
-}
 
 // Props you want the resulting component to take (besides the props of the wrapped component)
-interface ExternalProps {
+export interface ExternalProps {
     oocss?: string;
 }
 
@@ -20,13 +16,12 @@ export interface InjectedProps {
 }
 
 // Options for the HOC factory that are not dependent on props values
-interface Options {
+export interface Options {
     key?: string;
-}
+} 
 
 export const OOCSS = () => (Component) => {
-
-        const result = class YourComponentName extends React.Component<any, State> {
+    const result = class YourComponentName extends React.Component<any, any> {
 
             styleObject : Array<any>;
 
@@ -89,6 +84,6 @@ export const OOCSS = () => (Component) => {
                 return <Component {...this.props} style={Object.assign({},this.state.style, this.props.style)} />;
             }
         };
-
-        return result;
-    };
+    
+    return result;
+};

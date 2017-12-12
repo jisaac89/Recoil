@@ -384,10 +384,11 @@ const DataSource : any = (Component : JSX.Element) =>
         }
 
         previousPage() {
+            let pageNumber = this.state.page;
             this.props.onPageChange ? this.props.onPageChange(this.state.page - 1) : null;
             if (!this.props.serverSide) {
                 this.setState({
-                    page: this.state.page -= 1
+                    page: pageNumber -= 1
                 }, () => {
                     this.renderActiveRows(this.state.dataSource);
                 })
@@ -395,8 +396,9 @@ const DataSource : any = (Component : JSX.Element) =>
         }
 
         nextPage() {
+            let pageNumber = this.state.page;
             this.setState({
-                page: this.state.page += 1
+                page: pageNumber += 1
             }, () => {
                 this.renderActiveRows(this.state.dataSource);
                 this.props.onPageChange ? this.props.onPageChange(this.state.page) : null
