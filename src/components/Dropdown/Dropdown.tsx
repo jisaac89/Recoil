@@ -5,6 +5,8 @@ import Button from '../Button/Button';
 import { IButtonProps } from '../Button/Button';
 import { ITableProps } from '../Table/Table';
 
+import Tags from '../Tags/Tags';
+
 import DropdownContent from './DropdownContent';
 
 function guidGenerator() {
@@ -30,6 +32,7 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     disabled?: boolean;
     parentId?: any;
     hideRoot?: boolean;
+    tagSelected?: boolean;
 }
 
 export interface State {
@@ -131,6 +134,16 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         })
 
     }
+
+    removeSelectedItem(item) {
+        function remove(array, element) {
+            return array.filter(e => e !== element);
+        }
+
+        this.setState({
+            selectedElements: remove(this.state.selectedElements, item)
+        })
+    }
     render(): JSX.Element {
         const self = this;
         const props = self.props;
@@ -183,7 +196,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             sortKey,
             hideFooter,
             hideDropdownHeader,
-            hideRoot
+            hideRoot,
+            tagSelected
         } = props;
 
         let buttonProps = {
@@ -263,13 +277,16 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         let selectedTitle = rowIsSelectable === 'single' && this.state.selectedElements && this.state.selectedElements.length > 0 ? this.state.selectedElements[0] : props.title
 
         return (
-            <div
-                id={id}
+            <div className="dinblock" id={id}
                 ref='dropdown'
+                >
+                {tagSelected ? <Tags onRemove={this.removeSelectedItem.bind(this)} dataSource={this.state.selectedElements} /> : null}
+                <div
                 className={dropdownClass}
-            >
-                <Button {...buttonProps}>{selectedTitle}</Button>
-                <DropdownContent {...dropdownPortalProps} />
+                >
+                    <Button {...buttonProps}>{selectedTitle}</Button>
+                    <DropdownContent {...dropdownPortalProps} />
+                </div>
             </div>
         )
     }

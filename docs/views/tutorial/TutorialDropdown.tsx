@@ -128,17 +128,20 @@ export default class TutorialDropdown extends React.Component<any,any>{
               />
           </div>
 
-          <h3>Material</h3>
+          <h3>Multiselect with tags</h3>
           <div className="ptb20">
               <Dropdown 
                 className='w200px' 
-                rowIsSelectable="single" 
-                title="Select Month"
+                rowIsSelectable
+                title="Select Months"
                 hideHeader 
                 dataSource={months}
                 hidePageSize 
                 selectedKey={'name'}
                 shortcut={'g'}
+                tagSelected
+                theme="primary"
+                icon="star"
               />
           </div>
 
@@ -156,8 +159,6 @@ export default class TutorialDropdown extends React.Component<any,any>{
                 disabled={true}
               />
           </div>
-
-
           <h3>Loading</h3>
           <div className="ptb20">
               <Dropdown 
@@ -175,7 +176,7 @@ export default class TutorialDropdown extends React.Component<any,any>{
 
           <h3>Multi Select Mobile Dropdown</h3>
           <div className="ptb20">
-              <Dropdown shortcut={"u"} focusOnMount mobile={true} className='w200px' icon="users" iconPointer="down" rowIsSelectable title="Select Users" dataSource={users} columns={[{name:'name'}]} searchableKeys={["name"]} searchTitle="Find Users" />
+              <Dropdown tagSelected selectedKey="name" shortcut={"u"} focusOnMount mobile={true} className='w200px' icon="users" iconPointer="down" rowIsSelectable title="Select Users" dataSource={users} columns={[{name:'name'}]} searchableKeys={["name"]} searchTitle="Find Users" />
           </div>
 
           <h3>Custom Content</h3>

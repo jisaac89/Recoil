@@ -38,9 +38,7 @@ class Open extends React.Component<IOpenProps, any>{
      return(
        <div ref="Open" className={OpenClass} style={hasStyle}>
         {props.openToHeight ? 
-          <Layer fill flex overflow scroll>
-            {props.if ? props.children : null}
-          </Layer>
+           props.children
         : props.if ? props.children : null}
        </div>
      )

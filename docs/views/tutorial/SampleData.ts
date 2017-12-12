@@ -86,6 +86,10 @@ const SampleData = [
   {
     "index" : 21,
     "name" : "Wizard"
+  },
+  {
+    "index" : 22,
+    "name" : "Grid"
   }
 ];
 export default SampleData;
