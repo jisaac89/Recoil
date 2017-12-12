@@ -40,8 +40,8 @@
 
 .r-Button.primary:hover,
 .r-Button.primary:focus{
-  background:@primary--hover-background;
-  color: white;
+  background:@primary--hover-background !important;
+  color: white !important;
 }
 .r-Button.error:hover,
 .r-Button.error:focus{
@@ -59,6 +59,7 @@
 .r-Button.simple.primary:hover,
 .r-Button.simple.primary:focus{
   background:transparent !important;
+  color: @default-color !important;
 }
 
 .r-Button.large{
@@ -109,14 +110,14 @@
 /* --ghost button */
 
 .r-Button.simple{
-  color: @default-color;
+  color: @default-color !important;
   background: transparent !important;
   border-color: transparent !important;
 }
 
 .r-Button.simple:hover{
-  background: transparent;
-  color: @primary-background;
+  background: transparent !important;
+  color: @primary-background !important;
 }
 
 /*Pointers*/

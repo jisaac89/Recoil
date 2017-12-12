@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Align, Button, Toolbar,DatePicker, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../../src/index';
+import {Align, Button, Toolbar,DatePicker,Calendar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../../src/index';
 import TutorialView from './TutorialView';
 const ChecboxProperties = [
   {
@@ -68,6 +68,27 @@ export default class TutorialDatePicker extends React.Component<any,any>{
     let example = () => {
       return (
         <div>
+            <h3>Select</h3>
+            <Layer className="ptb20">
+                <Toolbar>
+                  <Button simple>Select Exp date:</Button>
+                  <DatePicker onSelect={this.selectFrom.bind(this)} selectedDay={this.state.from} mobile={props.mobile} />
+                </Toolbar>
+            </Layer>
+            <Layer className="ptb20">
+                <Toolbar>
+                  <Button simple>Select Exp date and time:</Button>
+                  <DatePicker theme="primary" selectTime={true} onSelect={this.selectFrom.bind(this)} selectedDay={this.state.from} mobile={props.mobile} />
+                </Toolbar>
+            </Layer>
+            <h3>Mobile</h3>
+            <Layer className="ptb20">
+                <Toolbar>
+                  <Button simple>From:</Button>
+                  <DatePicker mobile={true} onSelect={this.selectFrom.bind(this)} selectedDay={this.state.from} />
+                  
+                </Toolbar>
+            </Layer>
             <h3>Default</h3>
             <Layer className="pt20">
                 <Toolbar>

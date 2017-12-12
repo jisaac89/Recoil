@@ -5,15 +5,15 @@ import Button from '../Button/Button';
 export default class Months extends React.Component<any, any> {
     render() {
 
-        let {year, month, currentMonth, date, title, selectedDay} = this.props;
+        let {year, month, currentMonth, date, title, selectedDay, mobile} = this.props;
 
         if (currentMonth) {
             return (
                     <table className="w100 h100">
                         <tbody className="r-Calendar__body h100">
-                            <tr>
+                            {mobile ? <tr>
                                 <td colSpan={7} className="month-header">{title}</td>
-                            </tr>
+                            </tr> : null}
                                 {currentMonth.map((week: any, index: any): any => {
                                     return (
                                         <tr key={index}>

@@ -9,9 +9,7 @@ export default class SelectYear extends React.Component<any, any> {
 
         return (
             <Dropdown 
-                className="w100"
-                material 
-                block  
+                material   
                 title={year.toString()}
                 selectedElements={[year]} 
                 dataSource={availableYears(year)}

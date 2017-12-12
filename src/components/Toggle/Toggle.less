@@ -62,18 +62,24 @@
     content: "";
     width: 30px;
     height: 100%;
+    left:0;
+    -webkit-transform: translateX(0%);
+    -webkit-transition: all .4s ease;
 }
 
 .r-Toggle__input.checked + .r-Toggle__button:after {
-    left: 100%;
-    transform: translateX(-30px)
+  -webkit-transform: translateX(-100%);
+  -webkit-transition: all .4s ease;
+  left:100%
 }
 
 .r-Toggle__input + .r-Toggle__button:after {
     border-radius: 2em;
     background: @default--hover-color;
-    -webkit-transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
-    transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), padding 0.3s ease, margin 0.3s ease;
+
+  -webkit-transform: translateX(0%);
+  -webkit-transition: all .4s ease;
+
 }
 
 .r-Toggle__input + .r-Toggle__button:after {
@@ -181,7 +187,7 @@
 }
 
 .r-Toggle.large .r-Toggle__input:checked + .r-Toggle__button:after {
-    left: 100%;
+    right: 0;
     transform: translateX(-38px)
 }
 

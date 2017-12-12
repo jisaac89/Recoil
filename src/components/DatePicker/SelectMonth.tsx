@@ -10,8 +10,7 @@ export default class SelectMonth extends React.Component<any, any> {
         return (
             <Dropdown 
                 className="w100"
-                material 
-                block 
+                material  
                 title={monthNames[month]} 
                 selectedElements={[monthNames[month]]}
                 rowIsSelectable="single"

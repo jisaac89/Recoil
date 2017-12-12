@@ -119,6 +119,12 @@ export default class TutorialCard extends React.Component<any,any>{
               <p>With props array passed with an array value of <strong>['No', 'Yes']</strong>.</p>
               <Toggle array={['No', 'Yes']} className="mt10" />
             </Layer>
+
+            <Layer className="pb20">
+              <p>With props array passed with an array value of <strong>['No', 'Yes']</strong>.</p>
+              <Toggle array={['Tuesday', 'Wednesday']} className="mt10" />
+            </Layer>
+
             <Layer className="pb20">
               <p>With props iconArray passed with an array value of <strong>['times', 'check']</strong>.</p>
               <Toggle iconArray={['times', 'check']} className="mt10" />

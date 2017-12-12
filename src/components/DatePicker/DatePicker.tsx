@@ -4,6 +4,7 @@ import Dropdown from '../Dropdown/Dropdown';
 import Layer from '../Layer/Layer';
 
 import Calendar, {ICalendarProps, ICalendarState} from './Calendar';
+
 export {Calendar, ICalendarProps, ICalendarState};
 
 export interface IDatePickerProps {
@@ -12,15 +13,19 @@ export interface IDatePickerProps {
     onSelect? : (date: Date) => void;
     mobile? : boolean;
     selectedDay?: Date;
+    selectTime?: boolean;
+    open?: boolean;
+    theme?: 'primary' | 'success' | 'error' | 'default';
 }
 
 export default class DatePicker extends React.Component<IDatePickerProps, any>{
 
-    constructor(props?: ICalendarProps) {
+    constructor(props?: IDatePickerProps) {
         super(props);
         var date = this.props.date || new Date(Date.now());
         this.state = {
-            date : date
+            date : date,
+            open: props.open || false
         }
     }
     
@@ -31,6 +36,12 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
         this.props.onSelect ? this.props.onSelect(date) : null;
     }
 
+    toggleOpen(){
+        this.setState({
+            open: !this.state.open
+        })
+    }
+
     render() {
         let {date} = this.state;
         let {mobile} = this.props;
@@ -39,23 +50,32 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
                 icon="calendar" 
                 type="text" 
                 material 
-                title={getDateFormatted(this.state.date)}
+                title={getDateFormatted(this.state.date, this.props.selectTime)}
                 mobile={mobile}
+                open={this.state.open}
+                onOpen={this.toggleOpen.bind(this)}
+                theme={this.props.theme}
             >
                 <Layer>
-                    <Calendar selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
+                    <Calendar mobile={mobile} selectTime={this.props.selectTime} selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
                 </Layer>
             </Dropdown>
         );
     }
 }
 
-function getDateFormatted(date: Date) {
-    var dd = date.getDate();
-    var mm = date.getMonth() + 1; //January is 0!
-    var yyyy = date.getFullYear();
+function getDateFormatted(date: Date, selectTime) {
+    let dd = date.getDate(),
+        mm = date.getMonth() + 1,
+        yyyy = date.getFullYear(),
+        hours = date.getHours(),
+        minutes = date.getMinutes(),
+        day = dd < 10 ? '0' + dd : '' + dd,
+        month = mm < 10 ? '0' + mm : '' + mm;
 
-    var day = dd < 10 ? '0' + dd : '' + dd;
-    var month = mm < 10 ? '0' + mm : '' + mm;
-    return month + '/' + day + '/' + yyyy;
+    if (selectTime){
+        return month + '/' + day + '/' + yyyy + ' - ' + hours + ':' + minutes;
+    }else {
+        return month + '/' + day + '/' + yyyy;
+    }
 }

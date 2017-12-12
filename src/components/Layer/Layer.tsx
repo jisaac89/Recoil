@@ -213,8 +213,8 @@ Math['easeInOutQuad'] = function (t: number, b: number, c: number, d: number) {
 };
 
 Math['easeInCubic'] = function(t: number, b: number, c: number, d: number) {
-  var tc = (t/=d)*t*t;
-  return b+c*(tc);
+	t /= d;
+	return c*t*t*t + b;
 };
 
 Math['inOutQuintic'] = function(t: number, b: number, c: number, d: number) {
@@ -245,7 +245,7 @@ function scrollTo(scrollTop : number, element : HTMLElement, to : number, durati
     // increment the time
     currentTime += increment;
     // find the value with the quadratic in-out easing function
-    var val = Math['easeInCubic'](currentTime, start, change, duration);
+    var val = Math['inOutQuintic'](currentTime, start, change, duration);
     // move the document.body
     move(val);
     // do the animation unless its over

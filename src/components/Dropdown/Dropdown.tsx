@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 import Button from '../Button/Button';
-import {IButtonProps} from '../Button/Button';
+import { IButtonProps } from '../Button/Button';
 import { ITableProps } from '../Table/Table';
 
 import DropdownContent from './DropdownContent';
@@ -19,12 +19,12 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     type?: string;
     material?: boolean;
     dropDirection?: string;
-    onChange ? : (element ? : Array<Object>, key ? : string | number, selectedElements?: Array<Object>, id? : string) => void;
+    onChange?: (element?: Array<Object>, key?: string | number, selectedElements?: Array<Object>, id?: string) => void;
     fixedClose?: boolean;
     mobile?: boolean;
     open?: boolean;
-    onOpen?: (boolean: boolean)=> void;
-    onClose?: (boolean: boolean)=> void;
+    onOpen?: (boolean: boolean) => void;
+    onClose?: (boolean: boolean) => void;
     hideDropdownHeader?: boolean;
     titleKey?: string;
     disabled?: boolean;
@@ -60,7 +60,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             type: props.dataSource && props.type !== 'tree' ? "table" : props.type,
             selectedElements: props.selectedElements || [],
             scrollToId: props.scrollToId || '',
-            title : props.title || ''
+            title: props.title || ''
         }
     }
 
@@ -71,9 +71,14 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             })
         }
         if (nextProps.open !== this.state.dropdownIsOpen) {
-            this.setState({
-                dropdownIsOpen: nextProps.open
-            })
+            setTimeout(() => {
+                this.setState({
+                    dropdownIsOpen: nextProps.open
+                },
+                    () => {
+                        this.props.onOpen ? this.props.onOpen(nextProps.open) : null;
+                    })
+            }, 300);
         }
         if (nextProps.scrollToId !== this.state.scrollToId) {
             this.setState({
@@ -106,18 +111,18 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             () => {
                 this.props.onOpen ? this.props.onOpen(true) : null;
             })
-        
+
     }
     onRowSelect(element: Array<any>, index: string | number, selectedElements: Array<any>, id: string) {
         let {rowIsSelectable } = this.props;
 
         this.setState({
-            selectedElements : selectedElements
-        }, ()=>{
+            selectedElements: selectedElements
+        }, () => {
             if (rowIsSelectable === 'single') {
 
                 this.setState({
-                    scrollToId : this.props.selectedKey ? element[this.props.titleKey ? this.props.titleKey : this.props.selectedKey] : null
+                    scrollToId: this.props.selectedKey ? element[this.props.titleKey ? this.props.titleKey : this.props.selectedKey] : null
                 })
 
                 this.closeDropdown();
@@ -126,7 +131,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
         })
 
     }
-    render() : JSX.Element  {
+    render(): JSX.Element {
         const self = this;
         const props = self.props;
         let state = self.state;
@@ -241,7 +246,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             scrollIf: this.state.dropdownIsOpen,
             //
             parentId: parentId,
-            hideRoot : hideRoot
+            hideRoot: hideRoot
         }
 
         let dropdownClass = classNames(
@@ -255,13 +260,15 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             props.className
         );
 
+        let selectedTitle = rowIsSelectable === 'single' && this.state.selectedElements && this.state.selectedElements.length > 0 ? this.state.selectedElements[0] : props.title
+
         return (
-            <div 
-                id={id} 
-                ref='dropdown' 
+            <div
+                id={id}
+                ref='dropdown'
                 className={dropdownClass}
             >
-                <Button {...buttonProps}>{title}</Button>
+                <Button {...buttonProps}>{selectedTitle}</Button>
                 <DropdownContent {...dropdownPortalProps} />
             </div>
         )

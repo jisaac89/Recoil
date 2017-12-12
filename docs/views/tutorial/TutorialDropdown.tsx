@@ -142,6 +142,37 @@ export default class TutorialDropdown extends React.Component<any,any>{
               />
           </div>
 
+          <h3>Disabled</h3>
+          <div className="ptb20">
+              <Dropdown 
+                className='w200px' 
+                rowIsSelectable="single" 
+                title="Disabled"
+                hideHeader 
+                dataSource={months}
+                hidePageSize 
+                selectedKey={'name'}
+                shortcut={'g'}
+                disabled={true}
+              />
+          </div>
+
+
+          <h3>Loading</h3>
+          <div className="ptb20">
+              <Dropdown 
+                className='w200px' 
+                rowIsSelectable="single" 
+                title="Loading"
+                hideHeader 
+                dataSource={months}
+                hidePageSize 
+                selectedKey={'name'}
+                shortcut={'g'}
+                loading={true}
+              />
+          </div>
+
           <h3>Multi Select Mobile Dropdown</h3>
           <div className="ptb20">
               <Dropdown shortcut={"u"} focusOnMount mobile={true} className='w200px' icon="users" iconPointer="down" rowIsSelectable title="Select Users" dataSource={users} columns={[{name:'name'}]} searchableKeys={["name"]} searchTitle="Find Users" />
