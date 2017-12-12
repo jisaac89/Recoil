@@ -42,6 +42,12 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
         })
     }
 
+    toggleClose(){
+        this.setState({
+            open: false
+        })
+    }
+
     render() {
         let {date} = this.state;
         let {mobile} = this.props;
@@ -53,12 +59,11 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
                 title={getDateFormatted(this.state.date, this.props.selectTime)}
                 mobile={mobile}
                 open={this.state.open}
-                onOpen={this.toggleOpen.bind(this)}
+                onClick={this.toggleOpen.bind(this)}
+                onClose={this.toggleClose.bind(this)}
                 theme={this.props.theme}
             >
-                <Layer>
-                    <Calendar mobile={mobile} selectTime={this.props.selectTime} selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
-                </Layer>
+                <Calendar mobile={mobile} selectTime={this.props.selectTime} selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
             </Dropdown>
         );
     }
