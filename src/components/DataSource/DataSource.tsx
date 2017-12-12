@@ -13,6 +13,8 @@ export interface IDataSourceProps extends ITableProps {
     dataSource?: Array<Object> | Array<number> | Array<string>;
     columns?: Array<IColumn>;
     emptyText: string;
+    loading?: boolean;
+    loadingText?: string;
 }
 
 const DataSource : any = (Component : JSX.Element) =>
@@ -94,7 +96,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
             let {dataSource} = props;
             
-            dataSource && Object.keys(dataSource).length ? self.loadDataSource(dataSource) : self.loadDataSource([]);
+            dataSource && Object.keys(dataSource).length || dataSource && dataSource.length ? self.loadDataSource(dataSource) : self.loadDataSource([]);
         }
 
         loadDataSource<T>(dataSource : Array<T>) {
@@ -493,7 +495,16 @@ const DataSource : any = (Component : JSX.Element) =>
                 filterItems: this.filterItems.bind(this),
             }
 
-            if ((activeRows.length || dataSource.length) && columns.length) {
+            if (props.loading) {
+                return (
+                    <Emerge className="e-fill">
+                        <Toolbar block textCenter>
+                            <Button loading={true} block size="large" simple>{props.loadingText}</Button>
+                        </Toolbar> 
+                    </Emerge>  
+                )
+            }
+            else if ((activeRows.length || dataSource.length) && columns && columns.length) {
                 const newProps = Object.assign({}, props, self.state, renderedObject);
                 // clone the original component and add the new props
                 const updatedComponent = React.cloneElement(Component, newProps, Component.props);
