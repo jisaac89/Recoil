@@ -25,6 +25,7 @@ import TutorialCalendar from './tutorial/TutorialCalendar';
 import TutorialDatePicker from './tutorial/TutorialDatePicker';
 import TutorialRecoil from './tutorial/TutorialRecoil';
 import TutorialStepper from './tutorial/TutorialStepper';
+import TutorialGrid from './tutorial/TutorialGrid';
 
 import SampleData from './tutorial/SampleData';
 
@@ -133,6 +134,7 @@ export default class App extends React.Component<any, any> {
                 <TutorialToolbar></TutorialToolbar>
                 <TutorialTransform></TutorialTransform>
                 <TutorialWizard></TutorialWizard>
+                <TutorialGrid></TutorialGrid>
               </Wizard>
             </Layer>
             <SlideIn className='z5' if={!showModal && showMenu === false && showModal === false} from={'bottom'}>
