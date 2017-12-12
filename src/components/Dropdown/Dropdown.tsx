@@ -59,7 +59,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
     constructor(props: IDropdownProps) {
         super(props);
         this.state = {
-            dropdownIsOpen: false,
+            dropdownIsOpen: props.open || false,
             type: props.dataSource && props.type !== 'tree' ? "table" : props.type,
             selectedElements: props.selectedElements || [],
             scrollToId: props.scrollToId || '',
@@ -73,8 +73,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                 type: nextProps.type
             })
         }
-        if (nextProps.open !== this.state.dropdownIsOpen) {
-            setTimeout(() => {
+        if (!this.props.loading && nextProps.open !== this.state.dropdownIsOpen) {
                 this.setState({
                     dropdownIsOpen: nextProps.open
                 },
@@ -82,7 +81,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                         this.props.onOpen && this.state.dropdownIsOpen === true ? this.props.onOpen(true) : null;
                         this.props.onClose && this.state.dropdownIsOpen === false ? this.props.onOpen(false) : null;
                     })
-            }, 300);
         }
         if (nextProps.scrollToId !== this.state.scrollToId) {
             this.setState({
@@ -105,7 +103,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             dropdownIsOpen: false
         },
             () => {
-                this.props.onOpen ? this.props.onOpen(false) : null;
+                this.props.onClose ? this.props.onClose(false) : null;
             })
     }
     openDropdown() {
@@ -218,7 +216,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             loading,
             disabled,
             checkedTheme,
-            onClick: this.openDropdown.bind(this)
+            onClick: props.onClick || this.openDropdown.bind(this)
         }
 
         let dropdownPortalProps = {
@@ -275,7 +273,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             props.className
         );
 
-        let selectedTitle = rowIsSelectable === 'single' && this.state.selectedElements && this.state.selectedElements.length > 0 ? this.state.selectedElements[0] : props.title
+        let selectedTitle = rowIsSelectable === 'single' && this.state.selectedElements && this.state.selectedElements.length > 0 && !this.props.title ? this.state.selectedElements[0] : props.title
 
         if (tagSelected) {
             return (
