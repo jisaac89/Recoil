@@ -173,6 +173,8 @@ export default class TutorialButton extends React.Component<any,any>{
               </Toolbar>
             </Layer>
 
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/button1.png" />
+
             <h3 className="pb20">Adding Icons</h3>
             <p className="pb20">To add an icon to a button, just add an icon prop to it. Icon's are taken from font-awesome, you can omit the fa fa-, for example below it would be a Button compoent with a icon prop of "star"</p>
             <Layer className="pb20">
@@ -209,6 +211,8 @@ export default class TutorialButton extends React.Component<any,any>{
               </Toolbar>
             </Layer>
 
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/button2.png" />
+
             <h3 className="pb20">States</h3>
             <p>Buttons can have different states. You can pass a <strong>checked</strong>,<strong>disabled</strong> or <strong>simple</strong> prop..</p>
             <Layer className="ptb20">
@@ -219,6 +223,8 @@ export default class TutorialButton extends React.Component<any,any>{
                 <Button loading={true}>Loading...</Button>
               </Toolbar>
             </Layer>
+
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/button3.png" />
 
             <h3 className="mb20">Pointer</h3>
             <p>The <strong>pointer</strong> prop accepts a direction either <strong>left</strong> or <strong>right</strong>.</p>

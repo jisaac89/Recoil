@@ -92,6 +92,9 @@ export default class TutorialAlign extends React.Component<any,any>{
               <Button onClick={this.setColumns.bind(this, [1,3,4])}>[3,2,1]</Button>
               <Button onClick={this.setColumns.bind(this, [1,1,1])}>[1,1,1]</Button>
             </Toolbar>
+
+            
+
             <div className="ptb20">
               <div className="dark p10">
                 <Align columns={this.state.columns} margin={'10px'}>
@@ -100,6 +103,8 @@ export default class TutorialAlign extends React.Component<any,any>{
                   <Layer theme="light" className="p20">C</Layer>
                 </Align>
               </div>
+
+              <img className="w100 mt20" src="http://reactrecoil.io/imgs/align1.png" />
             </div>
 
             <h3 className="pb10">Vertical</h3>
@@ -112,6 +117,7 @@ export default class TutorialAlign extends React.Component<any,any>{
                   <Layer fill theme="light" className="p10">C</Layer>
                 </Align>
               </div>
+              <img className="w100 mt20" src="http://reactrecoil.io/imgs/align2.png" />
             </div>
 
 

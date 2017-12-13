@@ -59,10 +59,14 @@ export default class TutorialCheckbox extends React.Component<any,any>{
                 <Checkbox icon="check" title={'Select All'} />
             </Layer>
 
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/checkbox1.png" />
+
             <h3>Checked</h3>
             <Layer className="ptb20">
                 <Checkbox checked />
             </Layer>
+
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/checkbox2.png" />
 
             <h3>Sizes</h3>
             <Layer className="ptb20">
@@ -74,6 +78,8 @@ export default class TutorialCheckbox extends React.Component<any,any>{
                 </Toolbar>
             </Layer>
 
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/checkbox3.png" />
+
             <h3>Disabled</h3>
             <Layer className="ptb20">
                 <Toolbar spacing>
@@ -81,12 +87,16 @@ export default class TutorialCheckbox extends React.Component<any,any>{
                 </Toolbar>
             </Layer>
 
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/checkbox4.png" />
+
             <h3>Loading</h3>
             <Layer className="ptb20">
                 <Toolbar spacing>
                   <Checkbox size="large" loading={true} disabled icon={'star'} />
                 </Toolbar>
             </Layer>
+
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/checkbox5.png" />
 
             <h3>Themes</h3>
             <Layer className="ptb20">
@@ -96,6 +106,8 @@ export default class TutorialCheckbox extends React.Component<any,any>{
                   <Checkbox icon={'star'} theme="success" />
                 </Toolbar>
             </Layer>
+
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/checkbox6.png" />
         </div>
       )
     }

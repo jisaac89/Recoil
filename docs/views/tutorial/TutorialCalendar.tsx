@@ -58,6 +58,8 @@ export default class TutorialCalendar extends React.Component<any,any>{
             <Layer className="ptb20">
                 <Calendar calendarHeight="300px" />
             </Layer>
+
+            <img className="w100 mtb20" src="http://reactrecoil.io/imgs/calendar1.png" />
         </div>
       )
     }
