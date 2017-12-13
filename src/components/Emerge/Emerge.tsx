@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
+import 'intersection-observer';
 import Observer from 'react-intersection-observer';
 
 export interface IEmergeProps {
