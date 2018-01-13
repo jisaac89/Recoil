@@ -16,6 +16,10 @@ export interface IDatePickerProps {
     selectTime?: boolean;
     open?: boolean;
     theme?: 'primary' | 'success' | 'error' | 'default';
+    title?: string;
+    className?: string;
+    outline?: boolean;
+    size: "small" | "default" | 'large' | "xlarge";
 }
 
 export default class DatePicker extends React.Component<IDatePickerProps, any>{
@@ -50,18 +54,21 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
 
     render() {
         let {date} = this.state;
-        let {mobile} = this.props;
+        let {mobile, title, className, outline, size} = this.props;
         return (
             <Dropdown 
+                className={className}
                 icon="calendar" 
                 type="text" 
                 material 
-                title={getDateFormatted(this.state.date, this.props.selectTime)}
+                title={title ? title : getDateFormatted(this.state.date, this.props.selectTime)}
                 mobile={mobile}
                 open={this.state.open}
                 onClick={this.toggleOpen.bind(this)}
                 onClose={this.toggleClose.bind(this)}
                 theme={this.props.theme}
+                outline={outline}
+                size={size}
             >
                 <Calendar mobile={mobile} selectTime={this.props.selectTime} selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
             </Dropdown>

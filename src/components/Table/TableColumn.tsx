@@ -61,7 +61,7 @@ export default class TableColumn extends React.Component<ITableDataProps,ITableD
         if (isArray) {
             return (
                 <td tabIndex={-1} id={element} style={{width : column.width}}>
-                    <Button size='small' simple>{element}</Button>
+                    {column.template ?  column.template(element) : <Button size='small' simple>{element}</Button>}
                 </td>
             )           
         } else if (type !== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
