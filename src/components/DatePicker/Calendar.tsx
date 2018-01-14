@@ -71,7 +71,6 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
             period: 'AM'
         };
 
-        console.log(this.state.hour, this.state.minute);
     }
 
     componentWillReceiveProps(nextProps: ICalendarProps) {

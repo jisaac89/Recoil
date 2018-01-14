@@ -79,6 +79,10 @@ export default class Input extends React.Component<IInputProps, IInputState>{
         if (nextProps.value && nextProps.value.length) {
             this.setState({ checked: true })
         }
+
+        if (nextProps.focusOnMount !== this.props.focusOnMount){
+            this.focusOnMount();
+        }
     }
 
     public componentDidMount() {

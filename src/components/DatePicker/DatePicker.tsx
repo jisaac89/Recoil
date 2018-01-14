@@ -1,25 +1,22 @@
 ﻿import * as React from 'react';
 
-import Dropdown from '../Dropdown/Dropdown';
+import Dropdown, {IDropdownProps} from '../Dropdown/Dropdown';
 import Layer from '../Layer/Layer';
 
 import Calendar, {ICalendarProps, ICalendarState} from './Calendar';
 
 export {Calendar, ICalendarProps, ICalendarState};
 
-export interface IDatePickerProps {
+export interface IDatePickerProps extends IDropdownProps {
     mask?: string;
     date?: Date | string;
     onSelect? : (date: Date) => void;
-    mobile? : boolean;
-    selectedDay?: Date;
     selectTime?: boolean;
     open?: boolean;
-    theme?: 'primary' | 'success' | 'error' | 'default';
     title?: string;
     className?: string;
     outline?: boolean;
-    size: "small" | "default" | 'large' | "xlarge";
+    onClick ?: () => void;
 }
 
 export default class DatePicker extends React.Component<IDatePickerProps, any>{
@@ -32,6 +29,21 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
             open: props.open || false
         }
     }
+
+    componentWillReceiveProps(nextProps){
+        const self = this;
+        if(nextProps.open !== this.props.open) {
+            self.setState({
+                open : nextProps.open
+            })
+        }
+
+        if(nextProps.date !== this.props.date){
+            self.setState({
+                date: nextProps.date
+            })
+        }
+    }
     
     onSelect = (date: Date) => {
         this.setState({
@@ -41,9 +53,14 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
     }
 
     toggleOpen(){
-        this.setState({
-            open: !this.state.open
-        })
+        if(this.props.onClick){
+            this.props.onClick();
+        } else {
+            this.setState({
+                open: !this.state.open
+            })
+        }
+
     }
 
     toggleClose(){
@@ -52,9 +69,13 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
         })
     }
 
+    onOpen(boolean){
+        return null;
+    }
+
     render() {
         let {date} = this.state;
-        let {mobile, title, className, outline, size} = this.props;
+        let {mobile, title, className, outline, size, block} = this.props;
         return (
             <Dropdown 
                 className={className}
@@ -69,8 +90,10 @@ export default class DatePicker extends React.Component<IDatePickerProps, any>{
                 theme={this.props.theme}
                 outline={outline}
                 size={size}
+                block={block}
+                onOpen={this.onOpen.bind(this)}
             >
-                <Calendar mobile={mobile} selectTime={this.props.selectTime} selectedDay={this.props.selectedDay} inDropdown={true} date={date} onSelect={this.onSelect} />
+                <Calendar mobile={mobile} selectTime={this.props.selectTime} selectedDay={this.state.date} inDropdown={true} date={date} onSelect={this.onSelect} />
             </Dropdown>
         );
     }
