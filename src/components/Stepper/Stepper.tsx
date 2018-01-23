@@ -19,6 +19,8 @@ class Stepper extends React.Component<IStepperProps, any>{
      const self = this;
      const props = self.props;
 
+     let {className} = props;
+
      let itemArray : Array<any> = [];
 
      let createList = (item : Array<any>, index: string | number) => {
@@ -48,7 +50,7 @@ class Stepper extends React.Component<IStepperProps, any>{
      props.children.map(createList);
 
      return(
-         <div className="r-Stepper dblock w100">
+         <div className={"r-Stepper dblock w100 " + className}>
              {props.title ? <h5>{props.title}</h5> : null}
              <Align vertical={props.vertical}>
                  {itemArray}
