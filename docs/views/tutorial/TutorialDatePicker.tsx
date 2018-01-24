@@ -72,20 +72,20 @@ export default class TutorialDatePicker extends React.Component<any,any>{
             <Layer className="ptb20">
                 <Toolbar>
                   <Button simple>Select Exp date:</Button>
-                  <DatePicker onSelect={this.selectFrom.bind(this)} selectedDay={this.state.from} mobile={props.mobile} />
+                  <DatePicker onSelect={this.selectFrom.bind(this)} date={this.state.from} mobile={props.mobile} />
                 </Toolbar>
             </Layer>
             <Layer className="ptb20">
                 <Toolbar>
                   <Button simple>Select Exp date and time:</Button>
-                  <DatePicker theme="primary" selectTime={true} onSelect={this.selectFrom.bind(this)} selectedDay={this.state.from} mobile={props.mobile} />
+                  <DatePicker theme="primary" selectTime={true} onSelect={this.selectFrom.bind(this)} date={this.state.from} mobile={props.mobile} />
                 </Toolbar>
             </Layer>
             <h3>Mobile</h3>
             <Layer className="ptb20">
                 <Toolbar>
                   <Button simple>From:</Button>
-                  <DatePicker mobile={true} onSelect={this.selectFrom.bind(this)} selectedDay={this.state.from} />
+                  <DatePicker mobile={true} onSelect={this.selectFrom.bind(this)} date={this.state.from} />
                   
                 </Toolbar>
             </Layer>
@@ -93,9 +93,9 @@ export default class TutorialDatePicker extends React.Component<any,any>{
             <Layer className="pt20">
                 <Toolbar>
                   <Button simple>From:</Button>
-                  <DatePicker onSelect={this.selectFrom.bind(this)} selectedDay={this.state.from} mobile={props.mobile} />
+                  <DatePicker onSelect={this.selectFrom.bind(this)} date={this.state.from} mobile={props.mobile} />
                   <Button simple>To:</Button>
-                  <DatePicker onSelect={this.selectTo.bind(this)} selectedDay={this.state.to} mobile={props.mobile} />
+                  <DatePicker onSelect={this.selectTo.bind(this)} date={this.state.to} mobile={props.mobile} />
                 </Toolbar>
             </Layer>
         </div>
