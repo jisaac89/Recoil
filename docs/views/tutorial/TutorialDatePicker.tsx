@@ -86,7 +86,6 @@ export default class TutorialDatePicker extends React.Component<any,any>{
                 <Toolbar>
                   <Button simple>From:</Button>
                   <DatePicker mobile={true} onSelect={this.selectFrom.bind(this)} date={this.state.from} />
-                  
                 </Toolbar>
             </Layer>
             <h3>Default</h3>
