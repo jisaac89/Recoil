@@ -83,7 +83,7 @@ export default class Notifications extends React.Component<INotificationsProps, 
         return (
             <div className={notificationClass}>
                 {dataSource.map((item, index) => {
-                    return <Notification item={item} key={item.id || index} />;
+                    return <Notification item={item} key={index} />;
                 }) }
             </div>
         );

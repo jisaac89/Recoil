@@ -3,21 +3,21 @@ import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 import * as classNames from 'classnames';
 
-import {IRecoil} from '../../index';
+import { IRecoil } from '../../index';
 
-export interface ICheckboxProps extends IRecoil{
-  icon? : string;
-  onChange? : (value: boolean, event?: React.MouseEvent<MouseEvent>) => void;
-  title? : string;
+export interface ICheckboxProps extends IRecoil {
+  icon?: string;
+  onChange?: (value: boolean, event?: React.MouseEvent<MouseEvent>) => void;
+  title?: string;
   loading?: boolean;
 }
 
 export interface ICheckboxState {
-  checked? : boolean;
+  checked?: boolean;
 }
 
 export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState>{
-  constructor(props : ICheckboxProps) {
+  constructor(props: ICheckboxProps) {
     super(props);
     this.state = {
       checked: props.checked || false
@@ -43,10 +43,10 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
       checked: true
     })
   }
-  
-  componentWillReceiveProps(nextProps : ICheckboxProps){
+
+  componentWillReceiveProps(nextProps: ICheckboxProps) {
     this.setState({
-      checked : nextProps.checked !== this.state.checked ? nextProps.checked : this.state.checked
+      checked: nextProps.checked !== this.state.checked ? nextProps.checked : this.state.checked
     })
   }
 
@@ -55,24 +55,24 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     const self = this;
     const props = self.props;
     let state = self.state;
-    let {checked} = state;
+    let { checked } = state;
 
     let checkboxClass = classNames(
       'r-Checkbox',
-      {'disabled' : (props.disabled)},
-      {'e-checked' : (this.state.checked)}
+      { 'disabled': (props.disabled) },
+      { 'e-checked': (this.state.checked) }
     )
 
     let checkboxProps = {
-      disabled:props.disabled,
+      disabled: props.disabled,
       loading: props.loading,
-      size:props.size,
-      onClick:this.toggleChecked.bind(this),
+      size: props.size,
+      onClick: this.toggleChecked.bind(this),
       theme: props.theme ? props.theme : checked ? 'primary' : 'default'
     }
 
     return (
-      <Toolbar flush>
+      <Toolbar flush className="r-Checkbox__Wrapper">
         <Button
           className={checkboxClass}
           icon={props.icon}
