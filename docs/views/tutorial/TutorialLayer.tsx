@@ -175,11 +175,13 @@ export default class TutorialLayer extends React.Component<any, any>{
                       Header
                     </Layer>
 
-                    <Open openToHeight={!this.state.isFlexed ? '42px' : '83.33px'} if={!this.state.contentClosed}>
-                      <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
-                        Content
-                      </Layer>
-                    </Open>
+                    <Layer className="mb5">
+                      <Open openToHeight={!this.state.isFlexed ? '45px' : '80.33px'} if={!this.state.contentClosed}>
+                        <Layer fill border flexCenter theme="dark">
+                          Content
+                        </Layer>
+                      </Open>
+                    </Layer>
 
                     <Layer border flexCenter theme="dark" fill={state.isFlexed} className="p10">
                       Footer
@@ -221,11 +223,13 @@ export default class TutorialLayer extends React.Component<any, any>{
                 <Layer overflow theme="light" fill flex={state.isFlexed} className="p10">
                   <Transform fill flex={state.isFlexed} if={state.showSidebar} push={'right'} amount={'100px'}>
 
-                    <Open openToHeight={!this.state.isFlexed ? '38px' : state.showNotify ? '172px' : '210px'} if={!this.state.contentClosed}>
-                      <Layer flex border flexCenter theme="dark" fill={state.isFlexed} className="p10 mb5">
-                        Content
-                      </Layer>
-                    </Open>
+                    <Layer className={this.state.contentClosed ? "mb0" : "mb10"}>
+                      <Open openToHeight={!this.state.isFlexed ? '38px' : state.showNotify ? '172px' : '210px'} if={!this.state.contentClosed}>
+                        <Layer flex border flexCenter theme="dark" fill={state.isFlexed} className="p10">
+                          Content
+                        </Layer>
+                      </Open>
+                    </Layer>
 
                     <Layer border dimensions={['100%', state.contentClosed && state.isFlexed ? '100%' : '38px', 1]} flexCenter theme="dark" className="p10">
                       Footer
