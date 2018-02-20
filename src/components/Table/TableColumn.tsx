@@ -1,28 +1,26 @@
 import * as React from 'react';
 import Dropdown from '../Dropdown/Dropdown';
-import {IColumn} from './IColumn';
+import { IColumn } from './IColumn';
 import Button from '../Button/Button';
 
-import Shrink from '../Shrink/Shrink';
-
 export interface ITableDataProps {
-    value ?: Array<any>;
+    value?: Array<any>;
     column?: IColumn;
-    element? : any;
-    hideColumns? : Array<string>;
-    isArray? : boolean;
+    element?: any;
+    hideColumns?: Array<string>;
+    isArray?: boolean;
 }
 
 export interface ITableDataState {
-    type ?: string;
+    type?: string;
 }
 
-export default class TableColumn extends React.Component<ITableDataProps,ITableDataState>{
+export default class TableColumn extends React.Component<ITableDataProps, ITableDataState>{
 
-    constructor(){
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            type : ''
+            type: ''
         }
     }
 
@@ -33,11 +31,11 @@ export default class TableColumn extends React.Component<ITableDataProps,ITableD
     renderType() {
         const self = this;
         const props = self.props;
-        let {value} = props;
-        
+        let { value } = props;
+
         if (value instanceof Array) {
             this.setState({
-                type : 'Array'
+                type: 'Array'
             })
         } else if (typeof value === 'object' && value !== null) {
             this.setState({
@@ -53,20 +51,20 @@ export default class TableColumn extends React.Component<ITableDataProps,ITableD
     render() {
         const self = this;
         let state = self.state;
-        let {type} = state;
-        let {value, column, element, hideColumns, isArray} = self.props;
+        let { type } = state;
+        let { value, column, element, hideColumns, isArray } = self.props;
 
         let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(column.title ? column.title : column.name);
 
         if (isArray) {
             return (
-                <td tabIndex={-1} id={element} style={{width : column.width}}>
-                    {column.template ?  column.template(element) : <Button size='small' simple>{element}</Button>}
+                <td tabIndex={-1} id={element} style={{ width: column.width }}>
+                    {column.template ? column.template(element) : <Button size='small' simple>{element}</Button>}
                 </td>
-            )           
+            )
         } else if (type !== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
-            return ( 
-                <td tabIndex={-1} id={value ? value.toString() : null} style={{width : column.width}}>
+            return (
+                <td tabIndex={-1} id={value ? value.toString() : null} style={{ width: column.width }}>
                     {column.template ? column.template(element) : type === 'Value' ? <Button size='small' simple>{value}</Button> ? <Button size='small' simple>{value.toString()}</Button> : null : <Dropdown className="r-Table-Dropdown" material dataSource={value} title={type} />}
                 </td>
             )

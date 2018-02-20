@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import {arraysEqual, search, branchIn} from '../Utils';
+import { arraysEqual, search, branchIn } from '../Utils';
 
 import { ITableProps } from '../Table/Table';
 import Emerge from '../Emerge/Emerge';
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
-import {IColumn} from './IColumn';
+import { IColumn } from './IColumn';
 
 export interface IDataSourceProps extends ITableProps {
     // initial dataSource loaded as prop
@@ -17,14 +17,14 @@ export interface IDataSourceProps extends ITableProps {
     loadingText?: string;
 }
 
-const DataSource : any = (Component : JSX.Element) =>
+const DataSource: any = (Component: JSX.Element) =>
     class Enhance extends React.Component<IDataSourceProps, any> {
 
         public static defaultProps = {
             emptyText: 'dataSource is empty'
         }
 
-        constructor(props : IDataSourceProps) {
+        constructor(props: IDataSourceProps) {
             super(props);
 
             this.state = {
@@ -51,9 +51,9 @@ const DataSource : any = (Component : JSX.Element) =>
             }
         }
 
-        componentWillReceiveProps(nextProps : IDataSourceProps) {
+        componentWillReceiveProps(nextProps: IDataSourceProps) {
 
-            let {dataSource, sortKey} = nextProps;
+            let { dataSource, sortKey } = nextProps;
 
             this.setState({
                 page: nextProps.page !== this.props.page ? nextProps.page : this.state.page,
@@ -94,25 +94,22 @@ const DataSource : any = (Component : JSX.Element) =>
             const self = this;
             const props = self.props;
 
-            let {dataSource} = props;
-            
+            let { dataSource } = props;
+
             dataSource && Object.keys(dataSource).length || dataSource && dataSource.length ? self.loadDataSource(dataSource) : self.loadDataSource([]);
         }
 
-        loadDataSource<T>(dataSource : Array<T>) {
+        loadDataSource<T>(dataSource: Array<T>) {
             const self = this;
 
             let dataSourceIsObject = typeof dataSource === 'object';
             let dataSourceIsArray = dataSource instanceof Array;
             let dataSourceIsArrayOfStingsOrNumbers = typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number';
-            let updatedDataSource = [];
 
-            let {sortKey} = this.props;
-            let {sortType} = this.state;
+            let { sortKey } = this.props;
+            let { sortType } = this.state;
 
-
-            let setDataSourceState = (dataSource : Array<T> | Array<Array<T>>, isArray : boolean) => {
-                updatedDataSource = dataSource;
+            let setDataSourceState = (dataSource: Array<T> | Array<Array<T>>, isArray: boolean) => {
                 self.setState({
                     dataSource: dataSource,
                     isArray: isArray
@@ -151,7 +148,7 @@ const DataSource : any = (Component : JSX.Element) =>
         sortDataSource(dataSource: Array<any>, sortType: string, sortKey: string) {
             const self = this;
 
-            let {searchedItems, searchTerm} = self.state;
+            let { searchedItems, searchTerm } = self.state;
 
             let sortOrderSearchedItems: Array<any>;
             let sortOrderDataSource: Array<any>;
@@ -208,20 +205,20 @@ const DataSource : any = (Component : JSX.Element) =>
             const props = self.props;
             let state = self.state;
 
-            let {columns} = props;
-            let {isArray} = state;
+            let { columns } = props;
+            let { isArray } = state;
 
             let columnsArray: Array<any>;
 
             // columns are defined
-            if (dataSource.length > 0){
+            if (dataSource.length > 0) {
                 if (columns) {
                     columnsArray = columns;
                 }
                 // else automatically create them
                 else {
                     columnsArray = [];
-    
+
                     if (isArray) {
                         columnsArray.push({ name: '_Array' });
                     } else {
@@ -240,13 +237,13 @@ const DataSource : any = (Component : JSX.Element) =>
         renderActiveRows(dataSource: Array<any>) {
             const self = this;
             const props = self.props;
-            let {rowCount} = props;
+            let { rowCount } = props;
 
-            let activeRows : Array<any> = [];
+            let activeRows: Array<any> = [];
 
             let numberPerPage, numberOfPages, renderedPage;
 
-            let {page, pageSize} = self.state;
+            let { page, pageSize } = self.state;
 
             if (this.state.searchTerm !== '') {
                 renderedPage = this.state.searchedItems;
@@ -283,7 +280,7 @@ const DataSource : any = (Component : JSX.Element) =>
         }
 
         detailTemplateToggleAll(dataSource: Array<any>) {
-            let {detailTemplateSelectedElements} = this.state;
+            let { detailTemplateSelectedElements } = this.state;
 
             this.setState({
                 detailTemplateSelectedElements: arraysEqual(dataSource, detailTemplateSelectedElements) ? [] : dataSource
@@ -292,11 +289,11 @@ const DataSource : any = (Component : JSX.Element) =>
 
         detailTemplateToggleSelectedElements(element: Array<any>) {
             const self = this;
-            let {detailTemplateOpenOnRowSelect, selectedKey} = this.props;
-            let {detailTemplateSelectedElements} = self.state;
+            let { detailTemplateOpenOnRowSelect, selectedKey } = this.props;
+            let { detailTemplateSelectedElements } = self.state;
 
             let selectedElementsArray: any;
-             
+
             let setSelectedElementsState = (data: Array<any>) => {
                 self.setState({
                     detailTemplateSelectedElements: data
@@ -311,7 +308,7 @@ const DataSource : any = (Component : JSX.Element) =>
             }
 
             if (selectedElementsArray.includes(selectedKey ? element[selectedKey] : element)) {
-                selectedElementsArray.map((data: string, key : string | number) => {
+                selectedElementsArray.map((data: string, key: string | number) => {
                     if (data === selectedKey ? element[selectedKey] : element) {
                         selectedElementsArray.splice(key, 1);
                         setSelectedElementsState(selectedElementsArray)
@@ -331,7 +328,7 @@ const DataSource : any = (Component : JSX.Element) =>
         }
 
         selectAll(dataSource: Array<any>) {
-            let {selectedElements} = this.state;
+            let { selectedElements } = this.state;
 
             this.setState({
                 selectedElements: arraysEqual(dataSource, selectedElements) ? [] : dataSource
@@ -340,8 +337,8 @@ const DataSource : any = (Component : JSX.Element) =>
 
         toggleSelectedElements(element: Array<any>, index: string | number) {
             const self = this;
-            let {selectedElements} = self.state;
-            let {rowIsSelectable, onCheck, selectedKey} = self.props;
+            let { selectedElements } = self.state;
+            let { rowIsSelectable, onCheck, selectedKey } = self.props;
             let selectedElement = selectedKey ? element[selectedKey] : element;
             let selectedElementsArray: any;
 
@@ -358,7 +355,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
                         self.setState({
                             selectedElements: selectedElementsArray
-                        },()=>{
+                        }, () => {
                             this.props.onRowSelect ? this.props.onRowSelect(element, index, selectedElementsArray) : null;
                         })
                     }
@@ -368,7 +365,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
                 self.setState({
                     selectedElements: selectedElementsArray
-                },()=>{
+                }, () => {
                     this.props.onRowSelect ? this.props.onRowSelect(element, index, selectedElementsArray) : null;
                 })
 
@@ -408,7 +405,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
         }
 
-        lastPage(numberOfPages : number) {
+        lastPage(numberOfPages: number) {
             this.setState({
                 page: numberOfPages - 1
             }, () => {
@@ -417,7 +414,7 @@ const DataSource : any = (Component : JSX.Element) =>
             this.props.onPageChange ? this.props.onPageChange(numberOfPages - 1) : null
         }
 
-        gotoPage(i : number) {
+        gotoPage(i: number) {
             this.setState({
                 page: i,
                 pageSize: this.state.pageSize,
@@ -426,7 +423,7 @@ const DataSource : any = (Component : JSX.Element) =>
             })
         }
 
-        changePageSize(pageSize : any) {
+        changePageSize(pageSize: any) {
             this.setState({
                 pageSize: pageSize,
                 page: 0
@@ -437,7 +434,7 @@ const DataSource : any = (Component : JSX.Element) =>
             this.props.onPageSizeChange ? this.props.onPageSizeChange(pageSize) : null;
         }
 
-        sortCollection(dataSource: Array<any>, key: string, sortType : string) {
+        sortCollection(dataSource: Array<any>, key: string, sortType: string) {
             const self = this;
 
             let sortKey = this.props.sortKey ? this.props.sortKey : key;
@@ -473,7 +470,7 @@ const DataSource : any = (Component : JSX.Element) =>
 
             const self = this;
             const props = self.props;
-            let {columns, dataSource, activeRows} = self.state;
+            let { columns, dataSource, activeRows } = self.state;
             //let {emptyText} = props;
 
             let renderedObject = {
@@ -500,8 +497,8 @@ const DataSource : any = (Component : JSX.Element) =>
                     <Emerge className="e-fill">
                         <Toolbar block textCenter>
                             <Button loading={true} block size="large" simple>{props.loadingText}</Button>
-                        </Toolbar> 
-                    </Emerge>  
+                        </Toolbar>
+                    </Emerge>
                 )
             }
             else if ((activeRows.length || dataSource.length) && columns && columns.length) {
@@ -515,11 +512,11 @@ const DataSource : any = (Component : JSX.Element) =>
                     <Emerge className="e-fill">
                         <Toolbar block textCenter>
                             <Button block size="large" simple>{props.emptyText}</Button>
-                        </Toolbar> 
-                    </Emerge>  
+                        </Toolbar>
+                    </Emerge>
                 )
             }
         }
-};
+    };
 
 export default DataSource;

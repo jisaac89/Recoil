@@ -22,8 +22,8 @@ export interface INotificationState {
 }
 
 class Notification extends React.Component<INotificationProps, INotificationState>{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             view: 'visible'
         };
@@ -72,7 +72,7 @@ export interface INotificationsState {
 export default class Notifications extends React.Component<INotificationsProps, INotificationsState>{
 
     render() {
-        let {className, dataSource} = this.props;
+        let { className, dataSource } = this.props;
 
         let notificationClass = classNames(
             'r-Notifications',
@@ -84,7 +84,7 @@ export default class Notifications extends React.Component<INotificationsProps, 
             <div className={notificationClass}>
                 {dataSource.map((item, index) => {
                     return <Notification item={item} key={index} />;
-                }) }
+                })}
             </div>
         );
     }

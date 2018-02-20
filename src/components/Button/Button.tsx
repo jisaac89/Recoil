@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 
@@ -101,18 +100,17 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
   }
 
-  public startShortcutListener(e) {
-    const context = this;
-    const props = context.props;
-    let state = context.state;
-    const refButton = ReactDOM.findDOMNode<HTMLElement>(context.refs["button"]);
-    context.setState({
-      showShortcut: e.shiftKey ? true : false
-    })
-    if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase()) {
-      refButton.focus();
-    }
-  }
+  // public startShortcutListener(e) {
+  //   const context = this;
+  //   const props = context.props;
+  //   const refButton: any = ReactDOM.findDOMNode(context.refs["button"]);
+  //   context.setState({
+  //     showShortcut: e.shiftKey ? true : false
+  //   })
+  //   if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase()) {
+  //     refButton.focus();
+  //   }
+  // }
 
   // public componentWillUnmount() {
   //   if (this.props.shortcut) {

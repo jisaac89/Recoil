@@ -3,24 +3,24 @@ import * as classNames from 'classnames';
 
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
-import {IRecoil} from '../../index';
+import { IRecoil } from '../../index';
 
 export interface ILoadingProps extends IRecoil {
-  children ? : any;
-  if ?: boolean;
-  src? : string;
-  title? : string;
+  children?: any;
+  if?: boolean;
+  src?: string;
+  title?: string;
   width?: number;
   height?: number;
   icon?: string;
 }
 
-export interface ILoadingState {}
+export interface ILoadingState { }
 
 export default class Loading extends React.Component<ILoadingProps, ILoadingState> {
-  public state : ILoadingState;
+  public state: ILoadingState;
 
-  constructor (props : ILoadingProps) {
+  constructor(props: ILoadingProps) {
     super(props);
   }
 
@@ -29,24 +29,24 @@ export default class Loading extends React.Component<ILoadingProps, ILoadingStat
     const self = this;
     const props = self.props;
 
-    let {src, size, theme, title} = props;
+    let { src, size, icon } = props;
 
     let loadingClass = classNames(
       'r-Loading',
       'loader',
       "dinblock",
       props.className,
-      props.size
+      size
     )
 
     if (props.if) {
       if (src)
-          return <div className={loadingClass}><img height={props.height} width={props.width} src={src} /></div>;
+        return <div className={loadingClass}><img height={props.height} width={props.width} src={src} /></div>;
       else {
         return (
-           <div className={loadingClass}>
+          <div className={loadingClass}>
             <i className="fa fa-circle-o-notch fa-spin"></i>
-            {this.props.icon ? <Emerge enter="fadeIn"><Button size={props.size} simple className="center-icon" icon={this.props.icon}></Button></Emerge> : null}
+            {icon ? <Emerge enter="fadeIn"><Button size={size} simple className="center-icon" icon={icon}></Button></Emerge> : null}
           </div>
         )
       }

@@ -12,8 +12,8 @@ export default class Fixed extends React.Component<IFixedProps, any> {
         fixedNode: (HTMLElement);
     }
 
-    constructor () {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             default: 0,
             node: null,
@@ -32,29 +32,29 @@ export default class Fixed extends React.Component<IFixedProps, any> {
 
     handleShortcuts() {
         const self = this;
-            var svg = this.refs.fixedNode;
-            if (svg.getBoundingClientRect().top <= 2) {
+        var svg = this.refs.fixedNode;
+        if (svg.getBoundingClientRect().top <= 2) {
             self.setState({
-                fixed: true 
-            })   
+                fixed: true
+            })
         }
     }
 
     public render() {
 
-    const self = this;
-    const props = self.props;
+        const self = this;
+        const props = self.props;
 
-    let {fixed} = self.state;
-    let fixedClass = classNames(
-        'r-Fixed',
-        {'e-fixed' :  (fixed === true)}
-    )
+        let { fixed } = self.state;
+        let fixedClass = classNames(
+            'r-Fixed',
+            { 'e-fixed': (fixed === true) }
+        )
 
-    return (
-        <div ref="fixedNode" className={fixedClass}>
-            {props.children}
-        </div>
-    )
-  }
+        return (
+            <div ref="fixedNode" className={fixedClass}>
+                {props.children}
+            </div>
+        )
+    }
 }

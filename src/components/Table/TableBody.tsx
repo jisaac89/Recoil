@@ -4,10 +4,7 @@ import TableRow from './TableRow';
 import TableDetail from './TableDetail';
 import TableSelectable from './TableSelectable';
 
-
-import Shrink from '../Shrink/Shrink';
-
-import {IColumn} from './IColumn';
+import { IColumn } from './IColumn';
 
 export interface TableBodyProps {
     id?: string;
@@ -27,40 +24,39 @@ export interface TableBodyProps {
     toggleSelectedElements?: Array<any>;
     rowIsSelectable?: boolean | string;
     checkable?: boolean;
-    hideColumns ? : Array<any>;
-    onRowSelect ? : (element ? : Array<any>, key ? : string | number, selectedElements?: Array<any> | Object, id? : string | number) => void;   
+    hideColumns?: Array<any>;
+    onRowSelect?: (element?: Array<any>, key?: string | number, selectedElements?: Array<any> | Object, id?: string | number) => void;
     isArray?: boolean;
     detailTemplateOpenOnRowSelect?: boolean | "single";
     selectedKey?: string;
-    filterRow?: (item : Object) => void;
+    filterRow?: (item: Object) => void;
     filterOpenDetailTemplate?: (item: Object) => void;
     serverSide?: boolean;
     disableSelectedElements?: Array<any>;
 }
 
-export default class TableBody extends React.Component<TableBodyProps,any>{
+export default class TableBody extends React.Component<TableBodyProps, any>{
 
     render() {
 
         const self = this;
         const props = self.props;
-        
+
         let {
-            columns, 
+            columns,
             detailTemplate,
             activeRows,
             selectedElements,
             dataSource,
             serverSide,
-            detailTemplateOpenAll, 
-            detailTemplateToggleSelectedElements, 
+            detailTemplateOpenAll,
+            detailTemplateToggleSelectedElements,
             detailTemplateSelectedElements,
             detailTemplateHideToggle,
             disableSelectedElements,
             toggleSelectedElements,
             rowIsSelectable,
             id,
-            portal,
             checkable,
             hideColumns,
             onRowSelect,
@@ -71,7 +67,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
             filterOpenDetailTemplate
         } = props;
 
-        let columnArray : Array<any> = [];
+        let columnArray: Array<any> = [];
         let key;
 
         let data;
@@ -81,7 +77,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
         } else {
             data = activeRows;
         }
-         
+
         if (data instanceof Array) {
             data.map((element, index) => {
 
@@ -125,7 +121,7 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
                 let keyDetail = key + '_detail';
                 let filteredElement;
 
-                filterRow ? filteredElement = filterRow(element) : filteredElement = false; 
+                filterRow ? filteredElement = filterRow(element) : filteredElement = false;
                 if (filteredElement === false) {
                     columnArray.push(
                         [
@@ -139,10 +135,10 @@ export default class TableBody extends React.Component<TableBodyProps,any>{
         }
 
         return (
-            <tbody 
+            <tbody
                 tab-index={-1}
             >
-                {columnArray}            
+                {columnArray}
             </tbody>
         )
     }

@@ -5,9 +5,9 @@ import DropdownContent from './DropdownContent';
 
 export default class DropdownPortal extends React.Component<any, any>{
 
-    portalElement : HTMLElement = null;
+    portalElement: HTMLElement = null;
 
-    constructor(props :any) {
+    constructor(props: any) {
         super(props);
         this.state = {
             position: null
@@ -19,7 +19,7 @@ export default class DropdownPortal extends React.Component<any, any>{
     }
 
     getDropdownPosition() {
-        let element = ReactDOM.findDOMNode<HTMLInputElement>(this.props.element);
+        let element: React.ReactInstance = ReactDOM.findDOMNode(this.props.element);
         let position = element.getBoundingClientRect();
         this.setState({
             position: [position.top, position.left]
@@ -126,7 +126,7 @@ export default class DropdownPortal extends React.Component<any, any>{
         ReactDOM.render(
             <DropdownContent
                 {...dropdownContentProps}
-             />, this.portalElement);
+            />, this.portalElement);
     }
-    render() : JSX.Element { return null }
+    render(): JSX.Element { return null }
 }

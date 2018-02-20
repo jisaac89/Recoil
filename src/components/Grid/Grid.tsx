@@ -1,29 +1,21 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 import Layer from '../Layer/Layer';
-import Toolbar from '../Toolbar/Toolbar';
-import Button from '../Button/Button';
-import Emerge from '../Emerge/Emerge';
-import Loading from '../Loading/Loading';
 import Selectable from '../Selectable/Selectable';
 
-import { IDataSourceProps } from '../DataSource/DataSource';
 import DataSource from '../DataSource/DataSource';
 
 import Align from '../Align/Align';
-
-import { branchIn } from '../Utils';
 
 export interface IGridProps {
     dataSource?: any;
     selectedKey?: string;
     activeRows?: any;
     rows?: any;
-    margin ?: string;
+    margin?: string;
     selectedElements?: any;
-    onChange?: (item?: any)=> void;
-    toggleSelectedElements ?: (x: any, s: any) => void;
+    onChange?: (item?: any) => void;
+    toggleSelectedElements?: (x: any, s: any) => void;
     pageSize?: number;
     className?: any;
 }
@@ -53,7 +45,7 @@ class Grid extends React.Component<IGridProps, IGridState>{
 
     componentWillReceiveProps(nextProps) {
 
-       if (nextProps.selectedElements !== this.state.selectedElements) {
+        if (nextProps.selectedElements !== this.state.selectedElements) {
             this.setState({
                 selectedElements: nextProps.selectedElements
             });
@@ -63,13 +55,13 @@ class Grid extends React.Component<IGridProps, IGridState>{
             this.setState({
                 update: false,
                 rows: nextProps.rows
-            }, ()=>{
+            }, () => {
                 this.convertDataSourceToGridRows(this.state.rows);
             })
         }
     }
 
-    convertDataSourceToGridRows(r : any, index?: number, indexRow?: number, indexColumn?: number, currentArray?: Array<any>, arrayIndex?: any) {
+    convertDataSourceToGridRows(r: any, index?: number, indexRow?: number, indexColumn?: number, currentArray?: Array<any>, arrayIndex?: any) {
 
         let { activeRows, rows } = this.props;
 
@@ -90,67 +82,63 @@ class Grid extends React.Component<IGridProps, IGridState>{
         let columns = currentRow.columns;
         let totalColumnsCount = currentRow.columns.length;
 
-        let currentColumn = columns[currentColumnIndex];
-
-        if (currentElementIndex < totalElementCount){
+        if (currentElementIndex < totalElementCount) {
 
             if (currentColumnIndex === 0 && currentColumnIndex < totalColumnsCount) {
-                
+
                 array.push({
-                    data: [], 
-                    height: currentRow.height, 
+                    data: [],
+                    height: currentRow.height,
                     columns: columns,
                     rowIndex: [currentRowIndex]
                 })
-                
+
                 array[arrayRowIndex].data.push(currentElement);
-                this.convertDataSourceToGridRows(rows, currentElementIndex+1, currentRowIndex, currentColumnIndex+1, array, arrayRowIndex);
-            } else if (currentColumnIndex < totalColumnsCount){
+                this.convertDataSourceToGridRows(rows, currentElementIndex + 1, currentRowIndex, currentColumnIndex + 1, array, arrayRowIndex);
+            } else if (currentColumnIndex < totalColumnsCount) {
                 array[arrayRowIndex].data.push(currentElement);
-                this.convertDataSourceToGridRows(rows, currentElementIndex+1, currentRowIndex, currentColumnIndex+1, array, arrayRowIndex);
+                this.convertDataSourceToGridRows(rows, currentElementIndex + 1, currentRowIndex, currentColumnIndex + 1, array, arrayRowIndex);
             } else {
-                if (currentRowIndex < totalRowsCount - 1){
-                    this.convertDataSourceToGridRows(rows, currentElementIndex, currentRowIndex+1, 0, array, arrayRowIndex+1);
-                } else{
-                    this.convertDataSourceToGridRows(rows, currentElementIndex, 0, 0, array, arrayRowIndex+1);
+                if (currentRowIndex < totalRowsCount - 1) {
+                    this.convertDataSourceToGridRows(rows, currentElementIndex, currentRowIndex + 1, 0, array, arrayRowIndex + 1);
+                } else {
+                    this.convertDataSourceToGridRows(rows, currentElementIndex, 0, 0, array, arrayRowIndex + 1);
                 }
             }
 
-        } else {   
+        } else {
             this.setState({
-                gridRows : array,
+                gridRows: array,
                 update: false
-            }) 
+            })
         }
 
 
     }
-    
-    toggleSelectedElements(element, i){
+
+    toggleSelectedElements(element, i) {
         this.props.onChange ? this.props.onChange(element) : null;
         this.onChange(element, i, this.state.selectedElements);
     }
 
     onChange(element: Array<any>, index: string | number, selectedElements: Array<any>) {
-
         this.setState({
-            selectedElements : selectedElements
+            selectedElements: selectedElements
         })
-
     }
 
     render() {
 
         let { selectedKey } = this.props;
-        let {selectedElements} = this.state;
+        let { selectedElements } = this.state;
 
-        if(!this.state.update) {
+        if (!this.state.update) {
             return (
                 <Layer flex fill className={this.props.className}>
-                    {this.state.gridRows.map((element, index) =>{
-                        return(
-                            <Align margin={this.props.margin} style={{height : element.height, marginBottom: this.props.margin}} columns={element.columns} key={index}>
-                                {element.data.map((item,i)=>{
+                    {this.state.gridRows.map((element, index) => {
+                        return (
+                            <Align margin={this.props.margin} style={{ height: element.height, marginBottom: this.props.margin }} columns={element.columns} key={index}>
+                                {element.data.map((item, i) => {
                                     let checked = selectedElements.includes(selectedKey ? item[selectedKey] : item);
                                     return (
                                         <Layer className={this.props.onChange ? 'cursor-pointer' : null} onClick={this.toggleSelectedElements.bind(this, item, i)} fill key={i}>
