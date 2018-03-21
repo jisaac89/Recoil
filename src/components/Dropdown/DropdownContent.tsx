@@ -47,6 +47,8 @@ export default class DropdownContent extends React.Component<any, any>{
             hideDropdownHeader,
             scrollToId,
             scrollIf,
+            checkable,
+            onCheck,
             //
             parentId,
             hideRoot
@@ -89,6 +91,7 @@ export default class DropdownContent extends React.Component<any, any>{
             hideFooter,
             scrollToId,
             scrollIf,
+            checkable,
             //
             parentId,
             hideRoot
@@ -102,7 +105,7 @@ export default class DropdownContent extends React.Component<any, any>{
         } else {
             return (
                 <div className="r-DropdownWrapper">
-                    {hideDropdownHeader ? null : <DropdownHeader {...dropdownHeaderProps} /> }
+                    {hideDropdownHeader ? null : <DropdownHeader {...dropdownHeaderProps} />}
                     <DropdownContentType {...dropdownContentTypeProps} />
                 </div>
             )

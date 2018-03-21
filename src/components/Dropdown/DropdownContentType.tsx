@@ -40,6 +40,8 @@ export default class DropdownContentType extends React.Component<any, any>{
             hideFooter,
             scrollToId,
             scrollIf,
+            checkable,
+            onCheck,
             //
             parentId,
             hideRoot
@@ -52,7 +54,7 @@ export default class DropdownContentType extends React.Component<any, any>{
             // Table
             disableSelectedElements,
             id,
-            portal : true,
+            portal: true,
             dataSource,
             focusOnMount,
             hideHeader,
@@ -63,7 +65,7 @@ export default class DropdownContentType extends React.Component<any, any>{
             columns,
             onSort,
             hidePageSize,
-            pageSize : pageSize ? pageSize : dataSource ? dataSource.length : pageSize,
+            pageSize: pageSize ? pageSize : dataSource ? dataSource.length : pageSize,
             rowCount,
             page,
             onPageChange,
@@ -77,7 +79,9 @@ export default class DropdownContentType extends React.Component<any, any>{
             hideFooter,
             scrollToId,
             scrollIf,
-            scrollY : true
+            scrollY: true,
+            checkable,
+            onCheck
             //
         }
 
