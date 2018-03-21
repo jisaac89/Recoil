@@ -39,6 +39,7 @@ export interface IInputProps extends IRecoil {
     disableKeys?: Array<string>;
     inputSize?: number;
     inputId?: any;
+    material?: boolean;
 }
 
 export interface IInputState {
