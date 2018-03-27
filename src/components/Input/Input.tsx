@@ -301,7 +301,8 @@ export default class Input extends React.Component<IInputProps, IInputState>{
             'flohide',
             { 'no-title': (!props.title) },
             { 'simple': (props.simple) },
-            'e-advanced'
+            'e-advanced',
+            props.theme
         );
 
         if (!props.advanced) {
@@ -319,7 +320,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
                         <small>{props.title}</small>
                         {inputPartial}
                         {pencilPartial}
-                        <Selectable type={props.error ? 'error' : 'primary'} ghost={props.simple} checked={self.state.checked} />
+                        <Selectable type={props.error ? 'error' : props.theme ? props.theme : 'primary'} ghost={props.simple} checked={self.state.checked} />
                         {errorInlinePartial()}
                     </div>
                     {props.errorMessage ? errorInlinePartialBottom : null}

@@ -172,6 +172,10 @@ textarea {
   pointer-events: none;
 }
 
+.r-Input__container.success > small {
+  color: @success-background;
+}
+
 .r-Input.checked .r-Input__container > small i.fa {
   opacity: 0;
 }
@@ -387,4 +391,11 @@ input:-moz-placeholder { color:#888 !important; text-transform:capitalize !impor
 .r-Input__container input:focus{
     border:1px solid;
     .transition(all 50ms ease-in);
+}
+
+
+.r-Input__container.success input:focus{
+  border:1px solid;
+  border-color: @success-background;
+  .transition(all 50ms ease-in);
 }

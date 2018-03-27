@@ -1,29 +1,29 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import {OOCSS} from '../OOCSS/OOCSS';
+import { OOCSS } from '../OOCSS/OOCSS';
 
-import {IRecoil} from '../../index';
+import { IRecoil } from '../../index';
 
-export interface ILayerProps extends IRecoil{
-  border? : boolean;
-  overflow? : boolean;
-  left? : boolean;
-  right? : boolean;
-  scrollY? : boolean;
-  scrollX? : boolean;
-  style? : Object;
+export interface ILayerProps extends IRecoil {
+  border?: boolean;
+  overflow?: boolean;
+  left?: boolean;
+  right?: boolean;
+  scrollY?: boolean;
+  scrollX?: boolean;
+  style?: Object;
   onClick?: () => void;
-  key? : string | number;
-  parent? : boolean;
-  child? : boolean;
-  dimensions?:[ string, string, number];
+  key?: string | number;
+  parent?: boolean;
+  child?: boolean;
+  dimensions?: [string, string, number];
   scrollToId?: string;
-  beforeAnimate? : () => void;
-  afterAnimate ? : () => void;
-  nightmode? : boolean;
-  scrollIf? : boolean;
-  scroll? : boolean;
+  beforeAnimate?: () => void;
+  afterAnimate?: () => void;
+  nightmode?: boolean;
+  scrollIf?: boolean;
+  scroll?: boolean;
   offset?: number;
   shadow?: boolean;
   flex?: boolean;
@@ -34,10 +34,10 @@ export interface ILayerProps extends IRecoil{
 
 export class Layer extends React.Component<ILayerProps, any> {
 
-  public _animate : any;
-  public _beforeAnimate : () => void;
-  public _afterAnimate : () => void;
-  public _scrollToId : string;
+  public _animate: any;
+  public _beforeAnimate: () => void;
+  public _afterAnimate: () => void;
+  public _scrollToId: string;
   public refs: {
     [key: string]: (Element);
     Layer: (HTMLElement);
@@ -53,59 +53,59 @@ export class Layer extends React.Component<ILayerProps, any> {
     flexCenter: false
   };
 
-  constructor(props : ILayerProps) {
+  constructor(props: ILayerProps) {
     super(props);
     this._scrollToId = props.scrollToId && props.scrollToId !== '' && props.scrollToId.toString().replace(/^#/, '') || '';
 
     let offset = props.offset || 0,
-          duration = 400,
-          easing = this.easeOutQuad;
-    
+      duration = 400,
+      easing = this.easeOutQuad;
+
     this._animate = { offset, duration, easing };
-    this._beforeAnimate = props.beforeAnimate || function() {};
-    this._afterAnimate = props.afterAnimate || function() {};
+    this._beforeAnimate = props.beforeAnimate || function () { };
+    this._afterAnimate = props.afterAnimate || function () { };
     this.state = {
-      scrollToId : '',
+      scrollToId: '',
       lastScrollY: 0,
-      ticking : false
+      ticking: false
     }
   }
 
-  componentWillReceiveProps(nextProps : ILayerProps) {
+  componentWillReceiveProps(nextProps: ILayerProps) {
     if (nextProps.scrollIf && nextProps.scrollToId !== this.props.scrollToId) {
       this.canLayerAnimateScroll(nextProps);
     };
   }
-  
-  componentDidMount(){
+
+  componentDidMount() {
     if (this.props.scrollIf && this.props.scrollToId !== '') {
       this.canLayerAnimateScroll(this.props);
     }
   }
 
-  canLayerAnimateScroll(props : ILayerProps){
-      let propss = props || this.props
-      const self = this;
-            setTimeout(()=>{
-              let element  = document.getElementById(propss.scrollToId);
-              if (element && element.getBoundingClientRect()) {
-                self.handleScroll(propss.scrollToId, element.offsetTop)
-              } else return null;
-            }, 0);
+  canLayerAnimateScroll(props: ILayerProps) {
+    let propss = props || this.props
+    const self = this;
+    setTimeout(() => {
+      let element = document.getElementById(propss.scrollToId);
+      if (element && element.getBoundingClientRect()) {
+        self.handleScroll(propss.scrollToId, element.offsetTop)
+      } else return null;
+    }, 0);
   }
 
-  handleScroll = (to: string, top : number) => {
-      const self = this;
-      self._beforeAnimate();
-      self.setState({
-        scrollToId: to
-      }, ()=>{
-        self.animateScroll(this._animate, top);
-      })
-      self._afterAnimate();
+  handleScroll = (to: string, top: number) => {
+    const self = this;
+    self._beforeAnimate();
+    self.setState({
+      scrollToId: to
+    }, () => {
+      self.animateScroll(this._animate, top);
+    })
+    self._afterAnimate();
   }
 
-  animateScroll(animate:{duration: number}, top: number) {
+  animateScroll(animate: { duration: number }, top: number) {
     this.refs.Layer ? this.scrollTo(animate.duration, top) : null;
   }
 
@@ -119,12 +119,12 @@ export class Layer extends React.Component<ILayerProps, any> {
 
 
     scrollTo(startY, this.refs.Layer, top, duration);
-      self.setState({
-        scrollToId: ''
-      })
+    self.setState({
+      scrollToId: ''
+    })
   }
 
-  setScrolling(x: number, y: number){
+  setScrolling(x: number, y: number) {
     this.refs.Layer.scrollTop = y;
     this.refs.Layer.scrollLeft = x;
   }
@@ -137,7 +137,7 @@ export class Layer extends React.Component<ILayerProps, any> {
     return this.refs.Layer.scrollTop || this.refs.Layer.scrollTop;
   }
 
-  setScrollTop(position : number) {
+  setScrollTop(position: number) {
     this.refs.Layer.scrollTop = position;
   }
 
@@ -151,11 +151,11 @@ export class Layer extends React.Component<ILayerProps, any> {
     return this.refs.Layer.scrollLeft || this.refs.Layer.scrollLeft;
   }
 
-  setScrollLeft(position : number) {
+  setScrollLeft(position: number) {
     this.refs.Layer.scrollLeft = position;
   }
 
-  getOffsetLeft(element : HTMLElement) {
+  getOffsetLeft(element: HTMLElement) {
     let left = element.getBoundingClientRect().left;
     return left + this.getScrollLeft();
   }
@@ -165,7 +165,7 @@ export class Layer extends React.Component<ILayerProps, any> {
 
     let dimensionStyle;
 
-    if(props.dimensions) {
+    if (props.dimensions) {
       dimensionStyle = {
         width: props.dimensions[0],
         height: props.dimensions[1],
@@ -175,17 +175,17 @@ export class Layer extends React.Component<ILayerProps, any> {
 
     let layerClass = classNames(
       'r-Layer',
-      {'flohide' : (props.overflow)},
-      {'pull-left': (props.left)},
-      {'pull-right': (props.right)},
+      { 'flohide': (props.overflow) },
+      { 'pull-left': (props.left) },
+      { 'pull-right': (props.right) },
       { 'e-NightMode': (props.nightmode) },
       { 'e-scroll': (props.scroll) },
-      {'e-scroll-y': (props.scrollY)},
-      {'e-scroll-x': (props.scrollX)},
+      { 'e-scroll-y': (props.scrollY) },
+      { 'e-scroll-x': (props.scrollX) },
       { 'disabled': (props.disabled) },
       { 'e-flex': (props.flex) },
-      {'e-fill': (props.fill)},
-      {'parent': (props.parent)},
+      { 'e-fill': (props.fill) },
+      { 'parent': (props.parent) },
       { 'child': (props.child) },
       { 'e-shadow': (props.shadow) },
       { 'e-flex-center': (props.flexCenter) },
@@ -194,8 +194,8 @@ export class Layer extends React.Component<ILayerProps, any> {
       props.className
     );
 
-    return(
-      <div id={props.id} onScroll={this.props.onScroll} tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({},dimensionStyle, props.style)}>
+    return (
+      <div id={props.id} onScroll={this.props.onScroll} tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({}, dimensionStyle, props.style)}>
         {props.children}
       </div>
     );
@@ -203,33 +203,33 @@ export class Layer extends React.Component<ILayerProps, any> {
 }
 
 Math['easeInOutQuad'] = function (t: number, b: number, c: number, d: number) {
-  t /= d/2;
+  t /= d / 2;
   if (t < 1) {
-    return c/2*t*t + b
+    return c / 2 * t * t + b
   }
   t--;
-  return -c/2 * (t*(t-2) - 1) + b;
+  return -c / 2 * (t * (t - 2) - 1) + b;
 };
 
-Math['easeInCubic'] = function(t: number, b: number, c: number, d: number) {
-	t /= d;
-	return c*t*t*t + b;
+Math['easeInCubic'] = function (t: number, b: number, c: number, d: number) {
+  t /= d;
+  return c * t * t * t + b;
 };
 
-Math['inOutQuintic'] = function(t: number, b: number, c: number, d: number) {
-  var ts = (t/=d)*t,
-  tc = ts*t;
-  return b+c*(6*tc*ts + -15*ts*ts + 10*tc);
+Math['inOutQuintic'] = function (t: number, b: number, c: number, d: number) {
+  var ts = (t /= d) * t,
+    tc = ts * t;
+  return b + c * (6 * tc * ts + -15 * ts * ts + 10 * tc);
 };
 
 
-var requestAnimFrame = (function(){
-  return  window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function( callback : ()=> void ){ window.setTimeout(callback, 2000 / 60); };
+var requestAnimFrame = (function () {
+  return window['requestAnimationFrame'] || window['webkitRequestAnimationFrame'] || window['mozRequestAnimationFrame'] || function (callback: () => void) { window.setTimeout(callback, 2000 / 60); };
 })();
 
-function scrollTo(scrollTop : number, element : HTMLElement, to : number, duration : number) {
+function scrollTo(scrollTop: number, element: HTMLElement, to: number, duration: number) {
 
-  function move(amount : number) {
+  function move(amount: number) {
     element.scrollTop = amount;
   }
   function position() {
@@ -239,8 +239,8 @@ function scrollTo(scrollTop : number, element : HTMLElement, to : number, durati
     change = to - start,
     currentTime = 0,
     increment = 10;
-  duration = (typeof(duration) === 'undefined') ? 500 : duration;
-  var animateScroll = function() {
+  duration = (typeof (duration) === 'undefined') ? 500 : duration;
+  var animateScroll = function () {
     // increment the time
     currentTime += increment;
     // find the value with the quadratic in-out easing function
