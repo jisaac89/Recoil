@@ -2,7 +2,7 @@ export interface IRecoil{
     size?: "small" | "large" | "xlarge" |  "xxlarge"  | "default";
     theme?: "primary" | "success" | "error" | "bronze" | "silver" | "gold" | "default" | "light" | "night" | "dark";
     className?: string;
-    flex?: boolean;
+    flex?: boolean | 'row';
     fill?: boolean;
     disabled?: boolean;
     checked?: boolean;

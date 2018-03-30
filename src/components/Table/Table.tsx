@@ -57,7 +57,7 @@ export interface ITableProps {
     sortKey?: string;
     showDataSourceLength?: boolean;
     selectedKey?: string;
-    flex?: boolean;
+    flex?: boolean | 'row';
     menuTemplate?: any;
     focusOnMount?: boolean;
     contentMaxHeight?: number;
@@ -93,7 +93,7 @@ export interface ITableProps {
     serverSide?: boolean;
     disableSelectedElements?: Array<any>;
     fill?: boolean;
-} 
+}
 
 interface ITableState {
 
@@ -106,7 +106,7 @@ class Table extends React.Component<ITableProps, ITableState>{
         title: 'items',
         portal: false,
         disableSelectedElements: [],
-        scrollY : true
+        scrollY: true
     }
 
     render() {
@@ -173,7 +173,7 @@ class Table extends React.Component<ITableProps, ITableState>{
             serverSide,
             id,
             portal,
-            focusOnMount 
+            focusOnMount
         } = props;
 
         // assign the props 
@@ -250,7 +250,7 @@ class Table extends React.Component<ITableProps, ITableState>{
 
         let tableClass = classNames(
             'r-Table',
-            { 'e-flex': (props.flex) },
+            { 'e-flex': (!!props.flex) },
             { 'e-fill': (props.fill) },
             { 'e-selectable': (!!props.rowIsSelectable) },
             { 'e-selectable': (detailTemplateOpenOnRowSelect === true || detailTemplateOpenOnRowSelect === 'single') },
@@ -276,7 +276,7 @@ class Table extends React.Component<ITableProps, ITableState>{
                                     </Toolbar>
                                 </Emerge>
                                 :
-                                <table tab-index={-1}  className="w100" >
+                                <table tab-index={-1} className="w100" >
                                     <TableHead {...tableProps} {...headProps} />
                                     <TableBody {...tableProps} {...bodyProps} />
                                 </table>

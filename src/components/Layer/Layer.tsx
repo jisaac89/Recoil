@@ -26,7 +26,6 @@ export interface ILayerProps extends IRecoil {
   scroll?: boolean;
   offset?: number;
   shadow?: boolean;
-  flex?: boolean;
   flexCenter?: boolean;
   onScroll?: any;
   id?: string;
@@ -183,7 +182,8 @@ export class Layer extends React.Component<ILayerProps, any> {
       { 'e-scroll-y': (props.scrollY) },
       { 'e-scroll-x': (props.scrollX) },
       { 'disabled': (props.disabled) },
-      { 'e-flex': (props.flex) },
+      { 'e-flex': (!!props.flex) },
+      { 'e-flex-row': (props.flex === 'row') },
       { 'e-fill': (props.fill) },
       { 'parent': (props.parent) },
       { 'child': (props.child) },

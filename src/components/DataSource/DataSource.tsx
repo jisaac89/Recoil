@@ -15,6 +15,7 @@ export interface IDataSourceProps extends ITableProps {
     emptyText: string;
     loading?: boolean;
     loadingText?: string;
+    addColumns?: Array<IColumn>;
 }
 
 const DataSource: any = (Component: JSX.Element) =>
@@ -231,6 +232,18 @@ const DataSource: any = (Component: JSX.Element) =>
 
             this.setState({
                 columns: columnsArray
+            }, () => {
+                if (props.addColumns) {
+                    let updatedColumns = self.state.columns;
+
+                    for (let col of props.addColumns) {
+                        updatedColumns.push(col);
+                    }
+
+                    self.setState({
+                        columns: updatedColumns
+                    })
+                }
             })
         }
 

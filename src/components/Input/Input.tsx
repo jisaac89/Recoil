@@ -284,7 +284,7 @@ export default class Input extends React.Component<IInputProps, IInputState>{
             { 'w100': (props.block) },
             { 'simple': (props.simple) },
             { 'checked': (this.state.checked) },
-            { 'flex': (props.flex) },
+            { 'flex': (!!props.flex) },
             props.size,
             props.className
         );
