@@ -26,6 +26,7 @@ export interface IButtonProps extends IRecoil {
   id?: string;
   shortcut?: string;
   materialIcon?: boolean;
+  onMouseEnter?: (event: React.MouseEvent<any>) => void;
 }
 
 export interface IButtonState {
@@ -78,6 +79,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
   public onClick(event: React.MouseEvent<MouseEvent>) {
     this.props.onClick ? this.props.onClick(event) : null;
+  }
+
+  onMouseEnter(event: React.MouseEvent<MouseEvent>) {
+    this.props.onMouseEnter ? this.props.onMouseEnter(event) : null;
   }
 
   public progressiveClick() {
@@ -191,7 +196,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let defaultButton = () => {
       return (
-        <button id={props.id} ref="button" tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
+        <button id={props.id} ref="button" onMouseEnter={this.props.onMouseEnter ? this.onMouseEnter.bind(this) : null} tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
           {iconWrapperLeft}
           {loadingPartial}
           {!this.state.showShortcut ? props.children : showTooltip()}

@@ -9,6 +9,7 @@ export interface IAlignProps {
   children?: any;
   fill?: boolean;
   style?: any;
+  alignItems?: string;
 }
 
 export interface IAlignChildProps {
@@ -92,7 +93,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
   render() {
     const self = this;
     const props = self.props;
-    let { vertical, children, className, fill } = props;
+    let { vertical, children, className, fill, alignItems } = props;
     let alignChildren = self.alignChildren.bind(self);
 
     let alignClass = classNames(
@@ -100,6 +101,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
       { 'e-vertical': (vertical) },
       { 'e-horizontal': (!vertical) },
       { 'e-fill': (fill) },
+      'e-align-' + alignItems,
       className
     );
 
