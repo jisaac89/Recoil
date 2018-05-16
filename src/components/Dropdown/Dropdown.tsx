@@ -33,6 +33,9 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     parentId?: any;
     hideRoot?: boolean;
     tagSelected?: boolean;
+    tagSelectedKey?: string;
+    tagSelectedElements?: Array<any>;
+    onTagRemove?: (item) => void;
 }
 
 export interface State {
@@ -143,6 +146,10 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             selectedElements: remove(this.state.selectedElements, item)
         })
     }
+
+    onTagRemove(item) {
+        this.props.onTagRemove(item);
+    }
     render(): JSX.Element {
         const self = this;
         const props = self.props;
@@ -197,6 +204,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             hideDropdownHeader,
             hideRoot,
             tagSelected,
+            tagSelectedKey,
+            tagSelectedElements,
             checkable,
             onCheck,
         } = props;
@@ -284,7 +293,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                 <div className={props.block ? "block" : "dinblock"} id={id}
                     ref='dropdown'
                 >
-                    <Tags onRemove={this.removeSelectedItem.bind(this)} dataSource={this.state.selectedElements} />
+                    <Tags branchIn={tagSelectedKey} onRemove={tagSelectedElements ? this.onTagRemove.bind(this) : this.removeSelectedItem.bind(this)} dataSource={tagSelectedElements ? tagSelectedElements : this.state.selectedElements} />
                     <div
                         className={dropdownClass}
                     >
