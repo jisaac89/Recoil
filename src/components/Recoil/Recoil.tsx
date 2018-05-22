@@ -1,21 +1,23 @@
 ﻿import * as React from 'react';
 import * as classNames from 'classnames';
 
+import { isMobile, isTablet } from './index';
+
 export interface IRecoilProps {
-    nightmode ? : boolean;
+    nightmode?: boolean;
     className?: string;
     overflow?: boolean;
-    mobile?: boolean;
-    scroll? : boolean;
-    scrollX? : boolean;
-    scrollY? : boolean;
-
-    onMobile? : any;
+    scroll?: boolean;
+    scrollX?: boolean;
+    scrollY?: boolean;
+    isMobile?: boolean;
+    isTablet?: boolean;
+    onDevice(device: string): void;
 }
 
-function delegate(el : HTMLElement, evt : any, sel : any, handler : any) {
+function delegate(el: HTMLElement, evt: any, sel: any, handler: any) {
     el.addEventListener(evt, function (event) {
-        var t = event.target;
+        let t = event.target;
         while (t && t !== this) {
             if (t.matches(sel)) {
                 handler.call(t, event);
@@ -29,32 +31,46 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 
     refs: any;
 
-    constructor(props : IRecoilProps) {
+    constructor(props: IRecoilProps) {
         super(props);
         this.state = {
             inputIsFocused: false,
-            mobile: props.mobile || false
+            isMobile: props.isMobile || isMobile,
+            isDesktop: false,
+            isTablet: props.isTablet || isTablet
         }
     }
-    componentDidMount() {
+    componentWillMount() {
+        //  detect device
         this.detectMobile();
-        
+
     }
-    detectMobile(){
-        this.setState({
-            mobile : window.navigator.userAgent.match(/Android|iPad|iPhone|iPod/i) != null || window.screen.width <= 480
-        }, ()=>{
-            this.isMobile(this.state.mobile);
-            this.state.mobile ? this.props.onMobile ? this.props.onMobile(this.state.mobile) : null : null
-        })
+    componentDidMount() {
+        this.isMobile(isMobile);
+    }
+    detectMobile() {
+
+        let device;
+        if (isMobile && !isTablet) {
+            device = 'mobile';
+        } else if (isTablet) {
+            device = 'tablet';
+        } else {
+            device = 'desktop';
+        }
+
+        if (this.props.onDevice) {
+
+            this.props.onDevice(device);
+        }
+        console.log(device);
     }
     componentWillReceiveProps(nextProps: IRecoilProps) {
-        this.isMobile(nextProps.mobile);
+        this.isMobile(nextProps.isMobile);
     }
-    isMobile(mobile : boolean) {
+    isMobile(mobile: boolean) {
         const self = this;
         if (mobile) {
-            
             delegate(self.refs.Recoil, "focusin", "input", function () {
                 self.setState({
                     inputIsFocused: true
@@ -74,12 +90,12 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 
         let RecoilClass = classNames(
             'r-Recoil',
-            { 'e-NightMode': (props.nightmode)},
-            { 'flohide': (props.overflow)},
-            { 'e-scroll': (props.scroll)},
-            {'e-scroll-y': (props.scrollY)},
-            {'e-scroll-x': (props.scrollX)},
-            { 'e-inputIsFocused': (this.state.inputIsFocused)},
+            { 'e-NightMode': (props.nightmode) },
+            { 'flohide': (props.overflow) },
+            { 'e-scroll': (props.scroll) },
+            { 'e-scroll-y': (props.scrollY) },
+            { 'e-scroll-x': (props.scrollX) },
+            { 'e-inputIsFocused': (this.state.inputIsFocused) },
             props.className
         );
 
