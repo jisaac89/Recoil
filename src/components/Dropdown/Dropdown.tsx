@@ -20,6 +20,7 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     title?: string;
     type?: string;
     material?: boolean;
+    materialIcon?: boolean;
     dropDirection?: string;
     onChange?: (element?: Array<Object>, key?: string | number, selectedElements?: Array<Object>, id?: string) => void;
     fixedClose?: boolean;
@@ -175,6 +176,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             disabled,
             parentId,
             shortcut,
+            materialIcon,
             //
             children,
 
@@ -227,6 +229,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             loading,
             disabled,
             checkedTheme,
+            materialIcon,
             onClick: props.onClick || this.openDropdown.bind(this)
         }
 
