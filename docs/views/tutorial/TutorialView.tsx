@@ -14,8 +14,8 @@ export interface ITutorialViewProps {
 }
 
 export default class TutorialView extends React.Component<ITutorialViewProps,any>{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       showProps : true,

@@ -66,8 +66,8 @@ const CardProperties = [
 ]
 
 export default class TutorialCard extends React.Component<any,any>{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       showProps : true,

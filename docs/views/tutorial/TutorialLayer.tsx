@@ -90,8 +90,8 @@ const LayerProperties = [
 ]
 
 export default class TutorialLayer extends React.Component<any, any>{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       showProps: true,

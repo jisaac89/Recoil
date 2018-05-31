@@ -1,5 +1,4 @@
 import {observable, computed} from 'mobx';
-import {browserHistory} from 'react-router';
 
 function checkForMobile() {
     return window.navigator.userAgent.match(/Android|iPad|iPhone|iPod/i) != null || window.screen.width <= 480;
@@ -19,10 +18,7 @@ export class AppState {
     initializeApp() {
         //
     }
-    
-    gotoPage(page : string) {
-        browserHistory.push(page);
-    }
+
 
 }
 

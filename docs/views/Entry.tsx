@@ -31,8 +31,8 @@ import SampleData from './tutorial/SampleData';
 
 export default class App extends React.Component<any, any> {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       slideIndex: 0,
@@ -75,9 +75,9 @@ export default class App extends React.Component<any, any> {
     })
   }
 
-  toggleMobile(isMobile) {
+  onDevice(device) {
     this.setState({
-      mobile: isMobile,
+      mobile: false,
       showMenu: false
     })
   }
@@ -94,7 +94,7 @@ export default class App extends React.Component<any, any> {
 
     let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
     return (
-      <Recoil overflow nightmode={nightmode} onMobile={this.toggleMobile.bind(this)}>
+      <Recoil overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
         <Layer fill overflow>
         <Shrink fill if={showModal}>
           <Transform type={mobile ? "translate" : null} push={!mobile ? 'left' : null} axis={'X'} flex fill if={showMenu} amount="300px" >

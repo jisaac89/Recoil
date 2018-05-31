@@ -31,8 +31,8 @@ const OpenProperties = [
 ]
 
 export default class TutorialOpen extends React.Component<any,any>{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       showProps : true,

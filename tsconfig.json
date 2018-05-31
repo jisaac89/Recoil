@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "es5",
+    "target": "es2017",
     "module": "commonjs",
     "moduleResolution": "node",
     "isolatedModules": false,
@@ -14,6 +14,7 @@
     "removeComments": true,
     "noLib": false,
     "preserveConstEnums": true,
+    "allowJs": true,
     "suppressImplicitAnyIndexErrors": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
@@ -26,6 +27,10 @@
   "include": [
     "src",
     "docs"
+  ],
+  "exclude": [
+    "./recoil/docs/**/*",
+    "node_modules"
   ],
   "compileOnSave": true,
   "buildOnSave": false

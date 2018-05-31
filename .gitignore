@@ -4,7 +4,7 @@ npm-debug.log
 typings
 dist/
 bundle/
-docs/
+public/
 *.d.ts
 *.log
 *.tgz

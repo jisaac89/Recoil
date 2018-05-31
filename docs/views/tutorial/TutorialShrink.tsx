@@ -23,8 +23,8 @@ const ShrinkProperties = [
 ]
 
 export default class TutorialShrink extends React.Component<any,any>{
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       showProps : true,
