@@ -1,20 +1,33 @@
 
 export const allowedKeys = [
+    //margin
     'm',
+    //marginTop
     'mt',
+    //padding
     'p',
+    //paddingTop
     'pt',
+    //width
     'w',
+    //height
     'h',
+    //left
     'l',
-    't'
+    //top
+    't',
+    //overflow
+    'o'
 ]
 
 export const allowedValues = [
     'rel',
     'abs',
     'block',
-    'inblock'
+    'inblock',
+
+    'h',
+    'v'
 ]
 
 export const allowedMeasurements = [

@@ -3,7 +3,8 @@ let shorcut = {
     'h': 'height',
     'm': 'margin',
     'l': 'left',
-    't': 'top'
+    't': 'top',
+    'o': 'overflow'
 }
 
 export class _$ {
@@ -30,7 +31,7 @@ export class _$ {
     shiftKey = function (keys, func?: any) {
 
         // cut out numbers from class
-        let prefixClass = this.currentClass.split(/[0-9]/)[0];
+        let prefixClass = this.currentClass.split(/[0-9]/)[0].substring(0, this.currentClass.split(/[0-9]/)[0].length - 1)
         let keysExistinClass = [];
 
         keys.forEach(key => {
@@ -39,7 +40,7 @@ export class _$ {
             }
         });
 
-        let strongest = this.returnStrongestMatch(keysExistinClass);
+        let strongest = this.returnStrongestMatch([prefixClass]);
 
         this.key = shorcut[strongest];
         this.styleObject[this.key] = 0;
