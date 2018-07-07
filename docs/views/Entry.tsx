@@ -28,6 +28,7 @@ import TutorialStepper from './tutorial/TutorialStepper';
 import TutorialGrid from './tutorial/TutorialGrid';
 
 import SampleData from './tutorial/SampleData';
+import ShortcutButton from '../../src/components/Button/ShortcutButton';
 
 export default class App extends React.Component<any, any> {
 
@@ -54,7 +55,7 @@ export default class App extends React.Component<any, any> {
     this.setState({
       showInstructions: !this.state.showInstructions
     })
-  } 
+  }
 
   toggleDocs() {
     this.setState({
@@ -94,78 +95,78 @@ export default class App extends React.Component<any, any> {
 
     let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
     return (
-      <Recoil overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
+      <Recoil shortCutInitKey={['shift']} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
         <Layer fill overflow>
-        <Shrink fill if={showModal}>
-          <Transform type={mobile ? "translate" : null} push={!mobile ? 'left' : null} axis={'X'} flex fill if={showMenu} amount="300px" >
-            <SlideIn className='z5' if={!showModal} from={'top'}>
-              <Layer fill theme="light">
-                <Toolbar size="small" block className="p10 border-bottom">
-                  {mobile ? <Button simple icon={showMenu ? "times" :"bars"} onClick={this.toggleMenu.bind(this)} /> : null}
-                  <h1 className="dinblock"><strong>Recoil</strong> <small>0.5.3</small></h1>
-                  <Button href="https://www.github.com/jisaac89/recoil" theme="error" right icon="github">github</Button>
-                  <Button simple onClick={this.toggleDocs.bind(this)} right icon="download" className="mr5"></Button>
-                  <Button simple onClick={this.toggleNightMode.bind(this)} right icon="moon-o"></Button>
-                </Toolbar>
-                <hr />
+          <Shrink fill if={showModal}>
+            <Transform type={mobile ? "translate" : null} push={!mobile ? 'left' : null} axis={'X'} flex fill if={showMenu} amount="300px" >
+              <SlideIn className='z5' if={!showModal} from={'top'}>
+                <Layer fill theme="light">
+                  <Toolbar size="small" block className="p10 border-bottom">
+                    {mobile ? <Button simple icon={showMenu ? "times" : "bars"} onClick={this.toggleMenu.bind(this)} /> : null}
+                    <h1 className="dinblock"><strong>Recoil</strong> <small>0.5.3</small></h1>
+                    <Button href="https://www.github.com/jisaac89/recoil" theme="error" right icon="github">github</Button>
+                    <Button simple onClick={this.toggleDocs.bind(this)} right icon="download" className="mr5"></Button>
+                    <Button simple onClick={this.toggleNightMode.bind(this)} right icon="moon-o"></Button>
+                  </Toolbar>
+                  <hr />
+                </Layer>
+              </SlideIn>
+              <Layer fill overflow className="ps5 pt50 z4">
+                <Wizard fill flex slideIndex={slideIndex}>
+                  <TutorialAlign />
+                  <TutorialButton mobile={mobile}></TutorialButton>
+                  <TutorialCalendar mobile={mobile}></TutorialCalendar>
+                  <TutorialCheckbox ></TutorialCheckbox>
+                  <TutorialDatePicker mobile={mobile}></TutorialDatePicker>
+                  <TutorialDropdown mobile={mobile}></TutorialDropdown>
+                  <TutorialEmerge ></TutorialEmerge>
+                  <TutorialInput></TutorialInput>
+                  <TutorialLayer></TutorialLayer>
+                  <TutorialLoading></TutorialLoading>
+                  <TutorialModal toggleModal={this.toggleModal.bind(this)}></TutorialModal>
+                  <TutorialOpen ></TutorialOpen>
+                  <TutorialRecoil mobile={mobile}></TutorialRecoil>
+                  <TutorialSelectable></TutorialSelectable>
+                  <TutorialShrink></TutorialShrink>
+                  <TutorialSlideIn></TutorialSlideIn>
+                  <TutorialStepper />
+                  <TutorialTable></TutorialTable>
+                  <TutorialToggle></TutorialToggle>
+                  <TutorialToolbar></TutorialToolbar>
+                  <TutorialTransform></TutorialTransform>
+                  <TutorialWizard></TutorialWizard>
+                  <TutorialGrid></TutorialGrid>
+                </Wizard>
               </Layer>
-            </SlideIn>
-            <Layer fill overflow className="ps5 pt50 z4">
-              <Wizard fill flex slideIndex={slideIndex}>
-                <TutorialAlign />
-                <TutorialButton mobile={mobile}></TutorialButton>
-                <TutorialCalendar mobile={mobile}></TutorialCalendar>
-                <TutorialCheckbox ></TutorialCheckbox>
-                <TutorialDatePicker mobile={mobile}></TutorialDatePicker>
-                <TutorialDropdown mobile={mobile}></TutorialDropdown>
-                <TutorialEmerge ></TutorialEmerge>
-                <TutorialInput></TutorialInput>
-                <TutorialLayer></TutorialLayer>
-                <TutorialLoading></TutorialLoading>
-                <TutorialModal toggleModal={this.toggleModal.bind(this)}></TutorialModal>
-                <TutorialOpen ></TutorialOpen>
-                <TutorialRecoil mobile={mobile}></TutorialRecoil>
-                <TutorialSelectable></TutorialSelectable>
-                <TutorialShrink></TutorialShrink>
-                <TutorialSlideIn></TutorialSlideIn>
-                <TutorialStepper />
-                <TutorialTable></TutorialTable>
-                <TutorialToggle></TutorialToggle>
-                <TutorialToolbar></TutorialToolbar>
-                <TutorialTransform></TutorialTransform>
-                <TutorialWizard></TutorialWizard>
-                <TutorialGrid></TutorialGrid>
-              </Wizard>
+              <SlideIn className='z5' if={!showModal && showMenu === false && showModal === false} from={'bottom'}>
+                <Layer fill nightmode>
+                  <Toolbar textCenter flex spacing block className="p10 border-top">
+                    {SampleData[slideIndex - 1] ? <Button iconLocation="left" icon="caret-left" tabIndex={-1} block onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex - 1])}>{SampleData[slideIndex - 1].name}</Button> : null}
+                    {SampleData[slideIndex + 1] ? <Button iconLocation="right" icon="caret-right" tabIndex={-1} block right onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex + 1])}>{SampleData[slideIndex + 1].name}</Button> : null}
+                  </Toolbar>
+                </Layer>
+              </SlideIn>
+            </Transform>
+          </Shrink>
+          <SlideIn if={this.state.showMenu && !showModal} from="left" className={mobile ? "w300px h100" : "w300px h100 pt50"}>
+            <Layer fill nightmode scrollY className="p10">
+              <Button block className="text-center mb10">Component List</Button>
+              <Table
+                dataSource={SampleData}
+                pageSize={SampleData.length}
+                columns={[{ name: 'name' }]}
+                hideHeader
+                onRowSelect={this.gotoSlideIndex.bind(this)}
+                selectedElements={[this.state.slideIndex]}
+                selectedKey='index'
+                searchableKeys={['name']}
+                searchTitle="Find a Component, e.g Table..."
+              />
             </Layer>
-            <SlideIn className='z5' if={!showModal && showMenu === false && showModal === false} from={'bottom'}>
-              <Layer fill nightmode>
-                <Toolbar textCenter flex spacing block className="p10 border-top">
-                  {SampleData[slideIndex - 1] ? <Button iconLocation="left" icon="caret-left" tabIndex={-1} block onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex - 1])}>{SampleData[slideIndex - 1].name}</Button> : null}
-                  {SampleData[slideIndex + 1] ? <Button iconLocation="right" icon="caret-right" tabIndex={-1} block right onClick={this.gotoSlideIndex.bind(this, SampleData[slideIndex + 1])}>{SampleData[slideIndex + 1].name}</Button> : null}
-                </Toolbar>
-              </Layer>
-            </SlideIn>
-          </Transform>
-        </Shrink>
-        <SlideIn if={this.state.showMenu && !showModal} from="left" className={mobile ? "w300px h100" : "w300px h100 pt50"}>
-          <Layer fill nightmode scrollY className="p10">
-            <Button block className="text-center mb10">Component List</Button>
-            <Table
-              dataSource={SampleData}
-              pageSize={SampleData.length}
-              columns={[{ name: 'name' }]}
-              hideHeader
-              onRowSelect={this.gotoSlideIndex.bind(this)}
-              selectedElements={[this.state.slideIndex]}
-              selectedKey='index'
-              searchableKeys={['name']}
-              searchTitle="Find a Component, e.g Table..."
-            />
-          </Layer>
-        </SlideIn>
+          </SlideIn>
         </Layer>
 
-        <SlideIn  className="z5" if={!this.state.showDocs} from="bottom" fill>
+        <SlideIn className="z5" if={!this.state.showDocs} from="bottom" fill>
 
           <Layer tabIndex={-1} flexCenter theme="light" className="p10" fill>
 
@@ -173,40 +174,40 @@ export default class App extends React.Component<any, any> {
             <p className="ptb20">A <a tabIndex={-1} href="https://reactjs.org/">React</a> powered front-end framework written in <a tabIndex={-1} href="https://www.typescriptlang.org/">Typescript</a>.</p>
             <Toolbar spacing className="pb20 dinblock">
               <Button tabIndex={-1} onClick={this.toggleNightMode.bind(this)} icon="moon-o" ></Button>
-              <Button tabIndex={-1} onClick={this.toggleDocs.bind(this)} className="ps40" theme="primary" icon="star" iconPointer="down"> 
+              <ShortcutButton tabIndex={-1} onClick={this.toggleDocs.bind(this)} className="ps40" theme="primary" icon="star" iconPointer="down">
                 Components
-                </Button>
+                </ShortcutButton>
               <Button tabIndex={-1} href="https://www.github.com/jisaac89/recoil" icon="github"></Button>
             </Toolbar>
 
-              <Layer tabIndex={-1} className="p10 text-center center-width">
-                <Emerge delay={1000} if={!this.state.showDocs}>
-                  <div>
-                    <small>clone recoil from github</small><br />
-                    <small><strong>git clone https://github.com/jisaac89/recoil.git</strong> </small><br /><br />
-                  </div>
-    
-                  <div>
-                    <small>cd into project </small><br />
-                    <small><strong> cd recoil</strong></small><br /><br />
-                  </div>
+            <Layer tabIndex={-1} className="p10 text-center center-width">
+              <Emerge delay={1000} if={!this.state.showDocs}>
+                <div>
+                  <small>clone recoil from github</small><br />
+                  <small><strong>git clone https://github.com/jisaac89/recoil.git</strong> </small><br /><br />
+                </div>
 
-                  <div>
-                    <small>install the npm dependencies </small><br />
-                    <small><strong> npm install</strong></small><br /><br />
-                  </div>
+                <div>
+                  <small>cd into project </small><br />
+                  <small><strong> cd recoil</strong></small><br /><br />
+                </div>
 
-                  <div>
-                    <small>run the project</small><br />
-                    <small><strong>npm run watch</strong></small><br /><br />
-                  </div>
+                <div>
+                  <small>install the npm dependencies </small><br />
+                  <small><strong> npm install</strong></small><br /><br />
+                </div>
 
-                  <div>
-                    <small>documentation located at <br />
-                      <strong>recoil/docs/index.html</strong></small>
-                  </div>
-                </Emerge>
-              </Layer>
+                <div>
+                  <small>run the project</small><br />
+                  <small><strong>npm run watch</strong></small><br /><br />
+                </div>
+
+                <div>
+                  <small>documentation located at <br />
+                    <strong>recoil/docs/index.html</strong></small>
+                </div>
+              </Emerge>
+            </Layer>
           </Layer>
 
         </SlideIn>

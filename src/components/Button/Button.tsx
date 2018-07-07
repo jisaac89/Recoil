@@ -28,6 +28,7 @@ export interface IButtonProps extends IRecoil {
   shortcut?: string;
   materialIcon?: boolean;
   onMouseEnter?: (event: React.MouseEvent<any>) => void;
+  shortCutInitKey?: string[];
 }
 
 export interface IButtonState {
@@ -35,7 +36,7 @@ export interface IButtonState {
   progressiveClickIndex?: number;
   progressiveClickLength?: number;
   clickCounter?: number;
-  showShortcut?: boolean;
+  showShortcut?: any;
 }
 
 export default class Button extends React.Component<IButtonProps, IButtonState>{
@@ -72,6 +73,8 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickLength: props.progressiveClick.length
       })
     }
+
+    this.props.shortCutInitKey ? console.log(this.props.shortCutInitKey) : null;
     // if (props.shortcut) {
     //    window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
     //    window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
@@ -172,7 +175,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     let iconWrapperRight = (props.icon && props.iconLocation === 'right' && !this.state.showShortcut ? <div className={'icon-pointer-' + props.iconPointer + " ml10 icon-wrapper"}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
     let iconWrapperLeft = (props.icon && props.iconLocation === 'left' && !this.state.showShortcut ? <div className={'icon-pointer-' + props.iconPointer + " icon-wrapper " + (props.children ? "mr10" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
 
-    let LinkButton = ({ innerRef}) => {
+    let LinkButton = ({ innerRef }) => {
       return (
         <a href={props.href} id={props.id} target={props.target} ref={innerRef} tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} className={buttonClass} style={props.style}>
           {iconWrapperLeft}
@@ -184,7 +187,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       )
     }
 
-    let SimpleButton = ({ innerRef}) => {
+    let SimpleButton = ({ innerRef }) => {
       return (
         <button id={props.id} ref={innerRef} tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
           {iconWrapperLeft}
@@ -195,7 +198,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       );
     }
 
-    let DefaultButton = ({ innerRef}) => {
+    let DefaultButton = ({ innerRef }) => {
       return (
         <button id={props.id} ref={innerRef} onMouseEnter={this.props.onMouseEnter ? this.onMouseEnter.bind(this) : null} tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
           {iconWrapperLeft}
@@ -208,28 +211,22 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
 
     let Link = React.forwardRef((props, ref) => (
-      <LinkButton innerRef={ref}/>
+      <LinkButton innerRef={ref} />
     ));
 
     let Simple = React.forwardRef((props, ref) => (
-      <SimpleButton innerRef={ref}/>
-    ));
-   
-    let Default = React.forwardRef((props, ref) => (
-      <DefaultButton innerRef={ref}/>
+      <SimpleButton innerRef={ref} />
     ));
 
-    return(
-      <ShortcutContext.Consumer>
-      {(shortcut) => {
-        if (props.href) {
-          return <Link/>
-        } else {
-          return props.advanced ? <Default/> : <Simple/>;
-        }
-      }}
-      </ShortcutContext.Consumer>
-    )
+    let Default = React.forwardRef((props, ref) => (
+      <DefaultButton innerRef={ref} />
+    ));
+
+    if (props.href) {
+      return <Link />
+    } else {
+      return props.advanced ? <Default /> : <Simple />;
+    }
 
   }
 }
