@@ -6,7 +6,7 @@
     "clean": "rimraf ./.build && rimraf ./.next && npm prune && npm install",
     "prepublishOnly": "rimraf ./public && tsc --declaration",
     "build:pro": "rimraf ./public && webpack --mode production",
-    "build:dev": "rimraf ./public && webpack --mode development",
+    "build:dev": "rimraf ./public && webpack --mode development --watch",
     "start:dev": "webpack-dev-server --mode development --open chrome --hot",
     "start": "node server.js"
   },

@@ -20,7 +20,7 @@ export default class Portal extends React.Component<IPortalProps, any>{
   };
 
   portalElement : HTMLElement = null;
-  componentDidMount() {
+  componentWillMount() {
     let p = this.props.portalId && document.getElementById(this.props.portalId);
     if (!p) {
       let docfrag = document.createDocumentFragment();
@@ -30,17 +30,31 @@ export default class Portal extends React.Component<IPortalProps, any>{
       document.getElementById('Recoil').appendChild(docfrag);
     }
     this.portalElement = p;
-    this.componentDidUpdate();
   }
   componentWillUnmount() {
      document.getElementById('Recoil').removeChild(this.portalElement);
   } 
-  componentDidUpdate() {
-     if(this.props.portalType !== 'SlideIn') {
-        ReactDOM.render(<Layer flex fill>{this.props.children}</Layer>, this.portalElement);
-     } else {
-        ReactDOM.render(<SlideIn flex onClose={this.props.onClose} title={this.props.title} icon={this.props.icon} className="r-Portal z5" fixed from="bottom" fill={true} if={this.props.open} ><Layer flex fill>{this.props.children}</Layer></SlideIn>, this.portalElement);
-     }
+  render(){
+    if(this.props.portalType !== 'SlideIn') {
+      return ReactDOM.createPortal(
+        this.props.children,
+        this.portalElement
+      )
+   } else {
+    return ReactDOM.createPortal(
+      <SlideIn 
+      flex 
+      fill 
+      onClose={this.props.onClose} 
+      title={this.props.title} 
+      icon={this.props.icon} 
+      className="r-Portal z5" 
+      fixed from="bottom" 
+      if={this.props.open} 
+      > <Layer flex fill>{this.props.children}
+      </Layer></SlideIn>,
+      this.portalElement
+    )
+   }
   }
-  render(): JSX.Element {return null}
 };

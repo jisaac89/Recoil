@@ -36,6 +36,6 @@ app.get("/", function (req, res) {
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 })
 
-app.listen(8000, function () {
+app.listen(2000, function () {
   console.log("listen");
 })

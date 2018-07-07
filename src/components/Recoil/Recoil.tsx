@@ -1,6 +1,6 @@
 ﻿import * as React from 'react';
 import * as classNames from 'classnames';
-
+import ShortCutProvider from '../ShortCut/ShortCutProvider';
 import { isMobile, isTablet } from './index';
 
 export interface IRecoilProps {
@@ -13,6 +13,8 @@ export interface IRecoilProps {
     isMobile?: boolean;
     isTablet?: boolean;
     onDevice(device: string): void;
+    // shortcut key to enable shortcuts on recoil
+    shortCutInitKey?: string[];
 }
 
 function delegate(el: HTMLElement, evt: any, sel: any, handler: any) {
@@ -101,7 +103,9 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 
         return (
             <div ref={'Recoil'} id={'Recoil'} className={RecoilClass}>
-                {this.props.children}
+                <ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
+                    {this.props.children}   
+                </ShortCutProvider>
             </div>
         );
     }
