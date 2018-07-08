@@ -31,14 +31,9 @@ export class _$ {
     shiftKey = function (keys, func?: any) {
 
         // cut out numbers from class
-        let prefixClass = this.currentClass.split(/[0-9]/)[0].substring(0, this.currentClass.split(/[0-9]/)[0].length - 1)
-        let keysExistinClass = [];
-
-        keys.forEach(key => {
-            if (prefixClass.indexOf(key) > -1) {
-                keysExistinClass.push(key);
-            }
-        });
+        // let prefixClass = this.currentClass.split(/[0-9]/)[0].substring(0, this.currentClass.split(/[0-9]/)[0].length - 1);
+        let prefixClass = this.currentClass.split(/[0-9]/)[0];
+        let keysExistinClass = keys.filter((key) => prefixClass.indexOf(key) > -1);
 
         let strongest = this.returnStrongestMatch([prefixClass]);
 

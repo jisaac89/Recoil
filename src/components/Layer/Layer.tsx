@@ -33,7 +33,7 @@ export interface ILayerProps extends IRecoil {
   dropShadow?: boolean;
 }
 
-export class Layer extends React.Component<ILayerProps, any> {
+class Layer extends React.Component<ILayerProps, any> {
 
   public _animate: any;
   public _beforeAnimate: () => void;
@@ -258,6 +258,5 @@ function scrollTo(scrollTop: number, element: HTMLElement, to: number, duration:
   };
   animateScroll();
 }
-
 
 export default OOCSS()(Layer);

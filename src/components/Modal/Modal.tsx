@@ -25,6 +25,7 @@ export interface IModalProps {
     overflow?: boolean;
     fill?: boolean;
     closeId?: string;
+    flexCenter?: boolean;
 }
 
 export interface IModalState {
@@ -34,10 +35,10 @@ export interface IModalState {
 }
 
 function guidGenerator() {
-    var S4 = function() {
-    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    var S4 = function () {
+        return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
     };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+    return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
 }
 
 export default class Modal extends React.Component<IModalProps, IModalState>{
@@ -47,7 +48,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
         Modal: (HTMLInputElement);
     }
 
-    constructor(props : IModalProps) {
+    constructor(props: IModalProps) {
         super(props);
         this.state = {
             fullScreen: props.fullScreen || false,
@@ -60,10 +61,10 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
         this.props.open ? this.open() : this.close();
     }
 
-    componentWillReceiveProps(nextProps : IModalProps) {
+    componentWillReceiveProps(nextProps: IModalProps) {
         nextProps.open ? this.open() : this.close();
     }
- 
+
     open() {
         this.beforeOpen();
         this.afterOpen();
@@ -76,7 +77,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
 
     openModal() {
         this.setState({
-            open:true
+            open: true
         }, () => {
             this.afterOpen();
         })
@@ -92,7 +93,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
         this.setState({
             open: false,
             showChildren: false
-        }) 
+        })
     }
 
     toggleFullScreen() {
@@ -105,12 +106,12 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
         this.setState({
             open: false,
             showChildren: false
-        }) 
+        })
         this.props.onClose ? this.props.onClose() : null;
     }
 
     render() {
-         
+
         const self = this;
         const props = self.props;
 
@@ -123,6 +124,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
             { 'e-fill': (props.fill) },
             { 'e-fullscreen': (self.state.fullScreen) },
             { 'mobile': props.mobile },
+            { 'e-flex-center': (props.flexCenter) },
             { 'flohide': (props.overflow) },
         );
 
@@ -135,7 +137,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
             <Portal portalType="SlideIn" open={this.state.open} portalId={guidGenerator()}>
                 {this.state.showChildren ? <div className={modalWrapperClass}>
                     <div ref='Modal' className={modalClass} style={props.style}>
-                        {!props.hideHeader ? 
+                        {!props.hideHeader ?
                             <ModalHeader
                                 open={this.state.open}
                                 icon={this.props.icon}
@@ -146,7 +148,7 @@ export default class Modal extends React.Component<IModalProps, IModalState>{
                                 hideFullScreenButton={props.hideFullScreenButton}
                                 hideCloseButton={props.hideCloseButton}
                                 closeId={props.closeId}
-                                />
+                            />
                             : null}
                         {props.children}
                     </div>

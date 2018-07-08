@@ -1,6 +1,9 @@
 ﻿import * as React from 'react';
 import * as classNames from 'classnames';
 import ShortCutProvider from '../ShortCut/ShortCutProvider';
+
+import PortalProvider from '../Portal/PortalProvider';
+
 import { isMobile, isTablet } from './index';
 
 export interface IRecoilProps {
@@ -39,7 +42,8 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
             inputIsFocused: false,
             isMobile: props.isMobile || isMobile,
             isDesktop: false,
-            isTablet: props.isTablet || isTablet
+            isTablet: props.isTablet || isTablet,
+            initialized: false
         }
     }
     componentWillMount() {
@@ -49,6 +53,9 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
     }
     componentDidMount() {
         this.isMobile(isMobile);
+        this.setState({
+            initialized: true
+        })
     }
     detectMobile() {
 
@@ -62,10 +69,8 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
         }
 
         if (this.props.onDevice) {
-
             this.props.onDevice(device);
         }
-        console.log(device);
     }
     componentWillReceiveProps(nextProps: IRecoilProps) {
         this.isMobile(nextProps.isMobile);
@@ -103,9 +108,11 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 
         return (
             <div ref={'Recoil'} id={'Recoil'} className={RecoilClass}>
-                <ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
-                    {this.props.children}
-                </ShortCutProvider>
+                <PortalProvider initialized={this.state.initialized}>
+                    <ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
+                        {this.props.children}
+                    </ShortCutProvider>
+                </PortalProvider>
             </div>
         );
     }

@@ -3,7 +3,6 @@ import * as classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 
 import { IRecoil } from '../../index';
-import { ShortcutContext } from '../ShortCut/ShortCutProvider';
 
 export interface IButtonProps extends IRecoil {
   progressiveClick?: Array<Function>;
@@ -73,12 +72,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
         progressiveClickLength: props.progressiveClick.length
       })
     }
-
-    this.props.shortCutInitKey ? console.log(this.props.shortCutInitKey) : null;
-    // if (props.shortcut) {
-    //    window.addEventListener("keydown", this.startShortcutListener.bind(this), false);
-    //    window.addEventListener("keyup", this.startShortcutListener.bind(this), false);
-    // }
   }
 
   public onClick(event: React.MouseEvent<MouseEvent>) {
@@ -109,24 +102,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     }
   }
 
-  // public startShortcutListener(e) {
-  //   const context = this;
-  //   const props = context.props;
-  //   const refButton: any = ReactDOM.findDOMNode(context.refs["button"]);
-  //   context.setState({
-  //     showShortcut: e.shiftKey ? true : false
-  //   })
-  //   if (e.shiftKey && e.code === "Key" + props.shortcut.toUpperCase()) {
-  //     refButton.focus();
-  //   }
-  // }
-
-  // public componentWillUnmount() {
-  //   if (this.props.shortcut) {
-  //     window.removeEventListener("keydown", null, false);
-  //     window.removeEventListener("keyup", null, false);
-  //   }
-  // }
 
   render() {
 

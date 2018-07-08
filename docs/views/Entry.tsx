@@ -79,7 +79,7 @@ export default class App extends React.Component<any, any> {
   onDevice(device) {
     this.setState({
       mobile: false,
-      showMenu: false
+      showMenu: device === 'desktop' ? true : false
     })
   }
 

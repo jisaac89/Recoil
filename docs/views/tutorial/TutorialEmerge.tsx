@@ -1,58 +1,58 @@
 import * as React from 'react';
-import {Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../../src/index';
+import { Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink } from '../../../src/index';
 
 import TutorialView from './TutorialView';
 const EmergeProperties = [
   {
-    name :'if',
+    name: 'if',
     type: 'boolean',
     options: 'true, false. True by default.',
     description: 'Defines if the element should emerge and stagger its children.'
   },
   {
-    name :'enter',
+    name: 'enter',
     type: 'string',
     options: 'Uses animate.css',
     description: 'Add the type of animations the staggered children will display as on enter.'
   },
   {
-    name :'exit',
+    name: 'exit',
     type: 'string',
     options: 'Uses animate.css',
     description: 'Add the type of animations the staggered children will display as on exit.'
   },
   {
-    name :'delay',
+    name: 'delay',
     type: 'number',
     options: '',
     description: 'Set the delay in milliseconds for each staggered child to appears.'
   },
   {
-    name :'overflow',
+    name: 'overflow',
     type: 'string',
     options: 'true, false',
     description: 'Defines if the elements overflow is visible.'
   },
   {
-    name :'className',
+    name: 'className',
     type: 'string',
     options: '',
     description: 'Defines a list of class names for the element.'
   },
   {
-    name :'style',
+    name: 'style',
     type: 'string',
     options: '',
     description: 'Add inline styles to the element.'
   }
 ]
 
-export default class TutorialEmerge extends React.Component<any,any>{
+export default class TutorialEmerge extends React.Component<any, any>{
   constructor(props) {
     super(props);
 
     this.state = {
-      showProps : true,
+      showProps: true,
       showVideo: false
     }
   }
@@ -78,9 +78,9 @@ export default class TutorialEmerge extends React.Component<any,any>{
     let state = self.state;
 
     const columns = [
-      {name: 'name', width:120},
-      {name: 'type', width:140},
-      {name: 'description'}
+      { name: 'name', width: 120 },
+      { name: 'type', width: 140 },
+      { name: 'description' }
     ]
     let example = () => {
       return (
@@ -99,33 +99,33 @@ export default class TutorialEmerge extends React.Component<any,any>{
               View
             </Button>
           </Emerge>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><Button simple icon="chevron-down">Scroll Down</Button><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><Button simple icon="chevron-down">Scroll Down</Button><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
           <Layer oocss="h300px w400px">
-          <Emerge enter="slideInLeft">
-            <Layer theme="light" oocss="w500px h200px" border flexCenter>Appear</Layer>
-            <Layer theme="light" oocss="w500px h200px" border flexCenter>When</Layer>
-            <Layer theme="light" oocss="w500px h200px" border flexCenter>In</Layer>
-            <Layer theme="light" oocss="w500px h200px" border flexCenter>View</Layer>
-          </Emerge>
+            <Emerge enter="slideInLeft">
+              <Layer theme="light" oocss="w500px h200px" border flexCenter>Appear</Layer>
+              <Layer theme="light" oocss="w500px h200px" border flexCenter>When</Layer>
+              <Layer theme="light" oocss="w500px h200px" border flexCenter>In</Layer>
+              <Layer theme="light" oocss="w500px h200px" border flexCenter>View</Layer>
+            </Emerge>
           </Layer>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
           <Layer oocss="h408px w100%">
-          <Emerge enter="fadeInUpBig">
-            <Align>
-              <Layer theme="light" className="pull-left"  oocss="w200px h200px" border flexCenter>Appear</Layer>
-              <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>When</Layer>
-              <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>In</Layer>
-              <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>View</Layer>
-            </Align>
-          </Emerge>
+            <Emerge enter="fadeInUpBig">
+              <Align>
+                <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>Appear</Layer>
+                <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>When</Layer>
+                <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>In</Layer>
+                <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>View</Layer>
+              </Align>
+            </Emerge>
           </Layer>
         </div>
       )
     }
 
     return (
-      <TutorialView 
+      <TutorialView
         description="The Emerge component staggers children into view if a certain event happens."
         Id="Emerge"
         columnData={EmergeProperties}
