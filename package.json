@@ -1,6 +1,13 @@
 {
-  "name": "web4",
-  "version": "1.0.0",
+  "name": "react-recoil",
+  "version": "0.6.0",
+  "description": "Powerful react powered front-end framework.",
+  "author": "Joseph Isaac <josephisaac89@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jisaac89/recoil.git"
+  },
+  "license": "MIT",
   "main": "docs/index.tsx",
   "scripts": {
     "clean": "rimraf ./.build && rimraf ./.next && npm prune && npm install",
@@ -10,8 +17,6 @@
     "start:dev": "webpack-dev-server --mode development --open chrome --hot",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@types/react": "^16.3.14",
     "animate.css": "^3.6.1",
@@ -59,5 +64,33 @@
     "webpack-cli": "^2.1.3",
     "webpack-dev-server": "^3.1.4"
   },
-  "description": ""
+  "keywords": [
+    "react",
+    "reactjs",
+    "react ui kit",
+    "react ui framework",
+    "react ui library",
+    "ui kit",
+    "ui framework",
+    "ui library",
+    "react uikit",
+    "react button",
+    "react input",
+    "react grid",
+    "react table",
+    "react components",
+    "react component library",
+    "react component kit",
+    "react dropdown",
+    "react mobile",
+    "react ui",
+    "react ui components",
+    "recoil",
+    "facebook",
+    "reactjs",
+    "typescript ui",
+    "typescript ui kit",
+    "typescript framework",
+    "react-component"
+  ]
 }
