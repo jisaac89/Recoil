@@ -107,13 +107,13 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
         );
 
         return (
-            <div ref={'Recoil'} id={'Recoil'} className={RecoilClass}>
-                <PortalProvider initialized={this.state.initialized}>
-                    <ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
+            <PortalProvider initialized={this.state.initialized}>
+                <ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
+                    <div ref={'Recoil'} id={'Recoil'} className={RecoilClass}>
                         {this.props.children}
-                    </ShortCutProvider>
-                </PortalProvider>
-            </div>
+                    </div>
+                </ShortCutProvider>
+            </PortalProvider>
         );
     }
 }
