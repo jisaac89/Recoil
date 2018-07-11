@@ -40,6 +40,7 @@ export default class App extends React.Component<any, any> {
       showMenu: true,
       showModal: false,
       nightmode: false,
+      mobile: false,
       showDocs: false,
       showInstructions: false
     }
@@ -78,7 +79,7 @@ export default class App extends React.Component<any, any> {
 
   onDevice(device) {
     this.setState({
-      mobile: false,
+      mobile: device === 'desktop' ? false : true,
       showMenu: device === 'desktop' ? true : false
     })
   }
