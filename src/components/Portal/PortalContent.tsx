@@ -12,6 +12,7 @@ export interface IPortalProps {
     icon?: string;
     portalType?: string;
     initialized: boolean;
+    portalTemplate?: JSX.Element;
 }
 
 export default class PortalContent extends React.Component<IPortalProps, any>{
@@ -38,21 +39,22 @@ export default class PortalContent extends React.Component<IPortalProps, any>{
     render() {
         if (this.portalElement) {
             return ReactDOM.createPortal(
-                <SlideIn
-                    id={this.props.portalId}
-                    flex
-                    fill
-                    onClose={this.props.onClose}
-                    title={this.props.title}
-                    icon={this.props.icon}
-                    className="r-Portal z5"
-                    fixed from="bottom"
-                    if={this.props.open}
-                >
-                    <Layer flex fill>
-                        {this.props.children}
-                    </Layer>
-                </SlideIn>,
+                this.props.portalTemplate ? this.props.portalTemplate :
+                    <SlideIn
+                        id={this.props.portalId}
+                        flex
+                        fill
+                        onClose={this.props.onClose}
+                        title={this.props.title}
+                        icon={this.props.icon}
+                        className="r-Portal z5"
+                        fixed from="bottom"
+                        if={this.props.open}
+                    >
+                        <Layer flex fill>
+                            {this.props.children}
+                        </Layer>
+                    </SlideIn>,
                 this.portalElement
             )
         } else return null;

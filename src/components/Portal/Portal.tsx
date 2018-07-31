@@ -14,6 +14,7 @@ export interface IPortalProps {
   title?: string;
   icon?: string;
   portalType?: string;
+  portalTemplate?: JSX.Element;
 }
 
 export default class Portal extends React.Component<IPortalProps, any>{

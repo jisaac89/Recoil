@@ -3,12 +3,14 @@ import * as React from 'react';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 
+
 import * as classNames from 'classnames';
+import Portal from '../Portal/Portal';
 
 export type NotificationType = 'success' | 'primary' | 'error' | 'default';
 
 export interface INotificationItem {
-    title: string;
+    template: string | JSX.Element;
     type?: NotificationType;
     id?: number;
 }
@@ -40,7 +42,7 @@ class Notification extends React.Component<INotificationProps, INotificationStat
             self.setState({
                 view: 'removed'
             });
-        }, 20000);
+        }, 6000);
     }
 
     render() {
@@ -52,12 +54,10 @@ class Notification extends React.Component<INotificationProps, INotificationStat
         if (this.state.view === 'visible') {
             animationClass = 'animated fadeInUp';
         } else if (this.state.view === 'hiding') {
-            animationClass = 'animated';
-        } else {
-            //animationClass = 'hide';
+            animationClass = 'animated fadeOut';
         }
 
-        return this.state.view === 'visible' ? <Toolbar block textCenter className="p10 w100"><Button block theme={props.item.type ? props.item.type : 'default'} className={animationClass}>{props.item.title}</Button></Toolbar> : null
+        return this.state.view === 'visible' || this.state.view === 'hiding' ? <Toolbar block textCenter className={"p10 m0 w100 e-light e-dropShadow" + ' ' + animationClass}>{props.item.template}</Toolbar> : null
     }
 }
 
@@ -81,11 +81,14 @@ export default class Notifications extends React.Component<INotificationsProps, 
         );
 
         return (
-            <div className={notificationClass}>
-                {dataSource.map((item, index) => {
-                    return <Notification item={item} key={index} />;
-                })}
-            </div>
+            <Portal open={true} portalTemplate={
+                <div className={notificationClass}>
+                    {dataSource.map((item, index) => {
+                        return <Notification item={item} key={index} />
+                    })}
+                </div>
+            }
+            />
         );
     }
 }
