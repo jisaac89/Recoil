@@ -57,7 +57,7 @@ export interface ITableProps {
     sortKey?: string;
     showDataSourceLength?: boolean;
     selectedKey?: string;
-    flex?: boolean | 'row';
+    flex?: boolean | 'row' | 'row-reverse';
     menuTemplate?: any;
     focusOnMount?: boolean;
     contentMaxHeight?: number;
