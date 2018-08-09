@@ -33,6 +33,7 @@ export interface TableBodyProps {
     filterOpenDetailTemplate?: (item: Object) => void;
     serverSide?: boolean;
     disableSelectedElements?: Array<any>;
+    tableDataClassName?: string;
 }
 
 export default class TableBody extends React.Component<TableBodyProps, any>{
@@ -64,7 +65,8 @@ export default class TableBody extends React.Component<TableBodyProps, any>{
             detailTemplateOpenOnRowSelect,
             selectedKey,
             filterRow,
-            filterOpenDetailTemplate
+            filterOpenDetailTemplate,
+            tableDataClassName
         } = props;
 
         let columnArray: Array<any> = [];
@@ -101,7 +103,8 @@ export default class TableBody extends React.Component<TableBodyProps, any>{
                     selectedKey: selectedKey,
                     filterOpenDetailTemplate: filterOpenDetailTemplate,
                     id,
-                    disableSelectedElements
+                    disableSelectedElements,
+                    tableDataClassName
                 }
                 if (typeof element === 'string' || typeof element === 'number') {
                     key = element;

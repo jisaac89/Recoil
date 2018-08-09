@@ -31,10 +31,12 @@ export interface ILayerProps extends IRecoil {
   id?: string;
   borderRadius?: boolean;
   dropShadow?: boolean;
+  length?: number;
+  scrollToBottom?: boolean;
 }
 
 class Layer extends React.Component<ILayerProps, any> {
-
+  messagesEnd: any;
   public _animate: any;
   public _beforeAnimate: () => void;
   public _afterAnimate: () => void;
@@ -76,12 +78,18 @@ class Layer extends React.Component<ILayerProps, any> {
     if (nextProps.scrollIf && nextProps.scrollToId !== this.props.scrollToId) {
       this.canLayerAnimateScroll(nextProps);
     };
+
+    if (nextProps.length !== this.props.length && this.props.scrollToBottom) {
+      this.scrollToBottom();
+    }
   }
 
   componentDidMount() {
     if (this.props.scrollIf && this.props.scrollToId !== '') {
       this.canLayerAnimateScroll(this.props);
     }
+
+    this.props.scrollToBottom ? this.scrollToBottom() : null;
   }
 
   canLayerAnimateScroll(props: ILayerProps) {
@@ -102,6 +110,9 @@ class Layer extends React.Component<ILayerProps, any> {
       scrollToId: to
     }, () => {
       self.animateScroll(this._animate, top);
+      // this.setState({
+      //   scrollToId: ''
+      // })
     })
     self._afterAnimate();
   }
@@ -160,6 +171,13 @@ class Layer extends React.Component<ILayerProps, any> {
     let left = element.getBoundingClientRect().left;
     return left + this.getScrollLeft();
   }
+
+  scrollToBottom = () => {
+    let endPOffsetTop = this.messagesEnd ? this.messagesEnd : 0;
+    this.messagesEnd ? this.handleScroll('end', endPOffsetTop.offsetTop) : null;
+  }
+
+
   render() {
     const self = this;
     const props = self.props;
@@ -201,6 +219,11 @@ class Layer extends React.Component<ILayerProps, any> {
     return (
       <div id={props.id} onScroll={this.props.onScroll} tabIndex={props.tabIndex} ref="Layer" onClick={props.onClick} className={layerClass} style={Object.assign({}, dimensionStyle, props.style)}>
         {props.children}
+
+
+        <div id="end" style={{ float: "left", clear: "both" }}
+          ref={(el) => { this.messagesEnd = el; }}>
+        </div>
       </div>
     );
   }

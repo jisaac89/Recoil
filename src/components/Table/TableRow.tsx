@@ -85,6 +85,7 @@ export interface ITableColumnProps {
     filterOpenDetailTemplate?: any;
     id?: any;
     disableSelectedElements?: Array<any>;
+    tableDataClassName?: string;
 }
 
 export default class TableRow extends React.Component<ITableColumnProps, any>{
@@ -123,7 +124,8 @@ export default class TableRow extends React.Component<ITableColumnProps, any>{
             selectedKey,
             index,
             filterOpenDetailTemplate,
-            disableSelectedElements
+            disableSelectedElements,
+            tableDataClassName
         } = props;
 
         let columnsValueArray = []
@@ -135,7 +137,7 @@ export default class TableRow extends React.Component<ITableColumnProps, any>{
 
         let createColumnValue = (value: Array<any>, key: string | number) => {
             return (
-                <TableColumn isArray={isArray} hideColumns={hideColumns} element={element} key={key} value={value} column={columns[key]} />
+                <TableColumn tableDataClassName={tableDataClassName} isArray={isArray} hideColumns={hideColumns} element={element} key={key} value={value} column={columns[key]} />
             )
         }
 

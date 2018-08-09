@@ -9,6 +9,7 @@ export interface ITableDataProps {
     element?: any;
     hideColumns?: Array<string>;
     isArray?: boolean;
+    tableDataClassName?: string;
 }
 
 export interface ITableDataState {
@@ -52,19 +53,19 @@ export default class TableColumn extends React.Component<ITableDataProps, ITable
         const self = this;
         let state = self.state;
         let { type } = state;
-        let { value, column, element, hideColumns, isArray } = self.props;
+        let { value, column, element, hideColumns, isArray, tableDataClassName } = self.props;
 
         let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(column.title ? column.title : column.name);
 
         if (isArray) {
             return (
-                <td tabIndex={-1} id={element} style={{ width: column.width }}>
+                <td className={tableDataClassName} tabIndex={-1} id={element} style={{ width: column.width }}>
                     {column.template ? column.template(element) : <Button size='small' simple>{element}</Button>}
                 </td>
             )
         } else if (type !== '' && !hideColumnsArrayIncludesEitherNameOrTitle) {
             return (
-                <td tabIndex={-1} id={value ? value.toString() : null} style={{ width: column.width }}>
+                <td className={tableDataClassName} tabIndex={-1} id={value ? value.toString() : null} style={{ width: column.width }}>
                     {column.template ? column.template(element) : type === 'Value' ? <Button size='small' simple>{value}</Button> ? <Button size='small' simple>{value.toString()}</Button> : null : <Dropdown className="r-Table-Dropdown" material dataSource={value} title={type} />}
                 </td>
             )
