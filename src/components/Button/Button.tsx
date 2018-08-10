@@ -28,6 +28,8 @@ export interface IButtonProps extends IRecoil {
   materialIcon?: boolean;
   onMouseEnter?: (event: React.MouseEvent<any>) => void;
   shortCutInitKey?: string[];
+  fileUpload?: boolean;
+  onChange?(e): void;
 }
 
 export interface IButtonState {
@@ -101,7 +103,9 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       })
     }
   }
-
+  onChangeFileUpload(e) {
+    this.props.onChange ? this.props.onChange(e.target.files[0]) : null;
+  }
 
   render() {
 
@@ -185,6 +189,19 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       );
     }
 
+    let FileButton = ({ innerRef }) => {
+      return (
+        <div id={props.id} ref={innerRef} onMouseEnter={this.props.onMouseEnter ? this.onMouseEnter.bind(this) : null} className={buttonClass} style={props.style}>
+          {iconWrapperLeft}
+          {loadingPartial}
+          {!this.state.showShortcut ? props.children : showTooltip()}
+          {selectablePartial}
+          {iconWrapperRight}
+          <input onChange={this.onChangeFileUpload.bind(this)} className="r-Button-File" type="file" accept="image/*" />
+        </div>
+      );
+    }
+
     let Link = React.forwardRef((props, ref) => (
       <LinkButton innerRef={ref} />
     ));
@@ -197,8 +214,14 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       <DefaultButton innerRef={ref} />
     ));
 
+    let FileUpload = React.forwardRef((props, ref) => (
+      <FileButton innerRef={ref} />
+    ));
+
     if (props.href) {
       return <Link />
+    } if (props.fileUpload) {
+      return <FileUpload />
     } else {
       return props.advanced ? <Default /> : <Simple />;
     }
