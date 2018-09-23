@@ -7,31 +7,25 @@ export default class DropdownHeader extends React.Component<any, any>{
         const self = this;
         const props = self.props;
 
-        let {onClose, title, icon} = props;
+        let { onClose, title, icon } = props;
 
         return (
-            <Button tabIndex={-1} icon={icon} left simple onClick={onClose}>{title}</Button>    
+            <Button tabIndex={-1} icon={icon} left simple onClick={onClose}>{title}</Button>
         )
     }
     menuTemplate() {
         let props = this.props;
-        let {onClose} = props;
+        let { onClose } = props;
         return (
-            <Button shortcut={'x'} tabIndex={-1} simple right icon="times" onClick={onClose}/>
+            <Button shortcut={'x'} tabIndex={-1} simple right icon="times" onClick={onClose} />
         )
     }
     render() {
-
-        const self = this;
-        const props = self.props;
-
-        let {onClose} = props;
-
         return (
-            <Toolbar onClick={onClose} block className="r-Dropdown__header">
-                {this.titleTemplate() }
-                {this.menuTemplate() }
-            </Toolbar>    
+            <Toolbar block className="r-Dropdown__header">
+                {this.titleTemplate()}
+                {this.menuTemplate()}
+            </Toolbar>
         )
     }
 }

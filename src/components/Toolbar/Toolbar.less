@@ -219,7 +219,20 @@
 .r-Toolbar.flush.horizontal > r-Input:first-child > input{
   border-top-left-radius : @input-border-radius;
   border-bottom-left-radius : @input-border-radius;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
+
+.r-Toolbar.flush.horizontal > .r-Input:nth-child(2),
+.r-Toolbar.flush.horizontal > r-Input:nth-child(2) > .r-Input__container > input[type='text'],
+.r-Toolbar.flush > .r-Input.r-Input__container:nth-child(2) > input[type='text'],
+.r-Toolbar.flush.horizontal > r-Input:nth-child(2) > input{
+  border-top-left-radius : 0;
+  border-bottom-left-radius : 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 
 .r-Toolbar.flush.horizontal > .r-Button:nth-child(1),
 .r-Toolbar.flush.horizontal > .r-Dropdown:nth-child(1) > .r-Button{

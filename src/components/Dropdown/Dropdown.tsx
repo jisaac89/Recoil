@@ -28,6 +28,7 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
     open?: boolean;
     onOpen?: (boolean: boolean) => void;
     onClose?: (boolean: boolean) => void;
+    onCloseDropdown?: () => void;
     hideDropdownHeader?: boolean;
     titleKey?: string;
     disabled?: boolean;
@@ -82,8 +83,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                 dropdownIsOpen: nextProps.open
             },
                 () => {
-                    this.props.onOpen && this.state.dropdownIsOpen === true ? this.props.onOpen(true) : null;
-                    this.props.onClose && this.state.dropdownIsOpen === false ? this.props.onOpen(false) : null;
+                    this.props.onOpen && this.state.dropdownIsOpen === true ? this.props.onOpen(true) : this.props.onOpen(false);
                 })
         }
         if (nextProps.scrollToId !== this.state.scrollToId) {
@@ -107,7 +107,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
             dropdownIsOpen: false
         },
             () => {
-                this.props.onClose ? this.props.onClose(false) : null;
+                this.props.onCloseDropdown ? this.props.onCloseDropdown() : null;
             })
     }
     openDropdown() {

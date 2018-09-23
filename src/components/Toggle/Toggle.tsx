@@ -23,6 +23,7 @@ export interface IToggleProps extends IRecoil {
 export interface IToggleState {
   checked?: boolean;
   selected?: Array<Object>;
+  slideIndex: number;
 }
 
 export default class Toggle extends React.Component<IToggleProps, IToggleState>{
@@ -35,23 +36,27 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     super(props);
     this.state = {
       checked: props.checked || false,
-      selected: props.selected || []
+      selected: props.selected || [],
+      slideIndex: 0
     }
   }
 
   componentWillReceiveProps(nextProps: IToggleProps) {
     this.setState({
-      checked: nextProps.checked
+      checked: nextProps.checked,
+      slideIndex: nextProps.checked ? 1 : 0
     })
   }
 
   onChange(event: React.FormEvent<any>) {
     this.setState({
-      checked: !this.state.checked
+      checked: !this.state.checked,
+      slideIndex: this.state.checked ? 1 : 0
+    }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(this.state.checked, event);
+      }
     });
-    if (this.props.onChange) {
-      this.props.onChange(this.state.checked, event);
-    }
   }
 
   changeSelected(item: Array<any>) {
@@ -62,6 +67,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
     const self = this;
     const props = self.props;
     let state = self.state;
+    let { slideIndex } = state;
 
     let { disabled, loading } = props;
 
@@ -109,17 +115,9 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState>{
       )
     }
 
-    let slideIndex;
-
     let inputProps = {
       className: this.state.checked ? "r-Toggle__input checked" : "r-Toggle__input",
       onClick: !loading ? this.onChange.bind(this) : null
-    }
-
-    if (state.checked) {
-      slideIndex = 1
-    } else {
-      slideIndex = 0
     }
 
     if (props.type === 'colors' || props.type === 'strings' || props.type === 'numbers' && props.array && props.array.length > 2) {
