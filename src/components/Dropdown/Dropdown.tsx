@@ -83,7 +83,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any>{
                 dropdownIsOpen: nextProps.open
             },
                 () => {
-                    this.props.onOpen && this.state.dropdownIsOpen === true ? this.props.onOpen(true) : this.props.onOpen(false);
+                    this.props.onOpen && this.state.dropdownIsOpen === true ? this.props.onOpen(true) : null;
                 })
         }
         if (nextProps.scrollToId !== this.state.scrollToId) {
