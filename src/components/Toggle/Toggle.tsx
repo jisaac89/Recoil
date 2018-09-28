@@ -19,49 +19,40 @@ export interface IToggleProps extends IRecoil {
   loading?: boolean;
 }
 
-export interface IToggleState {
-  checked?: boolean;
-  selected?: Array<Object>;
-  slideIndex: number;
-}
+// export interface IToggleState {
+//   selected?: Array<Object>;
+//   slideIndex: number;
+// }
 
-export default class Toggle extends React.Component<IToggleProps, IToggleState> {
+export default class Toggle extends React.Component<IToggleProps, any> {
   public static defaultProps = {
-    checked: null
+    checked: false
   };
 
   constructor(props: IToggleProps) {
     super(props);
     this.state = {
-      checked: props.checked || false,
       selected: props.selected || [],
-      slideIndex: 0
+      checked: props.checked || false
     };
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.checked === null) {
+    if (props.checked !== state.checked) {
       return {
-        checked: state.checked,
-        slideIndex: state.slideIndex
+        checked: true
       };
-    } else {
-      return {
-        checked: props.checked,
-        slideIndex: props.checked ? 1 : 0
-      };
-    }
+    } else return null;
   }
 
   onChange(event: React.FormEvent<any>) {
     this.setState(
       {
-        checked: !this.state.checked,
-        slideIndex: this.state.checked ? 1 : 0
+        checked: !this.state.checked
       },
       () => {
         if (this.props.onChange) {
-          this.props.onChange(this.state.checked, event);
+          this.props.onChange(!this.props.checked, event);
         }
       }
     );
@@ -75,7 +66,8 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState> 
     const self = this;
     const props = self.props;
     let state = self.state;
-    let { slideIndex } = state;
+    let { checked } = state;
+    let slideIndex = state.checked ? 1 : 0;
 
     let { disabled, loading } = props;
 
@@ -84,7 +76,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState> 
       {
         'e-text': (props.array && props.array.length === 2) || (props.iconArray && props.iconArray.length === 2)
       },
-      { 'e-checked': state.checked },
+      { 'e-checked': checked },
       {
         'e-color': props.array && props.array.length > 2 && props.type === 'colors'
       },
@@ -138,7 +130,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState> 
     };
 
     let inputProps = {
-      className: this.state.checked ? 'r-Toggle__input checked' : 'r-Toggle__input',
+      className: checked ? 'r-Toggle__input checked' : 'r-Toggle__input',
       onClick: !loading ? this.onChange.bind(this) : null
     };
 

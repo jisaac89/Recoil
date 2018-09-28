@@ -1,17 +1,17 @@
 export interface IRecoil {
-    size?: "small" | "large" | "xlarge" | "xxlarge" | "default";
-    theme?: "primary" | "success" | "error" | "bronze" | "silver" | "gold" | "default" | "light" | "night" | "dark";
-    className?: string;
-    flex?: boolean | 'row' | 'row-reverse';
-    fill?: boolean;
-    disabled?: boolean;
-    checked?: boolean;
-    loading?: boolean;
-    simple?: boolean;
-    outline?: boolean;
-    tabIndex?: number;
-    id?: string;
-    children?: any;
+  size?: 'small' | 'large' | 'xlarge' | 'xxlarge' | 'default';
+  theme?: 'primary' | 'success' | 'error' | 'bronze' | 'silver' | 'gold' | 'default' | 'light' | 'night' | 'dark';
+  className?: string;
+  flex?: boolean | 'row' | 'row-reverse';
+  fill?: boolean;
+  disabled?: boolean;
+  checked?: boolean;
+  loading?: boolean;
+  simple?: boolean;
+  outline?: boolean;
+  tabIndex?: number;
+  id?: string;
+  children?: any;
 }
 
 export { default as Recoil } from './components/Recoil/Recoil';
@@ -19,7 +19,13 @@ export { default as Align } from './components/Align/Align';
 export { default as Button, IButtonProps, IButtonState } from './components/Button/Button';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Open } from './components/Open/Open';
-export { default as DatePicker, IDatePickerProps, Calendar, ICalendarProps, ICalendarState } from './components/DatePicker/DatePicker';
+export {
+  default as DatePicker,
+  IDatePickerProps,
+  Calendar,
+  ICalendarProps,
+  ICalendarState
+} from './components/DatePicker/DatePicker';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
 export { default as Emerge } from './components/Emerge/Emerge';
 export { default as Fixed } from './components/Fixed/Fixed';
@@ -31,7 +37,7 @@ export { default as Modal } from './components/Modal/Modal';
 export { default as Notifications } from './components/Notifications/Notifications';
 export { default as Selectable } from './components/Selectable/Selectable';
 export { default as Shrink } from './components/Shrink/Shrink';
-export { default as Toggle, IToggleProps, IToggleState } from './components/Toggle/Toggle';
+export { default as Toggle, IToggleProps } from './components/Toggle/Toggle';
 export { default as Tree, ITreeItem } from './components/Tree/Tree';
 export { default as Toolbar } from './components/Toolbar/Toolbar';
 export { default as Transform } from './components/Transform/Transform';
