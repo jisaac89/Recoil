@@ -69,14 +69,14 @@ const DataSource: any = (Component: JSX.Element) =>
 
       // TODO
 
-      // if (!!this.props.sortKey && this.props.sortKey !== prevProps.sortKey) {
-      //   this.sortDataSource(dataSource, sortType, sortKey);
-      // } else {
-      //   if (this.props.dataSource && !prevProps.page) {
-      //     dataSource.length > 0 && prevProps.dataSource !== dataSource ? this.loadDataSource(dataSource) : null;
-      //     dataSource.length === 0 && prevProps.dataSource !== dataSource ? this.loadDataSource([]) : null;
-      //   }
-      // }
+      if (!!this.props.sortKey && this.props.sortKey !== prevProps.sortKey) {
+        this.sortDataSource(dataSource, sortType, sortKey);
+      } else {
+        if (this.props.dataSource && !prevProps.page) {
+          dataSource.length > 0 && prevProps.dataSource !== dataSource ? this.loadDataSource(dataSource) : null;
+          dataSource.length === 0 && prevProps.dataSource !== dataSource ? this.loadDataSource([]) : null;
+        }
+      }
 
       if (!!this.props.searchValue && this.props.searchValue !== prevProps.searchValue) {
         this.filterItems(this.props.searchValue, this.props.searchableKeys);

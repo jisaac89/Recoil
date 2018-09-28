@@ -79,13 +79,13 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
         type: type
       });
     }
-    if (!loading && !!open && open !== prevState.dropdownIsOpen) {
+    if (!loading && open !== prevState.dropdownIsOpen) {
       this.setState(
         {
           dropdownIsOpen: open
         },
         () => {
-          onOpen && prevState.dropdownIsOpen === true ? onOpen(true) : null;
+          onOpen && this.props.open === true ? onOpen(true) : null;
         }
       );
     }
@@ -113,10 +113,10 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     this.setState(
       {
         dropdownIsOpen: false
+      },
+      () => {
+        this.props.onCloseDropdown ? this.props.onCloseDropdown() : null;
       }
-      //   () => {
-      //     // this.props.onCloseDropdown ? this.props.onCloseDropdown() : null;
-      //   }
     );
   }
   openDropdown() {
@@ -126,7 +126,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
       },
       () => {
         //    may not need as it seems like a duplicate call
-        // this.props.onOpen ? this.props.onOpen(true) : null;
+        this.props.onOpen ? this.props.onOpen(true) : null;
       }
     );
   }
