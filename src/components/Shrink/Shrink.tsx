@@ -12,11 +12,10 @@ export interface IShrinkProps {
   flex?: boolean;
 }
 
-export default class Shrink extends React.Component<IShrinkProps, {}>{
-
+export default class Shrink extends React.Component<IShrinkProps, {}> {
   public static defaultProps = {
     opacity: 5,
-    scale: .98,
+    scale: 0.98,
     position: 'relative'
   };
 
@@ -28,23 +27,23 @@ export default class Shrink extends React.Component<IShrinkProps, {}>{
 
     let shrinkClass = classNames(
       'r-Shrink',
-      { 'e-shrink': (props.if) },
-      { 'e-fill': (props.fill) },
-      { 'e-flex': (props.flex) },
+      { 'e-shrink': props.if },
+      { 'e-fill': props.fill },
+      { 'e-flex': props.flex },
       props.className
     );
 
     if (props.if) {
       shrinkStyle = {
-        'transform': 'scale(' + props.scale + ')',
+        transform: 'scale(' + props.scale + ')',
         opacity: props.opacity / 100,
         position: props.position
-      }
+      };
     } else {
       shrinkStyle = {
         position: props.position
-      }
-    };
+      };
+    }
 
     return (
       <div className={shrinkClass} style={shrinkStyle}>

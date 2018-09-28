@@ -16,18 +16,18 @@ export interface ICheckboxState {
   checked?: boolean;
 }
 
-export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState>{
+export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxState> {
   constructor(props: ICheckboxProps) {
     super(props);
     this.state = {
       checked: props.checked || false
-    }
+    };
   }
 
   public toggleChecked() {
     this.setState({
       checked: !this.state.checked
-    })
+    });
 
     this.props.onChange ? this.props.onChange(this.state.checked) : null;
   }
@@ -35,33 +35,30 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
   public notchecked() {
     this.setState({
       checked: false
-    })
+    });
   }
 
   public checked() {
     this.setState({
       checked: true
-    })
+    });
   }
 
-  componentWillReceiveProps(nextProps: ICheckboxProps) {
-    this.setState({
-      checked: nextProps.checked !== this.state.checked ? nextProps.checked : this.state.checked
-    })
+  componentDidUpdate(prevProps: ICheckboxProps, prevState) {
+    if (prevState.checked !== this.props.checked) {
+      this.setState({
+        checked: this.props.checked
+      });
+    }
   }
 
   render() {
-
     const self = this;
     const props = self.props;
     let state = self.state;
     let { checked } = state;
 
-    let checkboxClass = classNames(
-      'r-Checkbox',
-      { 'disabled': (props.disabled) },
-      { 'e-checked': (this.state.checked) }
-    )
+    let checkboxClass = classNames('r-Checkbox', { disabled: props.disabled }, { 'e-checked': this.state.checked });
 
     let checkboxProps = {
       disabled: props.disabled,
@@ -69,18 +66,17 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
       size: props.size,
       onClick: this.toggleChecked.bind(this),
       theme: props.theme ? props.theme : checked ? 'primary' : 'default'
-    }
+    };
 
     return (
       <Toolbar flush className="r-Checkbox__Wrapper">
-        <Button
-          className={checkboxClass}
-          icon={props.icon}
-          {...checkboxProps}
-        >
-        </Button>
-        {props.title ? <Button {...checkboxProps} simple>{props.title}</Button> : null}
+        <Button className={checkboxClass} icon={props.icon} {...checkboxProps} />
+        {props.title ? (
+          <Button {...checkboxProps} simple>
+            {props.title}
+          </Button>
+        ) : null}
       </Toolbar>
-    )
+    );
   }
 }

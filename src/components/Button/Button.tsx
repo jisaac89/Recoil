@@ -40,12 +40,11 @@ export interface IButtonState {
   showShortcut?: any;
 }
 
-export default class Button extends React.Component<IButtonProps, IButtonState>{
-
+export default class Button extends React.Component<IButtonProps, IButtonState> {
   public refs: {
-    [key: string]: (Element);
-    button: (HTMLButtonElement);
-  }
+    [key: string]: Element;
+    button: HTMLButtonElement;
+  };
 
   public static defaultProps = {
     disabled: false,
@@ -72,7 +71,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
     if (props.progressiveClick) {
       this.setState({
         progressiveClickLength: props.progressiveClick.length
-      })
+      });
     }
   }
 
@@ -95,12 +94,12 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       array[clickIndex]();
       self.setState({
         progressiveClickIndex: clickIndex + 1
-      })
+      });
     } else {
       array[0]();
       self.setState({
         progressiveClickIndex: 1
-      })
+      });
     }
   }
   onChangeFileUpload(e) {
@@ -108,7 +107,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
   }
 
   render() {
-
     const self = this;
     const props = self.props;
 
@@ -116,23 +114,23 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
 
     let buttonClass = classNames(
       'r-Button',
-      { 'simple': (props.simple) },
-      { 'e-required': (props.required) },
-      { 'outline': (props.outline) },
-      { 'block': (props.block) },
-      { 'column': (props.strech) },
-      { 'icon': (!props.children) },
-      { 'button-pointer-right': (props.pointer === 'right') },
-      { 'button-pointer-left': (props.pointer === 'left') },
-      { 'icon-right': (props.iconLocation === 'right') },
-      { 'icon-left': (props.iconLocation === 'left') },
-      { 'pull-right': (props.right) },
-      { 'pull-left': (props.left) },
+      { simple: props.simple },
+      { 'e-required': props.required },
+      { outline: props.outline },
+      { block: props.block },
+      { column: props.strech },
+      { icon: !props.children },
+      { 'button-pointer-right': props.pointer === 'right' },
+      { 'button-pointer-left': props.pointer === 'left' },
+      { 'icon-right': props.iconLocation === 'right' },
+      { 'icon-left': props.iconLocation === 'left' },
+      { 'pull-right': props.right },
+      { 'pull-left': props.left },
       props.size,
       props.theme,
       props.className,
-      { 'checked': (props.checked) },
-      { 'fill': (props.fill) }
+      { checked: props.checked },
+      { fill: props.fill }
     );
 
     if (props.submit) {
@@ -145,41 +143,91 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
       if (this.state.showShortcut) {
         return <div className="animated text-center fadeIn w100">{this.props.shortcut}</div>;
       }
-    }
+    };
 
-    let selectablePartial = <Selectable type={props.checkedTheme} checked={props.checked ? true : false}></Selectable>;
-    let iconPartial = (props.icon && !props.loading ? props.materialIcon ? <i className={'material-icons'}>{props.icon}</i> : <i className={'fa fa-' + props.icon}></i> : null);
-    let loadingPartial = (props.loading ? <i className={'fa fa-circle-o-notch fa-spin' + (props.children ? ' mr10' : '')}></i> : null);
-    let animatedIcon = (props.iconPointer && !props.loading ? <i className={"icon-pointer fa fa-caret-" + props.iconPointer} ></i> : null);
-    let iconWrapperRight = (props.icon && props.iconLocation === 'right' && !this.state.showShortcut ? <div className={'icon-pointer-' + props.iconPointer + " ml10 icon-wrapper"}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
-    let iconWrapperLeft = (props.icon && props.iconLocation === 'left' && !this.state.showShortcut ? <div className={'icon-pointer-' + props.iconPointer + " icon-wrapper " + (props.children ? "mr10" : "")}>{iconPartial}{props.iconPointer ? animatedIcon : null}</div> : null);
+    let selectablePartial = <Selectable type={props.checkedTheme} checked={props.checked ? true : false} />;
+    let iconPartial =
+      props.icon && !props.loading ? (
+        props.materialIcon ? (
+          <i className={'material-icons'}>{props.icon}</i>
+        ) : (
+          <i className={'fa fa-' + props.icon} />
+        )
+      ) : null;
+    let loadingPartial = props.loading ? (
+      <i className={'fa fa-circle-o-notch fa-spin' + (props.children ? ' mr10' : '')} />
+    ) : null;
+    let animatedIcon =
+      props.iconPointer && !props.loading ? <i className={'icon-pointer fa fa-caret-' + props.iconPointer} /> : null;
+    let iconWrapperRight =
+      props.icon && props.iconLocation === 'right' && !this.state.showShortcut ? (
+        <div className={'icon-pointer-' + props.iconPointer + ' ml10 icon-wrapper'}>
+          {iconPartial}
+          {props.iconPointer ? animatedIcon : null}
+        </div>
+      ) : null;
+    let iconWrapperLeft =
+      props.icon && props.iconLocation === 'left' && !this.state.showShortcut ? (
+        <div className={'icon-pointer-' + props.iconPointer + ' icon-wrapper ' + (props.children ? 'mr10' : '')}>
+          {iconPartial}
+          {props.iconPointer ? animatedIcon : null}
+        </div>
+      ) : null;
 
     let LinkButton = ({ innerRef }) => {
       return (
-        <a href={props.href} id={props.id} target={props.target} ref={innerRef} tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} className={buttonClass} style={props.style}>
+        <a
+          href={props.href}
+          id={props.id}
+          target={props.target}
+          ref={innerRef}
+          tabIndex={props.tabIndex}
+          onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)}
+          className={buttonClass}
+          style={props.style}
+        >
           {iconWrapperLeft}
           {loadingPartial}
           {!this.state.showShortcut ? props.children : showTooltip()}
           {selectablePartial}
           {iconWrapperRight}
         </a>
-      )
-    }
+      );
+    };
 
     let SimpleButton = ({ innerRef }) => {
       return (
-        <button id={props.id} ref={innerRef} tabIndex={props.tabIndex} onClick={this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
+        <button
+          id={props.id}
+          ref={innerRef}
+          tabIndex={props.tabIndex}
+          onClick={this.onClick.bind(this)}
+          type={buttonType}
+          disabled={props.disabled || props.loading === true}
+          className={buttonClass}
+          style={props.style}
+        >
           {iconWrapperLeft}
           {loadingPartial}
           {!this.state.showShortcut ? props.children : showTooltip()}
           {iconWrapperRight}
         </button>
       );
-    }
+    };
 
     let DefaultButton = ({ innerRef }) => {
       return (
-        <button id={props.id} ref={innerRef} onMouseEnter={this.props.onMouseEnter ? this.onMouseEnter.bind(this) : null} tabIndex={props.tabIndex} onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)} type={buttonType} disabled={props.disabled || props.loading === true} className={buttonClass} style={props.style}>
+        <button
+          id={props.id}
+          ref={innerRef}
+          onMouseEnter={this.props.onMouseEnter ? this.onMouseEnter.bind(this) : null}
+          tabIndex={props.tabIndex}
+          onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)}
+          type={buttonType}
+          disabled={props.disabled || props.loading === true}
+          className={buttonClass}
+          style={props.style}
+        >
           {iconWrapperLeft}
           {loadingPartial}
           {!this.state.showShortcut ? props.children : showTooltip()}
@@ -187,11 +235,17 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
           {iconWrapperRight}
         </button>
       );
-    }
+    };
 
     let FileButton = ({ innerRef }) => {
       return (
-        <div id={props.id} ref={innerRef} onMouseEnter={this.props.onMouseEnter ? this.onMouseEnter.bind(this) : null} className={buttonClass} style={props.style}>
+        <div
+          id={props.id}
+          ref={innerRef}
+          onMouseEnter={this.props.onMouseEnter ? this.onMouseEnter.bind(this) : null}
+          className={buttonClass}
+          style={props.style}
+        >
           {iconWrapperLeft}
           {loadingPartial}
           {!this.state.showShortcut ? props.children : showTooltip()}
@@ -200,31 +254,23 @@ export default class Button extends React.Component<IButtonProps, IButtonState>{
           <input onChange={this.onChangeFileUpload.bind(this)} className="r-Button-File" type="file" accept="image/*" />
         </div>
       );
-    }
+    };
 
-    let Link = React.forwardRef((props, ref) => (
-      <LinkButton innerRef={ref} />
-    ));
+    let Link = React.forwardRef((props, ref) => <LinkButton innerRef={ref} />);
 
-    let Simple = React.forwardRef((props, ref) => (
-      <SimpleButton innerRef={ref} />
-    ));
+    let Simple = React.forwardRef((props, ref) => <SimpleButton innerRef={ref} />);
 
-    let Default = React.forwardRef((props, ref) => (
-      <DefaultButton innerRef={ref} />
-    ));
+    let Default = React.forwardRef((props, ref) => <DefaultButton innerRef={ref} />);
 
-    let FileUpload = React.forwardRef((props, ref) => (
-      <FileButton innerRef={ref} />
-    ));
+    let FileUpload = React.forwardRef((props, ref) => <FileButton innerRef={ref} />);
 
     if (props.href) {
-      return <Link />
-    } if (props.fileUpload) {
-      return <FileUpload />
+      return <Link />;
+    }
+    if (props.fileUpload) {
+      return <FileUpload />;
     } else {
       return props.advanced ? <Default /> : <Simple />;
     }
-
   }
 }

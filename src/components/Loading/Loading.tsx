@@ -15,7 +15,7 @@ export interface ILoadingProps extends IRecoil {
   icon?: string;
 }
 
-export interface ILoadingState { }
+export interface ILoadingState {}
 
 export default class Loading extends React.Component<ILoadingProps, ILoadingState> {
   public state: ILoadingState;
@@ -25,30 +25,31 @@ export default class Loading extends React.Component<ILoadingProps, ILoadingStat
   }
 
   public render() {
-
     const self = this;
     const props = self.props;
 
     let { src, size, icon } = props;
 
-    let loadingClass = classNames(
-      'r-Loading',
-      'loader',
-      "dinblock",
-      props.className,
-      size
-    )
+    let loadingClass = classNames('r-Loading', 'loader', 'dinblock', props.className, size);
 
     if (props.if) {
       if (src)
-        return <div className={loadingClass}><img height={props.height} width={props.width} src={src} /></div>;
+        return (
+          <div className={loadingClass}>
+            <img height={props.height} width={props.width} src={src} />
+          </div>
+        );
       else {
         return (
           <div className={loadingClass}>
-            <i className="fa fa-circle-o-notch fa-spin"></i>
-            {icon ? <Emerge enter="fadeIn"><Button size={size} simple className="center-icon" icon={icon}></Button></Emerge> : null}
+            <i className="fa fa-circle-o-notch fa-spin" />
+            {icon ? (
+              <Emerge enter="fadeIn">
+                <Button size={size} simple className="center-icon" icon={icon} />
+              </Emerge>
+            ) : null}
           </div>
-        )
+        );
       }
     } else return null;
   }

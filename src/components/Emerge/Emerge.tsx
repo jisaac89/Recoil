@@ -16,14 +16,13 @@ export interface IEmergeProps {
 }
 
 export default class Emerge extends React.Component<IEmergeProps, {}> {
-
   public static defaultProps = {
     if: true,
     enter: 'fadeInUp',
     exit: 'fadeOutDown',
     delay: 300,
     overflow: false
-  }
+  };
 
   public render() {
     const self = this;
@@ -31,12 +30,7 @@ export default class Emerge extends React.Component<IEmergeProps, {}> {
 
     let index = 0;
 
-    let emergeClass = classNames(
-      'r-Emerge',
-      props.className,
-      { 'e-enter': (props.if) },
-      { 'floshow': (props.overflow) }
-    );
+    let emergeClass = classNames('r-Emerge', props.className, { 'e-enter': props.if }, { floshow: props.overflow });
 
     let newChildren = React.Children.map(this.props.children, (child: any) => {
       let exit, enter;
@@ -53,22 +47,20 @@ export default class Emerge extends React.Component<IEmergeProps, {}> {
         exit = null;
       }
 
-      let newClass = classNames(
-        'r-Emerge',
-        'animated',
-        enter,
-        exit,
-        child.props.className
-      );
+      let newClass = classNames('r-Emerge', 'animated', enter, exit, child.props.className);
 
       let newStyle: any = {
-        animationDelay: ((index++) * props.delay) + 'ms'
+        animationDelay: index++ * props.delay + 'ms'
       };
 
       function merge_options(obj1: Array<any>, obj2: Array<any>) {
         let obj3 = {};
-        for (let attrname in obj1) { obj3[attrname] = obj1[attrname]; }
-        for (let attrname in obj2) { obj3[attrname] = obj2[attrname]; }
+        for (let attrname in obj1) {
+          obj3[attrname] = obj1[attrname];
+        }
+        for (let attrname in obj2) {
+          obj3[attrname] = obj2[attrname];
+        }
         return obj3;
       }
       return React.cloneElement(child, { className: newClass, style: merge_options(newStyle, props.style) });
@@ -76,9 +68,14 @@ export default class Emerge extends React.Component<IEmergeProps, {}> {
 
     return (
       <Observer triggerOnce={props.triggerOnce}>
-        {(inView) => inView ? <span className={emergeClass} ref="element">{newChildren}</span> : null}
+        {inView =>
+          inView ? (
+            <span className={emergeClass} ref="element">
+              {newChildren}
+            </span>
+          ) : null
+        }
       </Observer>
-
     );
   }
 }

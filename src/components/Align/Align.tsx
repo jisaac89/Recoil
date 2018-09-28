@@ -26,7 +26,6 @@ export interface IAlignState {
 }
 
 const AlignChild = (props: IAlignChildProps) => {
-
   let { columns, vertical, width, element, margin } = props;
 
   let alignChildStyle = {
@@ -40,7 +39,7 @@ const AlignChild = (props: IAlignChildProps) => {
     <div className="r-Align__Child" style={alignChildStyle}>
       {element}
     </div>
-  )
+  );
 };
 
 export default class Align extends React.Component<IAlignProps, IAlignState> {
@@ -49,32 +48,35 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
     this.state = {
       widthArray: [],
       maxColumnsLength: 0
-    }
+    };
   }
   componentDidMount() {
     this.props.columns ? this.alignColumns(this.props.columns) : null;
   }
-  componentWillReceiveProps(nextProps: IAlignProps) {
-    if (nextProps.columns !== this.props.columns) {
-      this.alignColumns(nextProps.columns);
+  componentDidUpdate(prevProps: IAlignProps) {
+    if (prevProps.columns !== this.props.columns) {
+      this.alignColumns(this.props.columns);
     }
   }
   alignUpdate(widthArray: Array<number>, singleColumnLength: number, maxColumnsLength: number) {
-    this.setState({
-      maxColumnsLength: maxColumnsLength
-    }, () => {
-      widthArray.push((singleColumnLength / this.state.maxColumnsLength) * 100)
-      this.setState({ widthArray: widthArray });
-    });
+    this.setState(
+      {
+        maxColumnsLength: maxColumnsLength
+      },
+      () => {
+        widthArray.push((singleColumnLength / this.state.maxColumnsLength) * 100);
+        this.setState({ widthArray: widthArray });
+      }
+    );
   }
   alignColumns(columns: Array<number>) {
     let widthArray: Array<number> = [];
     let maxColumnsLength = 0;
     if (columns) {
-      columns.map((singleColumnLength) => {
+      columns.map(singleColumnLength => {
         maxColumnsLength += singleColumnLength;
         this.alignUpdate(widthArray, singleColumnLength, maxColumnsLength);
-      })
+      });
     }
   }
   alignChildren(element: JSX.Element, key: string) {
@@ -88,7 +90,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
         margin={margin}
         vertical={vertical}
       />
-    )
+    );
   }
   render() {
     const self = this;
@@ -98,9 +100,9 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 
     let alignClass = classNames(
       'r-Align',
-      { 'e-vertical': (vertical) },
-      { 'e-horizontal': (!vertical) },
-      { 'e-fill': (fill) },
+      { 'e-vertical': vertical },
+      { 'e-horizontal': !vertical },
+      { 'e-fill': fill },
       'e-align-' + alignItems,
       className
     );

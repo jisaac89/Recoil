@@ -23,20 +23,22 @@ export interface ISlideInProps {
   id?: string;
 }
 
-export default class SlideIn extends React.Component<ISlideInProps, any>{
-
+export default class SlideIn extends React.Component<ISlideInProps, any> {
   constructor(props: ISlideInProps) {
     super(props);
     this.state = {
       offset: props.offset || 0,
       axis: props.from === 'left' || 'right' ? 'X' : 'Y',
-      style: props.if ? { transform: 'translate' + (props.from === 'left' || 'right' ? 'X' : 'Y') + '(' + props.offset + ')' } : null,
+      style: props.if
+        ? { transform: 'translate' + (props.from === 'left' || 'right' ? 'X' : 'Y') + '(' + props.offset + ')' }
+        : null,
       showChildren: props.if
-    }
+    };
   }
 
-  componentWillReceiveProps(nextProps: ISlideInProps) {
-    nextProps.if ? this.open() : this.close();
+  componentDidUpdate(prevProps: ISlideInProps) {
+    this.props.if === true && prevProps.if !== true ? this.open() : null;
+    this.props.if === false && prevProps.if !== false ? this.close() : null;
   }
 
   open() {
@@ -50,28 +52,34 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
   }
 
   slideIn() {
-    this.setState({
-      style: { transform: 'translate' + this.state.axis + '(' + this.state.offset + ')' },
-    }, () => {
-      this.afterOpen();
-    })
+    this.setState(
+      {
+        style: { transform: 'translate' + this.state.axis + '(' + this.state.offset + ')' }
+      },
+      () => {
+        this.afterOpen();
+      }
+    );
   }
 
   afterOpen() {
     this.setState({
       showChildren: true
-    })
+    });
   }
 
   close() {
-    this.setState({
-      style: null
-    }, () => {
-      this.setState({
-        open: false,
-        showChildren: false
-      })
-    })
+    this.setState(
+      {
+        style: null
+      },
+      () => {
+        this.setState({
+          open: false,
+          showChildren: false
+        });
+      }
+    );
   }
   render() {
     const self = this;
@@ -80,24 +88,35 @@ export default class SlideIn extends React.Component<ISlideInProps, any>{
 
     let slideInContainerClass = classNames(
       'r-SlideIn',
-      { 'e-open': (props.if) },
-      { 'e-fill': (fill) },
-      { 'e-flex': (flex) },
-      { 'fixed': (fixed) },
+      { 'e-open': props.if },
+      { 'e-fill': fill },
+      { 'e-flex': flex },
+      { fixed: fixed },
       props.className,
       props.from
     );
 
     return (
-      <div id={this.props.id} tabIndex={-1} onClick={props.onClick} ref="slideIn" className={slideInContainerClass} style={this.state.slideInContainerStyle}>
-        {props.title || props.onClose ? <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
-          {props.title ?
-            <Button simple size="small">{this.props.title}</Button>
-            : null}
-          {props.onClose ?
-            <Button shortcut={"x"} simple size="small" right onClick={props.onClose} icon="times" />
-            : null}
-        </Toolbar> : null}
+      <div
+        id={this.props.id}
+        tabIndex={-1}
+        onClick={props.onClick}
+        ref="slideIn"
+        className={slideInContainerClass}
+        style={this.state.slideInContainerStyle}
+      >
+        {props.title || props.onClose ? (
+          <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
+            {props.title ? (
+              <Button simple size="small">
+                {this.props.title}
+              </Button>
+            ) : null}
+            {props.onClose ? (
+              <Button shortcut={'x'} simple size="small" right onClick={props.onClose} icon="times" />
+            ) : null}
+          </Toolbar>
+        ) : null}
         {props.children}
       </div>
     );

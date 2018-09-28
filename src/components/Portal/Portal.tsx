@@ -17,23 +17,19 @@ export interface IPortalProps {
   portalTemplate?: JSX.Element;
 }
 
-export default class Portal extends React.Component<IPortalProps, any>{
-
+export default class Portal extends React.Component<IPortalProps, any> {
   public static defaultProps = {
     portalType: 'SlideIn'
   };
 
   portalElement: HTMLElement = null;
   render() {
-
     return (
       <PortalContext.Consumer>
         {(initialized: any) => {
-          return <PortalContent initialized={initialized} {...this.props} />
+          return <PortalContent initialized={initialized} {...this.props} />;
         }}
       </PortalContext.Consumer>
-    )
-
-
+    );
   }
-};
+}

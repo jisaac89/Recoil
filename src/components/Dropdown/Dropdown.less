@@ -1,117 +1,116 @@
 @import '../../less/Global.less';
 
-.r-Dropdown{    
-    display: inline-block;
-    position: relative;
+.r-Dropdown {
+  display: inline-block;
+  position: relative;
 }
 
-.r-Dropdown.block{    
-    display: block;
-    position: relative;
+.r-Dropdown.block {
+  display: block;
+  position: relative;
 }
 
-.r-Dropdown > .r-DropdownWrapper{    
-    opacity: 1;
-    -webkit-transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
-    transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
-    -webkit-transition-duration: 200ms;
-    transition-duration: 200ms;
-    position: absolute;
-    transform-origin: left top 0px;
-    transform: scale(0);
-    top:100%;
-    left:0;
-    min-width:100%;
-    border-radius: @default-border-radius;
-    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.2),0 4px 5px 0 rgba(0,0,0,0.14),0 1px 10px 0 rgba(0,0,0,0.12);
+.r-Dropdown > .r-DropdownWrapper {
+  opacity: 1;
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+  position: absolute;
+  transform-origin: left top 0px;
+  transform: scale(0);
+  top: 100%;
+  left: 0;
+  min-width: 100%;
+  border-radius: @default-border-radius;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-
-.r-Dropdown.e-open > .r-DropdownWrapper{
-    opacity: 1;
-    -webkit-transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
-    transition: all .4s cubic-bezier(0.25,0.8,0.25,1);
-    -webkit-transition-duration: 200ms;
-    transition-duration: 200ms;
-    position: absolute;
-    transform-origin: left top 0px;
-    transform: scale(1);
-    z-index: 10;
-    background:white;
-    text-align: left;
+.r-Dropdown.e-open > .r-DropdownWrapper {
+  opacity: 1;
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition-duration: 200ms;
+  transition-duration: 200ms;
+  position: absolute;
+  transform-origin: left top 0px;
+  transform: scale(1);
+  z-index: 10;
+  background: white;
+  text-align: left;
 }
 
-.r-Table-Dropdown > .r-DropdownWrapper > .r-Dropdown__header{
-    display:flex;
+.r-Table-Dropdown > .r-DropdownWrapper > .r-Dropdown__header {
+  display: flex;
 }
 
-.r-Dropdown.right > .r-DropdownWrapper{
-    top:0;
-    left:100%;
+.r-Dropdown.right > .r-DropdownWrapper {
+  top: 0;
+  left: 100%;
 }
 
-.r-Dropdown.left > .r-DropdownWrapper{
-    top:0;
-    right:100%;
+.r-Dropdown.left > .r-DropdownWrapper {
+  top: 0;
+  right: 100%;
 }
 
-.r-Dropdown.down > .r-DropdownWrapper{
-    top:100%;
-    left:0;
+.r-Dropdown.down > .r-DropdownWrapper {
+  top: 100%;
+  left: 0;
 }
 
-.r-Dropdown.up > .r-DropdownWrapper{
-    bottom:100%;
-    left:0;
+.r-Dropdown.up > .r-DropdownWrapper {
+  bottom: 100%;
+  left: 0;
 }
 
-.r-Dropdown.material > .r-DropdownWrapper{
-    top:0;
-    left:0;
+.r-Dropdown.material > .r-DropdownWrapper {
+  top: 0;
+  left: 0;
 }
 
 .r-Dropdown > .r-DropdownWrapper > .r-Grid > .r-Toolbar,
-.r-Dropdown > .r-DropdownWrapper > .r-Grid > .r-Grid__Footer{
-    margin:0 !important;
+.r-Dropdown > .r-DropdownWrapper > .r-Grid > .r-Grid__Footer {
+  margin: 0 !important;
 }
 
-.r-DropdownWrapper > .r-Table{
-    cursor: pointer;
+.r-DropdownWrapper > .r-Table {
+  cursor: pointer;
 }
 
-.r-Dropdown.material.left>.r-DropdownWrapper{
-    left: auto !important;
-    right:0 !important;
-    transform-origin: right top 0 !important;
+.r-Dropdown.material.left > .r-DropdownWrapper {
+  left: auto !important;
+  right: 0 !important;
+  transform-origin: right top 0 !important;
 }
 
-.r-DropdownWrapper > .r-Table > .r-Layer{
-    max-height: 200px;
+.r-DropdownWrapper > .r-Table > .r-Layer {
+  max-height: 200px;
 }
 
-.r-Dropdown__header{
-            border-bottom: 1px solid #ccc;
-    background: #ececec;
+.r-Dropdown__header {
+  border-bottom: 1px solid #ccc;
+  background: #ececec;
 }
 
-.r-Dropdown .r-Toolbar.r-fixed{
-    position: absolute;
-    z-index: 10;
-    /* width: 100%; */
-    right: 0;
-    padding: 4px 0px;
+.r-Dropdown .r-Toolbar.r-fixed {
+  position: absolute;
+  z-index: 10;
+  /* width: 100%; */
+  right: 0;
+  padding: 4px 0px;
 }
 
-.r-DropdownWrapper .r-Tree{
-    max-height:300px;
-    overflow-y:scroll;
+.r-DropdownWrapper .r-Tree {
+  max-height: 300px;
+  overflow-y: scroll;
 }
 
-.r-DropdownWrapper{
-    min-width: 200px;
+.r-DropdownWrapper {
+  min-width: 200px;
 }
 
-.r-Dropdown > .r-Button{
-    word-wrap: break-word;
-    white-space: nowrap;
+.r-Dropdown > .r-Button {
+  word-wrap: break-word;
+  white-space: nowrap;
 }
