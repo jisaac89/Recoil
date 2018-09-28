@@ -8,7 +8,7 @@ import { IRecoil } from '../../index';
 export interface IToggleProps extends IRecoil {
   name?: string;
   array?: Array<string | number>;
-  onChange?: (checked: boolean, event: React.FormEvent<HTMLInputElement>) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   iconArray?: Array<string>;
   type?: string; // 'colors'
   right?: boolean;
@@ -26,7 +26,7 @@ export interface IToggleProps extends IRecoil {
 
 export default class Toggle extends React.Component<IToggleProps, any> {
   public static defaultProps = {
-    checked: false
+    checked: null
   };
 
   constructor(props: IToggleProps) {
@@ -38,11 +38,15 @@ export default class Toggle extends React.Component<IToggleProps, any> {
   }
 
   static getDerivedStateFromProps(props, state) {
-    if (props.checked !== state.checked) {
-      return {
-        checked: true
-      };
-    } else return null;
+    if (props.checked === null) {
+      return null;
+    } else {
+      if (props.checked !== state.checked) {
+        return {
+          checked: props.checked
+        };
+      } else return null;
+    }
   }
 
   onChange(event: React.FormEvent<any>) {
@@ -52,7 +56,7 @@ export default class Toggle extends React.Component<IToggleProps, any> {
       },
       () => {
         if (this.props.onChange) {
-          this.props.onChange(!this.props.checked, event);
+          this.props.onChange(event);
         }
       }
     );

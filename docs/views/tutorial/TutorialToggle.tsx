@@ -88,7 +88,8 @@ export default class TutorialCard extends React.Component<any, any> {
 
     this.state = {
       showProps: true,
-      showVideo: false
+      showVideo: false,
+      toggleIt: true
     };
   }
 
@@ -103,6 +104,12 @@ export default class TutorialCard extends React.Component<any, any> {
     this.setState({
       showProps: false,
       showVideo: this.state.showVideo ? false : true
+    });
+  }
+
+  toggle() {
+    this.setState({
+      toggleIt: !this.state.toggleIt
     });
   }
 
@@ -127,7 +134,7 @@ export default class TutorialCard extends React.Component<any, any> {
             <p>
               With props checked passed as <strong>true</strong>.
             </p>
-            <Toggle className="mt10" checked={true} />
+            <Toggle onChange={this.toggle.bind(this)} className="mt10" checked={state.toggleIt} />
           </Layer>
           <Layer className="pb20">
             <p>
