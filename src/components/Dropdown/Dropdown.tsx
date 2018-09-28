@@ -57,7 +57,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     type: 'children',
     contentMaxHeight: 200,
     material: true,
-    hideFooter: true
+    hideFooter: true,
+    open: null
   };
 
   constructor(props: IDropdownProps) {
@@ -73,7 +74,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 
   static getDerivedStateFromProps(props, state) {
     // must get very explicit on state changes
-    if (!props.loading) {
+    if (props.open !== null) {
       if (props.open !== state.dropdownIsOpen) {
         return {
           dropdownIsOpen: props.open
@@ -83,11 +84,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
           dropdownIsOpen: state.dropdownIsOpen
         };
       }
-    } else {
-      return {
-        dropdownIsOpen: false
-      };
-    }
+    } else return null;
   }
 
   componentDidUpdate(prevProps: IDropdownProps, prevState) {
@@ -266,7 +263,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
       children,
       portalId: guidGenerator(),
       onClose: this.closeDropdown.bind(this),
-      open: state.dropdownIsOpen,
+      open: props.loading ? false : state.dropdownIsOpen,
       position: state.position,
       type: state.type,
       // Table
