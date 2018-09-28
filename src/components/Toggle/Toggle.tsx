@@ -27,7 +27,7 @@ export interface IToggleState {
 
 export default class Toggle extends React.Component<IToggleProps, IToggleState> {
   public static defaultProps = {
-    checked: false
+    checked: null
   };
 
   constructor(props: IToggleProps) {
@@ -39,12 +39,17 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState> 
     };
   }
 
-  componentDidUpdate(prevProps: IToggleProps) {
-    if (prevProps.checked !== this.props.checked) {
-      this.setState({
-        checked: this.props.checked,
-        slideIndex: this.props.checked ? 1 : 0
-      });
+  static getDerivedStateFromProps(props, state) {
+    if (props.checked === null) {
+      return {
+        checked: state.checked,
+        slideIndex: state.slideIndex
+      };
+    } else {
+      return {
+        checked: props.checked,
+        slideIndex: props.checked ? 1 : 0
+      };
     }
   }
 

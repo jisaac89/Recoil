@@ -44,11 +44,15 @@ export default class Checkbox extends React.Component<ICheckboxProps, ICheckboxS
     });
   }
 
-  componentDidUpdate(prevProps: ICheckboxProps, prevState) {
-    if (prevState.checked !== this.props.checked) {
-      this.setState({
-        checked: this.props.checked
-      });
+  static getDerivedStateFromProps(props: ICheckboxProps, state) {
+    if (state.checked !== props.checked) {
+      return {
+        checked: props.checked
+      };
+    } else {
+      return {
+        checked: state.checked
+      };
     }
   }
 

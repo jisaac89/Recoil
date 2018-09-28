@@ -52,20 +52,40 @@ const DataSource: any = (Component: JSX.Element) =>
       };
     }
 
+    static getDerivedStateFromProps(props, state) {
+      if (
+        (!!props.selectedElements && props.selectedElements !== state.selectedElements) ||
+        (!!props.detailTemplateSelectedElements &&
+          props.detailTemplateSelectedElements !== state.detailTemplateSelectedElements)
+      ) {
+        return {
+          selectedElements: props.selectedElements ? props.selectedElements : state.selectedElements,
+          detailTemplateSelectedElements: props.detailTemplateSelectedElements
+            ? props.detailTemplateSelectedElements
+            : state.detailTemplateSelectedElements
+        };
+      } else {
+        return {
+          selectedElements: state.selectedElements,
+          detailTemplateSelectedElements: state.detailTemplateSelectedElements
+        };
+      }
+    }
+
     componentDidUpdate(prevProps: IDataSourceProps, prevState) {
       let { dataSource, sortKey, sortType } = this.props;
 
-      if (this.props.selectedElements && this.props.selectedElements !== prevState.selectedElements) {
-        this.setState({
-          selectedElements: this.props.selectedElements
-        });
-      }
+      // if (this.props.selectedElements && this.props.selectedElements !== prevState.selectedElements) {
+      //   this.setState({
+      //     selectedElements: this.props.selectedElements
+      //   });
+      // }
 
-      if (prevProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
-        this.setState({
-          detailTemplateSelectedElements: this.props.detailTemplateSelectedElements
-        });
-      }
+      // if (prevProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
+      //   this.setState({
+      //     detailTemplateSelectedElements: this.props.detailTemplateSelectedElements
+      //   });
+      // }
 
       // TODO
 

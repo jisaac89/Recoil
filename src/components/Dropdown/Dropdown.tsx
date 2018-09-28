@@ -71,24 +71,36 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     };
   }
 
+  static getDerivedStateFromProps(props, state) {
+    // must get very explicit on state changes
+    if (!props.loading) {
+      if (props.open !== state.dropdownIsOpen) {
+        return {
+          dropdownIsOpen: props.open
+        };
+      } else {
+        return {
+          dropdownIsOpen: state.dropdownIsOpen
+        };
+      }
+    } else {
+      return {
+        dropdownIsOpen: false
+      };
+    }
+  }
+
   componentDidUpdate(prevProps: IDropdownProps, prevState) {
     let { type, loading, open, onOpen, scrollToId, selectedElements } = this.props;
+
+    // TODO move below methods TO getDerivedStateFromProps WHEN POSSIBLE
 
     if (prevProps.type !== type) {
       this.setState({
         type: type
       });
     }
-    if (!loading && open !== prevState.dropdownIsOpen) {
-      this.setState(
-        {
-          dropdownIsOpen: open
-        },
-        () => {
-          onOpen && this.props.open === true ? onOpen(true) : null;
-        }
-      );
-    }
+
     if (scrollToId && scrollToId !== prevState.scrollToId) {
       this.setState({
         scrollToId: scrollToId

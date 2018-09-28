@@ -33,9 +33,15 @@ export default class Wizard extends React.Component<IWizardProps, any> {
     };
   }
 
-  componentDidUpdate(prevProps: IWizardProps) {
-    if (prevProps.slideIndex !== this.props.slideIndex) {
-      this.gotoSlideIndex(this.props.slideIndex);
+  static getDerivedStateFromProps(props, state) {
+    if (props.slideIndex !== state.slideIndex) {
+      return {
+        slideIndex: props.slideIndex
+      };
+    } else {
+      return {
+        slideIndex: state.slideIndex
+      };
     }
   }
 
