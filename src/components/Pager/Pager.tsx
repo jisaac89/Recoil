@@ -8,12 +8,12 @@ export interface IPagerProps {
   gotoPage?: (pageNumber: number, event?: React.MouseEvent<HTMLElement>) => void;
   currentPage?: number;
   changePageSize?: (pageSizeAmount: number, event?: React.MouseEvent<HTMLElement>) => void;
-  firstPage?: (event: React.MouseEvent<any>) => void;
-  nextPage?: (event: React.MouseEvent<any>) => void;
   numberOfPages?: number;
   numberPerPage?: number;
-  lastPage?: (event: React.MouseEvent<any>) => void;
-  previousPage?: (event: React.MouseEvent<any>) => void;
+  firstPage?: any;
+  nextPage?: any;
+  lastPage?: any;
+  previousPage?: any;
   dataSource?: Array<Object>;
   pageSize?: number;
   onPageChange?: (pageNumber: number, event?: React.MouseEvent<any>) => void;
@@ -35,10 +35,6 @@ export default class Pager extends React.Component<IPagerProps, {}> {
 
   onSelected(pageSizeAmount: number) {
     this.props.changePageSize(pageSizeAmount);
-  }
-
-  lastPage(numberOfPages: React.MouseEvent<any>) {
-    this.props.lastPage(numberOfPages);
   }
 
   renderPager(page: number, pageCount: number, pagerSize: number) {
@@ -115,7 +111,7 @@ export default class Pager extends React.Component<IPagerProps, {}> {
               size="small"
               disabled={currentPage === 0}
               tabIndex={-1}
-              onClick={firstPage}
+              onClick={this.gotoPage.bind(this, 9)}
               icon="fast-backward"
             />
             <Button
@@ -124,7 +120,7 @@ export default class Pager extends React.Component<IPagerProps, {}> {
               size="small"
               disabled={currentPage === 0}
               tabIndex={-1}
-              onClick={previousPage}
+              onClick={this.gotoPage.bind(this, this.props.currentPage - 1)}
               icon="step-backward"
             />
             {this.renderPager(currentPage, numberOfPages, pagerSize ? pagerSize : 5)}
@@ -134,7 +130,7 @@ export default class Pager extends React.Component<IPagerProps, {}> {
               size="small"
               disabled={currentPage === numberOfPages - 1}
               tabIndex={-1}
-              onClick={nextPage}
+              onClick={this.gotoPage.bind(this, this.props.currentPage + 1)}
               icon="step-forward"
             />
             <Button
@@ -143,7 +139,7 @@ export default class Pager extends React.Component<IPagerProps, {}> {
               size="small"
               disabled={currentPage === numberOfPages - 1}
               tabIndex={-1}
-              onClick={this.lastPage.bind(this, numberOfPages)}
+              onClick={this.gotoPage.bind(this, numberOfPages - 1)}
               icon="fast-forward"
             />
             {hidePageSize ? null : (

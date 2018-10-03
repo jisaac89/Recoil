@@ -5,84 +5,84 @@ import { stepThrough } from './StepThrough';
 
 // Props you want the resulting component to take (besides the props of the wrapped component)
 export interface ExternalProps {
-    oocss?: string;
+  oocss?: string;
 }
 
 // Props the HOC adds to the wrapped component
 export interface InjectedProps {
-    style?: Object;
-    oocss?: any;
+  style?: Object;
+  oocss?: any;
 }
 
 // Options for the HOC factory that are not dependent on props values
 export interface Options {
-    key?: string;
+  key?: string;
 }
 
-export const OOCSS = () => (Component) => {
-    const result = class YourComponentName extends React.Component<any, any> {
+export const OOCSS = () => Component => {
+  const result = class YourComponentName extends React.Component<any, any> {
+    styleObject: Array<any>;
 
-        styleObject: Array<any>;
+    constructor(props: any) {
+      super(props);
+      this.state = {
+        style: {}
+      };
 
-        constructor(props: any) {
-            super(props);
-            this.state = {
-                style: {}
-            };
+      this.styleObject = [];
+    }
 
-            this.styleObject = [];
-        }
+    componentDidMount() {
+      let { oocss } = this.props;
+      oocss ? this.convertClassToStyle(oocss) : null;
+    }
 
-        componentDidMount() {
-            let { oocss } = this.props;
-            oocss ? this.convertClassToStyle(oocss) : null
-        }
+    componentDidUpdate(prevProps) {
+      if (prevProps.oocss !== this.props.oocss) {
+        this.convertClassToStyle(this.props.oocss);
+      }
+    }
 
-        componentWillReceiveProps(nextProps) {
-            if (nextProps.oocss !== this.props.oocss) {
-                this.convertClassToStyle(nextProps.oocss)
-            }
-        }
+    convertClassToStyle(classNames, currentClassIndex?: number) {
+      // sperate the string as a unique array
+      let classesArray = classNames.split(' ');
+      let classIndex = currentClassIndex || 0;
+      let amountOfClasses = classesArray.length;
 
-        convertClassToStyle(classNames, currentClassIndex?: number) {
+      let currentClass: string = classesArray[classIndex];
 
-            // sperate the string as a unique array
-            let classesArray = classNames.split(' ');
-            let classIndex = currentClassIndex || 0;
-            let amountOfClasses = classesArray.length;
+      if (classIndex < amountOfClasses) {
+        // every class
 
-            let currentClass: string = classesArray[classIndex];
+        // let currentKey;
+        // let currentValue;
+        // let currentMeasurement;
 
-            if (classIndex < amountOfClasses) {
-                // every class
+        // array returns array without key and callback sets key
+        stepThrough(currentClass)
+          .shiftKey(allowedKeys)
+          .shiftValue(allowedValues, data => {
+            this.styleObject.push(data);
+          })
+          .shiftMeasurement();
 
-                // let currentKey;
-                // let currentValue;
-                // let currentMeasurement;
+        // styleObject.push({currentKey : currentValue + currentMeasurement});
 
-                // array returns array without key and callback sets key
-                stepThrough(currentClass).shiftKey(allowedKeys).shiftValue(allowedValues, (data) => {
-                    this.styleObject.push(data);
-                }).shiftMeasurement();
+        return this.convertClassToStyle(classNames, classIndex + 1);
+      } else {
+        this.setState({
+          style: Object.assign({}, ...this.styleObject)
+        });
+      }
+    }
 
-                // styleObject.push({currentKey : currentValue + currentMeasurement});
+    // Implement other methods here
 
-                return this.convertClassToStyle(classNames, classIndex + 1);
-            } else {
-                this.setState({
-                    style: Object.assign({}, ...this.styleObject)
-                })
+    render(): JSX.Element {
+      // Render all your added markup
+      return <Component {...this.props} style={Object.assign({}, this.state.style, this.props.style)} />;
+    }
+  };
 
-            }
-        }
-
-        // Implement other methods here
-
-        render(): JSX.Element {
-            // Render all your added markup
-            return <Component {...this.props} style={Object.assign({}, this.state.style, this.props.style)} />;
-        }
-    };
-
-    return result;
+  return result;
 };

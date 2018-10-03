@@ -24,7 +24,7 @@ export interface IInputProps extends IRecoil {
   cols?: number;
   block?: boolean;
   autoExpand?: boolean;
-  onBlur?: (value: any, event: React.FormEvent<any>) => void;
+  onBlur?: any;
   onChange?: (value: any, event: React.FormEvent<any>) => void;
   scrollHeight?: number;
   focusOnMount?: boolean;
@@ -109,12 +109,12 @@ export default class Input extends React.Component<IInputProps, IInputState> {
       }, focusDelay);
     })(inputDOM);
   }
-  public focus(e: any) {
+  public focus = (e: any) => {
     this.setState({
       checked: true
     });
-  }
-  public blur(event: React.MouseEvent<HTMLInputElement>) {
+  };
+  public blur = (event: React.MouseEvent<HTMLInputElement>) => {
     let inputDOM = this.refs['refInput'];
     let value = (event.target as any).value;
     this.setState(
@@ -126,17 +126,18 @@ export default class Input extends React.Component<IInputProps, IInputState> {
         this.props.onBlur ? this.props.onBlur(value, event) : null;
       }
     );
-  }
+  };
   public mouseOut() {
     let inputDOM = this.refs['refInput'];
     this.setState({
       mouseOut: (ReactDOM.findDOMNode(inputDOM) as HTMLInputElement).onmouseout ? false : true
     });
   }
-  public onChange(event: React.KeyboardEvent<HTMLInputElement>) {
+  public onChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
     // ts issues
-    this.inputValue((event.target as HTMLInputElement).value, event);
-  }
+
+    this.setValue((event.target as HTMLInputElement).value, event);
+  };
 
   limit(max: number) {
     let inputDOM = ReactDOM.findDOMNode(this.refs['refInput']);
@@ -144,10 +145,6 @@ export default class Input extends React.Component<IInputProps, IInputState> {
     if ((inputDOM as HTMLInputElement).value.length > maxLength) {
       (inputDOM as HTMLInputElement).value = (inputDOM as HTMLInputElement).value.substr(0, maxLength);
     }
-  }
-
-  inputValue(value: string, event: React.FormEvent<any>) {
-    this.setValue(value, event);
   }
 
   setValue(value: string, event: React.FormEvent<any>) {
@@ -162,8 +159,8 @@ export default class Input extends React.Component<IInputProps, IInputState> {
     );
   }
 
-  disableKeys(key: string, event: any) {
-    if (this.props.disableKeys.includes(key)) {
+  disableKeys(event: any) {
+    if (this.props.disableKeys.includes(event.key)) {
       event.preventDefault();
       event.stopPropagation();
       return false;
@@ -171,9 +168,9 @@ export default class Input extends React.Component<IInputProps, IInputState> {
     return true;
   }
 
-  onKeyDown(a: any) {
-    this.props.disableKeys ? this.disableKeys(a.key, a) : null;
-  }
+  onKeyDown = (event: any) => {
+    this.props.disableKeys ? this.disableKeys(event) : null;
+  };
 
   render() {
     const self = this;
@@ -254,14 +251,14 @@ export default class Input extends React.Component<IInputProps, IInputState> {
     }
 
     let inputProps = {
-      onKeyPress: this.onKeyDown.bind(this),
+      onKeyPress: this.onKeyDown,
       autoComplete: props.autoComplete,
       name: props.name,
       ref: 'refInput',
-      onChange: this.focus.bind(this),
-      onInput: this.onChange.bind(this),
-      onBlur: this.blur.bind(this),
-      onFocus: this.focus.bind(this),
+      onChange: this.focus,
+      onInput: this.onChange,
+      onBlur: this.blur,
+      onFocus: this.focus,
       placeholder: !props.advanced ? (props.title ? props.title : props.placeholder) : props.placeholder
     };
 
@@ -290,9 +287,8 @@ export default class Input extends React.Component<IInputProps, IInputState> {
             cols={props.cols}
             ref="refInput"
             style={{ height: textAreaScrollHeight }}
-            onFocus={this.focus.bind(this)}
-            onBlur={this.blur.bind(this)}
-            onChange={this.focus.bind(this)}
+            onFocus={this.focus}
+            onChange={this.focus}
           />
         );
         break;

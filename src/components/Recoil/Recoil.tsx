@@ -44,11 +44,10 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
       isTablet: props.isTablet || isTablet,
       initialized: false
     };
-  }
-  componentWillMount() {
-    //  detect device
+    // init
     this.detectMobile();
   }
+
   componentDidMount() {
     this.isMobile(isMobile);
     this.setState({

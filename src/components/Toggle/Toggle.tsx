@@ -49,7 +49,7 @@ export default class Toggle extends React.Component<IToggleProps, any> {
     }
   }
 
-  onChange(event: React.FormEvent<any>) {
+  onChange = (event: React.FormEvent<HTMLInputElement>) => {
     this.setState(
       {
         checked: !this.state.checked
@@ -60,7 +60,7 @@ export default class Toggle extends React.Component<IToggleProps, any> {
         }
       }
     );
-  }
+  };
 
   changeSelected(item: Array<any>) {
     this.setState({ selected: item });
@@ -135,7 +135,7 @@ export default class Toggle extends React.Component<IToggleProps, any> {
 
     let inputProps = {
       className: checked ? 'r-Toggle__input checked' : 'r-Toggle__input',
-      onClick: !loading ? this.onChange.bind(this) : null
+      onClick: !loading ? this.onChange : null
     };
 
     if (

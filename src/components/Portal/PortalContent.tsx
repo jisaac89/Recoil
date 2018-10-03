@@ -21,20 +21,25 @@ export default class PortalContent extends React.Component<IPortalProps, any> {
   };
 
   portalElement: HTMLElement = null;
-  componentWillMount() {
-    let p;
-    if (this.props.initialized) {
-      p = document.getElementById('Recoil');
-      this.portalElement = p;
-    }
+
+  constructor(props) {
+    super(props);
+    this.initPortal();
   }
+
   componentDidUpdate(prevProps, prevState) {
-    let p;
-    if (this.props.initialized && !prevProps.initialized) {
-      p = document.getElementById('Recoil');
-      this.portalElement = p;
+    // ususually you woould compare props but for a portal we need to rerender
+    this.initPortal();
+  }
+
+  initPortal() {
+    let portalDOM;
+    if (this.props.initialized) {
+      portalDOM = document.getElementById('Recoil');
+      this.portalElement = portalDOM;
     }
   }
+
   render() {
     if (this.portalElement) {
       return ReactDOM.createPortal(

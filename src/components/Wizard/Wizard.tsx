@@ -16,6 +16,7 @@ export interface IWizardProps {
   flex?: boolean;
   paginate?: boolean;
   selectedIsRelative?: boolean;
+  onSlide?(slideIndex): void;
 }
 
 const WizardSlide: any = (props: any) => {
@@ -26,35 +27,14 @@ export default class Wizard extends React.Component<IWizardProps, any> {
   public static defaultProps = {
     slideIndex: 0
   };
-  constructor(props: IWizardProps) {
-    super(props);
-    this.state = {
-      slideIndex: props.slideIndex || 0
-    };
-  }
 
-  static getDerivedStateFromProps(props, state) {
-    if (props.slideIndex !== state.slideIndex) {
-      return {
-        slideIndex: props.slideIndex
-      };
-    } else {
-      return {
-        slideIndex: state.slideIndex
-      };
-    }
-  }
-
-  gotoSlideIndex(slideIndex: number) {
-    this.setState({
-      slideIndex: slideIndex
-    });
-  }
+  onSlide = (slideIndex: number) => {
+    this.props.onSlide ? this.props.onSlide(slideIndex) : null;
+  };
 
   render() {
     const self = this;
     const props = self.props;
-    let state = self.state;
 
     let wizardClass = classNames(
       'r-Wizard',
@@ -64,17 +44,17 @@ export default class Wizard extends React.Component<IWizardProps, any> {
     );
 
     let createSlidesPartial = (item: Array<any>, index: string | number) => {
-      let selected = state.slideIndex === index;
+      let selected = props.slideIndex === index;
 
       let wizardSlideClass = classNames(
         'r-WizardSlide',
-        { 'e-selected': state.slideIndex === index },
-        { 'e-backward': state.slideIndex > index },
-        { 'e-forward': state.slideIndex < index },
+        { 'e-selected': props.slideIndex === index },
+        { 'e-backward': props.slideIndex > index },
+        { 'e-forward': props.slideIndex < index },
         { 'e-vertical': props.vertical },
         { 'e-dont-animate': props.animate === false },
         {
-          'e-selected-relative': props.selectedIsRelative === true && state.slideIndex === index
+          'e-selected-relative': props.selectedIsRelative === true && props.slideIndex === index
         },
         props.className
       );
@@ -95,12 +75,8 @@ export default class Wizard extends React.Component<IWizardProps, any> {
           {props.paginate ? (
             <Pager
               numberOfPages={props.children.length}
-              currentPage={state.slideIndex}
-              gotoPage={this.gotoSlideIndex.bind(this)}
-              firstPage={this.gotoSlideIndex.bind(this, 0)}
-              lastPage={this.gotoSlideIndex.bind(this, props.children.length - 1)}
-              nextPage={this.gotoSlideIndex.bind(this, this.state.slideIndex + 1)}
-              previousPage={this.gotoSlideIndex.bind(this, this.state.slideIndex - 1)}
+              currentPage={props.slideIndex}
+              gotoPage={this.onSlide}
               hidePageSize
             />
           ) : null}

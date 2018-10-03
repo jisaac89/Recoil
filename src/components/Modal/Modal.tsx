@@ -102,19 +102,19 @@ export default class Modal extends React.Component<IModalProps, IModalState> {
     });
   }
 
-  toggleFullScreen() {
+  toggleFullScreen = () => {
     this.setState({
       fullScreen: !this.state.fullScreen
     });
-  }
+  };
 
-  closeModal() {
+  closeModal = () => {
     this.setState({
       open: false,
       showChildren: false
     });
     this.props.onClose ? this.props.onClose() : null;
-  }
+  };
 
   render() {
     const self = this;
@@ -146,8 +146,8 @@ export default class Modal extends React.Component<IModalProps, IModalState> {
                   icon={this.props.icon}
                   title={this.props.title}
                   fullScreen={this.state.fullScreen}
-                  toggleFullScreen={this.toggleFullScreen.bind(this)}
-                  onClose={this.closeModal.bind(this)}
+                  toggleFullScreen={this.toggleFullScreen}
+                  onClose={this.closeModal}
                   hideFullScreenButton={props.hideFullScreenButton}
                   hideCloseButton={props.hideCloseButton}
                   closeId={props.closeId}

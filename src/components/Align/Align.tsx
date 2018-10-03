@@ -79,7 +79,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
       });
     }
   }
-  alignChildren(element: JSX.Element, key: string) {
+  alignChildren = (element: JSX.Element, key: string) => {
     let { columns, margin, vertical } = this.props;
     return (
       <AlignChild
@@ -91,12 +91,11 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
         vertical={vertical}
       />
     );
-  }
+  };
   render() {
     const self = this;
     const props = self.props;
     let { vertical, children, className, fill, alignItems } = props;
-    let alignChildren = self.alignChildren.bind(self);
 
     let alignClass = classNames(
       'r-Align',
@@ -109,7 +108,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 
     return (
       <div style={this.props.style} className={alignClass}>
-        {children.length > 1 ? children.map(alignChildren) : this.props.children}
+        {children.length > 1 ? children.map(this.alignChildren) : this.props.children}
       </div>
     );
   }
