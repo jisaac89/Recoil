@@ -79,51 +79,20 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
         return {
           dropdownIsOpen: props.open
         };
+      } else if (props.selectedElements !== state.selectedElements) {
+        return {
+          selectedElements: props.selectedElements
+        };
+      } else if (props.scrollToId !== state.scrollToId) {
+        return {
+          scrollToId: props.scrollToId
+        };
       } else {
         return {
           dropdownIsOpen: state.dropdownIsOpen
         };
       }
     } else return null;
-
-    // must get very explicit on state changes
-    if (props.type !== null) {
-      if (props.open !== state.type) {
-        return {
-          type: props.type
-        };
-      } else return null;
-    } else return null;
-
-    // must get very explicit on state changes
-    if (props.scrollToId !== null) {
-      if (props.scrollToId !== state.scrollToId) {
-        return {
-          scrollToId: props.scrollToId
-        };
-      } else return null;
-    } else return null;
-
-    // must get very explicit on state changes
-    if (props.selectedElements !== null) {
-      if (props.selectedElements !== state.selectedElements) {
-        return {
-          selectedElements: props.selectedElements
-        };
-      } else return null;
-    } else return null;
-  }
-
-  componentDidUpdate(prevProps: IDropdownProps, prevState) {
-    let { selectedElements } = this.props;
-
-    if (
-      this.props.type === 'tree' &&
-      !!selectedElements &&
-      prevProps.selectedElements.length !== this.props.selectedElements.length
-    ) {
-      this.closeDropdown();
-    }
   }
 
   closeDropdown() {
