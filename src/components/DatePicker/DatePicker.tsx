@@ -54,8 +54,10 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
     if (this.props.onClick) {
       this.props.onClick();
     } else {
-      this.setState({
-        open: !this.state.open
+      this.setState(state => {
+        return {
+          open: !state.open
+        };
       });
     }
   }
@@ -77,13 +79,13 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
       <Dropdown
         className={className}
         icon="calendar"
-        type="text"
         material
         title={title ? title : getDateFormatted(this.state.date, this.props.selectTime)}
         mobile={mobile}
         open={this.state.open}
         onClick={this.toggleOpen.bind(this)}
         onClose={this.toggleClose.bind(this)}
+        onCloseDropdown={this.toggleClose.bind(this)}
         theme={this.props.theme}
         outline={outline}
         size={size}

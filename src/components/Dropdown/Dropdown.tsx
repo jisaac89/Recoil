@@ -18,17 +18,12 @@ function guidGenerator() {
 
 export interface IDropdownProps extends IButtonProps, ITableProps {
   title?: string;
-  type?: string;
   material?: boolean;
   materialIcon?: boolean;
   dropDirection?: string;
-  onChange?: (element?: Array<Object>, key?: string | number, selectedElements?: Array<Object>, id?: string) => void;
   fixedClose?: boolean;
   mobile?: boolean;
   open?: boolean;
-  onOpen?: (boolean: boolean) => void;
-  onClose?: (boolean: boolean) => void;
-  onCloseDropdown?: () => void;
   hideDropdownHeader?: boolean;
   titleKey?: string;
   disabled?: boolean;
@@ -37,15 +32,16 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
   tagSelected?: boolean;
   tagSelectedKey?: string;
   tagSelectedElements?: Array<any>;
+  onChange?: (element?: Array<Object>, key?: string | number, selectedElements?: Array<Object>, id?: string) => void;
+  onOpen?: (boolean: boolean) => void;
+  onClose?: (boolean: boolean) => void;
+  onCloseDropdown?: () => void;
   onTagRemove?: (item) => void;
 }
 
 export interface State {
   open?: boolean;
 }
-
-//DropdownTypes:
-//types="table/tree/calendar/children"
 
 export default class Dropdown extends React.Component<IDropdownProps, any> {
   refs: {
@@ -54,7 +50,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   };
 
   public static defaultProps = {
-    type: 'children',
     contentMaxHeight: 200,
     material: true,
     hideFooter: true,
@@ -64,8 +59,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
   constructor(props: IDropdownProps) {
     super(props);
     this.state = {
-      dropdownIsOpen: props.open || false,
-      type: props.dataSource && props.type !== 'tree' ? 'table' : props.type,
+      dropdownIsOpen: false,
       selectedElements: props.selectedElements || [],
       scrollToId: props.scrollToId || '',
       title: props.title || ''
@@ -242,7 +236,6 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
       onClose: this.closeDropdown.bind(this),
       open: props.loading ? false : state.dropdownIsOpen,
       position: state.position,
-      type: state.type,
       // Table
       disableSelectedElements,
       dataSource,

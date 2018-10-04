@@ -15,7 +15,6 @@ export default class DropdownContent extends React.Component<any, any> {
       title,
       icon,
       onClose,
-      type,
       children,
       // Table
       disableSelectedElements,
@@ -61,7 +60,6 @@ export default class DropdownContent extends React.Component<any, any> {
 
     let dropdownContentTypeProps = {
       id,
-      type,
       children,
       open,
       // Table

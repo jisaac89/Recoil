@@ -96,18 +96,10 @@ export default class DropdownContentType extends React.Component<any, any> {
       //
     };
 
-    switch (props.type) {
-      case 'table':
-        dropdownTypePartial = <Table {...tableProps} />;
-        break;
-      case 'tree':
-        dropdownTypePartial = <Tree {...treeProps} />;
-        break;
-      case 'calendar':
-        dropdownTypePartial = <Calendar />;
-        break;
-      default:
-        dropdownTypePartial = children;
+    if (props.dataSource) {
+      dropdownTypePartial = <Table {...tableProps} />;
+    } else {
+      dropdownTypePartial = children;
     }
 
     return open ? dropdownTypePartial : null;
