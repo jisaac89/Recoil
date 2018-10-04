@@ -39,6 +39,10 @@ export default class Fixed extends React.Component<IFixedProps, any> {
     }
   }
 
+  componentWillUnmount() {
+    document.body.removeEventListener('scroll', this.handleShortcuts);
+  }
+
   public render() {
     const self = this;
     const props = self.props;

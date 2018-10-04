@@ -15,34 +15,25 @@ export interface IStepperProps {
 class Stepper extends React.Component<IStepperProps, any> {
   createList = (item: Array<any>, index: number | number) => {
     let { stepIndex } = this.props;
-    if (item !== null) {
-      if (Math.abs(index % 2) !== 1) {
-        return (
-          <Shrink key={index} opacity={50} scale={1} if={index > stepIndex}>
-            <div>{item}</div>
-          </Shrink>
-        );
-      } else {
-        return (
-          <Shrink key={index} opacity={50} scale={1} if={index > stepIndex}>
-            <div className={index > stepIndex - 1 ? 'flex-step e-gray' : 'flex-step'} />
-          </Shrink>
-        );
-      }
-    } else return null;
+    return (
+      <Shrink key={index} opacity={50} scale={1} if={index > stepIndex}>
+        {Math.abs(index % 2) !== 1 ? (
+          <div>{item}</div>
+        ) : (
+          <div className={index > stepIndex - 1 ? 'flex-step e-gray' : 'flex-step'} />
+        )}
+      </Shrink>
+    );
   };
   render() {
-    const self = this;
-    const props = self.props;
-
+    const props = this.props;
     let { className, align, title, vertical, children } = props;
 
     let updatedArray = [];
 
     children.map((item, index) => {
-      if (index !== children.length) {
-        updatedArray.push(item, []);
-      }
+      let lastChild = index === children.length - 1;
+      lastChild ? updatedArray.push(item) : updatedArray.push(item, []);
     });
 
     return (

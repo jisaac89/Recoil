@@ -4,8 +4,6 @@ import * as classNames from 'classnames';
 export interface ISelectableProps {
   checked?: boolean;
   classNames?: any;
-  ghost?: boolean;
-  children?: any;
   type?: string;
 }
 
@@ -15,11 +13,9 @@ class Selectable extends React.Component<ISelectableProps, {}> {
   };
 
   render() {
-    const self = this;
-    const props = self.props;
-
-    let selectableClass = classNames('r-Selectable', 'r-Selectable__border', props.type, { checked: props.checked });
-
+    const props = this.props;
+    const { checked, type } = props;
+    let selectableClass = classNames('r-Selectable', 'r-Selectable__border', type, { checked: checked });
     return <div tabIndex={-1} className={selectableClass} />;
   }
 }

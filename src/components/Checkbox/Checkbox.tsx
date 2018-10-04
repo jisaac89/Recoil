@@ -30,16 +30,17 @@ export default class Checkbox extends React.Component<ICheckboxProps> {
     let checkboxClass = classNames('r-Checkbox', { disabled: props.disabled }, { 'e-checked': this.props.checked });
 
     let checkboxProps = {
-      disabled: disabled,
-      loading: loading,
-      size: size,
+      disabled,
+      loading,
+      size,
+      icon,
       onClick: this.toggleChecked,
       theme: theme ? theme : checked ? 'primary' : 'default'
     };
 
     return (
       <Toolbar flush className="r-Checkbox__Wrapper">
-        <Button className={checkboxClass} icon={props.icon} {...checkboxProps} />
+        <Button className={checkboxClass} {...checkboxProps} />
         {props.title ? (
           <Button {...checkboxProps} simple>
             {props.title}

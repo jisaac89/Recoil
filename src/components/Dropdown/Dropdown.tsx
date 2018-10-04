@@ -85,29 +85,37 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
         };
       }
     } else return null;
+
+    // must get very explicit on state changes
+    if (props.type !== null) {
+      if (props.open !== state.type) {
+        return {
+          type: props.type
+        };
+      } else return null;
+    } else return null;
+
+    // must get very explicit on state changes
+    if (props.scrollToId !== null) {
+      if (props.scrollToId !== state.scrollToId) {
+        return {
+          scrollToId: props.scrollToId
+        };
+      } else return null;
+    } else return null;
+
+    // must get very explicit on state changes
+    if (props.selectedElements !== null) {
+      if (props.selectedElements !== state.selectedElements) {
+        return {
+          selectedElements: props.selectedElements
+        };
+      } else return null;
+    } else return null;
   }
 
   componentDidUpdate(prevProps: IDropdownProps, prevState) {
-    let { type, loading, open, onOpen, scrollToId, selectedElements } = this.props;
-
-    // TODO move below methods TO getDerivedStateFromProps WHEN POSSIBLE
-
-    if (prevProps.type !== type) {
-      this.setState({
-        type: type
-      });
-    }
-
-    if (scrollToId && scrollToId !== prevState.scrollToId) {
-      this.setState({
-        scrollToId: scrollToId
-      });
-    }
-    if (selectedElements && selectedElements !== prevState.selectedElements) {
-      this.setState({
-        selectedElements: selectedElements
-      });
-    }
+    let { selectedElements } = this.props;
 
     if (
       this.props.type === 'tree' &&
@@ -344,5 +352,3 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     }
   }
 }
-
-//<DropdownPortal {...dropdownPortalProps} />

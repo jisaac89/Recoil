@@ -5,7 +5,6 @@ import Selectable from '../Selectable/Selectable';
 import { IRecoil } from '../../index';
 
 export interface IButtonProps extends IRecoil {
-  progressiveClick?: Array<Function>;
   style?: Object;
   onClick?: (event: React.MouseEvent<any>) => void;
   pointer?: 'left' | 'right' | boolean;
@@ -34,9 +33,6 @@ export interface IButtonProps extends IRecoil {
 
 export interface IButtonState {
   checked?: boolean;
-  progressiveClickIndex?: number;
-  progressiveClickLength?: number;
-  clickCounter?: number;
   showShortcut?: any;
 }
 
@@ -59,20 +55,8 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     super(props);
     this.state = {
       checked: false,
-      progressiveClickIndex: 0,
-      clickCounter: 0,
       showShortcut: false
     };
-  }
-
-  public componentDidMount() {
-    const self = this;
-    const props = self.props;
-    if (props.progressiveClick) {
-      this.setState({
-        progressiveClickLength: props.progressiveClick.length
-      });
-    }
   }
 
   public onClick(event: React.MouseEvent<MouseEvent>) {
@@ -83,25 +67,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     this.props.onMouseEnter ? this.props.onMouseEnter(event) : null;
   }
 
-  public progressiveClick() {
-    const self = this;
-    const array = this.props.progressiveClick;
-    let state = self.state;
-    let clickIndex = state.progressiveClickIndex;
-    let arrayLength = state.progressiveClickLength;
-
-    if (clickIndex < arrayLength) {
-      array[clickIndex]();
-      self.setState({
-        progressiveClickIndex: clickIndex + 1
-      });
-    } else {
-      array[0]();
-      self.setState({
-        progressiveClickIndex: 1
-      });
-    }
-  }
   onChangeFileUpload(e) {
     this.props.onChange ? this.props.onChange(e.target.files[0]) : null;
   }
@@ -182,7 +147,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
           target={props.target}
           ref={innerRef}
           tabIndex={props.tabIndex}
-          onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)}
+          onClick={this.onClick.bind(this)}
           className={buttonClass}
           style={props.style}
         >
@@ -222,7 +187,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
           ref={innerRef}
           onMouseEnter={this.props.onMouseEnter ? this.onMouseEnter.bind(this) : null}
           tabIndex={props.tabIndex}
-          onClick={props.progressiveClick ? this.progressiveClick.bind(this) : this.onClick.bind(this)}
+          onClick={this.onClick.bind(this)}
           type={buttonType}
           disabled={props.disabled || props.loading === true}
           className={buttonClass}
@@ -257,17 +222,13 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     };
 
     let Link = React.forwardRef((props, ref) => <LinkButton innerRef={ref} />);
-
     let Simple = React.forwardRef((props, ref) => <SimpleButton innerRef={ref} />);
-
     let Default = React.forwardRef((props, ref) => <DefaultButton innerRef={ref} />);
-
     let FileUpload = React.forwardRef((props, ref) => <FileButton innerRef={ref} />);
 
     if (props.href) {
       return <Link />;
-    }
-    if (props.fileUpload) {
+    } else if (props.fileUpload) {
       return <FileUpload />;
     } else {
       return props.advanced ? <Default /> : <Simple />;
