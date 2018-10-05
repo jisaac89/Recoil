@@ -18,23 +18,10 @@ export default class TableSearch extends React.Component<any, any> {
     onChange() {}
   };
 
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      searchTerm: props.value || ''
-    };
-  }
-
   componentDidMount() {
     if (this.props.value) {
       this.updateSearch(this.props.value);
     }
-  }
-
-  componentDidUpdate(prevProps: any, prevState) {
-    // if (!!this.props.value && prevState.searchTerm !== this.props.value) {
-    //   this.updateSearch(this.props.value);
-    // }
   }
 
   updateSearch(term: string) {
@@ -46,20 +33,13 @@ export default class TableSearch extends React.Component<any, any> {
       searchTerm = term;
     }
 
-    this.setState(
-      {
-        searchTerm: searchTerm
-      },
-      () => {
-        if (this._throttleTimeout) {
-          clearTimeout(this._throttleTimeout);
-        }
-        this._throttleTimeout = setTimeout(() => {
-          this.props.filterItems(searchTerm, this.props.searchableKeys);
-          this.props.onSearchChange ? this.props.onSearchChange(searchTerm) : null;
-        }, this.props.throttle);
-      }
-    );
+    if (this._throttleTimeout) {
+      clearTimeout(this._throttleTimeout);
+    }
+    this._throttleTimeout = setTimeout(() => {
+      this.props.filterItems(searchTerm, this.props.searchableKeys);
+      this.props.onSearchChange ? this.props.onSearchChange(searchTerm) : null;
+    }, this.props.throttle);
   }
 
   render() {
@@ -73,12 +53,12 @@ export default class TableSearch extends React.Component<any, any> {
         <Toolbar tabIndex={-1} theme="light" flex flush block noRadius className="p5 table-search">
           <Input
             placeholder={props.searchTitle}
-            onChange={this.updateSearch}
+            onChange={this.updateSearch.bind(this)}
             block
             type="text"
             size="small"
             flex
-            value={this.state.searchTerm}
+            value={this.props.value}
             focusOnMount={focusOnMount}
             tabIndex={-1}
           />
