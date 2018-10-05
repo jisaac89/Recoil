@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Months from './Months';
 import Layer from '../Layer/Layer';
+import AdvancedLayer from '../Layer/AdvancedLayer';
 
 export default class MobileTemplate extends React.Component<any, any> {
   render() {
@@ -21,7 +22,7 @@ export default class MobileTemplate extends React.Component<any, any> {
       Dec = getWeeks(year, 11);
 
     return (
-      <Layer
+      <AdvancedLayer
         style={setHeight}
         className="r-Calendar-Scroll"
         flex
@@ -173,7 +174,7 @@ export default class MobileTemplate extends React.Component<any, any> {
             mobile={true}
           />
         </div>
-      </Layer>
+      </AdvancedLayer>
     );
   }
 }

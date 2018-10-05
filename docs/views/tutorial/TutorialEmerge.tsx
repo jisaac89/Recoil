@@ -1,5 +1,23 @@
 import * as React from 'react';
-import { Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink } from '../../../src/index';
+import {
+  Align,
+  Button,
+  Toolbar,
+  Checkbox,
+  Table,
+  Layer,
+  Dropdown,
+  Input,
+  Wizard,
+  Modal,
+  Open,
+  Emerge,
+  SlideIn,
+  Transform,
+  Toggle,
+  Shrink,
+  AdvancedLayer
+} from '../../../src/index';
 
 import TutorialView from './TutorialView';
 const EmergeProperties = [
@@ -45,84 +63,156 @@ const EmergeProperties = [
     options: '',
     description: 'Add inline styles to the element.'
   }
-]
+];
 
-export default class TutorialEmerge extends React.Component<any, any>{
+export default class TutorialEmerge extends React.Component<any, any> {
   constructor(props) {
     super(props);
 
     this.state = {
       showProps: true,
       showVideo: false
-    }
+    };
   }
 
   toggleShowProps() {
     this.setState({
       showVideo: false,
       showProps: this.state.showProps ? false : true
-    })
+    });
   }
 
   toggleShowVideo() {
     this.setState({
       showProps: false,
       showVideo: this.state.showVideo ? false : true
-    })
+    });
   }
 
   render() {
-
     const self = this;
     const props = self.props;
     let state = self.state;
 
-    const columns = [
-      { name: 'name', width: 120 },
-      { name: 'type', width: 140 },
-      { name: 'description' }
-    ]
+    const columns = [{ name: 'name', width: 120 }, { name: 'type', width: 140 }, { name: 'description' }];
     let example = () => {
       return (
         <div>
           <Emerge delay={300} if={props.if}>
-            <Button className="mr10">
-              Appear
-            </Button>
-            <Button className="mr10">
-              When
-            </Button>
-            <Button className="mr10">
-              In
-            </Button>
-            <Button className="">
-              View
-            </Button>
+            <Button className="mr10">Appear</Button>
+            <Button className="mr10">When</Button>
+            <Button className="mr10">In</Button>
+            <Button className="">View</Button>
           </Emerge>
-          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><Button simple icon="chevron-down">Scroll Down</Button><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-          <Layer oocss="h300px w400px">
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <Button simple icon="chevron-down">
+            Scroll Down
+          </Button>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <AdvancedLayer oocss="h300px w400px">
             <Emerge enter="slideInLeft">
-              <Layer theme="light" oocss="w500px h200px" border flexCenter>Appear</Layer>
-              <Layer theme="light" oocss="w500px h200px" border flexCenter>When</Layer>
-              <Layer theme="light" oocss="w500px h200px" border flexCenter>In</Layer>
-              <Layer theme="light" oocss="w500px h200px" border flexCenter>View</Layer>
+              <AdvancedLayer theme="light" oocss="w500px h200px" border flexCenter>
+                Appear
+              </AdvancedLayer>
+              <AdvancedLayer theme="light" oocss="w500px h200px" border flexCenter>
+                When
+              </AdvancedLayer>
+              <AdvancedLayer theme="light" oocss="w500px h200px" border flexCenter>
+                In
+              </AdvancedLayer>
+              <AdvancedLayer theme="light" oocss="w500px h200px" border flexCenter>
+                View
+              </AdvancedLayer>
             </Emerge>
-          </Layer>
-          <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+          </AdvancedLayer>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
 
-          <Layer oocss="h408px w100%">
+          <AdvancedLayer oocss="h408px w100%">
             <Emerge enter="fadeInUpBig">
               <Align>
-                <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>Appear</Layer>
-                <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>When</Layer>
-                <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>In</Layer>
-                <Layer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>View</Layer>
+                <AdvancedLayer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>
+                  Appear
+                </AdvancedLayer>
+                <AdvancedLayer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>
+                  When
+                </AdvancedLayer>
+                <AdvancedLayer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>
+                  In
+                </AdvancedLayer>
+                <AdvancedLayer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>
+                  View
+                </AdvancedLayer>
               </Align>
             </Emerge>
-          </Layer>
+          </AdvancedLayer>
         </div>
-      )
-    }
+      );
+    };
 
     return (
       <TutorialView
@@ -133,6 +223,6 @@ export default class TutorialEmerge extends React.Component<any, any>{
         scrollIf={props.scrollIf}
         scrollToId={props.scrollToId}
       />
-    )
+    );
   }
 }

@@ -14,6 +14,7 @@ import Loading from '../Loading/Loading';
 import DataSource from '../DataSource/DataSource';
 
 import { IColumn } from './IColumn';
+import AdvancedLayer from '../Layer/AdvancedLayer';
 export { IColumn };
 
 export interface ITableProps {
@@ -271,7 +272,7 @@ class Table extends React.Component<ITableProps, ITableState> {
           {headerTemplate ? headerTemplate : null}
           <TableSearch {...tableSearchProps} />
           {menuTemplate ? menuTemplate() : null}
-          <Layer
+          <AdvancedLayer
             tabIndex={-1}
             scrollY={true}
             theme="light"
@@ -292,7 +293,7 @@ class Table extends React.Component<ITableProps, ITableState> {
                 <TableBody {...tableProps} {...bodyProps} />
               </table>
             )}
-          </Layer>
+          </AdvancedLayer>
           {nothingMatchesSearchCriteria || hideFooter ? null : <TableFooter {...footerProps} />}
         </div>
       );
