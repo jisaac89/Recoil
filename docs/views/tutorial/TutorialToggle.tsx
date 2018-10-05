@@ -1,22 +1,5 @@
 import * as React from 'react';
-import {
-  Align,
-  Button,
-  Toolbar,
-  Checkbox,
-  Table,
-  Layer,
-  Dropdown,
-  Input,
-  Wizard,
-  Modal,
-  Open,
-  Emerge,
-  SlideIn,
-  Transform,
-  Toggle,
-  Shrink
-} from '../../../src/index';
+import { Toolbar, Layer, Toggle } from '../../../src/index';
 
 import TutorialView from './TutorialView';
 const CardProperties = [

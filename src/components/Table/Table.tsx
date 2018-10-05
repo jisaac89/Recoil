@@ -94,6 +94,8 @@ export interface ITableProps {
   disableSelectedElements?: Array<any>;
   fill?: boolean;
   tableDataClassName?: string;
+  loadingElements?: any[];
+  loadingKey?: string;
 }
 
 interface ITableState {}
@@ -171,7 +173,9 @@ class Table extends React.Component<ITableProps, ITableState> {
       id,
       portal,
       focusOnMount,
-      tableDataClassName
+      tableDataClassName,
+      loadingElements,
+      loadingKey
     } = props;
 
     // assign the props
@@ -196,7 +200,9 @@ class Table extends React.Component<ITableProps, ITableState> {
       id,
       portal,
       disableSelectedElements,
-      tableDataClassName
+      tableDataClassName,
+      loadingElements,
+      loadingKey
     };
 
     let headProps = {

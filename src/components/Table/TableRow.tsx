@@ -96,6 +96,8 @@ export interface ITableColumnProps {
   id?: any;
   disableSelectedElements?: Array<any>;
   tableDataClassName?: string;
+  loadingElements?: any;
+  loadingKey?: string;
 }
 
 export default class TableRow extends React.Component<ITableColumnProps, any> {
@@ -133,7 +135,9 @@ export default class TableRow extends React.Component<ITableColumnProps, any> {
       index,
       filterOpenDetailTemplate,
       disableSelectedElements,
-      tableDataClassName
+      tableDataClassName,
+      loadingElements,
+      loadingKey
     } = props;
 
     let columnsValueArray = [];
@@ -144,6 +148,8 @@ export default class TableRow extends React.Component<ITableColumnProps, any> {
     }
 
     let createColumnValue = (value: Array<any>, key: string | number) => {
+      let isLoading = loadingElements && loadingElements.includes(loadingKey ? element[loadingKey] : element);
+
       return (
         <TableColumn
           tableDataClassName={tableDataClassName}
@@ -153,6 +159,7 @@ export default class TableRow extends React.Component<ITableColumnProps, any> {
           key={key}
           value={value}
           column={columns[key]}
+          isLoading={isLoading}
         />
       );
     };

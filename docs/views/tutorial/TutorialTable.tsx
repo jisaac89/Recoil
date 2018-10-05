@@ -1,22 +1,5 @@
 import * as React from 'react';
-import {
-  Align,
-  Button,
-  Toolbar,
-  Checkbox,
-  Table,
-  Layer,
-  Dropdown,
-  Input,
-  Wizard,
-  Modal,
-  Open,
-  Emerge,
-  SlideIn,
-  Transform,
-  Toggle,
-  Shrink
-} from '../../../src/index';
+import { Table, Layer } from '../../../src/index';
 
 import TutorialView from './TutorialView';
 const TableProperties = [
@@ -132,6 +115,8 @@ export default class TutorialTable extends React.Component<any, any> {
             sortable
             columns={columns}
             dataSource={TableProperties}
+            loadingKey={'name'}
+            loadingElements={['sortable']}
           />
         </div>
       );
