@@ -73,19 +73,7 @@ const DataSource: any = (Component: JSX.Element) =>
     }
 
     componentDidUpdate(prevProps: IDataSourceProps, prevState) {
-      let { dataSource, sortKey, sortType } = this.props;
-
-      // if (this.props.selectedElements && this.props.selectedElements !== prevState.selectedElements) {
-      //   this.setState({
-      //     selectedElements: this.props.selectedElements
-      //   });
-      // }
-
-      // if (prevProps.detailTemplateSelectedElements !== this.props.detailTemplateSelectedElements) {
-      //   this.setState({
-      //     detailTemplateSelectedElements: this.props.detailTemplateSelectedElements
-      //   });
-      // }
+      let { dataSource, sortKey, sortType, pageSize, rowCount, searchValue, searchableKeys } = this.props;
 
       // TODO
 
@@ -98,8 +86,15 @@ const DataSource: any = (Component: JSX.Element) =>
         }
       }
 
-      if (!!this.props.searchValue && this.props.searchValue !== prevProps.searchValue) {
-        this.filterItems(this.props.searchValue, this.props.searchableKeys);
+      if (!!searchValue && searchValue !== prevProps.searchValue) {
+        this.filterItems(searchValue, searchableKeys);
+      }
+
+      if (prevProps.pageSize !== pageSize) {
+        this.setState({
+          pageSize: pageSize,
+          rowCount: rowCount ? rowCount : prevState.rowCount
+        });
       }
     }
 
