@@ -20,7 +20,7 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
   title?: string;
   material?: boolean;
   materialIcon?: boolean;
-  dropDirection?: string;
+  dropDirection?: 'up' | 'down' | 'left' | 'right' | string;
   fixedClose?: boolean;
   mobile?: boolean;
   open?: boolean;

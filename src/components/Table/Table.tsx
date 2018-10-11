@@ -176,7 +176,8 @@ class Table extends React.Component<ITableProps, ITableState> {
       focusOnMount,
       tableDataClassName,
       loadingElements,
-      loadingKey
+      loadingKey,
+      flex
     } = props;
 
     // assign the props
@@ -242,7 +243,8 @@ class Table extends React.Component<ITableProps, ITableState> {
       hidePageSize: hidePageSize,
       hideHeader: hideHeader,
       showDataSourceLength: showDataSourceLength,
-      title: title
+      title: title,
+      flex
     };
 
     let tableSearchProps = {

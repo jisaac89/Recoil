@@ -20,6 +20,8 @@ export interface IToolbarProps extends IRecoil {
   breadcrumbs?: boolean;
   id?: string;
   form?: boolean;
+  onMouseEnter?: (event: React.MouseEvent<HTMLElement>) => void;
+  onMouseLeave?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
 export default class Toolbar extends React.Component<IToolbarProps, {}> {
@@ -69,6 +71,8 @@ export default class Toolbar extends React.Component<IToolbarProps, {}> {
     } else {
       return (
         <div
+          onMouseEnter={props.onMouseEnter}
+          onMouseLeave={props.onMouseLeave}
           tab-index={-1}
           id={this.props.id}
           ref="toolbar"

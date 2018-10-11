@@ -25,6 +25,7 @@ export interface IPagerProps {
   title?: string;
   pagerSize?: number;
   className?: string;
+  pageSizeDropDirection?: string;
 }
 
 export default class Pager extends React.Component<IPagerProps, {}> {
@@ -92,7 +93,8 @@ export default class Pager extends React.Component<IPagerProps, {}> {
       dataSource,
       rowCount,
       hidePageSize,
-      pagerSize
+      pagerSize,
+      pageSizeDropDirection
     } = props;
 
     let dataSourceLength;
@@ -103,62 +105,61 @@ export default class Pager extends React.Component<IPagerProps, {}> {
 
     return (
       <div className="r-Pager">
-        {numberOfPages === 1 ? null : (
-          <Toolbar flex textCenter flush block noRadius className={props.className}>
-            <Button
+        <Toolbar flex textCenter flush block noRadius className={props.className}>
+          <Button
+            simple
+            block
+            size="small"
+            disabled={currentPage === 0}
+            tabIndex={-1}
+            onClick={this.gotoPage.bind(this, 9)}
+            icon="fast-backward"
+          />
+          <Button
+            simple
+            block
+            size="small"
+            disabled={currentPage === 0}
+            tabIndex={-1}
+            onClick={this.gotoPage.bind(this, this.props.currentPage - 1)}
+            icon="step-backward"
+          />
+          {this.renderPager(currentPage, numberOfPages, pagerSize ? pagerSize : 5)}
+          <Button
+            simple
+            block
+            size="small"
+            disabled={currentPage === numberOfPages - 1}
+            tabIndex={-1}
+            onClick={this.gotoPage.bind(this, this.props.currentPage + 1)}
+            icon="step-forward"
+          />
+          <Button
+            simple
+            block
+            size="small"
+            disabled={currentPage === numberOfPages - 1}
+            tabIndex={-1}
+            onClick={this.gotoPage.bind(this, numberOfPages - 1)}
+            icon="fast-forward"
+          />
+          {hidePageSize ? null : (
+            <Dropdown
               simple
               block
+              hideHeader
+              hideDropdownHeader
+              rowIsSelectable="single"
+              onChange={this.onSelected.bind(this)}
+              material
               size="small"
-              disabled={currentPage === 0}
-              tabIndex={-1}
-              onClick={this.gotoPage.bind(this, 9)}
-              icon="fast-backward"
+              dropDirection={pageSizeDropDirection ? pageSizeDropDirection : 'down'}
+              title={'Page Size ' + pageSize}
+              pageSizerOptions={pageSizerOptions}
+              dataSource={pageSizerOptions || ['5', '10', '15']}
             />
-            <Button
-              simple
-              block
-              size="small"
-              disabled={currentPage === 0}
-              tabIndex={-1}
-              onClick={this.gotoPage.bind(this, this.props.currentPage - 1)}
-              icon="step-backward"
-            />
-            {this.renderPager(currentPage, numberOfPages, pagerSize ? pagerSize : 5)}
-            <Button
-              simple
-              block
-              size="small"
-              disabled={currentPage === numberOfPages - 1}
-              tabIndex={-1}
-              onClick={this.gotoPage.bind(this, this.props.currentPage + 1)}
-              icon="step-forward"
-            />
-            <Button
-              simple
-              block
-              size="small"
-              disabled={currentPage === numberOfPages - 1}
-              tabIndex={-1}
-              onClick={this.gotoPage.bind(this, numberOfPages - 1)}
-              icon="fast-forward"
-            />
-            {hidePageSize ? null : (
-              <Dropdown
-                simple
-                block
-                hideHeader
-                hideDropdownHeader
-                rowIsSelectable="single"
-                onChange={this.onSelected.bind(this)}
-                material
-                size="small"
-                title={'Page Size ' + pageSize}
-                pageSizerOptions={pageSizerOptions}
-                dataSource={pageSizerOptions || ['5', '10', '15']}
-              />
-            )}
-          </Toolbar>
-        )}
+          )}
+        </Toolbar>
         {hidePageSize ? null : (
           <Toolbar flush noRadius className={props.className}>
             <Button simple size="small">
