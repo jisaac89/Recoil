@@ -13,34 +13,44 @@ export interface IStepperProps {
 }
 
 class Stepper extends React.Component<IStepperProps, any> {
-  createList = (item: Array<any>, index: number | number) => {
-    let { stepIndex } = this.props;
-    return (
-      <Shrink key={index} opacity={50} scale={1} if={index > stepIndex}>
-        {Math.abs(index % 2) !== 1 ? (
-          <div>{item}</div>
-        ) : (
-          <div className={index > stepIndex - 1 ? 'flex-step e-gray' : 'flex-step'} />
-        )}
-      </Shrink>
-    );
-  };
+  public refOpen: any;
+
   render() {
-    const props = this.props;
-    let { className, align, title, vertical, children } = props;
+    const self = this;
+    const props = self.props;
 
-    let updatedArray = [];
+    let { className } = props;
 
-    children.map((item, index) => {
-      let lastChild = index === children.length - 1;
-      lastChild ? updatedArray.push(item) : updatedArray.push(item, []);
-    });
+    let itemArray: Array<any> = [];
+
+    let createList = (item: Array<any>, index: string | number) => {
+      if (item !== null) {
+        if (index === props.children.length - 1) {
+          itemArray.push(
+            <Shrink key={index} opacity={50} scale={1} if={index > props.stepIndex}>
+              <div>{item}</div>
+            </Shrink>
+          );
+        } else {
+          itemArray.push(
+            <Shrink key={index} opacity={50} scale={1} if={index > props.stepIndex}>
+              <div>{item}</div>
+            </Shrink>,
+            <Shrink key={index} opacity={50} scale={1} if={index > props.stepIndex}>
+              <div className={index > props.stepIndex - 1 ? 'flex-step e-gray' : 'flex-step'} />
+            </Shrink>
+          );
+        }
+      } else return null;
+    };
+
+    props.children.map(createList);
 
     return (
       <div className={'r-Stepper dblock w100 ' + className}>
-        {title ? <h5>{title}</h5> : null}
-        <Align className={align === 'top' ? 'e-align-top' : 'middle'} vertical={vertical}>
-          {updatedArray.map(this.createList)}
+        {props.title ? <h5>{props.title}</h5> : null}
+        <Align className={props.align === 'top' ? 'e-align-top' : 'middle'} vertical={props.vertical}>
+          {itemArray}
         </Align>
       </div>
     );
