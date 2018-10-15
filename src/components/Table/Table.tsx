@@ -177,7 +177,8 @@ class Table extends React.Component<ITableProps, ITableState> {
       tableDataClassName,
       loadingElements,
       loadingKey,
-      flex
+      flex,
+      searchTitle
     } = props;
 
     // assign the props
@@ -251,7 +252,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       filterItems: filterItems,
       searchableKeys: this.props.searchableKeys,
       focusOnMount,
-      searchTitle: this.props.searchTitle,
+      searchTitle,
       value: searchValue,
       onSearchChange: onSearchChange
     };

@@ -20,10 +20,6 @@ export interface IDataSourceProps extends ITableProps {
 
 const DataSource: any = (Component: JSX.Element) =>
   class Enhance extends React.Component<IDataSourceProps, any> {
-    public static defaultProps = {
-      emptyText: 'dataSource is empty'
-    };
-
     constructor(props: IDataSourceProps) {
       super(props);
 
@@ -566,15 +562,15 @@ const DataSource: any = (Component: JSX.Element) =>
         // only if a dataSource exists return the new element - else return original
         return dataSource.length ? updatedComponent : Component;
       } else {
-        return (
-          <Emerge className="e-fill">
+        return props.emptyText ? (
+          <Emerge enter="fadeIn" className="e-fill">
             <Toolbar block textCenter>
-              <Button block size="large" simple>
+              <Button block size="small" simple>
                 {props.emptyText}
               </Button>
             </Toolbar>
           </Emerge>
-        );
+        ) : null;
       }
     }
   };
