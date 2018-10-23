@@ -61,7 +61,7 @@ import { Recoil } from 'react-recoil';
 // the onDevice and nightmode props are optional on Recoil Component
    <Router>
         <Recoil onDevice={this.onDevice} nightmode={isNightmode} {...styles}>
-            // View goes here
+            // View and other Recoil Components here
         </Recoil>
     </Router>
 ````
@@ -93,7 +93,7 @@ npm install
 npm run start:dev
 ````
 
-Should open up on port:3000
+Will run on http://localhost:3000/
 
 ## Todos
 
