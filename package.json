@@ -23,7 +23,8 @@
 		"intersection-observer": "^0.5.0",
 		"less": "^3.0.4",
 		"normalize.css": "^8.0.0",
-		"react-intersection-observer": "^5.0.3"
+		"react-intersection-observer": "^5.0.3",
+		"styled-components": "^4.0.2"
 	},
 	"peerDependencies": {
 		"react": "^16.4.0",
