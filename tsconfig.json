@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "es2017",
+    "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
     "isolatedModules": false,
@@ -20,6 +20,10 @@
       "dom",
       "es6",
       "es2016"
+    ],
+    "typeRoots": [
+      "index.d.ts",
+      "node_modules/@types"
     ]
   },
   "include": [
@@ -27,7 +31,8 @@
   ],
   "exclude": [
     "./recoil/docs/**/*",
-    "node_modules"
+    "node_modules",
+    "docs"
   ],
   "compileOnSave": true,
   "buildOnSave": false

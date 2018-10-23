@@ -20,16 +20,14 @@ module.exports = {
 		extensions: [ '.ts', '.tsx', '.js', '.json' ]
 	},
 	entry: {
-		app: './docs/index.tsx',
-		recoil: './src/index.ts',
 		styles: './docs/styles.ts'
 	},
 
 	output: {
 		library: '[name]',
 		libraryTarget: 'umd',
-		filename: '[name].[hash].js',
-		path: path.resolve(__dirname, 'public')
+		filename: '[name].js',
+		path: path.resolve(__dirname, 'dist')
 	},
 	// Source maps support ('inline-source-map' also works)
 	devtool: 'source-map',
@@ -60,15 +58,6 @@ module.exports = {
 				use: 'file-loader?name=assets/[name]-[hash].[ext]'
 			},
 			{
-				test: /\.html$/,
-				use: [
-					{
-						loader: 'html-loader',
-						options: { minimize: true }
-					}
-				]
-			},
-			{
 				test: /\.(eot?.+|svg?.+|ttf?.+|otf?.+|woff?.+|woff2?.+)$/,
 				use: 'file-loader?name=assets/[name]-[hash].[ext]'
 			},
@@ -90,17 +79,6 @@ module.exports = {
 			cssProcessorOptions: { discardComments: { removeAll: true } },
 			canPrint: true
 		}),
-		new HtmlWebPackPlugin({
-			template: './docs/template.html',
-			filename: './index.html',
-			path: buildPath,
-			minify: {
-				collapseWhitespace: true,
-				collapseInlineTagWhitespace: true,
-				removeComments: true,
-				removeRedundantAttributes: true
-			}
-		}),
 		new PurifyCSSPlugin({
 			paths: glob.sync([
 				path.join(__dirname, 'docs/**/*.html'),
@@ -120,13 +98,6 @@ module.exports = {
 				info: true,
 				rejected: true
 			}
-		}),
-		new CompressionPlugin({
-			asset: '[path].gz[query]',
-			algorithm: 'gzip',
-			test: /\.js$|\.css$|\.html$|\.eot?.+$|\.ttf?.+$|\.woff?.+$|\.svg?.+$/,
-			threshold: 10240,
-			minRatio: 0.8
 		}),
 		new webpack.optimize.OccurrenceOrderPlugin(),
 		new CopyWebpackPlugin([ { from: 'static/**/*' } ])
