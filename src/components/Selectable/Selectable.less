@@ -1,61 +1,59 @@
 @import '../../less/Global.less';
 
-.r-Selectable{
-  background: @input-background;
-  position: absolute;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  z-index: 5;
-  right: 0;
+.r-Selectable {
+	background: @input-background;
+	position: absolute;
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	z-index: 5;
+	right: 0;
 
-  input{
-   width:100%;
-  }
+	input {
+		width: 100%;
+	}
 
+	width: 0%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	transition: all 350ms cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
+	transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
 
-    width:0%;
-    position: absolute ;
-    bottom: 0 ;
-    left: 0 ;
-    right: 0 ;
-    margin: auto ;
-    transition: all 350ms cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
-    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
-
-  .r-Selectable__border.error {
-    opacity: 0;
-    border:1px solid transparent;
-    width:0%;
-    position: absolute ;
-    bottom: 0 ;
-    left: 0 ;
-    right: 0 ;
-    margin: auto ;
-  }
+	.r-Selectable__border.error {
+		opacity: 0;
+		border: 1px solid transparent;
+		width: 0%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
 }
 
-.r-Selectable.checked .r-Selectable__border{
-  opacity: 1;
-  width:100%;
+.r-Selectable.checked .r-Selectable__border {
+	opacity: 1;
+	width: 100%;
 }
 
-.r-Selectable.checked .r-Selectable__border.primary{
-  border-color:@selectable-primary-background;
+.r-Selectable.checked .r-Selectable__border.primary {
+	border-color: @selectable-primary-background;
 }
 
-.r-Selectable.checked .r-Selectable__border.error{
-  border-color: @selectable-error-background;
+.r-Selectable.checked .r-Selectable__border.error {
+	border-color: @selectable-error-background;
 }
 
 // test
 
+.r-Selectable {
+	transform: scaleX(0);
+	width: 100% !important;
+}
 
-  .r-Selectable{
-    transform:scaleX(0);
-    width:100% !important;
-  }
-
-  .r-Selectable.checked {
-    transform:scaleX(1);
-  }
+.r-Selectable.checked {
+	transform: scaleX(1);
+}

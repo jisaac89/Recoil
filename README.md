@@ -13,7 +13,27 @@ Recoil is a react powered UI framework.
 
 ## NPM Module
 
-If you're using npm, you'll need to set up your project to build recoil.  Assuming you're using Webpack, first install
+Then include the following CSS files in your HTML:
+
+```` html
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css" />
+<link async href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+````
+
+In order to add the styles, you'll need to include in one file of your project
+
+## CSS Styles
+```` TypeScript
+import 'react-recoil/dist/styles.css';
+````
+
+## Preffered Method - LESS Styles
+```` TypeScript
+import 'react-recoil/src/index.less';
+````
+
+You'll need to set up your project to build recoil.  Assuming you're using Webpack, first install
 
     npm install css-loader less less-loader style-loader --save-dev
 
@@ -26,21 +46,7 @@ Then in your Webpack configuration, include in the `loaders` array
 }
 ````
 
-Then include the following CSS files in your HTML:
-
-```` html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.css" />
-````
-
-In order to add the styles, you'll need to include in one file of your project
-
-```` TypeScript
-import 'react-recoil/src/index.less';
-````
-
+## Importing Components
 Now, on your project you can destructure the components you want.
 
 ```` TypeScript
@@ -66,39 +72,11 @@ First run these commands
 git clone https://github.com/jisaac89/recoil.git
 cd recoil
 npm install
-npm run build
+npm run start:dev
 ````
 
-Then open `recoil/docs/index.html` in your browser.
-
-## Videos
-
-Helpful videos on how to use each component can be found here:
-
-* [Align]
-* [Button]
-* [Card]
-* [Checkbox]
-* [Door]
-* [Dropdown]
-* [Emerge]
-* [Grid]
-* [Input]
-* [Layer]
-* [Loading]
-* [Modal]
-* [Pane]
-* [Selectable]
-* [Shrink]
-* [Toolbar]
-* [Transform]
-* [Wizard]
+Should open up on port:3000
 
 ## Todos
 
  - Write Tests
- - Rethink Github Save
- - Add Code Comments
- - Rename Door to Open
- - Rename Pane to SlideIn
-
