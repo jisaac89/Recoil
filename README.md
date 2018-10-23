@@ -50,12 +50,15 @@ Then in your Webpack configuration, include in the `loaders` array
 
 First you'll need to include the main Recoil component in the root view of your project.
 
+The root Recoil component handles suff like detecting user agent or toggling nightmode.
+
 For example if you use react-router.
 
 ```` TypeScript
 import { Recoil } from 'react-recoil';
 
 // On Render
+// the onDevice and nightmode props are optional on Recoil Component
    <Router>
         <Recoil onDevice={this.onDevice} nightmode={isNightmode} {...styles}>
             // View goes here
