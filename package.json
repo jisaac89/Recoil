@@ -1,6 +1,6 @@
 {
 	"name": "react-recoil",
-	"version": "0.6.2",
+	"version": "0.6.21",
 	"description": "Powerful react powered front-end framework.",
 	"author": "Joseph Isaac <josephisaac89@gmail.com>",
 	"repository": {
@@ -8,12 +8,12 @@
 		"url": "https://github.com/jisaac89/recoil.git"
 	},
 	"license": "MIT",
-	"main": "docs/index.tsx",
+	"main": "dist/index.js",
 	"scripts": {
 		"clean": "rimraf ./.build && rimraf ./.next && npm prune && npm install",
 		"prepublishOnly": "rimraf ./dist && tsc --declaration",
-		"build:pro": "rimraf ./dist && webpack --mode production",
-		"build:dev": "rimraf ./dist && webpack --mode development --watch",
+		"build:pro": "rimraf ./public && webpack --mode production",
+		"build:dev": "rimraf ./public && webpack --mode development --watch",
 		"start": "node server.js",
 		"start:dev": "webpack-dev-server --mode development --hot --port 8000"
 	},
