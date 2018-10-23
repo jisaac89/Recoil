@@ -13,6 +13,8 @@ Recoil is a react powered UI framework.
 
 ## NPM Module
 
+    npm install react-recoil --save
+
 Then include the following CSS files in your HTML:
 
 ```` html
