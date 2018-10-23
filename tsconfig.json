@@ -23,8 +23,7 @@
     ]
   },
   "include": [
-    "src",
-    "docs"
+    "src"
   ],
   "exclude": [
     "./recoil/docs/**/*",

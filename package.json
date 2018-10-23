@@ -11,9 +11,9 @@
 	"main": "docs/index.tsx",
 	"scripts": {
 		"clean": "rimraf ./.build && rimraf ./.next && npm prune && npm install",
-		"prepublishOnly": "rimraf ./public && tsc --declaration",
-		"build:pro": "rimraf ./public && webpack --mode production",
-		"build:dev": "rimraf ./public && webpack --mode development --watch",
+		"prepublishOnly": "rimraf ./dist && tsc --declaration",
+		"build:pro": "rimraf ./dist && webpack --mode production",
+		"build:dev": "rimraf ./dist && webpack --mode development --watch",
 		"start": "node server.js",
 		"start:dev": "webpack-dev-server --mode development --hot --port 8000"
 	},
