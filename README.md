@@ -47,6 +47,21 @@ Then in your Webpack configuration, include in the `loaders` array
 ````
 
 ## Importing Components
+
+First you'll need to include the main Recoil component in the root view of your project.
+
+For example if you use react-router.
+
+```` TypeScript
+import { Recoil } from 'react-recoil';
+
+// On Render
+   <Router>
+        <Recoil onDevice={this.onDevice} nightmode={isNightmode} {...styles}>
+            // View goes here
+        </Recoil>
+    </Router>
+````
 Now, on your project you can destructure the components you want.
 
 ```` TypeScript
