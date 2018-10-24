@@ -6,7 +6,8 @@ export const GlobalReset = createGlobalStyle`
 	}
 
 	html {
-		font-family: ${(props) => (props.theme.main && props.theme.main.fontFamily ? props.theme.main.fontFamily : 'Roboto')};
+		font-family: ${(props) =>
+			props.theme && props.theme.main && props.theme.main.fontFamily ? props.theme.main.fontFamily : 'Roboto'};
 	}
 
 	* {
@@ -22,18 +23,24 @@ export const GlobalReset = createGlobalStyle`
 	button:focus,
 	input:focus {
 		box-shadow: 0 0 3px ${(props) =>
-			props.theme.main && props.theme.main.primaryBackground ? props.theme.main.primaryBackground : '0099ff'};
+			props.theme && props.theme.main && props.theme.main.primaryBackground
+				? props.theme.main.primaryBackground
+				: '0099ff'};
 	}
 
 	body {
 		background: ${(props) =>
-			props.theme.main && props.theme.main.bodyBackground ? props.theme.main.bodyBackground : 'red !important'};
+			props.theme && props.theme.main && props.theme.main.bodyBackground
+				? props.theme.main.bodyBackground
+				: 'red !important'};
 		overflow-y: hidden !important;
 	}
 
 	.body-background {
 		background: ${(props) =>
-			props.theme.main && props.theme.main.bodyBackground ? props.theme.main.bodyBackground : 'red !important'};
+			props.theme && props.theme.main && props.theme.main.bodyBackground
+				? props.theme.main.bodyBackground
+				: 'red !important'};
 	}
 
 `;

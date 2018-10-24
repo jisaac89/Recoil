@@ -17,7 +17,10 @@ module.exports = {
 	// Currently we need to add '.ts' to the resolve.extensions array.
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.
-		extensions: [ '.ts', '.tsx', '.js', '.json' ]
+		extensions: [ '.ts', '.tsx', '.js', '.json' ],
+		alias: {
+			'react-native$': 'react-native-web'
+		}
 	},
 	entry: {
 		app: './docs/index.tsx',
@@ -49,11 +52,6 @@ module.exports = {
 					'css-loader',
 					'less-loader'
 				]
-			},
-
-			{
-				test: /\.json$/,
-				loader: 'json-loader'
 			},
 			{
 				test: /\.(eot?.+|svg?.+|ttf?.+|otf?.+|woff?.+|woff2?.+)$/,

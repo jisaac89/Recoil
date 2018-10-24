@@ -12,7 +12,9 @@ import { GlobalReset } from '../../styles/globalReset';
 import { mainTheme } from '../../styles/mainTheme';
 import { GlobalClasses } from '../../styles/globalClasses';
 
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components/native';
+
+import { View } from 'react-native-web';
 
 export interface IRecoilProps {
 	nightmode?: boolean;
@@ -122,9 +124,7 @@ class Recoil extends React.Component<IRecoilProps, any> {
 				<React.Fragment>
 					<PortalProvider initialized={this.state.initialized}>
 						<ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
-							<div ref={'Recoil'} id={'Recoil'} className={RecoilClass}>
-								{children}
-							</div>
+							<View>{children}</View>
 						</ShortCutProvider>
 					</PortalProvider>
 					<GlobalReset />
@@ -135,11 +135,10 @@ class Recoil extends React.Component<IRecoilProps, any> {
 	}
 }
 
-export default styled(Recoil)`
+export default styled(View)`
   height: 100%;
   width: 100%;
   flex: 1 1 auto;
-  -webkit-flex: 1 1 auto;
 
   ${(props) => (props.coverflow ? 'overflow: vibile' : 'overflow: hidden')};
   ${(props) => (props.scroll ? 'overflow: auto' : 'overflow: hidden')};
