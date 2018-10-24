@@ -15,6 +15,7 @@ import { GlobalClasses } from '../../styles/globalClasses';
 import styled, { ThemeProvider } from 'styled-components/native';
 
 import { View } from 'react-native-web';
+import { overflow, scroll, scrollX, scrollY } from '../../styles/sharedStyleObjects';
 
 export interface IRecoilProps {
 	nightmode?: boolean;
@@ -138,11 +139,10 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 const RecoilWrapper = styled.View`
 	height: 100%;
 	width: 100%;
-	flex: 1 1 auto;
-	display: flex;
+	flex: 1;
 
-	${(props) => (props.coverflow ? 'overflow: vibile' : 'overflow: hidden')};
-	${(props) => (props.scroll ? 'overflow: auto' : 'overflow: hidden')};
-	${(props) => (props.scrollX ? 'overflow-x: auto' : 'overflow-x: hidden')};
-	${(props) => (props.scrollY ? 'overflow-y: auto' : 'overflow-y: hidden')};
+	${(props) => (props.overflow ? overflow : 'overflow: hidden')};
+	${(props) => (props.scroll ? scroll : 'overflow: hidden')};
+	${(props) => (props.scrollX ? scrollX : 'overflow-x: hidden')};
+	${(props) => (props.scrollY ? scrollY : 'overflow-y: hidden')};
 `;

@@ -21,6 +21,7 @@ import {
 } from '../../src/index';
 
 import { Text } from 'react-native-web';
+import { fill, p, h } from '../../src/styles/sharedStyleObjects';
 
 export default class App extends React.Component<any, any> {
 	constructor(props) {
@@ -87,8 +88,18 @@ export default class App extends React.Component<any, any> {
 		let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
-				<Layer fill flexCenter>
-					<Text>Hello</Text>
+				<Layer fill>
+					<Layer dimensions={[ '100px', '100px', 1 ]} flexCenter>
+						<Text>Hello</Text>
+					</Layer>
+
+					<Layer fill flexCenter>
+						<Text>Hello</Text>
+					</Layer>
+
+					<Layer dimensions={[ '100px', '100px', 1 ]} flexCenter>
+						<Text>Hello</Text>
+					</Layer>
 				</Layer>
 			</Recoil>
 		);
