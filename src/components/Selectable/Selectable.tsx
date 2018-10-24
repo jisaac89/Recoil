@@ -1,23 +1,21 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
-
-export interface ISelectableProps {
-  checked?: boolean;
-  classNames?: any;
-  type?: string;
-}
+import { ISelectableProps } from './ISelectable';
+import styled from 'styled-components/native';
 
 class Selectable extends React.Component<ISelectableProps, {}> {
-  public static defaultProps = {
-    type: 'primary'
-  };
-
-  render() {
-    const props = this.props;
-    const { checked, type } = props;
-    let selectableClass = classNames('r-Selectable', 'r-Selectable__border', type, { checked: checked });
-    return <div tabIndex={-1} className={selectableClass} />;
-  }
+	render() {
+		const self = this;
+		const props = self.props;
+		return <SelectableWrapper {...props} />;
+	}
 }
 
 export default Selectable;
+
+const SelectableWrapper = styled.View`
+	${(props) => (props.checked ? 'width:100%' : 'width:0%')};
+	background: blue;
+	height: 1px;
+	bottom: 1px;
+	z-index: 2;
+`;

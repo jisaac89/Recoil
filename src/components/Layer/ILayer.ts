@@ -1,7 +1,7 @@
 import { IRecoil } from '../../index';
 
 export interface ILayerProps extends IRecoil {
-	onPress?: () => void;
+	onPress?: any;
 	overflow?: boolean;
 	dimensions?: [string, string, number];
 	scroll?: boolean;

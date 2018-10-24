@@ -103,3 +103,13 @@ export function dimensions(width, height, zIndex) {
 		zIndex: zIndex
 	};
 }
+
+export const flexRow = {
+	flexDirection: 'row'
+};
+
+export function cursor(value) {
+	return {
+		cursor: value
+	};
+}

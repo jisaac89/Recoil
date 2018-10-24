@@ -24,6 +24,7 @@ import { Text } from 'react-native-web';
 import { fill, p, h } from '../../src/styles/sharedStyleObjects';
 
 export default class App extends React.Component<any, any> {
+	onPress: any;
 	constructor(props) {
 		super(props);
 
@@ -36,6 +37,8 @@ export default class App extends React.Component<any, any> {
 			showDocs: false,
 			showInstructions: false
 		};
+
+		this.onSelect = this.onSelect.bind(this);
 	}
 
 	toggleMenu() {
@@ -76,28 +79,47 @@ export default class App extends React.Component<any, any> {
 		});
 	}
 
-	gotoSlideIndex(item) {
+	gotoSlideIndex(x) {
 		this.setState({
-			slideIndex: item.index,
+			slideIndex: x,
 			showMenu: this.state.mobile ? false : true,
 			showModal: false
 		});
+	}
+
+	onSelect(x) {
+		this.gotoSlideIndex(x);
 	}
 
 	render() {
 		let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
-				<Layer fill>
-					<Layer dimensions={[ '100px', '100px', 1 ]} flexCenter>
+				<Layer fill flex="row">
+					<Layer
+						onPress={() => this.onSelect(1)}
+						checked={slideIndex === 1}
+						dimensions={[ '100px', '100px', 1 ]}
+						flexCenter
+					>
 						<Text>Hello</Text>
 					</Layer>
 
-					<Layer fill flexCenter>
+					<Layer
+						onPress={() => this.onSelect(2)}
+						checked={slideIndex === 2}
+						dimensions={[ '100%', '100px', 2 ]}
+						flex
+						flexCenter
+					>
 						<Text>Hello</Text>
 					</Layer>
-
-					<Layer dimensions={[ '100px', '100px', 1 ]} flexCenter>
+					<Layer
+						onPress={() => this.onSelect(3)}
+						checked={slideIndex === 3}
+						dimensions={[ '100px', '100px', 3 ]}
+						flexCenter
+					>
 						<Text>Hello</Text>
 					</Layer>
 				</Layer>
