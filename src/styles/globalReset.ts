@@ -6,7 +6,7 @@ export const GlobalReset = createGlobalStyle`
 	}
 
 	html {
-		font-family: ${(props) => (props.theme.main.fontFamily ? props.theme.main.fontFamily : 'Roboto')};
+		font-family: ${(props) => (props.theme.main && props.theme.main.fontFamily ? props.theme.main.fontFamily : 'Roboto')};
 	}
 
 	* {

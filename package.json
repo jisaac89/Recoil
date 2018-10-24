@@ -23,11 +23,12 @@
 		"intersection-observer": "^0.5.0",
 		"less": "^3.0.4",
 		"normalize.css": "^8.0.0",
+		"react": "^16.6.0",
 		"react-intersection-observer": "^5.0.3",
 		"styled-components": "^4.0.2"
 	},
 	"peerDependencies": {
-		"react": "^16.4.0",
+		"react": "^16.5.2",
 		"react-dom": "^16.4.0"
 	},
 	"devDependencies": {
@@ -51,7 +52,6 @@
 		"optimize-css-assets-webpack-plugin": "^4.0.1",
 		"purify-css": "^1.2.5",
 		"purifycss-webpack": "^0.7.0",
-		"react": "^16.5.2",
 		"react-dom": "^16.5.2",
 		"rimraf": "^2.6.2",
 		"style-loader": "^0.21.0",

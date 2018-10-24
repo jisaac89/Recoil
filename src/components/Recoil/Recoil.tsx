@@ -7,13 +7,12 @@ import PortalProvider from '../Portal/PortalProvider';
 import { isMobile, isTablet } from './index';
 import { GlobalReset } from '../../styles/globalReset';
 
-import { ThemeProvider } from 'styled-components';
+// import { ThemeProvider, styled } from 'styled-components';
 
 import { mainTheme } from '../../styles/mainTheme';
 import { GlobalClasses } from '../../styles/globalClasses';
 
-import { styled } from 'styled-components';
-import RecoilStyled from './RecoilStyled';
+import styled, { ThemeProvider } from 'styled-components';
 
 export interface IRecoilProps {
 	nightmode?: boolean;
@@ -44,7 +43,7 @@ function delegate(el: HTMLElement, evt: any, sel: any, handler: any) {
 	});
 }
 
-export default class Recoil extends React.Component<IRecoilProps, any> {
+class Recoil extends React.Component<IRecoilProps, any> {
 	refs: any;
 
 	static defaulProps = {
@@ -72,6 +71,7 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 			initialized: true
 		});
 	}
+
 	detectMobile() {
 		let device;
 		if (isMobile && !isTablet) {
@@ -86,6 +86,7 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 			this.props.onDevice(device);
 		}
 	}
+
 	componentDidUpdate(prevProps: IRecoilProps, prevState) {
 		!!this.props.isMobile && this.props.isMobile !== prevState.isMobile ? this.isMobile(this.props.isMobile) : null;
 	}
@@ -117,11 +118,13 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 		);
 
 		return (
-			<ThemeProvider theme={theme}>
+			<ThemeProvider theme={{ theme }}>
 				<React.Fragment>
 					<PortalProvider initialized={this.state.initialized}>
 						<ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
-							<RecoilStyled>{children}</RecoilStyled>
+							<div ref={'Recoil'} id={'Recoil'} className={RecoilClass}>
+								{children}
+							</div>
 						</ShortCutProvider>
 					</PortalProvider>
 					<GlobalReset />
@@ -131,3 +134,15 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 		);
 	}
 }
+
+export default styled(Recoil)`
+  height: 100%;
+  width: 100%;
+  flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+
+  ${(props) => (props.coverflow ? 'overflow: vibile' : 'overflow: hidden')};
+  ${(props) => (props.scroll ? 'overflow: auto' : 'overflow: hidden')};
+  ${(props) => (props.scrollX ? 'overflow-x: auto' : 'overflow-x: hidden')};
+  ${(props) => (props.scrollY ? 'overflow-y: auto' : 'overflow-y: hidden')};
+`;
