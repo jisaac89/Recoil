@@ -87,7 +87,9 @@ export default class App extends React.Component<any, any> {
 		let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
-				<Text>hello world</Text>
+				<Layer fill flexCenter>
+					<Text>Hello</Text>
+				</Layer>
 			</Recoil>
 		);
 	}

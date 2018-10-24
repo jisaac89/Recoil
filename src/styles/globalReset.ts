@@ -28,14 +28,6 @@ export const GlobalReset = createGlobalStyle`
 				: '0099ff'};
 	}
 
-	body {
-		background: ${(props) =>
-			props.theme && props.theme.main && props.theme.main.bodyBackground
-				? props.theme.main.bodyBackground
-				: 'red !important'};
-		overflow-y: hidden !important;
-	}
-
 	.body-background {
 		background: ${(props) =>
 			props.theme && props.theme.main && props.theme.main.bodyBackground

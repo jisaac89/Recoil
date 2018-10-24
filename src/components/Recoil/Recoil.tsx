@@ -45,7 +45,7 @@ function delegate(el: HTMLElement, evt: any, sel: any, handler: any) {
 	});
 }
 
-class Recoil extends React.Component<IRecoilProps, any> {
+export default class Recoil extends React.Component<IRecoilProps, any> {
 	refs: any;
 
 	static defaulProps = {
@@ -121,27 +121,28 @@ class Recoil extends React.Component<IRecoilProps, any> {
 
 		return (
 			<ThemeProvider theme={{ theme }}>
-				<React.Fragment>
+				<RecoilWrapper>
 					<PortalProvider initialized={this.state.initialized}>
 						<ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
-							<View>{children}</View>
+							<React.Fragment>{children}</React.Fragment>
 						</ShortCutProvider>
 					</PortalProvider>
 					<GlobalReset />
 					<GlobalClasses />
-				</React.Fragment>
+				</RecoilWrapper>
 			</ThemeProvider>
 		);
 	}
 }
 
-export default styled(View)`
-  height: 100%;
-  width: 100%;
-  flex: 1 1 auto;
+const RecoilWrapper = styled.View`
+	height: 100%;
+	width: 100%;
+	flex: 1 1 auto;
+	display: flex;
 
-  ${(props) => (props.coverflow ? 'overflow: vibile' : 'overflow: hidden')};
-  ${(props) => (props.scroll ? 'overflow: auto' : 'overflow: hidden')};
-  ${(props) => (props.scrollX ? 'overflow-x: auto' : 'overflow-x: hidden')};
-  ${(props) => (props.scrollY ? 'overflow-y: auto' : 'overflow-y: hidden')};
+	${(props) => (props.coverflow ? 'overflow: vibile' : 'overflow: hidden')};
+	${(props) => (props.scroll ? 'overflow: auto' : 'overflow: hidden')};
+	${(props) => (props.scrollX ? 'overflow-x: auto' : 'overflow-x: hidden')};
+	${(props) => (props.scrollY ? 'overflow-y: auto' : 'overflow-y: hidden')};
 `;

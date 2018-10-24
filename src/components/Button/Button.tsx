@@ -4,133 +4,108 @@ import Selectable from '../Selectable/Selectable';
 
 import { IRecoil } from '../../index';
 
+import { Text, View, TouchableOpacity } from 'react-native-web';
+import styled, { ThemeProvider } from 'styled-components/native';
+
 export interface IButtonProps extends IRecoil {
-  style?: Object;
-  onClick?: (event: React.MouseEvent<any>) => void;
-  pointer?: 'left' | 'right' | boolean;
-  iconPointer?: 'left' | 'right' | 'up' | 'down';
-  iconLocation?: 'left' | 'right';
-  checkedTheme?: 'primary' | 'success' | 'error' | 'default';
-  icon?: string;
-  href?: string;
-  target?: string;
-  block?: boolean;
-  strech?: boolean;
-  right?: boolean;
-  left?: boolean;
-  submit?: boolean;
-  advanced?: boolean;
-  ghost?: boolean;
-  required?: boolean;
-  id?: string;
-  shortcut?: string;
-  shortCutInitKey?: string;
-  materialIcon?: boolean;
+	style?: Object;
+
+	pointer?: 'left' | 'right' | boolean;
+	iconPointer?: 'left' | 'right' | 'up' | 'down';
+	iconLocation?: 'left' | 'right';
+	checkedTheme?: 'primary' | 'success' | 'error' | 'default';
+	icon?: string;
+	href?: string;
+	target?: string;
+	block?: boolean;
+	strech?: boolean;
+	right?: boolean;
+	left?: boolean;
+	submit?: boolean;
+	advanced?: boolean;
+	ghost?: boolean;
+	required?: boolean;
+	id?: string;
+	shortcut?: string;
+	shortCutInitKey?: string;
+	materialIcon?: boolean;
+
+	// TODO MAKE REQUIRED
+	onPress?: (event: React.MouseEvent<any>) => void;
+
+	// TODO REMOVE
+
+	onClick?: any;
 }
 
 export interface IButtonState {}
 
 export default class Button extends React.Component<IButtonProps, IButtonState> {
-  public refs: {
-    [key: string]: Element;
-    button: HTMLButtonElement;
-  };
+	public refs: {
+		[key: string]: Element;
+		button: HTMLButtonElement;
+	};
 
-  public static defaultProps = {
-    disabled: false,
-    block: false,
-    advanced: false,
-    iconLocation: 'left'
-  };
+	public static defaultProps = {
+		disabled: false,
+		block: false,
+		advanced: false,
+		iconLocation: 'left',
+		theme: false
+	};
 
-  public onClick(event: React.MouseEvent<MouseEvent>) {
-    this.props.onClick ? this.props.onClick(event) : null;
-  }
+	constructor(props) {
+		super(props);
+		// Must pre bind
+		this.onPress = this.onPress.bind(this);
+	}
 
-  render() {
-    const self = this;
-    const props = self.props;
+	public onPress(event: React.MouseEvent<MouseEvent>) {
+		this.props.onPress(event);
+	}
 
-    let buttonType: string;
+	render() {
+		const self = this;
+		const props = self.props;
 
-    let buttonClass = classNames(
-      'r-Button',
-      { simple: props.simple },
-      { 'e-required': props.required },
-      { outline: props.outline },
-      { block: props.block },
-      { column: props.strech },
-      { icon: !props.children },
-      { 'button-pointer-right': props.pointer === 'right' },
-      { 'button-pointer-left': props.pointer === 'left' },
-      { 'icon-right': props.iconLocation === 'right' },
-      { 'icon-left': props.iconLocation === 'left' },
-      { 'pull-right': props.right },
-      { 'pull-left': props.left },
-      props.size,
-      props.theme,
-      props.className,
-      { checked: props.checked },
-      { fill: props.fill }
-    );
+		let buttonType: string;
 
-    if (props.submit) {
-      buttonType = 'submit';
-    } else {
-      buttonType = 'button';
-    }
-
-    let iconPartial =
-      props.icon && !props.loading ? (
-        props.materialIcon ? (
-          <i className={'material-icons'}>{props.icon}</i>
-        ) : (
-          <i className={'fa fa-' + props.icon} />
-        )
-      ) : null;
-    let loadingPartial = props.loading ? (
-      <i className={'fa fa-circle-o-notch fa-spin' + (props.children ? ' mr10' : '')} />
-    ) : null;
-    let animatedIcon =
-      props.iconPointer && !props.loading ? <i className={'icon-pointer fa fa-caret-' + props.iconPointer} /> : null;
-    let iconWrapperRight =
-      props.icon && props.iconLocation === 'right' ? (
-        <div className={'icon-pointer-' + props.iconPointer + ' ml10 icon-wrapper'}>
-          {iconPartial}
-          {props.iconPointer ? animatedIcon : null}
-        </div>
-      ) : null;
-    let iconWrapperLeft =
-      props.icon && props.iconLocation === 'left' ? (
-        <div className={'icon-pointer-' + props.iconPointer + ' icon-wrapper ' + (props.children ? 'mr10' : '')}>
-          {iconPartial}
-          {props.iconPointer ? animatedIcon : null}
-        </div>
-      ) : null;
-
-    let SimpleButton = ({ innerRef }) => {
-      return (
-        <button
-          id={props.id}
-          ref={innerRef}
-          tabIndex={props.tabIndex}
-          onClick={this.onClick.bind(this)}
-          type={buttonType}
-          disabled={props.disabled || props.loading === true}
-          className={buttonClass}
-          style={props.style}
-        >
-          {iconWrapperLeft}
-          {loadingPartial}
-          {props.children}
-          {iconWrapperRight}
-          <Selectable type={props.checkedTheme} checked={props.checked ? true : false} />
-        </button>
-      );
-    };
-
-    let Button = React.forwardRef((props, ref) => <SimpleButton innerRef={ref} />);
-
-    return <Button />;
-  }
+		return (
+			<StyledView>
+				<StyledOpacity onPress={this.onPress}>
+					<StyledText>{props.children}</StyledText>
+				</StyledOpacity>
+			</StyledView>
+		);
+	}
 }
+
+const StyledView = styled.View`
+	background: ${(props) => (false && props.theme.main.defaultBackground ? 'red' : 'yellow')};
+	border: 1px solid ${(props) => (false && props.theme.main.defaultBorder ? 'red' : 'yellow')};
+	padding: 6px 10px;
+`;
+
+const StyledOpacity = styled.TouchableOpacity`
+	height: 100%;
+	width: 100%;
+	background: yellow;
+	display: flex;
+
+	${(props) => (props.coverflow ? 'overflow: vibile' : 'overflow: hidden')};
+	${(props) => (props.scroll ? 'overflow: auto' : 'overflow: hidden')};
+	${(props) => (props.scrollX ? 'overflow-x: auto' : 'overflow-x: hidden')};
+	${(props) => (props.scrollY ? 'overflow-y: auto' : 'overflow-y: hidden')};
+`;
+
+const StyledText = styled.Text`color: palevioletred;`;
+
+const defaultButton = (props) => ({
+	background: false && props.theme.main.defaultBackground ? 'red' : 'yellow',
+	border: false && props.theme.main.defaultBorder ? '1px solid  red' : '1px solid yellow'
+});
+
+const primaryButton = {
+	fg: 'palevioletred',
+	bg: 'white'
+};
