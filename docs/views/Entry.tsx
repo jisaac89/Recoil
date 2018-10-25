@@ -95,13 +95,19 @@ export default class App extends React.Component<any, any> {
 		let { nightmode } = this.state;
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
-				<Layer fill flex>
-					<Align margin={'10px'}>
-						<Layer>
-							<Text>a</Text>
+				<Layer addStyleClass={[ p('10px') ]} dimensions={[ '300px', '300px', 2 ]}>
+					<Align fill>
+						<Layer fill flexCenter>
+							<Text>A</Text>
 						</Layer>
-						<Layer>
-							<Text>a</Text>
+						<Layer fill flexCenter>
+							<Text>B</Text>
+						</Layer>
+						<Layer fill flexCenter>
+							<Text>C</Text>
+						</Layer>
+						<Layer fill flexCenter>
+							<Text>D</Text>
 						</Layer>
 					</Align>
 				</Layer>

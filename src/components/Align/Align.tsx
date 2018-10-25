@@ -66,7 +66,6 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 }
 
 const AlignWrapper = styled.View`
-	flex: 1;
 	${(props) => (props.fill ? fill : null)};
 	${(props) => (props.vertical ? flexDirection('column') : null)};
 	${(props) => (!props.vertical ? flexDirection('row') : null)};
