@@ -7,7 +7,7 @@ import TableFooter from './TableFooter';
 import TableSearch from './TableSearch';
 import Layer from '../Layer/Layer';
 import Toolbar from '../Toolbar/Toolbar';
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
 import Loading from '../Loading/Loading';
 

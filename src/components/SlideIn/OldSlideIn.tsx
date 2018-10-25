@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 import Toolbar from '../Toolbar/Toolbar';
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
 
 export interface ISlideInProps {
 	if: boolean;

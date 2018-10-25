@@ -21,7 +21,7 @@ import {
 } from '../../src/index';
 
 import { Text } from 'react-native-web';
-import { fill, p, h } from '../../src/styles/sharedStyleObjects';
+import { fill, p, h, pos } from '../../src/styles/sharedStyleObjects';
 
 export default class App extends React.Component<any, any> {
 	onPress: any;
@@ -95,18 +95,18 @@ export default class App extends React.Component<any, any> {
 		let { nightmode } = this.state;
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
-				<Layer addStyleClass={[ p('10px') ]} dimensions={[ '300px', '300px', 2 ]}>
-					<Align fill>
-						<Layer fill flexCenter>
+				<Layer>
+					<Align>
+						<Layer flexCenter>
 							<Text>A</Text>
 						</Layer>
-						<Layer fill flexCenter>
+						<Layer flexCenter>
 							<Text>B</Text>
 						</Layer>
-						<Layer fill flexCenter>
+						<Layer flexCenter>
 							<Text>C</Text>
 						</Layer>
-						<Layer fill flexCenter>
+						<Layer flexCenter>
 							<Text>D</Text>
 						</Layer>
 					</Align>

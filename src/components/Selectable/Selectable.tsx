@@ -2,15 +2,9 @@ import * as React from 'react';
 import { ISelectableProps } from './ISelectable';
 import styled from 'styled-components/native';
 
-class Selectable extends React.Component<ISelectableProps, {}> {
-	render() {
-		const self = this;
-		const props = self.props;
-		return <SelectableWrapper {...props} />;
-	}
-}
-
-export default Selectable;
+export const Selectable = (props: ISelectableProps) => {
+	return <SelectableWrapper {...props} />;
+};
 
 const SelectableWrapper = styled.View`
 	${(props) => (props.checked ? 'width:100%' : 'width:0%')};

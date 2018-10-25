@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
-import Selectable from '../Selectable/Selectable';
+import { Selectable } from '../Selectable/Selectable';
 import { SlideIn } from '../SlideIn/SlideIn';
 
 import { IRecoil } from '../../index';

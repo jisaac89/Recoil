@@ -1,13 +1,10 @@
 export const fill = {
 	height: '100%',
-	width: '100%',
-	flex: '1 1 auto',
-	display: 'flex'
+	width: '100%'
 };
 
 export const flex = {
-	flex: '1 1 auto',
-	display: 'flex'
+	flex: '1'
 };
 
 export const flexCenter = {
@@ -62,11 +59,31 @@ export function m(x) {
 	};
 }
 
+export function ms(x) {
+	return {
+		marginLeft: x,
+		marginRight: x
+	};
+}
+
+export function mtb(x) {
+	return {
+		marginTop: x,
+		marginBottom: x
+	};
+}
+
 // Width
 
 export function w(x) {
 	return {
-		margin: x
+		width: x
+	};
+}
+
+export function mw(x) {
+	return {
+		maxWidth: x
 	};
 }
 
@@ -74,7 +91,13 @@ export function w(x) {
 
 export function h(x) {
 	return {
-		margin: x
+		height: x
+	};
+}
+
+export function mh(x) {
+	return {
+		maxHeight: x
 	};
 }
 
@@ -110,11 +133,29 @@ export function l(x) {
 	};
 }
 
+// Methods
+
 export function dimensions(width, height, zIndex) {
 	return {
 		width: width,
 		height: height,
 		zIndex: zIndex
+	};
+}
+
+export function tlr(t, l, r) {
+	return {
+		left: l,
+		right: r,
+		top: t
+	};
+}
+
+export function blr(b, l, r) {
+	return {
+		left: l,
+		right: r,
+		bottom: b
 	};
 }
 export function cursor(value) {
@@ -123,8 +164,26 @@ export function cursor(value) {
 	};
 }
 
-export function flexDirection(value) {
+export function pos(value) {
 	return {
-		flexDirection: value
+		position: value
+	};
+}
+
+export function pull(direction) {
+	return {
+		float: direction
+	};
+}
+
+export function flexDirection(direction) {
+	return {
+		flexDirection: direction
+	};
+}
+
+export function backgroundImage(url) {
+	return {
+		backgroundImage: `url(${url})`
 	};
 }

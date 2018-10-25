@@ -1,11 +1,10 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import styled from 'styled-components/native';
+import { IAvatarProps } from './IAvatar';
+import { backgroundImage } from '../../styles/sharedStyleObjects';
 
-export interface IAvatarProps {
-  src?: 'string';
-}
-
-export const Avatar = () => {
-  let avatarClass = classNames('r-Avatar');
-  return <div className={avatarClass} style={{ backgroundImage: 'url(' + this.props.src + ')' }} />;
+export const Avatar = (props: IAvatarProps) => {
+	return <AvatarWrapper {...props} />;
 };
+
+const AvatarWrapper = styled.View`${(props) => (!props.src ? backgroundImage(props.src) : null)};`;

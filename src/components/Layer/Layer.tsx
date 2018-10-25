@@ -14,7 +14,7 @@ import {
 	flexDirection
 } from '../../styles/sharedStyleObjects';
 
-import Selectable from '../Selectable/Selectable';
+import { Selectable } from '../Selectable/Selectable';
 
 export const Layer = (props: ILayerProps) => {
 	return (
@@ -30,27 +30,29 @@ export const Layer = (props: ILayerProps) => {
 export default Layer;
 
 const LayerWrapper = styled.View`
+	position: relative;
 	${(props) => (props.flex ? flex : null)};
 	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 	${(props) => (props.fill ? fill : null)};
-	${(props) => (props.overflow ? overflow : 'overflow: hidden')};
-	${(props) => (props.scroll ? scroll : 'overflow: hidden')};
-	${(props) => (props.scrollX ? scrollX : 'overflow-x: hidden')};
-	${(props) => (props.scrollY ? scrollY : 'overflow-y: hidden')};
+	${(props) => (props.overflow ? overflow : null)};
+	${(props) => (props.scroll ? scroll : null)};
+	${(props) => (props.scrollX ? scrollX : null)};
+	${(props) => (props.scrollY ? scrollY : null)};
 	${(props) => (props.flexCenter ? flexCenter : null)};
 	${(props) => (props.addStyleClass ? props.addStyleClass : null)};
 `;
 
 const TouchableWrapper = styled.TouchableOpacity`
+	position: relative;
 	${(props) => (props.flex ? flex : null)};
 	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 	${(props) => (props.fill ? fill : null)};
-	${(props) => (props.overflow ? overflow : 'overflow: hidden')};
-	${(props) => (props.scroll ? scroll : 'overflow: hidden')};
-	${(props) => (props.scrollX ? scrollX : 'overflow-x: hidden')};
-	${(props) => (props.scrollY ? scrollY : 'overflow-y: hidden')};
+	${(props) => (props.overflow ? overflow : null)};
+	${(props) => (props.scroll ? scroll : null)};
+	${(props) => (props.scrollX ? scrollX : null)};
+	${(props) => (props.scrollY ? scrollY : null)};
 	${(props) => (props.flexCenter ? flexCenter : null)};
 	${(props) => (props.addStyleClass ? props.addStyleClass : null)};
 `;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import Selectable from '../Selectable/Selectable';
+import { Selectable } from '../Selectable/Selectable';
 
 import { IRecoil } from '../../index';
 
