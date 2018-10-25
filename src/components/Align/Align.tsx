@@ -1,46 +1,8 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
-
-export interface IAlignProps {
-	vertical?: boolean;
-	className?: string;
-	columns?: Array<number>;
-	margin?: string;
-	children?: any;
-	fill?: boolean;
-	style?: any;
-	alignItems?: string;
-}
-
-export interface IAlignChildProps {
-	columns?: Array<number>;
-	vertical?: boolean;
-	width?: number;
-	element?: JSX.Element;
-	margin?: string;
-}
-
-export interface IAlignState {
-	widthArray?: Array<number>;
-	maxColumnsLength?: number;
-}
-
-const AlignChild = (props: IAlignChildProps) => {
-	let { columns, vertical, width, element, margin } = props;
-
-	let alignChildStyle = {
-		flex: columns || vertical ? 'none' : '1 !important',
-		padding: margin,
-		width: !vertical ? width + '%' : null,
-		height: vertical ? width + '%' : null
-	};
-
-	return (
-		<div className="r-Align__Child" style={alignChildStyle}>
-			{element}
-		</div>
-	);
-};
+import styled from 'styled-components/native';
+import { fill, flexDirection } from '../../styles/sharedStyleObjects';
+import { IAlignProps, IAlignState } from './IAlign';
+import { AlignChild } from './AlignChild';
 
 export default class Align extends React.Component<IAlignProps, IAlignState> {
 	constructor(props) {
@@ -95,21 +57,17 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 	render() {
 		const self = this;
 		const props = self.props;
-		let { vertical, children, className, fill, alignItems } = props;
-
-		let alignClass = classNames(
-			'r-Align',
-			{ 'e-vertical': vertical },
-			{ 'e-horizontal': !vertical },
-			{ 'e-fill': fill },
-			'e-align-' + alignItems,
-			className
-		);
+		let { children } = props;
 
 		return (
-			<div style={this.props.style} className={alignClass}>
-				{children.length > 1 ? children.map(this.alignChildren) : this.props.children}
-			</div>
+			<AlignWrapper {...props}>{children.length > 1 ? children.map(this.alignChildren) : children}</AlignWrapper>
 		);
 	}
 }
+
+const AlignWrapper = styled.View`
+	flex: 1;
+	${(props) => (props.fill ? fill : null)};
+	${(props) => (props.vertical ? flexDirection('column') : null)};
+	${(props) => (!props.vertical ? flexDirection('row') : null)};
+`;

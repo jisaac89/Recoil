@@ -92,34 +92,18 @@ export default class App extends React.Component<any, any> {
 	}
 
 	render() {
-		let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
+		let { nightmode } = this.state;
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
-				<Layer dimensions={[ '100%', '100px', 1 ]} flex="row">
-					<Layer
-						onPress={() => this.onSelect(1)}
-						checked={slideIndex === 1}
-						dimensions={[ '100px', '100px', 1 ]}
-						flexCenter
-					>
-						<Text>Hello</Text>
-					</Layer>
-
-					<Layer
-						onPress={() => this.onSelect(2)}
-						checked={slideIndex === 2}
-						dimensions={[ '100%', '100px', 2 ]}
-						flex
-						flexCenter
-					>
-						<Text>Hello</Text>
-					</Layer>
-
-					<SlideIn dimensions={[ '100px', '100px', 3 ]} if={true} from="bottom">
-						<Layer fill onPress={() => this.onSelect(3)} checked={slideIndex === 3} flexCenter>
-							<Text>Hello</Text>
+				<Layer fill flex>
+					<Align margin={'10px'}>
+						<Layer>
+							<Text>a</Text>
 						</Layer>
-					</SlideIn>
+						<Layer>
+							<Text>a</Text>
+						</Layer>
+					</Align>
 				</Layer>
 			</Recoil>
 		);

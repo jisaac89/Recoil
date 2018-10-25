@@ -40,6 +40,20 @@ export function p(x) {
 	};
 }
 
+export function ps(x) {
+	return {
+		paddingLeft: x,
+		paddingRight: x
+	};
+}
+
+export function ptb(x) {
+	return {
+		paddingTop: x,
+		paddingBottom: x
+	};
+}
+
 // Margin
 
 export function m(x) {
@@ -103,13 +117,14 @@ export function dimensions(width, height, zIndex) {
 		zIndex: zIndex
 	};
 }
-
-export const flexRow = {
-	flexDirection: 'row'
-};
-
 export function cursor(value) {
 	return {
 		cursor: value
+	};
+}
+
+export function flexDirection(value) {
+	return {
+		flexDirection: value
 	};
 }

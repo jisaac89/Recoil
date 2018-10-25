@@ -11,47 +11,27 @@ import {
 	fill,
 	dimensions,
 	flex,
-	flexRow
+	flexDirection
 } from '../../styles/sharedStyleObjects';
 
 import Selectable from '../Selectable/Selectable';
 
-class Layer extends React.Component<ILayerProps, any> {
-	public refs: {
-		[key: string]: Element;
-		Layer: Element;
-	};
-
-	public static defaultProps = {
-		overflow: false,
-		type: '',
-		left: false,
-		right: false,
-		border: '',
-		flexCenter: false
-	};
-
-	render() {
-		const self = this;
-		const props = self.props;
-		let { checked, children, onPress } = props;
-
-		return (
-			<LayerWrapper ref="Layer" {...props}>
-				<TouchableWrapper {...props} onPress={onPress} disabled={!onPress}>
-					{children}
-				</TouchableWrapper>
-				<Selectable checked={checked} />
-			</LayerWrapper>
-		);
-	}
-}
+export const Layer = (props: ILayerProps) => {
+	return (
+		<LayerWrapper {...props}>
+			<TouchableWrapper {...props} onPress={props.onPress} disabled={!props.onPress}>
+				{props.children}
+			</TouchableWrapper>
+			<Selectable checked={props.checked} />
+		</LayerWrapper>
+	);
+};
 
 export default Layer;
 
 const LayerWrapper = styled.View`
 	${(props) => (props.flex ? flex : null)};
-	${(props) => (props.flex === 'row' ? flexRow : null)};
+	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 	${(props) => (props.fill ? fill : null)};
 	${(props) => (props.overflow ? overflow : 'overflow: hidden')};
@@ -64,7 +44,7 @@ const LayerWrapper = styled.View`
 
 const TouchableWrapper = styled.TouchableOpacity`
 	${(props) => (props.flex ? flex : null)};
-	${(props) => (props.flex === 'row' ? flexRow : null)};
+	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 	${(props) => (props.fill ? fill : null)};
 	${(props) => (props.overflow ? overflow : 'overflow: hidden')};
