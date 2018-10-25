@@ -95,7 +95,7 @@ export default class App extends React.Component<any, any> {
 		let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
-				<Layer fill flex="row">
+				<Layer dimensions={[ '100%', '100px', 1 ]} flex="row">
 					<Layer
 						onPress={() => this.onSelect(1)}
 						checked={slideIndex === 1}
@@ -114,14 +114,12 @@ export default class App extends React.Component<any, any> {
 					>
 						<Text>Hello</Text>
 					</Layer>
-					<Layer
-						onPress={() => this.onSelect(3)}
-						checked={slideIndex === 3}
-						dimensions={[ '100px', '100px', 3 ]}
-						flexCenter
-					>
-						<Text>Hello</Text>
-					</Layer>
+
+					<SlideIn dimensions={[ '100px', '100px', 3 ]} if={true} from="bottom">
+						<Layer fill onPress={() => this.onSelect(3)} checked={slideIndex === 3} flexCenter>
+							<Text>Hello</Text>
+						</Layer>
+					</SlideIn>
 				</Layer>
 			</Recoil>
 		);
