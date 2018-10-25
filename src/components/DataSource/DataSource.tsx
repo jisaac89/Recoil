@@ -35,7 +35,6 @@ const DataSource: any = (Component: JSX.Element) =>
 				page: props.page || 0,
 				numberOfPages: 0,
 				numberPerPage: 0,
-
 				// table selected options
 				detailTemplateSelectedElements: props.detailTemplateSelectedElements || [],
 				selectedElements: props.selectedElements || [],

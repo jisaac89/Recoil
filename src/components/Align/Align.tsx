@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { fill, flexDirection } from '../../styles/sharedStyleObjects';
+import { fill, flexDirection } from '../../styles/classList';
 import { IAlignProps, IAlignState } from './IAlign';
 import { AlignChild } from './AlignChild';
 

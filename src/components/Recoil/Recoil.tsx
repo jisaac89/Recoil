@@ -15,7 +15,7 @@ import { GlobalClasses } from '../../styles/globalClasses';
 import styled, { ThemeProvider } from 'styled-components/native';
 
 import { View } from 'react-native-web';
-import { overflow, scroll, scrollX, scrollY } from '../../styles/sharedStyleObjects';
+import { overflow, scroll, scrollX, scrollY } from '../../styles/classList';
 
 export interface IRecoilProps {
 	nightmode?: boolean;

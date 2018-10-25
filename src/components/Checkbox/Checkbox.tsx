@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import { ICheckboxProps } from './ICheckbox';
-import { fill } from '../../styles/sharedStyleObjects';
+import { flexDirection, p, dimensions } from '../../styles/classList';
 
 export const Checkbox = (props: ICheckboxProps) => {
 	return (
@@ -12,14 +12,17 @@ export const Checkbox = (props: ICheckboxProps) => {
 	);
 };
 
-const CheckboxWrapper = styled.View`
-	display: inline-block;
-	flexWrap: nowrap;
-	border-radius: 50% !important;
-	padding: 6px 8px;
-	height: 30px;
-	width: 30px;
+const CheckboxWrapper = styled.View`${flexDirection('row')};`;
+
+const TouchableWrapper = styled.TouchableOpacity`
+	border-radius: 50%;
 	background: ${(props) => (props.checked ? '#09f' : '#efefef')};
+	${p('6px 10px')};
+	${dimensions('30px', '30px', 1)};
 `;
-const TouchableWrapper = styled.View`${fill};`;
-const CheckboxTitle = styled.Text``;
+
+const CheckboxTitle = styled.Text`
+	position: relative;
+	display: block;
+	${p('5px 10px')};
+`;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
-import { overflow, fill, flex, flexDirection, dimensions } from '../../styles/sharedStyleObjects';
+import { overflow, fill, flex, flexDirection, dimensions } from '../../styles/classList';
 import { ISlideInProps } from './ISlideInProps';
 
 export const SlideIn = (props: ISlideInProps) => {

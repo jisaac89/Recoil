@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components/native';
 import { IAvatarProps } from './IAvatar';
-import { backgroundImage } from '../../styles/sharedStyleObjects';
+import { backgroundImage } from '../../styles/classList';
 
 export const Avatar = (props: IAvatarProps) => {
 	return <AvatarWrapper {...props} />;

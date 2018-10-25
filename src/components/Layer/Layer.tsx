@@ -12,7 +12,7 @@ import {
 	dimensions,
 	flex,
 	flexDirection
-} from '../../styles/sharedStyleObjects';
+} from '../../styles/classList';
 
 import { Selectable } from '../Selectable/Selectable';
 
@@ -31,7 +31,7 @@ export default Layer;
 
 const LayerWrapper = styled.View`
 	position: relative;
-	${(props) => (props.flex ? flex : null)};
+	${(props) => (props.flex !== 'row' ? flex : null)};
 	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 	${(props) => (props.fill ? fill : null)};
@@ -45,7 +45,7 @@ const LayerWrapper = styled.View`
 
 const TouchableWrapper = styled.TouchableOpacity`
 	position: relative;
-	${(props) => (props.flex ? flex : null)};
+	${(props) => (props.flex !== 'row' ? flex : null)};
 	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 	${(props) => (props.fill ? fill : null)};

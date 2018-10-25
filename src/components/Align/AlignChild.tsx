@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IAlignChildProps } from './IAlign';
 import styled from 'styled-components/native';
-import { w, ps, ptb, fill } from '../../styles/sharedStyleObjects';
+import { w, ps, ptb, fill } from '../../styles/classList';
 
 export const AlignChild = (props: IAlignChildProps) => {
 	return <AlignChildWrapper {...props}>{props.element}</AlignChildWrapper>;
