@@ -40,7 +40,7 @@ const LayerWrapper = styled.View`
 	${(props) => (props.scrollX ? scrollX : null)};
 	${(props) => (props.scrollY ? scrollY : null)};
 	${(props) => (props.flexCenter ? flexCenter : null)};
-	${(props) => (props.addStyleClass ? props.addStyleClass : null)};
+	${(props) => (props.classList ? props.classList : null)};
 `;
 
 const TouchableWrapper = styled.TouchableOpacity`
@@ -54,5 +54,5 @@ const TouchableWrapper = styled.TouchableOpacity`
 	${(props) => (props.scrollX ? scrollX : null)};
 	${(props) => (props.scrollY ? scrollY : null)};
 	${(props) => (props.flexCenter ? flexCenter : null)};
-	${(props) => (props.addStyleClass ? props.addStyleClass : null)};
+	${(props) => (props.classList ? props.classList : null)};
 `;

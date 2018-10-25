@@ -1,17 +1,17 @@
 export interface IRecoil {
-  size?: 'small' | 'large' | 'xlarge' | 'xxlarge' | 'default';
-  theme?: 'primary' | 'success' | 'error' | 'bronze' | 'silver' | 'gold' | 'default' | 'light' | 'night' | 'dark';
-  className?: string;
-  flex?: boolean | 'row' | 'row-reverse';
-  fill?: boolean;
-  disabled?: boolean;
-  checked?: boolean;
-  loading?: boolean;
-  simple?: boolean;
-  outline?: boolean;
-  tabIndex?: number;
-  id?: string;
-  children?: any;
+	size?: 'small' | 'large' | 'xlarge' | 'xxlarge' | 'default';
+	theme?: 'primary' | 'success' | 'error' | 'bronze' | 'silver' | 'gold' | 'default' | 'light' | 'night' | 'dark';
+	className?: string;
+	flex?: boolean | 'row' | 'row-reverse';
+	fill?: boolean;
+	disabled?: boolean;
+	checked?: boolean;
+	loading?: boolean;
+	simple?: boolean;
+	outline?: boolean;
+	tabIndex?: number;
+	id?: string;
+	children?: any;
 }
 
 export { default as Recoil } from './components/Recoil/Recoil';
@@ -19,14 +19,15 @@ export { default as Align } from './components/Align/Align';
 export { default as AdvancedLayer } from './components/Layer/AdvancedLayer';
 export { default as AdvancedButton } from './components/Button/AdvancedButton';
 export { default as Button, IButtonProps, IButtonState } from './components/Button/Button';
-export { default as Checkbox } from './components/Checkbox/Checkbox';
+export { Checkbox } from './components/Checkbox/Checkbox';
+export { default as OldCheckbox } from './components/Checkbox/OldCheckbox';
 export { default as Open } from './components/Open/Open';
 export {
-  default as DatePicker,
-  IDatePickerProps,
-  Calendar,
-  ICalendarProps,
-  ICalendarState
+	default as DatePicker,
+	IDatePickerProps,
+	Calendar,
+	ICalendarProps,
+	ICalendarState
 } from './components/DatePicker/DatePicker';
 export { default as Dropdown } from './components/Dropdown/Dropdown';
 export { default as Emerge } from './components/Emerge/Emerge';

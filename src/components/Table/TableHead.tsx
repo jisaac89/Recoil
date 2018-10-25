@@ -3,7 +3,7 @@ import * as React from 'react';
 import { arraysEqual } from '../Utils';
 
 import { Button } from '../Button/Button';
-import Checkbox from '../Checkbox/Checkbox';
+import OldCheckbox from '../Checkbox/OldCheckbox';
 
 import { IColumn } from './IColumn';
 
@@ -44,7 +44,7 @@ class CheckboxHead extends React.Component<any, any> {
 		return (
 			<th style={{ width: '25px' }}>
 				{!hideCheckAll ? (
-					<Checkbox
+					<OldCheckbox
 						onChange={this.selectAll.bind(this, props.dataSource)}
 						size="small"
 						checked={props.selectedElements ? arraysEqual(props.dataSource, props.selectedElements) : false}

@@ -1,52 +1,25 @@
 import * as React from 'react';
-import { Button } from '../Button/Button';
-import Toolbar from '../Toolbar/Toolbar';
-import * as classNames from 'classnames';
+import styled from 'styled-components/native';
+import { ICheckboxProps } from './ICheckbox';
+import { fill } from '../../styles/sharedStyleObjects';
 
-import { IRecoil } from '../../index';
+export const Checkbox = (props: ICheckboxProps) => {
+	return (
+		<CheckboxWrapper {...props}>
+			<TouchableWrapper onPress={props.onChange} />
+			{props.title ? <CheckboxTitle>{props.title}</CheckboxTitle> : null}
+		</CheckboxWrapper>
+	);
+};
 
-export interface ICheckboxProps extends IRecoil {
-	onChange: (value: boolean, event?: React.MouseEvent<MouseEvent>) => void;
-	checked: boolean;
-	icon?: string;
-	title?: string;
-	loading?: boolean;
-}
-
-export default class Checkbox extends React.Component<ICheckboxProps> {
-	static defaultProps = {
-		checked: false
-	};
-
-	public toggleChecked = () => {
-		this.props.onChange ? this.props.onChange(this.props.checked) : null;
-	};
-
-	render() {
-		const self = this;
-		const props = self.props;
-		let { checked, disabled, icon, loading, theme, size } = props;
-
-		let checkboxClass = classNames('r-Checkbox', { disabled: props.disabled }, { 'e-checked': this.props.checked });
-
-		let checkboxProps = {
-			disabled,
-			loading,
-			size,
-			icon,
-			onClick: this.toggleChecked,
-			theme: theme ? theme : checked ? 'primary' : 'default'
-		};
-
-		return (
-			<Toolbar flush className="r-Checkbox__Wrapper">
-				<Button className={checkboxClass} {...checkboxProps} />
-				{props.title ? (
-					<Button {...checkboxProps} simple>
-						{props.title}
-					</Button>
-				) : null}
-			</Toolbar>
-		);
-	}
-}
+const CheckboxWrapper = styled.View`
+	display: inline-block;
+	flexWrap: nowrap;
+	border-radius: 50% !important;
+	padding: 6px 8px;
+	height: 30px;
+	width: 30px;
+	background: ${(props) => (props.checked ? '#09f' : '#efefef')};
+`;
+const TouchableWrapper = styled.View`${fill};`;
+const CheckboxTitle = styled.Text``;
