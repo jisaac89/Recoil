@@ -5,7 +5,7 @@ import { CheckboxWrapper, TouchableWrapper, CheckboxCircle, CheckboxTitle } from
 export const Checkbox = (props: ICheckboxProps) => {
 	return (
 		<CheckboxWrapper {...props}>
-			<TouchableWrapper>
+			<TouchableWrapper style={{ alignSelf: 'flex-start' }}>
 				<CheckboxCircle {...props} />
 				{props.title ? <CheckboxTitle>{props.title}</CheckboxTitle> : null}
 			</TouchableWrapper>
