@@ -13,6 +13,14 @@ export const flexCenter = {
 	alignItems: 'center'
 };
 
+export const dblock = {
+	width: '100%',
+	flex: '1',
+	flexGrow: 1,
+	flexShrink: 1,
+	flexBasis: '0%'
+};
+
 export const scroll = {
 	overflow: 'auto'
 };

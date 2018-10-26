@@ -7,8 +7,8 @@ export const Button = (props: IButtonProps) => {
 	return (
 		<TouchableWrapper
 			style={{ alignSelf: props.block ? 'stretch' : 'flex-start' }}
-			{...props}
 			onPress={this.onPress}
+			{...props}
 		>
 			<ButtonTitle>{props.children}</ButtonTitle>
 			<Selectable checked={props.checked} />
