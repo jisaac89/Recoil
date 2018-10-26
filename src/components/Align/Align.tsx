@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IAlignProps, IAlignState } from './IAlign';
-import { AlignChild } from './AlignChild';
-import { AlignWrapper } from './style';
+import { AlignWrapper, AlignChildWrapper } from './style';
 
 export default class Align extends React.Component<IAlignProps, IAlignState> {
 	constructor(props) {
@@ -43,23 +42,23 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 	alignChildren = (element: JSX.Element, key: string) => {
 		let { columns, margin, vertical } = this.props;
 		return (
-			<AlignChild
+			<AlignChildWrapper
 				key={key}
-				element={element}
 				width={this.state.widthArray[key]}
 				columns={columns}
 				margin={margin}
 				vertical={vertical}
-			/>
+			>
+				{element}
+			</AlignChildWrapper>
 		);
 	};
 	render() {
-		const self = this;
-		const props = self.props;
-		let { children } = props;
-
+		let { children } = this.props;
 		return (
-			<AlignWrapper {...props}>{children.length > 1 ? children.map(this.alignChildren) : children}</AlignWrapper>
+			<AlignWrapper {...this.props}>
+				{children.length > 1 ? children.map(this.alignChildren) : children}
+			</AlignWrapper>
 		);
 	}
 }
