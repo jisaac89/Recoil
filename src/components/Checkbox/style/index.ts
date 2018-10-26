@@ -2,14 +2,11 @@ import styled from 'styled-components/native';
 import { flexDirection, p, dimensions, fill } from '../../../styles/classList';
 
 export const CheckboxWrapper = styled.View`
-	flex: 0;
+	${flexDirection('row')};
 	position: relative;
 `;
 
-export const TouchableWrapper = styled.TouchableOpacity`
-	${fill};
-	${flexDirection('row')};
-`;
+export const TouchableWrapper = styled.TouchableOpacity`${flexDirection('row')};`;
 
 export const CheckboxCircle = styled.TouchableOpacity`
 	border-radius: 50%;
