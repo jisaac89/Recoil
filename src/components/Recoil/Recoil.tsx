@@ -15,7 +15,7 @@ import { GlobalClasses } from '../../styles/globalClasses';
 import styled, { ThemeProvider } from 'styled-components/native';
 
 import { View } from 'react-native-web';
-import { overflow, scroll, scrollX, scrollY } from '../../styles/classList';
+import { overflow, scroll, scrollX, scrollY, fill, flexDirection } from '../../styles/classList';
 
 export interface IRecoilProps {
 	nightmode?: boolean;
@@ -121,26 +121,19 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 		);
 
 		return (
-			<ThemeProvider theme={{ theme }}>
-				<RecoilWrapper>
-					<PortalProvider initialized={this.state.initialized}>
-						<ShortCutProvider shortCutInitKey={props.shortCutInitKey}>
-							<React.Fragment>{children}</React.Fragment>
-						</ShortCutProvider>
-					</PortalProvider>
-					<GlobalReset />
-					<GlobalClasses />
-				</RecoilWrapper>
-			</ThemeProvider>
+			<RecoilWrapper>
+				<PortalProvider initialized={this.state.initialized}>
+					<ShortCutProvider shortCutInitKey={props.shortCutInitKey}>{children}</ShortCutProvider>
+				</PortalProvider>
+				<GlobalReset />
+				<GlobalClasses />
+			</RecoilWrapper>
 		);
 	}
 }
 
 const RecoilWrapper = styled.View`
-	height: 100%;
-	width: 100%;
-	flex: 1;
-
+	${fill};
 	${(props) => (props.overflow ? overflow : 'overflow: hidden')};
 	${(props) => (props.scroll ? scroll : 'overflow: hidden')};
 	${(props) => (props.scrollX ? scrollX : 'overflow-x: hidden')};

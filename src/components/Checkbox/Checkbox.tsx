@@ -6,7 +6,7 @@ export const Checkbox = (props: ICheckboxProps) => {
 	return (
 		<CheckboxWrapper {...props}>
 			<TouchableWrapper>
-				<CheckboxCircle />
+				<CheckboxCircle {...props} />
 				{props.title ? <CheckboxTitle>{props.title}</CheckboxTitle> : null}
 			</TouchableWrapper>
 		</CheckboxWrapper>

@@ -1,7 +1,10 @@
 import styled from 'styled-components/native';
 import { flexDirection, p, dimensions, fill } from '../../../styles/classList';
 
-export const CheckboxWrapper = styled.View`${flexDirection('row')};`;
+export const CheckboxWrapper = styled.View`
+	flex: 0;
+	position: relative;
+`;
 
 export const TouchableWrapper = styled.TouchableOpacity`
 	${fill};

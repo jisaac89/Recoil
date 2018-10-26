@@ -10,6 +10,7 @@ export interface ILayerProps extends IRecoil {
 	flexCenter?: boolean;
 	classList?: any[];
 	fill?: boolean;
+	style?: object;
 	// TODO REMOVE
 	onClick?: any;
 }
