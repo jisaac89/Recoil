@@ -30,3 +30,5 @@ const SlideInWrapper = styled.View`
 	${(props) => (props.addStyleClass ? props.addStyleClass : null)};
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 `;
+
+export default SlideIn;

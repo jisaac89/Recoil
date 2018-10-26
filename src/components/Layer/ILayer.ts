@@ -11,6 +11,7 @@ export interface ILayerProps extends IRecoil {
 	classList?: any[];
 	fill?: boolean;
 	style?: object;
+	border?: boolean | string;
 	// TODO REMOVE
 	onClick?: any;
 }

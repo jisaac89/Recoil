@@ -7,7 +7,7 @@ export const Layer = (props: ILayerProps) => {
 	return (
 		<LayerWrapper {...props}>
 			<TouchableWrapper {...props} onPress={props.onPress} disabled={!props.onPress}>
-				{props.children}
+				<React.Fragment>{props.children}</React.Fragment>
 			</TouchableWrapper>
 			<Selectable checked={props.checked} />
 		</LayerWrapper>

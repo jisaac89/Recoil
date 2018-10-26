@@ -28,3 +28,5 @@ export const Wizard = (props: IWizardProps) => {
 const WizardWrapper = styled.View``;
 const WizardTrack = styled.View``;
 const WizardSlide = styled.View``;
+
+export default Wizard;

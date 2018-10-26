@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import { w, ps, ptb, fill, flexDirection } from '../../../styles/classList';
 
 export const AlignWrapper = styled.View`
-	${fill};
+	${(props) => (props.fill ? fill : null)};
 	${(props) => (props.vertical ? flexDirection('column !important') : null)};
 	${(props) => (!props.vertical ? flexDirection('row') : null)};
 `;
