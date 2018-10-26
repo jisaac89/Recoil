@@ -20,7 +20,6 @@ export { default as AdvancedLayer } from './components/Layer/AdvancedLayer';
 export { default as AdvancedButton } from './components/Button/AdvancedButton';
 export { default as Button, IButtonProps } from './components/Button/Button';
 export { Checkbox } from './components/Checkbox/Checkbox';
-export { default as OldCheckbox } from './components/Checkbox/OldCheckbox';
 export { default as Open } from './components/Open/Open';
 export {
 	default as DatePicker,

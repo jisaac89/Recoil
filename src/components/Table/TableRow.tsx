@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import TableColumn from './TableColumn';
 import { Button } from '../Button/Button';
-import OldCheckbox from '../Checkbox/OldCheckbox';
+import { Checkbox } from '../Checkbox/Checkbox';
 import { IColumn } from './IColumn';
 
 import { branchIn } from '../Utils';
@@ -72,7 +72,7 @@ class CheckboxColumn extends React.Component<any, any> {
 		let { selectedElements } = props;
 		return (
 			<td style={{ width: '25px' }}>
-				<OldCheckbox
+				<Checkbox
 					onChange={this.toggleSelectedElements.bind(this, props.element)}
 					size="small"
 					checked={selectedElements ? selectedElements.includes(props.element) : false}
