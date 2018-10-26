@@ -1,8 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components/native';
-import { fill, flexDirection } from '../../styles/classList';
 import { IAlignProps, IAlignState } from './IAlign';
 import { AlignChild } from './AlignChild';
+import { AlignWrapper } from './style';
 
 export default class Align extends React.Component<IAlignProps, IAlignState> {
 	constructor(props) {
@@ -64,9 +63,3 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 		);
 	}
 }
-
-const AlignWrapper = styled.View`
-	${(props) => (props.fill ? fill : null)};
-	${(props) => (props.vertical ? flexDirection('column') : null)};
-	${(props) => (!props.vertical ? flexDirection('row') : null)};
-`;
