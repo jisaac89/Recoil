@@ -6,15 +6,10 @@ export default class App extends React.Component<any, any> {
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={false} onDevice={() => {}}>
 				<Layer flex="row">
-					<Align>
-						<Button checked={true} block>
-							WFASFASF
-						</Button>
-						<Layer>
-							<Checkbox checked={true} title="hello" onChange={() => {}} />
-						</Layer>
-						<Button block>WFASFASF</Button>
-					</Align>
+					<Button block>Hellow</Button>
+					<Button>World</Button>
+					<Button>test</Button>
+					<Button block>a</Button>
 				</Layer>
 			</Recoil>
 		);
