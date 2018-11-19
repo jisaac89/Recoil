@@ -104,7 +104,7 @@ export default class App extends React.Component<any, any> {
                 <Layer fill theme="light">
                   <Toolbar size="small" block className="p10 border-bottom">
                     {mobile ? <Button simple icon={showMenu ? "times" : "bars"} onClick={this.toggleMenu.bind(this)} /> : null}
-                    <h1 className="dinblock"><strong>Recoil</strong> <small>0.6.0</small></h1>
+                    <h1 className="dinblock"><strong>Recoil</strong> <small>0.7.0</small></h1>
                     <Button href="https://www.github.com/jisaac89/recoil" theme="error" right icon="github">github</Button>
                     <Button simple onClick={this.toggleDocs.bind(this)} right icon="download" className="mr5"></Button>
                     <Button simple onClick={this.toggleNightMode.bind(this)} right icon="moon-o"></Button>
@@ -171,7 +171,7 @@ export default class App extends React.Component<any, any> {
 
           <Layer tabIndex={-1} flexCenter theme="light" className="p10" fill>
 
-            <h2><a tabIndex={-1} href="https://www.github.com/jisaac89/recoil">Recoil</a> <small>0.6.0</small></h2>
+            <h2><a tabIndex={-1} href="https://www.github.com/jisaac89/recoil">Recoil</a> <small>0.7.0</small></h2>
             <p className="ptb20">A <a tabIndex={-1} href="https://reactjs.org/">React</a> powered front-end framework written in <a tabIndex={-1} href="https://www.typescriptlang.org/">Typescript</a>.</p>
             <Toolbar spacing className="pb20 dinblock">
               <Button tabIndex={-1} onClick={this.toggleNightMode.bind(this)} icon="moon-o" ></Button>
