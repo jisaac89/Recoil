@@ -71,6 +71,18 @@ const DataSource: any = (Component: JSX.Element) =>
 		componentDidUpdate(prevProps: IDataSourceProps, prevState) {
 			let { dataSource, sortKey, sortType, pageSize, rowCount, searchValue, searchableKeys, page } = this.props;
 
+			if ((page !== null && page !== undefined && page !== prevState.page) || prevProps.pageSize !== pageSize) {
+				this.setState(
+					{
+						page: page !== null && page !== undefined ? page : prevState.page,
+						pageSize: prevProps.pageSize !== pageSize ? pageSize : prevProps.pageSize
+					},
+					() => {
+						this.renderActiveRows(prevState.dataSource);
+					}
+				);
+			}
+
 			if (!!this.props.sortKey && this.props.sortKey !== prevProps.sortKey) {
 				this.sortDataSource(dataSource, sortType, sortKey);
 			} else {
@@ -114,7 +126,7 @@ const DataSource: any = (Component: JSX.Element) =>
 				typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number';
 
 			let { sortKey } = this.props;
-			let { sortType } = this.state;
+			let { sortType, page } = this.state;
 
 			let setDataSourceState = (dataSource: Array<T> | Array<Array<T>>, isArray: boolean) => {
 				self.setState(
@@ -128,7 +140,7 @@ const DataSource: any = (Component: JSX.Element) =>
 						if (sortKey && sortType) {
 							self.sortDataSource(dataSource, sortType, sortKey);
 						} else {
-							self.renderActiveRows(dataSource);
+							self.gotoPage(dataSource, page);
 						}
 					}
 				);
@@ -198,7 +210,7 @@ const DataSource: any = (Component: JSX.Element) =>
 						searchedItems: sortOrderSearchedItems
 					},
 					() => {
-						self.renderActiveRows(sortOrderSearchedItems);
+						self.gotoPage(sortOrderSearchedItems, this.state.page);
 					}
 				);
 			} else {
@@ -207,7 +219,7 @@ const DataSource: any = (Component: JSX.Element) =>
 						dataSource: sortOrderDataSource
 					},
 					() => {
-						self.renderActiveRows(sortOrderDataSource);
+						self.gotoPage(sortOrderDataSource, this.state.page);
 					}
 				);
 			}
@@ -463,14 +475,14 @@ const DataSource: any = (Component: JSX.Element) =>
 			this.props.onPageChange ? this.props.onPageChange(numberOfPages - 1) : null;
 		}
 
-		gotoPage(i: number) {
+		gotoPage(datasource, i: number) {
 			this.setState(
 				{
 					page: i,
 					pageSize: this.state.pageSize
 				},
 				() => {
-					this.renderActiveRows(this.state.dataSource);
+					this.renderActiveRows(datasource);
 				}
 			);
 		}
@@ -534,7 +546,7 @@ const DataSource: any = (Component: JSX.Element) =>
 
 			let renderedObject = {
 				// methods
-				gotoPage: this.gotoPage.bind(this),
+				gotoPage: this.gotoPage.bind(this, dataSource),
 				previousPage: this.previousPage.bind(this),
 				nextPage: this.nextPage.bind(this),
 				lastPage: this.lastPage.bind(this),
