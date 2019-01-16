@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 import { Button } from '../Button/Button';
-import Emerge from '../Emerge/Emerge';
+import Emerge from '../Emerge/OldEmerge';
 import { IRecoil } from '../../index';
 
 export interface ILoadingProps extends IRecoil {

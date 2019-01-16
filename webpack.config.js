@@ -45,6 +45,14 @@ module.exports = {
 				// include: ['src', 'docs']
 			},
 			{
+				test: /\.(js|jsx|mjs)$/,
+				include: [
+					// Add this line:
+					'./node_modules/react-native-web-vector-icons/'
+				],
+				loader: 'babel-loader'
+			},
+			{
 				test: /\.(css?.+|less?.+)$/,
 				use: [
 					MiniCssExtractPlugin.loader,

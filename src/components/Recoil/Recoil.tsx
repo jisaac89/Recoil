@@ -34,17 +34,17 @@ export interface IRecoilProps {
 	theme?: any;
 }
 
-function delegate(el: HTMLElement, evt: any, sel: any, handler: any) {
-	el.addEventListener(evt, function(event) {
-		let t = event.target;
-		while (t && t !== this) {
-			if (t.matches(sel)) {
-				handler.call(t, event);
-			}
-			t = t.parentNode;
-		}
-	});
-}
+// function delegate(el: HTMLElement, evt: any, sel: any, handler: any) {
+// 	el.addEventListener(evt, function(event) {
+// 		let t = event.target;
+// 		while (t && t !== this) {
+// 			if (t.matches(sel)) {
+// 				handler.call(t, event);
+// 			}
+// 			t = t.parentNode;
+// 		}
+// 	});
+// }
 
 export default class Recoil extends React.Component<IRecoilProps, any> {
 	refs: any;
@@ -96,16 +96,6 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 	isMobile(mobile: boolean) {
 		const self = this;
 		if (mobile) {
-			delegate(self.refs.Recoil, 'focusin', 'input', function() {
-				self.setState({
-					inputIsFocused: true
-				});
-			});
-			delegate(self.refs.Recoil, 'focusout', 'input', function() {
-				self.setState({
-					inputIsFocused: false
-				});
-			});
 		}
 	}
 	render() {
