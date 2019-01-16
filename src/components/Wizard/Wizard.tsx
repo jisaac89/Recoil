@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { IWizardProps } from './IWizard';
 
 export const Wizard = (props: IWizardProps) => {
@@ -25,8 +25,8 @@ export const Wizard = (props: IWizardProps) => {
 	);
 };
 
-const WizardWrapper = styled.View``;
-const WizardTrack = styled.View``;
-const WizardSlide = styled.View``;
+const WizardWrapper = styled.div``;
+const WizardTrack = styled.div``;
+const WizardSlide = styled.div``;
 
 export default Wizard;

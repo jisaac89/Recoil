@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { flexCenter, w, dblock } from '../../../styles/classList';
 
-export const EmergeWrapper = styled.Text`${flexCenter};`;
+export const EmergeWrapper = styled.p`${flexCenter};`;

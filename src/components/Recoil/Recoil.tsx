@@ -12,7 +12,7 @@ import { GlobalReset } from '../../styles/globalReset';
 import { mainTheme } from '../../styles/mainTheme';
 import { GlobalClasses } from '../../styles/globalClasses';
 
-import styled, { ThemeProvider } from 'styled-components/native';
+import styled, { ThemeProvider } from 'styled-components';
 
 import { View } from 'react-native-web';
 import { overflow, scroll, scrollX, scrollY, fill, flexDirection } from '../../styles/classList';
@@ -122,7 +122,7 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 	}
 }
 
-const RecoilWrapper = styled.View`
+const RecoilWrapper = styled.div`
 	${fill};
 	${(props) => (props.overflow ? overflow : 'overflow: hidden')};
 	${(props) => (props.scroll ? scroll : 'overflow: hidden')};

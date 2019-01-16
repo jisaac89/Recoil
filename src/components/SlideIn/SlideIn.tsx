@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { overflow, fill, flex, flexDirection, dimensions } from '../../styles/classList';
 import { ISlideInProps } from './ISlideInProps';
 
@@ -22,7 +22,7 @@ export const SlideIn = (props: ISlideInProps) => {
 	);
 };
 
-const SlideInWrapper = styled.View`
+const SlideInWrapper = styled.div`
 	${(props) => (props.flex ? flex : null)};
 	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};
 	${(props) => (props.fill ? fill : null)};

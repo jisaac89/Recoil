@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import {
 	flexCenter,
 	overflow,
@@ -11,7 +11,7 @@ import {
 	flexDirection
 } from '../../../styles/classList';
 
-export const LayerWrapper = styled.View`
+export const LayerWrapper = styled.div`
 	display: block;
 	position: relative;
 	${(props) => (props.fill ? fill : null)};
@@ -19,7 +19,7 @@ export const LayerWrapper = styled.View`
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 `;
 
-export const TouchableWrapper = styled.TouchableOpacity`
+export const TouchableWrapper = styled.div`
 	position: relative;
 	${(props) => (props.flex !== 'row' ? flex : null)};
 	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};

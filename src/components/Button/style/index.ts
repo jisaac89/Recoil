@@ -1,9 +1,10 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 import { flexCenter, w, dblock } from '../../../styles/classList';
 
-export const TouchableWrapper = styled.TouchableOpacity`
+export const TouchableWrapper = styled.button`
+	position: relative;
 	padding: 6px 10px;
-	backgroundColor: #efefef;
+	background: #efefef;
 	height: 30px;
 	background: ${(props) => (false && props.theme.main.defaultBackground ? 'red' : '#e7e7e7')};
 	border: 1px solid ${(props) => (false && props.theme.main.defaultBorder ? 'red' : '#e7e7e7')};
@@ -15,4 +16,4 @@ export const TouchableWrapper = styled.TouchableOpacity`
 	${(props) => (props.scrollY ? 'overflow-y: auto' : 'overflow-y: hidden')};
 `;
 
-export const ButtonTitle = styled.Text`color: rgba(0, 0, 0, .87);`;
+export const ButtonTitle = styled.div`color: rgba(0, 0, 0, .87);`;

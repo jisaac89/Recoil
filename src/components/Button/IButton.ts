@@ -24,5 +24,5 @@ export interface IButtonProps extends IRecoil {
 	// TODO MAKE REQUIRED
 	onPress?: (event: React.MouseEvent<any>) => void;
 	// TODO REMOVE
-	onClick?: any;
+	onClick?: (event: React.MouseEvent<any>) => void;
 }
