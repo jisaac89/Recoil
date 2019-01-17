@@ -10,6 +10,5 @@ export interface IButtonProps extends IRecoilNew {
 	checkedTheme?: RecoilTheme;
 	checkedAmount?: number;
 
-	onPress?: (event: React.MouseEvent<any>) => void;
-	onClick?: (event: React.MouseEvent<any>) => void;
+	onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
