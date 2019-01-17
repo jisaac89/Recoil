@@ -7,7 +7,7 @@ export default class App extends React.Component<any, any> {
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={false} onDevice={() => {}}>
 				<Button checked>asfasf</Button>
-				<Button checked block>
+				<Button checked checkedAmount={20} block>
 					asfasf
 				</Button>
 				<Button>asfasf</Button>

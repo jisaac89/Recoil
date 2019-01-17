@@ -1,5 +1,7 @@
+import { RecoilTheme } from '../..';
+
 export interface ISelectableProps {
 	checked?: boolean;
-	// TODO REMOVE
-	type?: any;
+	checkedAmount?: number;
+	theme?: RecoilTheme;
 }

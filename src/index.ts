@@ -1,8 +1,24 @@
+export type RecoilTheme =
+	| 'primary'
+	| 'success'
+	| 'error'
+	| 'bronze'
+	| 'silver'
+	| 'gold'
+	| 'default'
+	| 'light'
+	| 'night'
+	| 'dark';
+
+export type RecoilSize = 'small' | 'large' | 'xlarge' | 'xxlarge' | 'default';
+export type RecoilFlex = boolean | 'row' | 'row-reverse';
+export type RecoilElement = JSX.Element | Element[] | JSX.Element[] | string | number | boolean | {};
+
 export interface IRecoil {
-	size?: 'small' | 'large' | 'xlarge' | 'xxlarge' | 'default';
-	theme?: 'primary' | 'success' | 'error' | 'bronze' | 'silver' | 'gold' | 'default' | 'light' | 'night' | 'dark';
+	size?: RecoilSize;
+	theme?: RecoilTheme;
 	className?: string;
-	flex?: boolean | 'row' | 'row-reverse';
+	flex?: RecoilFlex;
 	fill?: boolean;
 	disabled?: boolean;
 	checked?: boolean;
@@ -11,7 +27,7 @@ export interface IRecoil {
 	outline?: boolean;
 	tabIndex?: number;
 	id?: string;
-	children?: any;
+	children?: RecoilElement;
 }
 
 export { default as Recoil } from './components/Recoil/Recoil';

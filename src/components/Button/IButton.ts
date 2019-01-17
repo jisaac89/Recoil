@@ -21,6 +21,7 @@ export interface IButtonProps extends IRecoil {
 	shortcut?: string;
 	shortCutInitKey?: string;
 	materialIcon?: boolean;
+	checkedAmount?: number;
 	// TODO MAKE REQUIRED
 	onPress?: (event: React.MouseEvent<any>) => void;
 	// TODO REMOVE

@@ -1,7 +1,5 @@
 import * as React from 'react';
-
 import { arraysEqual, search, branchIn } from '../Utils';
-
 import { ITableProps } from '../Table/Table';
 import Emerge from '../Emerge/Emerge';
 import Toolbar from '../Toolbar/Toolbar';
@@ -17,31 +15,6 @@ export interface IDataSourceProps extends ITableProps {
 	loadingText?: string;
 	addColumns?: Array<IColumn>;
 }
-
-class Data {
-	// datasource
-	dataSource = [];
-	isArray = false;
-	columns = [];
-	activeRows = [];
-	// page structure
-	page = 0;
-	numberOfPages = 0;
-	numberPerPage = 0;
-	// selected
-	detailTemplateSelectedElements = [];
-	selectedElements = [];
-	// search
-	searchTerm = '';
-	searchedItems = [];
-	// sort
-	sortType = 'asc';
-	sortKey = null;
-
-	constructor() {}
-}
-
-export const data = new Data();
 
 const DataSource: any = (Component: JSX.Element) =>
 	class Enhance extends React.Component<IDataSourceProps, any> {

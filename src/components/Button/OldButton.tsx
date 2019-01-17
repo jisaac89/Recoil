@@ -126,7 +126,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
 					{loadingPartial}
 					{props.children}
 					{iconWrapperRight}
-					<Selectable type={props.checkedTheme} checked={props.checked ? true : false} />
+					<Selectable theme={props.checkedTheme} checked={props.checked ? true : false} />
 				</button>
 			);
 		};

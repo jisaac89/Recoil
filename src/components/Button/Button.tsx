@@ -1,18 +1,20 @@
 import * as React from 'react';
 import { Selectable } from '../Selectable/Selectable';
 import { IButtonProps } from './IButton';
-import { TouchableWrapper } from './style';
+import { ButtonWrapper, ButtonTitle } from './style';
+import { ISelectableProps } from '../Selectable/ISelectable';
 
 export const Button = (props: IButtonProps) => {
+	const selectableProps: ISelectableProps = {
+		theme: props.checkedTheme,
+		checkedAmount: props.checkedAmount,
+		checked: props.checked
+	};
 	return (
-		<TouchableWrapper
-			style={{ alignSelf: props.block ? 'stretch' : 'flex-start' }}
-			onClick={this.onClick}
-			{...props}
-		>
-			<div>{props.children}</div>
-			<Selectable checked={props.checked} />
-		</TouchableWrapper>
+		<ButtonWrapper onClick={this.onClick} {...props}>
+			<ButtonTitle>{props.children}</ButtonTitle>
+			<Selectable {...selectableProps} />
+		</ButtonWrapper>
 	);
 };
 

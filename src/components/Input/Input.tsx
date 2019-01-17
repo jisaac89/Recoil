@@ -347,7 +347,7 @@ export default class Input extends React.Component<IInputProps, IInputState> {
 						{inputPartial}
 						{pencilPartial}
 						<Selectable
-							type={props.error ? 'error' : props.theme ? props.theme : 'primary'}
+							theme={props.error ? 'error' : props.theme ? props.theme : 'primary'}
 							checked={self.state.checked}
 						/>
 						{errorInlinePartial()}
