@@ -8,6 +8,8 @@ export interface IRecoilTheme {
 	default_buttonBackgroundColor_hover?: string;
 	default_buttonBorderColor?: string;
 	default_buttonFontColor?: string;
+
+	primary_buttonBackgroundColor: string;
 }
 
 export const defaultTheme: IRecoilTheme = {
@@ -19,12 +21,16 @@ export const defaultTheme: IRecoilTheme = {
 	default_buttonBackgroundColor: '#efefef',
 	default_buttonBackgroundColor_hover: '#fefefe',
 	default_buttonBorderColor: '#e7e7e7',
-	default_buttonFontColor: '#888'
+	default_buttonFontColor: '#888',
+	//
+	primary_buttonBackgroundColor: 'blue'
 };
 
 export const nightModeTheme: IRecoilTheme = {
 	default_buttonBackgroundColor: 'red',
 	default_buttonBackgroundColor_hover: '#fefefe',
 	default_buttonBorderColor: '#222',
-	default_buttonFontColor: '#888'
+	default_buttonFontColor: '#888',
+	//
+	primary_buttonBackgroundColor: 'red'
 };

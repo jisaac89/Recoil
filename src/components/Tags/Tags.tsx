@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Open from '../Open/Open';
-import { Button } from '../Button/Button';
+import Button from '../Button/OldButton';
 import Toolbar from '../Toolbar/Toolbar';
 
 import { branchIn } from '../Utils';

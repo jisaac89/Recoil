@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '../Button/Button';
+import Button from '../Button/OldButton';
 import Toolbar from '../Toolbar/Toolbar';
 
 export default class DropdownHeader extends React.Component<any, any> {

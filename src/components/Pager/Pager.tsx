@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Toolbar from '../Toolbar/Toolbar';
-import { Button } from '../Button/Button';
+import Button from '../Button/OldButton';
 import Dropdown from '../Dropdown/Dropdown';
 
 export interface IPagerProps {

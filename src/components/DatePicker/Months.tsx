@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button } from '../Button/Button';
+import Button from '../Button/OldButton';
 
 export default class Months extends React.Component<any, any> {
 	render() {

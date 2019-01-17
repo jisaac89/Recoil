@@ -1,7 +1,7 @@
 ﻿import * as React from 'react';
 
 import Layer from '../Layer/Layer';
-import { Button } from '../Button/Button';
+import Button from '../Button/OldButton';
 import Toolbar from '../Toolbar/Toolbar';
 
 import Months from './Months';

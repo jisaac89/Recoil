@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import { Button } from '../Button/Button';
-import { IButtonProps } from '../Button/Button';
+import Button from '../Button/OldButton';
+import { IButtonProps } from '../Button/OldButton';
 import { ITableProps } from '../Table/Table';
 
 import Tags from '../Tags/Tags';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import { Button } from '../Button/Button';
+import Button from '../Button/OldButton';
 import Emerge from '../Emerge/OldEmerge';
 import { IRecoil } from '../../index';
 
