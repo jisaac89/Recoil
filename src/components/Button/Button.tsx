@@ -12,7 +12,7 @@ export const Button = (props: IButtonProps) => {
 	};
 	return (
 		<ButtonWrapper onClick={this.onClick} {...props}>
-			<ButtonTitle>{props.children}</ButtonTitle>
+			<ButtonTitle kind={props.kind}>{props.children}</ButtonTitle>
 			<Selectable {...selectableProps} />
 		</ButtonWrapper>
 	);

@@ -3,23 +3,21 @@ import { Recoil, Layer, Button, Toolbar, Align, Checkbox, Emerge } from '../../s
 
 import { ThemeProvider } from 'styled-components';
 import { p, w } from '../../src/styles/classList';
-import { nightModeTheme, defaultTheme } from '../../src/styles/themes';
+import { defaultTheme } from '../../src/styles/themes/defaultTheme';
 
 export default class App extends React.Component<any, any> {
 	render() {
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow nightmode={false} onDevice={() => {}}>
-				<ThemeProvider theme={defaultTheme}>
-					<div>
-						<Button kind="primary" checked>
-							Primary
-						</Button>
-						<Button checked checkedAmount={20} block>
-							Amount
-						</Button>
-						<Button kind="primary">Nightmode</Button>
-					</div>
-				</ThemeProvider>
+				<div>
+					<Button kind="primary" checked>
+						Primary
+					</Button>
+					<Button checked checkedAmount={20} block>
+						Amount
+					</Button>
+					<Button kind="primary">Nightmode</Button>
+				</div>
 			</Recoil>
 		);
 	}

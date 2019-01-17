@@ -1,44 +1,52 @@
 import styled from 'styled-components';
 import { css } from 'styled-components';
 import { flexCenter, dblock, dinblock } from '../../../styles/classList';
-import { defaultTheme, nightModeTheme } from '../../../styles/themes';
+import { defaultTheme } from '../../../styles/themes/defaultTheme';
+import { nightModeTheme } from '../../../styles/themes/nightModeTheme';
 
 export const ButtonWrapper = styled.button`
 	position: relative;
 	padding: 6px 10px;
 	height: 30px;
 	border-width: 1px;
-	:hover {
-		background: ${(props) => props.theme.default_buttonBackgroundColor_hover};
-	}
+
 	${flexCenter};
 	${(props) => (props.block ? dblock : dinblock)};
 	alignSelf: ${(props) => (props.block ? 'stretch' : 'flex-start')};
 
-	border-color: ${(props) => props.theme.default_buttonBorderColor};
+	border-color: ${(props) => props.theme.defaultBorderColor};
 	overflow: ${(props) => (props.coverflow ? 'vibile' : 'hidden')};
 	overflow: ${(props) => (props.scroll ? 'auto' : 'hidden')};
 	overflow-x: ${(props) => (props.scrollX ? 'auto' : 'hidden')};
 	overflow-y: ${(props) => (props.scrollY ? 'auto' : 'hidden')};
 
-	${(props) => props.kind === 'default' && css`background-color: ${props.theme.default_buttonBackgroundColor};`};
-	${(props) => props.kind === 'primary' && css`background-color: ${props.theme.primary_buttonBackgroundColor};`};
+	${(props) => props.kind === 'default' && css`background-color: ${props.theme.defaultBackgroundColor};`};
+	${(props) => props.kind === 'primary' && css`background-color: ${props.theme.primaryBackgroundColor};`};
+
+	:hover {
+		${(props) => props.kind === 'default' && css`background-color: ${props.theme.defaultBackgroundColorHover};`};
+		${(props) => props.kind === 'primary' && css`background-color: ${props.theme.primaryBackgroundColorHover};`};
+	}
 `;
 
-export const ButtonTitle = styled.div`color: ${(props) => props.theme.buttonFontColor};`;
+export const ButtonTitle = styled.div`
+	${(props) => props.kind === 'default' && css`color: ${props.theme.defaultFontColor};`};
+	${(props) => props.kind === 'primary' && css`color: ${props.theme.primaryFontColor};`};
+`;
 
 ButtonWrapper.defaultProps = {
 	kind: 'default',
 	theme: {
-		default_buttonBackgroundColor: defaultTheme.default_buttonBackgroundColor,
-		default_buttonBackgroundColor_hover: defaultTheme.default_buttonBackgroundColor_hover,
-		default_buttonBorderColor: defaultTheme.default_buttonBorderColor,
-		primary_buttonBackgroundColor: defaultTheme.primary_buttonBackgroundColor
+		defaultBackgroundColor: defaultTheme.defaultBackgroundColor,
+		defaultBackgroundColorHover: defaultTheme.defaultBackgroundColorHover,
+		defaultBorderColor: defaultTheme.defaultBorderColor,
+		primaryBackgroundColor: defaultTheme.primaryBackgroundColor,
+		primaryBackgroundColorHover: defaultTheme.primaryBackgroundColorHover
 	}
 };
 
 ButtonTitle.defaultProps = {
 	theme: {
-		default_buttonFontColor: nightModeTheme.default_buttonFontColor
+		defaultFontColor: defaultTheme.defaultFontColor
 	}
 };

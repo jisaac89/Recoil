@@ -9,7 +9,7 @@ import { GlobalReset } from '../../styles/globalReset';
 
 // import { ThemeProvider, styled } from 'styled-components';
 
-import { mainTheme } from '../../styles/mainTheme';
+import { defaultTheme } from '../../styles/themes/defaultTheme';
 import { GlobalClasses } from '../../styles/globalClasses';
 
 import styled, { ThemeProvider } from 'styled-components';
@@ -50,9 +50,7 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 	refs: any;
 
 	static defaulProps = {
-		theme: {
-			main: mainTheme
-		}
+		theme: defaultTheme
 	};
 
 	constructor(props: IRecoilProps) {
@@ -111,13 +109,15 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 		);
 
 		return (
-			<RecoilWrapper>
-				<PortalProvider initialized={this.state.initialized}>
-					<ShortCutProvider shortCutInitKey={props.shortCutInitKey}>{children}</ShortCutProvider>
-				</PortalProvider>
-				<GlobalReset />
-				<GlobalClasses />
-			</RecoilWrapper>
+			<ThemeProvider theme={defaultTheme}>
+				<RecoilWrapper>
+					<PortalProvider initialized={this.state.initialized}>
+						<ShortCutProvider shortCutInitKey={props.shortCutInitKey}>{children}</ShortCutProvider>
+					</PortalProvider>
+					<GlobalReset />
+					<GlobalClasses />
+				</RecoilWrapper>
+			</ThemeProvider>
 		);
 	}
 }
