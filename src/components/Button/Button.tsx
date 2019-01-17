@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Selectable } from '../Selectable/Selectable';
 import { IButtonProps } from './IButton';
-import { ButtonWrapper, ButtonTitle } from './style';
+import { ButtonWrapper } from './style/ButtonWrapper';
+import { ButtonTitle } from './style/ButtonTitle';
 import { ISelectableProps } from '../Selectable/ISelectable';
 
 export const Button = (props: IButtonProps) => {

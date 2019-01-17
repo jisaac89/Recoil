@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { css } from 'styled-components';
 import { flexCenter, dblock, dinblock } from '../../../styles/classList';
 import { defaultTheme } from '../../../styles/themes/defaultTheme';
-import { nightModeTheme } from '../../../styles/themes/nightModeTheme';
 
 export const ButtonWrapper = styled.button`
 	position: relative;
@@ -29,11 +28,6 @@ export const ButtonWrapper = styled.button`
 	}
 `;
 
-export const ButtonTitle = styled.div`
-	${(props) => props.kind === 'default' && css`color: ${props.theme.defaultFontColor};`};
-	${(props) => props.kind === 'primary' && css`color: ${props.theme.primaryFontColor};`};
-`;
-
 ButtonWrapper.defaultProps = {
 	kind: 'default',
 	theme: {
@@ -42,11 +36,5 @@ ButtonWrapper.defaultProps = {
 		defaultBorderColor: defaultTheme.defaultBorderColor,
 		primaryBackgroundColor: defaultTheme.primaryBackgroundColor,
 		primaryBackgroundColorHover: defaultTheme.primaryBackgroundColorHover
-	}
-};
-
-ButtonTitle.defaultProps = {
-	theme: {
-		defaultFontColor: defaultTheme.defaultFontColor
 	}
 };
