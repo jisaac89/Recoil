@@ -6,14 +6,16 @@ import { ButtonTitle } from './style/ButtonTitle';
 import { ISelectableProps } from '../Selectable/ISelectable';
 
 export const Button = (props: IButtonProps) => {
+	const { checkedTheme, checkedAmount, checked, disabled, loading, kind, children } = props;
+
 	const selectableProps: ISelectableProps = {
-		theme: props.checkedTheme,
-		checkedAmount: props.checkedAmount,
-		checked: props.checked
+		theme: checkedTheme,
+		checkedAmount: checkedAmount,
+		checked: checked
 	};
 	return (
-		<ButtonWrapper {...props}>
-			<ButtonTitle kind={props.kind}>{props.children}</ButtonTitle>
+		<ButtonWrapper {...props} disabled={disabled || loading}>
+			<ButtonTitle kind={kind}>{children}</ButtonTitle>
 			<Selectable {...selectableProps} />
 		</ButtonWrapper>
 	);
