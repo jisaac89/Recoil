@@ -1,229 +1,229 @@
 @import '../../less/Global.less';
 
 .r-Button {
-  color: @default-color;
-  background: @default-background;
-  border: 1px solid @default-border;
-  cursor: pointer;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: @default-border-radius;
-  text-decoration: none;
-  vertical-align: middle;
-  margin: 0;
-  line-height: 18px;
-  font-size: 14px;
-  position: relative;
-  min-height: 32px;
-  .transition(all 200ms ease-in) !important;
-  font-family: @font-family;
+	color: @default-color;
+	background: @default-background;
+	border: 1px solid @default-border;
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	display: inline-block;
+	padding: 6px 10px;
+	border-radius: @default-border-radius;
+	text-decoration: none;
+	vertical-align: middle;
+	margin: 0;
+	line-height: 18px;
+	font-size: 14px;
+	position: relative;
+	min-height: 32px;
+	.transition(all 200ms ease-in) !important;
+	font-family: @font-family;
 }
 
 .r-Button.link {
-  border-color: @default-border;
-  background: transparent;
+	border-color: @default-border;
+	background: transparent;
 }
 
 .r-Button:hover,
 .r-Button:focus {
-  background: @default--hover-background;
-  color: @primary-background;
-  border-color: @primary-background;
-  z-index: 2 !important;
+	background: @default--hover-background;
+	color: @primary-background;
+	border-color: @primary-background;
+	z-index: 2 !important;
 }
 
 .r-Button:focus {
-  outline: 0;
+	outline: 0;
 }
 
 .r-Button.primary:hover,
 .r-Button.primary:focus {
-  background: @primary--hover-background !important;
-  color: white !important;
+	background: @primary--hover-background !important;
+	color: white !important;
 }
 .r-Button.error:hover,
 .r-Button.error:focus {
-  background: @error--hover-background;
+	background: @error--hover-background;
 }
 .r-Button.success:hover,
 .r-Button.success:focus {
-  background: @success--hover-background;
+	background: @success--hover-background;
 }
 .r-Button.link:hover,
 .r-Button.link:focus {
-  color: @link--hover-color;
-  background: @link-background;
+	color: @link--hover-color;
+	background: @link-background;
 }
 .r-Button.simple.primary,
 .r-Button.simple.primary {
-  background: transparent !important;
-  color: @primary-background !important;
+	background: transparent !important;
+	color: @primary-background !important;
 }
 .r-Button.simple.primary:hover,
 .r-Button.simple.primary:focus {
-  background: transparent !important;
-  color: @default-color !important;
+	background: transparent !important;
+	color: @default-color !important;
 }
 
 .r-Button.large {
-  padding: 10px 2pc;
-  height: auto;
-  font-size: 18px;
+	padding: 10px 2pc;
+	height: auto;
+	font-size: 18px;
 }
 
 .r-Button.small {
-  // padding: 3px 1pc;
-  padding: 3px 10px;
-  height: auto;
-  font-size: 13px;
-  font-weight: normal;
-  min-height: 26px;
+	// padding: 3px 1pc;
+	padding: 3px 10px;
+	height: auto;
+	font-size: 13px;
+	font-weight: normal;
+	min-height: 26px;
 }
 
 .r-Button.large {
-  padding: 10px 2pc;
-  height: 40px;
+	padding: 10px 2pc;
+	height: 40px;
 }
 
 .r-Button.xlarge {
-  padding: 17.5px 2pc;
-  font-size: 25px;
-  height: auto;
-  min-height: 62px;
+	padding: 17.5px 2pc;
+	font-size: 25px;
+	height: auto;
+	min-height: 62px;
 }
 
 .r-Button.block {
-  width: 100%;
-  text-align: inherit;
+	width: 100%;
+	text-align: inherit;
 }
 
 .r-Button.disabled,
 .r-Button[disabled],
 fieldset[disabled] .r-Button {
-  cursor: not-allowed;
-  opacity: 0.5;
-  filter: alpha(opacity=65);
-  .box-shadow(0);
+	cursor: not-allowed;
+	opacity: 0.5;
+	filter: alpha(opacity=65);
+	.box-shadow(0);
 }
 
 .text-center .r-Button span,
 .text-center .r-Button {
-  align-items: center;
+	align-items: center;
 }
 
 /* --ghost button */
 
 .r-Button.simple {
-  color: @default-color !important;
-  background: transparent !important;
-  border-color: transparent !important;
+	color: @default-color !important;
+	background: transparent !important;
+	border-color: transparent !important;
 }
 
 .r-Button.simple:hover {
-  background: transparent !important;
-  color: @primary-background !important;
+	background: transparent !important;
+	color: @primary-background !important;
 }
 
 /*Pointers*/
 
 .r-Button.button-pointer-left:before,
 .r-Button.button-pointer-right:before {
-  top: 50%;
-  left: -1px;
-  border-color: inherit;
-  border-width: 1px 0 0 1px;
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  top: 0;
-  left: 50%;
-  background-color: inherit;
-  border-style: solid;
-  border-color: inherit;
-  position: absolute;
-  content: '';
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-  background-image: none;
-  z-index: 2;
-  width: 0.6666em;
-  height: 0.6666em;
-  -webkit-transition: background 0.1s ease;
-  transition: background 0.1s ease;
+	top: 50%;
+	left: -1px;
+	border-color: inherit;
+	border-width: 1px 0 0 1px;
+	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	-ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	top: 0;
+	left: 50%;
+	background-color: inherit;
+	border-style: solid;
+	border-color: inherit;
+	position: absolute;
+	content: '';
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+	background-image: none;
+	z-index: 2;
+	width: 0.6666em;
+	height: 0.6666em;
+	-webkit-transition: background 0.1s ease;
+	transition: background 0.1s ease;
 }
 
 .r-Button.button-pointer-left:hover:before,
 .r-Button.button-pointer-right:hover:before {
-  color: rgba(0, 0, 0, 0.8);
+	color: rgba(0, 0, 0, 0.8);
 }
 
 .r-Button.button-pointer-left:before {
-  border-width: 0 0 1px 1px;
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  transform: translateX(-50%) translateY(-50%) rotate(45deg);
-  bottom: auto;
-  right: auto;
-  top: 50%;
-  left: 0;
+	border-width: 0 0 1px 1px;
+	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	-ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	transform: translateX(-50%) translateY(-50%) rotate(45deg);
+	bottom: auto;
+	right: auto;
+	top: 50%;
+	left: 0;
 }
 
 .r-Button.button-pointer-right:before {
-  top: 50%;
-  right: -1px;
+	top: 50%;
+	right: -1px;
 }
 
 .r-Button.button-pointer-right:before {
-  border-width: 1px 1px 0 0;
-  -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
-  -ms-transform: translateX(50%) translateY(-50%) rotate(45deg);
-  transform: translateX(50%) translateY(-50%) rotate(45deg);
-  top: 50%;
-  right: 0;
-  bottom: auto;
-  left: auto;
+	border-width: 1px 1px 0 0;
+	-webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
+	-ms-transform: translateX(50%) translateY(-50%) rotate(45deg);
+	transform: translateX(50%) translateY(-50%) rotate(45deg);
+	top: 50%;
+	right: 0;
+	bottom: auto;
+	left: auto;
 }
 
 .r-Button {
-  box-sizing: border-box;
-  overflow: hidden;
+	box-sizing: border-box;
+	overflow: hidden;
 }
 
 .r-Button.button-pointer-right,
 .r-Button.button-pointer-left {
-  overflow: visible;
+	overflow: visible;
 }
 
 .button-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .r-Button .e-invisible {
-  opacity: 0;
+	opacity: 0;
 }
 
 .r-Button .e-shortcut {
-  position: absolute;
-  right: 0;
-  left: 0;
-  margin: auto;
+	position: absolute;
+	right: 0;
+	left: 0;
+	margin: auto;
 }
 
 a,
 .r-Button {
-  -ms-touch-action: manipulation; /* IE10  */
-  touch-action: manipulation; /* IE11+ */
+	-ms-touch-action: manipulation; /* IE10  */
+	touch-action: manipulation; /* IE11+ */
 }
 
 .r-Button > a {
-  color: inherit;
+	color: inherit;
 }
 
 // .r-Button.icon > .fa{
@@ -231,81 +231,81 @@ a,
 // }
 
 .icon-wrapper {
-  display: inline-block;
-  cursor: pointer;
+	display: inline-block;
+	cursor: pointer;
 }
 
 .icon-wrapper .fa {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .icon-pointer {
-  margin-left: 5px;
-  margin-right: 0px;
+	margin-left: 5px;
+	margin-right: 0px;
 }
 
 //
 
 .r-Button.outline {
-  color: @default-color;
-  background: transparent !important;
-  border-color: @default-border !important;
+	color: @default-color;
+	background: transparent !important;
+	border-color: @default-border !important;
 }
 
 .r-Button.outline.primary {
-  background: transparent !important;
-  border-color: @primary-background !important;
-  color: @primary-background !important;
+	background: transparent !important;
+	border-color: @primary-background !important;
+	color: @primary-background !important;
 }
 
 .r-Button.outline.error {
-  border-color: @error-background !important;
-  color: @error-background !important;
+	border-color: @error-background !important;
+	color: @error-background !important;
 }
 
 .r-Button.outline.success {
-  border-color: @success-background !important;
-  color: @success-background !important;
+	border-color: @success-background !important;
+	color: @success-background !important;
 }
 
 .r-Button.fill {
-  height: 100%;
-  width: 100%;
+	height: 100%;
+	width: 100%;
 }
 .r-Button::selection,
 .r-Button *::selection {
-  background: transparent;
+	background: transparent;
 }
 
 .r-Button.e-required {
-  border: 1px solid @error-background !important;
+	border: 1px solid @error-background !important;
 }
 
 .click-effect {
-  background: rgba(255, 255, 255, 0);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
+	background: rgba(255, 255, 255, 0);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
 }
 
 .r-Button:focus {
-  border: 1px solid @primary-background;
-  .transition(all 50ms ease-in);
-  color: @primary-background;
+	border: 1px solid @primary-background;
+	.transition(all 50ms ease-in);
+	color: @primary-background;
 }
 
 .e-NightMode .r-Button:focus {
-  color: @primary-background !important;
+	color: @primary-background !important;
 }
 
 .r-Button-File {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  cursor: pointer;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer;
 }

@@ -21,6 +21,10 @@ export const dblock = {
 	flexBasis: '0%'
 };
 
+export const dinblock = {
+	display: 'inline-block'
+};
+
 export const scroll = {
 	overflow: 'auto'
 };

@@ -1,20 +1,38 @@
 import styled from 'styled-components';
-import { flexCenter, w, dblock } from '../../../styles/classList';
+import { flexCenter, dblock, dinblock } from '../../../styles/classList';
+import { defaultTheme, nightModeTheme } from '../../../styles/themes';
 
 export const ButtonWrapper = styled.button`
 	position: relative;
 	padding: 6px 10px;
-	background: #efefef;
 	height: 30px;
-	background: ${(props) => (false && props.theme.main.defaultBackground ? 'red' : '#e7e7e7')};
-	border: 1px solid ${(props) => (false && props.theme.main.defaultBorder ? 'red' : '#e7e7e7')};
+	border-width: 1px;
+	:hover {
+		background: ${(props) => props.theme.default_buttonBackgroundColor_hover};
+	}
 	${flexCenter};
-	${(props) => (props.block ? dblock : null)};
-	${(props) => (props.coverflow ? 'overflow: vibile' : 'overflow: hidden')};
-	${(props) => (props.scroll ? 'overflow: auto' : 'overflow: hidden')};
-	${(props) => (props.scrollX ? 'overflow-x: auto' : 'overflow-x: hidden')};
-	${(props) => (props.scrollY ? 'overflow-y: auto' : 'overflow-y: hidden')};
+	${(props) => (props.block ? dblock : dinblock)};
 	alignSelf: ${(props) => (props.block ? 'stretch' : 'flex-start')};
+	background-color: ${(props) => props.theme.default_buttonBackgroundColor};
+	border-color: ${(props) => props.theme.default_buttonBorderColor};
+	overflow: ${(props) => (props.coverflow ? 'vibile' : 'hidden')};
+	overflow: ${(props) => (props.scroll ? 'auto' : 'hidden')};
+	overflow-x: ${(props) => (props.scrollX ? 'auto' : 'hidden')};
+	overflow-y: ${(props) => (props.scrollY ? 'auto' : 'hidden')};
 `;
 
-export const ButtonTitle = styled.div`color: rgba(0, 0, 0, .87);`;
+export const ButtonTitle = styled.div`color: ${(props) => props.theme.buttonFontColor};`;
+
+ButtonWrapper.defaultProps = {
+	theme: {
+		default_buttonBackgroundColor: defaultTheme.default_buttonBackgroundColor,
+		default_buttonBackgroundColor_hover: defaultTheme.default_buttonBackgroundColor_hover,
+		default_buttonBorderColor: defaultTheme.default_buttonBorderColor
+	}
+};
+
+ButtonTitle.defaultProps = {
+	theme: {
+		default_buttonFontColor: nightModeTheme.default_buttonFontColor
+	}
+};
