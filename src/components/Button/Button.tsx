@@ -11,7 +11,7 @@ export const Button = (props: IButtonProps) => {
 		checked: props.checked
 	};
 	return (
-		<ButtonWrapper onClick={this.onClick} {...props}>
+		<ButtonWrapper {...props}>
 			<ButtonTitle kind={props.kind}>{props.children}</ButtonTitle>
 			<Selectable {...selectableProps} />
 		</ButtonWrapper>
