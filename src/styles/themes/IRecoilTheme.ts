@@ -32,6 +32,12 @@ export interface IRecoilTheme {
 	primaryBorderColor?: string;
 	primaryBorderColorHover?: string;
 	primaryFontColor?: string;
+	//secondary
+	secondaryBackgroundColor?: string;
+	secondaryBackgroundColorHover?: string;
+	secondaryBorderColor?: string;
+	secondaryBorderColorHover?: string;
+	secondaryFontColor?: string;
 	// error
 	errorBackgroundColor?: string;
 	errorBackgroundColorHover?: string;

@@ -17,6 +17,12 @@ export const defaultTheme: IRecoilTheme = {
 	primaryBorderColor: '#09f',
 	primaryBorderColorHover: '#53afff',
 	primaryFontColor: '#fff',
+	//secondary
+	secondaryBackgroundColor: '#09f',
+	secondaryBackgroundColorHover: '#53afff',
+	secondaryBorderColor: '#09f',
+	secondaryBorderColorHover: '#53afff',
+	secondaryFontColor: '#fff',
 
 	// MISC
 	defaultBorderRadius: '4px',

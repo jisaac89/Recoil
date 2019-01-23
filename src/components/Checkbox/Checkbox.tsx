@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { ICheckboxProps } from './ICheckbox';
-import { CheckboxWrapper, TouchableWrapper, CheckboxCircle, CheckboxTitle } from './style';
+import { CheckboxWrapper, TouchableWrapper } from './style/CheckboxWrapper';
+import { CheckboxCircle } from './style/CheckboxCircle';
+import { CheckboxTitle } from './style/CheckboxTitle';
 
 export const Checkbox = (props: ICheckboxProps) => {
 	return (

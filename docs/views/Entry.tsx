@@ -17,6 +17,9 @@ export default class App extends React.Component<any, any> {
 						Amount
 					</Button>
 					<Button kind="primary">Nightmode</Button>
+
+					<Checkbox title={'Test'} checked={false} onChange={() => {}} />
+					<Checkbox checked={true} onChange={() => {}} />
 				</div>
 			</Recoil>
 		);
