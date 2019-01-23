@@ -19,7 +19,7 @@ export interface IRecoilNew {
 	kind?: RecoilTheme;
 	className?: string;
 	flex?: RecoilFlex;
-	fill?: boolean;
+	fill?: boolean | string;
 	disabled?: boolean;
 	checked?: boolean;
 	loading?: boolean;
@@ -47,6 +47,7 @@ export interface IRecoil {
 }
 
 export { default as Recoil } from './components/Recoil/Recoil';
+export { default as Avatar } from './components/Avatar/Avatar';
 export { default as Align } from './components/Align/Align';
 export { default as AdvancedLayer } from './components/Layer/AdvancedLayer';
 export { default as Button, IButtonProps } from './components/Button/Button';

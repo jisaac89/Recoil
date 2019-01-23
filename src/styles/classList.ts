@@ -199,3 +199,15 @@ export function backgroundImage(url) {
 		backgroundImage: `url(${url})`
 	};
 }
+
+export function backgroundColor(color) {
+	return {
+		backgroundColor: `${color}`
+	};
+}
+
+export function borderRadius(rad) {
+	return {
+		borderRadius: `${rad}`
+	};
+}

@@ -4,7 +4,7 @@ import { animated } from 'react-spring/hooks';
 export const SelectableWrapper = styled(animated.div)`
 	width: ${(props) => (props.value ? props.value : '0')};
 	background: #0099fe;
-	height: 2px;
+	height: 3px;
 	bottom: 0px;
 	right: 0;
 	left: 0;

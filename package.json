@@ -13,7 +13,7 @@
 		"clean": "rimraf ./.build && rimraf ./.next && npm prune && npm install",
 		"prepublishOnly": "rimraf ./dist &&  tsc --declaration && npm run-script build:styles",
 		"build:styles": "webpack --config webpack.styles.js --mode production",
-		"build:pro": "rimraf ./public && webpack --mode production",
+		"build:pro": "rimraf ./publ-ic && webpack --mode production",
 		"build:dev": "rimraf ./public && webpack --mode development --watch",
 		"start": "node server.js",
 		"start:dev": "webpack-dev-server --mode development --hot --port 4000"

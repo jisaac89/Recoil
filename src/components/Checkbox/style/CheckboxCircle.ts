@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { flexDirection, p, dimensions, fill } from '../../../styles/classList';
 import { defaultTheme } from '../../../styles/themes/defaultTheme';
-import { themeBackgroundColor, themeBorderColor, themeCheckedStateBackgroundColor } from '../../../styles/sharedTheme';
+import { themeBackgroundColor, themeBorderColor, themeCheckedStateBackgroundColor, themeBlockSize } from '../../../styles/sharedTheme';
 import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
 
 export const CheckboxCircle = styled.div`
@@ -11,14 +11,15 @@ export const CheckboxCircle = styled.div`
 	border-style: solid;
 
 	${p('6px 10px')};
-	${dimensions('30px', '30px', 1)};
 
+	${themeBlockSize};
 	${themeBackgroundColor};
 	${themeBorderColor};
 	${themeCheckedStateBackgroundColor};
 `;
 
 CheckboxCircle.defaultProps = {
+	size: 'default',
 	kind: 'default',
 	theme: defaultPropsTheme
 };
