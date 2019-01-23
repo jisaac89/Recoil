@@ -1,6 +1,6 @@
-import { IRecoil } from '../..';
+import { IRecoil, IRecoilNew } from '../..';
 
-export interface ICheckboxProps extends IRecoil {
+export interface ICheckboxProps extends IRecoilNew {
 	onChange: (value: boolean, event?: React.MouseEvent<MouseEvent>) => void;
 	checked: boolean;
 	icon?: string;

@@ -13,13 +13,13 @@ export default class App extends React.Component<any, any> {
 					<Button kind="primary" checked>
 						Primary
 					</Button>
-					<Button checked checkedAmount={20} block>
+					<Button checked checkedAmount={83} block>
 						Amount
 					</Button>
 					<Button kind="primary">Nightmode</Button>
 
 					<Checkbox title={'Test'} checked={false} onChange={() => {}} />
-					<Checkbox checked={true} onChange={() => {}} />
+					<Checkbox kind="primary" checked={true} onChange={() => {}} />
 				</div>
 			</Recoil>
 		);
