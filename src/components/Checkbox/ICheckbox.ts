@@ -6,4 +6,6 @@ export interface ICheckboxProps extends IRecoilNew {
 	icon?: string;
 	title?: string;
 	loading?: boolean;
+	circle?: boolean;
+	radius?: string;
 }

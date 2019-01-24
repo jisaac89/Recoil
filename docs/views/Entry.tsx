@@ -23,7 +23,7 @@ export default class App extends React.Component<any, any> {
 					</Button> */}
 						<Button kind="primary">Nightmode</Button>
 
-						<Checkbox title={'Test'} checked={false} onChange={() => {}} />
+						<Checkbox circle title={'Test'} checked={false} onChange={() => {}} />
 						<Checkbox kind="primary" checked={true} onChange={() => {}} />
 					</Align>
 				</Layer>

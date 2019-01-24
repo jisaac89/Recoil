@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { p } from '../../../styles/classList';
+import { p, borderRadius } from '../../../styles/classList';
 import {
 	themeBackgroundColor,
 	themeBorderColor,
@@ -12,11 +12,12 @@ import { CheckboxWrapper } from './CheckboxWrapper';
 
 export const CheckboxCircle = styled.div`
 	cursor: pointer;
-	border-radius: 50%;
 	border-width: 1px;
 	border-style: solid;
 
 	${p('6px 10px')};
+	${(props) => (props.circle ? borderRadius('100%') : null)};
+	${(props) => (props.borderRadius ? borderRadius(props.borderRadius) : null)};
 
 	${themeBlockSize};
 	${themeBackgroundColor};
