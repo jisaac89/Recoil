@@ -11,13 +11,14 @@ const buildPath = path.join(__dirname, 'public');
 const devMode = process.env.NODE_ENV !== 'production';
 const staticSourcePath = path.join(__dirname, 'public');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
 	mode: 'development',
 	// Currently we need to add '.ts' to the resolve.extensions array.
 	resolve: {
 		// Add '.ts' and '.tsx' as resolvable extensions.
-		extensions: [ '.ts', '.tsx', '.js', '.json' ]
+		extensions: ['.ts', '.tsx', '.js', '.json']
 		// alias: {
 		// 	'react-native$': 'react-native-web'
 		// }
@@ -80,7 +81,7 @@ module.exports = {
 			},
 			{
 				test: /\.(png|gif|jpg|svg)$/,
-				use: [ 'url-loader?limit=20480&name=assets/[name]-[hash].[ext]' ],
+				use: ['url-loader?limit=20480&name=assets/[name]-[hash].[ext]'],
 				include: staticSourcePath
 			}
 		]
@@ -120,7 +121,7 @@ module.exports = {
 				path.join(__dirname, 'public/**/*.html'),
 				path.join(__dirname, 'public/**/*.js')
 			]),
-			styleExtensions: [ '.css', '.less' ],
+			styleExtensions: ['.css', '.less'],
 			purifyOptions: {
 				minify: true,
 				info: true,
@@ -135,7 +136,9 @@ module.exports = {
 			minRatio: 0.8
 		}),
 		new webpack.optimize.OccurrenceOrderPlugin(),
-		new CopyWebpackPlugin([ { from: 'static/**/*' } ])
+		new CopyWebpackPlugin([{ from: 'static/**/*' }]),
+		new BundleAnalyzerPlugin()
+
 	],
 	optimization: {
 		splitChunks: {
