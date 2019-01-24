@@ -1,7 +1,12 @@
-import styled, { css } from 'styled-components';
-import { flexDirection, p, dimensions, fill } from '../../../styles/classList';
-import { defaultTheme } from '../../../styles/themes/defaultTheme';
-import { themeBackgroundColor, themeBorderColor, themeCheckedStateBackgroundColor, themeBlockSize, themeCheckedStateBackgroundColorHover } from '../../../styles/sharedTheme';
+import styled from 'styled-components';
+import { p } from '../../../styles/classList';
+import {
+	themeBackgroundColor,
+	themeBorderColor,
+	themeCheckedStateBackgroundColor,
+	themeBlockSize,
+	themeCheckedStateBackgroundColorHover
+} from '../../../styles/sharedTheme';
 import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
 import { CheckboxWrapper } from './CheckboxWrapper';
 

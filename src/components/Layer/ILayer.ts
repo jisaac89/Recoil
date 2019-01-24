@@ -1,7 +1,6 @@
 import { IRecoil } from '../../index';
 
 export interface ILayerProps extends IRecoil {
-	onPress?: any;
 	overflow?: boolean;
 	dimensions?: [string, string, number];
 	scroll?: boolean;
@@ -14,4 +13,7 @@ export interface ILayerProps extends IRecoil {
 	border?: boolean | string;
 	// TODO REMOVE
 	onClick?: any;
+	// TODO
+	scrollIf?: boolean;
+	scrollToId?: string;
 }

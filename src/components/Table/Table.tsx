@@ -14,7 +14,6 @@ import Loading from '../Loading/Loading';
 import DataSource from '../DataSource/DataSource';
 
 import { IColumn } from './IColumn';
-import AdvancedLayer from '../Layer/AdvancedLayer';
 export { IColumn };
 
 export interface ITableProps {
@@ -280,12 +279,12 @@ class Table extends React.Component<ITableProps, ITableState> {
 					{headerTemplate ? headerTemplate : null}
 					<TableSearch {...tableSearchProps} />
 					{menuTemplate ? menuTemplate() : null}
-					<AdvancedLayer
+					<Layer
 						tabIndex={-1}
 						scrollY={true}
 						theme="light"
-						scrollToId={scrollToId}
-						scrollIf={scrollIf}
+						// scrollToId={scrollToId}
+						// scrollIf={scrollIf}
 						fill
 						style={contentMaxHeight ? { height: contentMaxHeight } : null}
 					>
@@ -301,7 +300,7 @@ class Table extends React.Component<ITableProps, ITableState> {
 								<TableBody {...tableProps} {...bodyProps} />
 							</table>
 						)}
-					</AdvancedLayer>
+					</Layer>
 					{nothingMatchesSearchCriteria || hideFooter ? null : <TableFooter {...footerProps} />}
 				</div>
 			);
