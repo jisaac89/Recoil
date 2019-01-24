@@ -8,7 +8,8 @@ export const AvatarWrapper = styled.div`
 	position: relative;
 	padding: 3px;
 	${themeBlockSize};
-	${themeBackgroundColor} ${(props) => (!props.src ? backgroundImage(props.src) : null)};
+	${themeBackgroundColor};
+	${(props) => (!props.src ? backgroundImage(props.src) : null)};
 	${(props) => (props.circle ? borderRadius('100%') : null)};
 	${(props) => (props.borderRadius ? borderRadius(props.borderRadius) : null)};
 	${(props) => (props.checked ? backgroundColor(defaultPropsTheme.primaryBackgroundColor) : null)};
