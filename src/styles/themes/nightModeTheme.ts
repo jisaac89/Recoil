@@ -1,4 +1,4 @@
-import { IRecoilTheme } from './IRecoilTheme';
+import { IRecoilTheme } from '../IRecoilTheme';
 
 export const nightModeTheme: IRecoilTheme = {
 	defaultBackgroundColor: 'red',
