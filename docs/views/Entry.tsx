@@ -10,19 +10,19 @@ export default class App extends React.Component<any, any> {
 	render() {
 		return (
 			<Recoil shortCutInitKey={['shift']} overflow nightmode={false} onDevice={() => { }}>
-				<div>
-					<Avatar src={'https://media.licdn.com/dms/image/C5603AQGR4DZ-LrcKOQ/profile-displayphoto-shrink_100_100/0?e=1553731200&v=beta&t=RgzFD6Q0kaIwiCs6mLnhLPKwKNv42zhzRfSagZYNnsQ'}></Avatar>
+				<Avatar src={'https://media.licdn.com/dms/image/C5603AQGR4DZ-LrcKOQ/profile-displayphoto-shrink_100_100/0?e=1553731200&v=beta&t=RgzFD6Q0kaIwiCs6mLnhLPKwKNv42zhzRfSagZYNnsQ'}></Avatar>
+				<Toolbar flex>
 					<Button kind="primary" checked>
 						Primary
 					</Button>
-					<Button checked checkedAmount={83} block>
+					{/* <Button size="xlarge" checked checkedAmount={83} block>
 						Amount
-					</Button>
+					</Button> */}
 					<Button kind="primary">Nightmode</Button>
 
 					<Checkbox title={'Test'} checked={false} onChange={() => { }} />
 					<Checkbox kind="primary" checked={true} onChange={() => { }} />
-				</div>
+				</Toolbar>
 			</Recoil>
 		);
 	}
