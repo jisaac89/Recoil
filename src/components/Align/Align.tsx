@@ -3,13 +3,10 @@ import { IAlignProps, IAlignState } from './IAlign';
 import { AlignWrapper, AlignChildWrapper } from './style';
 
 export default class Align extends React.Component<IAlignProps, IAlignState> {
-	constructor(props) {
-		super(props);
-		this.state = {
-			widthArray: [],
-			maxColumnsLength: 0
-		};
-	}
+	state = {
+		widthArray: [],
+		maxColumnsLength: 0
+	};
 	componentDidMount() {
 		this.props.columns ? this.alignColumns(this.props.columns) : null;
 	}

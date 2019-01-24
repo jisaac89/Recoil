@@ -16,7 +16,7 @@ export default class App extends React.Component<any, any> {
 							'https://media.licdn.com/dms/image/C5603AQGR4DZ-LrcKOQ/profile-displayphoto-shrink_100_100/0?e=1553731200&v=beta&t=RgzFD6Q0kaIwiCs6mLnhLPKwKNv42zhzRfSagZYNnsQ'
 						}
 					/>
-					<Toolbar flex>
+					<Align>
 						<Button checked>Primary</Button>
 						{/* <Button size="xlarge" checked checkedAmount={83} block>
 						Amount
@@ -25,7 +25,7 @@ export default class App extends React.Component<any, any> {
 
 						<Checkbox title={'Test'} checked={false} onChange={() => {}} />
 						<Checkbox kind="primary" checked={true} onChange={() => {}} />
-					</Toolbar>
+					</Align>
 				</Layer>
 			</Recoil>
 		);
