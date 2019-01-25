@@ -11,13 +11,14 @@ export default class App extends React.Component<any, any> {
 	render() {
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow onDevice={() => {}}>
-				<GroupButton>
+				<GroupButton checked>
 					<Avatar
+						simple
 						src={
 							'https://media.licdn.com/dms/image/C5603AQGR4DZ-LrcKOQ/profile-displayphoto-shrink_100_100/0?e=1553731200&v=beta&t=RgzFD6Q0kaIwiCs6mLnhLPKwKNv42zhzRfSagZYNnsQ'
 						}
 					/>
-					<Button checked>Primary</Button>
+					<Button simple>Primary</Button>
 				</GroupButton>
 			</Recoil>
 		);

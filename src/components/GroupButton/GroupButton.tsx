@@ -5,12 +5,13 @@ import { ISelectableProps } from '../Selectable/ISelectable';
 import { IGroupButtonProps } from './style/IGroupButtonProps';
 
 export const GroupButton = (props: IGroupButtonProps) => {
-	const { checkedTheme, checkedAmount, checked, disabled, loading, kind, children } = props;
+	const { checkedTheme, checkedAmount, checked, disabled, loading, kind, children, checkedDirection } = props;
 
 	const selectableProps: ISelectableProps = {
-		theme: checkedTheme,
+		kind: checkedTheme,
 		checkedAmount: checkedAmount,
-		checked: checked
+		checked: checked,
+		checkedDirection: checkedDirection
 	};
 	return (
 		<GroupButtonWrapper className="group" {...props} disabled={disabled || loading}>

@@ -5,8 +5,10 @@ import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
 export const GroupButtonWrapper = styled.div`
 	position: relative;
 	display: inline-flex;
-	${(props) => (props.block ? dblock : dinblock)};
-	${flexCenter};
+
+	:hover {
+		cursor: pointer;
+	}
 `;
 
 GroupButtonWrapper.defaultProps = {

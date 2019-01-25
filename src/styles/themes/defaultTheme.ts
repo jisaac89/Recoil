@@ -26,5 +26,7 @@ export const defaultTheme: IRecoilTheme = {
 
 	// MISC
 	defaultBorderRadius: '4px',
-	defaultDropShadow: '0 0 4px 1px rgba(0,0,0,.01), 0 3px 24px rgba(0,0,0,.3)'
+	defaultDropShadow: '0 0 4px 1px rgba(0,0,0,.01), 0 3px 24px rgba(0,0,0,.3)',
+
+	defaultCheckedDirection: 'center'
 };

@@ -16,8 +16,10 @@ export const ButtonWrapper = styled.button`
 	${flexCenter};
 	${themeBackgroundColor};
 	${themeBorderColor};
-	${buttonSizes}
-	${buttonPadding}
+	${buttonSizes};
+	${buttonPadding};
+	${(props) => (props.simple ? `background-color:transparent` : null)};
+	${(props) => (props.simple ? `border-color:transparent` : null)};
 `;
 
 ButtonWrapper.defaultProps = {

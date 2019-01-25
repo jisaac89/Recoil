@@ -83,4 +83,7 @@ export interface IRecoilTheme {
 	cardBackground?: string;
 	cardPadding?: string;
 	cardRadius?: string;
+
+	//
+	defaultCheckedDirection?: string;
 }

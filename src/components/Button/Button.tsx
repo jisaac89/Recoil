@@ -9,7 +9,7 @@ export const Button = (props: IButtonProps) => {
 	const { checkedTheme, checkedAmount, checked, disabled, loading, kind, children } = props;
 
 	const selectableProps: ISelectableProps = {
-		theme: checkedTheme,
+		kind: checkedTheme,
 		checkedAmount: checkedAmount,
 		checked: checked
 	};
