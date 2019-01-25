@@ -7,6 +7,7 @@ export interface IAlignProps {
 	fill?: boolean;
 	style?: any;
 	alignItems?: string;
+	textCenter?: boolean;
 }
 
 export interface IAlignChildProps {

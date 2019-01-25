@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { IAlignProps, IAlignState } from './IAlign';
 import { AlignWrapper, AlignChildWrapper } from './style';
+import { returnObjectWithoutProperties } from '../Utils';
 
 export default class Align extends React.Component<IAlignProps, IAlignState> {
+	public static defaultProps = {
+		name: 'Align'
+	};
 	state = {
 		widthArray: [],
 		maxColumnsLength: 0
@@ -37,6 +41,21 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 		}
 	}
 	alignChildren = (element: JSX.Element, key: string) => {
+		const groupChildProps = returnObjectWithoutProperties(this.props, [
+			'children',
+			'checked',
+			'block',
+			'width',
+			'height',
+			'style',
+			'name'
+		]);
+
+		// loop through all children and pass new props
+		let renderChild = (props: any) => {
+			return React.cloneElement(element as React.ReactElement<any>, groupChildProps);
+		};
+
 		let { columns, margin, vertical } = this.props;
 		return (
 			<AlignChildWrapper
@@ -46,14 +65,14 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 				margin={margin}
 				vertical={vertical}
 			>
-				{element}
+				{renderChild(this.props)}
 			</AlignChildWrapper>
 		);
 	};
 	render() {
 		let { children } = this.props;
 		return (
-			<AlignWrapper {...this.props}>
+			<AlignWrapper ref={'Align'} {...this.props}>
 				{children.length > 1 ? children.map(this.alignChildren) : children}
 			</AlignWrapper>
 		);

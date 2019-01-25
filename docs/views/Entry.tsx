@@ -12,17 +12,22 @@ import { GroupButton } from '../../src/components/GroupButton/GroupButton';
 export default class App extends React.Component<any, any> {
 	render() {
 		return (
-			<Recoil theme={monokaiTheme} shortCutInitKey={[ 'shift' ]} overflow onDevice={() => {}}>
-				<GroupButton checked size="default">
+			<Recoil shortCutInitKey={[ 'shift' ]} overflow onDevice={() => {}}>
+				<Toolbar block size="large">
 					<Avatar
-						simple
-						circle
 						src={
 							'https://media.licdn.com/dms/image/C5603AQGR4DZ-LrcKOQ/profile-displayphoto-shrink_100_100/0?e=1553731200&v=beta&t=RgzFD6Q0kaIwiCs6mLnhLPKwKNv42zhzRfSagZYNnsQ'
 						}
 					/>
-					<Button>Primary</Button>
-				</GroupButton>
+
+					<Toolbar right>
+						<GroupButton>
+							<Button>A</Button>
+							<Button>B</Button>
+						</GroupButton>
+						<Button>C</Button>
+					</Toolbar>
+				</Toolbar>
 			</Recoil>
 		);
 	}

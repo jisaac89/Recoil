@@ -6,6 +6,7 @@ export const AlignWrapper = styled.div`
 	${(props) => (props.fill ? fill : null)};
 	${(props) => (props.vertical ? flexDirection('column !important') : null)};
 	${(props) => (!props.vertical ? flexDirection('row') : null)};
+	${(props) => (props.textCenter ? `text-align:center` : null)};
 `;
 
 export const AlignChildWrapper = styled.div`

@@ -4,11 +4,13 @@ import { GroupButtonWrapper } from './style/GroupButtonWrapper';
 import { ISelectableProps } from '../Selectable/ISelectable';
 import { IGroupButtonProps } from './style/IGroupButtonProps';
 import { RecoilSize } from '../..';
+import { returnObjectWithoutProperties } from '../Utils';
 
 interface IGroupChild {
 	size?: RecoilSize;
 	simple?: boolean;
 	children?: any;
+	block?: boolean;
 }
 
 export const GroupButton = (props: IGroupButtonProps) => {
@@ -21,17 +23,17 @@ export const GroupButton = (props: IGroupButtonProps) => {
 		checkedDirection: checkedDirection
 	};
 
-	let _objectWithoutProperties = (obj, keys) => {
-		var target = {};
-		for (var i in obj) {
-			if (keys.indexOf(i) >= 0) continue;
-			if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;
-			target[i] = obj[i];
-		}
-		return target;
-	};
-
-	const groupChildProps = _objectWithoutProperties(props, [ 'children', 'checked' ]);
+	const groupChildProps = returnObjectWithoutProperties(props, [
+		'children',
+		'checked',
+		'block',
+		'width',
+		'height',
+		'style',
+		'name',
+		'right',
+		'left'
+	]);
 
 	// loop through all children and pass new props
 	let renderChildren = (props: IGroupChild) => {
@@ -47,6 +49,10 @@ export const GroupButton = (props: IGroupButtonProps) => {
 			<Selectable {...selectableProps} />
 		</GroupButtonWrapper>
 	);
+};
+
+GroupButton.defaultProps = {
+	name: 'GroupButton'
 };
 
 export { IGroupButtonProps };
