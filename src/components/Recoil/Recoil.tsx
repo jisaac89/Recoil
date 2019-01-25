@@ -8,6 +8,7 @@ import { GlobalClasses } from '../../styles/globalClasses';
 import styled, { ThemeProvider } from 'styled-components';
 import { overflow, scroll, scrollX, scrollY, fill } from '../../styles/classList';
 import { nightModeTheme } from '../../styles/themes/nightModeTheme';
+import { defaultPropsTheme } from '../../styles/defaultPropsTheme';
 
 export interface IRecoilProps {
 	nightmode?: boolean;
@@ -93,4 +94,9 @@ const RecoilWrapper = styled.div`
 	${(props) => (props.scroll ? scroll : 'overflow: hidden')};
 	${(props) => (props.scrollX ? scrollX : 'overflow-x: hidden')};
 	${(props) => (props.scrollY ? scrollY : 'overflow-y: hidden')};
+	background-color: ${(props) => props.theme.bodyBackgroundColor};
 `;
+
+RecoilWrapper.defaulProps = {
+	theme: defaultPropsTheme
+};

@@ -1,23 +1,24 @@
 import { IRecoilTheme } from '../IRecoilTheme';
 
-export const defaultTheme: IRecoilTheme = {
+export const monokaiTheme: IRecoilTheme = {
 	// FONT
 	fontFamily: 'Roboto',
 	fontColorLight: 'rgba(0,0,0,0.87)',
 
-	bodyBackgroundColor: '#fff',
+	bodyBackgroundColor: '#272921',
+
 	// BUTTONS
 	// default
-	defaultBackgroundColor: '#efefef',
-	defaultBackgroundColorHover: '#fefefe',
-	defaultBorderColor: '#e7e7e7',
-	defaultFontColor: '#888',
+	defaultBackgroundColor: '#ff006b',
+	defaultBackgroundColorHover: '#ff006bg',
+	defaultBorderColor: '#602334',
+	defaultFontColor: '#f5f5ed',
 	// primary
-	primaryBackgroundColor: '#09f',
-	primaryBackgroundColorHover: '#53afff',
-	primaryBorderColor: '#09f',
-	primaryBorderColorHover: '#53afff',
-	primaryFontColor: '#fff',
+	primaryBackgroundColor: '#f58600',
+	primaryBackgroundColorHover: '#f58600',
+	primaryBorderColor: '#784d00',
+	primaryBorderColorHover: '#784d00',
+	primaryFontColor: '#f5f5ed',
 	//secondary
 	secondaryBackgroundColor: '#09f',
 	secondaryBackgroundColorHover: '#53afff',
