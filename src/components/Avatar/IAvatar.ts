@@ -5,4 +5,6 @@ export interface IAvatarProps extends IRecoilNew {
 	circle?: boolean;
 	radius?: string;
 	simple?: boolean;
+	right?: boolean;
+	left?: boolean;
 }

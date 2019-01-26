@@ -13,14 +13,8 @@ export default class App extends React.Component<any, any> {
 	render() {
 		return (
 			<Recoil shortCutInitKey={[ 'shift' ]} overflow onDevice={() => {}}>
-				<Toolbar block size="large">
-					<Avatar
-						src={
-							'https://media.licdn.com/dms/image/C5603AQGR4DZ-LrcKOQ/profile-displayphoto-shrink_100_100/0?e=1553731200&v=beta&t=RgzFD6Q0kaIwiCs6mLnhLPKwKNv42zhzRfSagZYNnsQ'
-						}
-					/>
-
-					<Toolbar right>
+				<Toolbar block>
+					<Toolbar size="large" simple right>
 						<GroupButton>
 							<Button>A</Button>
 							<Button>B</Button>

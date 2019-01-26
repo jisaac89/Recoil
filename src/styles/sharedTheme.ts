@@ -85,3 +85,8 @@ export const buttonPadding = css`
 	${(props) => props.size === 'large' && css`padding: 10px 2pc;`};
 	${(props) => props.size === 'xlarge' && css`padding: 17.5px 2pc;`};
 `;
+
+export const flexFloat = css`
+	${(props) => (props.right ? `margin-left:auto` : null)};
+	${(props) => (props.left ? `margin-right:auto` : null)};
+`;

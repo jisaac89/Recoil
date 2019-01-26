@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { flexCenter, dblock, dinblock } from '../../../styles/classList';
-import { themeBackgroundColor, themeBorderColor, buttonSizes, buttonPadding } from '../../../styles/sharedTheme';
+import {
+	themeBackgroundColor,
+	themeBorderColor,
+	buttonSizes,
+	buttonPadding,
+	flexFloat
+} from '../../../styles/sharedTheme';
 import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
 
 export const ToolbarWrapper = styled.div`
@@ -16,8 +22,7 @@ export const ToolbarWrapper = styled.div`
 	${themeBorderColor};
 	${(props) => (props.block ? `width:100%` : null)};
 	${(props) => (props.simple ? `border-color:transparent` : null)};
-	${(props) => (props.right ? `margin-left:auto` : null)};
-	${(props) => (props.left ? `margin-right:auto` : null)};
+	${flexFloat};
 `;
 
 ToolbarWrapper.defaultProps = {

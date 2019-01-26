@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { backgroundImage, dimensions, borderRadius, backgroundColor } from '../../../styles/classList';
-import { themeBackgroundColor, themeBlockSize } from '../../../styles/sharedTheme';
+import { themeBackgroundColor, themeBlockSize, flexFloat } from '../../../styles/sharedTheme';
 import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
 
 export const AvatarWrapper = styled.div`
@@ -16,6 +16,7 @@ export const AvatarWrapper = styled.div`
 	${themeBackgroundColor};
 	${(props) => (props.simple ? `background-color: transparent;` : null)};
 	${(props) => (props.simple ? `border-color:transparent;` : null)};
+	${flexFloat};
 `;
 
 AvatarWrapper.defaultProps = {

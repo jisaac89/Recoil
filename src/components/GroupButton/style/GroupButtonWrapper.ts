@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { flexCenter, dblock, dinblock } from '../../../styles/classList';
 import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
+import { flexFloat } from '../../../styles/sharedTheme';
 
 export const GroupButtonWrapper = styled.div`
 	display: inline-flex;
 	position: relative;
 	${(props) => (props.textCenter ? `text-align:center` : null)};
 
-	${(props) => (props.right ? `margin-left:auto` : null)};
-	${(props) => (props.left ? `margin-right:auto` : null)};
+	${flexFloat};
 
 	:hover {
 		cursor: pointer;
