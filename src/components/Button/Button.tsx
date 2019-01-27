@@ -6,12 +6,13 @@ import { ButtonTitle } from './style/ButtonTitle';
 import { ISelectableProps } from '../Selectable/ISelectable';
 
 export const Button = (props: IButtonProps) => {
-	const { checkedTheme, checkedAmount, checked, disabled, loading, kind, children } = props;
+	const { checkedTheme, checkedAmount, checked, disabled, loading, kind, children,checkedDirection } = props;
 
 	const selectableProps: ISelectableProps = {
 		kind: checkedTheme,
 		checkedAmount: checkedAmount,
-		checked: checked
+		checked: checked,
+		checkeddirection: checkedDirection
 	};
 	return (
 		<ButtonWrapper {...props} disabled={disabled || loading}>
