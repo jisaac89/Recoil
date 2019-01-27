@@ -1,4 +1,3 @@
-import React from 'react';
 
 export const AndroidView = (props) => {
 	return props.device ? props.children : null;

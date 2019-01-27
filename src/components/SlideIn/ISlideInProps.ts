@@ -2,6 +2,7 @@ export interface ISlideInProps {
 	if: boolean;
 	fill?: boolean;
 	from: 'left' | 'right' | 'top' | 'bottom';
+	overflow?: boolean;
 	className?: string;
 	offset?: number;
 	onClick?: () => void;
@@ -13,7 +14,7 @@ export interface ISlideInProps {
 	icon?: string;
 	onClose?: () => void;
 	mobile?: boolean;
-	flex?: boolean;
+	flex?: boolean | 'row';
 	id?: string;
 	dimensions?: any;
 }

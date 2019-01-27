@@ -4,7 +4,7 @@ import { SelectableWrapper } from './style';
 import { Spring } from 'react-spring';
 
 export const Selectable = (props: ISelectableProps) => {
-	const { checkedDirection, kind } = props;
+	const { checkeddirection, kind } = props;
 	return (
 		<Spring
 			from={{ value: 0 }}
@@ -13,7 +13,7 @@ export const Selectable = (props: ISelectableProps) => {
 			{(props) => (
 				<SelectableWrapper
 					kind={kind}
-					checkeddirection={checkedDirection}
+					checkeddirection={checkeddirection}
 					style={{ width: props.value + '%' }}
 				/>
 			)}

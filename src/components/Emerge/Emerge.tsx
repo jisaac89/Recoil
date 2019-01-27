@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Transition } from 'react-spring';
-import 'intersection-observer';
 import { IEmergeProps } from './IEmergeProps';
 
 const items = [

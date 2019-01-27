@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { w, ps, ptb, fill, flexDirection } from '../../../styles/classList';
+import { IAlignProps, IAlignChildProps } from '../IAlign';
 
-export const AlignWrapper = styled.div`
+export const AlignWrapper = styled.div<IAlignProps>`
 	display: flex;
 	${(props) => (props.fill ? fill : null)};
 	${(props) => (props.vertical ? flexDirection('column !important') : null)};
@@ -9,7 +10,7 @@ export const AlignWrapper = styled.div`
 	${(props) => (props.textCenter ? `text-align:center` : null)};
 `;
 
-export const AlignChildWrapper = styled.div`
+export const AlignChildWrapper = styled.div<IAlignChildProps>`
 	flex: 1;
 	${fill};
 	${(props) => (!props.vertical ? w(props.width) : null)};

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 export interface IOpenProps {
   if: boolean;
@@ -17,13 +16,13 @@ class Open extends React.Component<IOpenProps, any> {
     const self = this;
     const props = self.props;
 
-    let OpenClass = classNames(
-      'r-Open',
-      { 'e-open': props.if },
-      { 'e-close': !props.if },
-      { 'e-fill': props.fill },
-      props.className
-    );
+    // let OpenClass = classNames(
+    //   'r-Open',
+    //   { 'e-open': props.if },
+    //   { 'e-close': !props.if },
+    //   { 'e-fill': props.fill },
+    //   props.className
+    // );
 
     let hasStyle;
 
@@ -34,7 +33,7 @@ class Open extends React.Component<IOpenProps, any> {
     }
 
     return (
-      <div ref="Open" className={OpenClass} style={hasStyle}>
+      <div ref="Open"  style={hasStyle}>
         {props.openToHeight ? props.children : props.if ? props.children : null}
       </div>
     );

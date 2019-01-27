@@ -72,7 +72,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
 	render() {
 		let { children } = this.props;
 		return (
-			<AlignWrapper ref={'Align'} {...this.props}>
+			<AlignWrapper  {...this.props}>
 				{children.length > 1 ? children.map(this.alignChildren) : children}
 			</AlignWrapper>
 		);

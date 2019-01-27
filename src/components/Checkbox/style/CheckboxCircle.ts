@@ -9,8 +9,9 @@ import {
 } from '../../../styles/sharedTheme';
 import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
 import { CheckboxWrapper } from './CheckboxWrapper';
+import { ICheckboxProps } from '../ICheckbox';
 
-export const CheckboxCircle = styled.div`
+export const CheckboxCircle = styled.div<ICheckboxProps>`
 	cursor: pointer;
 	border-width: 1px;
 	border-style: solid;

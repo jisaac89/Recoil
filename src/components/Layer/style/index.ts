@@ -10,8 +10,9 @@ import {
 	flex,
 	flexDirection
 } from '../../../styles/classList';
+import { ILayerProps } from '../ILayer';
 
-export const LayerWrapper = styled.div`
+export const LayerWrapper = styled.div<ILayerProps>`
 	display: block;
 	position: relative;
 	${(props) => (props.fill ? fill : null)};
@@ -19,7 +20,7 @@ export const LayerWrapper = styled.div`
 	${(props) => (props.dimensions ? dimensions(props.dimensions[0], props.dimensions[1], props.dimensions[2]) : null)};
 `;
 
-export const TouchableWrapper = styled.div`
+export const TouchableWrapper = styled.div<ILayerProps>`
 	position: relative;
 	${(props) => (props.flex !== 'row' ? flex : null)};
 	${(props) => (props.flex === 'row' ? flexDirection('row') : null)};

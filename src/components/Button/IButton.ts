@@ -8,5 +8,6 @@ export interface IButtonProps extends IRecoilNew {
 	id?: string;
 	checkedTheme?: RecoilTheme;
 	checkedAmount?: number;
+	checkedDirection?: string;
 	onClick?: (event: React.MouseEvent<HTMLElement>) => Event;
 }

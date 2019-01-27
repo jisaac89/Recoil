@@ -8,9 +8,9 @@ export const flex = {
 };
 
 export const flexCenter = {
-	justifyContent: 'center',
-	flexDirection: 'column',
-	alignItems: 'center'
+	'justify-content': 'center',
+	'flex-direction': 'column',
+	'align-items': 'center'
 };
 
 export const dblock = {
@@ -30,11 +30,11 @@ export const scroll = {
 };
 
 export const scrollX = {
-	overflowX: 'auto'
+	'overflow-x': 'auto'
 };
 
 export const scrollY = {
-	overflowY: 'auto'
+	'overflow-y': 'auto'
 };
 
 export const overflow = {

@@ -13,14 +13,14 @@ interface IGroupChild {
 	block?: boolean;
 }
 
-export const GroupButton = (props: IGroupButtonProps) => {
+export const GroupButton = (props: any) => {
 	const { checkedTheme, checkedAmount, checked, disabled, loading, checkedDirection, size, simple } = props;
 
 	const selectableProps: ISelectableProps = {
 		kind: checkedTheme,
 		checkedAmount: checkedAmount,
 		checked: checked,
-		checkedDirection: checkedDirection
+		checkeddirection: checkedDirection
 	};
 
 	const groupChildProps = returnObjectWithoutProperties(props, [

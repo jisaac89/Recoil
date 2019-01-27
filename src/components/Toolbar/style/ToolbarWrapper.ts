@@ -8,17 +8,14 @@ import {
 	flexFloat
 } from '../../../styles/sharedTheme';
 import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
+import { IToolbarProps } from '../IToolbar';
 
-export const ToolbarWrapper = styled.div`
+export const ToolbarWrapper = styled.div<IToolbarProps>`
 	position: relative;
 	border-width: 1px;
 	display: inline-flex;
 	flex-direction: row;
 	alignSelf: ${(props) => (props.block ? 'stretch' : 'flex-start')};
-	overflow: ${(props) => (props.coverflow ? 'vibile' : 'hidden')};
-	overflow: ${(props) => (props.scroll ? 'auto' : 'hidden')};
-	overflow-x: ${(props) => (props.scrollX ? 'auto' : 'hidden')};
-	overflow-y: ${(props) => (props.scrollY ? 'auto' : 'hidden')};
 	${themeBorderColor};
 	${(props) => (props.block ? `width:100%` : null)};
 	${(props) => (props.simple ? `border-color:transparent` : null)};

@@ -25,8 +25,8 @@ export const Wizard = (props: IWizardProps) => {
 	);
 };
 
-const WizardWrapper = styled.div``;
-const WizardTrack = styled.div``;
-const WizardSlide = styled.div``;
+const WizardWrapper = styled.div<IWizardProps>``;
+const WizardTrack = styled.div<IWizardProps>``;
+const WizardSlide = styled.div<IWizardProps>``;
 
 export default Wizard;

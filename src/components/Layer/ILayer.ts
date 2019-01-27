@@ -8,7 +8,7 @@ export interface ILayerProps extends IRecoil {
 	scrollY?: boolean;
 	flexCenter?: boolean;
 	classList?: any[];
-	fill?: boolean;
+	fill?: boolean ;
 	style?: object;
 	border?: boolean | string;
 	// TODO REMOVE
