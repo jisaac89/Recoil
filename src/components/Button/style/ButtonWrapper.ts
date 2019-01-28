@@ -11,6 +11,7 @@ import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
 import { IButtonProps } from '../Button';
 
 export const ButtonWrapper = styled.button<IButtonProps>`
+	cursor:pointer;
 	position: relative;
 	border-width: 1px;
 	display: inline-flex;

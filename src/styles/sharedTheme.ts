@@ -74,9 +74,9 @@ export const themeBlockSize = css<any>`
 `;
 
 export const buttonSizes = css<any>`
-	${(props) => props.size === 'default' && css`${dimensions(props.block ? '100%' : 'auto', '32px', 1)};`};
+	${(props) => props.size === 'default' && css`${dimensions(props.block ? '100%' : 'auto', '40', 1)};`};
 	${(props) => props.size === 'small' && css`${dimensions(props.block ? '100%' : 'auto', '26px', 1)};`};
-	${(props) => props.size === 'large' && css`${dimensions(props.block ? '100%' : 'auto', '40px', 1)};`};
+	${(props) => props.size === 'large' && css`${dimensions(props.block ? '100%' : 'auto', '45px', 1)};`};
 	${(props) => props.size === 'xlarge' && css`${dimensions(props.block ? '100%' : 'auto', '62px', 1)};`};
 `;
 export const buttonPadding =css<any>`
