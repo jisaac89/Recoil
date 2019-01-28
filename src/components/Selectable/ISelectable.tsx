@@ -1,7 +1,7 @@
 import { RecoilTheme } from '../..';
 
 export interface ISelectableProps {
-	checkedDirection?: 'left' | 'right' | 'center';
+	checkeddirection?: string;
 	checked?: boolean;
 	checkedAmount?: number;
 	kind?: RecoilTheme;

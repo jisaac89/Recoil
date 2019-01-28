@@ -5,10 +5,10 @@ import { ILayerProps } from './ILayer';
 
 export const Layer = (props: ILayerProps) => {
 	return (
-		<LayerWrapper {...props} fill={props.fill ? props.fill.toString() : null}>
+		<LayerWrapper {...props} fill={props.fill ? props.fill : null}>
 			<TouchableWrapper
 				{...props}
-				fill={props.fill ? props.fill.toString() : null}
+				fill={props.fill ? props.fill : null}
 				onClick={props.onClick}
 				disabled={!props.onClick}
 			>

@@ -9,6 +9,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import { overflow, scroll, scrollX, scrollY, fill } from '../../styles/classList';
 import { nightModeTheme } from '../../styles/themes/nightModeTheme';
 import { defaultPropsTheme } from '../../styles/defaultPropsTheme';
+import { IRecoilTheme } from '../../styles/IRecoilTheme';
 
 export interface IRecoilProps {
 	nightmode?: boolean;
@@ -19,10 +20,10 @@ export interface IRecoilProps {
 	scrollY?: boolean;
 	isMobile?: boolean;
 	isTablet?: boolean;
-	onDevice(device: string): void;
+	onDevice?(device: string): void;
 	shortCutInitKey?: any;
 	globalStyles?: any;
-	theme?: any;
+	theme?: IRecoilTheme;
 }
 
 export default class Recoil extends React.Component<IRecoilProps, any> {
@@ -88,7 +89,7 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
 	}
 }
 
-const RecoilWrapper = styled.div`
+const RecoilWrapper = styled.div<IRecoilProps>`
 	${fill};
 	${(props) => (props.overflow ? overflow : 'overflow: hidden')};
 	${(props) => (props.scroll ? scroll : 'overflow: hidden')};
@@ -97,6 +98,6 @@ const RecoilWrapper = styled.div`
 	background-color: ${(props) => props.theme.bodyBackgroundColor};
 `;
 
-RecoilWrapper.defaulProps = {
+RecoilWrapper.defaultProps = {
 	theme: defaultPropsTheme
 };

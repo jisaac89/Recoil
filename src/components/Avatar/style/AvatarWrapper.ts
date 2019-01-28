@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { backgroundImage, dimensions, borderRadius, backgroundColor } from '../../../styles/classList';
+import { backgroundImage, borderRadius, backgroundColor } from '../../../styles/classList';
 import { themeBackgroundColor, themeBlockSize, flexFloat } from '../../../styles/sharedTheme';
 import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
+import { IAvatarProps } from '../IAvatar';
 
-export const AvatarWrapper = styled.div`
+export const AvatarWrapper = styled.div<IAvatarProps>`
 	overflow: hidden;
 	position: relative;
 	padding: 3px;

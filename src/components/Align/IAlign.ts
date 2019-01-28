@@ -8,11 +8,14 @@ export interface IAlignProps {
 	style?: any;
 	alignItems?: string;
 	textCenter?: boolean;
+	width?: string;
+	horizontal?:boolean;
 }
 
 export interface IAlignChildProps {
 	columns?: Array<number>;
 	vertical?: boolean;
+	horizontal?:boolean;
 	width?: number;
 	element?: JSX.Element;
 	margin?: string;

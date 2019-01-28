@@ -44,7 +44,6 @@ export default class Toolbar extends React.Component<IToolbarProps, {}> {
 				onSubmit={this.handleSubmit}
 				tab-index={-1}
 				id={props.id}
-				ref="toolbar"
 				onClick={this.props.onClick}
 				{...props}
 			>

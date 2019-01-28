@@ -1,5 +1,5 @@
 export interface IWizardProps {
-	slideIndex: number;
+	slideIndex?: number;
 	children?: any;
 	vertical?: boolean;
 	className?: string;
@@ -12,4 +12,5 @@ export interface IWizardProps {
 	paginate?: boolean;
 	selectedIsRelative?: boolean;
 	onSlide?(slideIndex): void;
+	visible?: boolean;
 }

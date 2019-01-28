@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
 
 export interface IShrinkProps {
   if?: boolean;
@@ -25,13 +24,13 @@ export default class Shrink extends React.Component<IShrinkProps, {}> {
 
     let shrinkStyle;
 
-    let shrinkClass = classNames(
-      'r-Shrink',
-      { 'e-shrink': props.if },
-      { 'e-fill': props.fill },
-      { 'e-flex': props.flex },
-      props.className
-    );
+    // let shrinkClass = classNames(
+    //   'r-Shrink',
+    //   { 'e-shrink': props.if },
+    //   { 'e-fill': props.fill },
+    //   { 'e-flex': props.flex },
+    //   props.className
+    // );
 
     if (props.if) {
       shrinkStyle = {
@@ -46,9 +45,10 @@ export default class Shrink extends React.Component<IShrinkProps, {}> {
     }
 
     return (
-      <div className={shrinkClass} style={shrinkStyle}>
-        {props.children}
-      </div>
+      // <div className={shrinkClass} style={shrinkStyle}>
+      //   {props.children}
+      // </div>
+      <div>Shrink</div>
     );
   }
 }
