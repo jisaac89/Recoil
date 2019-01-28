@@ -1,23 +1,24 @@
 import { IRecoilTheme } from '../IRecoilTheme';
+import {colors, font} from '../sharedBrand';
 
 export const defaultTheme: IRecoilTheme = {
 	// FONT
-	fontFamily: 'Roboto',
-	fontColorLight: 'rgba(0,0,0,0.87)',
+	fontFamily: font.fontFamily.default,
+	fontColorLight: colors.font.base,
 
-	bodyBackgroundColor: '#fff',
+	bodyBackgroundColor: colors.body.base,
 	// BUTTONS
 	// default
-	defaultBackgroundColor: '#efefef',
-	defaultBackgroundColorHover: '#fefefe',
-	defaultBorderColor: '#e7e7e7',
-	defaultFontColor: '#888',
+	defaultBackgroundColor: colors.default.base,
+	defaultBackgroundColorHover: colors.default.light,
+	defaultBorderColor: colors.default.dark,
+	defaultFontColor: colors.default.special,
 	// primary
-	primaryBackgroundColor: '#09f',
-	primaryBackgroundColorHover: '#53afff',
-	primaryBorderColor: '#09f',
-	primaryBorderColorHover: '#53afff',
-	primaryFontColor: '#fff',
+	primaryBackgroundColor: colors.primary.base,
+	primaryBackgroundColorHover: colors.primary.light,
+	primaryBorderColor: colors.primary.base,
+	primaryBorderColorHover: colors.primary.base,
+	primaryFontColor: colors.primary.special,
 	//secondary
 	secondaryBackgroundColor: '#09f',
 	secondaryBackgroundColorHover: '#53afff',
