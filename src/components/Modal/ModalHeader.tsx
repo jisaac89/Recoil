@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Button from '../Button/OldButton';
+import { Button } from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 
 export default class ModalHeader extends React.Component<any, any> {
@@ -25,7 +25,7 @@ export default class ModalHeader extends React.Component<any, any> {
 					<Button onClick={this.toggleFullScreen.bind(this)} icon={fullScreen ? 'expand' : 'compress'} />
 				) : null}
 				{!props.hideCloseButton ? (
-					<Button shortcut={'x'} id={this.props.closeId} onClick={onClose} icon="times" theme="error" />
+					<Button id={this.props.closeId} onClick={onClose} icon="times" kind="error" />
 				) : null}
 			</Toolbar>
 		);

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { arraysEqual } from '../Utils';
 
-import Button from '../Button/OldButton';
+import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 
 import { IColumn } from './IColumn';

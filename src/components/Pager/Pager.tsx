@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Toolbar from '../Toolbar/Toolbar';
-import Button from '../Button/OldButton';
+import { Button } from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 
 export interface IPagerProps {
@@ -65,7 +65,6 @@ export default class Pager extends React.Component<IPagerProps, {}> {
 					block
 					size="small"
 					tabIndex={-1}
-					advanced
 					checked={currentPage === index ? true : false}
 					onClick={this.gotoPage.bind(self, index)}
 					key={index}

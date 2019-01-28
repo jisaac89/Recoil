@@ -1,4 +1,5 @@
 import { RecoilTheme, IRecoilNew } from '../..';
+import { IRecoilTheme } from '../../styles/IRecoilTheme';
 
 export interface IButtonProps extends IRecoilNew {
 	block?: boolean;
@@ -9,5 +10,9 @@ export interface IButtonProps extends IRecoilNew {
 	checkedTheme?: RecoilTheme;
 	checkedAmount?: number;
 	checkedDirection?: string;
-	onClick?: (event: React.MouseEvent<HTMLElement>) => Event;
+	onClick?: any;
+	//
+	icon?: string;
+	iconLocation?: string;
+	theme?: IRecoilTheme;
 }

@@ -5,8 +5,8 @@ import { defaultPropsTheme } from '../../../styles/defaultPropsTheme';
 import { IButtonProps } from '../Button';
 
 export const ButtonTitle = styled.p`
-	${(props : IButtonProps) => props.kind === 'default' && css`color: ${props.theme.defaultFontColor};`};
-	${(props : IButtonProps) => props.kind === 'primary' && css`color: ${props.theme.primaryFontColor};`};
+	${(props: IButtonProps) => props.kind === 'default' && css`color: ${props.theme.defaultFontColor};`};
+	${(props: IButtonProps) => props.kind === 'primary' && css`color: ${props.theme.primaryFontColor};`};
 `;
 
 ButtonTitle.defaultProps = {

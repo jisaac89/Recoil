@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Button from '../Button/OldButton';
+import { Button } from '../Button/Button';
 
 export default class Months extends React.Component<any, any> {
 	render() {
@@ -31,10 +31,9 @@ export default class Months extends React.Component<any, any> {
 											<td className="p0" key={year + ' ' + month + ' ' + index}>
 												<Button
 													simple
-													advanced
 													checked={selected}
 													onClick={this.props.selectDay.bind(this, day)}
-													theme={selected ? 'primary' : undefined}
+													kind={selected ? 'primary' : undefined}
 													className="e-fill"
 												>
 													{day.getDate()}

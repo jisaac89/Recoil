@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import TableColumn from './TableColumn';
-import Button from '../Button/OldButton';
+import Button from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { IColumn } from './IColumn';
 

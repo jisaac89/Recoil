@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 import Toolbar from '../Toolbar/Toolbar';
-import Button from '../Button/OldButton';
+import { Button } from '../Button/Button';
 
 export interface ISlideInProps {
 	if: boolean;
@@ -113,7 +113,7 @@ export default class SlideIn extends React.Component<ISlideInProps, any> {
 							</Button>
 						) : null}
 						{props.onClose ? (
-							<Button shortcut={'x'} simple size="small" right onClick={props.onClose} icon="times" />
+							<Button simple size="small" right onClick={props.onClose} icon="times" />
 						) : null}
 					</Toolbar>
 				) : null}

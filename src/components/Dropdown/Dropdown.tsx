@@ -1,8 +1,8 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 
-import Button from '../Button/OldButton';
-import { IButtonProps } from '../Button/OldButton';
+import { Button } from '../Button/Button';
+import { IButtonProps } from '../Button/IButton';
 import { ITableProps } from '../Table/Table';
 
 import Tags from '../Tags/Tags';
@@ -156,20 +156,18 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 			// Button props
 			icon,
 			size,
-			iconPointer,
+			// iconPointer,
 			iconLocation,
 			simple,
 			outline,
 			checked,
-			advanced,
 			loading,
-			theme,
-			pointer,
+			kind,
+			// pointer,
 			required,
 			checkedTheme,
 			disabled,
 			parentId,
-			shortcut,
 			materialIcon,
 			//
 			children,
@@ -208,17 +206,15 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
 
 		let buttonProps = {
 			block: true,
-			shortcut,
 			icon,
 			size,
-			iconPointer,
+			// iconPointer,
 			iconLocation,
 			simple,
 			outline,
 			checked,
-			advanced,
-			theme,
-			pointer,
+			kind,
+			// pointer,
 			required,
 			loading,
 			disabled,

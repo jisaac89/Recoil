@@ -97,7 +97,7 @@ export interface ITableProps {
 	headerTemplate?: () => void;
 	serverSide?: boolean;
 	disableSelectedElements?: Array<any>;
-	fill?: boolean;
+	fill?: boolean | string;
 	tableDataClassName?: string;
 	loadingElements?: any[];
 	loadingKey?: string;
