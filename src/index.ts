@@ -38,7 +38,7 @@ export interface IRecoil {
 	theme?: RecoilTheme;
 	className?: string;
 	flex?: RecoilFlex;
-	fill?: boolean;
+	fill?: boolean | string;
 	disabled?: boolean;
 	checked?: boolean;
 	loading?: boolean;

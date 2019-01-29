@@ -1,7 +1,5 @@
-import * as UAParser from 'ua-parser-js';
-
+import {UAParser} from 'ua-parser-js';
 export const UA = new UAParser();
-
 export const browser = UA.getBrowser();
 export const cpu = UA.getCPU();
 export const device = UA.getDevice();

@@ -5,14 +5,14 @@ import { ILayerProps } from './ILayer';
 
 export const Layer = (props: ILayerProps) => {
 	return (
-		<LayerWrapper {...props} fill={props.fill ? props.fill : null}>
+		<LayerWrapper {...props} fill={props.fill ? props.fill.toString() : null}>
 			<TouchableWrapper
 				{...props}
-				fill={props.fill ? props.fill : null}
+				fill={props.fill ? props.fill.toString() : null}
 				onClick={props.onClick}
 				disabled={!props.onClick}
 			>
-				<React.Fragment>{props.children}</React.Fragment>
+				{props.children}
 			</TouchableWrapper>
 			<Selectable checked={props.checked} />
 		</LayerWrapper>
