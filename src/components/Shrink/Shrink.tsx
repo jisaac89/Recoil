@@ -32,7 +32,7 @@ export default class Shrink extends React.Component<IShrinkProps, {}> {
     //   props.className
     // );
 
-    if (props.if) {
+    if (props.if && !!shrinkStyle) {
       shrinkStyle = {
         transform: 'scale(' + props.scale + ')',
         opacity: props.opacity / 100,

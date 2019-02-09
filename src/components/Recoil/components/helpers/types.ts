@@ -1,10 +1,17 @@
+
+interface IBrowser{
+  major?: string;
+  version?: string;
+  name?: string;
+}
+
 const initialData = {
   isMobile: false,
   isTablet: false,
   isBrowser: false
 };
 
-export const checkType = type => {
+export const checkType = (type: string) => {
   switch (type) {
     case "mobile":
       return {
@@ -23,7 +30,7 @@ export const checkType = type => {
   }
 };
 
-export const getCurrentBrowser = name => {
+export const getCurrentBrowser = (name: string) => {
   switch (name) {
     case "Chrome":
       return true;
@@ -46,7 +53,7 @@ export const getCurrentBrowser = name => {
   }
 };
 
-export const broPayload = (isBrowser, browser, engine, os, ua) => {
+export const broPayload = (isBrowser : boolean, browser : IBrowser, engine  : IBrowser, os  : IBrowser, ua : string) => {
   return {
     isBrowser,
     browserMajorVersion: browser.major,
@@ -60,7 +67,11 @@ export const broPayload = (isBrowser, browser, engine, os, ua) => {
   };
 };
 
-export const mobilePayload = (type, device, os, ua) => {
+export const mobilePayload = (type : {
+  isMobile?: boolean,
+  isDesktop?: boolean,
+  isTablet?: boolean
+}, device : {vendor :string, model: string}, os : {name :string, version: string}, ua : string) => {
   return {
     type,
     vendor: device.vendor || "none",

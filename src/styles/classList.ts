@@ -1,3 +1,5 @@
+type IStyleValue = string;
+
 export const fill = {
 	'height': '100%',
 	'width': '100%'
@@ -43,42 +45,42 @@ export const overflow = {
 
 // Padding
 
-export function p(x) {
+export function p(x: IStyleValue) {
 	return {
 		padding: x
 	};
 }
 
-export function ps(x) {
+export function ps(x: IStyleValue) {
 	return {
 		paddingLeft: x,
 		paddingRight: x
 	};
 }
 
-export function ptb(x) {
+export function ptb(x: IStyleValue) {
 	return {
-		paddingTop: x,
-		paddingBottom: x
+		'padding-top': x,
+		'padding-bottom': x
 	};
 }
 
 // Margin
 
-export function m(x) {
+export function m(x: IStyleValue) {
 	return {
 		margin: x
 	};
 }
 
-export function ms(x) {
+export function ms(x: IStyleValue) {
 	return {
 		marginLeft: x,
 		marginRight: x
 	};
 }
 
-export function mtb(x) {
+export function mtb(x: IStyleValue) {
 	return {
 		marginTop: x,
 		marginBottom: x
@@ -87,27 +89,27 @@ export function mtb(x) {
 
 // Width
 
-export function w(x) {
+export function w(x: IStyleValue) {
 	return {
-		width: x
+		'width': x
 	};
 }
 
-export function mw(x) {
+export function mw(x: IStyleValue) {
 	return {
-		maxWidth: x
+		'max-width': x
 	};
 }
 
 // Height
 
-export function h(x) {
+export function h(x: IStyleValue) {
 	return {
 		height: x
 	};
 }
 
-export function mh(x) {
+export function mh(x: IStyleValue) {
 	return {
 		maxHeight: x
 	};
@@ -115,7 +117,7 @@ export function mh(x) {
 
 // Top
 
-export function t(x) {
+export function t(x: IStyleValue) {
 	return {
 		top: x
 	};
@@ -123,7 +125,7 @@ export function t(x) {
 
 // Right
 
-export function r(x) {
+export function r(x: IStyleValue) {
 	return {
 		right: x
 	};
@@ -131,7 +133,7 @@ export function r(x) {
 
 // Bottom
 
-export function b(x) {
+export function b(x: IStyleValue) {
 	return {
 		bottom: x
 	};
@@ -139,7 +141,7 @@ export function b(x) {
 
 // Left
 
-export function l(x) {
+export function l(x: IStyleValue) {
 	return {
 		left: x
 	};
@@ -147,7 +149,7 @@ export function l(x) {
 
 // Methods
 
-export function dimensions(width, height, zIndex) {
+export function dimensions(width : IStyleValue, height: IStyleValue, zIndex: number) {
 	return {
 		width: width,
 		height: height,
@@ -155,7 +157,7 @@ export function dimensions(width, height, zIndex) {
 	};
 }
 
-export function tlr(t, l, r) {
+export function tlr(t: IStyleValue, l: IStyleValue, r: IStyleValue) {
 	return {
 		left: l,
 		right: r,
@@ -163,50 +165,50 @@ export function tlr(t, l, r) {
 	};
 }
 
-export function blr(b, l, r) {
+export function blr(b : IStyleValue, l : IStyleValue, r : IStyleValue) {
 	return {
 		left: l,
 		right: r,
 		bottom: b
 	};
 }
-export function cursor(value) {
+export function cursor(value: IStyleValue) {
 	return {
 		cursor: value
 	};
 }
 
-export function pos(value) {
+export function pos(value: IStyleValue) {
 	return {
 		position: value
 	};
 }
 
-export function pull(direction) {
+export function pull(direction: IStyleValue) {
 	return {
 		float: direction
 	};
 }
 
-export function flexDirection(direction) {
+export function flexDirection(direction :IStyleValue) {
 	return {
-		flexDirection: direction
+		'flex-direction': direction
 	};
 }
 
-export function backgroundImage(url) {
+export function backgroundImage(url : IStyleValue) {
 	return {
 		backgroundImage: `url(${url})`
 	};
 }
 
-export function backgroundColor(color) {
+export function backgroundColor(color : IStyleValue) {
 	return {
 		backgroundColor: `${color}`
 	};
 }
 
-export function borderRadius(rad) {
+export function borderRadius(rad: IStyleValue) {
 	return {
 		borderRadius: `${rad}`
 	};

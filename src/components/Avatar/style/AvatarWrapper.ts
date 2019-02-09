@@ -9,10 +9,10 @@ export const AvatarWrapper = styled.div<IAvatarProps>`
 	position: relative;
 	padding: 3px;
 	display: inline-flex;
-	${(props) => (!props.src ? backgroundImage(props.src) : null)};
+	${(props) => (!!props.src ? backgroundImage(props.src) : null)};
 	${(props) => (props.circle ? borderRadius('100%') : null)};
 	${(props) => (props.borderRadius ? borderRadius(props.borderRadius) : null)};
-	${(props) => (props.checked ? backgroundColor(defaultPropsTheme.primaryBackgroundColor) : null)};
+	${(props) => (props.checked && props.theme.primaryBackgroundColor ? backgroundColor(props.theme.primaryBackgroundColor) : null)};
 	${themeBlockSize};
 	${themeBackgroundColor};
 	${(props) => (props.simple ? `background-color: transparent;` : null)};

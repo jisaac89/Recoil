@@ -1,6 +1,7 @@
 import { defaultTheme } from './themes/defaultTheme';
+import { IRecoilTheme } from './IRecoilTheme';
 
-export const defaultPropsTheme = {
+export const defaultPropsTheme : IRecoilTheme = {
 	bodyBackgroundColor: defaultTheme.bodyBackgroundColor,
 	defaultBackgroundColor: defaultTheme.defaultBackgroundColor,
 	defaultBackgroundColorHover: defaultTheme.defaultBackgroundColorHover,

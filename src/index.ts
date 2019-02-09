@@ -13,8 +13,8 @@ export type RecoilTheme =
 	| 'dark';
 
 export type RecoilSize = 'small' | 'large' | 'xlarge' | 'xxlarge' | 'default';
-export type RecoilFlex = boolean | 'row' | 'row-reverse';
-export type RecoilElement = JSX.Element | Element[] | JSX.Element[] | string | number | boolean | {};
+export type RecoilFlex =   'row' | 'row-reverse';
+export type RecoilElement = React.ReactNode;
 
 export interface IRecoilNew {
 	theme?: IRecoilTheme

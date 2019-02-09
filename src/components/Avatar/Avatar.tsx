@@ -7,7 +7,7 @@ import { Selectable } from '../Selectable/Selectable';
 export const Avatar = (props: IAvatarProps) => {
 	console.log(props.simple);
 	return (
-		<AvatarWrapper {...props} simple={props.simple ? 'true' : null}>
+		<AvatarWrapper {...props} simple={props.simple ? 'true' : undefined}>
 			<Image circle={props.circle} fill={true.toString()} source={{ uri: props.src }} />
 		</AvatarWrapper>
 	);

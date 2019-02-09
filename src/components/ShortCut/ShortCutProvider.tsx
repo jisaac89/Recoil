@@ -2,8 +2,12 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 export const ShortcutContext = React.createContext('');
 
+interface IShortCutProviderProps{
+
+}
+
 export default class ShortCutProvider extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props : IShortCutProviderProps) {
     super(props);
     this.state = {
       showShortcut: false
@@ -14,27 +18,27 @@ export default class ShortCutProvider extends React.Component<any, any> {
     const props = self.props;
 
     if (props.shortcut) {
-      window.addEventListener('keydown', this.startShortcutListener.bind(this), false);
-      window.addEventListener('keyup', this.startShortcutListener.bind(this), false);
+      // window.addEventListener('keydown', this.startShortcutListener.bind(this), false);
+      // window.addEventListener('keyup', this.startShortcutListener.bind(this), false);
     }
   }
 
-  public startShortcutListener(e) {
+  public startShortcutListener(e : React.KeyboardEvent<Element>) {
     const context = this;
     const props = context.props;
     const refButton: any = ReactDOM.findDOMNode(context.refs['button']);
     context.setState({
       showShortcut: e.shiftKey ? true : false
     });
-    if (e.shiftKey && e.code === 'Key' + props.shortcut.toUpperCase()) {
-      refButton.focus();
-    }
+    // if (e.shiftKey && e.code === 'Key' + props.shortcut.toUpperCase()) {
+    //   refButton.focus();
+    // }
   }
 
   public componentWillUnmount() {
     if (this.props.shortcut) {
-      window.removeEventListener('keydown', null, false);
-      window.removeEventListener('keyup', null, false);
+      // window.removeEventListener('keydown', null, false);
+      // window.removeEventListener('keyup', null, false);
     }
   }
 

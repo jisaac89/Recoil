@@ -13,6 +13,7 @@ export interface IPortalProps {
 	portalType?: string;
 	initialized: boolean;
 	portalTemplate?: JSX.Element;
+	children?:  React.ReactNode;
 }
 
 export default class PortalContent extends React.Component<IPortalProps, any> {
@@ -20,7 +21,7 @@ export default class PortalContent extends React.Component<IPortalProps, any> {
 		portalType: 'SlideIn'
 	};
 
-	portalElement: HTMLElement = null;
+	portalElement: HTMLElement;
 
 	constructor(props) {
 		super(props);
@@ -56,9 +57,9 @@ export default class PortalContent extends React.Component<IPortalProps, any> {
 						className="r-Portal z5"
 						fixed
 						from="bottom"
-						if={this.props.open}
+						if={!!this.props.open}
 					>
-						<Layer flex fill>
+						<Layer flex="row" fill>
 							{this.props.children}
 						</Layer>
 					</SlideIn>

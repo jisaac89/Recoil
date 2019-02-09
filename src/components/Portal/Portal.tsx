@@ -18,7 +18,7 @@ export default class Portal extends React.Component<IPortalProps, any> {
 		portalType: 'SlideIn'
 	};
 
-	portalElement: HTMLElement = null;
+	portalElement!: HTMLElement;
 	render() {
 		return (
 			<PortalContext.Consumer>

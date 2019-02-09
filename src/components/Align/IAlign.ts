@@ -16,7 +16,7 @@ export interface IAlignChildProps {
 	columns?: Array<number>;
 	vertical?: boolean;
 	horizontal?:boolean;
-	width?: number;
+	width?: string;
 	element?: JSX.Element;
 	margin?: string;
 }
