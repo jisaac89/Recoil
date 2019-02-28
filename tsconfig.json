@@ -17,6 +17,7 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
+    "strict" : true
     "lib": [
       "dom",
       "es6",
