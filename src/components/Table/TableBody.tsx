@@ -31,7 +31,7 @@ export interface TableBodyProps {
     selectedElements?: Array<any> | Object,
     id?: string | number
   ) => void;
-  isArray?: boolean;
+  isArray: boolean;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
   selectedKey?: string;
   filterRow?: (item: Object) => void;
@@ -43,7 +43,7 @@ export interface TableBodyProps {
   loadingKey?: string;
 }
 
-export default class TableBody extends React.Component<TableBodyProps, any> {
+export default class TableBody extends React.Component<TableBodyProps> {
   render() {
     const self = this;
     const props = self.props;

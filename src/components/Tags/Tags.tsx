@@ -41,25 +41,18 @@ export default class Tags extends React.Component<ITagsProps, any> {
   }
 
   render() {
-    let _array = [];
-
     let createList = (item, index) => {
-      _array.push(
+      return (
         <Toolbar flush key={index} className="mr10">
           <Button size="small">{this.props.branchIn ? branchIn(item, this.props.branchIn) : item}</Button>
           <Button size="small" icon="times" onClick={this.onRemove.bind(this, item)} />
         </Toolbar>
       );
     };
-
-    if (!!this.state.dataSource) {
-      this.state.dataSource.map(createList);
-    }
-
     return (
       <Open openToHeight={'32px'} if={this.state.open && !!this.state.dataSource}>
         <Toolbar block className="text-left">
-          {_array}
+          {this.state.dataSource.map(createList)}
         </Toolbar>
       </Open>
     );

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import  classNames from 'classnames';
+import classNames from 'classnames';
 
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import TableSearch from './TableSearch';
-import Layer from '../Layer/Layer';
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
@@ -21,7 +20,7 @@ export interface ITableProps {
   id?: string;
   portal?: boolean;
   // initial dataSource loaded as prop
-  dataSource?: Array<Object> | Array<number> | Array<string>;
+  dataSource: Array<Object> | Array<number> | Array<string>;
   // columns defined by user
   columns?: Array<IColumn>;
   // a detail template function that returns a view

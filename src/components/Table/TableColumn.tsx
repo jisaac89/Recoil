@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 
 export interface ITableDataProps {
   value?: Array<any>;
-  column?: IColumn;
+  column: IColumn;
   element?: any;
   hideColumns?: Array<string>;
   isArray?: boolean;

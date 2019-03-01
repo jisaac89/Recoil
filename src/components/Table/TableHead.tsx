@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 
 import { IColumn } from './IColumn';
+import { T } from '../DataSource/DataSource';
 
 class DetailTemplateHeadToggle extends React.Component<any, any> {
   detailTemplateToggleAll(dataSource: Array<any>) {
@@ -50,10 +51,10 @@ class CheckboxHead extends React.Component<any, any> {
 }
 
 export interface ITableHeadProps {
-  toggleSorting?: (dataSource: any, key: string, sortType: any) => void;
+  toggleSorting: (dataSource: any, key: string, sortType: any) => void;
   detailTemplateToggleAll?: (dataSource: any) => void;
   selectAll?: (dataSource: any) => void;
-  dataSource: Array<any> | Object;
+  dataSource: T[];
   columns?: Array<IColumn>;
   hideHeader?: boolean;
   hideColumns?: any;
@@ -69,7 +70,13 @@ export interface ITableHeadProps {
   sortType?: string;
 }
 
-export default class TableHead extends React.Component<ITableHeadProps, any> {
+export interface ITableHeadState {
+  sortType: string;
+  column: string;
+  columns: any[];
+}
+
+export default class TableHead extends React.Component<ITableHeadProps, ITableHeadState> {
   constructor(props: ITableHeadProps) {
     super(props);
     this.state = {
@@ -118,6 +125,8 @@ export default class TableHead extends React.Component<ITableHeadProps, any> {
       let hideColumnsArrayIncludesEitherNameOrTitle =
         hideColumns && hideColumns.includes(key.title ? key.title : key.name);
 
+      const sortTitle: string = key.title ? key.title : key.name;
+
       if (hideColumnsArrayIncludesEitherNameOrTitle) {
         return null;
       } else {
@@ -129,13 +138,15 @@ export default class TableHead extends React.Component<ITableHeadProps, any> {
               <Button
                 tabIndex={-1}
                 className="p0"
-                icon={
-                  sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : null
-                }
+                icon={sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : ''}
                 size="small"
                 simple
                 iconLocation="right"
-                onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}
+                onClick={
+                  (sortable && key.name) || (sortable && key.title)
+                    ? this.toggleSorting.bind(this, dataSource, sortTitle)
+                    : null
+                }
               >
                 {key.hideHeader ? null : key.title || key.name}
               </Button>
