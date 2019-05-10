@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import Open from '../Open/Open';
 import { IColumn } from './IColumn';
@@ -12,11 +12,11 @@ export interface ITableColumnDetailProps {
   selectedKey?: string;
 }
 
-export default class TableDetail extends React.Component<ITableColumnDetailProps, any> {
+export class TableDetail extends React.Component<ITableColumnDetailProps, any> {
   render() {
     const self = this;
     const props = self.props;
-    let {
+    const {
       element,
       columns,
       detailTemplate,
@@ -28,19 +28,18 @@ export default class TableDetail extends React.Component<ITableColumnDetailProps
 
     if (detailTemplate) {
       return (
-        <tr className="r-TableColumnDetail">
+        <tr className='r-TableColumnDetail'>
           <td colSpan={columns.length + (checkable ? 1 : 0) + (detailTemplate ? 1 : 0)}>
             <Open
               if={
                 detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ||
                 detailTemplateOpenAll
-              }
-            >
+              }>
               {self.props.detailTemplate(element)}
             </Open>
           </td>
         </tr>
       );
-    } else return null;
+    } else { return null; }
   }
 }

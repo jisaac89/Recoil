@@ -1,15 +1,14 @@
-import * as React from 'react';
-import Portal from '../Portal/Portal';
+import React from 'react';
+import { Portal } from '../Portal/Portal';
+import { DropdownContentType } from './DropdownContentType';
+import { DropdownHeader } from './DropdownHeader';
 
-import DropdownContentType from './DropdownContentType';
-import DropdownHeader from './DropdownHeader';
-
-export default class DropdownContent extends React.Component<any, any> {
+export class DropdownContent extends React.Component<any, any> {
   render() {
     const self = this;
     const props = self.props;
 
-    let {
+    const {
       id,
       open,
       title,
@@ -52,13 +51,13 @@ export default class DropdownContent extends React.Component<any, any> {
       hideRoot
     } = props;
 
-    let dropdownHeaderProps = {
+    const dropdownHeaderProps = {
       onClose,
       title,
       icon
     };
 
-    let dropdownContentTypeProps = {
+    const dropdownContentTypeProps = {
       id,
       children,
       open,
@@ -94,15 +93,14 @@ export default class DropdownContent extends React.Component<any, any> {
       hideRoot
     };
 
-    let dropdownPortal = (
+    const dropdownPortal = (
       <Portal
-        portalType="SlideIn"
+        portalType='SlideIn'
         title={props.title}
         icon={props.icon}
         open={open}
         onClose={onClose}
-        portalId={portalId}
-      >
+        portalId={portalId}>
         <DropdownContentType {...dropdownContentTypeProps} />
       </Portal>
     );
@@ -111,7 +109,7 @@ export default class DropdownContent extends React.Component<any, any> {
       return dropdownPortal;
     } else {
       return (
-        <div className="r-DropdownWrapper">
+        <div className='r-DropdownWrapper'>
           {hideDropdownHeader ? null : <DropdownHeader {...dropdownHeaderProps} />}
           <DropdownContentType {...dropdownContentTypeProps} />
         </div>

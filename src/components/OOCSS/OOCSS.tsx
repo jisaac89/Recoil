@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { allowedKeys, allowedValues } from './Allowed';
 import { stepThrough } from './StepThrough';
@@ -33,7 +33,7 @@ export const OOCSS = () => Component => {
     }
 
     componentDidMount() {
-      let { oocss } = this.props;
+      const { oocss } = this.props;
       oocss ? this.convertClassToStyle(oocss) : null;
     }
 
@@ -45,11 +45,11 @@ export const OOCSS = () => Component => {
 
     convertClassToStyle(classNames, currentClassIndex?: number) {
       // sperate the string as a unique array
-      let classesArray = classNames.split(' ');
-      let classIndex = currentClassIndex || 0;
-      let amountOfClasses = classesArray.length;
+      const classesArray = classNames.split(' ');
+      const classIndex = currentClassIndex || 0;
+      const amountOfClasses = classesArray.length;
 
-      let currentClass: string = classesArray[classIndex];
+      const currentClass: string = classesArray[classIndex];
 
       if (classIndex < amountOfClasses) {
         // every class

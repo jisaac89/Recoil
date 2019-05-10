@@ -1,18 +1,18 @@
-import * as React from 'react';
+import React from 'react';
 
 import Dropdown from '../Dropdown/Dropdown';
 
-export default class SelectMonth extends React.Component<any, any> {
+export class SelectMonth extends React.Component<any, any> {
   render(): JSX.Element {
-    let { month, selectMonth, monthNames } = this.props;
+    const { month, selectMonth, monthNames } = this.props;
 
     return (
       <Dropdown
-        className="w100"
+        className='w100'
         material
         title={monthNames[month]}
         selectedElements={[monthNames[month]]}
-        rowIsSelectable="single"
+        rowIsSelectable='single'
         onChange={selectMonth}
         dataSource={monthNames}
         pageSize={monthNames.length}

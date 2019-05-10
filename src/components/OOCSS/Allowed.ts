@@ -18,7 +18,7 @@ export const allowedKeys = [
     't',
     //overflow
     'o'
-]
+];
 
 export const allowedValues = [
     'rel',
@@ -28,10 +28,10 @@ export const allowedValues = [
 
     'h',
     'v'
-]
+];
 
 export const allowedMeasurements = [
     'px',
     'rem',
     'em'
-]
+];

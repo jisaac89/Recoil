@@ -1,10 +1,8 @@
-import * as React from 'react';
-
-import TableRow from './TableRow';
-import TableDetail from './TableDetail';
-import TableSelectable from './TableSelectable';
-
+import React from 'react';
 import { IColumn } from './IColumn';
+import { TableDetail } from './TableDetail';
+import { TableRow } from './TableRow';
+import { TableSelectable } from './TableSelectable';
 
 export interface TableBodyProps {
   id?: string;
@@ -43,12 +41,12 @@ export interface TableBodyProps {
   loadingKey?: string;
 }
 
-export default class TableBody extends React.Component<TableBodyProps> {
+export class TableBody extends React.Component<TableBodyProps> {
   render() {
     const self = this;
     const props = self.props;
 
-    let {
+    const {
       columns,
       detailTemplate,
       activeRows,
@@ -76,7 +74,7 @@ export default class TableBody extends React.Component<TableBodyProps> {
       loadingKey
     } = props;
 
-    let columnArray: Array<any> = [];
+    const columnArray: Array<any> = [];
     let key;
 
     let data;
@@ -89,7 +87,7 @@ export default class TableBody extends React.Component<TableBodyProps> {
 
     if (data instanceof Array) {
       data.map((element, index) => {
-        let columnProps = {
+        const columnProps = {
           element,
           columns,
           detailTemplate,
@@ -128,8 +126,8 @@ export default class TableBody extends React.Component<TableBodyProps> {
 
           key = element['_uniqueId'];
         }
-        let keySelectable = key + '_selectable';
-        let keyDetail = key + '_detail';
+        const keySelectable = key + '_selectable';
+        const keyDetail = key + '_detail';
         let filteredElement;
 
         filterRow ? (filteredElement = filterRow(element)) : (filteredElement = false);
@@ -139,7 +137,9 @@ export default class TableBody extends React.Component<TableBodyProps> {
             [<TableSelectable key={keySelectable} {...columnProps} />],
             [<TableDetail key={keyDetail} {...columnProps} />]
           ]);
-        } else return null;
+        } else {
+          return null;
+        }
       });
     }
 

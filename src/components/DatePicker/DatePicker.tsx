@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 
 import Dropdown, { IDropdownProps } from '../Dropdown/Dropdown';
 
@@ -18,10 +18,10 @@ export interface IDatePickerProps extends IDropdownProps {
   onClick?: () => void;
 }
 
-export default class DatePicker extends React.Component<IDatePickerProps, any> {
+export class DatePicker extends React.Component<IDatePickerProps, any> {
   constructor(props?: IDatePickerProps) {
     super(props);
-    var date = this.props.date || new Date(Date.now());
+    const date = this.props.date || new Date(Date.now());
     this.state = {
       date: date,
       open: props.open || false
@@ -48,7 +48,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
       date: date
     });
     this.props.onSelect ? this.props.onSelect(date) : null;
-  };
+  }
 
   toggleOpen() {
     if (this.props.onClick) {
@@ -73,12 +73,12 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
   }
 
   render() {
-    let { date } = this.state;
-    let { mobile, title, className, outline, size, block } = this.props;
+    const { date } = this.state;
+    const { mobile, title, className, outline, size, block } = this.props;
     return (
       <Dropdown
         className={className}
-        icon="calendar"
+        icon='calendar'
         material
         title={title ? title : getDateFormatted(this.state.date, this.props.selectTime)}
         mobile={mobile}
@@ -90,8 +90,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
         outline={outline}
         size={size}
         block={block}
-        onOpen={this.onOpen.bind(this)}
-      >
+        onOpen={this.onOpen.bind(this)}>
         <Calendar
           mobile={mobile}
           selectTime={this.props.selectTime}
@@ -106,7 +105,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
 }
 
 function getDateFormatted(date: Date, selectTime) {
-  let dd = date.getDate(),
+  const dd = date.getDate(),
     mm = date.getMonth() + 1,
     yyyy = date.getFullYear(),
     hours = date.getHours(),

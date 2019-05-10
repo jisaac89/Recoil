@@ -1,8 +1,8 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 export const ShortcutContext = React.createContext('');
 
-export default class ShortCutProvider extends React.Component<any, any> {
+export class ShortCutProvider extends React.Component<any, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,8 +39,6 @@ export default class ShortCutProvider extends React.Component<any, any> {
   }
 
   render() {
-    return (
-      <ShortcutContext.Provider value={this.props.shortCutInitKey}>{this.props.children}</ShortcutContext.Provider>
-    );
+    return <ShortcutContext.Provider value={this.props.shortCutInitKey}>{this.props.children}</ShortcutContext.Provider>;
   }
 }

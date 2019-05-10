@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
 
-import Open from '../Open/Open';
 import Button from '../Button/Button';
+import Open from '../Open/Open';
 import Toolbar from '../Toolbar/Toolbar';
 
 import { branchIn } from '../Utils';
@@ -12,7 +12,7 @@ export interface ITagsProps {
   onRemove?: any;
 }
 
-export default class Tags extends React.Component<ITagsProps, any> {
+export class Tags extends React.Component<ITagsProps, any> {
   constructor(props) {
     super(props);
     this.state = {
@@ -41,17 +41,17 @@ export default class Tags extends React.Component<ITagsProps, any> {
   }
 
   render() {
-    let createList = (item, index) => {
+    const createList = (item, index) => {
       return (
-        <Toolbar flush key={index} className="mr10">
-          <Button size="small">{this.props.branchIn ? branchIn(item, this.props.branchIn) : item}</Button>
-          <Button size="small" icon="times" onClick={this.onRemove.bind(this, item)} />
+        <Toolbar flush key={index} className='mr10'>
+          <Button size='small'>{this.props.branchIn ? branchIn(item, this.props.branchIn) : item}</Button>
+          <Button size='small' icon='times' onClick={this.onRemove.bind(this, item)} />
         </Toolbar>
       );
     };
     return (
       <Open openToHeight={'32px'} if={this.state.open && !!this.state.dataSource}>
-        <Toolbar block className="text-left">
+        <Toolbar block className='text-left'>
           {this.state.dataSource.map(createList)}
         </Toolbar>
       </Open>

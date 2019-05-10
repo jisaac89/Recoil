@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { arraysEqual, search, branchIn } from '../Utils';
+import React from 'react';
+import { Button } from '../Button/Button';
+import { Emerge } from '../Emerge/Emerge';
 import { ITableProps } from '../Table/Table';
-import Emerge from '../Emerge/Emerge';
-import Toolbar from '../Toolbar/Toolbar';
-import Button from '../Button/Button';
+import { Toolbar } from '../Toolbar/Toolbar';
+import { arraysEqual, branchIn, search } from '../Utils';
 import { IColumn } from './IColumn';
 
 export type T = Object | string | number;
@@ -69,7 +69,7 @@ const DataSource: any = (Component: JSX.Element) =>
     }
 
     componentDidUpdate(prevProps: IDataSourceProps, prevState) {
-      let { dataSource, sortKey, sortType, pageSize, rowCount, searchValue, searchableKeys, page } = this.props;
+      const { dataSource, sortKey, sortType, pageSize, rowCount, searchValue, searchableKeys, page } = this.props;
 
       if ((page !== null && page !== undefined && page !== prevState.page) || prevProps.pageSize !== pageSize) {
         this.setState(
@@ -108,8 +108,7 @@ const DataSource: any = (Component: JSX.Element) =>
       const self = this;
       const props = self.props;
 
-      let { dataSource } = props;
-
+      const { dataSource } = props;
       (dataSource && Object.keys(dataSource).length) || (dataSource && dataSource.length)
         ? self.loadDataSource(dataSource)
         : self.loadDataSource([]);
@@ -118,14 +117,14 @@ const DataSource: any = (Component: JSX.Element) =>
     loadDataSource<T>(dataSource: Array<T>) {
       const self = this;
 
-      let dataSourceIsObject = typeof dataSource === 'object';
-      let dataSourceIsArray = dataSource instanceof Array;
-      let dataSourceIsArrayOfStingsOrNumbers = typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number';
+      const dataSourceIsObject = typeof dataSource === 'object';
+      const dataSourceIsArray = dataSource instanceof Array;
+      const dataSourceIsArrayOfStingsOrNumbers = typeof dataSource[0] === 'string' || typeof dataSource[0] === 'number';
 
-      let { sortKey } = this.props;
-      let { sortType, page } = this.state;
+      const { sortKey } = this.props;
+      const { sortType, page } = this.state;
 
-      let setDataSourceState = (dataSource: Array<T> | Array<Array<T>>, isArray: boolean) => {
+      const setDataSourceState = (dataSource: Array<T> | Array<Array<T>>, isArray: boolean) => {
         self.setState(
           {
             dataSource: dataSource,
@@ -145,7 +144,7 @@ const DataSource: any = (Component: JSX.Element) =>
 
       if (dataSourceIsArray) {
         if (dataSourceIsArrayOfStingsOrNumbers) {
-          let newDataSource: Array<T> = [];
+          const newDataSource: Array<T> = [];
 
           dataSource.forEach(element => {
             newDataSource.push(element);
@@ -165,23 +164,26 @@ const DataSource: any = (Component: JSX.Element) =>
     sortDataSource(dataSource: Array<any>, sortType: string, sortKey: string) {
       const self = this;
 
-      let { searchedItems, searchTerm } = self.state;
+      const { searchedItems, searchTerm } = self.state;
 
       let sortOrderSearchedItems: Array<any>;
       let sortOrderDataSource: Array<any>;
 
-      let sort = (dataSource: Array<any>) => {
+      const sort = (dataSource: Array<any>) => {
         return dataSource.sort((a: any, b: any) => {
-          let aKey = branchIn(a, sortKey);
-          let bKey = branchIn(b, sortKey);
+          const aKey = branchIn(a, sortKey);
+          const bKey = branchIn(b, sortKey);
           switch (typeof aKey) {
             case 'string':
-              let itemPrev = aKey && aKey.toLowerCase();
-              let itemNext = bKey && bKey.toLowerCase();
-              if (itemPrev < itemNext)
+              const itemPrev = aKey && aKey.toLowerCase();
+              const itemNext = bKey && bKey.toLowerCase();
+              if (itemPrev < itemNext) {
                 //string asc
                 return -1;
-              if (itemPrev > itemNext) return 1;
+              }
+              if (itemPrev > itemNext) {
+                return 1;
+              }
               break;
             case 'number':
               return aKey - bKey;
@@ -225,10 +227,10 @@ const DataSource: any = (Component: JSX.Element) =>
     defineColumns(dataSource: Array<any>) {
       const self = this;
       const props = self.props;
-      let state = self.state;
+      const state = self.state;
 
-      let { columns } = props;
-      let { isArray } = state;
+      const { columns } = props;
+      const { isArray } = state;
 
       let columnsArray;
 
@@ -256,9 +258,9 @@ const DataSource: any = (Component: JSX.Element) =>
         },
         () => {
           if (props.addColumns) {
-            let updatedColumns = self.state.columns;
+            const updatedColumns = self.state.columns;
 
-            for (let col of props.addColumns) {
+            for (const col of props.addColumns) {
               updatedColumns.push(col);
             }
 
@@ -273,13 +275,13 @@ const DataSource: any = (Component: JSX.Element) =>
     renderActiveRows(dataSource: Array<any>) {
       const self = this;
       const props = self.props;
-      let { rowCount } = props;
+      const { rowCount } = props;
 
-      let activeRows: Array<any> = [];
+      const activeRows: Array<any> = [];
 
       let numberPerPage, numberOfPages, renderedPage;
 
-      let { page, pageSize } = self.state;
+      const { page, pageSize } = self.state;
 
       if (this.state.searchTerm !== '') {
         renderedPage = this.state.searchedItems;
@@ -300,9 +302,9 @@ const DataSource: any = (Component: JSX.Element) =>
         numberOfPages: numberOfPages
       });
 
-      let begin = page * parseInt(numberPerPage);
-      let end = begin + parseInt(numberPerPage);
-      let pageList = renderedPage.slice(begin, end);
+      const begin = page * parseInt(numberPerPage);
+      const end = begin + parseInt(numberPerPage);
+      const pageList = renderedPage.slice(begin, end);
 
       pageList.map((item: Array<any>) => {
         activeRows.push(item);
@@ -316,7 +318,7 @@ const DataSource: any = (Component: JSX.Element) =>
     }
 
     detailTemplateToggleAll(dataSource: Array<any>) {
-      let { detailTemplateSelectedElements } = this.state;
+      const { detailTemplateSelectedElements } = this.state;
 
       this.setState({
         detailTemplateSelectedElements: arraysEqual(dataSource, detailTemplateSelectedElements) ? [] : dataSource
@@ -325,12 +327,12 @@ const DataSource: any = (Component: JSX.Element) =>
 
     detailTemplateToggleSelectedElements(element: Array<any>) {
       const self = this;
-      let { detailTemplateOpenOnRowSelect, selectedKey } = this.props;
-      let { detailTemplateSelectedElements } = self.state;
+      const { detailTemplateOpenOnRowSelect, selectedKey } = this.props;
+      const { detailTemplateSelectedElements } = self.state;
 
       let selectedElementsArray: any;
 
-      let setSelectedElementsState = (data: Array<any>) => {
+      const setSelectedElementsState = (data: Array<any>) => {
         self.setState({
           detailTemplateSelectedElements: data
         });
@@ -363,7 +365,7 @@ const DataSource: any = (Component: JSX.Element) =>
     }
 
     selectAll(dataSource: Array<any>) {
-      let { selectedElements } = this.state;
+      const { selectedElements } = this.state;
 
       this.setState({
         selectedElements: arraysEqual(dataSource, selectedElements ? selectedElements : []) ? [] : dataSource
@@ -372,9 +374,9 @@ const DataSource: any = (Component: JSX.Element) =>
 
     toggleSelectedElements(element: Array<any>, index: string | number) {
       const self = this;
-      let { selectedElements } = self.state;
-      let { rowIsSelectable, onCheck, selectedKey } = self.props;
-      let selectedElement = selectedKey ? element[selectedKey] : element;
+      const { selectedElements } = self.state;
+      const { rowIsSelectable, onCheck, selectedKey } = self.props;
+      const selectedElement = selectedKey ? element[selectedKey] : element;
       let selectedElementsArray: any;
 
       if (rowIsSelectable === 'single') {
@@ -495,7 +497,7 @@ const DataSource: any = (Component: JSX.Element) =>
     sortCollection(dataSource: Array<any>, key: string, sortType: string) {
       const self = this;
 
-      let sortKey = this.props.sortKey ? this.props.sortKey : key;
+      const sortKey = this.props.sortKey ? this.props.sortKey : key;
 
       self.setState(
         {
@@ -515,7 +517,7 @@ const DataSource: any = (Component: JSX.Element) =>
 
     filterItems(term: string, keys: Array<any>) {
       const self = this;
-      let state = self.state;
+      const state = self.state;
 
       self.setState(
         {
@@ -532,10 +534,10 @@ const DataSource: any = (Component: JSX.Element) =>
     render() {
       const self = this;
       const props = self.props;
-      let { columns, dataSource, activeRows } = self.state;
+      const { columns, dataSource, activeRows } = self.state;
       //let {emptyText} = props;
 
-      let renderedObject = {
+      const renderedObject = {
         // methods
         gotoPage: this.gotoPage.bind(this, dataSource),
         previousPage: this.previousPage.bind(this),
@@ -556,9 +558,9 @@ const DataSource: any = (Component: JSX.Element) =>
 
       if (props.loading) {
         return (
-          <Emerge className="e-fill">
+          <Emerge className='e-fill'>
             <Toolbar block textCenter>
-              <Button loading={true} block size="large" simple>
+              <Button loading={true} block size='large' simple>
                 {props.loadingText}
               </Button>
             </Toolbar>
@@ -572,9 +574,9 @@ const DataSource: any = (Component: JSX.Element) =>
         return dataSource.length ? updatedComponent : Component;
       } else {
         return props.emptyText ? (
-          <Emerge enter="fadeIn" className="e-fill">
+          <Emerge enter='fadeIn' className='e-fill'>
             <Toolbar block textCenter>
-              <Button block size="small" simple>
+              <Button block size='small' simple>
                 {props.emptyText}
               </Button>
             </Toolbar>
@@ -584,4 +586,4 @@ const DataSource: any = (Component: JSX.Element) =>
     }
   };
 
-export default DataSource;
+export { DataSource };

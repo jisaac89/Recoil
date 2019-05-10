@@ -1,11 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 
-import Input from '../Input/Input';
 import Button from '../Button/Button';
+import Input from '../Input/Input';
 import Toolbar from '../Toolbar/Toolbar';
 
-export default class TableSearch extends React.Component<any, any> {
-  _throttleTimeout: any;
+export class TableSearch extends React.Component<any, any> {
 
   public static defaultProps = {
     active: true,
@@ -17,6 +16,7 @@ export default class TableSearch extends React.Component<any, any> {
     iconLocation: 'left',
     onChange() {}
   };
+  _throttleTimeout: any;
 
   componentDidMount() {
     if (this.props.value) {
@@ -48,21 +48,21 @@ export default class TableSearch extends React.Component<any, any> {
 
     const { focusOnMount } = this.props;
 
-    let searchPartial = () => {
+    const searchPartial = () => {
       return (
-        <Toolbar tabIndex={-1} theme="light" flex flush block noRadius className="p5 table-search">
+        <Toolbar tabIndex={-1} theme='light' flex flush block noRadius className='p5 table-search'>
           <Input
             placeholder={props.searchTitle}
             onChange={this.updateSearch.bind(this)}
             block
-            type="text"
-            size="small"
+            type='text'
+            size='small'
             flex
             value={this.props.value}
             focusOnMount={focusOnMount}
             tabIndex={-1}
           />
-          <Button tabIndex={-1} size="small" icon="times" onClick={this.updateSearch.bind(this, '')} />
+          <Button tabIndex={-1} size='small' icon='times' onClick={this.updateSearch.bind(this, '')} />
         </Toolbar>
       );
     };

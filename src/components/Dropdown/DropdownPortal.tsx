@@ -1,9 +1,9 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import DropdownContent from './DropdownContent';
 
-export default class DropdownPortal extends React.Component<any, any> {
+export class DropdownPortal extends React.Component<any, any> {
   portalElement: HTMLElement = null;
 
   constructor(props: any) {
@@ -18,8 +18,8 @@ export default class DropdownPortal extends React.Component<any, any> {
   }
 
   getDropdownPosition() {
-    let element: HTMLElement = ReactDOM.findDOMNode(this.props.element);
-    let position = element.getBoundingClientRect();
+    const element: HTMLElement = ReactDOM.findDOMNode(this.props.element);
+    const position = element.getBoundingClientRect();
     this.setState(
       {
         position: [position.top, position.left]
@@ -30,12 +30,12 @@ export default class DropdownPortal extends React.Component<any, any> {
     );
   }
   createDropdownPortal() {
-    let position = this.state.position;
+    const position = this.state.position;
 
-    let y = position[0];
-    let x = position[1];
+    const y = position[0];
+    const x = position[1];
 
-    let absolutePosition = {
+    const absolutePosition = {
       position: 'absolute',
       top: y,
       left: x
@@ -43,7 +43,7 @@ export default class DropdownPortal extends React.Component<any, any> {
 
     let p = this.props.portalId && document.getElementById(this.props.portalId);
     if (!p) {
-      let docfrag = document.createDocumentFragment();
+      const docfrag = document.createDocumentFragment();
       p = document.createElement('div');
       p.id = this.props.portalId;
       p.style.position = 'absolute';
@@ -63,7 +63,7 @@ export default class DropdownPortal extends React.Component<any, any> {
     const self = this;
     const props = self.props;
 
-    let {
+    const {
       id,
       open,
       title,
@@ -93,7 +93,7 @@ export default class DropdownPortal extends React.Component<any, any> {
       contentMaxHeight
     } = props;
 
-    let dropdownContentProps = {
+    const dropdownContentProps = {
       id,
       open,
       title,

@@ -1,5 +1,5 @@
-import * as React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 
 export interface IAlignProps {
   vertical?: boolean;
@@ -26,9 +26,9 @@ export interface IAlignState {
 }
 
 const AlignChild = (props: IAlignChildProps) => {
-  let { columns, vertical, width, element, margin } = props;
+  const { columns, vertical, width, element, margin } = props;
 
-  let alignChildStyle = {
+  const alignChildStyle = {
     flex: columns || vertical ? 'none' : '1 !important',
     padding: margin,
     width: !vertical ? width + '%' : '',
@@ -36,13 +36,13 @@ const AlignChild = (props: IAlignChildProps) => {
   };
 
   return (
-    <div className="r-Align__Child" style={alignChildStyle}>
+    <div className='r-Align__Child' style={alignChildStyle}>
       {element}
     </div>
   );
 };
 
-export default class Align extends React.Component<IAlignProps, IAlignState> {
+export class Align extends React.Component<IAlignProps, IAlignState> {
   static defaultProps: { columns: number[] } = {
     columns: []
   };
@@ -73,7 +73,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
     );
   }
   alignColumns(columns: Array<number>) {
-    let widthArray: Array<number> = [];
+    const widthArray: Array<number> = [];
     let maxColumnsLength = 0;
     if (columns) {
       columns.map(singleColumnLength => {
@@ -83,7 +83,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
     }
   }
   alignChildren = (element: JSX.Element, key: string) => {
-    let { columns, margin, vertical } = this.props;
+    const { columns, margin, vertical } = this.props;
     return (
       <AlignChild
         key={key}
@@ -98,9 +98,9 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
   render() {
     const self = this;
     const props = self.props;
-    let { vertical, children, className, fill, alignItems } = props;
+    const { vertical, children, className, fill, alignItems } = props;
 
-    let alignClass = classNames(
+    const alignClass = classNames(
       'r-Align',
       { 'e-vertical': vertical },
       { 'e-horizontal': !vertical },

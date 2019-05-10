@@ -1,18 +1,18 @@
-import * as React from 'react';
+import React from 'react';
 
 import Button from '../Button/Button';
 
-export default class Months extends React.Component<any, any> {
+export class Months extends React.Component<any, any> {
   render() {
-    let { year, month, currentMonth, title, selectedDay, mobile } = this.props;
+    const { year, month, currentMonth, title, selectedDay, mobile } = this.props;
 
     if (currentMonth) {
       return (
-        <table className="w100 h100">
-          <tbody className="r-Calendar__body h100">
+        <table className='w100 h100'>
+          <tbody className='r-Calendar__body h100'>
             {mobile ? (
               <tr>
-                <td colSpan={7} className="month-header">
+                <td colSpan={7} className='month-header'>
                   {title}
                 </td>
               </tr>
@@ -22,29 +22,28 @@ export default class Months extends React.Component<any, any> {
                 return (
                   <tr key={index}>
                     {index === 0 && week.length < 7 ? (
-                      <td className="empty-date p0" colSpan={7 - week.length} />
+                      <td className='empty-date p0' colSpan={7 - week.length} />
                     ) : (
                       undefined
                     )}
                     {week.map((day: any, index: any) => {
-                      let selected = selectedDay.toDateString() == day.toDateString();
+                      const selected = selectedDay.toDateString() == day.toDateString();
                       return (
-                        <td className="p0" key={year + ' ' + month + ' ' + index}>
+                        <td className='p0' key={year + ' ' + month + ' ' + index}>
                           <Button
                             simple
                             advanced
                             checked={selected}
                             onClick={this.props.selectDay.bind(this, day)}
                             theme={selected ? 'primary' : undefined}
-                            className="e-fill"
-                          >
+                            className='e-fill'>
                             {day.getDate()}
                           </Button>
                         </td>
                       );
                     })}
                     {index > 0 && week.length < 7 ? (
-                      <td className="empty-date p0" colSpan={7 - week.length} />
+                      <td className='empty-date p0' colSpan={7 - week.length} />
                     ) : (
                       undefined
                     )}
@@ -55,6 +54,6 @@ export default class Months extends React.Component<any, any> {
           </tbody>
         </table>
       );
-    } else return null;
+    } else { return null; }
   }
 }

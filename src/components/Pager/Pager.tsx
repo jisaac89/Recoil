@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 
-import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
+import Toolbar from '../Toolbar/Toolbar';
 
 export interface IPagerProps {
   gotoPage?: (pageNumber: number, event?: React.MouseEvent<HTMLElement>) => void;
@@ -28,7 +28,7 @@ export interface IPagerProps {
   pageSizeDropDirection?: string;
 }
 
-export default class Pager extends React.Component<IPagerProps, {}> {
+export class Pager extends React.Component<IPagerProps, {}> {
   gotoPage(pageNumber: number) {
     this.props.gotoPage(pageNumber);
     this.props.onPageChange ? this.props.onPageChange(pageNumber) : null;
@@ -41,35 +41,34 @@ export default class Pager extends React.Component<IPagerProps, {}> {
   renderPager(page: number, pageCount: number, pagerSize: number) {
     const self = this;
 
-    let { currentPage } = this.props;
+    const { currentPage } = this.props;
 
-    var lastPager = page + Math.floor(pagerSize / 2);
-    var firstPager = page - Math.ceil(pagerSize / 2) + 1;
+    let lastPager = page + Math.floor(pagerSize / 2);
+    let firstPager = page - Math.ceil(pagerSize / 2) + 1;
     if (firstPager < 0) {
       lastPager -= firstPager;
       firstPager = 0;
     }
     if (lastPager >= pageCount) {
-      var difference = lastPager - (pageCount - 1);
+      const difference = lastPager - (pageCount - 1);
       lastPager -= difference;
       firstPager -= difference;
       if (firstPager < 0) {
         firstPager = 0;
       }
     }
-    var pagers = [];
-    for (var index = firstPager; index <= lastPager; index++) {
+    const pagers = [];
+    for (let index = firstPager; index <= lastPager; index++) {
       pagers.push(
         <Button
           simple
           block
-          size="small"
+          size='small'
           tabIndex={-1}
           advanced
           checked={currentPage === index ? true : false}
           onClick={this.gotoPage.bind(self, index)}
-          key={index}
-        >
+          key={index}>
           {index + 1}
         </Button>
       );
@@ -80,9 +79,9 @@ export default class Pager extends React.Component<IPagerProps, {}> {
   render() {
     const self = this;
 
-    let props = self.props;
+    const props = self.props;
 
-    let {
+    const {
       currentPage,
       firstPage,
       previousPage,
@@ -104,44 +103,44 @@ export default class Pager extends React.Component<IPagerProps, {}> {
     }
 
     return (
-      <div className="r-Pager">
+      <div className='r-Pager'>
         <Toolbar flex textCenter flush block noRadius className={props.className}>
           <Button
             simple
             block
-            size="small"
+            size='small'
             disabled={currentPage === 0}
             tabIndex={-1}
             onClick={this.gotoPage.bind(this, 9)}
-            icon="fast-backward"
+            icon='fast-backward'
           />
           <Button
             simple
             block
-            size="small"
+            size='small'
             disabled={currentPage === 0}
             tabIndex={-1}
             onClick={this.gotoPage.bind(this, this.props.currentPage - 1)}
-            icon="step-backward"
+            icon='step-backward'
           />
           {this.renderPager(currentPage, numberOfPages, pagerSize ? pagerSize : 5)}
           <Button
             simple
             block
-            size="small"
+            size='small'
             disabled={currentPage === numberOfPages - 1}
             tabIndex={-1}
             onClick={this.gotoPage.bind(this, this.props.currentPage + 1)}
-            icon="step-forward"
+            icon='step-forward'
           />
           <Button
             simple
             block
-            size="small"
+            size='small'
             disabled={currentPage === numberOfPages - 1}
             tabIndex={-1}
             onClick={this.gotoPage.bind(this, numberOfPages - 1)}
-            icon="fast-forward"
+            icon='fast-forward'
           />
           {hidePageSize ? null : (
             <Dropdown
@@ -149,10 +148,10 @@ export default class Pager extends React.Component<IPagerProps, {}> {
               block
               hideHeader
               hideDropdownHeader
-              rowIsSelectable="single"
+              rowIsSelectable='single'
               onChange={this.onSelected.bind(this)}
               material
-              size="small"
+              size='small'
               dropDirection={pageSizeDropDirection ? pageSizeDropDirection : 'down'}
               title={'Page Size ' + pageSize}
               pageSizerOptions={pageSizerOptions}
@@ -162,7 +161,7 @@ export default class Pager extends React.Component<IPagerProps, {}> {
         </Toolbar>
         {hidePageSize ? null : (
           <Toolbar flush noRadius className={props.className}>
-            <Button simple size="small">
+            <Button simple size='small'>
               {(currentPage + 1) * pageSize -
                 pageSize +
                 1 +

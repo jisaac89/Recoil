@@ -1,19 +1,16 @@
-import * as React from 'react';
 import classNames from 'classnames';
-
-import TableHead from './TableHead';
-import TableBody from './TableBody';
-import TableFooter from './TableFooter';
-import TableSearch from './TableSearch';
-import Toolbar from '../Toolbar/Toolbar';
-import Button from '../Button/Button';
-import Emerge from '../Emerge/Emerge';
-import Loading from '../Loading/Loading';
-
-import DataSource from '../DataSource/DataSource';
-
+import React from 'react';
+import { Button } from '../Button/Button';
+import { DataSource } from '../DataSource/DataSource';
+import { Emerge } from '../Emerge/Emerge';
+import { AdvancedLayer } from '../Layer/AdvancedLayer';
+import { Loading } from '../Loading/Loading';
+import { Toolbar } from '../Toolbar/Toolbar';
 import { IColumn } from './IColumn';
-import AdvancedLayer from '../Layer/AdvancedLayer';
+import { TableBody } from './TableBody';
+import { TableFooter } from './TableFooter';
+import { TableHead } from './TableHead';
+import { TableSearch } from './TableSearch';
 export { IColumn };
 
 export interface ITableProps {
@@ -100,7 +97,7 @@ export interface ITableProps {
 
 interface ITableState {}
 
-class Table extends React.Component<ITableProps, ITableState> {
+class TableData extends React.Component<ITableProps, ITableState> {
   public static defaultProps = {
     showDataSourceLength: true,
     title: 'items',
@@ -113,7 +110,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     const self = this;
     const props = self.props;
 
-    let {
+    const {
       disableSelectedElements,
       searchValue,
       selectedKey,
@@ -182,7 +179,7 @@ class Table extends React.Component<ITableProps, ITableState> {
 
     // assign the props
 
-    let tableProps = {
+    const tableProps = {
       dataSource: dataSource,
       activeRows: activeRows,
       columns: columns,
@@ -207,7 +204,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       loadingKey
     };
 
-    let headProps = {
+    const headProps = {
       detailTemplateToggleAll: detailTemplateToggleAll,
       selectAll: selectAll,
       sortable: sortable,
@@ -218,14 +215,14 @@ class Table extends React.Component<ITableProps, ITableState> {
       hideCheckAll: hideCheckAll
     };
 
-    let bodyProps = {
+    const bodyProps = {
       rowIsSelectable: rowIsSelectable,
       toggleSelectedElements: toggleSelectedElements,
       detailTemplateToggleSelectedElements: detailTemplateToggleSelectedElements,
       onRowSelect: onRowSelect
     };
 
-    let footerProps = {
+    const footerProps = {
       currentPage: page,
       numberOfPages: numberOfPages,
       numberPerPage: numberPerPage,
@@ -247,7 +244,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       flex
     };
 
-    let tableSearchProps = {
+    const tableSearchProps = {
       filterItems: filterItems,
       searchableKeys: this.props.searchableKeys,
       focusOnMount,
@@ -256,7 +253,7 @@ class Table extends React.Component<ITableProps, ITableState> {
       onSearchChange: onSearchChange
     };
 
-    let tableClass = classNames(
+    const tableClass = classNames(
       'r-Table',
       { 'e-flex': !!props.flex },
       { 'e-fill': props.fill },
@@ -268,7 +265,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     if (loading) {
       return <Loading />;
     } else if (!!dataSource && dataSource.length && !!columns && columns.length) {
-      let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
+      const nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
       return (
         <div id={props.id ? (portal ? props.id + '-portal' : props.id) : null} className={tableClass}>
           {headerTemplate ? headerTemplate : null}
@@ -277,20 +274,19 @@ class Table extends React.Component<ITableProps, ITableState> {
           <AdvancedLayer
             tabIndex={-1}
             scrollY={true}
-            theme="light"
+            theme='light'
             scrollToId={scrollToId}
             scrollIf={scrollIf}
             fill
-            style={contentMaxHeight ? { height: contentMaxHeight } : null}
-          >
+            style={contentMaxHeight ? { height: contentMaxHeight } : null}>
             {nothingMatchesSearchCriteria ? (
-              <Emerge className="e-fill">
-                <Toolbar block textCenter className="p10 ptb20">
+              <Emerge className='e-fill'>
+                <Toolbar block textCenter className='p10 ptb20'>
                   <small>Nothing matches search criteria...</small>
                 </Toolbar>
               </Emerge>
             ) : (
-              <table tab-index={-1} className="w100">
+              <table tab-index={-1} className='w100'>
                 <TableHead {...tableProps} {...headProps} />
                 <TableBody {...tableProps} {...bodyProps} />
               </table>
@@ -301,9 +297,9 @@ class Table extends React.Component<ITableProps, ITableState> {
       );
     } else {
       return (
-        <Emerge className="e-fill">
-          <Toolbar block textCenter className="ptb20">
-            <Button block size="large" simple>
+        <Emerge className='e-fill'>
+          <Toolbar block textCenter className='ptb20'>
+            <Button block size='large' simple>
               No items found
             </Button>
           </Toolbar>
@@ -313,4 +309,4 @@ class Table extends React.Component<ITableProps, ITableState> {
   }
 }
 
-export default DataSource(<Table />);
+export const Table = DataSource(<TableData />);

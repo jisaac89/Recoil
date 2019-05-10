@@ -1,7 +1,6 @@
-import * as React from 'react';
 import classNames from 'classnames';
-
-import Pager from '../Pager/Pager';
+import React from 'react';
+import { Pager } from '../Pager/Pager';
 
 export interface IWizardProps {
   slideIndex: number;
@@ -23,7 +22,7 @@ const WizardSlide: any = (props: any) => {
   return <div className={props.className}>{props.visible ? props.children : null}</div>;
 };
 
-export default class Wizard extends React.Component<IWizardProps, any> {
+export class Wizard extends React.Component<IWizardProps, any> {
   public static defaultProps = {
     slideIndex: 0
   };
@@ -36,17 +35,17 @@ export default class Wizard extends React.Component<IWizardProps, any> {
     const self = this;
     const props = self.props;
 
-    let wizardClass = classNames(
+    const wizardClass = classNames(
       'r-Wizard',
       { 'e-fill': props.fill },
       { 'e-flex': props.flex || props.paginate },
       { 'e-overflow': props.overflow }
     );
 
-    let createSlidesPartial = (item: Array<any>, index: string | number) => {
-      let selected = props.slideIndex === index;
+    const createSlidesPartial = (item: Array<any>, index: string | number) => {
+      const selected = props.slideIndex === index;
 
-      let wizardSlideClass = classNames(
+      const wizardSlideClass = classNames(
         'r-WizardSlide',
         { 'e-selected': props.slideIndex === index },
         { 'e-backward': props.slideIndex > index },
@@ -68,8 +67,8 @@ export default class Wizard extends React.Component<IWizardProps, any> {
 
     if (props.children.length > 1) {
       return (
-        <div ref="r-Wizard" className={wizardClass} style={props.style}>
-          <div ref="r-Wizard__track" className="r-Wizard__track">
+        <div ref='r-Wizard' className={wizardClass} style={props.style}>
+          <div ref='r-Wizard__track' className='r-Wizard__track'>
             {props.children.map(createSlidesPartial)}
           </div>
           {props.paginate ? (

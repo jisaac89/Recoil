@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 
 import Dropdown from '../Dropdown/Dropdown';
 
-export default class SelectYear extends React.Component<any, any> {
+export class SelectYear extends React.Component<any, any> {
   render() {
-    let { year, selectYear } = this.props;
+    const { year, selectYear } = this.props;
 
     return (
       <Dropdown
@@ -12,7 +12,7 @@ export default class SelectYear extends React.Component<any, any> {
         title={year.toString()}
         selectedElements={[year]}
         dataSource={availableYears(year)}
-        rowIsSelectable="single"
+        rowIsSelectable='single'
         onChange={selectYear}
         pageSize={availableYears(year).length}
         hideHeader
@@ -23,13 +23,13 @@ export default class SelectYear extends React.Component<any, any> {
 }
 
 function availableYears(year: number) {
-  let availableYearsArray: Array<any> = [];
-  let startYear = year - 2;
-  let endYear = year + 100;
+  const availableYearsArray: Array<any> = [];
+  const startYear = year - 2;
+  const endYear = year + 100;
 
   function recursion(start: number, end: number): any {
-    let currentYear = start;
-    let endYear = end;
+    const currentYear = start;
+    const endYear = end;
     if (currentYear < endYear) {
       availableYearsArray.push(currentYear);
       recursion(currentYear + 1, endYear);

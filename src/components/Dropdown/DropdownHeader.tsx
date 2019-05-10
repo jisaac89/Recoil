@@ -1,13 +1,13 @@
-import * as React from 'react';
-import Button from '../Button/Button';
-import Toolbar from '../Toolbar/Toolbar';
+import React from 'react';
+import { Button } from '../Button/Button';
+import { Toolbar } from '../Toolbar/Toolbar';
 
-export default class DropdownHeader extends React.Component<any, any> {
+export class DropdownHeader extends React.Component<any, any> {
   titleTemplate() {
     const self = this;
     const props = self.props;
 
-    let { onClose, title, icon } = props;
+    const { onClose, title, icon } = props;
 
     return (
       <Button tabIndex={-1} icon={icon} left simple onClick={onClose}>
@@ -16,13 +16,13 @@ export default class DropdownHeader extends React.Component<any, any> {
     );
   }
   menuTemplate() {
-    let props = this.props;
-    let { onClose } = props;
-    return <Button shortcut={'x'} tabIndex={-1} simple right icon="times" onClick={onClose} />;
+    const props = this.props;
+    const { onClose } = props;
+    return <Button shortcut={'x'} tabIndex={-1} simple right icon='times' onClick={onClose} />;
   }
   render() {
     return (
-      <Toolbar block className="r-Dropdown__header">
+      <Toolbar block className='r-Dropdown__header'>
         {this.titleTemplate()}
         {this.menuTemplate()}
       </Toolbar>

@@ -1,14 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 
-import Months from './Months';
-import Layer from '../Layer/Layer';
 import AdvancedLayer from '../Layer/AdvancedLayer';
+import Layer from '../Layer/Layer';
+import Months from './Months';
 
-export default class MobileTemplate extends React.Component<any, any> {
+export class MobileTemplate extends React.Component<any, any> {
   render() {
-    let { monthNames, date, selectDay, selectedDay, year, getWeeks, month, setHeight } = this.props;
+    const { monthNames, date, selectDay, selectedDay, year, getWeeks, month, setHeight } = this.props;
 
-    let Jan = getWeeks(year, 0),
+    const Jan = getWeeks(year, 0),
       Feb = getWeeks(year, 1),
       Mar = getWeeks(year, 2),
       Apr = getWeeks(year, 3),
@@ -24,13 +24,12 @@ export default class MobileTemplate extends React.Component<any, any> {
     return (
       <AdvancedLayer
         style={setHeight}
-        className="r-Calendar-Scroll"
+        className='r-Calendar-Scroll'
         flex
         scrollY={true}
         scrollIf={month.toString().length}
-        scrollToId={month.toString()}
-      >
-        <div id="0">
+        scrollToId={month.toString()}>
+        <div id='0'>
           <Months
             title={monthNames[0]}
             year={year}

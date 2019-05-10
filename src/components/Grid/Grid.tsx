@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import Layer from '../Layer/Layer';
 import Selectable from '../Selectable/Selectable';
@@ -70,24 +70,24 @@ class Grid extends React.Component<IGridProps, IGridState> {
     currentArray?: Array<any>,
     arrayIndex?: any
   ) {
-    let { activeRows, rows } = this.props;
+    const { activeRows, rows } = this.props;
 
-    let array = currentArray || [];
-    let arrayRowIndex = arrayIndex || 0;
+    const array = currentArray || [];
+    const arrayRowIndex = arrayIndex || 0;
 
-    let currentElementIndex = index || 0;
-    let currentRowIndex = indexRow || 0;
-    let currentColumnIndex = indexColumn || 0;
+    const currentElementIndex = index || 0;
+    const currentRowIndex = indexRow || 0;
+    const currentColumnIndex = indexColumn || 0;
 
-    let elements = activeRows;
-    let totalElementCount = elements.length;
-    let currentElement = elements[currentElementIndex];
+    const elements = activeRows;
+    const totalElementCount = elements.length;
+    const currentElement = elements[currentElementIndex];
 
-    let totalRowsCount = rows.length;
-    let currentRow = rows[currentRowIndex];
+    const totalRowsCount = rows.length;
+    const currentRow = rows[currentRowIndex];
 
-    let columns = currentRow.columns;
-    let totalColumnsCount = currentRow.columns.length;
+    const columns = currentRow.columns;
+    const totalColumnsCount = currentRow.columns.length;
 
     if (currentElementIndex < totalElementCount) {
       if (currentColumnIndex === 0 && currentColumnIndex < totalColumnsCount) {
@@ -144,8 +144,8 @@ class Grid extends React.Component<IGridProps, IGridState> {
   }
 
   render() {
-    let { selectedKey } = this.props;
-    let { selectedElements } = this.state;
+    const { selectedKey } = this.props;
+    const { selectedElements } = this.state;
 
     if (!this.state.update) {
       return (
@@ -156,17 +156,15 @@ class Grid extends React.Component<IGridProps, IGridState> {
                 margin={this.props.margin}
                 style={{ height: element.height, marginBottom: this.props.margin }}
                 columns={element.columns}
-                key={index}
-              >
+                key={index}>
                 {element.data.map((item, i) => {
-                  let checked = selectedElements.includes(selectedKey ? item[selectedKey] : item);
+                  const checked = selectedElements.includes(selectedKey ? item[selectedKey] : item);
                   return (
                     <Layer
                       className={this.props.onChange ? 'cursor-pointer' : null}
                       onClick={this.toggleSelectedElements.bind(this, item, i)}
                       fill
-                      key={i}
-                    >
+                      key={i}>
                       {this.state.rows[element.rowIndex].template(item)}
                       <Selectable checked={checked} />
                     </Layer>
@@ -177,8 +175,8 @@ class Grid extends React.Component<IGridProps, IGridState> {
           })}
         </Layer>
       );
-    } else return null;
+    } else { return null; }
   }
 }
 
-export default DataSource(<Grid />);
+export  DataSource(<Grid />);

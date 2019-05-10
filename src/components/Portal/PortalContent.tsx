@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import Layer from '../Layer/Layer';
 import SlideIn from '../SlideIn/SlideIn';
 
@@ -15,7 +15,7 @@ export interface IPortalProps {
   portalTemplate?: JSX.Element;
 }
 
-export default class PortalContent extends React.Component<IPortalProps, any> {
+export class PortalContent extends React.Component<IPortalProps, any> {
   public static defaultProps = {
     portalType: 'SlideIn'
   };
@@ -53,11 +53,10 @@ export default class PortalContent extends React.Component<IPortalProps, any> {
             onClose={this.props.onClose}
             title={this.props.title}
             icon={this.props.icon}
-            className="r-Portal z5"
+            className='r-Portal z5'
             fixed
-            from="bottom"
-            if={this.props.open}
-          >
+            from='bottom'
+            if={this.props.open}>
             <Layer flex fill>
               {this.props.children}
             </Layer>
@@ -65,6 +64,6 @@ export default class PortalContent extends React.Component<IPortalProps, any> {
         ),
         this.portalElement
       );
-    } else return null;
+    } else { return null; }
   }
 }

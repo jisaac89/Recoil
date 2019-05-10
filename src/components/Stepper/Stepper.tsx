@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import Align from '../Align/Align';
 import Shrink from '../Shrink/Shrink';
@@ -19,11 +19,11 @@ class Stepper extends React.Component<IStepperProps, any> {
     const self = this;
     const props = self.props;
 
-    let { className } = props;
+    const { className } = props;
 
-    let itemArray: Array<any> = [];
+    const itemArray: Array<any> = [];
 
-    let createList = (item: Array<any>, index: string | number) => {
+    const createList = (item: Array<any>, index: string | number) => {
       if (item !== null) {
         if (index === props.children.length - 1) {
           itemArray.push(
@@ -41,7 +41,7 @@ class Stepper extends React.Component<IStepperProps, any> {
             </Shrink>
           );
         }
-      } else return null;
+      } else { return null; }
     };
 
     props.children.map(createList);
@@ -57,4 +57,4 @@ class Stepper extends React.Component<IStepperProps, any> {
   }
 }
 
-export default Stepper;
+export  Stepper;

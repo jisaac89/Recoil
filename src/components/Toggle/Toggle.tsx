@@ -1,7 +1,7 @@
-import * as React from 'react';
 import classNames from 'classnames';
-import Wizard from '../Wizard/Wizard';
+import React from 'react';
 import Shrink from '../Shrink/Shrink';
+import Wizard from '../Wizard/Wizard';
 
 import { IRecoil } from '../../index';
 
@@ -24,7 +24,7 @@ export interface IToggleProps extends IRecoil {
 //   slideIndex: number;
 // }
 
-export default class Toggle extends React.Component<IToggleProps, any> {
+export class Toggle extends React.Component<IToggleProps, any> {
   public static defaultProps = {
     checked: null
   };
@@ -45,7 +45,7 @@ export default class Toggle extends React.Component<IToggleProps, any> {
         return {
           checked: props.checked
         };
-      } else return null;
+      } else { return null; }
     }
   }
 
@@ -60,7 +60,7 @@ export default class Toggle extends React.Component<IToggleProps, any> {
         }
       }
     );
-  };
+  }
 
   changeSelected(item: Array<any>) {
     this.setState({ selected: item });
@@ -69,13 +69,13 @@ export default class Toggle extends React.Component<IToggleProps, any> {
   render() {
     const self = this;
     const props = self.props;
-    let state = self.state;
-    let { checked } = state;
-    let slideIndex = state.checked ? 1 : 0;
+    const state = self.state;
+    const { checked } = state;
+    const slideIndex = state.checked ? 1 : 0;
 
-    let { disabled, loading } = props;
+    const { disabled, loading } = props;
 
-    let toggleClass = classNames(
+    const toggleClass = classNames(
       'r-Toggle',
       {
         'e-text': (props.array && props.array.length === 2) || (props.iconArray && props.iconArray.length === 2)
@@ -100,24 +100,22 @@ export default class Toggle extends React.Component<IToggleProps, any> {
       (props.iconArray && props.iconArray.length === 2)
     ) {
       arrayFirstTemplate =
-        (props.array && props.array[0]) ||
-        (props.iconArray[0] ? <i className={'fa fa-' + props.iconArray[0]} /> : null);
+        (props.array && props.array[0]) || (props.iconArray[0] ? <i className={'fa fa-' + props.iconArray[0]} /> : null);
       arraySecondTemplate =
-        (props.array && props.array[1]) ||
-        (props.iconArray[1] ? <i className={'fa fa-' + props.iconArray[1]} /> : null);
+        (props.array && props.array[1]) || (props.iconArray[1] ? <i className={'fa fa-' + props.iconArray[1]} /> : null);
     }
 
-    let loadingTemplate = <i className={'fa fa-circle-o-notch fa-spin' + (props.children ? ' mr10' : '')} />;
+    const loadingTemplate = <i className={'fa fa-circle-o-notch fa-spin' + (props.children ? ' mr10' : '')} />;
 
-    let createList = (item: any, index: number) => {
-      let itemClass = classNames('r-Toggle__item', {
+    const createList = (item: any, index: number) => {
+      const itemClass = classNames('r-Toggle__item', {
         'e-selected': state.selected === item
       });
 
-      let colorTemplate = (
+      const colorTemplate = (
         <div className={'r-Toggle__item__color'} style={{ background: item, height: 26, width: 26 }} />
       );
-      let stringTemplate = (
+      const stringTemplate = (
         <div className={'r-Toggle__item__string'} style={{ minWidth: 26 }}>
           {item}
         </div>
@@ -136,7 +134,7 @@ export default class Toggle extends React.Component<IToggleProps, any> {
       );
     };
 
-    let inputProps = {
+    const inputProps = {
       className: checked ? 'r-Toggle__input checked' : 'r-Toggle__input',
       onClick: this.onChange
     };
@@ -154,13 +152,13 @@ export default class Toggle extends React.Component<IToggleProps, any> {
     } else {
       return (
         <Shrink opacity={50} if={disabled} className={toggleClass}>
-          <input type="checkbox" {...inputProps} />
+          <input type='checkbox' {...inputProps} />
           {this.props.label}
           {(props.array && props.array.length === 2) || (props.iconArray && props.iconArray.length === 2) ? (
             <label className={'r-Toggle__button ' + props.theme}>
               <Wizard slideIndex={slideIndex}>
-                <div className="text-right">{loading ? loadingTemplate : arrayFirstTemplate}</div>
-                <div className="text-white">{loading ? loadingTemplate : arraySecondTemplate}</div>
+                <div className='text-right'>{loading ? loadingTemplate : arrayFirstTemplate}</div>
+                <div className='text-white'>{loading ? loadingTemplate : arraySecondTemplate}</div>
               </Wizard>
             </label>
           ) : (

@@ -1,8 +1,7 @@
-import * as React from 'react';
 import classNames from 'classnames';
-import Selectable from '../Selectable/Selectable';
-
+import React from 'react';
 import { IRecoil } from '../../index';
+import { Selectable } from '../Selectable/Selectable';
 
 export interface IButtonProps extends IRecoil {
   style?: Object;
@@ -28,17 +27,16 @@ export interface IButtonProps extends IRecoil {
   materialIcon?: boolean;
 }
 
-export default class Button extends React.Component<IButtonProps> {
-  public refs!: {
-    [key: string]: Element;
-    button: HTMLButtonElement;
-  };
-
+export class Button extends React.Component<IButtonProps> {
   public static defaultProps = {
     disabled: false,
     block: false,
     advanced: false,
     iconLocation: 'left'
+  };
+  public refs!: {
+    [key: string]: Element;
+    button: HTMLButtonElement;
   };
 
   render() {
@@ -47,7 +45,7 @@ export default class Button extends React.Component<IButtonProps> {
 
     let buttonType: string;
 
-    let buttonClass = classNames(
+    const buttonClass = classNames(
       'r-Button',
       { simple: props.simple },
       { 'e-required': props.required },
@@ -74,7 +72,7 @@ export default class Button extends React.Component<IButtonProps> {
       buttonType = 'button';
     }
 
-    let iconPartial =
+    const iconPartial =
       props.icon && !props.loading ? (
         props.materialIcon ? (
           <i className={'material-icons'}>{props.icon}</i>
@@ -82,19 +80,19 @@ export default class Button extends React.Component<IButtonProps> {
           <i className={'fa fa-' + props.icon} />
         )
       ) : null;
-    let loadingPartial = props.loading ? (
+    const loadingPartial = props.loading ? (
       <i className={'fa fa-circle-o-notch fa-spin' + (props.children ? ' mr10' : '')} />
     ) : null;
-    let animatedIcon =
+    const animatedIcon =
       props.iconPointer && !props.loading ? <i className={'icon-pointer fa fa-caret-' + props.iconPointer} /> : null;
-    let iconWrapperRight =
+    const iconWrapperRight =
       props.icon && props.iconLocation === 'right' ? (
         <div className={'icon-pointer-' + props.iconPointer + ' ml10 icon-wrapper'}>
           {iconPartial}
           {props.iconPointer ? animatedIcon : null}
         </div>
       ) : null;
-    let iconWrapperLeft =
+    const iconWrapperLeft =
       props.icon && props.iconLocation === 'left' ? (
         <div className={'icon-pointer-' + props.iconPointer + ' icon-wrapper ' + (props.children ? 'mr10' : '')}>
           {iconPartial}
@@ -102,7 +100,7 @@ export default class Button extends React.Component<IButtonProps> {
         </div>
       ) : null;
 
-    let SimpleButton = ({ innerRef }) => {
+    const SimpleButton = ({ innerRef }) => {
       return (
         <button
           id={props.id}
@@ -112,8 +110,7 @@ export default class Button extends React.Component<IButtonProps> {
           type={buttonType}
           disabled={props.disabled || props.loading === true}
           className={buttonClass}
-          style={props.style}
-        >
+          style={props.style}>
           {iconWrapperLeft}
           {loadingPartial}
           {props.children}
@@ -123,7 +120,7 @@ export default class Button extends React.Component<IButtonProps> {
       );
     };
 
-    let Button = React.forwardRef((props, ref) => <SimpleButton innerRef={ref} />);
+    const Button = React.forwardRef((props, ref) => <SimpleButton innerRef={ref} />);
 
     return <Button />;
   }

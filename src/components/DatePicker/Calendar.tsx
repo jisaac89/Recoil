@@ -1,19 +1,14 @@
-﻿import * as React from 'react';
-
-import Layer from '../Layer/Layer';
-import Button from '../Button/Button';
-import Toolbar from '../Toolbar/Toolbar';
-
-import Months from './Months';
+﻿import React from 'react';
+import { Button } from '../Button/Button';
+import { Layer } from '../Layer/Layer';
+import { Toolbar } from '../Toolbar/Toolbar';
 import { DaysHeader } from './DaysHeader';
-import SelectMonth from './SelectMonth';
-import SelectYear from './SelectYear';
-
-import SelectHour from './SelectHour';
-import SelectMinute from './SelectMinute';
-// import SelectPeriod from './SelectPeriod';
-
-import MobileTemplate from './MobileTemplate';
+import { MobileTemplate } from './MobileTemplate';
+import { Months } from './Months';
+import { SelectHour } from './SelectHour';
+import { SelectMinute } from './SelectMinute';
+import { SelectMonth } from './SelectMonth';
+import { SelectYear } from './SelectYear';
 
 type Month =
   | 'January'
@@ -29,7 +24,7 @@ type Month =
   | 'November'
   | 'December';
 
-let monthNames: Month[] = [
+const monthNames: Month[] = [
   'January',
   'February',
   'March',
@@ -44,8 +39,8 @@ let monthNames: Month[] = [
   'December'
 ];
 
-let createArrayOfNumbers = function(n, string?: any) {
-  let numbersArray = [];
+const createArrayOfNumbers = function(n, string?: any) {
+  const numbersArray = [];
   for (let x = 0; x < n; x++) {
     numbersArray.push(x.toString() + string);
   }
@@ -74,7 +69,7 @@ export interface ICalendarState {
   period?: string;
 }
 
-export default class Calendar extends React.Component<ICalendarProps, ICalendarState> {
+export class Calendar extends React.Component<ICalendarProps, ICalendarState> {
   public static defaultProps = {
     calendarHeight: '400px',
     inDropdown: false,
@@ -84,7 +79,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
 
   constructor(props?: ICalendarProps) {
     super(props);
-    let date = props.date || new Date(Date.now());
+    const date = props.date || new Date(Date.now());
     this.state = {
       year: date.getFullYear(),
       month: date.getMonth(),
@@ -113,7 +108,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
   };
 
   selectMonth = (...Args: Array<any>) => {
-    let monthIndex = Args[1];
+    const monthIndex = Args[1];
     this.setState({
       month: monthIndex
     });
@@ -153,10 +148,10 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
   }
 
   getDays(year: number, month: number) {
-    let firstDay = new Date(year, month, 1);
-    let lastDay = new Date(year, month + 1, 0);
+    const firstDay = new Date(year, month, 1);
+    const lastDay = new Date(year, month + 1, 0);
 
-    let days = [firstDay];
+    const days = [firstDay];
     for (let index = 2, length = lastDay.getDate(); index < length; index++) {
       days.push(new Date(year, month, index));
     }
@@ -166,9 +161,9 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
   }
 
   getWeeks(year: number, month: number) {
-    let days = this.getDays(year, month);
+    const days = this.getDays(year, month);
 
-    let weeks: Date[][] = [];
+    const weeks: Date[][] = [];
     let week: Date[];
 
     if (days[0].getDay() !== 0) {
@@ -207,17 +202,17 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
   render(): JSX.Element {
     const self = this;
 
-    let { year, month, date, selectedDay } = self.state;
-    let { calendarHeight, inDropdown } = self.props;
+    const { year, month, date, selectedDay } = self.state;
+    const { calendarHeight, inDropdown } = self.props;
 
-    let setHeight = inDropdown ? { height: '100%' } : { height: calendarHeight };
+    const setHeight = inDropdown ? { height: '100%' } : { height: calendarHeight };
 
     return (
-      <Layer flex className="r-Calendar">
+      <Layer flex className='r-Calendar'>
         <Toolbar flush block flex noRadius>
           <Toolbar block={!this.props.selectTime} flush flex noRadius>
-            <Button onClick={this.decreaseMonth} icon="chevron-left" />
-            <Button onClick={this.increaseMonth} icon="chevron-right" />
+            <Button onClick={this.decreaseMonth} icon='chevron-left' />
+            <Button onClick={this.increaseMonth} icon='chevron-right' />
             <SelectMonth month={month} monthNames={monthNames} selectMonth={this.selectMonth.bind(this)} />
             <SelectYear year={year} monthNames={monthNames} selectYear={this.selectYear.bind(this)} />
           </Toolbar>
@@ -238,7 +233,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
             </Toolbar>
           ) : null}
         </Toolbar>
-        <Layer overflow flex theme="light">
+        <Layer overflow flex theme='light'>
           <Layer fill flex>
             <DaysHeader />
             {this.props.mobile ? (

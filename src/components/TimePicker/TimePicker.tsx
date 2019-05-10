@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import Toolbar from '../Toolbar/Toolbar';
 
@@ -9,10 +9,10 @@ export interface IDatePickerProps {
   mobile?: boolean;
 }
 
-export default class TimePicker extends React.Component<IDatePickerProps, any> {
+export class TimePicker extends React.Component<IDatePickerProps, any> {
   constructor(props: IDatePickerProps) {
     super(props);
-    var time = this.props.time || new Date(Date.now()).getTime();
+    const time = this.props.time || new Date(Date.now()).getTime();
     this.state = {
       time: time
     };
@@ -23,28 +23,28 @@ export default class TimePicker extends React.Component<IDatePickerProps, any> {
       time: time
     });
     this.props.onSelect ? this.props.onSelect(time) : null;
-  };
+  }
 
   onChange = (value: any) => {
     this.setState({
       time: new Date(value).getTime()
     });
-  };
+  }
 
   render() {
     return (
       <Toolbar flex flush>
-        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'HH'} dataSource={hours} />
-        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'MM'} dataSource={secondsMinutes} />
-        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'SS'} dataSource={secondsMinutes} />
+        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'HH'} dataSource={hours} />
+        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'MM'} dataSource={secondsMinutes} />
+        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'SS'} dataSource={secondsMinutes} />
       </Toolbar>
     );
   }
 }
 
-let hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-let secondsMinutes = [
+const secondsMinutes = [
   0,
   1,
   2,

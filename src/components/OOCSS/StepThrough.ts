@@ -1,11 +1,11 @@
-let shorcut = {
+const shorcut = {
     'w': 'width',
     'h': 'height',
     'm': 'margin',
     'l': 'left',
     't': 'top',
     'o': 'overflow'
-}
+};
 
 export class _$ {
 
@@ -19,11 +19,11 @@ export class _$ {
     constructor(className: string) {
 
         this.currentClass = className;
-        this.styleObject = {}
+        this.styleObject = {};
 
         this.key = '';
         this.value = 0;
-        this.measure = ''
+        this.measure = '';
     }
     // Save the context
 
@@ -32,10 +32,10 @@ export class _$ {
 
         // cut out numbers from class
         // let prefixClass = this.currentClass.split(/[0-9]/)[0].substring(0, this.currentClass.split(/[0-9]/)[0].length - 1);
-        let prefixClass = this.currentClass.split(/[0-9]/)[0];
-        let keysExistinClass = keys.filter((key) => prefixClass.indexOf(key) > -1);
+        const prefixClass = this.currentClass.split(/[0-9]/)[0];
+        const keysExistinClass = keys.filter((key) => prefixClass.indexOf(key) > -1);
 
-        let strongest = this.returnStrongestMatch([prefixClass]);
+        const strongest = this.returnStrongestMatch([prefixClass]);
 
         this.key = shorcut[strongest];
         this.styleObject[this.key] = 0;
@@ -44,14 +44,14 @@ export class _$ {
         func ? func(this.styleObject) : null;
 
         return this;
-    }
+    };
 
     shiftValue = function (allowedValues, func?: any) {
         //check if string contains numbers
         //if so cut numbers
         //
-        let thenum = this.currentClass.replace(/^\D+/g, '');
-        let withNoDigits = this.currentClass.replace(/[0-9]/g, '');
+        const thenum = this.currentClass.replace(/^\D+/g, '');
+        const withNoDigits = this.currentClass.replace(/[0-9]/g, '');
 
         this.currentClass = withNoDigits;
 
@@ -60,17 +60,17 @@ export class _$ {
         func ? func(this.styleObject) : null;
 
         return this;
-    }
+    };
 
     shiftMeasurement = function (measurements) {
         // console.log(this);
-    }
+    };
     // m, mr
     returnStrongestMatch = function (keysExistinClass: string[], idx?: number, currentStrongest?: string) {
 
         let strongest = currentStrongest || keysExistinClass[0];
-        let currentIndex = idx || 0;
-        let currentKey = keysExistinClass[currentIndex];
+        const currentIndex = idx || 0;
+        const currentKey = keysExistinClass[currentIndex];
 
         if (idx < keysExistinClass.length) {
             if (strongest.length < currentKey.length) {
@@ -80,12 +80,12 @@ export class _$ {
         } else {
             return strongest;
         }
-    }
-};
+    };
+}
 
 export const stepThrough = function (b) {
     return new _$(b);
-}
+};
 
 // function classContainsValue(className: string) {
 //     let bool: boolean;

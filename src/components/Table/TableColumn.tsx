@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React from 'react';
+import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
 import { IColumn } from './IColumn';
-import Button from '../Button/Button';
 
 export interface ITableDataProps {
   value?: Array<any>;
@@ -18,7 +18,7 @@ export interface ITableDataState {
   type?: string;
 }
 
-export default class TableColumn extends React.Component<ITableDataProps, ITableDataState> {
+export class TableColumn extends React.Component<ITableDataProps, ITableDataState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +33,7 @@ export default class TableColumn extends React.Component<ITableDataProps, ITable
   renderType() {
     const self = this;
     const props = self.props;
-    let { value } = props;
+    const { value } = props;
 
     if (value instanceof Array) {
       this.setState({
@@ -52,11 +52,11 @@ export default class TableColumn extends React.Component<ITableDataProps, ITable
 
   render() {
     const self = this;
-    let state = self.state;
-    let { type } = state;
-    let { value, column, element, hideColumns, isArray, tableDataClassName, isLoading } = self.props;
+    const state = self.state;
+    const { type } = state;
+    const { value, column, element, hideColumns, isArray, tableDataClassName, isLoading } = self.props;
 
-    let hideColumnsArrayIncludesEitherNameOrTitle =
+    const hideColumnsArrayIncludesEitherNameOrTitle =
       hideColumns && hideColumns.includes(column.title ? column.title : column.name);
 
     if (isArray) {
@@ -65,7 +65,7 @@ export default class TableColumn extends React.Component<ITableDataProps, ITable
           {column.template ? (
             column.template(element)
           ) : (
-            <Button loading={this.props.isLoading} size="small" simple>
+            <Button loading={this.props.isLoading} size='small' simple>
               {element}
             </Button>
           )}
@@ -77,20 +77,19 @@ export default class TableColumn extends React.Component<ITableDataProps, ITable
           className={tableDataClassName}
           tabIndex={-1}
           id={value ? value.toString() : null}
-          style={{ width: column.width }}
-        >
+          style={{ width: column.width }}>
           {column.template ? (
             column.template(element)
           ) : type === 'Value' ? (
-            <Button loading={isLoading} size="small" simple>
+            <Button loading={isLoading} size='small' simple>
               {value}
             </Button> ? (
-              <Button loading={isLoading} size="small" simple>
+              <Button loading={isLoading} size='small' simple>
                 {value.toString()}
               </Button>
             ) : null
           ) : (
-            <Dropdown loading={isLoading} className="r-Table-Dropdown" material dataSource={value} title={type} />
+            <Dropdown loading={isLoading} className='r-Table-Dropdown' material dataSource={value} title={type} />
           )}
         </td>
       );

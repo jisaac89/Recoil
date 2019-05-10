@@ -1,15 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 
+import Calendar from '../DatePicker/Calendar';
 import Table from '../Table/Table';
 import Tree from '../Tree/Tree';
-import Calendar from '../DatePicker/Calendar';
 
-export default class DropdownContentType extends React.Component<any, any> {
+export class DropdownContentType extends React.Component<any, any> {
   render() {
     const self = this;
     const props = self.props;
 
-    let {
+    const {
       id,
       children,
       open,
@@ -48,7 +48,7 @@ export default class DropdownContentType extends React.Component<any, any> {
 
     let dropdownTypePartial;
 
-    let tableProps = {
+    const tableProps = {
       // Table
       disableSelectedElements,
       id,
@@ -83,7 +83,7 @@ export default class DropdownContentType extends React.Component<any, any> {
       //
     };
 
-    let treeProps = {
+    const treeProps = {
       // Tree
       dataSource,
       columns,

@@ -1,26 +1,26 @@
-import * as React from 'react';
+import React from 'react';
 
 import { arraysEqual } from '../Utils';
 
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 
-import { IColumn } from './IColumn';
 import { T } from '../DataSource/DataSource';
+import { IColumn } from './IColumn';
 
 class DetailTemplateHeadToggle extends React.Component<any, any> {
   detailTemplateToggleAll(dataSource: Array<any>) {
     this.props.detailTemplateToggleAll(dataSource);
   }
   render() {
-    let { props } = this;
+    const { props } = this;
     return (
-      <th style={{ width: '25' }} className="r-Table__DetailTd text-center">
+      <th style={{ width: '25' }} className='r-Table__DetailTd text-center'>
         <Button
           icon={arraysEqual(props.dataSource, props.detailTemplateSelectedElements) ? 'chevron-down' : 'chevron-right'}
           onClick={this.detailTemplateToggleAll.bind(this, props.dataSource)}
           simple
-          size="small"
+          size='small'
         />
       </th>
     );
@@ -32,16 +32,16 @@ class CheckboxHead extends React.Component<any, any> {
     this.props.selectAll(dataSource);
   }
   render() {
-    let props = this.props;
+    const props = this.props;
 
-    let { hideCheckAll } = props;
+    const { hideCheckAll } = props;
 
     return (
       <th style={{ width: '25px' }}>
         {!hideCheckAll ? (
           <Checkbox
             onChange={this.selectAll.bind(this, props.dataSource)}
-            size="small"
+            size='small'
             checked={props.selectedElements ? arraysEqual(props.dataSource, props.selectedElements) : false}
           />
         ) : null}
@@ -76,7 +76,7 @@ export interface ITableHeadState {
   columns: any[];
 }
 
-export default class TableHead extends React.Component<ITableHeadProps, ITableHeadState> {
+export class TableHead extends React.Component<ITableHeadProps, ITableHeadState> {
   constructor(props: ITableHeadProps) {
     super(props);
     this.state = {
@@ -103,7 +103,7 @@ export default class TableHead extends React.Component<ITableHeadProps, ITableHe
   }
 
   render() {
-    let {
+    const {
       detailTemplate,
       hideCheckAll,
       sortKey,
@@ -119,10 +119,10 @@ export default class TableHead extends React.Component<ITableHeadProps, ITableHe
       selectedElements,
       sortable
     } = this.props;
-    let columnHeadArray: Array<any> = [];
+    const columnHeadArray: Array<any> = [];
 
     columns.map((key, index) => {
-      let hideColumnsArrayIncludesEitherNameOrTitle =
+      const hideColumnsArrayIncludesEitherNameOrTitle =
         hideColumns && hideColumns.includes(key.title ? key.title : key.name);
 
       const sortTitle: string = key.title ? key.title : key.name;
@@ -137,17 +137,16 @@ export default class TableHead extends React.Component<ITableHeadProps, ITableHe
             ) : (
               <Button
                 tabIndex={-1}
-                className="p0"
+                className='p0'
                 icon={sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : ''}
-                size="small"
+                size='small'
                 simple
-                iconLocation="right"
+                iconLocation='right'
                 onClick={
                   (sortable && key.name) || (sortable && key.title)
                     ? this.toggleSorting.bind(this, dataSource, sortTitle)
                     : null
-                }
-              >
+                }>
                 {key.hideHeader ? null : key.title || key.name}
               </Button>
             )}
@@ -156,13 +155,13 @@ export default class TableHead extends React.Component<ITableHeadProps, ITableHe
       }
     });
 
-    let detailTemplateHeadProps = {
+    const detailTemplateHeadProps = {
       detailTemplateToggleAll: detailTemplateToggleAll,
       dataSource: dataSource,
       detailTemplateSelectedElements: detailTemplateSelectedElements
     };
 
-    let checkboxHeadProps = {
+    const checkboxHeadProps = {
       selectAll: selectAll,
       selectedElements: selectedElements,
       dataSource: dataSource,
@@ -181,6 +180,6 @@ export default class TableHead extends React.Component<ITableHeadProps, ITableHe
           </tr>
         </thead>
       );
-    } else return null;
+    } else { return null; }
   }
 }

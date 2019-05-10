@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Toolbar from '../Toolbar/Toolbar';
 
 export type NotificationType = 'success' | 'primary' | 'error' | 'default';
@@ -20,7 +20,7 @@ export interface INotificationState {
   start: number;
 }
 
-export default class Notification extends React.Component<INotificationProps, INotificationState> {
+export class Notification extends React.Component<INotificationProps, INotificationState> {
   secondsRemaining: any;
   timer: any;
   constructor(props) {
@@ -69,7 +69,7 @@ export default class Notification extends React.Component<INotificationProps, IN
   render() {
     const self = this;
     const props = self.props;
-    let { time, view } = this.state;
+    const { time, view } = this.state;
 
     let animationClass;
 
@@ -87,8 +87,7 @@ export default class Notification extends React.Component<INotificationProps, IN
         onMouseLeave={this.startTimer.bind(this)}
         block
         textCenter
-        className={'p10 m0 w100 e-light e-dropShadow animated' + ' ' + animationClass}
-      >
+        className={'p10 m0 w100 e-light e-dropShadow animated' + ' ' + animationClass}>
         {props.item.template}
       </Toolbar>
     ) : null;

@@ -1,5 +1,5 @@
-import * as React from 'react';
 import classNames from 'classnames';
+import React from 'react';
 
 export interface ITransformProps {
   type: string;
@@ -14,13 +14,13 @@ export interface ITransformProps {
   flex?: boolean;
 }
 
-export default class Transform extends React.Component<ITransformProps, {}> {
+export class Transform extends React.Component<ITransformProps, {}> {
   public render() {
     const self = this;
     const props = self.props;
     let transformStyle;
 
-    let transformClass = classNames(
+    const transformClass = classNames(
       'r-Transform',
       { 'e-translate': props.type === 'translate' },
       { 'e-scale': props.type === 'scale' },
