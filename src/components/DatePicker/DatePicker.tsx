@@ -1,9 +1,6 @@
 ﻿import React from 'react';
-
-import Dropdown, { IDropdownProps } from '../Dropdown/Dropdown';
-
-import Calendar, { ICalendarProps, ICalendarState } from './Calendar';
-
+import { Dropdown, IDropdownProps } from '../Dropdown/Dropdown';
+import { Calendar, ICalendarProps, ICalendarState } from './Calendar';
 export { Calendar, ICalendarProps, ICalendarState };
 
 export interface IDatePickerProps extends IDropdownProps {
@@ -19,7 +16,7 @@ export interface IDatePickerProps extends IDropdownProps {
 }
 
 export class DatePicker extends React.Component<IDatePickerProps, any> {
-  constructor(props?: IDatePickerProps) {
+  constructor(props: IDatePickerProps) {
     super(props);
     const date = this.props.date || new Date(Date.now());
     this.state = {
@@ -48,7 +45,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
       date: date
     });
     this.props.onSelect ? this.props.onSelect(date) : null;
-  }
+  };
 
   toggleOpen() {
     if (this.props.onClick) {

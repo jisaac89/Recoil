@@ -4,7 +4,7 @@ import { IRecoil } from '../../index';
 import { Selectable } from '../Selectable/Selectable';
 
 export interface IButtonProps extends IRecoil {
-  style?: Object;
+  style?: object;
   onClick?: (event: React.MouseEvent<any>) => void;
   pointer?: 'left' | 'right' | boolean;
   iconPointer?: 'left' | 'right' | 'up' | 'down';
@@ -120,8 +120,8 @@ export class Button extends React.Component<IButtonProps> {
       );
     };
 
-    const Button = React.forwardRef((props, ref) => <SimpleButton innerRef={ref} />);
+    const ButtonForward = React.forwardRef((prop, ref) => <SimpleButton innerRef={ref} />);
 
-    return <Button />;
+    return <ButtonForward />;
   }
 }

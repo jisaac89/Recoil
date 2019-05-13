@@ -1,34 +1,21 @@
 import classNames from 'classnames';
 import React from 'react';
 import { Pager } from '../Pager/Pager';
+import { IWizardProps } from './WizardTypes';
 
-export interface IWizardProps {
-  slideIndex: number;
-  children?: any;
-  vertical?: boolean;
-  className?: string;
-  style?: Object;
-  mobile?: boolean;
-  animate?: boolean;
-  fill?: boolean;
-  overflow?: boolean;
-  flex?: boolean;
-  paginate?: boolean;
-  selectedIsRelative?: boolean;
-  onSlide?(slideIndex): void;
-}
-
-const WizardSlide: any = (props: any) => {
+const WizardSlide = (props: IWizardProps & { visible: boolean }) => {
   return <div className={props.className}>{props.visible ? props.children : null}</div>;
 };
 
-export class Wizard extends React.Component<IWizardProps, any> {
+export class Wizard extends React.Component<IWizardProps> {
   public static defaultProps = {
     slideIndex: 0
   };
 
   onSlide = (slideIndex: number) => {
-    this.props.onSlide ? this.props.onSlide(slideIndex) : null;
+    if (this.props.onSlide) {
+      this.props.onSlide(slideIndex);
+    }
   };
 
   render() {
@@ -59,7 +46,7 @@ export class Wizard extends React.Component<IWizardProps, any> {
       );
 
       return (
-        <WizardSlide visible={selected} className={wizardSlideClass} key={index}>
+        <WizardSlide slideIndex={props.slideIndex} visible={selected} className={wizardSlideClass} key={index}>
           {item}
         </WizardSlide>
       );
@@ -67,10 +54,8 @@ export class Wizard extends React.Component<IWizardProps, any> {
 
     if (props.children.length > 1) {
       return (
-        <div ref='r-Wizard' className={wizardClass} style={props.style}>
-          <div ref='r-Wizard__track' className='r-Wizard__track'>
-            {props.children.map(createSlidesPartial)}
-          </div>
+        <div className={wizardClass} style={props.style}>
+          <div className={'r-Wizard__track'}>{props.children.map(createSlidesPartial)}</div>
           {props.paginate ? (
             <Pager
               numberOfPages={props.children.length}

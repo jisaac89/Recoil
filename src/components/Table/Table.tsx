@@ -17,7 +17,7 @@ export interface ITableProps {
   id?: string;
   portal?: boolean;
   // initial dataSource loaded as prop
-  dataSource: Array<Object> | Array<number> | Array<string>;
+  dataSource?: Array<Object> | Array<number> | Array<string>;
   // columns defined by user
   columns?: Array<IColumn>;
   // a detail template function that returns a view

@@ -19,7 +19,9 @@ export class Checkbox extends React.Component<ICheckboxProps> {
   };
 
   public toggleChecked = () => {
-    this.props.onChange ? this.props.onChange(this.props.checked) : null;
+    if (this.props.onChange) {
+      this.props.onChange(this.props.checked);
+    }
   };
 
   render() {
@@ -39,7 +41,7 @@ export class Checkbox extends React.Component<ICheckboxProps> {
     };
 
     return (
-      <Toolbar flush className='r-Checkbox__Wrapper'>
+      <Toolbar flush className={'r-Checkbox__Wrapper'}>
         <Button className={checkboxClass} {...checkboxProps} />
         {props.title ? (
           <Button {...checkboxProps} simple>

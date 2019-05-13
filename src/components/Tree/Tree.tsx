@@ -15,9 +15,9 @@ export interface ITreeItemHash<T> {
 export interface ITreeProps {
   dataSource?: any;
   columns?: any;
-  parentKey?: string;
-  uniqueKey?: string;
-  selectedElements?: Array<any>;
+  parentKey: string;
+  uniqueKey: string;
+  selectedElements: Array<any>;
   openedElements?: Array<any>;
   selectedKey?: string;
   onRowSelect?: any;
@@ -29,10 +29,10 @@ export interface ITreeProps {
 }
 
 export interface ITreeState {
-  treeItems?: ITreeItem<any, any>[];
-  treeItemHash?: ITreeItemHash<any>;
-  roots?: ITreeItem<any, any>[];
-  openedKeys?: string[];
+  treeItems: ITreeItem<any, any>[];
+  treeItemHash: ITreeItemHash<any>;
+  roots: ITreeItem<any, any>[];
+  openedKeys: string[];
 }
 
 export class Tree extends React.Component<ITreeProps, ITreeState> {
@@ -252,7 +252,7 @@ export class Tree extends React.Component<ITreeProps, ITreeState> {
         return this.renderChildrenWithoutParent(roots[0]);
       } else {
         return (
-          <div className='r-Tree e-scroll-y'>
+          <div className="r-Tree e-scroll-y">
             <Table
               hideHeader
               columns={columns}

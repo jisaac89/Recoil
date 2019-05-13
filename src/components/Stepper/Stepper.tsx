@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Align from '../Align/Align';
-import Shrink from '../Shrink/Shrink';
+import { Align } from '../Align/Align';
+import { Shrink } from '../Shrink/Shrink';
 
 export interface IStepperProps {
   title?: string;
@@ -41,7 +41,9 @@ class Stepper extends React.Component<IStepperProps, any> {
             </Shrink>
           );
         }
-      } else { return null; }
+      } else {
+        return null;
+      }
     };
 
     props.children.map(createList);
@@ -57,4 +59,4 @@ class Stepper extends React.Component<IStepperProps, any> {
   }
 }
 
-export  Stepper;
+export { Stepper };

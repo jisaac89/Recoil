@@ -2,12 +2,13 @@ import classNames from 'classnames';
 import React from 'react';
 import { Button } from '../Button/Button';
 import { IButtonProps } from '../Button/Button';
+import { IDataSourceProps } from '../DataSource/DataSource';
 import { ITableProps } from '../Table/Table';
 import { Tags } from '../Tags/Tags';
 import { DropdownContent } from './DropdownContent';
 
 function guidGenerator() {
-  const S4 = function() {
+  const S4 = () => {
     return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
   };
   return S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4();

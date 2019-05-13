@@ -39,8 +39,8 @@ const monthNames: Month[] = [
   'December'
 ];
 
-const createArrayOfNumbers = function(n, string?: any) {
-  const numbersArray = [];
+const createArrayOfNumbers = function(n: number, string?: any) {
+  const numbersArray: string[] = [];
   for (let x = 0; x < n; x++) {
     numbersArray.push(x.toString() + string);
   }
@@ -60,13 +60,13 @@ export interface ICalendarProps {
 }
 
 export interface ICalendarState {
-  month?: number;
-  year?: number;
-  date?: Date;
-  selectedDay?: Date;
-  hour?: any;
-  minute?: any;
-  period?: string;
+  month: number;
+  year: number;
+  date: Date;
+  selectedDay: Date;
+  hour: any;
+  minute: any;
+  period: string;
 }
 
 export class Calendar extends React.Component<ICalendarProps, ICalendarState> {
@@ -77,7 +77,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> {
     selectTime: false
   };
 
-  constructor(props?: ICalendarProps) {
+  constructor(props: ICalendarProps) {
     super(props);
     const date = props.date || new Date(Date.now());
     this.state = {
@@ -92,7 +92,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> {
   }
 
   componentDidUpdate(prevProps: ICalendarProps) {
-    if (prevProps.date !== this.props.date) {
+    if (this.props.date && prevProps.date !== this.props.date) {
       this.setState({
         date: this.props.date,
         year: this.props.date.getFullYear(),
@@ -102,9 +102,12 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> {
   }
 
   increaseMonth = () => {
-    this.setState({
-      month: this.state.month === 11 ? 0 : this.state.month + 1
-    });
+    const { state } = this;
+    if (state) {
+      this.setState({
+        month: state.month === 11 ? 0 : state.month + 1
+      });
+    }
   };
 
   selectMonth = (...Args: Array<any>) => {
@@ -208,42 +211,38 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> {
     const setHeight = inDropdown ? { height: '100%' } : { height: calendarHeight };
 
     return (
-      <Layer flex className='r-Calendar'>
+      <Layer flex className={'r-Calendar'}>
         <Toolbar flush block flex noRadius>
           <Toolbar block={!this.props.selectTime} flush flex noRadius>
-            <Button onClick={this.decreaseMonth} icon='chevron-left' />
-            <Button onClick={this.increaseMonth} icon='chevron-right' />
-            <SelectMonth month={month} monthNames={monthNames} selectMonth={this.selectMonth.bind(this)} />
-            <SelectYear year={year} monthNames={monthNames} selectYear={this.selectYear.bind(this)} />
+            <Button onClick={this.decreaseMonth} icon={'chevron-left'} />
+            <Button onClick={this.increaseMonth} icon={'chevron-right'} />
+            <SelectMonth month={month} monthNames={monthNames} selectMonth={this.selectMonth} />
+            <SelectYear year={year} monthNames={monthNames} selectYear={this.selectYear} />
           </Toolbar>
           {this.props.selectTime ? (
             <Toolbar flush flex noRadius>
               <Button>-</Button>
-              <SelectHour
-                hour={this.state.hour}
-                hours={createArrayOfNumbers(25, 'h')}
-                selectHour={this.selectHour.bind(this)}
-              />
+              <SelectHour hour={this.state.hour} hours={createArrayOfNumbers(25, 'h')} selectHour={this.selectHour} />
               <Button>:</Button>
               <SelectMinute
                 minute={this.state.minute}
                 minutes={createArrayOfNumbers(60, 'm')}
-                selectMinute={this.selectMinute.bind(this)}
+                selectMinute={this.selectMinute}
               />
             </Toolbar>
           ) : null}
         </Toolbar>
-        <Layer overflow flex theme='light'>
+        <Layer overflow flex theme={'light'}>
           <Layer fill flex>
             <DaysHeader />
             {this.props.mobile ? (
               <MobileTemplate
                 monthNames={monthNames}
                 date={this.state.date}
-                selectDay={this.selectDay.bind(this)}
+                selectDay={this.selectDay}
                 selectedDay={this.state.selectedDay}
                 year={this.state.year}
-                getWeeks={this.getWeeks.bind(this)}
+                getWeeks={this.getWeeks}
                 month={this.state.month}
                 setHeight={setHeight}
               />
@@ -253,7 +252,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> {
                 year={year}
                 month={this.state.month}
                 currentMonth={this.getWeeks(year, this.state.month)}
-                selectDay={this.selectDay.bind(this)}
+                selectDay={this.selectDay}
                 date={date}
                 selectedDay={selectedDay}
                 mobile={this.props.mobile}

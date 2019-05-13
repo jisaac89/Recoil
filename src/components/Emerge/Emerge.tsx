@@ -15,7 +15,7 @@ export interface IEmergeProps {
   triggerOnce?: boolean;
 }
 
-export class Emerge extends React.Component<IEmergeProps, {}> {
+export class Emerge extends React.Component<IEmergeProps> {
   public static defaultProps = {
     if: true,
     enter: 'fadeInUp',
@@ -49,7 +49,7 @@ export class Emerge extends React.Component<IEmergeProps, {}> {
 
       const newClass = classNames('r-Emerge', 'animated', enter, exit, child.props.className);
 
-      const newStyle: any = {
+      const newStyle: { animationDelay: string } = {
         animationDelay: index++ * props.delay + 'ms'
       };
 

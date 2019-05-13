@@ -1,29 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-
-export interface IAlignProps {
-  vertical?: boolean;
-  className?: string;
-  columns?: Array<number>;
-  margin?: string;
-  children?: any;
-  fill?: boolean;
-  style?: any;
-  alignItems?: string;
-}
-
-export interface IAlignChildProps {
-  columns?: Array<number>;
-  vertical?: boolean;
-  width?: number;
-  element?: JSX.Element;
-  margin?: string;
-}
-
-export interface IAlignState {
-  widthArray: Array<number>;
-  maxColumnsLength: number;
-}
+import { IAlignChildProps, IAlignProps, IAlignState } from './AlignTypes';
 
 const AlignChild = (props: IAlignChildProps) => {
   const { columns, vertical, width, element, margin } = props;
@@ -36,7 +13,7 @@ const AlignChild = (props: IAlignChildProps) => {
   };
 
   return (
-    <div className='r-Align__Child' style={alignChildStyle}>
+    <div className={'r-Align__Child'} style={alignChildStyle}>
       {element}
     </div>
   );
@@ -54,7 +31,9 @@ export class Align extends React.Component<IAlignProps, IAlignState> {
     };
   }
   componentDidMount() {
-    this.props.columns ? this.alignColumns(this.props.columns) : null;
+    if (this.props.columns) {
+      this.alignColumns(this.props.columns);
+    }
   }
   componentDidUpdate(prevProps: IAlignProps) {
     if (this.props.columns && prevProps.columns !== this.props.columns) {

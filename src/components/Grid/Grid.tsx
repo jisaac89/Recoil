@@ -1,11 +1,8 @@
 import React from 'react';
-
-import Layer from '../Layer/Layer';
-import Selectable from '../Selectable/Selectable';
-
-import DataSource from '../DataSource/DataSource';
-
-import Align from '../Align/Align';
+import { Align } from '../Align/Align';
+import { DataSource } from '../DataSource/DataSource';
+import { Layer } from '../Layer/Layer';
+import { Selectable } from '../Selectable/Selectable';
 
 export interface IGridProps {
   dataSource?: any;
@@ -161,7 +158,7 @@ class Grid extends React.Component<IGridProps, IGridState> {
                   const checked = selectedElements.includes(selectedKey ? item[selectedKey] : item);
                   return (
                     <Layer
-                      className={this.props.onChange ? 'cursor-pointer' : null}
+                      className={this.props.onChange ? 'cursor-pointer' : ''}
                       onClick={this.toggleSelectedElements.bind(this, item, i)}
                       fill
                       key={i}>
@@ -175,8 +172,10 @@ class Grid extends React.Component<IGridProps, IGridState> {
           })}
         </Layer>
       );
-    } else { return null; }
+    } else {
+      return null;
+    }
   }
 }
 
-export  DataSource(<Grid />);
+export const DataSources = DataSource(Grid);

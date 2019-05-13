@@ -161,16 +161,16 @@ const DataSource: any = (Component: JSX.Element) =>
       }
     }
 
-    sortDataSource(dataSource: Array<any>, sortType: string, sortKey: string) {
+    sortDataSource(dataSource: Array<never>, sortType: string, sortKey: string) {
       const self = this;
 
       const { searchedItems, searchTerm } = self.state;
 
-      let sortOrderSearchedItems: Array<any>;
-      let sortOrderDataSource: Array<any>;
+      let sortOrderSearchedItems: Array<never>;
+      let sortOrderDataSource: Array<never>;
 
-      const sort = (dataSource: Array<any>) => {
-        return dataSource.sort((a: any, b: any) => {
+      const sort = (dataSourcea: Array<never>) => {
+        return dataSourcea.sort((a, b) => {
           const aKey = branchIn(a, sortKey);
           const bKey = branchIn(b, sortKey);
           switch (typeof aKey) {

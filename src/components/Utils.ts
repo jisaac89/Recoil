@@ -32,10 +32,10 @@ export function debounce<T, U, V, W, X>(
 export function debounce(func: Function, wait: number, immediate?: boolean): Function {
   let timeout: number;
   const self = {};
-  return function() {
+  return () => {
     const args = arguments;
     const later = () => {
-      timeout = null;
+      timeout = 0;
       if (!immediate) {
         func.apply(self, args);
       }
