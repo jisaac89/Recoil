@@ -11,7 +11,7 @@ export interface IEmergeProps {
   delay?: number;
   overflow?: boolean;
   className?: string;
-  style?: Array<string>;
+  style?: object;
   triggerOnce?: boolean;
 }
 
@@ -49,17 +49,21 @@ export class Emerge extends React.Component<IEmergeProps> {
 
       const newClass = classNames('r-Emerge', 'animated', enter, exit, child.props.className);
 
-      const newStyle: { animationDelay: string } = {
-        animationDelay: index++ * props.delay + 'ms'
+      const newStyle: any = {
+        animationDelay: index++ * (props.delay ? props.delay : 300) + 'ms'
       };
 
       function merge_options(obj1: Array<any>, obj2: Array<any>) {
         const obj3 = {};
         for (const attrname in obj1) {
-          obj3[attrname] = obj1[attrname];
+          if (obj1) {
+            obj3[attrname] = obj1[attrname];
+          }
         }
         for (const attrname in obj2) {
-          obj3[attrname] = obj2[attrname];
+          if (obj2) {
+            obj3[attrname] = obj2[attrname];
+          }
         }
         return obj3;
       }
@@ -70,7 +74,7 @@ export class Emerge extends React.Component<IEmergeProps> {
       <Observer triggerOnce={props.triggerOnce}>
         {inView =>
           inView ? (
-            <span className={emergeClass} ref='element'>
+            <span className={emergeClass} ref="element">
               {newChildren}
             </span>
           ) : null

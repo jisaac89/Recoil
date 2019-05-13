@@ -18,11 +18,11 @@ export class DropdownHeader extends React.Component<any, any> {
   menuTemplate() {
     const props = this.props;
     const { onClose } = props;
-    return <Button shortcut={'x'} tabIndex={-1} simple right icon='times' onClick={onClose} />;
+    return <Button shortcut={'x'} tabIndex={-1} simple right icon="times" onClick={onClose} />;
   }
   render() {
     return (
-      <Toolbar block className='r-Dropdown__header'>
+      <Toolbar block className="r-Dropdown__header">
         {this.titleTemplate()}
         {this.menuTemplate()}
       </Toolbar>

@@ -2,8 +2,9 @@ import React from 'react';
 import { Portal } from '../Portal/Portal';
 import { DropdownContentType } from './DropdownContentType';
 import { DropdownHeader } from './DropdownHeader';
+import { IDropdownProps } from './Dropdown';
 
-export class DropdownContent extends React.Component<any, any> {
+export class DropdownContent extends React.Component<any> {
   render() {
     const self = this;
     const props = self.props;
@@ -95,7 +96,7 @@ export class DropdownContent extends React.Component<any, any> {
 
     const dropdownPortal = (
       <Portal
-        portalType='SlideIn'
+        portalType="SlideIn"
         title={props.title}
         icon={props.icon}
         open={open}
@@ -109,7 +110,7 @@ export class DropdownContent extends React.Component<any, any> {
       return dropdownPortal;
     } else {
       return (
-        <div className='r-DropdownWrapper'>
+        <div className="r-DropdownWrapper">
           {hideDropdownHeader ? null : <DropdownHeader {...dropdownHeaderProps} />}
           <DropdownContentType {...dropdownContentTypeProps} />
         </div>

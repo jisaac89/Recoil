@@ -1,11 +1,17 @@
 import React from 'react';
+import { Button } from '../Button/Button';
+import { Input } from '../Input/Input';
+import { Toolbar } from '../Toolbar/Toolbar';
 
-import Button from '../Button/Button';
-import Input from '../Input/Input';
-import Toolbar from '../Toolbar/Toolbar';
-
-export class TableSearch extends React.Component<any, any> {
-
+export class TableSearch extends React.Component<{
+  filterItems: (searchTerm, searchableKeys) => void;
+  searchableKeys: string[];
+  focusOnMount: boolean;
+  searchTitle: string;
+  value: string;
+  onSearchChange: (searchTerm) => void;
+  throttle: number;
+}> {
   public static defaultProps = {
     active: true,
     className: '',
@@ -24,7 +30,7 @@ export class TableSearch extends React.Component<any, any> {
     }
   }
 
-  updateSearch(term: string) {
+  updateSearch = (term: string) => evt => {
     let searchTerm: string;
 
     if (/\s+$/.test(term)) {
@@ -40,7 +46,7 @@ export class TableSearch extends React.Component<any, any> {
       this.props.filterItems(searchTerm, this.props.searchableKeys);
       this.props.onSearchChange ? this.props.onSearchChange(searchTerm) : null;
     }, this.props.throttle);
-  }
+  };
 
   render() {
     const self = this;
@@ -50,19 +56,19 @@ export class TableSearch extends React.Component<any, any> {
 
     const searchPartial = () => {
       return (
-        <Toolbar tabIndex={-1} theme='light' flex flush block noRadius className='p5 table-search'>
+        <Toolbar tabIndex={-1} theme={'light'} flex flush block noRadius className={'p5 table-search'}>
           <Input
             placeholder={props.searchTitle}
-            onChange={this.updateSearch.bind(this)}
+            onChange={this.updateSearch}
             block
-            type='text'
-            size='small'
+            type={'text'}
+            size={'small'}
             flex
             value={this.props.value}
             focusOnMount={focusOnMount}
             tabIndex={-1}
           />
-          <Button tabIndex={-1} size='small' icon='times' onClick={this.updateSearch.bind(this, '')} />
+          <Button tabIndex={-1} size={'small'} icon={'times'} onClick={this.updateSearch('')} />
         </Toolbar>
       );
     };

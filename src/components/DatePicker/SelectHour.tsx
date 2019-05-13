@@ -1,6 +1,5 @@
 import React from 'react';
-
-import Dropdown from '../Dropdown/Dropdown';
+import { Dropdown } from '../Dropdown/Dropdown';
 
 export class SelectHour extends React.Component<any, any> {
   render(): JSX.Element {
@@ -11,7 +10,7 @@ export class SelectHour extends React.Component<any, any> {
         material
         title={hour}
         selectedElements={[hour]}
-        rowIsSelectable='single'
+        rowIsSelectable="single"
         onChange={selectHour}
         dataSource={hours}
         pageSize={hours.length}

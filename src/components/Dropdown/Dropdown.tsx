@@ -73,7 +73,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     hideFooter: true,
     open: null
   };
-  refs: {
+  static refs: {
     [key: string]: Element;
     dropdown: HTMLInputElement;
   };
@@ -142,7 +142,9 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
   }
 
   onTagRemove(item) {
-    this.props.onTagRemove(item);
+    if (this.props.onTagRemove) {
+      this.props.onTagRemove(item);
+    }
   }
   render(): JSX.Element {
     const self = this;
@@ -291,7 +293,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
 
     if (tagSelected) {
       return (
-        <div className={props.block ? 'block' : 'dinblock'} id={id} ref='dropdown'>
+        <div className={props.block ? 'block' : 'dinblock'} id={id} ref="dropdown">
           <Tags
             branchIn={tagSelectedKey}
             onRemove={tagSelectedElements ? this.onTagRemove.bind(this) : this.removeSelectedItem.bind(this)}
@@ -305,7 +307,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       );
     } else {
       return (
-        <div id={id} ref='dropdown' className={dropdownClass}>
+        <div id={id} ref="dropdown" className={dropdownClass}>
           <Button {...buttonProps}>{selectedTitle}</Button>
           <DropdownContent {...dropdownPortalProps} />
         </div>

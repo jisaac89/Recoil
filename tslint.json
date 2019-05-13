@@ -46,7 +46,7 @@
     "completed-docs": [false],
     "no-inferrable-types": [true],
     "no-invalid-this": [true],
-    "cyclomatic-complexity": [true, 20],
+    "cyclomatic-complexity": [true, 40],
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,

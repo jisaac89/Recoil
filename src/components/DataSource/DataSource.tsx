@@ -558,9 +558,9 @@ const DataSource: any = (Component: JSX.Element) =>
 
       if (props.loading) {
         return (
-          <Emerge className='e-fill'>
+          <Emerge className="e-fill">
             <Toolbar block textCenter>
-              <Button loading={true} block size='large' simple>
+              <Button loading={true} block size="large" simple>
                 {props.loadingText}
               </Button>
             </Toolbar>
@@ -574,9 +574,9 @@ const DataSource: any = (Component: JSX.Element) =>
         return dataSource.length ? updatedComponent : Component;
       } else {
         return props.emptyText ? (
-          <Emerge enter='fadeIn' className='e-fill'>
+          <Emerge enter="fadeIn" className="e-fill">
             <Toolbar block textCenter>
-              <Button block size='small' simple>
+              <Button block size="small" simple>
                 {props.emptyText}
               </Button>
             </Toolbar>

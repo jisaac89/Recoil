@@ -14,7 +14,7 @@ export interface ITransformProps {
   flex?: boolean;
 }
 
-export class Transform extends React.Component<ITransformProps, {}> {
+export class Transform extends React.Component<ITransformProps> {
   public render() {
     const self = this;
     const props = self.props;

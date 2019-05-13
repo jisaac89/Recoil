@@ -1,8 +1,5 @@
 import React from 'react';
-
-import Calendar from '../DatePicker/Calendar';
-import Table from '../Table/Table';
-import Tree from '../Tree/Tree';
+import { Table } from '../Table/Table';
 
 export class DropdownContentType extends React.Component<any, any> {
   render() {

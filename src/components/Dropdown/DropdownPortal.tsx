@@ -1,10 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import DropdownContent from './DropdownContent';
+import { DropdownContent } from './DropdownContent';
 
 export class DropdownPortal extends React.Component<any, any> {
-  portalElement: HTMLElement = null;
+  static portalElement: HTMLElement;
 
   constructor(props: any) {
     super(props);
@@ -126,7 +125,7 @@ export class DropdownPortal extends React.Component<any, any> {
 
     ReactDOM.render(<DropdownContent {...dropdownContentProps} />, this.portalElement);
   }
-  render(): JSX.Element {
+  render() {
     return null;
   }
 }

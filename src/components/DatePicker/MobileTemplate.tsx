@@ -1,8 +1,7 @@
 import React from 'react';
-
-import AdvancedLayer from '../Layer/AdvancedLayer';
-import Layer from '../Layer/Layer';
-import Months from './Months';
+import { AdvancedLayer } from '../Layer/AdvancedLayer';
+import { Layer } from '../Layer/Layer';
+import { Months } from './Months';
 
 export class MobileTemplate extends React.Component<any, any> {
   render() {
@@ -24,18 +23,18 @@ export class MobileTemplate extends React.Component<any, any> {
     return (
       <AdvancedLayer
         style={setHeight}
-        className='r-Calendar-Scroll'
+        className={'r-Calendar-Scroll'}
         flex
         scrollY={true}
         scrollIf={month.toString().length}
         scrollToId={month.toString()}>
-        <div id='0'>
+        <div id="0">
           <Months
             title={monthNames[0]}
             year={year}
             month={0}
             currentMonth={Jan}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -47,7 +46,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={1}
             currentMonth={Feb}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -59,7 +58,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={2}
             currentMonth={Mar}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -71,7 +70,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={3}
             currentMonth={Apr}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -83,7 +82,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={4}
             currentMonth={May}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -95,7 +94,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={5}
             currentMonth={Jun}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -107,7 +106,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={6}
             currentMonth={Jul}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -119,7 +118,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={7}
             currentMonth={Aug}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -131,7 +130,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={8}
             currentMonth={Sep}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -143,7 +142,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={9}
             currentMonth={Oct}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -155,7 +154,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={10}
             currentMonth={Nov}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
@@ -167,7 +166,7 @@ export class MobileTemplate extends React.Component<any, any> {
             year={year}
             month={11}
             currentMonth={Dec}
-            selectDay={selectDay.bind(this)}
+            selectDay={selectDay}
             date={date}
             selectedDay={selectedDay}
             mobile={true}
