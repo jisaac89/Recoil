@@ -1,6 +1,7 @@
 import React from 'react';
 import { ShortcutContext } from '../ShortCut/ShortCutProvider';
-import { Button, IButtonProps } from './Button';
+import { Button } from './Button';
+import { IButtonProps } from './ButtonType';
 
 export class ShortcutButton extends React.Component<IButtonProps> {
   public refs!: {

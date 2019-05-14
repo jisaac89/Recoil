@@ -1,56 +1,11 @@
 import classNames from 'classnames';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Selectable from '../Selectable/Selectable';
-import SlideIn from '../SlideIn/SlideIn';
-
-import { IRecoil } from '../../index';
-
-export interface IInputProps extends IRecoil {
-  id?: string;
-  ref?: string;
-  type?: string;
-  icon?: string;
-  title?: string;
-  placeholder?: string;
-  value?: string | string[];
-  defaultValue?: string | string[];
-  style?: Object;
-  errorInline?: boolean;
-  errorDirection?: 'left' | 'top' | 'right' | 'bottom';
-  error?: boolean;
-  errorMessage?: string | JSX.Element;
-  rows?: number;
-  cols?: number;
-  block?: boolean;
-  autoExpand?: boolean;
-  onBlur?: any;
-  onChange?: (value: any, event: React.FormEvent<any>) => void;
-  scrollHeight?: number;
-  focusOnMount?: boolean;
-  focusDelay?: number;
-  advanced?: boolean;
-  maxLength?: number;
-  max?: number;
-  min?: number;
-  name?: string;
-  required?: boolean;
-  autoComplete?: string;
-  disableKeys?: Array<string>;
-  inputSize?: number;
-  inputId?: any;
-  material?: boolean;
-  pattern?: string;
-}
-
-export interface IInputState {
-  checked?: boolean;
-  value?: string | string[];
-  mouseOut?: boolean;
-}
+import { Selectable } from '../Selectable/Selectable';
+import { SlideIn } from '../SlideIn/SlideIn';
+import { IInputProps, IInputState } from './InputType';
 
 export class Input extends React.Component<IInputProps, IInputState> {
-
   public static defaultProps = {
     advanced: false,
     type: 'text'
@@ -78,7 +33,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
       const value = this.setCurrentValue(props);
       valueIsChanging ? this.setState({ value: value, checked: true }) : null;
     }
-    if (prevProps.value !== this.props.value && prevProps.value.length) {
+    if (prevProps.value !== this.props.value && prevProps.value && prevProps.value.length) {
       this.setState({ checked: true });
     }
     if (prevProps.focusOnMount !== this.props.focusOnMount) {
@@ -93,16 +48,16 @@ export class Input extends React.Component<IInputProps, IInputState> {
     }
   }
   public componentWillUnmount() {
-    const inputDOM: any = ReactDOM.findDOMNode(this.refs['refInput'])
-    ;(inputDOM as HTMLInputElement).blur();
+    const inputDOM: any = ReactDOM.findDOMNode(this.refs['refInput']);
+    (inputDOM as HTMLInputElement).blur();
   }
   public focusOnMount() {
     const self = this;
     const inputDOM = ReactDOM.findDOMNode(this.refs['refInput']);
     let focusDelay;
 
-    focusDelay = self.props.focusDelay || 400
-    ;(function(inputDOM) {
+    focusDelay = self.props.focusDelay || 400;
+    (function(inputDOM) {
       setTimeout(function() {
         (inputDOM as HTMLInputElement).focus();
       }, focusDelay);
@@ -112,7 +67,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
     this.setState({
       checked: true
     });
-  }
+  };
   public blur = (event: React.MouseEvent<HTMLInputElement>) => {
     const inputDOM = this.refs['refInput'];
     const value = (event.target as any).value;
@@ -125,7 +80,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
         this.props.onBlur ? this.props.onBlur(value, event) : null;
       }
     );
-  }
+  };
   public mouseOut() {
     const inputDOM = this.refs['refInput'];
     this.setState({
@@ -136,7 +91,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
     // ts issues
 
     this.setValue((event.target as HTMLInputElement).value, event);
-  }
+  };
 
   limit(max: number) {
     const inputDOM = ReactDOM.findDOMNode(this.refs['refInput']);
@@ -159,7 +114,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
   }
 
   disableKeys(event: any) {
-    if (this.props.disableKeys.includes(event.key)) {
+    if (this.props.disableKeys && this.props.disableKeys.includes(event.key)) {
       event.preventDefault();
       event.stopPropagation();
       return false;
@@ -169,7 +124,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
 
   onKeyDown = (event: any) => {
     this.props.disableKeys ? this.disableKeys(event) : null;
-  }
+  };
 
   render() {
     const self = this;
@@ -179,7 +134,13 @@ export class Input extends React.Component<IInputProps, IInputState> {
     let inputPartial, iconPartial, pencilPartial, textAreaScrollHeight, errorInlinePartialTop, errorInlinePartialBottom;
 
     const errorInlinePartial = () => {
-      if (props.errorInline && (props.errorDirection === 'top' || 'bottom') && props.errorMessage) {
+      if (
+        props.error &&
+        props.errorDirection &&
+        props.errorInline &&
+        (props.errorDirection === 'top' || 'bottom') &&
+        props.errorMessage
+      ) {
         return (
           <SlideIn
             from={props.errorDirection}
@@ -209,7 +170,7 @@ export class Input extends React.Component<IInputProps, IInputState> {
 
     if (inputDOM) {
       // textarea auto expand
-      if (props.autoExpand) {
+      if (props.autoExpand && self.props.scrollHeight) {
         textAreaScrollHeight = Math.min(self.props.scrollHeight, 300) + 'px';
       } else {
         textAreaScrollHeight = null;

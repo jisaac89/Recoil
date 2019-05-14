@@ -1,21 +1,21 @@
 import React from 'react';
-
-import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
-import Toolbar from '../Toolbar/Toolbar';
+import { Button } from '../Button/Button';
+import { Dropdown } from '../Dropdown/Dropdown';
+import { Toolbar } from '../Toolbar/Toolbar';
 
 export interface IPagerProps {
-  gotoPage?: (pageNumber: number, event?: React.MouseEvent<HTMLElement>) => void;
-  currentPage?: number;
-  changePageSize?: (pageSizeAmount: number, event?: React.MouseEvent<HTMLElement>) => void;
-  numberOfPages?: number;
-  numberPerPage?: number;
+  gotoPage: (pageNumber: number, event?: React.MouseEvent<HTMLElement>) => void;
+  currentPage: number;
+  changePageSize: (pageSizeAmount: number, event?: React.MouseEvent<HTMLElement>) => void;
+  numberOfPages: number;
+  numberPerPage: number;
+  pagerSize?: number;
   firstPage?: any;
   nextPage?: any;
   lastPage?: any;
   previousPage?: any;
-  dataSource?: Array<Object>;
-  pageSize?: number;
+  dataSource: Array<object>;
+  pageSize: number;
   onPageChange?: (pageNumber: number, event?: React.MouseEvent<any>) => void;
   pageSizerOptions?: Array<number>;
   hidePageSize?: boolean;
@@ -23,20 +23,19 @@ export interface IPagerProps {
   showDataSourceLength?: boolean;
   hideHeader?: boolean;
   title?: string;
-  pagerSize?: number;
   className?: string;
   pageSizeDropDirection?: string;
 }
 
-export class Pager extends React.Component<IPagerProps, {}> {
+export class Pager extends React.Component<IPagerProps> {
   gotoPage(pageNumber: number) {
     this.props.gotoPage(pageNumber);
     this.props.onPageChange ? this.props.onPageChange(pageNumber) : null;
   }
 
-  onSelected(pageSizeAmount: number) {
+  onSelected = (pageSizeAmount: number) => evt => {
     this.props.changePageSize(pageSizeAmount);
-  }
+  };
 
   renderPager(page: number, pageCount: number, pagerSize: number) {
     const self = this;
@@ -57,7 +56,7 @@ export class Pager extends React.Component<IPagerProps, {}> {
         firstPager = 0;
       }
     }
-    const pagers = [];
+    const pagers: JSX.Element[] = [];
     for (let index = firstPager; index <= lastPager; index++) {
       pagers.push(
         <Button
@@ -149,7 +148,7 @@ export class Pager extends React.Component<IPagerProps, {}> {
               hideHeader
               hideDropdownHeader
               rowIsSelectable='single'
-              onChange={this.onSelected.bind(this)}
+              onChange={this.onSelected}
               material
               size='small'
               dropDirection={pageSizeDropDirection ? pageSizeDropDirection : 'down'}

@@ -252,7 +252,7 @@ export class Tree extends React.Component<ITreeProps, ITreeState> {
         return this.renderChildrenWithoutParent(roots[0]);
       } else {
         return (
-          <div className="r-Tree e-scroll-y">
+          <div className='r-Tree e-scroll-y'>
             <Table
               hideHeader
               columns={columns}

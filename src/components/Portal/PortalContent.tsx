@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Layer from '../Layer/Layer';
-import SlideIn from '../SlideIn/SlideIn';
+import { Layer } from '../Layer/Layer';
+import { SlideIn } from '../SlideIn/SlideIn';
 
 export interface IPortalProps {
   portalId?: string;
   portal?: JSX.Element;
-  open?: boolean;
+  open: boolean;
   onClose?: () => void;
   title?: string;
   icon?: string;
@@ -64,6 +64,8 @@ export class PortalContent extends React.Component<IPortalProps, any> {
         ),
         this.portalElement
       );
-    } else { return null; }
+    } else {
+      return null;
+    }
   }
 }

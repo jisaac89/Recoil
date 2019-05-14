@@ -1,31 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
-import { IRecoil } from '../../index';
 import { Selectable } from '../Selectable/Selectable';
-
-export interface IButtonProps extends IRecoil {
-  style?: object;
-  onClick?: (event: React.MouseEvent<any>) => void;
-  pointer?: 'left' | 'right' | boolean;
-  iconPointer?: 'left' | 'right' | 'up' | 'down';
-  iconLocation?: 'left' | 'right';
-  checkedTheme?: 'primary' | 'success' | 'error' | 'default';
-  icon?: string;
-  href?: string;
-  target?: string;
-  block?: boolean;
-  strech?: boolean;
-  right?: boolean;
-  left?: boolean;
-  submit?: boolean;
-  advanced?: boolean;
-  ghost?: boolean;
-  required?: boolean;
-  id?: string;
-  shortcut?: string;
-  shortCutInitKey?: string;
-  materialIcon?: boolean;
-}
+import { IButtonProps } from './ButtonType';
 
 export class Button extends React.Component<IButtonProps> {
   public static defaultProps = {

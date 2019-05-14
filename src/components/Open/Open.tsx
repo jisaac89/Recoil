@@ -10,7 +10,7 @@ export interface IOpenProps {
   openToHeight?: string;
 }
 
-class Open extends React.Component<IOpenProps, any> {
+class Open extends React.Component<IOpenProps> {
   public refOpen: any;
 
   render() {

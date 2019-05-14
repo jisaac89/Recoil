@@ -1,8 +1,6 @@
+/* tslint:disable */
 import classNames from 'classnames';
 import React from 'react';
-
-import { OOCSS } from '../OOCSS/OOCSS';
-
 import { IRecoil } from '../..';
 
 export interface ILayerProps extends IRecoil {
@@ -12,7 +10,7 @@ export interface ILayerProps extends IRecoil {
   right?: boolean;
   scrollY?: boolean;
   scrollX?: boolean;
-  style?: Object;
+  style?: object;
   onClick?: () => void;
   key?: string | number;
   parent?: boolean;
@@ -36,7 +34,6 @@ export interface ILayerProps extends IRecoil {
 }
 
 class AdvancedLayer extends React.Component<ILayerProps, any> {
-
   public static defaultProps = {
     overflow: false,
     type: '',
@@ -94,13 +91,16 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
   }
 
   canLayerAnimateScroll(props: ILayerProps) {
-    const propss = props || this.props;
     const self = this;
     setTimeout(() => {
-      const element = document.getElementById(propss.scrollToId);
-      if (element && element.getBoundingClientRect()) {
-        self.handleScroll(propss.scrollToId, element.offsetTop);
-      } else { return null; }
+      if (props.scrollToId) {
+        const element = document.getElementById(props.scrollToId);
+        if (element && element.getBoundingClientRect()) {
+          self.handleScroll(props.scrollToId, element.offsetTop);
+        } else {
+          return null;
+        }
+      }
     }, 0);
   }
 
@@ -222,14 +222,14 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
         id={props.id}
         onScroll={this.props.onScroll}
         tabIndex={props.tabIndex}
-        ref='Layer'
+        ref="Layer"
         onClick={props.onClick}
         className={layerClass}
         style={Object.assign({}, dimensionStyle, props.style)}>
         {props.children}
 
         <div
-          id='end'
+          id="end"
           style={{ float: 'left', clear: 'both' }}
           ref={el => {
             this.messagesEnd = el;

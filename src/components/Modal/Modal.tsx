@@ -2,36 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { Portal } from '../Portal/Portal';
 import { ModalHeader } from './ModalHeader';
-
-export interface IModalProps {
-  ghost?: boolean;
-  open?: boolean;
-  float?: boolean;
-  effect?: string;
-  className?: string;
-  icon?: string;
-  fullScreen?: boolean;
-  style?: Object;
-  title?: string;
-  onClose?: () => void;
-  children?: any;
-  beforeOpen?: () => void;
-  afterOpen?: () => void;
-  mobile?: boolean;
-  hideFullScreenButton?: boolean;
-  hideCloseButton?: boolean;
-  hideHeader?: boolean;
-  overflow?: boolean;
-  fill?: boolean;
-  closeId?: string;
-  flexCenter?: boolean;
-}
-
-export interface IModalState {
-  fullScreen?: boolean;
-  open?: boolean;
-  showChildren?: boolean;
-}
+import { IModalProps, IModalState } from './ModalTypes';
 
 function guidGenerator() {
   const S4 = function() {
@@ -41,7 +12,7 @@ function guidGenerator() {
 }
 
 export class Modal extends React.Component<IModalProps, IModalState> {
-  refs: {
+  static refs: {
     [key: string]: Element;
     Modal: HTMLInputElement;
   };

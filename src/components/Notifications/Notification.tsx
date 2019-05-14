@@ -1,5 +1,5 @@
 import React from 'react';
-import Toolbar from '../Toolbar/Toolbar';
+import { Toolbar } from '../Toolbar/Toolbar';
 
 export type NotificationType = 'success' | 'primary' | 'error' | 'default';
 
@@ -14,9 +14,9 @@ export interface INotificationProps {
 }
 
 export interface INotificationState {
-  view?: 'visible' | 'hiding' | 'removed';
-  time?: number;
-  isOn?: boolean;
+  view: 'visible' | 'hiding' | 'removed';
+  time: number;
+  isOn: boolean;
   start: number;
 }
 

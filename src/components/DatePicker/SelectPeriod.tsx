@@ -7,7 +7,7 @@ export class SelectPeriod extends React.Component<any, any> {
 
     return (
       <Dropdown
-        className="w100"
+        className='w100'
         material
         block
         title={periods[period]}

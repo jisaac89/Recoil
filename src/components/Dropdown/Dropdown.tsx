@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import { Button } from '../Button/Button';
-import { IButtonProps } from '../Button/Button';
-import { IDataSourceProps } from '../DataSource/DataSource';
+import { IButtonProps } from '../Button/ButtonType';
 import { ITableProps } from '../Table/Table';
 import { Tags } from '../Tags/Tags';
 import { DropdownContent } from './DropdownContent';
@@ -293,7 +292,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
 
     if (tagSelected) {
       return (
-        <div className={props.block ? 'block' : 'dinblock'} id={id} ref="dropdown">
+        <div className={props.block ? 'block' : 'dinblock'} id={id} ref='dropdown'>
           <Tags
             branchIn={tagSelectedKey}
             onRemove={tagSelectedElements ? this.onTagRemove.bind(this) : this.removeSelectedItem.bind(this)}
@@ -307,7 +306,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
       );
     } else {
       return (
-        <div id={id} ref="dropdown" className={dropdownClass}>
+        <div id={id} ref='dropdown' className={dropdownClass}>
           <Button {...buttonProps}>{selectedTitle}</Button>
           <DropdownContent {...dropdownPortalProps} />
         </div>

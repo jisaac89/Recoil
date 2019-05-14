@@ -1,22 +1,10 @@
 import classNames from 'classnames';
 import React from 'react';
-import { IRecoil } from '../../index';
 import { Button } from '../Button/Button';
 import { Emerge } from '../Emerge/Emerge';
+import { ILoadingProps } from './LoadingTypes';
 
-export interface ILoadingProps extends IRecoil {
-  children?: any;
-  if?: boolean;
-  src?: string;
-  title?: string;
-  width?: number;
-  height?: number;
-  icon?: string;
-}
-
-export interface ILoadingState {}
-
-export class Loading extends React.Component<ILoadingProps, ILoadingState> {
+export class Loading extends React.Component<ILoadingProps> {
   constructor(props: ILoadingProps) {
     super(props);
   }

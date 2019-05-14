@@ -2,15 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { Button } from '../Button/Button';
 import { Toolbar } from '../Toolbar/Toolbar';
-import { IRecoil } from '../../index';
-
-export interface ICheckboxProps extends IRecoil {
-  onChange: (value: boolean, event?: React.MouseEvent<MouseEvent>) => void;
-  checked: boolean;
-  icon?: string;
-  title?: string;
-  loading?: boolean;
-}
+import { ICheckboxProps } from './CheckboxType';
 
 export class Checkbox extends React.Component<ICheckboxProps> {
   static defaultProps = {
@@ -27,7 +19,6 @@ export class Checkbox extends React.Component<ICheckboxProps> {
     const self = this;
     const props = self.props;
     const { checked, disabled, icon, loading, theme, size } = props;
-
     const checkboxClass = classNames('r-Checkbox', { disabled: props.disabled }, { 'e-checked': this.props.checked });
 
     const checkboxProps = {

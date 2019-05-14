@@ -1,19 +1,8 @@
 import classNames from 'classnames';
-import React from 'react';
-
 import 'intersection-observer';
+import React from 'react';
 import Observer from 'react-intersection-observer';
-
-export interface IEmergeProps {
-  if?: boolean;
-  enter?: string;
-  exit?: string;
-  delay?: number;
-  overflow?: boolean;
-  className?: string;
-  style?: object;
-  triggerOnce?: boolean;
-}
+import { IEmergeProps } from './EmergeType';
 
 export class Emerge extends React.Component<IEmergeProps> {
   public static defaultProps = {
@@ -49,11 +38,11 @@ export class Emerge extends React.Component<IEmergeProps> {
 
       const newClass = classNames('r-Emerge', 'animated', enter, exit, child.props.className);
 
-      const newStyle: any = {
+      const newStyle: { animationDelay: string } = {
         animationDelay: index++ * (props.delay ? props.delay : 300) + 'ms'
       };
 
-      function merge_options(obj1: Array<any>, obj2: Array<any>) {
+      function merge_options(obj1: object, obj2: object) {
         const obj3 = {};
         for (const attrname in obj1) {
           if (obj1) {
@@ -67,18 +56,15 @@ export class Emerge extends React.Component<IEmergeProps> {
         }
         return obj3;
       }
-      return React.cloneElement(child, { className: newClass, style: merge_options(newStyle, props.style) });
+
+      const style = props.style ? props.style : {};
+
+      return React.cloneElement(child, { className: newClass, style: merge_options(newStyle, style) });
     });
 
     return (
       <Observer triggerOnce={props.triggerOnce}>
-        {inView =>
-          inView ? (
-            <span className={emergeClass} ref="element">
-              {newChildren}
-            </span>
-          ) : null
-        }
+        {inView => (inView ? <span className={emergeClass}>{newChildren}</span> : null)}
       </Observer>
     );
   }

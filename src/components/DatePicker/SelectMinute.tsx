@@ -10,7 +10,7 @@ export class SelectMinute extends React.Component<any, any> {
         material
         title={minute}
         selectedElements={minute}
-        rowIsSelectable="single"
+        rowIsSelectable='single'
         onChange={selectMinute}
         dataSource={minutes}
         pageSize={minutes.length}

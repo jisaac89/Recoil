@@ -1,8 +1,7 @@
 ﻿import classNames from 'classnames';
 import React from 'react';
-import ShortCutProvider from '../ShortCut/ShortCutProvider';
-
-import PortalProvider from '../Portal/PortalProvider';
+import { PortalProvider } from '../Portal/PortalProvider';
+import { ShortCutProvider } from '../ShortCut/ShortCutProvider';
 
 import { isMobile, isTablet } from './index';
 

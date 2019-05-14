@@ -6,9 +6,9 @@ export interface IFixedProps {
 }
 
 export class Fixed extends React.Component<IFixedProps, any> {
-  refs: {
-    [key: string]: Element
-    fixedNode: HTMLElement
+  static refs: {
+    [key: string]: Element;
+    fixedNode: HTMLElement;
   };
 
   constructor(props) {
@@ -21,7 +21,7 @@ export class Fixed extends React.Component<IFixedProps, any> {
   }
 
   componentDidMount() {
-    const svg = this.refs.fixedNode;
+    const svg: any = this.refs.fixedNode;
     document.body.addEventListener('scroll', this.handleShortcuts.bind(this), true);
     this.setState({
       default: svg.getBoundingClientRect().top,
@@ -31,7 +31,7 @@ export class Fixed extends React.Component<IFixedProps, any> {
 
   handleShortcuts() {
     const self = this;
-    const svg = this.refs.fixedNode;
+    const svg: any = this.refs.fixedNode;
     if (svg.getBoundingClientRect().top <= 2) {
       self.setState({
         fixed: true

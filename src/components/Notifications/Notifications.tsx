@@ -1,8 +1,7 @@
-import React from 'react';
-
 import classNames from 'classnames';
-import Portal from '../Portal/Portal';
-import Notification from './Notification';
+import React from 'react';
+import { Portal } from '../Portal/Portal';
+import { Notification } from './Notification';
 
 export interface INotificationsProps {
   dataSource: INotificationItem[];

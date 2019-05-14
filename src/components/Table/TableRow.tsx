@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
+import { branchIn } from '../Utils';
 import { IColumn } from './IColumn';
 import { TableColumn } from './TableColumn';
-import { branchIn } from '../Utils';
 
 class DetailTemplateColumnToggle extends React.Component<any, any> {
   detailTemplateToggleSelectedElements(element: Array<any>) {
@@ -19,14 +19,14 @@ class DetailTemplateColumnToggle extends React.Component<any, any> {
         onClick={
           !detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null
         }
-        className="r-Table__DetailTd"
+        className='r-Table__DetailTd'
         style={{ width: '25px' }}>
         {filterOpenDetailTemplate ? (
           filterOpenDetailTemplate(element) === true ? (
             <Button
               tabIndex={-1}
               simple
-              size="small"
+              size='small'
               icon={
                 props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element)
                   ? 'chevron-down'
@@ -38,7 +38,7 @@ class DetailTemplateColumnToggle extends React.Component<any, any> {
           <Button
             tabIndex={-1}
             simple
-            size="small"
+            size='small'
             icon={
               props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element)
                 ? 'chevron-down'
@@ -63,7 +63,7 @@ class CheckboxColumn extends React.Component<any, any> {
       <td style={{ width: '25px' }}>
         <Checkbox
           onChange={this.toggleSelectedElements.bind(this, props.element)}
-          size="small"
+          size='small'
           checked={selectedElements ? selectedElements.includes(props.element) : false}
         />
       </td>

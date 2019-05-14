@@ -7,7 +7,7 @@ export interface ISelectableProps {
   type?: string;
 }
 
-class Selectable extends React.Component<ISelectableProps, {}> {
+class Selectable extends React.Component<ISelectableProps> {
   public static defaultProps = {
     type: 'primary'
   };
