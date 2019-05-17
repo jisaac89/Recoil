@@ -24,7 +24,7 @@ interface IGridState {
   selectedElements: any;
 }
 
-class Grid extends React.Component<IGridProps, IGridState> {
+class GridComponent extends React.Component<IGridProps, IGridState> {
   constructor(props) {
     super(props);
     this.state = {
@@ -178,4 +178,4 @@ class Grid extends React.Component<IGridProps, IGridState> {
   }
 }
 
-export const DataSources = DataSource(Grid);
+export const Grid = DataSource(GridComponent);

@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from '../Button/Button';
-import Dropdown from '../Dropdown/Dropdown';
+import { Button } from '../Button/Button';
+import { Dropdown } from '../Dropdown/Dropdown';
 import { IColumn } from './IColumn';
 
 export interface ITableDataProps {
-  value?: Array<any>;
+  value: Array<any>;
   column: IColumn;
   element?: any;
   hideColumns?: Array<string>;
@@ -56,8 +56,16 @@ export class TableColumn extends React.Component<ITableDataProps, ITableDataStat
     const { type } = state;
     const { value, column, element, hideColumns, isArray, tableDataClassName, isLoading } = self.props;
 
-    const hideColumnsArrayIncludesEitherNameOrTitle =
-      hideColumns && hideColumns.includes(column.title ? column.title : column.name);
+    const columnName = () => {
+      if (column.title) {
+        return column.title;
+      } else if (column.name) {
+        return column.name;
+      } else {
+        return '';
+      }
+    };
+    const hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(columnName());
 
     if (isArray) {
       return (
@@ -65,7 +73,7 @@ export class TableColumn extends React.Component<ITableDataProps, ITableDataStat
           {column.template ? (
             column.template(element)
           ) : (
-            <Button loading={this.props.isLoading} size='small' simple>
+            <Button loading={this.props.isLoading} size="small" simple>
               {element}
             </Button>
           )}
@@ -76,20 +84,20 @@ export class TableColumn extends React.Component<ITableDataProps, ITableDataStat
         <td
           className={tableDataClassName}
           tabIndex={-1}
-          id={value ? value.toString() : null}
+          id={value ? value.toString() : undefined}
           style={{ width: column.width }}>
           {column.template ? (
             column.template(element)
           ) : type === 'Value' ? (
-            <Button loading={isLoading} size='small' simple>
+            <Button loading={isLoading} size="small" simple>
               {value}
             </Button> ? (
-              <Button loading={isLoading} size='small' simple>
+              <Button loading={isLoading} size="small" simple>
                 {value.toString()}
               </Button>
             ) : null
           ) : (
-            <Dropdown loading={isLoading} className='r-Table-Dropdown' material dataSource={value} title={type} />
+            <Dropdown loading={isLoading} className="r-Table-Dropdown" material dataSource={value} title={type} />
           )}
         </td>
       );

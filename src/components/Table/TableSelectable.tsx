@@ -1,15 +1,6 @@
 import React from 'react';
 import { Selectable } from '../Selectable/Selectable';
-import { IColumn } from './Table';
-
-export interface ITableColumnSelectableProps {
-  columns: IColumn[];
-  detailTemplate?: (element: any) => JSX.Element;
-  selectedElements?: any;
-  element?: any;
-  checkable?: boolean;
-  selectedKey?: string;
-}
+import { ITableColumnSelectableProps } from './TableTypes';
 
 export class TableSelectable extends React.Component<ITableColumnSelectableProps> {
   render() {
@@ -18,7 +9,7 @@ export class TableSelectable extends React.Component<ITableColumnSelectableProps
 
     return (
       <tr tabIndex={-1} className={'r-TableColumnSelectable'}>
-        <td colSpan={columns.length + (checkable ? 1 : 0) + (detailTemplate ? 1 : 0)}>
+        <td colSpan={columns && columns.length + (checkable ? 1 : 0) + (detailTemplate ? 1 : 0)}>
           <Selectable
             checked={selectedElements && selectedElements.includes(selectedKey ? element[selectedKey] : element)}
           />

@@ -1,45 +1,8 @@
 import React from 'react';
-import { IColumn } from './IColumn';
 import { TableDetail } from './TableDetail';
 import { TableRow } from './TableRow';
 import { TableSelectable } from './TableSelectable';
-
-export interface TableBodyProps {
-  id?: string;
-  portal?: boolean;
-  activeRows: any;
-  // initial dataSource loaded as prop
-  dataSource: Array<any> | Object;
-  // columns defined by user
-  columns?: Array<IColumn>;
-  // a detail template function that returns a view
-  detailTemplate?: (element: Array<any>) => JSX.Element;
-  selectedElements?: Array<any>;
-  detailTemplateOpenAll?: boolean;
-  detailTemplateToggleSelectedElements?: boolean;
-  detailTemplateSelectedElements?: Array<any>;
-  detailTemplateHideToggle?: boolean;
-  toggleSelectedElements?: Array<any>;
-  rowIsSelectable?: boolean | string;
-  checkable?: boolean;
-  hideColumns?: Array<any>;
-  onRowSelect?: (
-    element?: Array<any>,
-    key?: string | number,
-    selectedElements?: Array<any> | Object,
-    id?: string | number
-  ) => void;
-  isArray: boolean;
-  detailTemplateOpenOnRowSelect?: boolean | 'single';
-  selectedKey?: string;
-  filterRow?: (item: Object) => void;
-  filterOpenDetailTemplate?: (item: Object) => void;
-  serverSide?: boolean;
-  disableSelectedElements?: Array<any>;
-  tableDataClassName?: string;
-  loadingElements?: any[];
-  loadingKey?: string;
-}
+import { TableBodyProps } from './TableTypes';
 
 export class TableBody extends React.Component<TableBodyProps> {
   render() {

@@ -1,7 +1,7 @@
 import { browser, device, engine, os, ua } from './get-ua-data';
 import { broPayload, checkType, mobilePayload } from './types';
 
-const type = checkType(device.type);
+export const type = checkType(device.type);
 
 export const isBrowser = browserType => {
   return broPayload(isBrowser, browser, engine, os, ua);

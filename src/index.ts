@@ -14,37 +14,30 @@ export interface IRecoil {
   children?: any;
 }
 
-export { default as Recoil } from './components/Recoil/Recoil';
-export { default as Align } from './components/Align/Align';
-export { default as AdvancedLayer } from './components/Layer/AdvancedLayer';
-export { default as Button, IButtonProps } from './components/Button/Button';
-export { default as Checkbox } from './components/Checkbox/Checkbox';
-export { default as Open } from './components/Open/Open';
-export {
-  default as DatePicker,
-  IDatePickerProps,
-  Calendar,
-  ICalendarProps,
-  ICalendarState
-} from './components/DatePicker/DatePicker';
-export { default as Dropdown } from './components/Dropdown/Dropdown';
-export { default as Emerge } from './components/Emerge/Emerge';
-export { default as Fixed } from './components/Fixed/Fixed';
-export { default as Grid } from './components/Grid/Grid';
-export { default as Input, IInputProps, IInputState } from './components/Input/Input';
-export { default as Layer } from './components/Layer/Layer';
-export { default as Loading } from './components/Loading/Loading';
-export { default as Modal } from './components/Modal/Modal';
-export { default as Notifications } from './components/Notifications/Notifications';
-export { default as Selectable } from './components/Selectable/Selectable';
-export { default as Shrink } from './components/Shrink/Shrink';
-export { default as Toggle, IToggleProps } from './components/Toggle/Toggle';
-export { default as Tree, ITreeItem } from './components/Tree/Tree';
-export { default as Toolbar } from './components/Toolbar/Toolbar';
-export { default as Transform } from './components/Transform/Transform';
-export { default as Wizard } from './components/Wizard/Wizard';
-export { default as SlideIn } from './components/SlideIn/SlideIn';
-export { default as Stepper } from './components/Stepper/Stepper';
-export { default as Table, ITableProps, IColumn } from './components/Table/Table';
-export { default as TimePicker } from './components/TimePicker/TimePicker';
-export { default as Portal } from './components/Portal/Portal';
+export { Recoil } from './components/Recoil/Recoil';
+export { Align } from './components/Align/Align';
+export { AdvancedLayer } from './components/Layer/AdvancedLayer';
+export { Button } from './components/Button/Button';
+export { Checkbox } from './components/Checkbox/Checkbox';
+export { Open } from './components/Open/Open';
+export { DatePicker } from './components/DatePicker/DatePicker';
+export { Dropdown } from './components/Dropdown/Dropdown';
+export { Emerge } from './components/Emerge/Emerge';
+export { Fixed } from './components/Fixed/Fixed';
+export { Grid } from './components/Grid/Grid';
+export { Input } from './components/Input/Input';
+export { Layer } from './components/Layer/Layer';
+export { Loading } from './components/Loading/Loading';
+export { Modal } from './components/Modal/Modal';
+export { Notifications } from './components/Notifications/Notifications';
+export { Selectable } from './components/Selectable/Selectable';
+export { Shrink } from './components/Shrink/Shrink';
+export { Toggle } from './components/Toggle/Toggle';
+export { Toolbar } from './components/Toolbar/Toolbar';
+export { Transform } from './components/Transform/Transform';
+export { Wizard } from './components/Wizard/Wizard';
+export { SlideIn } from './components/SlideIn/SlideIn';
+export { Stepper } from './components/Stepper/Stepper';
+export { Table } from './components/Table/Table';
+export { TimePicker } from './components/TimePicker/TimePicker';
+export { Portal } from './components/Portal/Portal';

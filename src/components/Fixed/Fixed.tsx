@@ -51,7 +51,7 @@ export class Fixed extends React.Component<IFixedProps, any> {
     const fixedClass = classNames('r-Fixed', { 'e-fixed': fixed === true });
 
     return (
-      <div ref='fixedNode' className={fixedClass}>
+      <div ref="fixedNode" className={fixedClass}>
         {props.children}
       </div>
     );

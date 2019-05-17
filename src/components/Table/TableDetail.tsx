@@ -1,18 +1,9 @@
 import React from 'react';
-
-import Open from '../Open/Open';
+import { Open } from '../Open/Open';
 import { IColumn } from './IColumn';
-export interface ITableColumnDetailProps {
-  element?: JSX.Element;
-  columns?: Array<IColumn>;
-  detailTemplate?: (element: any) => JSX.Element;
-  detailTemplateOpenAll?: boolean;
-  detailTemplateSelectedElements?: any;
-  checkable?: boolean;
-  selectedKey?: string;
-}
+import { ITableColumnDetailProps } from './TableTypes';
 
-export class TableDetail extends React.Component<ITableColumnDetailProps, any> {
+export class TableDetail extends React.Component<ITableColumnDetailProps> {
   render() {
     const self = this;
     const props = self.props;
@@ -28,18 +19,24 @@ export class TableDetail extends React.Component<ITableColumnDetailProps, any> {
 
     if (detailTemplate) {
       return (
-        <tr className='r-TableColumnDetail'>
-          <td colSpan={columns.length + (checkable ? 1 : 0) + (detailTemplate ? 1 : 0)}>
+        <tr className="r-TableColumnDetail">
+          <td colSpan={columns && columns.length + (checkable ? 1 : 0) + (detailTemplate ? 1 : 0)}>
             <Open
               if={
                 detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element) ||
                 detailTemplateOpenAll
               }>
-              {self.props.detailTemplate(element)}
+              {() => {
+                if (detailTemplate) {
+                  return detailTemplate(element);
+                }
+              }}
             </Open>
           </td>
         </tr>
       );
-    } else { return null; }
+    } else {
+      return null;
+    }
   }
 }

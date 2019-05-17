@@ -1,6 +1,6 @@
 ﻿import React from 'react';
-import Dropdown from '../Dropdown/Dropdown';
-import Toolbar from '../Toolbar/Toolbar';
+import { Dropdown } from '../Dropdown/Dropdown';
+import { Toolbar } from '../Toolbar/Toolbar';
 
 export interface IDatePickerProps {
   mask?: string;
@@ -23,20 +23,20 @@ export class TimePicker extends React.Component<IDatePickerProps, any> {
       time: time
     });
     this.props.onSelect ? this.props.onSelect(time) : null;
-  }
+  };
 
   onChange = (value: any) => {
     this.setState({
       time: new Date(value).getTime()
     });
-  }
+  };
 
   render() {
     return (
       <Toolbar flex flush>
-        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'HH'} dataSource={hours} />
-        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'MM'} dataSource={secondsMinutes} />
-        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'SS'} dataSource={secondsMinutes} />
+        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'HH'} dataSource={hours} />
+        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'MM'} dataSource={secondsMinutes} />
+        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'SS'} dataSource={secondsMinutes} />
       </Toolbar>
     );
   }

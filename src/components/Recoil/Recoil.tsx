@@ -3,8 +3,6 @@ import React from 'react';
 import { PortalProvider } from '../Portal/PortalProvider';
 import { ShortCutProvider } from '../ShortCut/ShortCutProvider';
 
-import { isMobile, isTablet } from './index';
-
 export interface IRecoilProps {
   nightmode?: boolean;
   className?: string;

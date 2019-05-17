@@ -18,7 +18,6 @@ export interface IButtonProps extends IRecoil {
   advanced?: boolean;
   ghost?: boolean;
   required?: boolean;
-  id?: string;
   shortcut?: string;
   shortCutInitKey?: string;
   materialIcon?: boolean;

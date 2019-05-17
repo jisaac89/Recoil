@@ -4,100 +4,70 @@ import { Checkbox } from '../Checkbox/Checkbox';
 import { branchIn } from '../Utils';
 import { IColumn } from './IColumn';
 import { TableColumn } from './TableColumn';
+import { ITableColumnProps } from './TableTypes';
 
-class DetailTemplateColumnToggle extends React.Component<any, any> {
-  detailTemplateToggleSelectedElements(element: Array<any>) {
-    this.props.detailTemplateToggleSelectedElements(element);
-  }
-  render() {
-    const props = this.props;
+const DetailTemplateColumnToggle = ({
+  detailTemplateSelectedElements,
+  element,
+  selectedKey,
+  filterOpenDetailTemplate,
+  detailTemplateToggleSelectedElements
+}) => {
+  const onDetailTemplateToggleSelectedElements = (selectedElement: Array<any>) => () => {
+    detailTemplateToggleSelectedElements(selectedElement);
+  };
 
-    const { detailTemplateOpenOnRowSelect, element, selectedKey, filterOpenDetailTemplate } = props;
-
-    return (
-      <td
-        onClick={
-          !detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null
-        }
-        className='r-Table__DetailTd'
-        style={{ width: '25px' }}>
-        {filterOpenDetailTemplate ? (
-          filterOpenDetailTemplate(element) === true ? (
-            <Button
-              tabIndex={-1}
-              simple
-              size='small'
-              icon={
-                props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element)
-                  ? 'chevron-down'
-                  : 'chevron-right'
-              }
-            />
-          ) : null
-        ) : (
+  return (
+    <td
+      onClick={onDetailTemplateToggleSelectedElements(element)}
+      className="r-Table__DetailTd"
+      style={{ width: '25px' }}>
+      {filterOpenDetailTemplate ? (
+        filterOpenDetailTemplate(element) === true ? (
           <Button
             tabIndex={-1}
             simple
-            size='small'
+            size="small"
             icon={
-              props.detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element)
+              detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element)
                 ? 'chevron-down'
                 : 'chevron-right'
             }
           />
-        )}
-      </td>
-    );
-  }
-}
-
-class CheckboxColumn extends React.Component<any, any> {
-  toggleSelectedElements(element: Array<any>) {
-    // console.log(element);
-    this.props.toggleSelectedElements(element);
-  }
-  render() {
-    const props = this.props;
-    const { selectedElements } = props;
-    return (
-      <td style={{ width: '25px' }}>
-        <Checkbox
-          onChange={this.toggleSelectedElements.bind(this, props.element)}
-          size='small'
-          checked={selectedElements ? selectedElements.includes(props.element) : false}
+        ) : null
+      ) : (
+        <Button
+          tabIndex={-1}
+          simple
+          size="small"
+          icon={
+            detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element)
+              ? 'chevron-down'
+              : 'chevron-right'
+          }
         />
-      </td>
-    );
-  }
-}
+      )}
+    </td>
+  );
+};
 
-export interface ITableColumnProps {
-  element?: any;
-  columns?: IColumn[];
-  toggleSelectedElements?: any;
-  rowIsSelectable?: any;
-  selectedElements?: any;
-  checkable?: boolean;
-  hideColumns?: Array<string>;
-  onRowSelect?: (element: any, index: number | string, event?: React.MouseEvent<any>) => void;
-  selectedKey?: string;
-  index?: number | string;
-  isArray: boolean;
-  detailTemplateOpenOnRowSelect?: boolean | 'single';
-  detailTemplate?: (element: any) => JSX.Element;
-  detailTemplateOpenAll?: any;
-  detailTemplateToggleSelectedElements?: any;
-  detailTemplateSelectedElements?: Array<any>;
-  detailTemplateHideToggle?: boolean;
-  filterOpenDetailTemplate?: any;
-  id?: any;
-  disableSelectedElements?: Array<any>;
-  tableDataClassName?: string;
-  loadingElements?: any;
-  loadingKey?: string;
-}
+const CheckboxColumn = ({ toggleSelectedElements, element, selectedElements }) => {
+  const onToggleSelectedElements = (toggledElement: Array<any>) => () => {
+    toggleSelectedElements(toggledElement);
+  };
 
-export class TableRow extends React.Component<ITableColumnProps, any> {
+  return (
+    <td style={{ width: '25px' }}>
+      <Checkbox
+        onChange={onToggleSelectedElements(element)}
+        size="small"
+        checked={selectedElements ? selectedElements.includes(element) : false}
+      />
+    </td>
+  );
+};
+
+export class TableRow extends React.Component<ITableColumnProps> {
   toggleSelectedElements(element: Array<any>, index: string | number) {
     this.props.rowIsSelectable ? this.props.toggleSelectedElements(element, index) : null;
     !this.props.rowIsSelectable && this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
@@ -183,7 +153,9 @@ export class TableRow extends React.Component<ITableColumnProps, any> {
         tab-index={-1}
         className={
           selectedElements && selectedElements.includes(selectedKey ? element[selectedKey] : element)
-            ? disableSelectedElements.length
+            ? disableSelectedElements
+              ? disableSelectedElements.length
+              : 0
               ? 'r-TableColumn disabled'
               : 'r-TableColumn checked'
             : 'r-TableColumn'

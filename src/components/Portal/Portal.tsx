@@ -5,7 +5,7 @@ import { PortalContext } from './PortalProvider';
 export interface IPortalProps {
   portalId?: string;
   portal?: JSX.Element;
-  open?: boolean;
+  open: boolean;
   onClose?: () => void;
   title?: string;
   icon?: string;

@@ -62,6 +62,7 @@ export class Wizard extends React.Component<IWizardProps> {
               currentPage={props.slideIndex}
               gotoPage={this.onSlide}
               hidePageSize
+              pageSize={props.children.length}
             />
           ) : null}
         </div>

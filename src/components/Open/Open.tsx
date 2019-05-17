@@ -34,7 +34,7 @@ class Open extends React.Component<IOpenProps> {
     }
 
     return (
-      <div ref='Open' className={OpenClass} style={hasStyle}>
+      <div ref="Open" className={OpenClass} style={hasStyle}>
         {props.openToHeight ? props.children : props.if ? props.children : null}
       </div>
     );
