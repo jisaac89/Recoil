@@ -3,6 +3,7 @@ import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { arraysEqual } from '../Utils';
 import { ITableHeadProps, ITableHeadState } from './TableTypes';
+import { T } from '../DataSource/DataSource';
 
 const DetailTemplateHeadToggle = ({ detailTemplateToggleAll, detailTemplateSelectedElements, dataSource }) => {
   detailTemplateToggleAll = dataSource => {
@@ -47,7 +48,7 @@ export class TableHead extends React.Component<ITableHeadProps, ITableHeadState>
     };
   }
 
-  toggleSorting(dataSource: Array<any>, columnName: string) {
+  toggleSorting(dataSource: T, columnName: string) {
     const self = this;
 
     this.setState(

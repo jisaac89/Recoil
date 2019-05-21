@@ -5,6 +5,7 @@ import { branchIn } from '../Utils';
 import { IColumn } from './IColumn';
 import { TableColumn } from './TableColumn';
 import { ITableColumnProps } from './TableTypes';
+import { T } from '../DataSource/DataSource';
 
 const DetailTemplateColumnToggle = ({
   detailTemplateSelectedElements,
@@ -68,13 +69,13 @@ const CheckboxColumn = ({ toggleSelectedElements, element, selectedElements }) =
 };
 
 export class TableRow extends React.Component<ITableColumnProps> {
-  toggleSelectedElements(element: Array<any>, index: string | number) {
+  toggleSelectedElements = (element: T, index: string | number) => evt => {
     this.props.rowIsSelectable ? this.props.toggleSelectedElements(element, index) : null;
     !this.props.rowIsSelectable && this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
     this.props.detailTemplateOpenOnRowSelect ? this.props.detailTemplateToggleSelectedElements(element) : null;
-  }
+  };
 
-  onRowSelect(element: Array<any>, index: string | number) {
+  onRowSelect(element: T, index: string | number) {
     this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
     this.props.detailTemplateOpenOnRowSelect ? this.props.detailTemplateToggleSelectedElements(element) : null;
   }
@@ -107,17 +108,21 @@ export class TableRow extends React.Component<ITableColumnProps> {
       loadingKey
     } = props;
 
-    const columnsValueArray = [];
+    const columnsValueArray: string[] = [];
 
-    for (let index = 0; index < columns.length; index++) {
-      const key = columns[index].name;
-      columnsValueArray.push(key ? branchIn(element, key) : element[key]);
+    if (columns) {
+      for (const iterator of columns) {
+        const key: string | undefined = iterator.name;
+        if (key) {
+          columnsValueArray.push(key ? branchIn(element, key) : element[key]);
+        }
+      }
     }
 
-    const createColumnValue = (value: Array<any>, key: string | number) => {
+    const createColumnValue = (value: T, key: string | number) => {
       const isLoading = loadingElements && loadingElements.includes(loadingKey ? element[loadingKey] : element);
 
-      return (
+      return columns ? (
         <TableColumn
           tableDataClassName={tableDataClassName}
           isArray={isArray}
@@ -128,7 +133,7 @@ export class TableRow extends React.Component<ITableColumnProps> {
           column={columns[key]}
           isLoading={isLoading}
         />
-      );
+      ) : null;
     };
 
     const DetailTemplateColumnToggleProps = {
@@ -154,22 +159,24 @@ export class TableRow extends React.Component<ITableColumnProps> {
         className={
           selectedElements && selectedElements.includes(selectedKey ? element[selectedKey] : element)
             ? disableSelectedElements
-              ? disableSelectedElements.length
-              : 0
+              ? disableSelectedElements.length.toString()
+              : ''
               ? 'r-TableColumn disabled'
               : 'r-TableColumn checked'
             : 'r-TableColumn'
         }
         onClick={
           rowIsSelectable && !checkable
-            ? this.toggleSelectedElements.bind(this, element, index)
-            : null ||
-              (onRowSelect || detailTemplateOpenOnRowSelect ? this.onRowSelect.bind(this, element, index) : null)
+            ? this.toggleSelectedElements(element, index)
+            : undefined ||
+              (onRowSelect || detailTemplateOpenOnRowSelect ? this.onRowSelect.bind(this, element, index) : undefined)
         }>
-        {checkable ? <CheckboxColumn {...CheckBoxColumnProps} /> : null}
+        {checkable === true ? <CheckboxColumn {...CheckBoxColumnProps} /> : false}
         {detailTemplate && !detailTemplateHideToggle ? (
           <DetailTemplateColumnToggle {...DetailTemplateColumnToggleProps} />
-        ) : null}
+        ) : (
+          false
+        )}
         {columnsValueArray.map(createColumnValue)}
       </tr>
     );

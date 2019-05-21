@@ -2,12 +2,15 @@ import { IColumn } from './Table';
 import { T } from '../DataSource/DataSource';
 import { IRecoil } from '../..';
 
-export interface ITableProps extends IRecoil {
+export interface ISharedTable {
+  dataSource: T[];
+  columns?: Array<IColumn>;
+}
+
+export interface ITableProps extends IRecoil, ISharedTable {
   portal?: boolean;
   // initial dataSource loaded as prop
-  dataSource: T[];
-  // columns defined by user
-  columns?: Array<IColumn>;
+
   // a detail template function that returns a view
   detailTemplate?: (element: Array<Object>) => JSX.Element;
   // toggle if the table header should show
@@ -89,10 +92,10 @@ export interface ITableProps extends IRecoil {
 }
 
 export interface ITableHeadProps {
-  toggleSorting: (dataSource: any, key: string, sortType: any) => void;
-  detailTemplateToggleAll?: (dataSource: any) => void;
-  selectAll?: (dataSource: any) => void;
-  dataSource: T[];
+  toggleSorting: (dataSource: T, key: string, sortType: any) => void;
+  detailTemplateToggleAll?: (dataSource: T) => void;
+  selectAll?: (dataSource: T) => void;
+  dataSource: T;
   columns?: Array<IColumn>;
   hideHeader?: boolean;
   hideColumns?: any;
@@ -114,14 +117,11 @@ export interface ITableHeadState {
   columns: any[];
 }
 
-export interface TableBodyProps {
+export interface TableBodyProps extends ISharedTable {
   id?: string;
   portal?: boolean;
   activeRows: any;
   // initial dataSource loaded as prop
-  dataSource: Array<any> | Object;
-  // columns defined by user
-  columns?: Array<IColumn>;
   // a detail template function that returns a view
   detailTemplate?: (element: Array<any>) => JSX.Element;
   selectedElements?: Array<any>;
@@ -129,7 +129,7 @@ export interface TableBodyProps {
   detailTemplateToggleSelectedElements?: boolean;
   detailTemplateSelectedElements?: Array<any>;
   detailTemplateHideToggle?: boolean;
-  toggleSelectedElements?: Array<any>;
+  toggleSelectedElements: (T: T, s: number | string) => void;
   rowIsSelectable?: boolean | string;
   checkable?: boolean;
   hideColumns?: Array<any>;
@@ -162,7 +162,7 @@ export interface ITableColumnSelectableProps {
 
 export interface ITableColumnDetailProps {
   element: JSX.Element;
-  columns?: Array<IColumn>;
+  columns?: IColumn[];
   detailTemplate?: (element: any) => JSX.Element;
   detailTemplateOpenAll?: boolean;
   detailTemplateSelectedElements?: any;
@@ -171,16 +171,16 @@ export interface ITableColumnDetailProps {
 }
 
 export interface ITableColumnProps {
-  element: any;
-  columns: IColumn[];
-  toggleSelectedElements?: any;
+  element: T;
+  columns?: IColumn[];
+  toggleSelectedElements: (T: T, s: number | string) => void;
   rowIsSelectable?: any;
   selectedElements?: any;
   checkable?: boolean;
   hideColumns?: Array<string>;
   onRowSelect?: (element: any, index: number | string, event?: React.MouseEvent<any>) => void;
   selectedKey?: string;
-  index?: number | string;
+  index: number | string;
   isArray: boolean;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
   detailTemplate?: (element: any) => JSX.Element;

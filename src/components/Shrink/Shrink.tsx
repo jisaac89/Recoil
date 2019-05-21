@@ -22,7 +22,6 @@ export class Shrink extends React.Component<IShrinkProps, {}> {
   public render() {
     const self = this;
     const props = self.props;
-
     let shrinkStyle;
 
     const shrinkClass = classNames(

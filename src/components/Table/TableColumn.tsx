@@ -2,9 +2,10 @@ import React from 'react';
 import { Button } from '../Button/Button';
 import { Dropdown } from '../Dropdown/Dropdown';
 import { IColumn } from './IColumn';
+import { T } from '../DataSource/DataSource';
 
 export interface ITableDataProps {
-  value: Array<any>;
+  value: T;
   column: IColumn;
   element?: any;
   hideColumns?: Array<string>;
@@ -97,7 +98,7 @@ export class TableColumn extends React.Component<ITableDataProps, ITableDataStat
               </Button>
             ) : null
           ) : (
-            <Dropdown loading={isLoading} className="r-Table-Dropdown" material dataSource={value} title={type} />
+            <Dropdown loading={isLoading} className="r-Table-Dropdown" material dataSource={[value]} title={type} />
           )}
         </td>
       );

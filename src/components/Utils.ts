@@ -1,4 +1,6 @@
-export function branchIn(value: Array<any>, key: string, step?: number): any {
+import { T } from './DataSource/DataSource';
+
+export function branchIn(value: T, key: string, step?: number): any {
   const result = key.split('.'),
     stepLength = result.length,
     currentStep = step || 0,

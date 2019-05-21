@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
-
-import Button from '../Button/Button';
-import Toolbar from '../Toolbar/Toolbar';
+import { Button } from '../Button/Button';
+import { Toolbar } from '../Toolbar/Toolbar';
 
 export interface ISlideInProps {
   if: boolean;
@@ -101,18 +100,18 @@ export class SlideIn extends React.Component<ISlideInProps, any> {
         id={this.props.id}
         tabIndex={-1}
         onClick={props.onClick}
-        ref='slideIn'
+        ref="slideIn"
         className={slideInContainerClass}
         style={this.state.slideInContainerStyle}>
         {props.title || props.onClose ? (
-          <Toolbar block flush noRadius className='r-Modal__header border-bottom clearfix'>
+          <Toolbar block flush noRadius className="r-Modal__header border-bottom clearfix">
             {props.title ? (
-              <Button simple size='small'>
+              <Button simple size="small">
                 {this.props.title}
               </Button>
             ) : null}
             {props.onClose ? (
-              <Button shortcut={'x'} simple size='small' right onClick={props.onClose} icon='times' />
+              <Button shortcut={'x'} simple size="small" right onClick={props.onClose} icon="times" />
             ) : null}
           </Toolbar>
         ) : null}

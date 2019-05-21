@@ -1,21 +1,21 @@
 import React from 'react';
 import { Button } from '../Button/Button';
 import { Emerge } from '../Emerge/Emerge';
-import { ITableProps } from '../Table/Table';
 import { Toolbar } from '../Toolbar/Toolbar';
 import { arraysEqual, branchIn, search } from '../Utils';
 import { IColumn } from './IColumn';
+import { ITableProps } from '../Table/TableTypes';
 
-export type T = Object | string | number;
+export type T = object | string | number | never[];
 
 export interface IDataSourceProps extends ITableProps {
   // initial dataSource loaded as prop
   dataSource: T[];
-  columns?: Array<IColumn>;
+  columns?: IColumn[];
   emptyText: string;
   loading?: boolean;
   loadingText?: string;
-  addColumns?: Array<IColumn>;
+  addColumns?: IColumn[];
 }
 
 const DataSource: any = (Component: JSX.Element) =>
@@ -124,7 +124,7 @@ const DataSource: any = (Component: JSX.Element) =>
       const { sortKey } = this.props;
       const { sortType, page } = this.state;
 
-      const setDataSourceState = (dataSource: Array<T> | Array<Array<T>>, isArray: boolean) => {
+      const setDataSourceState = (dataSource, isArray: boolean) => {
         self.setState(
           {
             dataSource: dataSource,
@@ -161,7 +161,7 @@ const DataSource: any = (Component: JSX.Element) =>
       }
     }
 
-    sortDataSource(dataSource: Array<never>, sortType: string, sortKey: string) {
+    sortDataSource(dataSource: T[], sortType: string, sortKey: string) {
       const self = this;
 
       const { searchedItems, searchTerm } = self.state;
@@ -169,7 +169,7 @@ const DataSource: any = (Component: JSX.Element) =>
       let sortOrderSearchedItems: Array<never>;
       let sortOrderDataSource: Array<never>;
 
-      const sort = (dataSourcea: Array<never>) => {
+      const sort = dataSourcea => {
         return dataSourcea.sort((a, b) => {
           const aKey = branchIn(a, sortKey);
           const bKey = branchIn(b, sortKey);
