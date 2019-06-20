@@ -1,16 +1,11 @@
 {
-  "defaultSeverity": "error",
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
-  "rulesDirectory": ["tslint-plugin-prettier"],
-  "jsRules": {},
   "rules": {
-    "class-name": true,
+    "class-name": false,
     "comment-format": [false],
     "curly": true,
     "eofline": false,
     "forin": true,
     "indent": [true, "spaces", 2],
-
     "label-position": true,
     "max-line-length": [true, 200],
     "member-access": false,
@@ -46,7 +41,7 @@
     "completed-docs": [false],
     "no-inferrable-types": [true],
     "no-invalid-this": [true],
-    "cyclomatic-complexity": [true, 40],
+    "cyclomatic-complexity": [true, 20],
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,
@@ -79,13 +74,10 @@
     "quotemark": [true, "single", "avoid-escape"],
     "radix": false,
     "semicolon": [true, "always", "ignore-bound-class-methods"],
-    "trailing-comma": [true],
+    "trailing-comma": [false],
     "triple-equals": [false],
     "typedef": [true],
     "variable-name": [true, "allow-leading-underscore", "allow-pascal-case"],
-    "whitespace": [false],
-    "jsx-boolean-value": false
-    // "react-hooks/rules-of-hooks": "error",
-    // "experimentalDecorators": true
+    "whitespace": [false]
   }
 }

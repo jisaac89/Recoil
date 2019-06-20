@@ -25,7 +25,7 @@ interface IGridState {
 }
 
 class GridComponent extends React.Component<IGridProps, IGridState> {
-  constructor(props) {
+  constructor(props: IGridProps) {
     super(props);
     this.state = {
       rows: props.rows || null,

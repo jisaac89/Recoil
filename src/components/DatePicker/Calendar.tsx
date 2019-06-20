@@ -184,19 +184,19 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> {
     return weeks;
   }
 
-  selectHour(hour) {
+  selectHour(hour: string) {
     this.setState({
       hour: hour
     });
   }
 
-  selectMinute(min) {
+  selectMinute(min: string) {
     this.setState({
       minute: min
     });
   }
 
-  SelectPeriod(period) {
+  SelectPeriod(period: string) {
     this.setState({
       period: period
     });

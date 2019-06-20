@@ -1,7 +1,6 @@
 ﻿import React from 'react';
 import { Dropdown, IDropdownProps } from '../Dropdown/Dropdown';
-import { Calendar, ICalendarProps, ICalendarState } from './Calendar';
-export { Calendar, ICalendarProps, ICalendarState };
+import { Calendar, ICalendarProps } from './Calendar';
 
 export interface IDatePickerProps extends IDropdownProps {
   mask?: string;
@@ -25,7 +24,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: IDatePickerProps) {
     const self = this;
     if (prevProps.open !== this.props.open) {
       self.setState({
@@ -51,7 +50,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
     if (this.props.onClick) {
       this.props.onClick();
     } else {
-      this.setState(state => {
+      this.setState((state: any) => {
         return {
           open: !state.open
         };
@@ -75,7 +74,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
     return (
       <Dropdown
         className={className}
-        icon="calendar"
+        icon='calendar'
         material
         title={title ? title : getDateFormatted(this.state.date, this.props.selectTime)}
         mobile={mobile}

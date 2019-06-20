@@ -1,29 +1,13 @@
 import classNames from 'classnames';
 import React from 'react';
-import { IAlignChildProps, IAlignProps, IAlignState } from './AlignTypes';
-
-const AlignChild = (props: IAlignChildProps) => {
-  const { columns, vertical, width, element, margin } = props;
-
-  const alignChildStyle = {
-    flex: columns || vertical ? 'none' : '1 !important',
-    padding: margin,
-    width: !vertical ? width + '%' : '',
-    height: vertical ? width + '%' : ''
-  };
-
-  return (
-    <div className={'r-Align__Child'} style={alignChildStyle}>
-      {element}
-    </div>
-  );
-};
+import { IAlignProps, IAlignState } from './AlignTypes';
+import { AlignChild } from './AlignChild';
 
 export class Align extends React.Component<IAlignProps, IAlignState> {
   static defaultProps: { columns: number[] } = {
     columns: []
   };
-  constructor(props) {
+  constructor(props: IAlignProps) {
     super(props);
     this.state = {
       widthArray: [],
@@ -61,13 +45,13 @@ export class Align extends React.Component<IAlignProps, IAlignState> {
       });
     }
   }
-  alignChildren = (element: JSX.Element, key: string) => {
+  alignChildren = (element: JSX.Element, index: number) => {
     const { columns, margin, vertical } = this.props;
     return (
       <AlignChild
-        key={key}
+        key={index}
         element={element}
-        width={this.state.widthArray[key]}
+        width={this.state.widthArray[index]}
         columns={columns}
         margin={margin}
         vertical={vertical}

@@ -21,14 +21,14 @@ const DetailTemplateColumnToggle = ({
   return (
     <td
       onClick={onDetailTemplateToggleSelectedElements(element)}
-      className="r-Table__DetailTd"
+      className='r-Table__DetailTd'
       style={{ width: '25px' }}>
       {filterOpenDetailTemplate ? (
         filterOpenDetailTemplate(element) === true ? (
           <Button
             tabIndex={-1}
             simple
-            size="small"
+            size='small'
             icon={
               detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element)
                 ? 'chevron-down'
@@ -40,7 +40,7 @@ const DetailTemplateColumnToggle = ({
         <Button
           tabIndex={-1}
           simple
-          size="small"
+          size='small'
           icon={
             detailTemplateSelectedElements.includes(selectedKey ? element[selectedKey] : element)
               ? 'chevron-down'
@@ -61,7 +61,7 @@ const CheckboxColumn = ({ toggleSelectedElements, element, selectedElements }) =
     <td style={{ width: '25px' }}>
       <Checkbox
         onChange={onToggleSelectedElements(element)}
-        size="small"
+        size='small'
         checked={selectedElements ? selectedElements.includes(element) : false}
       />
     </td>

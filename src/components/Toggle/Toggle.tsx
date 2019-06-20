@@ -156,13 +156,13 @@ export class Toggle extends React.Component<IToggleProps, any> {
     } else {
       return (
         <Shrink opacity={50} if={disabled} className={toggleClass}>
-          <input type="checkbox" {...inputProps} />
+          <input type='checkbox' {...inputProps} />
           {this.props.label}
           {(props.array && props.array.length === 2) || (props.iconArray && props.iconArray.length === 2) ? (
             <label className={'r-Toggle__button ' + props.theme}>
               <Wizard slideIndex={slideIndex}>
-                <div className="text-right">{loading ? loadingTemplate : arrayFirstTemplate}</div>
-                <div className="text-white">{loading ? loadingTemplate : arraySecondTemplate}</div>
+                <div className='text-right'>{loading ? loadingTemplate : arrayFirstTemplate}</div>
+                <div className='text-white'>{loading ? loadingTemplate : arraySecondTemplate}</div>
               </Wizard>
             </label>
           ) : (

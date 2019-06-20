@@ -19,7 +19,7 @@ export class Button extends React.Component<IButtonProps> {
     const self = this;
     const props = self.props;
 
-    let buttonType: string;
+    let buttonType: 'submit' | 'reset' | 'button';
 
     const buttonClass = classNames(
       'r-Button',
@@ -76,7 +76,7 @@ export class Button extends React.Component<IButtonProps> {
         </div>
       ) : null;
 
-    const SimpleButton = ({ innerRef }) => {
+    const SimpleButton = ({ innerRef }: { innerRef: any }) => {
       return (
         <button
           id={props.id}
