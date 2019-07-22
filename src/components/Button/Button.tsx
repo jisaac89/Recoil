@@ -89,7 +89,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
         )
       ) : null;
     let loadingPartial = props.loading ? (
-      <i className={'fa fa-circle-o-notch fa-spin' + (props.children ? ' mr10' : '')} />
+      <i className={'fa fa-circle-notch fa-spin' + (props.children ? ' mr10' : '')} />
     ) : null;
     let animatedIcon =
       props.iconPointer && !props.loading ? <i className={'icon-pointer fa fa-caret-' + props.iconPointer} /> : null;
