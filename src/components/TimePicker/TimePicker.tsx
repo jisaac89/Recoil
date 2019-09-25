@@ -22,7 +22,9 @@ export class TimePicker extends React.Component<IDatePickerProps, any> {
     this.setState({
       time: time
     });
-    this.props.onSelect ? this.props.onSelect(time) : null;
+    if (this.props.onSelect) {
+      this.props.onSelect(time);
+    }
   };
 
   onChange = (value: any) => {
@@ -34,9 +36,9 @@ export class TimePicker extends React.Component<IDatePickerProps, any> {
   render() {
     return (
       <Toolbar flex flush>
-        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'HH'} dataSource={hours} />
-        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'MM'} dataSource={secondsMinutes} />
-        <Dropdown rowIsSelectable="single" hideDropdownHeader hideHeader title={'SS'} dataSource={secondsMinutes} />
+        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'HH'} dataSource={hours} />
+        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'MM'} dataSource={secondsMinutes} />
+        <Dropdown rowIsSelectable='single' hideDropdownHeader hideHeader title={'SS'} dataSource={secondsMinutes} />
       </Toolbar>
     );
   }

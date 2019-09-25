@@ -95,7 +95,7 @@ export class DropdownContent extends React.Component<any> {
 
     const dropdownPortal = (
       <Portal
-        portalType="SlideIn"
+        portalType='SlideIn'
         title={props.title}
         icon={props.icon}
         open={open}
@@ -109,7 +109,7 @@ export class DropdownContent extends React.Component<any> {
       return dropdownPortal;
     } else {
       return (
-        <div className="r-DropdownWrapper">
+        <div className='r-DropdownWrapper'>
           {hideDropdownHeader ? null : <DropdownHeader {...dropdownHeaderProps} />}
           <DropdownContentType {...dropdownContentTypeProps} />
         </div>

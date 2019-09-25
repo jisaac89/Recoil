@@ -27,10 +27,10 @@ export class Loading extends React.Component<ILoadingProps> {
       } else {
         return (
           <div className={loadingClass}>
-            <i className="fa fa-circle-o-notch fa-spin" />
+            <i className='fa fa-circle-o-notch fa-spin' />
             {icon ? (
-              <Emerge enter="fadeIn">
-                <Button size={size} simple className="center-icon" icon={icon} />
+              <Emerge enter='fadeIn'>
+                <Button size={size} simple className='center-icon' icon={icon} />
               </Emerge>
             ) : null}
           </div>

@@ -27,7 +27,7 @@ export class MobileTemplate extends React.Component<any, any> {
         scrollY={true}
         scrollIf={month.toString().length}
         scrollToId={month.toString()}>
-        <div id="0">
+        <div id='0'>
           <Months
             title={monthNames[0]}
             year={year}

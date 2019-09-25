@@ -74,7 +74,7 @@ export class TableColumn extends React.Component<ITableDataProps, ITableDataStat
           {column.template ? (
             column.template(element)
           ) : (
-            <Button loading={this.props.isLoading} size="small" simple>
+            <Button loading={this.props.isLoading} size='small' simple>
               {element}
             </Button>
           )}
@@ -90,15 +90,15 @@ export class TableColumn extends React.Component<ITableDataProps, ITableDataStat
           {column.template ? (
             column.template(element)
           ) : type === 'Value' ? (
-            <Button loading={isLoading} size="small" simple>
+            <Button loading={isLoading} size='small' simple>
               {value}
             </Button> ? (
-              <Button loading={isLoading} size="small" simple>
+              <Button loading={isLoading} size='small' simple>
                 {value.toString()}
               </Button>
             ) : null
           ) : (
-            <Dropdown loading={isLoading} className="r-Table-Dropdown" material dataSource={[value]} title={type} />
+            <Dropdown loading={isLoading} className='r-Table-Dropdown' material dataSource={[value]} title={type} />
           )}
         </td>
       );

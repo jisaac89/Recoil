@@ -19,7 +19,7 @@ export class TableDetail extends React.Component<ITableColumnDetailProps> {
 
     if (detailTemplate) {
       return (
-        <tr className="r-TableColumnDetail">
+        <tr className='r-TableColumnDetail'>
           <td colSpan={columns && columns.length + (checkable ? 1 : 0) + (detailTemplate ? 1 : 0)}>
             <Open
               if={

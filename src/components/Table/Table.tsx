@@ -191,19 +191,19 @@ class TableData extends React.Component<ITableProps> {
           <AdvancedLayer
             tabIndex={-1}
             scrollY={true}
-            theme="light"
+            theme='light'
             scrollToId={scrollToId}
             scrollIf={scrollIf}
             fill
             style={contentMaxHeight ? { height: contentMaxHeight } : {}}>
             {nothingMatchesSearchCriteria ? (
-              <Emerge className="e-fill">
-                <Toolbar block textCenter className="p10 ptb20">
+              <Emerge className='e-fill'>
+                <Toolbar block textCenter className='p10 ptb20'>
                   <small>Nothing matches search criteria...</small>
                 </Toolbar>
               </Emerge>
             ) : (
-              <table tab-index={-1} className="w100">
+              <table tab-index={-1} className='w100'>
                 <TableHead {...tableProps} {...headProps} />
                 <TableBody {...tableProps} {...bodyProps} />
               </table>
@@ -214,9 +214,9 @@ class TableData extends React.Component<ITableProps> {
       );
     } else {
       return (
-        <Emerge className="e-fill">
-          <Toolbar block textCenter className="ptb20">
-            <Button block size="large" simple>
+        <Emerge className='e-fill'>
+          <Toolbar block textCenter className='ptb20'>
+            <Button block size='large' simple>
               No items found
             </Button>
           </Toolbar>
