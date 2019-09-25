@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { DropdownContent } from './DropdownContent';
 
 export class DropdownPortal extends React.Component<any, any> {
-  static portalElement: HTMLElement;
+  portalElement: HTMLElement;
 
   constructor(props: any) {
     super(props);

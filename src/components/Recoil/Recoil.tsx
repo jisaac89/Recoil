@@ -36,34 +36,16 @@ export class Recoil extends React.Component<IRecoilProps, any> {
     super(props);
     this.state = {
       inputIsFocused: false,
-      isMobile: props.isMobile || isMobile,
       isDesktop: false,
-      isTablet: props.isTablet || isTablet,
       initialized: false
     };
     // init
-    this.detectMobile();
   }
 
   componentDidMount() {
-    this.isMobile(isMobile);
     this.setState({
       initialized: true
     });
-  }
-  detectMobile() {
-    let device;
-    if (isMobile && !isTablet) {
-      device = 'mobile';
-    } else if (isTablet) {
-      device = 'tablet';
-    } else {
-      device = 'desktop';
-    }
-
-    if (this.props.onDevice) {
-      this.props.onDevice(device);
-    }
   }
   componentDidUpdate(prevProps: IRecoilProps, prevState) {
     !!this.props.isMobile && this.props.isMobile !== prevState.isMobile ? this.isMobile(this.props.isMobile) : null;
@@ -71,12 +53,12 @@ export class Recoil extends React.Component<IRecoilProps, any> {
   isMobile(mobile: boolean) {
     const self = this;
     if (mobile) {
-      delegate(self.refs.Recoil, 'focusin', 'input', function() {
+      delegate(self.refs.Recoil, 'focusin', 'input', () => {
         self.setState({
           inputIsFocused: true
         });
       });
-      delegate(self.refs.Recoil, 'focusout', 'input', function() {
+      delegate(self.refs.Recoil, 'focusout', 'input', () => {
         self.setState({
           inputIsFocused: false
         });

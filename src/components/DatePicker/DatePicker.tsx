@@ -75,7 +75,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
     return (
       <Dropdown
         className={className}
-        icon="calendar"
+        icon='calendar'
         material
         title={title ? title : getDateFormatted(this.state.date, this.props.selectTime)}
         mobile={mobile}
@@ -85,6 +85,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
         onCloseDropdown={this.toggleClose.bind(this)}
         theme={this.props.theme}
         outline={outline}
+        dataSource={this.props.dataSource}
         size={size}
         block={block}
         onOpen={this.onOpen.bind(this)}>

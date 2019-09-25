@@ -33,12 +33,14 @@ export class ShortCutProvider extends React.Component<any, any> {
 
   public componentWillUnmount() {
     if (this.props.shortcut) {
-      window.removeEventListener('keydown', null, false);
-      window.removeEventListener('keyup', null, false);
+      window.removeEventListener('keydown', () => {}, false);
+      window.removeEventListener('keyup', () => {}, false);
     }
   }
 
   render() {
-    return <ShortcutContext.Provider value={this.props.shortCutInitKey}>{this.props.children}</ShortcutContext.Provider>;
+    return (
+      <ShortcutContext.Provider value={this.props.shortCutInitKey}>{this.props.children}</ShortcutContext.Provider>
+    );
   }
 }
