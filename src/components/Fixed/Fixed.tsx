@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 
 export interface IFixedProps {
-  children?: any;
+  children?: React.ReactNode;
 }
 
 export default class Fixed extends React.Component<IFixedProps, any> {

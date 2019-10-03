@@ -4,12 +4,16 @@ import Toolbar from '../Toolbar/Toolbar';
 
 export interface IDatePickerProps {
   mask?: string;
-  time?: Date | string;
-  onSelect?: (date: Date) => void;
+  time?: number;
+  onSelect?: (date: number) => void;
   mobile?: boolean;
 }
 
-export default class TimePicker extends React.Component<IDatePickerProps, any> {
+export interface IDatePickerState {
+  time: number;
+}
+
+export default class TimePicker extends React.Component<IDatePickerProps, IDatePickerState> {
   constructor(props: IDatePickerProps) {
     super(props);
     var time = this.props.time || new Date(Date.now()).getTime();
@@ -18,14 +22,14 @@ export default class TimePicker extends React.Component<IDatePickerProps, any> {
     };
   }
 
-  onSelect = (time: any) => {
+  onSelect = (time: number) => {
     this.setState({
       time: time
     });
     this.props.onSelect ? this.props.onSelect(time) : null;
   };
 
-  onChange = (value: any) => {
+  onChange = (value: string) => {
     this.setState({
       time: new Date(value).getTime()
     });

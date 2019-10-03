@@ -13,7 +13,7 @@ export interface ITagsProps {
 }
 
 export default class Tags extends React.Component<ITagsProps, any> {
-  constructor(props) {
+  constructor(props: ITagsProps) {
     super(props);
     this.state = {
       dataSource: props.dataSource || [],
@@ -21,7 +21,7 @@ export default class Tags extends React.Component<ITagsProps, any> {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: ITagsProps) {
     if (prevProps.dataSource !== this.props.dataSource) {
       this.setState({
         dataSource: this.props.dataSource,
@@ -36,14 +36,14 @@ export default class Tags extends React.Component<ITagsProps, any> {
     }
   }
 
-  onRemove(item) {
+  onRemove(item: object) {
     this.props.onRemove(item);
   }
 
   render() {
-    let _array = [];
+    let _array: React.ReactNode[] = [];
 
-    let createList = (item, index) => {
+    let createList = (item: object, index: number) => {
       _array.push(
         <Toolbar flush key={index} className="mr10">
           <Button size="small">{this.props.branchIn ? branchIn(item, this.props.branchIn) : item}</Button>

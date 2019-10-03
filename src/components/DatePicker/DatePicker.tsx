@@ -18,7 +18,12 @@ export interface IDatePickerProps extends IDropdownProps {
   onClick?: () => void;
 }
 
-export default class DatePicker extends React.Component<IDatePickerProps, any> {
+export interface IDatePickerState {
+  date: Date | string;
+  open: boolean;
+}
+
+export default class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
   constructor(props?: IDatePickerProps) {
     super(props);
     var date = this.props.date || new Date(Date.now());
@@ -28,7 +33,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
     };
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: IDatePickerProps) {
     const self = this;
     if (prevProps.open !== this.props.open) {
       self.setState({
@@ -68,10 +73,6 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
     });
   }
 
-  onOpen() {
-    return null;
-  }
-
   render() {
     let { date } = this.state;
     let { mobile, title, className, outline, size, block } = this.props;
@@ -90,7 +91,6 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
         outline={outline}
         size={size}
         block={block}
-        onOpen={this.onOpen.bind(this)}
       >
         <Calendar
           mobile={mobile}
@@ -105,7 +105,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, any> {
   }
 }
 
-function getDateFormatted(date: Date, selectTime) {
+function getDateFormatted(date: Date, selectTime: boolean) {
   let dd = date.getDate(),
     mm = date.getMonth() + 1,
     yyyy = date.getFullYear(),

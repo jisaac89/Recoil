@@ -11,13 +11,12 @@ export interface IRecoil {
   outline?: boolean;
   tabIndex?: number;
   id?: string;
-  children?: any;
+  children?: React.ReactNode;
 }
 
 export { default as Recoil } from './components/Recoil/Recoil';
 export { default as Align } from './components/Align/Align';
 export { default as AdvancedLayer } from './components/Layer/AdvancedLayer';
-export { default as AdvancedButton } from './components/Button/AdvancedButton';
 export { default as Button, IButtonProps, IButtonState } from './components/Button/Button';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Open } from './components/Open/Open';
@@ -40,7 +39,6 @@ export { default as Notifications } from './components/Notifications/Notificatio
 export { default as Selectable } from './components/Selectable/Selectable';
 export { default as Shrink } from './components/Shrink/Shrink';
 export { default as Toggle, IToggleProps } from './components/Toggle/Toggle';
-export { default as Tree, ITreeItem } from './components/Tree/Tree';
 export { default as Toolbar } from './components/Toolbar/Toolbar';
 export { default as Transform } from './components/Transform/Transform';
 export { default as Wizard } from './components/Wizard/Wizard';

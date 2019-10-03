@@ -2,114 +2,114 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export interface IAlignProps {
-	vertical?: boolean;
-	className?: string;
-	columns?: Array<number>;
-	margin?: string;
-	children?: any;
-	fill?: boolean;
-	style?: any;
-	alignItems?: string;
+  vertical?: boolean;
+  className?: string;
+  columns?: Array<number>;
+  margin?: string;
+  children?: React.ReactNode[];
+  fill?: boolean;
+  style?: React.CSSProperties;
+  alignItems?: string;
 }
 
 export interface IAlignChildProps {
-	columns?: Array<number>;
-	vertical?: boolean;
-	width?: number;
-	element?: JSX.Element;
-	margin?: string;
+  columns?: Array<number>;
+  vertical?: boolean;
+  width?: number;
+  element?: JSX.Element;
+  margin?: string;
 }
 
 export interface IAlignState {
-	widthArray?: Array<number>;
-	maxColumnsLength?: number;
+  widthArray?: Array<number>;
+  maxColumnsLength?: number;
 }
 
 const AlignChild = (props: IAlignChildProps) => {
-	let { columns, vertical, width, element, margin } = props;
+  let { columns, vertical, width, element, margin } = props;
 
-	let alignChildStyle = {
-		flex: columns || vertical ? 'none' : '1 !important',
-		padding: margin,
-		width: !vertical ? width + '%' : null,
-		height: vertical ? width + '%' : null
-	};
+  let alignChildStyle = {
+    flex: columns || vertical ? 'none' : '1 !important',
+    padding: margin,
+    width: !vertical ? width + '%' : null,
+    height: vertical ? width + '%' : null
+  };
 
-	return (
-		<div className="r-Align__Child" style={alignChildStyle}>
-			{element}
-		</div>
-	);
+  return (
+    <div className="r-Align__Child" style={alignChildStyle}>
+      {element}
+    </div>
+  );
 };
 
 export default class Align extends React.Component<IAlignProps, IAlignState> {
-	constructor(props) {
-		super(props);
-		this.state = {
-			widthArray: [],
-			maxColumnsLength: 0
-		};
-	}
-	componentDidMount() {
-		this.props.columns ? this.alignColumns(this.props.columns) : null;
-	}
-	componentDidUpdate(prevProps: IAlignProps) {
-		if (prevProps.columns !== this.props.columns) {
-			this.alignColumns(this.props.columns);
-		}
-	}
-	alignUpdate(widthArray: Array<number>, singleColumnLength: number, maxColumnsLength: number) {
-		this.setState(
-			{
-				maxColumnsLength: maxColumnsLength
-			},
-			() => {
-				widthArray.push(singleColumnLength / this.state.maxColumnsLength * 100);
-				this.setState({ widthArray: widthArray });
-			}
-		);
-	}
-	alignColumns(columns: Array<number>) {
-		let widthArray: Array<number> = [];
-		let maxColumnsLength = 0;
-		if (columns) {
-			columns.map((singleColumnLength) => {
-				maxColumnsLength += singleColumnLength;
-				this.alignUpdate(widthArray, singleColumnLength, maxColumnsLength);
-			});
-		}
-	}
-	alignChildren = (element: JSX.Element, key: string) => {
-		let { columns, margin, vertical } = this.props;
-		return (
-			<AlignChild
-				key={key}
-				element={element}
-				width={this.state.widthArray[key]}
-				columns={columns}
-				margin={margin}
-				vertical={vertical}
-			/>
-		);
-	};
-	render() {
-		const self = this;
-		const props = self.props;
-		let { vertical, children, className, fill, alignItems } = props;
+  constructor(props: IAlignProps) {
+    super(props);
+    this.state = {
+      widthArray: [],
+      maxColumnsLength: 0
+    };
+  }
+  componentDidMount() {
+    this.props.columns ? this.alignColumns(this.props.columns) : null;
+  }
+  componentDidUpdate(prevProps: IAlignProps) {
+    if (prevProps.columns !== this.props.columns) {
+      this.alignColumns(this.props.columns);
+    }
+  }
+  alignUpdate(widthArray: Array<number>, singleColumnLength: number, maxColumnsLength: number) {
+    this.setState(
+      {
+        maxColumnsLength: maxColumnsLength
+      },
+      () => {
+        widthArray.push((singleColumnLength / this.state.maxColumnsLength) * 100);
+        this.setState({ widthArray: widthArray });
+      }
+    );
+  }
+  alignColumns(columns: Array<number>) {
+    let widthArray: Array<number> = [];
+    let maxColumnsLength = 0;
+    if (columns) {
+      columns.map((singleColumnLength: number) => {
+        maxColumnsLength += singleColumnLength;
+        this.alignUpdate(widthArray, singleColumnLength, maxColumnsLength);
+      });
+    }
+  }
+  alignChildren = (element: JSX.Element, index: number) => {
+    let { columns, margin, vertical } = this.props;
+    return (
+      <AlignChild
+        key={index}
+        element={element}
+        width={this.state.widthArray[index]}
+        columns={columns}
+        margin={margin}
+        vertical={vertical}
+      />
+    );
+  };
+  render() {
+    const self = this;
+    const props = self.props;
+    let { vertical, children, className, fill, alignItems } = props;
 
-		let alignClass = classNames(
-			'r-Align',
-			{ 'e-vertical': vertical },
-			{ 'e-horizontal': !vertical },
-			{ 'e-fill': fill },
-			'e-align-' + alignItems,
-			className
-		);
+    let alignClass = classNames(
+      'r-Align',
+      { 'e-vertical': vertical },
+      { 'e-horizontal': !vertical },
+      { 'e-fill': fill },
+      'e-align-' + alignItems,
+      className
+    );
 
-		return (
-			<div style={this.props.style} className={alignClass}>
-				{children.length > 1 ? children.map(this.alignChildren) : this.props.children}
-			</div>
-		);
-	}
+    return (
+      <div style={this.props.style} className={alignClass}>
+        {children.length > 1 ? children.map(this.alignChildren) : this.props.children}
+      </div>
+    );
+  }
 }

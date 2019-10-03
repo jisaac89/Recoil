@@ -11,7 +11,6 @@ import SelectYear from './SelectYear';
 
 import SelectHour from './SelectHour';
 import SelectMinute from './SelectMinute';
-// import SelectPeriod from './SelectPeriod';
 
 import MobileTemplate from './MobileTemplate';
 
@@ -44,7 +43,7 @@ let monthNames: Month[] = [
   'December'
 ];
 
-let createArrayOfNumbers = function(n, string?: any) {
+let createArrayOfNumbers = function(n: number, string?: string) {
   let numbersArray = [];
   for (let x = 0; x < n; x++) {
     numbersArray.push(x.toString() + string);
@@ -56,10 +55,10 @@ let createArrayOfNumbers = function(n, string?: any) {
 
 export interface ICalendarProps {
   date?: Date;
-  onSelect?: (date: Date) => any;
+  onSelect?: (date: Date) => void;
   calendarHeight?: string;
   inDropdown?: boolean;
-  selectedDay?: Date;
+  selectedDay?: string;
   selectTime?: boolean;
   mobile?: boolean;
 }
@@ -69,8 +68,8 @@ export interface ICalendarState {
   year?: number;
   date?: Date;
   selectedDay?: Date;
-  hour?: any;
-  minute?: any;
+  hour?: string;
+  minute?: string;
   period?: string;
 }
 
@@ -112,7 +111,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     });
   };
 
-  selectMonth = (...Args: Array<any>) => {
+  selectMonth = (...Args: Array<number>) => {
     let monthIndex = Args[1];
     this.setState({
       month: monthIndex
@@ -143,11 +142,11 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     });
   };
 
-  selectDay(day: any) {
+  selectDay(date: Date) {
     if (this.props.onSelect) {
-      this.props.onSelect(day);
+      this.props.onSelect(date);
       this.setState({
-        selectedDay: day
+        selectedDay: date
       });
     }
   }
@@ -186,19 +185,19 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     return weeks;
   }
 
-  selectHour(hour) {
+  selectHour(hour: string) {
     this.setState({
       hour: hour
     });
   }
 
-  selectMinute(min) {
+  selectMinute(min: string) {
     this.setState({
       minute: min
     });
   }
 
-  SelectPeriod(period) {
+  SelectPeriod(period: string) {
     this.setState({
       period: period
     });

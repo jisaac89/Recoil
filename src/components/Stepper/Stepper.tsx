@@ -7,7 +7,7 @@ export interface IStepperProps {
   title?: string;
   className?: string;
   stepIndex: number;
-  children?: any;
+  children?: React.ReactNode;
   vertical?: boolean;
   align?: 'top' | 'center';
 }

@@ -16,9 +16,12 @@
     "build:pro": "rimraf ./public && webpack --mode production",
     "build:dev": "rimraf ./public && webpack --mode development --watch",
     "start": "node server.js",
-    "start:dev": "webpack-dev-server --mode development --hot --port 3000"
+    "start:dev": "webpack-dev-server --mode development --hot --port 3000",
+    "lint": "tslint -c tslint.json './src/**/*.ts'",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}"
   },
   "dependencies": {
+    "@types/classnames": "^2.2.9",
     "animate.css": "^3.6.1",
     "intersection-observer": "^0.5.0",
     "less": "^3.0.4",

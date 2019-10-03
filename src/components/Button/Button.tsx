@@ -1,12 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
-
 import { IRecoil } from '../../index';
 
 export interface IButtonProps extends IRecoil {
   style?: Object;
-  onClick?: (event: React.MouseEvent<any>) => void;
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void;
   pointer?: 'left' | 'right' | boolean;
   iconPointer?: 'left' | 'right' | 'up' | 'down';
   iconLocation?: 'left' | 'right';
@@ -43,7 +42,7 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
     iconLocation: 'left'
   };
 
-  public onClick(event: React.MouseEvent<MouseEvent>) {
+  public onClick(event: React.MouseEvent<HTMLElement>) {
     this.props.onClick ? this.props.onClick(event) : null;
   }
 
@@ -108,11 +107,10 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
         </div>
       ) : null;
 
-    let SimpleButton = ({ innerRef }) => {
+    let SimpleButton = () => {
       return (
         <button
           id={props.id}
-          ref={innerRef}
           tabIndex={props.tabIndex}
           onClick={this.onClick.bind(this)}
           type={buttonType}
@@ -129,8 +127,6 @@ export default class Button extends React.Component<IButtonProps, IButtonState> 
       );
     };
 
-    let Button = React.forwardRef((props, ref) => <SimpleButton innerRef={ref} />);
-
-    return <Button />;
+    return <SimpleButton />;
   }
 }

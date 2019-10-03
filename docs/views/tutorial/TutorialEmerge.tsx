@@ -1,23 +1,5 @@
 import * as React from 'react';
-import {
-  Align,
-  Button,
-  Toolbar,
-  Checkbox,
-  Table,
-  Layer,
-  Dropdown,
-  Input,
-  Wizard,
-  Modal,
-  Open,
-  Emerge,
-  SlideIn,
-  Transform,
-  Toggle,
-  Shrink,
-  AdvancedLayer
-} from '../../../src/index';
+import { Align, Button, Emerge, AdvancedLayer } from '../../../src/index';
 
 import TutorialView from './TutorialView';
 const EmergeProperties = [

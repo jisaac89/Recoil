@@ -1,8 +1,6 @@
 import * as React from 'react';
 
 import Table from '../Table/Table';
-import Tree from '../Tree/Tree';
-import Calendar from '../DatePicker/Calendar';
 
 export default class DropdownContentType extends React.Component<any, any> {
   render() {
@@ -80,19 +78,6 @@ export default class DropdownContentType extends React.Component<any, any> {
       scrollY: true,
       checkable,
       onCheck
-      //
-    };
-
-    let treeProps = {
-      // Tree
-      dataSource,
-      columns,
-      onRowSelect,
-      selectedElements,
-      selectedKey,
-      filterOpenDetailTemplate,
-      parentId,
-      hideRoot
       //
     };
 
