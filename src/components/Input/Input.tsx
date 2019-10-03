@@ -114,7 +114,7 @@ export default class Input extends React.Component<IInputProps, IInputState> {
       checked: true
     });
   };
-  public blur = (event: React.MouseEvent<HTMLInputElement>) => {
+  public blur = (event: any) => {
     let inputDOM = this.refs['refInput'];
     let value = (event.target as any).value;
     this.setState(

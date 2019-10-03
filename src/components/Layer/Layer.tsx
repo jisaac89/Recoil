@@ -1,8 +1,5 @@
 import * as React from 'react';
 import classNames from 'classnames';
-
-import { OOCSS } from '../OOCSS/OOCSS';
-
 import { IRecoil } from '../../index';
 
 export interface ILayerProps extends IRecoil {

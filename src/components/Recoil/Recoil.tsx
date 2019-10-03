@@ -32,7 +32,15 @@ function delegate(el: HTMLElement, evt: any, sel: any, handler: any) {
   });
 }
 
-export default class Recoil extends React.Component<IRecoilProps, any> {
+interface IRecoilState {
+  inputIsFocused: boolean;
+  isMobile: boolean;
+  isDesktop: boolean;
+  isTablet: boolean;
+  initialized: boolean;
+}
+
+export default class Recoil extends React.Component<IRecoilProps, IRecoilState> {
   refs: any;
 
   constructor(props: IRecoilProps) {
@@ -68,7 +76,7 @@ export default class Recoil extends React.Component<IRecoilProps, any> {
       this.props.onDevice(device);
     }
   }
-  componentDidUpdate(prevProps: IRecoilProps, prevState) {
+  componentDidUpdate(prevProps: IRecoilProps, prevState: IRecoilState) {
     !!this.props.isMobile && this.props.isMobile !== prevState.isMobile ? this.isMobile(this.props.isMobile) : null;
   }
   isMobile(mobile: boolean) {

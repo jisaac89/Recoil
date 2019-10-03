@@ -35,7 +35,7 @@ interface IDataSourceState {
   selectedElements: Array<Object>;
   // table search
   searchTerm: string;
-  searchedItems: string[];
+  searchedItems: Array<Object>;
   // table sort
   sortType: string;
   sortKey: string;
@@ -200,14 +200,14 @@ const DataSource: any = (Component: JSX.Element) =>
           switch (typeof aKey) {
             case 'string':
               let itemPrev = aKey && aKey.toLowerCase();
-              let itemNext = bKey && bKey.toLowerCase();
+              let itemNext = bKey && (bKey as string).toLowerCase();
               if (itemPrev < itemNext)
                 //string asc
                 return -1;
               if (itemPrev > itemNext) return 1;
               break;
             case 'number':
-              return aKey - bKey;
+              return (aKey as number) - (bKey as number);
             default:
               return null;
           }

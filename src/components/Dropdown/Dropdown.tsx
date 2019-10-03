@@ -36,14 +36,22 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
   onOpen?: (boolean: boolean) => void;
   onClose?: (boolean: boolean) => void;
   onCloseDropdown?: () => void;
-  onTagRemove?: (item) => void;
+  onTagRemove?: (item: object) => void;
+}
+
+export interface IDropdownState {
+  dropdownIsOpen: boolean;
+  selectedElements: Array<Object>;
+  scrollToId: string;
+  title: string;
+  position: string;
 }
 
 export interface State {
   open?: boolean;
 }
 
-export default class Dropdown extends React.Component<IDropdownProps, any> {
+export default class Dropdown extends React.Component<IDropdownProps, IDropdownState> {
   refs: {
     [key: string]: Element;
     dropdown: HTMLInputElement;
@@ -62,11 +70,12 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
       dropdownIsOpen: false,
       selectedElements: props.selectedElements || [],
       scrollToId: props.scrollToId || '',
-      title: props.title || ''
+      title: props.title || '',
+      position: ''
     };
   }
 
-  static getDerivedStateFromProps(props, state) {
+  static getDerivedStateFromProps(props: IDropdownProps, state: IDropdownState) {
     // must get very explicit on state changes
     if (props.open !== null) {
       if (props.open !== state.dropdownIsOpen) {
@@ -132,8 +141,8 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     );
   }
 
-  removeSelectedItem(item) {
-    function remove(array, element) {
+  removeSelectedItem(item: any) {
+    function remove(array: Array<any>, element: JSX.Element) {
       return array.filter(e => e !== element);
     }
 
@@ -142,7 +151,7 @@ export default class Dropdown extends React.Component<IDropdownProps, any> {
     });
   }
 
-  onTagRemove(item) {
+  onTagRemove(item: object) {
     this.props.onTagRemove(item);
   }
   render(): JSX.Element {

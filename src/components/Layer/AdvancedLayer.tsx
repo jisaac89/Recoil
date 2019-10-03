@@ -1,8 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
-import { OOCSS } from '../OOCSS/OOCSS';
-
 import { IRecoil } from '../..';
 
 export interface ILayerProps extends IRecoil {
@@ -299,4 +297,4 @@ function scrollTo(scrollTop: number, element: HTMLElement, to: number, duration:
   animateScroll();
 }
 
-export default OOCSS()(AdvancedLayer);
+export default AdvancedLayer;

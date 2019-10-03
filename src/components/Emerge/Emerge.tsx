@@ -49,11 +49,11 @@ export default class Emerge extends React.Component<IEmergeProps, {}> {
 
       let newClass = classNames('r-Emerge', 'animated', enter, exit, child.props.className);
 
-      let newStyle: any = {
+      let newStyle: React.CSSProperties = {
         animationDelay: index++ * props.delay + 'ms'
       };
 
-      function merge_options(obj1: Array<any>, obj2: Array<any>) {
+      function merge_options(obj1: object, obj2: object) {
         let obj3 = {};
         for (let attrname in obj1) {
           obj3[attrname] = obj1[attrname];

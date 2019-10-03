@@ -23,7 +23,7 @@ export interface INotificationState {
 export default class Notification extends React.Component<INotificationProps, INotificationState> {
   secondsRemaining: any;
   timer: any;
-  constructor(props) {
+  constructor(props: INotificationProps) {
     super(props);
     this.state = {
       time: 0,

@@ -8,11 +8,11 @@ export interface IShrinkProps {
   children?: React.ReactNode;
   opacity?: number;
   scale?: number | string;
-  position?: string;
+  position?: React.CSSProperties['position'];
   flex?: boolean;
 }
 
-export default class Shrink extends React.Component<IShrinkProps, {}> {
+export default class Shrink extends React.Component<IShrinkProps> {
   public static defaultProps = {
     opacity: 5,
     scale: 0.98,
@@ -23,7 +23,7 @@ export default class Shrink extends React.Component<IShrinkProps, {}> {
     const self = this;
     const props = self.props;
 
-    let shrinkStyle;
+    let shrinkStyle: React.CSSProperties;
 
     let shrinkClass = classNames(
       'r-Shrink',

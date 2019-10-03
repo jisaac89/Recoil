@@ -60,7 +60,7 @@ export default class Modal extends React.Component<IModalProps, IModalState> {
     this.props.open ? this.open() : this.close();
   }
 
-  componentDidUpdate(prevProps: IModalProps, prevState) {
+  componentDidUpdate(prevProps: IModalProps, prevState: IModalState) {
     this.props.open === true && prevState.open !== true
       ? this.open()
       : this.props.open === false && prevState.open !== false

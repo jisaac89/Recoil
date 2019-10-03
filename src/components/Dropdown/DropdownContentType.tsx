@@ -11,7 +11,6 @@ export default class DropdownContentType extends React.Component<any, any> {
       id,
       children,
       open,
-      // Table
       disableSelectedElements,
       dataSource,
       focusOnMount,
@@ -38,10 +37,7 @@ export default class DropdownContentType extends React.Component<any, any> {
       scrollToId,
       scrollIf,
       checkable,
-      onCheck,
-      //
-      parentId,
-      hideRoot
+      onCheck
     } = props;
 
     let dropdownTypePartial;

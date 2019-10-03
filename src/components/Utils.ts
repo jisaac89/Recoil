@@ -20,7 +20,7 @@ export function debounce(func: Function, wait: number, immediate?: boolean): Fun
   };
 }
 
-export function branchIn(value: object, key: string, step?: number): string {
+export function branchIn(value: object, key: string, step?: number): string | number | [] | object {
   let result = key.split('.'),
     stepLength = result.length,
     currentStep = step || 0,
@@ -37,8 +37,8 @@ export function search(
   dataSource: TDataSource,
   term: string,
   keys: Array<any>,
-  fn?: (dataSource?: Array<any>, term?: string, keys?: Array<string>) => void
-) {
+  fn?: (dataSource?: Array<any>, term?: string, keys?: Array<string>) => Array<Object>
+): Array<Object> {
   let queryResult: Array<Object> = [];
   if (term.length > 0) {
     dataSource.forEach(function(item) {

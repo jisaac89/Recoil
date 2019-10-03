@@ -2,10 +2,9 @@ import * as React from 'react';
 
 import Layer from '../Layer/Layer';
 import Selectable from '../Selectable/Selectable';
-
 import DataSource from '../DataSource/DataSource';
-
 import Align from '../Align/Align';
+import { IColumn } from '../Table/Table';
 
 export interface IGridProps {
   dataSource?: any;
@@ -28,7 +27,7 @@ interface IGridState {
 }
 
 class Grid extends React.Component<IGridProps, IGridState> {
-  constructor(props) {
+  constructor(props: IGridProps) {
     super(props);
     this.state = {
       rows: props.rows || null,
@@ -42,7 +41,7 @@ class Grid extends React.Component<IGridProps, IGridState> {
     this.convertDataSourceToGridRows(this.props.rows);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: IGridProps) {
     if (prevProps.selectedElements !== this.props.selectedElements) {
       this.setState({
         selectedElements: this.props.selectedElements
@@ -132,12 +131,12 @@ class Grid extends React.Component<IGridProps, IGridState> {
     }
   }
 
-  toggleSelectedElements(element, i) {
+  toggleSelectedElements(element: object, i: number) {
     this.props.onChange ? this.props.onChange(element) : null;
     this.onChange(element, i, this.state.selectedElements);
   }
 
-  onChange(element: Array<any>, index: string | number, selectedElements: Array<any>) {
+  onChange(element: object, index: string | number, selectedElements: Array<any>) {
     this.setState({
       selectedElements: selectedElements
     });
@@ -150,31 +149,33 @@ class Grid extends React.Component<IGridProps, IGridState> {
     if (!this.state.update) {
       return (
         <Layer flex fill className={this.props.className}>
-          {this.state.gridRows.map((element, index) => {
-            return (
-              <Align
-                margin={this.props.margin}
-                style={{ height: element.height, marginBottom: this.props.margin }}
-                columns={element.columns}
-                key={index}
-              >
-                {element.data.map((item, i) => {
-                  let checked = selectedElements.includes(selectedKey ? item[selectedKey] : item);
-                  return (
-                    <Layer
-                      className={this.props.onChange ? 'cursor-pointer' : null}
-                      onClick={this.toggleSelectedElements.bind(this, item, i)}
-                      fill
-                      key={i}
-                    >
-                      {this.state.rows[element.rowIndex].template(item)}
-                      <Selectable checked={checked} />
-                    </Layer>
-                  );
-                })}
-              </Align>
-            );
-          })}
+          {this.state.gridRows.map(
+            (element: { height: number; columns: Array<number>; data: []; rowIndex: number }, index: number) => {
+              return (
+                <Align
+                  margin={this.props.margin}
+                  style={{ height: element.height, marginBottom: this.props.margin }}
+                  columns={element.columns}
+                  key={index}
+                >
+                  {element.data.map((item: object, i: number) => {
+                    let checked = selectedElements.includes(selectedKey ? item[selectedKey] : item);
+                    return (
+                      <Layer
+                        className={this.props.onChange ? 'cursor-pointer' : null}
+                        onClick={this.toggleSelectedElements.bind(this, item, i)}
+                        fill
+                        key={i}
+                      >
+                        {this.state.rows[element.rowIndex].template(item)}
+                        <Selectable checked={checked} />
+                      </Layer>
+                    );
+                  })}
+                </Align>
+              );
+            }
+          )}
         </Layer>
       );
     } else return null;

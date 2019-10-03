@@ -1,6 +1,5 @@
 import * as React from 'react';
 import classNames from 'classnames';
-
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
 import { IRecoil } from '../../index';
