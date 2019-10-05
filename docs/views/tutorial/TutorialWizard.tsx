@@ -1,22 +1,5 @@
 import * as React from 'react';
-import {
-  Align,
-  Button,
-  Toolbar,
-  Checkbox,
-  Table,
-  Layer,
-  Dropdown,
-  Input,
-  Wizard,
-  Modal,
-  Open,
-  Emerge,
-  SlideIn,
-  Transform,
-  Toggle,
-  Shrink
-} from '../../../src/index';
+import { Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard } from '../../../src/index';
 import TutorialView from './TutorialView';
 const WizardProperties = [
   { name: 'slideIndex', type: '', options: '', description: 'The active index to show.' },
@@ -25,7 +8,7 @@ const WizardProperties = [
 ];
 
 export default class TutorialWizard extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {
@@ -50,19 +33,19 @@ export default class TutorialWizard extends React.Component<any, any> {
     });
   }
 
-  gotoSlideIndex(n) {
+  gotoSlideIndex(n: number) {
     this.setState({
       slideIndex: n
     });
   }
 
-  gotoSlideIndex2(n) {
+  gotoSlideIndex2(n: number) {
     this.setState({
       slideIndex2: n
     });
   }
 
-  onSlide = index => {
+  onSlide = (index: { slideIndex: number; slideIndex2: number }) => {
     this.setState({
       slideIndex: index,
       slideIndex2: index
@@ -80,7 +63,7 @@ export default class TutorialWizard extends React.Component<any, any> {
         <div>
           <h3>Default</h3>
           <Layer className="h300px p20 pb0 mt20" theme="dark">
-            <Wizard paginate onSlide={this.onSlide} fill slideIndex={this.state.slideIndex}>
+            <Wizard paginate fill slideIndex={this.state.slideIndex}>
               <Layer fill theme="light" className="p20">
                 1
               </Layer>
@@ -95,7 +78,7 @@ export default class TutorialWizard extends React.Component<any, any> {
 
           <h3 className="pt20 pb20">Vertical</h3>
           <Layer className="h300px p20 pb0 mb10" theme="dark">
-            <Wizard paginate onSlide={this.onSlide} vertical fill slideIndex={this.state.slideIndex2}>
+            <Wizard paginate vertical fill slideIndex={this.state.slideIndex2}>
               <Layer fill theme="light" className="p20">
                 1
               </Layer>

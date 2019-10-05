@@ -55,7 +55,7 @@ const SelectableProperties = [
 ];
 
 export default class TutorialSelectable extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {

@@ -1,14 +1,10 @@
-import { browser, device, os, ua, engine } from "./get-ua-data";
-import * as create from "./types";
+import { browser, device, os, ua, engine } from './get-ua-data';
+import * as create from './types';
 
 const type = create.checkType(device.type);
 
 export default () => {
-  const {
-    isBrowser,
-    isMobile,
-    isTablet,
-  } = type;
+  const { isBrowser, isMobile, isTablet } = type;
   if (isBrowser) {
     return create.broPayload(isBrowser, browser, engine, os, ua);
   }

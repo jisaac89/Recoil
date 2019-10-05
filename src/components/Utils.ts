@@ -34,12 +34,12 @@ export function branchIn(value: object, key: string, step?: number): string | nu
 }
 
 export function search(
-  dataSource: TDataSource,
+  dataSource: TDataSource[],
   term: string,
   keys: Array<any>,
-  fn?: (dataSource?: Array<any>, term?: string, keys?: Array<string>) => Array<Object>
-): Array<Object> {
-  let queryResult: Array<Object> = [];
+  fn?: (dataSource?: TDataSource[], term?: string, keys?: Array<string>) => TDataSource[]
+): TDataSource[] {
+  let queryResult: TDataSource[] = [];
   if (term.length > 0) {
     dataSource.forEach(function(item) {
       keys.forEach(key => {

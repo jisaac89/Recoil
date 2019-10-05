@@ -44,7 +44,7 @@ export interface ITableProps {
   onRowSelect?: (element?: Array<Object>, key?: string | number, selectedElements?: Array<Object>, id?: string) => void;
   pageSizerOptions?: Array<number>;
   onPageSizeChange?: (event: React.MouseEvent<HTMLElement>) => void;
-  onPageChange?: () => void;
+  onPageChange?: (number: number) => void;
   sortable?: boolean;
   searchableKeys?: Array<string>;
   searchTitle?: string;

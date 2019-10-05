@@ -48,8 +48,20 @@ import TutorialGrid from './tutorial/TutorialGrid';
 import SampleData from './tutorial/SampleData';
 import ShortcutButton from '../../src/components/Button/ShortcutButton';
 
-export default class App extends React.Component<any, any> {
-  constructor(props) {
+interface IAppProps {}
+
+interface IAppState {
+  slideIndex: number;
+  showMenu: boolean;
+  showModal: boolean;
+  nightmode: boolean;
+  mobile: boolean;
+  showDocs: boolean;
+  showInstructions: boolean;
+}
+
+export default class App extends React.Component<IAppProps, IAppState> {
+  constructor(props: IAppProps) {
     super(props);
 
     this.state = {
@@ -94,14 +106,14 @@ export default class App extends React.Component<any, any> {
     });
   }
 
-  onDevice(device) {
+  onDevice(device: string) {
     this.setState({
       mobile: device === 'desktop' ? false : true,
       showMenu: device === 'desktop' ? true : false
     });
   }
 
-  gotoSlideIndex(item) {
+  gotoSlideIndex(item: { index: number }) {
     this.setState({
       slideIndex: item.index,
       showMenu: this.state.mobile ? false : true,

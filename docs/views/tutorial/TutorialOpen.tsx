@@ -40,7 +40,7 @@ const OpenProperties = [
 ];
 
 export default class TutorialOpen extends React.Component<IOpenProps, IOpenState> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {

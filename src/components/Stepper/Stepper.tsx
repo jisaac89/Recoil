@@ -7,12 +7,12 @@ export interface IStepperProps {
   title?: string;
   className?: string;
   stepIndex: number;
-  children?: React.ReactNode;
+  children?: React.ReactNode[];
   vertical?: boolean;
   align?: 'top' | 'center';
 }
 
-class Stepper extends React.Component<IStepperProps, any> {
+class Stepper extends React.Component<IStepperProps> {
   public refOpen: any;
 
   render() {
@@ -21,9 +21,9 @@ class Stepper extends React.Component<IStepperProps, any> {
 
     let { className } = props;
 
-    let itemArray: Array<any> = [];
+    let itemArray: React.ReactNode[] = [];
 
-    let createList = (item: Array<any>, index: string | number) => {
+    let createList = (item: React.ReactNode, index: number) => {
       if (item !== null) {
         if (index === props.children.length - 1) {
           itemArray.push(
@@ -41,7 +41,7 @@ class Stepper extends React.Component<IStepperProps, any> {
             </Shrink>
           );
         }
-      } else return null;
+      } else return <></>;
     };
 
     props.children.map(createList);

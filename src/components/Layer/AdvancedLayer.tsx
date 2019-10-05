@@ -98,7 +98,7 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
       let element = document.getElementById(propss.scrollToId);
       if (element && element.getBoundingClientRect()) {
         self.handleScroll(propss.scrollToId, element.offsetTop);
-      } else return null;
+      } else return <></>;
     }, 0);
   }
 

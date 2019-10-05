@@ -4,13 +4,34 @@ const initialData = {
   isBrowser: false
 };
 
-export const checkType = type => {
+interface IBrowser {
+  name: string;
+  version: string;
+  major: string;
+}
+
+interface IDevice {
+  vendor: string;
+  model: string;
+}
+
+interface IOs {
+  name: string;
+  version: string;
+}
+
+interface IEngine {
+  name: string;
+  version: string;
+}
+
+export const checkType = (type: string | undefined) => {
   switch (type) {
-    case "mobile":
+    case 'mobile':
       return {
         isMobile: true
       };
-    case "tablet":
+    case 'tablet':
       return {
         isTablet: true
       };
@@ -23,30 +44,30 @@ export const checkType = type => {
   }
 };
 
-export const getCurrentBrowser = name => {
+export const getCurrentBrowser = (name: string) => {
   switch (name) {
-    case "Chrome":
+    case 'Chrome':
       return true;
-    case "Firefox":
+    case 'Firefox':
       return true;
-    case "Opera":
+    case 'Opera':
       return true;
-    case "Yandex":
+    case 'Yandex':
       return true;
-    case "Safari":
+    case 'Safari':
       return true;
-    case "IE":
+    case 'IE':
       return true;
-    case "Edge":
+    case 'Edge':
       return true;
-    case "Chromium":
+    case 'Chromium':
       return true;
     default:
       return false;
   }
 };
 
-export const broPayload = (isBrowser, browser, engine, os, ua) => {
+export const broPayload = (isBrowser: boolean, browser: IBrowser, engine: IEngine, os: IOs, ua: string) => {
   return {
     isBrowser,
     browserMajorVersion: browser.major,
@@ -60,13 +81,13 @@ export const broPayload = (isBrowser, browser, engine, os, ua) => {
   };
 };
 
-export const mobilePayload = (type, device, os, ua) => {
+export const mobilePayload = (type: any, device: IDevice, os: IOs, ua: string) => {
   return {
     type,
-    vendor: device.vendor || "none",
-    model: device.model || "none",
-    os: os.name || "none",
-    osVersion: os.version || "none",
-    ua: ua || "none"
+    vendor: device.vendor || 'none',
+    model: device.model || 'none',
+    os: os.name || 'none',
+    osVersion: os.version || 'none',
+    ua: ua || 'none'
   };
 };

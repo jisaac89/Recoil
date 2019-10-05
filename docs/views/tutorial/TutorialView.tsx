@@ -1,23 +1,5 @@
 import * as React from 'react';
-import {
-  Align,
-  Button,
-  Toolbar,
-  Checkbox,
-  Table,
-  AdvancedLayer,
-  Dropdown,
-  Input,
-  Wizard,
-  Modal,
-  Layer,
-  Open,
-  Emerge,
-  SlideIn,
-  Transform,
-  Toggle,
-  Shrink
-} from '../../../src/index';
+import { Table, AdvancedLayer, Layer } from '../../../src/index';
 
 export interface ITutorialViewProps {
   description: string;
@@ -32,7 +14,7 @@ export interface ITutorialViewProps {
 }
 
 export default class TutorialView extends React.Component<ITutorialViewProps, any> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {
@@ -78,7 +60,7 @@ export default class TutorialView extends React.Component<ITutorialViewProps, an
     );
   }
 
-  detailTemplate(item) {
+  detailTemplate(item: { type: string; description: string }) {
     const self = this;
     const props = self.props;
     let state = self.state;
@@ -105,7 +87,7 @@ export default class TutorialView extends React.Component<ITutorialViewProps, an
     const columns = [
       {
         name: 'name',
-        template: data => {
+        template: (data: { name: string }) => {
           return <h3 className="ptb20">{data.name}</h3>;
         }
       }

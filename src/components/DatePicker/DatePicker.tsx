@@ -81,7 +81,7 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
         className={className}
         icon="calendar"
         material
-        title={title ? title : getDateFormatted(this.state.date, this.props.selectTime)}
+        title={title ? title : getDateFormatted(this.state.date as Date, this.props.selectTime)}
         mobile={mobile}
         open={this.state.open}
         onClick={this.toggleOpen.bind(this)}
@@ -95,9 +95,9 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
         <Calendar
           mobile={mobile}
           selectTime={this.props.selectTime}
-          selectedDay={this.state.date}
+          selectedDay={this.state.date as Date}
           inDropdown={true}
-          date={date}
+          date={date as Date}
           onSelect={this.onSelect}
         />
       </Dropdown>

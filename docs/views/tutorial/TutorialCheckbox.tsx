@@ -34,7 +34,7 @@ const ChecboxProperties = [
 ];
 
 export default class TutorialCheckbox extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {
@@ -59,7 +59,7 @@ export default class TutorialCheckbox extends React.Component<any, any> {
   }
 
   onCheck = () => {
-    this.setState(state => {
+    this.setState((state: { isChecked: boolean }) => {
       return { isChecked: !state.isChecked };
     });
   };

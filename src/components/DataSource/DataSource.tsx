@@ -10,7 +10,7 @@ export type TDataSource = Array<Object> | Array<number> | Array<string>;
 
 export interface IDataSourceProps extends ITableProps {
   // initial dataSource loaded as prop
-  dataSource?: TDataSource;
+  dataSource?: TDataSource[];
   columns?: Array<IColumn>;
   emptyText: string;
   loading?: boolean;
@@ -20,10 +20,10 @@ export interface IDataSourceProps extends ITableProps {
 
 interface IDataSourceState {
   // dataSource
-  dataSource: TDataSource;
+  dataSource: TDataSource[];
   isArray: boolean;
   columns: Array<IColumn>;
-  activeRows: Array<TDataSource>;
+  activeRows: TDataSource[];
   // page
   rowCount: number;
   pageSize: number;
@@ -31,11 +31,11 @@ interface IDataSourceState {
   numberOfPages: number;
   numberPerPage: number;
   // table selected options
-  detailTemplateSelectedElements: Array<TDataSource>;
-  selectedElements: Array<TDataSource>;
+  detailTemplateSelectedElements: TDataSource[];
+  selectedElements: TDataSource[];
   // table search
   searchTerm: string;
-  searchedItems: Array<TDataSource>;
+  searchedItems: TDataSource[];
   // table sort
   sortType: string;
   sortKey: string;
@@ -138,7 +138,7 @@ const DataSource: any = (Component: JSX.Element) =>
         : self.loadDataSource([]);
     }
 
-    loadDataSource<T>(dataSource: Array<T>) {
+    loadDataSource(dataSource: TDataSource[]) {
       const self = this;
 
       let dataSourceIsObject = typeof dataSource === 'object';
@@ -148,7 +148,7 @@ const DataSource: any = (Component: JSX.Element) =>
       let { sortKey } = this.props;
       let { sortType, page } = this.state;
 
-      let setDataSourceState = (dataSource: Array<T> | Array<Array<T>>, isArray: boolean) => {
+      let setDataSourceState = (dataSource: TDataSource[], isArray: boolean) => {
         self.setState(
           {
             dataSource: dataSource,
@@ -168,7 +168,7 @@ const DataSource: any = (Component: JSX.Element) =>
 
       if (dataSourceIsArray) {
         if (dataSourceIsArrayOfStingsOrNumbers) {
-          let newDataSource: Array<T> = [];
+          let newDataSource: TDataSource[] = [];
 
           dataSource.forEach(element => {
             newDataSource.push(element);
@@ -367,9 +367,9 @@ const DataSource: any = (Component: JSX.Element) =>
       }
 
       if (selectedElementsArray.includes(selectedKey ? element[selectedKey] : element)) {
-        selectedElementsArray.map((data: string, key: string | number) => {
+        selectedElementsArray.map((data: TDataSource | string, key: string | number) => {
           if (data === selectedKey ? element[selectedKey] : element) {
-            selectedElementsArray.splice(key, 1);
+            selectedElementsArray.splice(key as number, 1);
             setSelectedElementsState(selectedElementsArray);
           }
         });
