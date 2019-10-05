@@ -2,7 +2,7 @@
   title?: string;
   width?: number | string;
   name?: string;
-  template?: (element: any) => JSX.Element;
+  template?: (element: Array<Object>) => JSX.Element;
   hideHeader?: boolean;
-  titleTemplate?: (element?: any) => JSX.Element;
+  titleTemplate?: (element?: Array<Object>) => JSX.Element;
 }

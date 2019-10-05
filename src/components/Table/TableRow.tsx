@@ -4,7 +4,6 @@ import TableColumn from './TableColumn';
 import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 import { IColumn } from './IColumn';
-
 import { branchIn } from '../Utils';
 
 class DetailTemplateColumnToggle extends React.Component<any, any> {

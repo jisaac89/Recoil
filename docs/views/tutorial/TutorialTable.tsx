@@ -66,7 +66,7 @@ const TableProperties = [
 ];
 
 export default class TutorialTable extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {
@@ -89,7 +89,7 @@ export default class TutorialTable extends React.Component<any, any> {
     });
   }
 
-  detailTemplate(element) {
+  detailTemplate(element: { description: string }) {
     return (
       <Layer theme="light" className="p10 pl50">
         <small>{element.description}</small>

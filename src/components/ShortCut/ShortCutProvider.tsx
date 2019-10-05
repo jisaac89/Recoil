@@ -2,8 +2,17 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 export const ShortcutContext = React.createContext('');
 
-export default class ShortCutProvider extends React.Component<any, any> {
-  constructor(props) {
+interface IShortCutProviderProps {
+  shortcut?: string;
+  shortCutInitKey: string;
+}
+
+interface IShortCutProviderState {
+  showShortcut: boolean;
+}
+
+export default class ShortCutProvider extends React.Component<IShortCutProviderProps, IShortCutProviderState> {
+  constructor(props: IShortCutProviderProps) {
     super(props);
     this.state = {
       showShortcut: false
@@ -19,7 +28,7 @@ export default class ShortCutProvider extends React.Component<any, any> {
     }
   }
 
-  public startShortcutListener(e) {
+  public startShortcutListener(e: KeyboardEvent) {
     const context = this;
     const props = context.props;
     const refButton: any = ReactDOM.findDOMNode(context.refs['button']);

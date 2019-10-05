@@ -8,7 +8,7 @@
     "jsx": "react",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "noImplicitUseStrict": false,
     "removeComments": true,
     "noLib": false,
@@ -17,24 +17,11 @@
     "esModuleInterop": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "dom",
-      "es6",
-      "es2016"
-    ],
-    "typeRoots": [
-      "index.d.ts",
-      "node_modules/@types"
-    ]
+    "lib": ["dom", "es6", "es2016"],
+    "typeRoots": ["index.d.ts", "node_modules/@types"]
   },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "./recoil/docs/**/*",
-    "node_modules",
-    "docs"
-  ],
+  "include": ["src"],
+  "exclude": ["./recoil/docs/**/*", "node_modules", "docs"],
   "compileOnSave": true,
   "buildOnSave": false
 }

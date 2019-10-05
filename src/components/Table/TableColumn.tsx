@@ -19,7 +19,7 @@ export interface ITableDataState {
 }
 
 export default class TableColumn extends React.Component<ITableDataProps, ITableDataState> {
-  constructor(props) {
+  constructor(props: ITableDataProps) {
     super(props);
     this.state = {
       type: ''

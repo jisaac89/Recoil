@@ -13,7 +13,7 @@ const TransformProperties = [
 ];
 
 export default class TutorialTransform extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {

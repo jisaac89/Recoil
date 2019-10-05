@@ -4,7 +4,24 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 
-export default class TableSearch extends React.Component<any, any> {
+interface ITableSearchProps {
+  active: boolean;
+  className: string;
+  disabled: boolean;
+  block: boolean;
+  simple: boolean;
+  throttle: number;
+  iconLocation: 'left' | 'right';
+  onChange: () => void;
+  value: string;
+  filterItems: (searchTerm: string, keys: string[]) => void;
+  onSearchChange: (value: string) => void;
+  searchableKeys: string[];
+  searchTitle: string;
+  focusOnMount: boolean;
+}
+
+export default class TableSearch extends React.Component<ITableSearchProps> {
   _throttleTimeout: any;
 
   public static defaultProps = {

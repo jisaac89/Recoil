@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Align, Button, Toolbar, Checkbox, Stepper, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink } from '../../../src/index';
+import { Button, Toolbar, Stepper, Layer } from '../../../src/index';
 import TutorialView from './TutorialView';
 const ChecboxProperties = [
   {
@@ -14,47 +14,41 @@ const ChecboxProperties = [
     options: 'true, false',
     description: 'Defines if the checkbox has a disabled state.'
   }
-]
+];
 
-export default class TutorialStepper extends React.Component<any, any>{
-  constructor(props) {
+export default class TutorialStepper extends React.Component<any, any> {
+  constructor(props: never) {
     super(props);
 
     this.state = {
       showProps: true,
       showVideo: false
-    }
+    };
   }
 
   toggleShowProps() {
     this.setState({
       showVideo: false,
       showProps: this.state.showProps ? false : true
-    })
+    });
   }
 
   toggleShowVideo() {
     this.setState({
       showProps: false,
       showVideo: this.state.showVideo ? false : true
-    })
+    });
   }
 
   render() {
-
     const self = this;
     const props = self.props;
     let state = self.state;
 
-    const columns = [
-      { name: 'name', width: 120 },
-      { name: 'type', width: 140 },
-      { name: 'description' }
-    ]
+    const columns = [{ name: 'name', width: 120 }, { name: 'type', width: 140 }, { name: 'description' }];
     let example = () => {
       return (
         <div>
-
           <h3>Default</h3>
           <Layer className="ptb20">
             <Layer className="p10 light">
@@ -79,16 +73,21 @@ export default class TutorialStepper extends React.Component<any, any>{
           <Layer className="ptb20">
             <Layer className="p10 light">
               <Stepper vertical stepIndex={0}>
-                <Button simple className="p0">Basic Info</Button>
-                <Button simple className="p0">Contact Details</Button>
-                <Button simple className="p0">Success!</Button>
+                <Button simple className="p0">
+                  Basic Info
+                </Button>
+                <Button simple className="p0">
+                  Contact Details
+                </Button>
+                <Button simple className="p0">
+                  Success!
+                </Button>
               </Stepper>
             </Layer>
           </Layer>
-
         </div>
-      )
-    }
+      );
+    };
 
     return (
       <TutorialView
@@ -99,6 +98,6 @@ export default class TutorialStepper extends React.Component<any, any>{
         scrollIf={props.scrollIf}
         scrollToId={props.scrollToId}
       />
-    )
+    );
   }
 }

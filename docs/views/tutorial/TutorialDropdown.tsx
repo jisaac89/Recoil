@@ -90,7 +90,7 @@ let users = [
 ];
 
 export default class TutorialDropdown extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {

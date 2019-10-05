@@ -1,17 +1,23 @@
 import * as React from 'react';
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 
 export interface IFixedProps {
-  children?: any;
+  children?: React.ReactNode;
 }
 
-export default class Fixed extends React.Component<IFixedProps, any> {
+export interface IFixedState {
+  default: number;
+  node: React.ReactNode;
+  fixed: boolean;
+}
+
+export default class Fixed extends React.Component<IFixedProps, IFixedState> {
   refs: {
     [key: string]: Element;
     fixedNode: HTMLElement;
   };
 
-  constructor(props) {
+  constructor(props: IFixedProps) {
     super(props);
     this.state = {
       default: 0,

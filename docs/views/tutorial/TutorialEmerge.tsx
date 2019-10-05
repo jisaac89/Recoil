@@ -1,23 +1,5 @@
 import * as React from 'react';
-import {
-  Align,
-  Button,
-  Toolbar,
-  Checkbox,
-  Table,
-  Layer,
-  Dropdown,
-  Input,
-  Wizard,
-  Modal,
-  Open,
-  Emerge,
-  SlideIn,
-  Transform,
-  Toggle,
-  Shrink,
-  AdvancedLayer
-} from '../../../src/index';
+import { Align, Button, Emerge, AdvancedLayer } from '../../../src/index';
 
 import TutorialView from './TutorialView';
 const EmergeProperties = [
@@ -66,7 +48,7 @@ const EmergeProperties = [
 ];
 
 export default class TutorialEmerge extends React.Component<any, any> {
-  constructor(props) {
+  constructor(props: never) {
     super(props);
 
     this.state = {
@@ -142,18 +124,18 @@ export default class TutorialEmerge extends React.Component<any, any> {
           <br />
           <br />
           <br />
-          <AdvancedLayer oocss="h300px w400px">
+          <AdvancedLayer>
             <Emerge enter="slideInLeft">
-              <AdvancedLayer theme="light" oocss="w500px h200px" border flexCenter>
+              <AdvancedLayer theme="light" border flexCenter>
                 Appear
               </AdvancedLayer>
-              <AdvancedLayer theme="light" oocss="w500px h200px" border flexCenter>
+              <AdvancedLayer theme="light" border flexCenter>
                 When
               </AdvancedLayer>
-              <AdvancedLayer theme="light" oocss="w500px h200px" border flexCenter>
+              <AdvancedLayer theme="light" border flexCenter>
                 In
               </AdvancedLayer>
-              <AdvancedLayer theme="light" oocss="w500px h200px" border flexCenter>
+              <AdvancedLayer theme="light" border flexCenter>
                 View
               </AdvancedLayer>
             </Emerge>
@@ -192,19 +174,19 @@ export default class TutorialEmerge extends React.Component<any, any> {
           <br />
           <br />
 
-          <AdvancedLayer oocss="h408px w100%">
+          <AdvancedLayer>
             <Emerge enter="fadeInUpBig">
               <Align>
-                <AdvancedLayer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>
+                <AdvancedLayer theme="light" className="pull-left" border flexCenter>
                   Appear
                 </AdvancedLayer>
-                <AdvancedLayer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>
+                <AdvancedLayer theme="light" className="pull-left" border flexCenter>
                   When
                 </AdvancedLayer>
-                <AdvancedLayer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>
+                <AdvancedLayer theme="light" className="pull-left" border flexCenter>
                   In
                 </AdvancedLayer>
-                <AdvancedLayer theme="light" className="pull-left" oocss="w200px h200px" border flexCenter>
+                <AdvancedLayer theme="light" className="pull-left" border flexCenter>
                   View
                 </AdvancedLayer>
               </Align>

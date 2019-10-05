@@ -22,13 +22,12 @@ export default class PortalContent extends React.Component<IPortalProps, any> {
 
   portalElement: HTMLElement = null;
 
-  constructor(props) {
+  constructor(props: IPortalProps) {
     super(props);
     this.initPortal();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // ususually you woould compare props but for a portal we need to rerender
+  componentDidUpdate() {
     this.initPortal();
   }
 

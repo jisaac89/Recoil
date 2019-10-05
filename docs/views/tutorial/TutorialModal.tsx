@@ -1,166 +1,207 @@
 import * as React from 'react';
-import {Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../../src/index';
+import {
+  Align,
+  Button,
+  Toolbar,
+  Checkbox,
+  Table,
+  Layer,
+  Dropdown,
+  Input,
+  Wizard,
+  Modal,
+  Open,
+  Emerge,
+  SlideIn,
+  Transform,
+  Toggle,
+  Shrink
+} from '../../../src/index';
 import TutorialView from './TutorialView';
 const ModalProperties = [
   {
-    name :'open',
+    name: 'open',
     type: 'boolean',
     options: 'true, false',
     description: 'Defines if the Modal should show.'
   },
   {
-    name :'className',
+    name: 'className',
     type: 'string',
     options: '',
     description: 'Defines a list of class names for the element.'
   },
   {
-    name :'icon',
+    name: 'icon',
     type: 'string',
     options: 'Omit to fa fa-',
     description: 'Defines a font awesome icon for the modal.'
   },
   {
-    name :'title',
+    name: 'title',
     type: 'string',
     options: '',
     description: 'Defines a title for the modal element.'
   },
   {
-    name :'float',
+    name: 'float',
     type: 'boolean',
     options: 'true, false',
     description: 'Defines if the modal element is floating.'
   },
   {
-    name :'ghost',
+    name: 'ghost',
     type: 'string',
     options: '',
     description: 'Defines if the modal is in ghost mode.'
   },
   {
-    name :'fullScreen',
+    name: 'fullScreen',
     type: 'boolean',
     options: 'true, false',
     description: 'Sets the modal to full-screen mode.'
   },
   {
-    name :'onClose',
+    name: 'onClose',
     type: 'string',
     options: '',
     description: 'Defines an onClose event for the modal.'
   },
   {
-    name :'min',
+    name: 'min',
     type: 'boolean',
     options: 'true, false',
     description: 'Defines if the modal is minified.'
   }
-]
+];
 
-export default class TutorialModal extends React.Component<any,any>{
-  constructor(props) {
+export default class TutorialModal extends React.Component<any, any> {
+  constructor(props: never) {
     super(props);
 
     this.state = {
-      showProps : true,
+      showProps: true,
       showVideo: false,
       showModal: false,
       showModalFullScreen: false
-    }
+    };
   }
 
   toggleShowProps() {
     this.setState({
       showVideo: false,
       showProps: this.state.showProps ? false : true
-    })
+    });
   }
 
   toggleShowVideo() {
     this.setState({
       showProps: false,
       showVideo: this.state.showVideo ? false : true
-    })
+    });
   }
 
   openModal() {
-    this.setState({
-      showModal: true
-    }, ()=>{
-      this.props.toggleModal(this.state.showModal);
-    })
+    this.setState(
+      {
+        showModal: true
+      },
+      () => {
+        this.props.toggleModal(this.state.showModal);
+      }
+    );
   }
 
   openModalFullScreen() {
-    this.setState({
-      showModalFullScreen: true
-    }, ()=>{
-      this.props.toggleModal(this.state.showModal);
-    })
+    this.setState(
+      {
+        showModalFullScreen: true
+      },
+      () => {
+        this.props.toggleModal(this.state.showModal);
+      }
+    );
   }
 
   closeModalFullScreen() {
-    this.setState({
-      showModalFullScreen: false
-    }, ()=>{
-      this.props.toggleModal(this.state.showModal);
-    })
+    this.setState(
+      {
+        showModalFullScreen: false
+      },
+      () => {
+        this.props.toggleModal(this.state.showModal);
+      }
+    );
   }
 
   closeModal() {
-    this.setState({
-      showModal: false
-    }, ()=>{
-      this.props.toggleModal(this.state.showModal);
-    })
+    this.setState(
+      {
+        showModal: false
+      },
+      () => {
+        this.props.toggleModal(this.state.showModal);
+      }
+    );
   }
 
   render() {
-
     const self = this;
     const props = self.props;
     let state = self.state;
 
-    const columns = [
-      {name: 'name', width:120},
-      {name: 'type', width:140},
-      {name: 'description'}
-    ]
+    const columns = [{ name: 'name', width: 120 }, { name: 'type', width: 140 }, { name: 'description' }];
     let example = () => {
       return (
         <div>
-           <h3 className="pb20">Default</h3>
-            <Layer className="pb20">
-              <Button theme="primary" onClick={this.openModal.bind(this)}>Show Modal</Button>
-            </Layer>
+          <h3 className="pb20">Default</h3>
+          <Layer className="pb20">
+            <Button theme="primary" onClick={this.openModal.bind(this)}>
+              Show Modal
+            </Button>
+          </Layer>
           <Modal open={this.state.showModal} onClose={this.closeModal.bind(this)}>
             <Layer className="p10">
               <p className="mb10">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </p>
               <Button onClick={this.closeModal.bind(this)}>Close Modal</Button>
             </Layer>
           </Modal>
 
           <h3 className="pb20">Fullscreen Modal</h3>
-            <Layer>
-              <Button theme="primary" onClick={this.openModalFullScreen.bind(this)}>Open Fullscreen Modal</Button>
-            </Layer>
-          <Modal fullScreen={true} hideFullScreenButton open={this.state.showModalFullScreen} onClose={this.closeModalFullScreen.bind(this)}>
+          <Layer>
+            <Button theme="primary" onClick={this.openModalFullScreen.bind(this)}>
+              Open Fullscreen Modal
+            </Button>
+          </Layer>
+          <Modal
+            fullScreen={true}
+            hideFullScreenButton
+            open={this.state.showModalFullScreen}
+            onClose={this.closeModalFullScreen.bind(this)}
+          >
             <Layer className="p10">
               <p className="mb10">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </p>
               <Button onClick={this.closeModalFullScreen.bind(this)}>Close Modal</Button>
             </Layer>
           </Modal>
         </div>
-      )
-    }
+      );
+    };
 
     return (
-      <TutorialView 
+      <TutorialView
         description="The Modal component shows a simple modal if a certain event happens."
         Id="Modal"
         columnData={ModalProperties}
@@ -168,6 +209,6 @@ export default class TutorialModal extends React.Component<any,any>{
         scrollIf={props.scrollIf}
         scrollToId={props.scrollToId}
       />
-    )
+    );
   }
 }

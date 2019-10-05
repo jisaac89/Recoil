@@ -18,7 +18,7 @@ export default class DropdownPortal extends React.Component<any, any> {
   }
 
   getDropdownPosition() {
-    let element: HTMLElement = ReactDOM.findDOMNode(this.props.element);
+    let element = ReactDOM.findDOMNode(this.props.element) as Element;
     let position = element.getBoundingClientRect();
     this.setState(
       {

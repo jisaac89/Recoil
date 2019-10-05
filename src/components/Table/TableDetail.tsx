@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Open from '../Open/Open';
 import { IColumn } from './IColumn';
+
 export interface ITableColumnDetailProps {
   element?: JSX.Element;
   columns?: Array<IColumn>;

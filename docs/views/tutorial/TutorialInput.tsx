@@ -1,116 +1,133 @@
 import * as React from 'react';
-import {Align, Button, Toolbar, Checkbox, Table, Layer, Dropdown, Input, Wizard, Modal, Open, Emerge, SlideIn, Transform, Toggle, Shrink} from '../../../src/index';
+import {
+  Align,
+  Button,
+  Toolbar,
+  Checkbox,
+  Table,
+  Layer,
+  Dropdown,
+  Input,
+  Wizard,
+  Modal,
+  Open,
+  Emerge,
+  SlideIn,
+  Transform,
+  Toggle,
+  Shrink
+} from '../../../src/index';
 
 import TutorialView from './TutorialView';
 const InputProperties = [
   {
-    name :'ghost',
+    name: 'ghost',
     type: 'boolean',
     options: 'true, false',
     description: 'Defines if the input border should be hidden.'
   },
   {
-    name :'className',
+    name: 'className',
     type: 'string',
     options: '',
     description: 'Defines a list of class names for the element.'
   },
   {
-    name :'type',
+    name: 'type',
     type: 'string',
     options: 'text, password, textarea',
     description: 'Defines the type of input the element is.'
   },
   {
-    name :'icon',
+    name: 'icon',
     type: 'string',
     options: 'Omit the fa fa-',
     description: 'Add a font-awesome icon to the input.'
   },
   {
-    name :'title',
+    name: 'title',
     type: 'string',
     options: '',
     description: 'Defines the title for the input.'
   },
   {
-    name :'placeholder',
+    name: 'placeholder',
     type: '',
     options: '',
     description: 'Defines the placeholder for the input.'
   },
   {
-    name :'value',
+    name: 'value',
     type: '',
     options: '',
     description: 'Defines the value for the input.'
   },
   {
-    name :'style',
+    name: 'style',
     type: 'string',
     options: '',
     description: 'Defines the inline styles for the element.'
   },
   {
-    name :'errorInline',
+    name: 'errorInline',
     type: 'boolean',
     options: '',
     description: 'Defines if the error appears within the input.'
   },
   {
-    name :'error',
+    name: 'error',
     type: 'boolean',
     options: 'true, false',
     description: 'Defines whether the error message should show.'
   },
   {
-    name :'block',
+    name: 'block',
     type: 'string',
     options: '',
     description: 'Sets the element as a block element with 100% width.'
   },
   {
-    name :'onChange',
+    name: 'onChange',
     type: '',
     options: '',
     description: 'Define a function, returns the current value of the input.'
   },
   {
-    name :'focusOnMount',
+    name: 'focusOnMount',
     type: 'boolean',
     options: 'true, false',
     description: 'When the component mounts should the input be set to focus.'
   },
   {
-    name :'focusDelay',
+    name: 'focusDelay',
     type: '',
     options: '',
     description: 'Sets the delay for the focus.'
   }
-]
+];
 
-export default class TutorialInput extends React.Component<any,any>{
-  constructor(props) {
+export default class TutorialInput extends React.Component<any, any> {
+  constructor(props: never) {
     super(props);
 
     this.state = {
-      showProps : true,
+      showProps: true,
       showVideo: false
-    }
+    };
   }
 
   toggleShowProps() {
     this.setState({
       showVideo: false,
       showProps: this.state.showProps ? false : true
-    })
+    });
   }
 
   toggleShowVideo() {
     this.setState({
       showProps: false,
       showVideo: this.state.showVideo ? false : true
-    })
+    });
   }
 
   setonChange() {
@@ -118,24 +135,34 @@ export default class TutorialInput extends React.Component<any,any>{
   }
 
   render() {
-
     const self = this;
     const props = self.props;
     let state = self.state;
 
-    const columns = [
-      {name: 'name', width:120},
-      {name: 'type', width:140},
-      {name: 'description'}
-    ]
+    const columns = [{ name: 'name', width: 120 }, { name: 'type', width: 140 }, { name: 'description' }];
     let example = () => {
       return (
         <div>
           <Layer className="ptb10">
             <Toolbar vertical spacing>
-              <Input size="small" advanced type="text" title="First Name" onChange={this.setonChange.bind(this)} block />
+              <Input
+                size="small"
+                advanced
+                type="text"
+                title="First Name"
+                onChange={this.setonChange.bind(this)}
+                block
+              />
               <Input advanced type="text" title="Last Name" onChange={this.setonChange.bind(this)} block />
-              <Input size="large" advanced type="text" icon="user" title="Search Users" onChange={this.setonChange.bind(this)} block />
+              <Input
+                size="large"
+                advanced
+                type="text"
+                icon="user"
+                title="Search Users"
+                onChange={this.setonChange.bind(this)}
+                block
+              />
               <Input size="xlarge" advanced type="text" title="Email" onChange={this.setonChange.bind(this)} block />
             </Toolbar>
           </Layer>
@@ -143,14 +170,23 @@ export default class TutorialInput extends React.Component<any,any>{
             <Input advanced type="text" placeholder="Search Places" onChange={this.setonChange.bind(this)} block />
           </Layer>
           <Layer className="ptb10">
-            <Input error={true} simple errorMessage={"Error Message"} advanced type="text" placeholder="Search Places" onChange={this.setonChange.bind(this)} block />
+            <Input
+              error={true}
+              simple
+              errorMessage={'Error Message'}
+              advanced
+              type="text"
+              placeholder="Search Places"
+              onChange={this.setonChange.bind(this)}
+              block
+            />
           </Layer>
         </div>
-      )
-    }
+      );
+    };
 
     return (
-      <TutorialView 
+      <TutorialView
         description="The Input component is an advanced version of the standard input type='text' control."
         Id="Input"
         columnData={InputProperties}
@@ -158,6 +194,6 @@ export default class TutorialInput extends React.Component<any,any>{
         scrollIf={props.scrollIf}
         scrollToId={props.scrollToId}
       />
-    )
+    );
   }
 }
