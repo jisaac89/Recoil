@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 
 export interface IAvatarProps {
-  src?: string;
+  src: string;
 }
 
 export const Avatar: React.FunctionComponent<IAvatarProps> = ({ src }) => {

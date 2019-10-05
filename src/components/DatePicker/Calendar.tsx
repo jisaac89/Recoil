@@ -58,7 +58,7 @@ export interface ICalendarProps {
   onSelect?: (date: Date) => void;
   calendarHeight?: string;
   inDropdown?: boolean;
-  selectedDay?: string;
+  selectedDay?: Date;
   selectTime?: boolean;
   mobile?: boolean;
 }

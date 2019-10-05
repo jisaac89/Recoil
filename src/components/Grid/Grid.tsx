@@ -2,21 +2,25 @@ import * as React from 'react';
 
 import Layer from '../Layer/Layer';
 import Selectable from '../Selectable/Selectable';
-import DataSource from '../DataSource/DataSource';
+import DataSource, { TDataSource } from '../DataSource/DataSource';
 import Align from '../Align/Align';
-import { IColumn } from '../Table/Table';
+
+interface IRows {
+  columns: number[];
+  height: string;
+}
 
 export interface IGridProps {
-  dataSource?: any;
+  dataSource?: TDataSource;
   selectedKey?: string;
-  activeRows?: any;
-  rows?: any;
+  activeRows?: IRows[];
+  rows?: IRows[];
   margin?: string;
-  selectedElements?: any;
+  selectedElements?: TDataSource[];
   onChange?: (item?: any) => void;
   toggleSelectedElements?: (x: any, s: any) => void;
   pageSize?: number;
-  className?: any;
+  className?: string;
 }
 
 interface IGridState {

@@ -23,7 +23,7 @@ interface IDataSourceState {
   dataSource: TDataSource;
   isArray: boolean;
   columns: Array<IColumn>;
-  activeRows: Array<Object>;
+  activeRows: Array<TDataSource>;
   // page
   rowCount: number;
   pageSize: number;
@@ -31,11 +31,11 @@ interface IDataSourceState {
   numberOfPages: number;
   numberPerPage: number;
   // table selected options
-  detailTemplateSelectedElements: Array<Object>;
-  selectedElements: Array<Object>;
+  detailTemplateSelectedElements: Array<TDataSource>;
+  selectedElements: Array<TDataSource>;
   // table search
   searchTerm: string;
-  searchedItems: Array<Object>;
+  searchedItems: Array<TDataSource>;
   // table sort
   sortType: string;
   sortKey: string;
@@ -346,12 +346,12 @@ const DataSource: any = (Component: JSX.Element) =>
       });
     }
 
-    detailTemplateToggleSelectedElements(element: Array<any>) {
+    detailTemplateToggleSelectedElements(element: Array<TDataSource>) {
       const self = this;
       let { detailTemplateOpenOnRowSelect, selectedKey } = this.props;
       let { detailTemplateSelectedElements } = self.state;
 
-      let selectedElementsArray: any;
+      let selectedElementsArray: TDataSource[];
 
       let setSelectedElementsState = (data: Array<any>) => {
         self.setState({
@@ -398,7 +398,7 @@ const DataSource: any = (Component: JSX.Element) =>
       let { selectedElements } = self.state;
       let { rowIsSelectable, onCheck, selectedKey } = self.props;
       let selectedElement = selectedKey ? element[selectedKey] : element;
-      let selectedElementsArray: any;
+      let selectedElementsArray: TDataSource[];
 
       if (rowIsSelectable === 'single') {
         selectedElementsArray = [];

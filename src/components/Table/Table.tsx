@@ -5,13 +5,12 @@ import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
 import TableSearch from './TableSearch';
-import Layer from '../Layer/Layer';
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
 import Loading from '../Loading/Loading';
 
-import DataSource from '../DataSource/DataSource';
+import DataSource, { TDataSource } from '../DataSource/DataSource';
 
 import { IColumn } from './IColumn';
 import AdvancedLayer from '../Layer/AdvancedLayer';
@@ -34,8 +33,8 @@ export interface ITableProps {
   page?: number;
   detailTemplateOnOpen?: (element: Array<Object>) => any;
   //
-  detailTemplateSelectedElements?: Array<Object>;
-  selectedElements?: Array<Object>;
+  detailTemplateSelectedElements?: Array<TDataSource>;
+  selectedElements?: Array<TDataSource>;
   rowIsSelectable?: boolean | 'single' | 'multi';
   checkable?: boolean;
   hideCheckAll?: boolean;
@@ -45,9 +44,9 @@ export interface ITableProps {
   onRowSelect?: (element?: Array<Object>, key?: string | number, selectedElements?: Array<Object>, id?: string) => void;
   pageSizerOptions?: Array<number>;
   onPageSizeChange?: (event: React.MouseEvent<HTMLElement>) => void;
-  onPageChange?: any;
+  onPageChange?: () => void;
   sortable?: boolean;
-  searchableKeys?: Array<any>;
+  searchableKeys?: Array<string>;
   searchTitle?: string;
   className?: string;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
@@ -67,9 +66,9 @@ export interface ITableProps {
   toggleSorting?: any;
   toggleSelectedElements?: any;
   selectAll?: any;
-  previousPage?: any;
-  nextPage?: any;
-  gotoPage?: any;
+  previousPage?: () => void;
+  nextPage?: () => void;
+  gotoPage?: () => void;
   firstPage?: any;
   lastPage?: any;
   detailTemplateToggleSelectedElements?: any;
@@ -92,7 +91,7 @@ export interface ITableProps {
   onSearchChange?: (term: string) => void;
   headerTemplate?: () => void;
   serverSide?: boolean;
-  disableSelectedElements?: Array<any>;
+  disableSelectedElements?: TDataSource[];
   fill?: boolean;
   tableDataClassName?: string;
   loadingElements?: any[];
@@ -102,7 +101,13 @@ export interface ITableProps {
 interface ITableState {}
 
 class Table extends React.Component<ITableProps, ITableState> {
-  public static defaultProps = {
+  public static defaultProps: {
+    disableSelectedElements: TDataSource[];
+    showDataSourceLength: boolean;
+    title: string;
+    portal: boolean;
+    scrollY: boolean;
+  } = {
     showDataSourceLength: true,
     title: 'items',
     portal: false,
