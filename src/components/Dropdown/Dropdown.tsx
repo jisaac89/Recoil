@@ -59,6 +59,10 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
   };
 
   public static defaultProps = {
+    dataSource: [],
+    searchableKeys: [],
+    activeRows: [],
+    filterItems: [],
     contentMaxHeight: 200,
     material: true,
     hideFooter: true,

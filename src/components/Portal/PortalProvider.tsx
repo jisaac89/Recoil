@@ -1,5 +1,4 @@
 import React from 'react';
-import * as ReactDOM from 'react-dom';
 export const PortalContext = React.createContext('');
 
 export default class PortalProvider extends React.Component<any, any> {

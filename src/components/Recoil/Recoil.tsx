@@ -1,9 +1,7 @@
 ﻿import React from 'react';
 import classNames from 'classnames';
 import ShortCutProvider from '../ShortCut/ShortCutProvider';
-
 import PortalProvider from '../Portal/PortalProvider';
-
 import { isMobile, isTablet } from './index';
 
 export interface IRecoilProps {

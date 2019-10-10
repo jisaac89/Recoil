@@ -2,7 +2,6 @@ import React from 'react';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 import classNames from 'classnames';
-
 import { IRecoil } from '../../index';
 
 export interface ICheckboxProps extends IRecoil {

@@ -21,6 +21,12 @@ export interface IDatePickerState {
 }
 
 export default class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
+  static defaultProps = {
+    dataSource: [],
+    searchableKeys: [],
+    activeRows: [],
+    filterItems: []
+  };
   constructor(props: IDatePickerProps) {
     super(props);
     var date = this.props.date || new Date(Date.now());

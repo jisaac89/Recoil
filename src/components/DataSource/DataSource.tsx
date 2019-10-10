@@ -6,7 +6,7 @@ import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import { IColumn } from './IColumn';
 
-export type TDataSource = Array<Object> | Array<number> | Array<string>;
+export type TDataSource = object | number | string | [];
 
 export interface IDataSourceProps extends ITableProps {
   // initial dataSource loaded as prop
@@ -300,7 +300,7 @@ const DataSource: any = (Component: JSX.Element) =>
       );
     }
 
-    renderActiveRows(dataSource: Array<any>) {
+    renderActiveRows(dataSource: TDataSource[]) {
       const self = this;
       const props = self.props;
       let { rowCount } = props;
@@ -400,7 +400,7 @@ const DataSource: any = (Component: JSX.Element) =>
       });
     }
 
-    toggleSelectedElements(element: Array<any>, index: string | number) {
+    toggleSelectedElements(element: Array<any>, index: number) {
       const self = this;
       let { selectedElements } = self.state;
       let { rowIsSelectable, onCheck, selectedKey } = self.props;
@@ -496,7 +496,7 @@ const DataSource: any = (Component: JSX.Element) =>
       this.props.onPageChange ? this.props.onPageChange(numberOfPages - 1) : null;
     }
 
-    gotoPage(datasource: TDataSource, i: number) {
+    gotoPage(datasource: TDataSource[], i: number) {
       this.setState(
         {
           page: i,
@@ -563,7 +563,6 @@ const DataSource: any = (Component: JSX.Element) =>
       const self = this;
       const props = self.props;
       let { columns, dataSource, activeRows } = self.state;
-      //let {emptyText} = props;
 
       let renderedObject = {
         // methods

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 export interface IAlignProps {
   vertical?: boolean;
   className?: string;
-  columns: Array<number>;
+  columns: number[];
   margin?: string;
   children: React.ReactNode[];
   fill?: boolean;
@@ -13,7 +13,7 @@ export interface IAlignProps {
 }
 
 export interface IAlignChildProps {
-  columns?: Array<number>;
+  columns?: number[];
   vertical?: boolean;
   width?: number;
   element?: JSX.Element;
@@ -21,7 +21,7 @@ export interface IAlignChildProps {
 }
 
 export interface IAlignState {
-  widthArray: Array<number>;
+  widthArray: number[];
   maxColumnsLength: number;
 }
 

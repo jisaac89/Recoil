@@ -16,10 +16,10 @@ export interface IPagerProps {
   nextPage?: any;
   lastPage?: any;
   previousPage?: any;
-  dataSource?: Array<Object>;
+  dataSource?: TDataSource[];
   pageSize?: number;
   onPageChange?: (pageNumber: number, event?: React.MouseEvent<any>) => void;
-  pageSizerOptions?: Array<number>;
+  pageSizerOptions?: number[];
   hidePageSize?: boolean;
   rowCount?: number;
   showDataSourceLength?: boolean;
@@ -156,7 +156,7 @@ export default class Pager extends React.Component<IPagerProps, {}> {
               dropDirection={pageSizeDropDirection ? pageSizeDropDirection : 'down'}
               title={'Page Size ' + pageSize}
               pageSizerOptions={pageSizerOptions}
-              dataSource={pageSizerOptions || ['5', '10', '15']}
+              dataSource={pageSizerOptions ? pageSizerOptions : [5, 10, 15]}
             />
           )}
         </Toolbar>

@@ -27,9 +27,7 @@ export interface IButtonProps extends IRecoil {
   materialIcon?: boolean;
 }
 
-export interface IButtonState {}
-
-export default class Button extends React.Component<IButtonProps, IButtonState> {
+export default class Button extends React.Component<IButtonProps> {
   public refs: {
     [key: string]: Element;
     button: HTMLButtonElement;
