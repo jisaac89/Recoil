@@ -1,8 +1,19 @@
 import React from 'react';
-
 import Button from '../Button/Button';
+import { Month } from './Calendar';
 
-export default class Months extends React.Component<any, any> {
+interface IMonthsProps {
+  month: number;
+  year: number;
+  currentMonth: Date[][];
+  title: Month;
+  mobile: boolean;
+  selectDay: (date: Date) => void;
+  date: Date;
+  selectedDay: Date;
+}
+
+export default class Months extends React.Component<IMonthsProps> {
   render() {
     let { year, month, currentMonth, title, selectedDay, mobile } = this.props;
 

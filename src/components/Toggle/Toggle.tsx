@@ -27,7 +27,8 @@ export interface IToggleState {
 export default class Toggle extends React.Component<IToggleProps, IToggleState> {
   public static defaultProps = {
     checked: false,
-    iconArray: []
+    iconArray: [],
+    array: []
   };
 
   constructor(props: IToggleProps) {

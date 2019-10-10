@@ -53,8 +53,8 @@ export interface ITableProps {
   rowCount?: number;
   hidePageSize?: boolean;
   onSort?: Function;
-  sortType?: 'asc' | 'desc';
-  sortKey?: string;
+  sortType?: 'asc' | 'desc' | undefined;
+  sortKey?: 'asc' | 'desc';
   showDataSourceLength?: boolean;
   selectedKey?: string;
   flex?: boolean | 'row' | 'row-reverse';

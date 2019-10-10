@@ -92,13 +92,14 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
   }
 
   canLayerAnimateScroll(props: ILayerProps) {
-    let propss = props || this.props;
     const self = this;
     setTimeout(() => {
-      let element = document.getElementById(propss.scrollToId);
-      if (element && element.getBoundingClientRect()) {
-        self.handleScroll(propss.scrollToId, element.offsetTop);
-      } else return <></>;
+      if (props.scrollToId) {
+        let element = document.getElementById(props.scrollToId);
+        if (element && element.getBoundingClientRect()) {
+          self.handleScroll(props.scrollToId, element.offsetTop);
+        } else return <></>;
+      }
     }, 0);
   }
 

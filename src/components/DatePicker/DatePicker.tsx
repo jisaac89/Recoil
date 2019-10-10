@@ -1,9 +1,6 @@
 ﻿import React from 'react';
-
 import Dropdown, { IDropdownProps } from '../Dropdown/Dropdown';
-
 import Calendar, { ICalendarProps, ICalendarState } from './Calendar';
-
 export { Calendar, ICalendarProps, ICalendarState };
 
 export interface IDatePickerProps extends IDropdownProps {

@@ -1,20 +1,16 @@
 ﻿import React from 'react';
-
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
-
 import Months from './Months';
 import { DaysHeader } from './DaysHeader';
 import SelectMonth from './SelectMonth';
 import SelectYear from './SelectYear';
-
 import SelectHour from './SelectHour';
 import SelectMinute from './SelectMinute';
-
 import MobileTemplate from './MobileTemplate';
 
-type Month =
+export type Month =
   | 'January'
   | 'February'
   | 'March'
@@ -164,7 +160,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     return days;
   }
 
-  getWeeks(year: number, month: number) {
+  getWeeks(year: number, month: number): Date[][] {
     let days = this.getDays(year, month);
 
     let weeks: Date[][] = [];
@@ -209,7 +205,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     let { year, month, date, selectedDay } = self.state;
     let { calendarHeight, inDropdown } = self.props;
 
-    let setHeight = inDropdown ? { height: '100%' } : { height: calendarHeight };
+    let setHeight = { height: calendarHeight && !inDropdown ? calendarHeight : '100%' };
 
     return (
       <Layer flex className="r-Calendar">
@@ -260,7 +256,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
                 selectDay={this.selectDay.bind(this)}
                 date={date}
                 selectedDay={selectedDay}
-                mobile={this.props.mobile}
+                mobile={this.props.mobile ? this.props.mobile : false}
               />
             )}
           </Layer>
