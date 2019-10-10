@@ -77,7 +77,7 @@ export interface ITableProps {
   filteredItems?: TDataSource[];
   detailTemplateToggleAll?: boolean;
   searchTerm?: string;
-  filterItems: TDataSource[];
+  filterItems: (searchTerm: string, keys: string[]) => TDataSource[];
   title?: string;
   hideFooter?: boolean;
   scrollToId?: string;

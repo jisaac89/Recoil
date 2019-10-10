@@ -6,6 +6,7 @@ import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 
 import { IColumn } from './IColumn';
+import { TDataSource } from '../DataSource/DataSource';
 
 class DetailTemplateHeadToggle extends React.Component<any, any> {
   detailTemplateToggleAll(dataSource: Array<any>) {
@@ -50,7 +51,7 @@ class CheckboxHead extends React.Component<any, any> {
 }
 
 export interface ITableHeadProps {
-  toggleSorting?: (dataSource: any, key: string, sortType: any) => void;
+  toggleSorting?: (dataSource: TDataSource[], key: number, sortType: 'asc' | 'desc') => void;
   detailTemplateToggleAll?: (dataSource: any) => void;
   selectAll?: (dataSource: any) => void;
   dataSource: Array<any> | Object;
@@ -69,7 +70,13 @@ export interface ITableHeadProps {
   sortType?: string;
 }
 
-export default class TableHead extends React.Component<ITableHeadProps, any> {
+interface ITableHeadState {
+  sortType: string;
+  column: string;
+  columns: IColumn[];
+}
+
+export default class TableHead extends React.Component<ITableHeadProps, ITableHeadState> {
   constructor(props: ITableHeadProps) {
     super(props);
     this.state = {
@@ -79,7 +86,7 @@ export default class TableHead extends React.Component<ITableHeadProps, any> {
     };
   }
 
-  toggleSorting(dataSource: Array<any>, columnName: string) {
+  toggleSorting(dataSource: TDataSource[], columnName: IColumn['name']) {
     const self = this;
 
     this.setState(

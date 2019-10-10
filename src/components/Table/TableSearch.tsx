@@ -3,6 +3,7 @@ import React from 'react';
 import Input from '../Input/Input';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
+import { TDataSource } from '../DataSource/DataSource';
 
 interface ITableSearchProps {
   active: boolean;
@@ -14,7 +15,7 @@ interface ITableSearchProps {
   iconLocation: 'left' | 'right';
   onChange: () => void;
   value?: string;
-  filterItems: (searchTerm: string, keys: string[]) => void;
+  filterItems: (searchTerm: string, keys: string[]) => TDataSource[];
   onSearchChange?: (term: string) => void;
   searchableKeys?: string[];
   searchTitle?: string;
