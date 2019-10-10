@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import TableFooter from './TableFooter';
@@ -9,9 +8,7 @@ import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import Emerge from '../Emerge/Emerge';
 import Loading from '../Loading/Loading';
-
 import DataSource, { TDataSource } from '../DataSource/DataSource';
-
 import { IColumn } from './IColumn';
 import AdvancedLayer from '../Layer/AdvancedLayer';
 export { IColumn };
@@ -20,99 +17,97 @@ export interface ITableProps {
   id?: string;
   portal?: boolean;
   // initial dataSource loaded as prop
-  dataSource?: Array<Object> | Array<number> | Array<string>;
+  dataSource: TDataSource[];
   // columns defined by user
-  columns?: Array<IColumn>;
+  columns?: IColumn[];
   // a detail template function that returns a view
-  detailTemplate?: (element: Array<Object>) => JSX.Element;
+  detailTemplate?: (element: TDataSource) => JSX.Element;
   // toggle if the table header should show
   hideHeader?: boolean;
   // how many rows to show
   pageSize?: number;
   // current page index
   page?: number;
-  detailTemplateOnOpen?: (element: Array<Object>) => any;
+  detailTemplateOnOpen?: (element: TDataSource) => void;
   //
-  detailTemplateSelectedElements?: Array<TDataSource>;
-  selectedElements?: Array<TDataSource>;
+  detailTemplateSelectedElements?: TDataSource[];
+  selectedElements?: TDataSource[];
   rowIsSelectable?: boolean | 'single' | 'multi';
   checkable?: boolean;
   hideCheckAll?: boolean;
   onCheck?: (event: React.MouseEvent<HTMLInputElement>) => void;
   detailTemplateHideToggle?: boolean;
-  hideColumns?: Array<string>;
-  onRowSelect?: (element?: Array<Object>, key?: string | number, selectedElements?: Array<Object>, id?: string) => void;
-  pageSizerOptions?: Array<number>;
+  hideColumns?: string[];
+  onRowSelect?: (element: TDataSource[], key: number, selectedElements?: TDataSource[], id?: string) => void;
+  pageSizerOptions?: number[];
   onPageSizeChange?: (event: React.MouseEvent<HTMLElement>) => void;
   onPageChange?: (number: number) => void;
   sortable?: boolean;
-  searchableKeys?: string[];
+  searchableKeys: string[];
   searchTitle?: string;
   className?: string;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
   rowCount?: number;
   hidePageSize?: boolean;
-  onSort?: Function;
+  onSort?: () => void;
   sortType?: 'asc' | 'desc' | undefined;
   sortKey?: 'asc' | 'desc';
   showDataSourceLength?: boolean;
   selectedKey?: string;
   flex?: boolean | 'row' | 'row-reverse';
-  menuTemplate?: any;
+  menuTemplate?: () => JSX.Element;
   focusOnMount?: boolean;
   contentMaxHeight?: number;
-  filterRow?: any;
-  filterOpenDetailTemplate?: any;
-  toggleSorting?: any;
-  toggleSelectedElements?: any;
-  selectAll?: any;
+  filterRow?: () => boolean;
+  filterOpenDetailTemplate?: () => boolean;
+  toggleSorting?: boolean;
+  toggleSelectedElements?: boolean;
+  selectAll?: boolean;
   previousPage?: () => void;
   nextPage?: () => void;
   gotoPage?: () => void;
-  firstPage?: any;
-  lastPage?: any;
-  detailTemplateToggleSelectedElements?: any;
+  firstPage?: number;
+  lastPage?: number;
+  detailTemplateToggleSelectedElements?: () => TDataSource[];
   changePageSize?: any;
-  isArray?: any;
-  numberOfPages?: any;
-  numberPerPage?: any;
-  activeRows?: any;
-  filteredItems?: any;
-  detailTemplateToggleAll?: any;
-  searchTerm?: any;
-  filterItems?: any;
+  isArray?: boolean;
+  numberOfPages?: number;
+  numberPerPage?: number;
+  activeRows: string[];
+  filteredItems?: TDataSource[];
+  detailTemplateToggleAll?: boolean;
+  searchTerm?: string;
+  filterItems: TDataSource[];
   title?: string;
   hideFooter?: boolean;
-  scrollToId?: any;
-  scrollIf?: any;
+  scrollToId?: string;
+  scrollIf?: boolean;
   loading?: boolean;
   searchValue?: string;
-  searchFilter?: any;
+  searchFilter?: () => TDataSource[];
   onSearchChange?: (term: string) => void;
   headerTemplate?: () => void;
   serverSide?: boolean;
   disableSelectedElements?: TDataSource[];
   fill?: boolean;
   tableDataClassName?: string;
-  loadingElements?: any[];
+  loadingElements?: TDataSource[];
   loadingKey?: string;
 }
 
 interface ITableState {}
 
 class Table extends React.Component<ITableProps, ITableState> {
-  public static defaultProps: {
-    disableSelectedElements: TDataSource[];
-    showDataSourceLength: boolean;
-    title: string;
-    portal: boolean;
-    scrollY: boolean;
-  } = {
+  public static defaultProps = {
+    dataSource: [],
+    activeRows: [],
+    disableSelectedElements: [],
+    searchableKeys: [],
     showDataSourceLength: true,
     title: 'items',
     portal: false,
-    disableSelectedElements: [],
-    scrollY: true
+    scrollY: true,
+    filterItems: []
   };
 
   render() {
