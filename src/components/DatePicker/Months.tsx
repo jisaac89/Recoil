@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import Button from '../Button/Button';
 
@@ -17,41 +17,39 @@ export default class Months extends React.Component<any, any> {
                 </td>
               </tr>
             ) : null}
-            {currentMonth.map(
-              (week: any, index: any): any => {
-                return (
-                  <tr key={index}>
-                    {index === 0 && week.length < 7 ? (
-                      <td className="empty-date p0" colSpan={7 - week.length} />
-                    ) : (
-                      undefined
-                    )}
-                    {week.map((day: any, index: any) => {
-                      let selected = selectedDay.toDateString() == day.toDateString();
-                      return (
-                        <td className="p0" key={year + ' ' + month + ' ' + index}>
-                          <Button
-                            simple
-                            advanced
-                            checked={selected}
-                            onClick={this.props.selectDay.bind(this, day)}
-                            theme={selected ? 'primary' : undefined}
-                            className="e-fill"
-                          >
-                            {day.getDate()}
-                          </Button>
-                        </td>
-                      );
-                    })}
-                    {index > 0 && week.length < 7 ? (
-                      <td className="empty-date p0" colSpan={7 - week.length} />
-                    ) : (
-                      undefined
-                    )}
-                  </tr>
-                );
-              }
-            )}
+            {currentMonth.map((week: any, index: any): any => {
+              return (
+                <tr key={index}>
+                  {index === 0 && week.length < 7 ? (
+                    <td className="empty-date p0" colSpan={7 - week.length} />
+                  ) : (
+                    undefined
+                  )}
+                  {week.map((day: any, index: any) => {
+                    let selected = selectedDay.toDateString() == day.toDateString();
+                    return (
+                      <td className="p0" key={year + ' ' + month + ' ' + index}>
+                        <Button
+                          simple
+                          advanced
+                          checked={selected}
+                          onClick={this.props.selectDay.bind(this, day)}
+                          theme={selected ? 'primary' : undefined}
+                          className="e-fill"
+                        >
+                          {day.getDate()}
+                        </Button>
+                      </td>
+                    );
+                  })}
+                  {index > 0 && week.length < 7 ? (
+                    <td className="empty-date p0" colSpan={7 - week.length} />
+                  ) : (
+                    undefined
+                  )}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       );

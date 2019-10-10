@@ -1,11 +1,11 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import DropdownContent from './DropdownContent';
 
 export default class DropdownPortal extends React.Component<any, any> {
-  portalElement: HTMLElement = null;
-
+  portalElement: HTMLElement;
+  recoilWapperElement = document.getElementById('Recoil');
   constructor(props: any) {
     super(props);
     this.state = {
@@ -44,20 +44,25 @@ export default class DropdownPortal extends React.Component<any, any> {
     let p = this.props.portalId && document.getElementById(this.props.portalId);
     if (!p) {
       let docfrag = document.createDocumentFragment();
+
       p = document.createElement('div');
       p.id = this.props.portalId;
       p.style.position = 'absolute';
       p.style.top = absolutePosition.top;
       p.style.left = absolutePosition.left;
       docfrag.appendChild(p);
-      document.getElementById('Recoil').appendChild(docfrag);
+      if (this.recoilWapperElement) {
+        this.recoilWapperElement.appendChild(docfrag);
+      }
     }
     this.portalElement = p;
     this.componentDidUpdate();
   }
 
   componentWillUnmount() {
-    document.getElementById('Recoil').removeChild(this.portalElement);
+    if (this.recoilWapperElement) {
+      this.recoilWapperElement.removeChild(this.portalElement);
+    }
   }
   componentDidUpdate() {
     const self = this;
@@ -127,6 +132,6 @@ export default class DropdownPortal extends React.Component<any, any> {
     ReactDOM.render(<DropdownContent {...dropdownContentProps} />, this.portalElement);
   }
   render(): JSX.Element {
-    return null;
+    return <></>;
   }
 }

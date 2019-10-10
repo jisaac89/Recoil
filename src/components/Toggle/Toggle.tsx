@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Wizard from '../Wizard/Wizard';
 import Shrink from '../Shrink/Shrink';
@@ -7,9 +7,9 @@ import { IRecoil } from '../../index';
 
 export interface IToggleProps extends IRecoil {
   name?: string;
-  array?: Array<string | number>;
+  array: Array<string | number>;
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
-  iconArray?: Array<string>;
+  iconArray: Array<string>;
   type?: string; // 'colors'
   right?: boolean;
   selected?: Array<Object>;
@@ -20,13 +20,14 @@ export interface IToggleProps extends IRecoil {
 }
 
 export interface IToggleState {
-  selected?: Array<Object>;
+  selected: Array<Object> | undefined;
   checked: boolean;
 }
 
 export default class Toggle extends React.Component<IToggleProps, IToggleState> {
   public static defaultProps = {
-    checked: false
+    checked: false,
+    iconArray: []
   };
 
   constructor(props: IToggleProps) {
@@ -135,7 +136,7 @@ export default class Toggle extends React.Component<IToggleProps, IToggleState> 
 
     let inputProps = {
       className: checked ? 'r-Toggle__input checked' : 'r-Toggle__input',
-      onClick: !loading ? this.onChange : null
+      onClick: !loading ? this.onChange : () => {}
     };
 
     if (

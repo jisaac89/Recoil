@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { arraysEqual, search, branchIn } from '../Utils';
 import { ITableProps } from '../Table/Table';
 import Emerge from '../Emerge/Emerge';

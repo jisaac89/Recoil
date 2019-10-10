@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Portal from '../Portal/Portal';
 
 import DropdownContentType from './DropdownContentType';

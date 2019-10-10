@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 export interface IShrinkProps {
@@ -6,7 +6,7 @@ export interface IShrinkProps {
   fill?: boolean;
   className?: string;
   children?: React.ReactNode;
-  opacity?: number;
+  opacity: number;
   scale?: number | string;
   position?: React.CSSProperties['position'];
   flex?: boolean;

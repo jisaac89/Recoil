@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Table, AdvancedLayer, Layer } from '../../../src/index';
 
 export interface ITutorialViewProps {

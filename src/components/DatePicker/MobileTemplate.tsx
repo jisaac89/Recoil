@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import Months from './Months';
 import Layer from '../Layer/Layer';

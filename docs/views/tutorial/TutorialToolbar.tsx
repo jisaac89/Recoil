@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Button, Toolbar, Layer, Input } from '../../../src/index';
 
 import TutorialView from './TutorialView';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import TableHead from './TableHead';
@@ -46,7 +46,7 @@ export interface ITableProps {
   onPageSizeChange?: (event: React.MouseEvent<HTMLElement>) => void;
   onPageChange?: (number: number) => void;
   sortable?: boolean;
-  searchableKeys?: Array<string>;
+  searchableKeys?: string[];
   searchTitle?: string;
   className?: string;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
@@ -276,7 +276,7 @@ class Table extends React.Component<ITableProps, ITableState> {
     } else if (!!dataSource && dataSource.length && !!columns && columns.length) {
       let nothingMatchesSearchCriteria = searchTerm !== '' && activeRows.length === 0;
       return (
-        <div id={props.id ? (portal ? props.id + '-portal' : props.id) : null} className={tableClass}>
+        <div id={props.id ? (portal ? props.id + '-portal' : props.id) : ''} className={tableClass}>
           {headerTemplate ? headerTemplate : null}
           <TableSearch {...tableSearchProps} />
           {menuTemplate ? menuTemplate() : null}
@@ -287,7 +287,7 @@ class Table extends React.Component<ITableProps, ITableState> {
             scrollToId={scrollToId}
             scrollIf={scrollIf}
             fill
-            style={contentMaxHeight ? { height: contentMaxHeight } : null}
+            style={contentMaxHeight ? { height: contentMaxHeight } : {}}
           >
             {nothingMatchesSearchCriteria ? (
               <Emerge className="e-fill">

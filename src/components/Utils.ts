@@ -6,7 +6,7 @@ export function debounce(func: Function, wait: number, immediate?: boolean): Fun
   return function() {
     var args = arguments;
     var later = () => {
-      timeout = null;
+      timeout = 0;
       if (!immediate) {
         func.apply(self, args);
       }

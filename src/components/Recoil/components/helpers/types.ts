@@ -5,24 +5,24 @@ const initialData = {
 };
 
 interface IBrowser {
-  name: string;
-  version: string;
-  major: string;
+  name: string | undefined;
+  version: string | undefined;
+  major: string | undefined;
 }
 
 interface IDevice {
-  vendor: string;
-  model: string;
+  vendor: string | undefined;
+  model: string | undefined;
 }
 
 interface IOs {
-  name: string;
-  version: string;
+  name: string | undefined;
+  version: string | undefined;
 }
 
 interface IEngine {
-  name: string;
-  version: string;
+  name: string | undefined;
+  version: string | undefined;
 }
 
 export const checkType = (type: string | undefined) => {

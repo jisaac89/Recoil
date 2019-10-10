@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 
 import Layer from '../Layer/Layer';
 import Button from '../Button/Button';
@@ -54,7 +54,7 @@ let createArrayOfNumbers = function(n: number, string?: string) {
 // let periods = ['AM', 'PM'];
 
 export interface ICalendarProps {
-  date?: Date;
+  date: Date;
   onSelect?: (date: Date) => void;
   calendarHeight?: string;
   inDropdown?: boolean;
@@ -64,13 +64,13 @@ export interface ICalendarProps {
 }
 
 export interface ICalendarState {
-  month?: number;
-  year?: number;
-  date?: Date;
-  selectedDay?: Date;
-  hour?: string;
-  minute?: string;
-  period?: string;
+  month: number;
+  year: number;
+  date: Date;
+  selectedDay: Date;
+  hour: string;
+  minute: string;
+  period: string;
 }
 
 export default class Calendar extends React.Component<ICalendarProps, ICalendarState> {
@@ -81,7 +81,7 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     selectTime: false
   };
 
-  constructor(props?: ICalendarProps) {
+  constructor(props: ICalendarProps) {
     super(props);
     let date = props.date || new Date(Date.now());
     this.state = {
@@ -269,3 +269,5 @@ export default class Calendar extends React.Component<ICalendarProps, ICalendarS
     );
   }
 }
+
+//

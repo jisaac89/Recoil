@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Selectable from '../Selectable/Selectable';
 
 export interface ITableColumnSelectableProps {

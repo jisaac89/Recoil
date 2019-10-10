@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import Input from '../Input/Input';
 import Button from '../Button/Button';
@@ -13,12 +13,12 @@ interface ITableSearchProps {
   throttle: number;
   iconLocation: 'left' | 'right';
   onChange: () => void;
-  value: string;
+  value?: string;
   filterItems: (searchTerm: string, keys: string[]) => void;
-  onSearchChange: (value: string) => void;
-  searchableKeys: string[];
-  searchTitle: string;
-  focusOnMount: boolean;
+  onSearchChange?: (term: string) => void;
+  searchableKeys?: string[];
+  searchTitle?: string;
+  focusOnMount?: boolean;
 }
 
 export default class TableSearch extends React.Component<ITableSearchProps> {
@@ -54,7 +54,9 @@ export default class TableSearch extends React.Component<ITableSearchProps> {
       clearTimeout(this._throttleTimeout);
     }
     this._throttleTimeout = setTimeout(() => {
-      this.props.filterItems(searchTerm, this.props.searchableKeys);
+      if (this.props.searchableKeys) {
+        this.props.filterItems(searchTerm, this.props.searchableKeys);
+      }
       this.props.onSearchChange ? this.props.onSearchChange(searchTerm) : null;
     }, this.props.throttle);
   }

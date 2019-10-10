@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import TableRow from './TableRow';
 import TableDetail from './TableDetail';

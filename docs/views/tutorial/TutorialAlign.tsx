@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { Align, Button, Toolbar, Layer } from '../../../src/index';
 

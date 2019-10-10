@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 
 export interface ISlideInProps {
-  if: boolean;
+  if: boolean | undefined;
   fill?: boolean;
-  from: 'left' | 'right' | 'top' | 'bottom';
+  from: 'left' | 'right' | 'top' | 'bottom' | undefined;
   className?: string;
   offset?: number;
   onClick?: () => void;

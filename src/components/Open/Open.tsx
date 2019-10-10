@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 export interface IOpenProps {
@@ -30,7 +30,7 @@ class Open extends React.Component<IOpenProps, any> {
     if (props.openToHeight) {
       hasStyle = { height: props.openToHeight && props.if === true ? props.openToHeight : 0 };
     } else {
-      hasStyle = null;
+      hasStyle = {};
     }
 
     return (

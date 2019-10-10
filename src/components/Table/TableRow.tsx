@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import TableColumn from './TableColumn';
 import Button from '../Button/Button';

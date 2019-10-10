@@ -1,4 +1,4 @@
-﻿import * as React from 'react';
+﻿import React from 'react';
 
 import Dropdown, { IDropdownProps } from '../Dropdown/Dropdown';
 
@@ -19,12 +19,12 @@ export interface IDatePickerProps extends IDropdownProps {
 }
 
 export interface IDatePickerState {
-  date: Date | string;
-  open: boolean;
+  date: Date | string | undefined;
+  open: boolean | undefined;
 }
 
 export default class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
-  constructor(props?: IDatePickerProps) {
+  constructor(props: IDatePickerProps) {
     super(props);
     var date = this.props.date || new Date(Date.now());
     this.state = {
@@ -81,7 +81,11 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
         className={className}
         icon="calendar"
         material
-        title={title ? title : getDateFormatted(this.state.date as Date, this.props.selectTime)}
+        title={
+          title
+            ? title
+            : getDateFormatted(this.state.date as Date, this.props.selectTime ? this.props.selectTime : false)
+        }
         mobile={mobile}
         open={this.state.open}
         onClick={this.toggleOpen.bind(this)}
