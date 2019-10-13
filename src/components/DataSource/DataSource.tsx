@@ -11,7 +11,7 @@ export type TDataSource = object | number | string | [];
 export interface IDataSourceProps extends ITableProps {
   // initial dataSource loaded as prop
   dataSource: TDataSource[];
-  columns?: Array<IColumn>;
+  columns: Array<IColumn>;
   emptyText: string;
   loading?: boolean;
   loadingText?: string;

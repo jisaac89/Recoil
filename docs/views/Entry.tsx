@@ -128,8 +128,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
         <Layer fill overflow>
           <Shrink fill if={showModal}>
             <Transform
-              type={mobile ? 'translate' : null}
-              push={!mobile ? 'left' : null}
+              type={mobile ? 'translate' : ''}
+              push={!mobile ? 'left' : ''}
               axis={'X'}
               flex
               fill

@@ -38,7 +38,7 @@ export interface TableBodyProps {
   filterRow?: (item: Object) => void;
   filterOpenDetailTemplate?: (item: Object) => void;
   serverSide?: boolean;
-  disableSelectedElements?: Array<any>;
+  disableSelectedElements: Array<any>;
   tableDataClassName?: string;
   loadingElements?: any[];
   loadingKey?: string;

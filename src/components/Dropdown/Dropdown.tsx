@@ -71,6 +71,7 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
     isArray: true,
     hideCheckAll: true,
     // relvant defaults
+    disableSelectedElements: [],
     columns: [],
     detailTemplateToggleAll: null,
     detailTemplateHideToggle: false,

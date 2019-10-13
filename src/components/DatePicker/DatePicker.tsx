@@ -25,7 +25,22 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     dataSource: [],
     searchableKeys: [],
     activeRows: [],
-    filterItems: []
+    filterItems: [],
+    // relvant defaults
+    disableSelectedElements: [],
+    columns: [],
+    detailTemplateToggleAll: null,
+    detailTemplateHideToggle: false,
+    selectAll: false,
+    toggleSorting: false,
+    onSort: null,
+    sortType: 'asc',
+    sortKey: '',
+    sortable: false,
+    detailTemplateToggleSelectedElements: [],
+    toggleSelectedElements: [],
+    hideCheckAll: false,
+    isArray: false
   };
   constructor(props: IDatePickerProps) {
     super(props);

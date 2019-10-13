@@ -17,7 +17,9 @@ export interface ITransformProps {
 export default class Transform extends React.Component<ITransformProps> {
   static defaultProps = {
     type: 'translate',
-    axis: 'X'
+    axis: 'X',
+    if: false,
+    amount: '0px'
   };
 
   public render() {

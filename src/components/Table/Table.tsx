@@ -51,7 +51,7 @@ export interface ITableProps {
   hidePageSize?: boolean;
   onSort: () => void;
   sortType: 'asc' | 'desc';
-  sortKey: string;
+  sortKey: 'asc' | 'desc';
   showDataSourceLength?: boolean;
   selectedKey?: string;
   flex?: boolean | 'row' | 'row-reverse';
@@ -88,7 +88,7 @@ export interface ITableProps {
   onSearchChange?: (term: string) => void;
   headerTemplate?: () => void;
   serverSide?: boolean;
-  disableSelectedElements?: TDataSource[];
+  disableSelectedElements: TDataSource[];
   fill?: boolean;
   tableDataClassName?: string;
   loadingElements?: TDataSource[];

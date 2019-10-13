@@ -13,8 +13,14 @@ export interface ITutorialViewProps {
   scrollToId: string;
 }
 
-export default class TutorialView extends React.Component<ITutorialViewProps, any> {
-  constructor(props: never) {
+export interface ITutorialViewState {
+  showProps: boolean;
+  showVideo: boolean;
+  showModal: boolean;
+}
+
+export default class TutorialView extends React.Component<ITutorialViewProps, ITutorialViewState> {
+  constructor(props: ITutorialViewProps) {
     super(props);
 
     this.state = {
