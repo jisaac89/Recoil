@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import * as ReactDOM from 'react-dom';
 export const ShortcutContext = React.createContext('');
 
@@ -35,15 +35,15 @@ export default class ShortCutProvider extends React.Component<IShortCutProviderP
     context.setState({
       showShortcut: e.shiftKey ? true : false
     });
-    if (e.shiftKey && e.code === 'Key' + props.shortcut.toUpperCase()) {
+    if (props.shortcut && e.shiftKey && e.code === 'Key' + props.shortcut.toUpperCase()) {
       refButton.focus();
     }
   }
 
   public componentWillUnmount() {
     if (this.props.shortcut) {
-      window.removeEventListener('keydown', null, false);
-      window.removeEventListener('keyup', null, false);
+      window.removeEventListener('keydown', this.startShortcutListener, false);
+      window.removeEventListener('keyup', this.startShortcutListener, false);
     }
   }
 

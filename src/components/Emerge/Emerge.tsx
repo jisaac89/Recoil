@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import 'intersection-observer';
@@ -8,30 +8,29 @@ export interface IEmergeProps {
   if?: boolean;
   enter?: string;
   exit?: string;
-  delay?: number;
+  delay: number;
   overflow?: boolean;
   className?: string;
-  style?: Array<string>;
+  style: Array<string>;
   triggerOnce?: boolean;
 }
 
 export default class Emerge extends React.Component<IEmergeProps, {}> {
-  public static defaultProps = {
+  static defaultProps = {
     if: true,
     enter: 'fadeInUp',
     exit: 'fadeOutDown',
     delay: 300,
-    overflow: false
+    overflow: false,
+    style: {}
   };
 
-  public render() {
+  render() {
     const self = this;
     const props = self.props;
 
     let index = 0;
-
     let emergeClass = classNames('r-Emerge', props.className, { 'e-enter': props.if }, { floshow: props.overflow });
-
     let newChildren = React.Children.map(this.props.children, (child: any) => {
       let exit, enter;
 

@@ -1,20 +1,27 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 export interface ITransformProps {
-  type?: string;
+  type: string;
   className?: string;
   if: boolean;
   push?: string;
   amount: string;
   delay?: number;
   fill?: boolean;
-  axis?: string;
+  axis: string;
   children?: React.ReactNode;
   flex?: boolean;
 }
 
-export default class Transform extends React.Component<ITransformProps, {}> {
+export default class Transform extends React.Component<ITransformProps> {
+  static defaultProps = {
+    type: 'translate',
+    axis: 'X',
+    if: false,
+    amount: '0px'
+  };
+
   public render() {
     const self = this;
     const props = self.props;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import * as ReactDOM from 'react-dom';
 import classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
@@ -17,8 +17,8 @@ export interface IInputProps extends IRecoil {
   defaultValue?: string | string[];
   style?: Object;
   errorInline?: boolean;
-  errorDirection?: 'left' | 'top' | 'right' | 'bottom';
-  error?: boolean;
+  errorDirection?: 'left' | 'top' | 'right' | 'bottom' | undefined;
+  error?: boolean | undefined;
   errorMessage?: string | JSX.Element;
   rows?: number;
   cols?: number;
@@ -44,9 +44,9 @@ export interface IInputProps extends IRecoil {
 }
 
 export interface IInputState {
-  checked?: boolean;
-  value?: string | string[];
-  mouseOut?: boolean;
+  checked: boolean;
+  value: string | string[];
+  mouseOut: boolean;
 }
 
 export default class Input extends React.Component<IInputProps, IInputState> {
@@ -78,7 +78,7 @@ export default class Input extends React.Component<IInputProps, IInputState> {
       const value = this.setCurrentValue(props);
       valueIsChanging ? this.setState({ value: value, checked: true }) : null;
     }
-    if (prevProps.value !== this.props.value && prevProps.value.length) {
+    if (prevProps.value && prevProps.value !== this.props.value && prevProps.value.length) {
       this.setState({ checked: true });
     }
     if (prevProps.focusOnMount !== this.props.focusOnMount) {
@@ -160,7 +160,8 @@ export default class Input extends React.Component<IInputProps, IInputState> {
   }
 
   disableKeys(event: any) {
-    if (this.props.disableKeys.includes(event.key)) {
+    const { disableKeys } = this.props;
+    if (disableKeys && disableKeys.includes(event.key)) {
       event.preventDefault();
       event.stopPropagation();
       return false;
@@ -211,10 +212,10 @@ export default class Input extends React.Component<IInputProps, IInputState> {
 
     if (inputDOM) {
       // textarea auto expand
-      if (props.autoExpand) {
+      if (props.autoExpand && self.props.scrollHeight) {
         textAreaScrollHeight = Math.min(self.props.scrollHeight, 300) + 'px';
       } else {
-        textAreaScrollHeight = null;
+        textAreaScrollHeight = '';
       }
       // hide pencil if placholder present or input has value
       if (!props.placeholder && !state.value) {

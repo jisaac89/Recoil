@@ -1,5 +1,4 @@
-import * as React from 'react';
-
+import React from 'react';
 import Layer from '../Layer/Layer';
 import Selectable from '../Selectable/Selectable';
 import DataSource, { TDataSource } from '../DataSource/DataSource';
@@ -8,6 +7,7 @@ import Align from '../Align/Align';
 interface IRows {
   columns: number[];
   height: string;
+  template: (item: JSX.Element) => void;
 }
 
 export interface IGridProps {
@@ -25,7 +25,7 @@ export interface IGridProps {
 
 interface IGridState {
   gridRows: any;
-  rows: any;
+  rows: IRows[];
   update: boolean;
   selectedElements: any;
 }
@@ -34,7 +34,7 @@ class Grid extends React.Component<IGridProps, IGridState> {
   constructor(props: IGridProps) {
     super(props);
     this.state = {
-      rows: props.rows || null,
+      rows: props.rows ? props.rows : [],
       gridRows: [],
       update: false,
       selectedElements: props.selectedElements || []
@@ -52,7 +52,7 @@ class Grid extends React.Component<IGridProps, IGridState> {
       });
     }
 
-    if (prevProps.rows !== this.props.rows) {
+    if (this.props.rows && prevProps.rows !== this.props.rows) {
       this.setState(
         {
           update: false,
@@ -83,11 +83,24 @@ class Grid extends React.Component<IGridProps, IGridState> {
     let currentColumnIndex = indexColumn || 0;
 
     let elements = activeRows;
+    let totalRowsCount;
+    let currentRow;
+
+    if (activeRows) {
+      elements = activeRows;
+    } else {
+      elements = [];
+    }
     let totalElementCount = elements.length;
     let currentElement = elements[currentElementIndex];
 
-    let totalRowsCount = rows.length;
-    let currentRow = rows[currentRowIndex];
+    if (rows) {
+      totalRowsCount = rows.length;
+      currentRow = rows[currentRowIndex];
+    } else {
+      totalRowsCount = 0;
+      currentRow = { columns: [] };
+    }
 
     let columns = currentRow.columns;
     let totalColumnsCount = currentRow.columns.length;
@@ -162,11 +175,11 @@ class Grid extends React.Component<IGridProps, IGridState> {
                   columns={element.columns}
                   key={index}
                 >
-                  {element.data.map((item: object, i: number) => {
+                  {element.data.map((item: JSX.Element, i: number) => {
                     let checked = selectedElements.includes(selectedKey ? item[selectedKey] : item);
                     return (
                       <Layer
-                        className={this.props.onChange ? 'cursor-pointer' : null}
+                        className={this.props.onChange ? 'cursor-pointer' : ''}
                         onClick={this.toggleSelectedElements.bind(this, item, i)}
                         fill
                         key={i}

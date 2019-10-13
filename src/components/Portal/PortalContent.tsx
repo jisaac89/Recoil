@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import * as ReactDOM from 'react-dom';
 import Layer from '../Layer/Layer';
 import SlideIn from '../SlideIn/SlideIn';
@@ -6,7 +6,7 @@ import SlideIn from '../SlideIn/SlideIn';
 export interface IPortalProps {
   portalId?: string;
   portal?: JSX.Element;
-  open?: boolean;
+  open: boolean;
   onClose?: () => void;
   title?: string;
   icon?: string;
@@ -15,12 +15,13 @@ export interface IPortalProps {
   portalTemplate?: JSX.Element;
 }
 
-export default class PortalContent extends React.Component<IPortalProps, any> {
+export default class PortalContent extends React.Component<IPortalProps> {
   public static defaultProps = {
-    portalType: 'SlideIn'
+    portalType: 'SlideIn',
+    open: false
   };
 
-  portalElement: HTMLElement = null;
+  portalElement: HTMLElement | null;
 
   constructor(props: IPortalProps) {
     super(props);
@@ -32,7 +33,7 @@ export default class PortalContent extends React.Component<IPortalProps, any> {
   }
 
   initPortal() {
-    let portalDOM;
+    let portalDOM: HTMLElement | null;
     if (this.props.initialized) {
       portalDOM = document.getElementById('Recoil');
       this.portalElement = portalDOM;

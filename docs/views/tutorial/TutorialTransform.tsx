@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Align, Button, Toolbar, Checkbox, Table, Layer } from '../../../src/index';
 
 import TutorialView from './TutorialView';

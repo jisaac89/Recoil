@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { arraysEqual } from '../Utils';
 
@@ -6,9 +6,10 @@ import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 
 import { IColumn } from './IColumn';
+import { TDataSource } from '../DataSource/DataSource';
 
 class DetailTemplateHeadToggle extends React.Component<any, any> {
-  detailTemplateToggleAll(dataSource: Array<any>) {
+  detailTemplateToggleAll(dataSource: TDataSource[]) {
     this.props.detailTemplateToggleAll(dataSource);
   }
   render() {
@@ -50,11 +51,11 @@ class CheckboxHead extends React.Component<any, any> {
 }
 
 export interface ITableHeadProps {
-  toggleSorting?: (dataSource: any, key: string, sortType: any) => void;
-  detailTemplateToggleAll?: (dataSource: any) => void;
-  selectAll?: (dataSource: any) => void;
+  toggleSorting: (dataSource: TDataSource[], key: string, sortType: 'asc' | 'desc') => void;
+  detailTemplateToggleAll: (dataSource: TDataSource[]) => void;
+  selectAll: (dataSource: TDataSource[]) => void;
   dataSource: Array<any> | Object;
-  columns?: Array<IColumn>;
+  columns: Array<IColumn>;
   hideHeader?: boolean;
   hideColumns?: any;
   checkable?: boolean;
@@ -66,10 +67,19 @@ export interface ITableHeadProps {
   detailTemplateHideToggle?: boolean;
   sortKey?: any;
   hideCheckAll?: boolean;
-  sortType?: string;
+  sortType?: 'asc' | 'desc';
 }
 
-export default class TableHead extends React.Component<ITableHeadProps, any> {
+interface ITableHeadState {
+  sortType: 'asc' | 'desc';
+  column: string;
+  columns: IColumn[];
+}
+
+export default class TableHead extends React.Component<ITableHeadProps, ITableHeadState> {
+  static defaultProps = {
+    columns: []
+  };
   constructor(props: ITableHeadProps) {
     super(props);
     this.state = {
@@ -79,18 +89,22 @@ export default class TableHead extends React.Component<ITableHeadProps, any> {
     };
   }
 
-  toggleSorting(dataSource: Array<any>, columnName: string) {
+  toggleSorting(dataSource: TDataSource[], columnName: IColumn['name']) {
     const self = this;
 
     this.setState(
       {
         sortType: this.state.sortType === 'desc' ? 'asc' : 'desc',
-        column: columnName
+        column: columnName ? columnName : ''
       },
       () => {
         self.props.onSort
           ? self.props.onSort(columnName, self.state.sortType)
-          : self.props.toggleSorting(dataSource, columnName, self.state.sortType);
+          : self.props.toggleSorting(
+              dataSource,
+              columnName ? columnName : '',
+              self.state.sortType ? self.state.sortType : 'asc'
+            );
       }
     );
   }
@@ -129,13 +143,11 @@ export default class TableHead extends React.Component<ITableHeadProps, any> {
               <Button
                 tabIndex={-1}
                 className="p0"
-                icon={
-                  sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : null
-                }
+                icon={sortable && (key.name === sortKey || key.title === sortKey) ? 'sort-' + this.state.sortType : ''}
                 size="small"
                 simple
                 iconLocation="right"
-                onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : null}
+                onClick={sortable ? this.toggleSorting.bind(this, dataSource, key.name || key.title) : () => {}}
               >
                 {key.hideHeader ? null : key.title || key.name}
               </Button>

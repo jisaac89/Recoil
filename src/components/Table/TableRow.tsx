@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import TableColumn from './TableColumn';
 import Button from '../Button/Button';
@@ -18,7 +18,9 @@ class DetailTemplateColumnToggle extends React.Component<any, any> {
     return (
       <td
         onClick={
-          !detailTemplateOpenOnRowSelect ? this.detailTemplateToggleSelectedElements.bind(this, props.element) : null
+          !detailTemplateOpenOnRowSelect
+            ? this.detailTemplateToggleSelectedElements.bind(this, props.element)
+            : () => {}
         }
         className="r-Table__DetailTd"
         style={{ width: '25px' }}
@@ -75,7 +77,7 @@ class CheckboxColumn extends React.Component<any, any> {
 
 export interface ITableColumnProps {
   element?: any;
-  columns?: IColumn[];
+  columns: IColumn[];
   toggleSelectedElements?: any;
   rowIsSelectable?: any;
   selectedElements?: any;
@@ -93,7 +95,7 @@ export interface ITableColumnProps {
   detailTemplateHideToggle?: boolean;
   filterOpenDetailTemplate?: any;
   id?: any;
-  disableSelectedElements?: Array<any>;
+  disableSelectedElements: Array<any>;
   tableDataClassName?: string;
   loadingElements?: any;
   loadingKey?: string;
@@ -142,8 +144,8 @@ export default class TableRow extends React.Component<ITableColumnProps, any> {
     let columnsValueArray = [];
 
     for (let index = 0; index < columns.length; index++) {
-      let key = columns[index].name;
-      columnsValueArray.push(key ? branchIn(element, key) : element[key]);
+      let key = columns[index].name ? columns[index].name : index.toString();
+      columnsValueArray.push(key ? branchIn(element, key) : element[key ? key : index]);
     }
 
     let createColumnValue = (value: Array<any>, key: string | number) => {
@@ -194,7 +196,7 @@ export default class TableRow extends React.Component<ITableColumnProps, any> {
           rowIsSelectable && !checkable
             ? this.toggleSelectedElements.bind(this, element, index)
             : null ||
-              (onRowSelect || detailTemplateOpenOnRowSelect ? this.onRowSelect.bind(this, element, index) : null)
+              (onRowSelect || detailTemplateOpenOnRowSelect ? this.onRowSelect.bind(this, element, index) : () => {})
         }
       >
         {checkable ? <CheckboxColumn {...CheckBoxColumnProps} /> : null}

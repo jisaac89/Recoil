@@ -1,10 +1,20 @@
-import * as React from 'react';
-
+import React from 'react';
 import Months from './Months';
-import Layer from '../Layer/Layer';
 import AdvancedLayer from '../Layer/AdvancedLayer';
+import { Month } from './Calendar';
 
-export default class MobileTemplate extends React.Component<any, any> {
+interface IMobileTemplateProps {
+  month: number;
+  year: number;
+  selectDay: (date: Date) => void;
+  date: Date;
+  selectedDay: Date;
+  monthNames: Month[];
+  getWeeks(year: number, month: number): Date[][];
+  setHeight: { height: string };
+}
+
+export default class MobileTemplate extends React.Component<IMobileTemplateProps> {
   render() {
     let { monthNames, date, selectDay, selectedDay, year, getWeeks, month, setHeight } = this.props;
 
@@ -27,7 +37,7 @@ export default class MobileTemplate extends React.Component<any, any> {
         className="r-Calendar-Scroll"
         flex
         scrollY={true}
-        scrollIf={month.toString().length}
+        scrollIf={!!month.toString().length}
         scrollToId={month.toString()}
       >
         <div id="0">

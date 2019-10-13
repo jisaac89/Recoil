@@ -1,41 +1,49 @@
-import * as React from 'react';
+import React from 'react';
 
 import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import Dropdown from '../Dropdown/Dropdown';
+import { TDataSource } from '../DataSource/DataSource';
 
 export interface IPagerProps {
-  gotoPage?: (pageNumber: number, event?: React.MouseEvent<HTMLElement>) => void;
-  currentPage?: number;
-  changePageSize?: (pageSizeAmount: number, event?: React.MouseEvent<HTMLElement>) => void;
-  numberOfPages?: number;
+  gotoPage: (pageNumber: number, event?: React.MouseEvent<HTMLElement>) => void;
+  currentPage: number;
+  changePageSize?: (pageSizeAmount: TDataSource, event?: React.MouseEvent<HTMLElement>) => void;
+  numberOfPages: number;
   numberPerPage?: number;
+  pagerSize?: number;
   firstPage?: any;
   nextPage?: any;
   lastPage?: any;
   previousPage?: any;
-  dataSource?: Array<Object>;
+  dataSource?: TDataSource[];
   pageSize?: number;
   onPageChange?: (pageNumber: number, event?: React.MouseEvent<any>) => void;
-  pageSizerOptions?: Array<number>;
+  pageSizerOptions?: number[];
   hidePageSize?: boolean;
   rowCount?: number;
   showDataSourceLength?: boolean;
   hideHeader?: boolean;
   title?: string;
-  pagerSize?: number;
   className?: string;
   pageSizeDropDirection?: string;
 }
 
 export default class Pager extends React.Component<IPagerProps, {}> {
+  static defaultProps = {
+    currentPage: 0,
+    numberOfPages: 0,
+    gotoPage: null
+  };
   gotoPage(pageNumber: number) {
     this.props.gotoPage(pageNumber);
     this.props.onPageChange ? this.props.onPageChange(pageNumber) : null;
   }
 
-  onSelected(pageSizeAmount: number) {
-    this.props.changePageSize(pageSizeAmount);
+  onSelected(element: TDataSource, key?: string | number, selectedElements?: Array<Object>, id?: string) {
+    if (this.props.changePageSize) {
+      this.props.changePageSize(element);
+    }
   }
 
   renderPager(page: number, pageCount: number, pagerSize: number) {
@@ -84,9 +92,6 @@ export default class Pager extends React.Component<IPagerProps, {}> {
 
     let {
       currentPage,
-      firstPage,
-      previousPage,
-      nextPage,
       pageSize,
       pageSizerOptions,
       numberOfPages,
@@ -97,9 +102,9 @@ export default class Pager extends React.Component<IPagerProps, {}> {
       pageSizeDropDirection
     } = props;
 
-    let dataSourceLength;
+    let dataSourceLength: number = 0;
 
-    if (rowCount || (dataSource && dataSource.length)) {
+    if ((dataSource && rowCount) || (dataSource && dataSource.length)) {
       dataSourceLength = rowCount || dataSource.length;
     }
 
@@ -156,11 +161,11 @@ export default class Pager extends React.Component<IPagerProps, {}> {
               dropDirection={pageSizeDropDirection ? pageSizeDropDirection : 'down'}
               title={'Page Size ' + pageSize}
               pageSizerOptions={pageSizerOptions}
-              dataSource={pageSizerOptions || ['5', '10', '15']}
+              dataSource={pageSizerOptions ? pageSizerOptions : [5, 10, 15]}
             />
           )}
         </Toolbar>
-        {hidePageSize ? null : (
+        {!hidePageSize && pageSize ? (
           <Toolbar flush noRadius className={props.className}>
             <Button simple size="small">
               {(currentPage + 1) * pageSize -
@@ -172,7 +177,7 @@ export default class Pager extends React.Component<IPagerProps, {}> {
                 (' of ' + dataSourceLength + ' ' + props.title)}
             </Button>
           </Toolbar>
-        )}
+        ) : null}
       </div>
     );
   }

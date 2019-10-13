@@ -1,19 +1,26 @@
-import * as React from 'react';
+import React from 'react';
 
 import Open from '../Open/Open';
 import { IColumn } from './IColumn';
 
 export interface ITableColumnDetailProps {
-  element?: JSX.Element;
-  columns?: Array<IColumn>;
-  detailTemplate?: (element: any) => JSX.Element;
+  element: JSX.Element;
+  columns: IColumn[];
+  detailTemplate: (element: any) => JSX.Element;
   detailTemplateOpenAll?: boolean;
   detailTemplateSelectedElements?: any;
   checkable?: boolean;
   selectedKey?: string;
 }
 
-export default class TableDetail extends React.Component<ITableColumnDetailProps, any> {
+export default class TableDetail extends React.Component<ITableColumnDetailProps> {
+  static defaultProps = {
+    value: [],
+    column: [],
+    element: '',
+    detailTemplate: null
+  };
+
   render() {
     const self = this;
     const props = self.props;

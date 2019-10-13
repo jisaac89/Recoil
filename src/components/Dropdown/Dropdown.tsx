@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import Button from '../Button/Button';
@@ -8,6 +8,7 @@ import { ITableProps } from '../Table/Table';
 import Tags from '../Tags/Tags';
 
 import DropdownContent from './DropdownContent';
+import { TDataSource } from '../DataSource/DataSource';
 
 function guidGenerator() {
   var S4 = function() {
@@ -32,7 +33,7 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
   tagSelected?: boolean;
   tagSelectedKey?: string;
   tagSelectedElements?: Array<any>;
-  onChange?: (element?: Array<Object>, key?: string | number, selectedElements?: Array<Object>, id?: string) => void;
+  onChange?: (element: TDataSource, key?: string | number, selectedElements?: Array<TDataSource>, id?: string) => void;
   onOpen?: (boolean: boolean) => void;
   onClose?: (boolean: boolean) => void;
   onCloseDropdown?: () => void;
@@ -58,10 +59,30 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
   };
 
   public static defaultProps = {
+    dataSource: [],
+    searchableKeys: [],
+    activeRows: [],
+    filterItems: [],
     contentMaxHeight: 200,
     material: true,
     hideFooter: true,
-    open: false
+    open: false,
+    //
+    isArray: true,
+    hideCheckAll: true,
+    // relvant defaults
+    disableSelectedElements: [],
+    columns: [],
+    detailTemplateToggleAll: null,
+    detailTemplateHideToggle: false,
+    selectAll: false,
+    toggleSorting: false,
+    onSort: null,
+    sortType: 'asc',
+    sortKey: '',
+    sortable: false,
+    detailTemplateToggleSelectedElements: [],
+    toggleSelectedElements: []
   };
 
   constructor(props: IDropdownProps) {
@@ -152,7 +173,9 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
   }
 
   onTagRemove(item: object) {
-    this.props.onTagRemove(item);
+    if (this.props.onTagRemove) {
+      this.props.onTagRemove(item);
+    }
   }
   render(): JSX.Element {
     const self = this;

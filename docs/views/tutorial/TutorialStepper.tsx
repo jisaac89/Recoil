@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Button, Toolbar, Stepper, Layer } from '../../../src/index';
 import TutorialView from './TutorialView';
 const ChecboxProperties = [

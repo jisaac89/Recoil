@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Toolbar from '../Toolbar/Toolbar';
 
 export type NotificationType = 'success' | 'primary' | 'error' | 'default';
@@ -14,14 +14,14 @@ export interface INotificationProps {
 }
 
 export interface INotificationState {
-  view?: 'visible' | 'hiding' | 'removed';
-  time?: number;
-  isOn?: boolean;
+  view: 'visible' | 'hiding' | 'removed';
+  time: number;
+  isOn: boolean;
   start: number;
 }
 
 export default class Notification extends React.Component<INotificationProps, INotificationState> {
-  secondsRemaining: any;
+  secondsRemaining: number;
   timer: any;
   constructor(props: INotificationProps) {
     super(props);

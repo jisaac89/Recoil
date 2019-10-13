@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 
 import TableRow from './TableRow';
 import TableDetail from './TableDetail';
 import TableSelectable from './TableSelectable';
 
 import { IColumn } from './IColumn';
+import { TDataSource } from '../DataSource/DataSource';
 
 export interface TableBodyProps {
   id?: string;
@@ -13,15 +14,15 @@ export interface TableBodyProps {
   // initial dataSource loaded as prop
   dataSource: Array<any> | Object;
   // columns defined by user
-  columns?: Array<IColumn>;
+  columns: Array<IColumn>;
   // a detail template function that returns a view
   detailTemplate?: (element: Array<any>) => JSX.Element;
   selectedElements?: Array<any>;
   detailTemplateOpenAll?: boolean;
-  detailTemplateToggleSelectedElements?: boolean;
+  detailTemplateToggleSelectedElements: (dataSource: TDataSource) => void;
   detailTemplateSelectedElements?: Array<any>;
   detailTemplateHideToggle?: boolean;
-  toggleSelectedElements?: Array<any>;
+  toggleSelectedElements: TDataSource[];
   rowIsSelectable?: boolean | string;
   checkable?: boolean;
   hideColumns?: Array<any>;
@@ -31,13 +32,13 @@ export interface TableBodyProps {
     selectedElements?: Array<any> | Object,
     id?: string | number
   ) => void;
-  isArray?: boolean;
+  isArray: boolean;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
   selectedKey?: string;
   filterRow?: (item: Object) => void;
   filterOpenDetailTemplate?: (item: Object) => void;
   serverSide?: boolean;
-  disableSelectedElements?: Array<any>;
+  disableSelectedElements: Array<any>;
   tableDataClassName?: string;
   loadingElements?: any[];
   loadingKey?: string;

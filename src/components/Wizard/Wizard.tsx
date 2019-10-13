@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 import Pager from '../Pager/Pager';
 
 export interface IWizardProps {
   slideIndex: number;
-  children?: React.ReactNode[];
+  children: React.ReactNode[];
   vertical?: boolean;
   className?: string;
   style?: Object;

@@ -1,18 +1,24 @@
-import * as React from 'react';
+import React from 'react';
 
 import Open from '../Open/Open';
 import Button from '../Button/Button';
 import Toolbar from '../Toolbar/Toolbar';
 
 import { branchIn } from '../Utils';
+import { TDataSource } from '../DataSource/DataSource';
 
 export interface ITagsProps {
-  dataSource?: any;
+  dataSource: TDataSource[];
   branchIn?: any;
   onRemove?: any;
 }
 
-export default class Tags extends React.Component<ITagsProps, any> {
+export interface ITagsState {
+  open: boolean;
+  dataSource: TDataSource[];
+}
+
+export default class Tags extends React.Component<ITagsProps, ITagsState> {
   constructor(props: ITagsProps) {
     super(props);
     this.state = {

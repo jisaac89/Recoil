@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { arraysEqual, search, branchIn } from '../Utils';
 import { ITableProps } from '../Table/Table';
 import Emerge from '../Emerge/Emerge';
@@ -6,12 +6,12 @@ import Toolbar from '../Toolbar/Toolbar';
 import Button from '../Button/Button';
 import { IColumn } from './IColumn';
 
-export type TDataSource = Array<Object> | Array<number> | Array<string>;
+export type TDataSource = object | number | string | [];
 
 export interface IDataSourceProps extends ITableProps {
   // initial dataSource loaded as prop
-  dataSource?: TDataSource[];
-  columns?: Array<IColumn>;
+  dataSource: TDataSource[];
+  columns: Array<IColumn>;
   emptyText: string;
   loading?: boolean;
   loadingText?: string;
@@ -37,8 +37,8 @@ interface IDataSourceState {
   searchTerm: string;
   searchedItems: TDataSource[];
   // table sort
-  sortType: string;
-  sortKey: string;
+  sortType: 'asc' | 'desc' | undefined;
+  sortKey: 'asc' | 'desc';
 }
 
 const DataSource: any = (Component: JSX.Element) =>
@@ -54,7 +54,7 @@ const DataSource: any = (Component: JSX.Element) =>
         activeRows: [],
         // page
         rowCount: props.rowCount || 0,
-        pageSize: props.pageSize || 10,
+        pageSize: props.pageSize ? props.pageSize : 10,
         page: props.page || 0,
         numberOfPages: 0,
         numberPerPage: 0,
@@ -67,7 +67,7 @@ const DataSource: any = (Component: JSX.Element) =>
         searchedItems: [],
         // table sort
         sortType: props.sortType || 'asc',
-        sortKey: props.sortKey || null
+        sortKey: props.sortKey ? props.sortKey : 'asc'
       };
     }
 
@@ -97,8 +97,9 @@ const DataSource: any = (Component: JSX.Element) =>
       if ((page !== null && page !== undefined && page !== prevState.page) || prevProps.pageSize !== pageSize) {
         this.setState(
           {
-            page: page !== null && page !== undefined ? page : prevState.page,
-            pageSize: prevProps.pageSize !== pageSize ? pageSize : prevProps.pageSize
+            // TODO JI fix
+            // page: page !== null && page !== undefined ? page : prevState.page,
+            // pageSize: prevProps.pageSize !== pageSize ? pageSize : prevProps.pageSize
           },
           () => {
             this.renderActiveRows(prevState.dataSource);
@@ -115,11 +116,11 @@ const DataSource: any = (Component: JSX.Element) =>
         }
       }
 
-      if (!!searchValue && searchValue !== prevProps.searchValue) {
+      if (searchableKeys && !!searchValue && searchValue !== prevProps.searchValue) {
         this.filterItems(searchValue, searchableKeys);
       }
 
-      if (prevProps.pageSize !== pageSize) {
+      if (pageSize && prevProps.pageSize !== pageSize) {
         this.setState({
           pageSize: pageSize,
           rowCount: rowCount ? rowCount : prevState.rowCount
@@ -185,7 +186,11 @@ const DataSource: any = (Component: JSX.Element) =>
       }
     }
 
-    sortDataSource(dataSource: Array<any>, sortType: string, sortKey: string) {
+    sortDataSource(
+      dataSource: TDataSource[],
+      sortType: 'asc' | 'desc' | undefined,
+      sortKey: 'asc' | 'desc' | undefined
+    ) {
       const self = this;
 
       let { searchedItems, searchTerm } = self.state;
@@ -193,10 +198,10 @@ const DataSource: any = (Component: JSX.Element) =>
       let sortOrderSearchedItems: Array<any>;
       let sortOrderDataSource: Array<any>;
 
-      let sort = (dataSource: Array<any>) => {
-        return dataSource.sort(function(a, b) {
-          let aKey = branchIn(a, sortKey);
-          let bKey = branchIn(b, sortKey);
+      let sort = (dataSource: any) => {
+        return dataSource.sort((a: any, b: any) => {
+          let aKey: any = branchIn(a, sortKey as string);
+          let bKey: any = branchIn(b, sortKey as string);
           switch (typeof aKey) {
             case 'string':
               let itemPrev = aKey && aKey.toLowerCase();
@@ -271,6 +276,8 @@ const DataSource: any = (Component: JSX.Element) =>
             });
           }
         }
+      } else {
+        columnsArray = [];
       }
 
       this.setState(
@@ -293,7 +300,7 @@ const DataSource: any = (Component: JSX.Element) =>
       );
     }
 
-    renderActiveRows(dataSource: Array<any>) {
+    renderActiveRows(dataSource: TDataSource[]) {
       const self = this;
       const props = self.props;
       let { rowCount } = props;
@@ -393,7 +400,7 @@ const DataSource: any = (Component: JSX.Element) =>
       });
     }
 
-    toggleSelectedElements(element: Array<any>, index: string | number) {
+    toggleSelectedElements(element: Array<any>, index: number) {
       const self = this;
       let { selectedElements } = self.state;
       let { rowIsSelectable, onCheck, selectedKey } = self.props;
@@ -489,7 +496,7 @@ const DataSource: any = (Component: JSX.Element) =>
       this.props.onPageChange ? this.props.onPageChange(numberOfPages - 1) : null;
     }
 
-    gotoPage(datasource: TDataSource, i: number) {
+    gotoPage(datasource: TDataSource[], i: number) {
       this.setState(
         {
           page: i,
@@ -515,7 +522,7 @@ const DataSource: any = (Component: JSX.Element) =>
       this.props.onPageSizeChange ? this.props.onPageSizeChange(pageSize) : null;
     }
 
-    sortCollection(dataSource: Array<any>, key: string, sortType: string) {
+    sortCollection(dataSource: TDataSource[], key: 'asc' | 'desc', sortType: 'asc' | 'desc') {
       const self = this;
 
       let sortKey = this.props.sortKey ? this.props.sortKey : key;
@@ -531,12 +538,12 @@ const DataSource: any = (Component: JSX.Element) =>
       );
     }
 
-    toggleSorting(dataSource: Array<any>, key: string, sortType: string) {
+    toggleSorting(dataSource: TDataSource[], key: 'asc' | 'desc', sortType: 'asc' | 'desc') {
       const self = this;
       self.sortCollection(dataSource, key, sortType);
     }
 
-    filterItems(term: string, keys: Array<any>) {
+    filterItems(term: string, keys: string[]) {
       const self = this;
       let state = self.state;
 
@@ -556,7 +563,6 @@ const DataSource: any = (Component: JSX.Element) =>
       const self = this;
       const props = self.props;
       let { columns, dataSource, activeRows } = self.state;
-      //let {emptyText} = props;
 
       let renderedObject = {
         // methods

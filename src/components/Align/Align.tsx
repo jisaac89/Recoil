@@ -1,19 +1,19 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
 export interface IAlignProps {
   vertical?: boolean;
   className?: string;
-  columns?: Array<number>;
+  columns: number[];
   margin?: string;
-  children?: React.ReactNode[];
+  children: React.ReactNode[];
   fill?: boolean;
   style?: React.CSSProperties;
   alignItems?: string;
 }
 
 export interface IAlignChildProps {
-  columns?: Array<number>;
+  columns?: number[];
   vertical?: boolean;
   width?: number;
   element?: JSX.Element;
@@ -21,8 +21,8 @@ export interface IAlignChildProps {
 }
 
 export interface IAlignState {
-  widthArray?: Array<number>;
-  maxColumnsLength?: number;
+  widthArray: number[];
+  maxColumnsLength: number;
 }
 
 const AlignChild = (props: IAlignChildProps) => {
@@ -31,8 +31,8 @@ const AlignChild = (props: IAlignChildProps) => {
   let alignChildStyle = {
     flex: columns || vertical ? 'none' : '1 !important',
     padding: margin,
-    width: !vertical ? width + '%' : null,
-    height: vertical ? width + '%' : null
+    width: !vertical ? width + '%' : '',
+    height: vertical ? width + '%' : ''
   };
 
   return (
@@ -43,6 +43,10 @@ const AlignChild = (props: IAlignChildProps) => {
 };
 
 export default class Align extends React.Component<IAlignProps, IAlignState> {
+  static defaultProps = {
+    columns: []
+  };
+
   constructor(props: IAlignProps) {
     super(props);
     this.state = {

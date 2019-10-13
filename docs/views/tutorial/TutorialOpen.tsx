@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Layer, Open, Toggle } from '../../../src/index';
 import TutorialView from './TutorialView';
 
@@ -7,8 +7,8 @@ interface IOpenProps {
   className?: object;
   children?: React.ReactNode;
   overflow?: boolean;
-  scrollToId?: string;
-  scrollIf?: boolean;
+  scrollToId: string;
+  scrollIf: boolean;
 }
 
 interface IOpenState {
@@ -40,6 +40,10 @@ const OpenProperties = [
 ];
 
 export default class TutorialOpen extends React.Component<IOpenProps, IOpenState> {
+  static defaultProps = {
+    scrollToId: '',
+    scrollIf: false
+  };
   constructor(props: never) {
     super(props);
 

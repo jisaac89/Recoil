@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import Align from '../Align/Align';
 import Shrink from '../Shrink/Shrink';
@@ -7,7 +7,7 @@ export interface IStepperProps {
   title?: string;
   className?: string;
   stepIndex: number;
-  children?: React.ReactNode[];
+  children: React.ReactNode[];
   vertical?: boolean;
   align?: 'top' | 'center';
 }

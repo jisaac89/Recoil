@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Selectable from '../Selectable/Selectable';
 import { IRecoil } from '../../index';
@@ -27,9 +27,7 @@ export interface IButtonProps extends IRecoil {
   materialIcon?: boolean;
 }
 
-export interface IButtonState {}
-
-export default class Button extends React.Component<IButtonProps, IButtonState> {
+export default class Button extends React.Component<IButtonProps> {
   public refs: {
     [key: string]: Element;
     button: HTMLButtonElement;

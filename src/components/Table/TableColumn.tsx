@@ -1,24 +1,36 @@
-import * as React from 'react';
+import React from 'react';
 import Dropdown from '../Dropdown/Dropdown';
 import { IColumn } from './IColumn';
 import Button from '../Button/Button';
+import { TDataSource } from '../DataSource/DataSource';
 
 export interface ITableDataProps {
-  value?: Array<any>;
-  column?: IColumn;
-  element?: any;
-  hideColumns?: Array<string>;
-  isArray?: boolean;
-  tableDataClassName?: string;
+  value: TDataSource[];
+  column: IColumn;
+  element: string;
+  hideColumns: string[];
+  isArray: boolean;
+  tableDataClassName: string;
   isLoading: boolean;
-  loadingKey?: string;
+  loadingKey: string;
 }
 
 export interface ITableDataState {
-  type?: string;
+  type: string;
 }
 
 export default class TableColumn extends React.Component<ITableDataProps, ITableDataState> {
+  static defaultProps = {
+    value: [],
+    column: [],
+    element: '',
+    hideColumns: [],
+    isArray: true,
+    tableDataClassName: '',
+    isLoading: true,
+    loadingKey: ''
+  };
+
   constructor(props: ITableDataProps) {
     super(props);
     this.state = {
@@ -56,8 +68,15 @@ export default class TableColumn extends React.Component<ITableDataProps, ITable
     let { type } = state;
     let { value, column, element, hideColumns, isArray, tableDataClassName, isLoading } = self.props;
 
-    let hideColumnsArrayIncludesEitherNameOrTitle =
-      hideColumns && hideColumns.includes(column.title ? column.title : column.name);
+    let string = '';
+
+    if (column.title) {
+      string = column.title;
+    } else if (column.name) {
+      string = column.name;
+    }
+
+    let hideColumnsArrayIncludesEitherNameOrTitle = hideColumns && hideColumns.includes(string);
 
     if (isArray) {
       return (
@@ -76,7 +95,7 @@ export default class TableColumn extends React.Component<ITableDataProps, ITable
         <td
           className={tableDataClassName}
           tabIndex={-1}
-          id={value ? value.toString() : null}
+          id={value ? value.toString() : ''}
           style={{ width: column.width }}
         >
           {column.template ? (

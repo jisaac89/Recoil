@@ -17,7 +17,7 @@ export interface IRecoil {
 export { default as Recoil } from './components/Recoil/Recoil';
 export { default as Align } from './components/Align/Align';
 export { default as AdvancedLayer } from './components/Layer/AdvancedLayer';
-export { default as Button, IButtonProps, IButtonState } from './components/Button/Button';
+export { default as Button, IButtonProps } from './components/Button/Button';
 export { default as Checkbox } from './components/Checkbox/Checkbox';
 export { default as Open } from './components/Open/Open';
 export {

@@ -6,7 +6,7 @@ export function debounce(func: Function, wait: number, immediate?: boolean): Fun
   return function() {
     var args = arguments;
     var later = () => {
-      timeout = null;
+      timeout = 0;
       if (!immediate) {
         func.apply(self, args);
       }
@@ -20,7 +20,7 @@ export function debounce(func: Function, wait: number, immediate?: boolean): Fun
   };
 }
 
-export function branchIn(value: object, key: string, step?: number): string | number | [] | object {
+export function branchIn(value: TDataSource, key: string, step?: number): string | number | [] | object {
   let result = key.split('.'),
     stepLength = result.length,
     currentStep = step || 0,
@@ -36,13 +36,13 @@ export function branchIn(value: object, key: string, step?: number): string | nu
 export function search(
   dataSource: TDataSource[],
   term: string,
-  keys: Array<any>,
+  keys: Array<string>,
   fn?: (dataSource?: TDataSource[], term?: string, keys?: Array<string>) => TDataSource[]
 ): TDataSource[] {
   let queryResult: TDataSource[] = [];
   if (term.length > 0) {
-    dataSource.forEach(function(item) {
-      keys.forEach(key => {
+    dataSource.forEach(function(item: TDataSource) {
+      keys.forEach((key: string) => {
         if (
           branchIn(item, key)
             ? branchIn(item, key)
