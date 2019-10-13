@@ -30,6 +30,11 @@ export interface IPagerProps {
 }
 
 export default class Pager extends React.Component<IPagerProps, {}> {
+  static defaultProps = {
+    currentPage: 0,
+    numberOfPages: 0,
+    gotoPage: null
+  };
   gotoPage(pageNumber: number) {
     this.props.gotoPage(pageNumber);
     this.props.onPageChange ? this.props.onPageChange(pageNumber) : null;

@@ -19,7 +19,7 @@ export interface ITableProps {
   // initial dataSource loaded as prop
   dataSource: TDataSource[];
   // columns defined by user
-  columns?: IColumn[];
+  columns: IColumn[];
   // a detail template function that returns a view
   detailTemplate?: (element: TDataSource) => JSX.Element;
   // toggle if the table header should show
@@ -34,7 +34,7 @@ export interface ITableProps {
   selectedElements?: TDataSource[];
   rowIsSelectable?: boolean | 'single' | 'multi';
   checkable?: boolean;
-  hideCheckAll?: boolean;
+  hideCheckAll: boolean;
   onCheck?: (event: React.MouseEvent<HTMLInputElement>) => void;
   detailTemplateHideToggle?: boolean;
   hideColumns?: string[];
@@ -42,16 +42,16 @@ export interface ITableProps {
   pageSizerOptions?: number[];
   onPageSizeChange?: (event: React.MouseEvent<HTMLElement>) => void;
   onPageChange?: (number: number) => void;
-  sortable?: boolean;
+  sortable: boolean;
   searchableKeys: string[];
   searchTitle?: string;
   className?: string;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
   rowCount?: number;
   hidePageSize?: boolean;
-  onSort?: () => void;
-  sortType?: 'asc' | 'desc' | undefined;
-  sortKey?: 'asc' | 'desc';
+  onSort: () => void;
+  sortType: 'asc' | 'desc';
+  sortKey: string;
   showDataSourceLength?: boolean;
   selectedKey?: string;
   flex?: boolean | 'row' | 'row-reverse';
@@ -60,22 +60,22 @@ export interface ITableProps {
   contentMaxHeight?: number;
   filterRow?: () => boolean;
   filterOpenDetailTemplate?: () => boolean;
-  toggleSorting?: boolean;
-  toggleSelectedElements?: boolean;
-  selectAll?: boolean;
+  toggleSorting: (dataSource: TDataSource[], key: string, sortType: 'asc' | 'desc') => void;
+  toggleSelectedElements: TDataSource[];
+  selectAll: (dataSource: TDataSource[]) => void;
   previousPage?: () => void;
   nextPage?: () => void;
   gotoPage?: () => void;
   firstPage?: number;
   lastPage?: number;
-  detailTemplateToggleSelectedElements?: () => TDataSource[];
+  detailTemplateToggleSelectedElements: () => TDataSource[];
   changePageSize?: any;
-  isArray?: boolean;
+  isArray: boolean;
   numberOfPages?: number;
   numberPerPage?: number;
   activeRows: string[];
   filteredItems?: TDataSource[];
-  detailTemplateToggleAll?: boolean;
+  detailTemplateToggleAll: (dataSource: TDataSource[]) => void;
   searchTerm?: string;
   filterItems: (searchTerm: string, keys: string[]) => TDataSource[];
   title?: string;
@@ -101,13 +101,28 @@ class Table extends React.Component<ITableProps, ITableState> {
   public static defaultProps = {
     dataSource: [],
     activeRows: [],
+    columns: [],
     disableSelectedElements: [],
     searchableKeys: [],
     showDataSourceLength: true,
     title: 'items',
     portal: false,
     scrollY: true,
-    filterItems: []
+    filterItems: [],
+
+    // relvant defaults
+    detailTemplateToggleAll: null,
+    detailTemplateHideToggle: false,
+    selectAll: false,
+    toggleSorting: false,
+    onSort: null,
+    sortType: 'asc',
+    sortKey: '',
+    hideCheckAll: false,
+    sortable: false,
+    detailTemplateToggleSelectedElements: [],
+    toggleSelectedElements: [],
+    isArray: true
   };
 
   render() {

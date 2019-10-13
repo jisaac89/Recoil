@@ -66,7 +66,22 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
     contentMaxHeight: 200,
     material: true,
     hideFooter: true,
-    open: false
+    open: false,
+    //
+    isArray: true,
+    hideCheckAll: true,
+    // relvant defaults
+    columns: [],
+    detailTemplateToggleAll: null,
+    detailTemplateHideToggle: false,
+    selectAll: false,
+    toggleSorting: false,
+    onSort: null,
+    sortType: 'asc',
+    sortKey: '',
+    sortable: false,
+    detailTemplateToggleSelectedElements: [],
+    toggleSelectedElements: []
   };
 
   constructor(props: IDropdownProps) {
