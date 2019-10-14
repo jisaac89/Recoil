@@ -1,29 +1,12 @@
 import React from 'react';
-import {
-  Align,
-  Button,
-  Toolbar,
-  Checkbox,
-  Table,
-  Layer,
-  Dropdown,
-  Input,
-  Wizard,
-  Modal,
-  Open,
-  Emerge,
-  SlideIn,
-  Transform,
-  Toggle,
-  Shrink
-} from '../../../src/index';
+import { Layer } from '../../../src/index';
 
 import TutorialView from './TutorialView';
 interface ISelectableProps {
   checked?: boolean;
   classNames?: string;
   ghost?: boolean;
-  children?: any;
+  children?: React.ReactNode;
   type?: string;
 }
 

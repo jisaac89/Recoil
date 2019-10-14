@@ -15,7 +15,7 @@ export interface IRecoilProps {
   isTablet?: boolean;
   onDevice(device: string): void;
   // shortcut key to enable shortcuts on recoil
-  shortCutInitKey?: any;
+  shortCutInitKey?: string;
 }
 
 function delegate(el: HTMLElement, evt: any, sel: any, handler: any) {

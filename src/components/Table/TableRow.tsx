@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 import Checkbox from '../Checkbox/Checkbox';
 import { IColumn } from './IColumn';
 import { branchIn } from '../Utils';
+import { TDataSource } from '../DataSource/DataSource';
 
 class DetailTemplateColumnToggle extends React.Component<any, any> {
   detailTemplateToggleSelectedElements(element: Array<any>) {
@@ -76,41 +77,45 @@ class CheckboxColumn extends React.Component<any, any> {
 }
 
 export interface ITableColumnProps {
-  element?: any;
+  element: TDataSource;
   columns: IColumn[];
-  toggleSelectedElements?: any;
-  rowIsSelectable?: any;
-  selectedElements?: any;
+  toggleSelectedElements: (element: TDataSource, index: string | number) => void;
+  rowIsSelectable?: boolean;
+  selectedElements?: TDataSource[];
   checkable?: boolean;
-  hideColumns?: Array<string>;
-  onRowSelect?: (element: any, index: number | string, event?: React.MouseEvent<any>) => void;
+  hideColumns?: string[];
+  onRowSelect?: (element: TDataSource, index: number | string, event?: React.MouseEvent<any>) => void;
   selectedKey?: string;
-  index?: number | string;
+  index: string | number;
   isArray: boolean;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
-  detailTemplate?: (element: any) => JSX.Element;
-  detailTemplateOpenAll?: any;
-  detailTemplateToggleSelectedElements?: any;
-  detailTemplateSelectedElements?: Array<any>;
+  detailTemplate?: (element: TDataSource) => JSX.Element;
+  detailTemplateOpenAll?: boolean;
+  detailTemplateToggleSelectedElements?: (element: TDataSource) => void;
+  detailTemplateSelectedElements?: TDataSource[];
   detailTemplateHideToggle?: boolean;
-  filterOpenDetailTemplate?: any;
-  id?: any;
-  disableSelectedElements: Array<any>;
+  filterOpenDetailTemplate?: () => boolean;
+  id?: string;
+  disableSelectedElements: TDataSource[];
   tableDataClassName?: string;
-  loadingElements?: any;
+  loadingElements?: TDataSource[];
   loadingKey?: string;
 }
 
 export default class TableRow extends React.Component<ITableColumnProps, any> {
-  toggleSelectedElements(element: Array<any>, index: string | number) {
-    this.props.rowIsSelectable ? this.props.toggleSelectedElements(element, index) : null;
+  toggleSelectedElements(element: TDataSource, index: string | number) {
+    this.props.rowIsSelectable && element ? this.props.toggleSelectedElements(element, index) : null;
     !this.props.rowIsSelectable && this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
-    this.props.detailTemplateOpenOnRowSelect ? this.props.detailTemplateToggleSelectedElements(element) : null;
+    this.props.detailTemplateOpenOnRowSelect && this.props.detailTemplateToggleSelectedElements
+      ? this.props.detailTemplateToggleSelectedElements(element)
+      : null;
   }
 
-  onRowSelect(element: Array<any>, index: string | number) {
+  onRowSelect(element: TDataSource, index: string | number) {
     this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
-    this.props.detailTemplateOpenOnRowSelect ? this.props.detailTemplateToggleSelectedElements(element) : null;
+    this.props.detailTemplateOpenOnRowSelect && this.props.detailTemplateToggleSelectedElements
+      ? this.props.detailTemplateToggleSelectedElements(element)
+      : null;
   }
 
   render() {

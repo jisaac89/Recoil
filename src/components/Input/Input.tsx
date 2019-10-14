@@ -24,7 +24,7 @@ export interface IInputProps extends IRecoil {
   cols?: number;
   block?: boolean;
   autoExpand?: boolean;
-  onBlur?: any;
+  onBlur?: () => void;
   onChange?: (value: any, event: React.FormEvent<any>) => void;
   scrollHeight?: number;
   focusOnMount?: boolean;
@@ -38,7 +38,7 @@ export interface IInputProps extends IRecoil {
   autoComplete?: string;
   disableKeys?: Array<string>;
   inputSize?: number;
-  inputId?: any;
+  inputId?: string;
   material?: boolean;
   pattern?: string;
 }

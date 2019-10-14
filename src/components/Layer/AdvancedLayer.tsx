@@ -25,7 +25,7 @@ export interface ILayerProps extends IRecoil {
   offset?: number;
   shadow?: boolean;
   flexCenter?: boolean;
-  onScroll?: any;
+  onScroll?: () => void;
   id?: string;
   borderRadius?: boolean;
   dropShadow?: boolean;
@@ -39,10 +39,7 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
   public _beforeAnimate: () => void;
   public _afterAnimate: () => void;
   public _scrollToId: string;
-  public refs: {
-    [key: string]: Element;
-    Layer: HTMLElement;
-  };
+  public static refs: any;
 
   public static defaultProps = {
     overflow: false,

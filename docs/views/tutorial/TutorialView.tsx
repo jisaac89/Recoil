@@ -4,10 +4,10 @@ import { Table, AdvancedLayer, Layer } from '../../../src/index';
 export interface ITutorialViewProps {
   description: string;
   Id: string;
-  toggleModal?: any;
-  examples?: any;
-  columnData: any;
-  video?: any;
+  toggleModal?: (isOpen: boolean) => void;
+  examples?: () => JSX.Element;
+  columnData: [];
+  video?: string;
   mobile?: boolean;
   scrollIf: boolean;
   scrollToId: string;

@@ -12,10 +12,10 @@ export interface IPagerProps {
   numberOfPages: number;
   numberPerPage?: number;
   pagerSize?: number;
-  firstPage?: any;
-  nextPage?: any;
-  lastPage?: any;
-  previousPage?: any;
+  firstPage?: number;
+  nextPage?: number;
+  lastPage?: number;
+  previousPage?: number;
   dataSource?: TDataSource[];
   pageSize?: number;
   onPageChange?: (pageNumber: number, event?: React.MouseEvent<any>) => void;

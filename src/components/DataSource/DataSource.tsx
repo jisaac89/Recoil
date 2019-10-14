@@ -334,7 +334,7 @@ const DataSource: any = (Component: JSX.Element) =>
       let end = begin + numberPerPage;
       let pageList = renderedPage.slice(begin, end);
 
-      pageList.map((item: Array<any>) => {
+      pageList.map((item: TDataSource) => {
         activeRows.push(item);
       });
 
