@@ -40,7 +40,8 @@ export default class DatePicker extends React.Component<IDatePickerProps, IDateP
     detailTemplateToggleSelectedElements: [],
     toggleSelectedElements: [],
     hideCheckAll: false,
-    isArray: false
+    isArray: false,
+    rowIsSelectable: false
   };
   constructor(props: IDatePickerProps) {
     super(props);

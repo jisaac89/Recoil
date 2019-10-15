@@ -5,7 +5,7 @@ import { TDataSource } from '../DataSource/DataSource';
 
 export interface ITableColumnSelectableProps {
   columns: IColumn[];
-  detailTemplate?: (element: TDataSource) => JSX.Element;
+  detailTemplate?: (element: TDataSource[]) => JSX.Element;
   selectedElements?: TDataSource[];
   element?: TDataSource;
   checkable?: boolean;

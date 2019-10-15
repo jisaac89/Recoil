@@ -32,13 +32,13 @@ export interface ITableProps {
   //
   detailTemplateSelectedElements?: TDataSource[];
   selectedElements?: TDataSource[];
-  rowIsSelectable?: boolean | 'single' | 'multi';
+  rowIsSelectable: boolean | 'single' | 'multi';
   checkable?: boolean;
   hideCheckAll: boolean;
   onCheck?: (event: React.MouseEvent<HTMLInputElement>) => void;
   detailTemplateHideToggle?: boolean;
   hideColumns?: string[];
-  onRowSelect?: (element: TDataSource[], key: number, selectedElements?: TDataSource[], id?: string) => void;
+  onRowSelect?: (element: TDataSource, index: number, selectedElements?: TDataSource[]) => void;
   pageSizerOptions?: number[];
   onPageSizeChange?: (event: React.MouseEvent<HTMLElement>) => void;
   onPageChange?: (number: number) => void;
@@ -61,7 +61,7 @@ export interface ITableProps {
   filterRow?: () => boolean;
   filterOpenDetailTemplate?: () => boolean;
   toggleSorting: (dataSource: TDataSource[], key: string, sortType: 'asc' | 'desc') => void;
-  toggleSelectedElements: TDataSource[];
+  toggleSelectedElements: (elements: TDataSource, key: number | string) => void;
   selectAll: (dataSource: TDataSource[]) => void;
   previousPage?: () => void;
   nextPage?: () => void;
@@ -122,7 +122,8 @@ class Table extends React.Component<ITableProps, ITableState> {
     sortable: false,
     detailTemplateToggleSelectedElements: [],
     toggleSelectedElements: [],
-    isArray: true
+    isArray: true,
+    rowIsSelectable: false
   };
 
   render() {

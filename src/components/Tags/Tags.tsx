@@ -10,7 +10,7 @@ import { TDataSource } from '../DataSource/DataSource';
 export interface ITagsProps {
   dataSource: TDataSource[];
   branchIn?: string;
-  onRemove?: (item: TDataSource) => void;
+  onRemove?: (item: any) => void;
 }
 
 export interface ITagsState {

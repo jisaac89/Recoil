@@ -54,7 +54,7 @@ export interface ITableHeadProps {
   toggleSorting: (dataSource: TDataSource[], key: string, sortType: 'asc' | 'desc') => void;
   detailTemplateToggleAll: (dataSource: TDataSource[]) => void;
   selectAll: (dataSource: TDataSource[]) => void;
-  dataSource: Array<any> | Object;
+  dataSource: TDataSource[];
   columns: Array<IColumn>;
   hideHeader?: boolean;
   hideColumns?: any;

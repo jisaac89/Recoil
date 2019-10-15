@@ -53,11 +53,6 @@ export interface State {
 }
 
 export default class Dropdown extends React.Component<IDropdownProps, IDropdownState> {
-  refs: {
-    [key: string]: Element;
-    dropdown: HTMLInputElement;
-  };
-
   public static defaultProps = {
     dataSource: [],
     searchableKeys: [],
@@ -82,7 +77,8 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
     sortKey: '',
     sortable: false,
     detailTemplateToggleSelectedElements: [],
-    toggleSelectedElements: []
+    toggleSelectedElements: [],
+    rowIsSelectable: false
   };
 
   constructor(props: IDropdownProps) {

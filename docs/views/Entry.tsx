@@ -124,7 +124,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
   render() {
     let { showModal, showMenu, nightmode, slideIndex, mobile } = this.state;
     return (
-      <Recoil shortCutInitKey={['shift']} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
+      <Recoil shortCutInitKey={'shift'} overflow nightmode={nightmode} onDevice={this.onDevice.bind(this)}>
         <Layer fill overflow>
           <Shrink fill if={showModal}>
             <Transform

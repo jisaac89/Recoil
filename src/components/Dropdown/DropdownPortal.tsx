@@ -8,6 +8,7 @@ export default class DropdownPortal extends React.Component<any, any> {
   recoilWapperElement = document.getElementById('Recoil');
   constructor(props: any) {
     super(props);
+    this.portalElement = null;
     this.state = {
       position: null
     };

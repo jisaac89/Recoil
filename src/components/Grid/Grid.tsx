@@ -53,7 +53,7 @@ class Grid extends React.Component<IGridProps, IGridState> {
   }
 
   componentDidUpdate(prevProps: IGridProps) {
-    if (prevProps.selectedElements !== this.props.selectedElements) {
+    if (this.props.selectedElements && prevProps.selectedElements !== this.props.selectedElements) {
       this.setState({
         selectedElements: this.props.selectedElements
       });

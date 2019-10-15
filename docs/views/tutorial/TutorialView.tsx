@@ -4,9 +4,9 @@ import { Table, AdvancedLayer, Layer } from '../../../src/index';
 export interface ITutorialViewProps {
   description: string;
   Id: string;
-  toggleModal?: (isOpen: boolean) => void;
+  toggleModal: (isOpen: boolean) => void;
   examples?: () => JSX.Element;
-  columnData: [];
+  columnData: object[];
   video?: string;
   mobile?: boolean;
   scrollIf: boolean;
@@ -20,6 +20,9 @@ export interface ITutorialViewState {
 }
 
 export default class TutorialView extends React.Component<ITutorialViewProps, ITutorialViewState> {
+  static defaultProps = {
+    toggleModal: null
+  };
   constructor(props: ITutorialViewProps) {
     super(props);
 

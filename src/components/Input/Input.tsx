@@ -24,7 +24,7 @@ export interface IInputProps extends IRecoil {
   cols?: number;
   block?: boolean;
   autoExpand?: boolean;
-  onBlur?: () => void;
+  onBlur?: (value: any, event: React.FormEvent<any>) => void;
   onChange?: (value: any, event: React.FormEvent<any>) => void;
   scrollHeight?: number;
   focusOnMount?: boolean;

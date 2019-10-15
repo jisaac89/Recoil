@@ -49,7 +49,7 @@ export default class Wizard extends React.Component<IWizardProps> {
       { 'e-overflow': props.overflow }
     );
 
-    let createSlidesPartial = (item: Array<React.ReactNode>, index: string | number) => {
+    let createSlidesPartial = (item: React.ReactNode, index: number) => {
       let selected = props.slideIndex === index;
 
       let wizardSlideClass = classNames(

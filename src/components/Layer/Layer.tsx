@@ -27,11 +27,8 @@ export interface ILayerProps extends IRecoil {
   length?: number;
 }
 
-class Layer extends React.Component<ILayerProps, any> {
-  public refs: {
-    [key: string]: Element;
-    Layer: HTMLElement;
-  };
+class Layer extends React.Component<ILayerProps> {
+  public refLayer: React.RefObject<HTMLElement>;
 
   public static defaultProps = {
     overflow: false,
@@ -41,6 +38,11 @@ class Layer extends React.Component<ILayerProps, any> {
     border: '',
     flexCenter: false
   };
+
+  constructor(props: ILayerProps) {
+    super(props);
+    this.refLayer = React.createRef();
+  }
 
   render() {
     const self = this;
@@ -85,7 +87,7 @@ class Layer extends React.Component<ILayerProps, any> {
         id={props.id}
         onScroll={this.props.onScroll}
         tabIndex={props.tabIndex}
-        ref="Layer"
+        ref={() => this.refLayer}
         onClick={props.onClick}
         className={layerClass}
         style={Object.assign({}, dimensionStyle, props.style)}

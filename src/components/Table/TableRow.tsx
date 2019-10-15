@@ -8,7 +8,7 @@ import { branchIn } from '../Utils';
 import { TDataSource } from '../DataSource/DataSource';
 
 class DetailTemplateColumnToggle extends React.Component<any, any> {
-  detailTemplateToggleSelectedElements(element: Array<any>) {
+  detailTemplateToggleSelectedElements(element: TDataSource[]) {
     this.props.detailTemplateToggleSelectedElements(element);
   }
   render() {
@@ -80,13 +80,13 @@ export interface ITableColumnProps {
   element: TDataSource;
   columns: IColumn[];
   toggleSelectedElements: (element: TDataSource, index: string | number) => void;
-  rowIsSelectable?: boolean;
+  rowIsSelectable: boolean | 'single' | 'multi';
   selectedElements?: TDataSource[];
   checkable?: boolean;
   hideColumns?: string[];
-  onRowSelect?: (element: TDataSource, index: number | string, event?: React.MouseEvent<any>) => void;
+  onRowSelect?: (element: TDataSource, index: number) => void;
   selectedKey?: string;
-  index: string | number;
+  index: number;
   isArray: boolean;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
   detailTemplate?: (element: TDataSource) => JSX.Element;
@@ -94,7 +94,7 @@ export interface ITableColumnProps {
   detailTemplateToggleSelectedElements?: (element: TDataSource) => void;
   detailTemplateSelectedElements?: TDataSource[];
   detailTemplateHideToggle?: boolean;
-  filterOpenDetailTemplate?: () => boolean;
+  filterOpenDetailTemplate?: (item: TDataSource) => boolean;
   id?: string;
   disableSelectedElements: TDataSource[];
   tableDataClassName?: string;
@@ -103,7 +103,7 @@ export interface ITableColumnProps {
 }
 
 export default class TableRow extends React.Component<ITableColumnProps, any> {
-  toggleSelectedElements(element: TDataSource, index: string | number) {
+  toggleSelectedElements(element: TDataSource, index: number) {
     this.props.rowIsSelectable && element ? this.props.toggleSelectedElements(element, index) : null;
     !this.props.rowIsSelectable && this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
     this.props.detailTemplateOpenOnRowSelect && this.props.detailTemplateToggleSelectedElements
@@ -111,8 +111,8 @@ export default class TableRow extends React.Component<ITableColumnProps, any> {
       : null;
   }
 
-  onRowSelect(element: TDataSource, index: string | number) {
-    this.props.onRowSelect ? this.props.onRowSelect(element, index) : null;
+  onRowSelect(element: TDataSource, key: number) {
+    this.props.onRowSelect ? this.props.onRowSelect(element, key) : null;
     this.props.detailTemplateOpenOnRowSelect && this.props.detailTemplateToggleSelectedElements
       ? this.props.detailTemplateToggleSelectedElements(element)
       : null;

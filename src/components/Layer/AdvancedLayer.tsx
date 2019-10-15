@@ -39,7 +39,7 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
   public _beforeAnimate: () => void;
   public _afterAnimate: () => void;
   public _scrollToId: string;
-  public static refs: any;
+  public refLayer: React.RefObject<HTMLElement>;
 
   public static defaultProps = {
     overflow: false,
@@ -53,6 +53,7 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
 
   constructor(props: ILayerProps) {
     super(props);
+    this.refLayer = React.createRef();
     this._scrollToId =
       (props.scrollToId && props.scrollToId !== '' && props.scrollToId.toString().replace(/^#/, '')) || '';
 
@@ -127,17 +128,19 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
 
   animateScrolling(duration: number, top: number) {
     const self = this;
-    const startY = this.getScrollTop();
+    const startY = this.getScrollTop() as number;
 
-    scrollTo(startY, this.refs.Layer, top, duration);
+    scrollTo(startY, this.refLayer.current, top, duration);
     self.setState({
       scrollToId: ''
     });
   }
 
   setScrolling(x: number, y: number) {
-    this.refs.Layer.scrollTop = y;
-    this.refs.Layer.scrollLeft = x;
+    if (this.refLayer.current) {
+      this.refLayer.current.scrollTop = y;
+      this.refLayer.current.scrollLeft = x;
+    }
   }
 
   easeOutQuad(t: number, b: number, c: number, d: number) {
@@ -145,29 +148,45 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
   }
 
   getScrollTop() {
-    return this.refs.Layer.scrollTop || this.refs.Layer.scrollTop;
+    if (this.refLayer.current) {
+      return this.refLayer.current.scrollTop || this.refLayer.current.scrollTop;
+    } else {
+      return 0;
+    }
   }
 
   setScrollTop(position: number) {
-    this.refs.Layer.scrollTop = position;
+    if (this.refLayer.current) {
+      this.refLayer.current.scrollTop = position;
+    }
   }
 
   getOffsetTop(element: HTMLElement) {
     let top = element.getBoundingClientRect().top;
-    return top + this.getScrollTop();
+    if (top) {
+      return top + this.getScrollTop();
+    }
   }
 
   getScrollLeft() {
-    return this.refs.Layer.scrollLeft || this.refs.Layer.scrollLeft;
+    if (this.refLayer.current) {
+      return this.refLayer.current.scrollLeft || this.refLayer.current.scrollLeft;
+    } else {
+      return 0;
+    }
   }
 
   setScrollLeft(position: number) {
-    this.refs.Layer.scrollLeft = position;
+    if (this.refLayer.current) {
+      this.refLayer.current.scrollLeft = position;
+    }
   }
 
   getOffsetLeft(element: HTMLElement) {
     let left = element.getBoundingClientRect().left;
-    return left + this.getScrollLeft();
+    if (left) {
+      return left + this.getScrollLeft();
+    }
   }
 
   scrollToBottom = () => {
@@ -218,7 +237,7 @@ class AdvancedLayer extends React.Component<ILayerProps, any> {
         id={props.id}
         onScroll={this.props.onScroll}
         tabIndex={props.tabIndex}
-        ref="Layer"
+        ref={() => this.refLayer}
         onClick={props.onClick}
         className={layerClass}
         style={Object.assign({}, dimensionStyle, props.style)}
@@ -268,9 +287,11 @@ var requestAnimFrame = (function() {
   );
 })();
 
-function scrollTo(scrollTop: number, element: HTMLElement, to: number, duration: number) {
+function scrollTo(scrollTop: number, element: HTMLElement | null, to: number, duration: number) {
   function move(amount: number) {
-    element.scrollTop = amount;
+    if (element) {
+      element.scrollTop = amount;
+    }
   }
   function position() {
     return scrollTop;
