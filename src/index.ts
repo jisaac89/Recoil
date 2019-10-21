@@ -41,7 +41,7 @@ export { default as Shrink } from './components/Shrink/Shrink';
 export { default as Toggle, IToggleProps } from './components/Toggle/Toggle';
 export { default as Toolbar } from './components/Toolbar/Toolbar';
 export { default as Transform } from './components/Transform/Transform';
-export { default as Wizard } from './components/Wizard/Wizard';
+export { Wizard } from './components/Wizard/Wizard';
 export { default as SlideIn } from './components/SlideIn/SlideIn';
 export { default as Stepper } from './components/Stepper/Stepper';
 export { default as Table, ITableProps, IColumn } from './components/Table/Table';

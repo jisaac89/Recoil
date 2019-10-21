@@ -177,7 +177,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
                   <TutorialToggle />
                   <TutorialToolbar />
                   <TutorialTransform />
-                  <TutorialWizard />
+
                   <TutorialGrid />
                 </Wizard>
               </Layer>

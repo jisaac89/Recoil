@@ -45,7 +45,7 @@ export default class TutorialWizard extends React.Component<any, any> {
     });
   }
 
-  onSlide = (index: { slideIndex: number; slideIndex2: number }) => {
+  onSlide = (index: number) => {
     this.setState({
       slideIndex: index,
       slideIndex2: index
@@ -56,14 +56,12 @@ export default class TutorialWizard extends React.Component<any, any> {
     const self = this;
     const props = self.props;
     let state = self.state;
-
-    const columns = [{ name: 'name', width: 120 }, { name: 'type', width: 140 }, { name: 'description' }];
     let example = () => {
       return (
         <div>
           <h3>Default</h3>
           <Layer className="h300px p20 pb0 mt20" theme="dark">
-            <Wizard paginate fill slideIndex={this.state.slideIndex}>
+            <Wizard onSlide={this.onSlide.bind(this)} paginate fill slideIndex={this.state.slideIndex}>
               <Layer fill theme="light" className="p20">
                 1
               </Layer>
@@ -78,7 +76,7 @@ export default class TutorialWizard extends React.Component<any, any> {
 
           <h3 className="pt20 pb20">Vertical</h3>
           <Layer className="h300px p20 pb0 mb10" theme="dark">
-            <Wizard paginate vertical fill slideIndex={this.state.slideIndex2}>
+            <Wizard onSlide={this.onSlide.bind(this)} paginate vertical fill slideIndex={this.state.slideIndex2}>
               <Layer fill theme="light" className="p20">
                 1
               </Layer>
