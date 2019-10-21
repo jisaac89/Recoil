@@ -16,7 +16,7 @@ export interface IAlignChildProps {
   columns?: number[];
   vertical?: boolean;
   width?: number;
-  element?: JSX.Element;
+  element?: React.ReactNode;
   margin?: string;
 }
 
@@ -83,7 +83,7 @@ export default class Align extends React.Component<IAlignProps, IAlignState> {
       });
     }
   }
-  alignChildren = (element: JSX.Element, index: number) => {
+  alignChildren = (element: React.ReactNode, index: number) => {
     let { columns, margin, vertical } = this.props;
     return (
       <AlignChild

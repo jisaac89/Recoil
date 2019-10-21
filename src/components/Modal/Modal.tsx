@@ -42,11 +42,6 @@ function guidGenerator() {
 }
 
 export default class Modal extends React.Component<IModalProps, IModalState> {
-  refs: {
-    [key: string]: Element;
-    Modal: HTMLInputElement;
-  };
-
   constructor(props: IModalProps) {
     super(props);
     this.state = {

@@ -12,35 +12,30 @@ export interface TableBodyProps {
   portal?: boolean;
   activeRows: any;
   // initial dataSource loaded as prop
-  dataSource: Array<any> | Object;
+  dataSource: TDataSource[];
   // columns defined by user
-  columns: Array<IColumn>;
+  columns: IColumn[];
   // a detail template function that returns a view
-  detailTemplate?: (element: Array<any>) => JSX.Element;
-  selectedElements?: Array<any>;
+  detailTemplate?: (element: TDataSource) => JSX.Element;
+  selectedElements?: TDataSource[];
   detailTemplateOpenAll?: boolean;
   detailTemplateToggleSelectedElements: (dataSource: TDataSource) => void;
-  detailTemplateSelectedElements?: Array<any>;
+  detailTemplateSelectedElements?: TDataSource[];
   detailTemplateHideToggle?: boolean;
-  toggleSelectedElements: TDataSource[];
-  rowIsSelectable?: boolean | string;
+  toggleSelectedElements: (element: TDataSource, index: string | number) => void;
+  rowIsSelectable: boolean | 'single' | 'multi';
   checkable?: boolean;
-  hideColumns?: Array<any>;
-  onRowSelect?: (
-    element?: Array<any>,
-    key?: string | number,
-    selectedElements?: Array<any> | Object,
-    id?: string | number
-  ) => void;
+  hideColumns?: string[];
+  onRowSelect?: (element: TDataSource, index: number) => void;
   isArray: boolean;
   detailTemplateOpenOnRowSelect?: boolean | 'single';
   selectedKey?: string;
-  filterRow?: (item: Object) => void;
-  filterOpenDetailTemplate?: (item: Object) => void;
+  filterRow?: (item: TDataSource) => void;
+  filterOpenDetailTemplate?: (item: TDataSource) => boolean;
   serverSide?: boolean;
-  disableSelectedElements: Array<any>;
+  disableSelectedElements: TDataSource[];
   tableDataClassName?: string;
-  loadingElements?: any[];
+  loadingElements?: TDataSource[];
   loadingKey?: string;
 }
 

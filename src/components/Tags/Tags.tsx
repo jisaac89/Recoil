@@ -9,8 +9,8 @@ import { TDataSource } from '../DataSource/DataSource';
 
 export interface ITagsProps {
   dataSource: TDataSource[];
-  branchIn?: any;
-  onRemove?: any;
+  branchIn?: string;
+  onRemove?: (item: any) => void;
 }
 
 export interface ITagsState {
@@ -42,14 +42,16 @@ export default class Tags extends React.Component<ITagsProps, ITagsState> {
     }
   }
 
-  onRemove(item: object) {
-    this.props.onRemove(item);
+  onRemove(item: TDataSource) {
+    if (this.props.onRemove) {
+      this.props.onRemove(item);
+    }
   }
 
   render() {
     let _array: React.ReactNode[] = [];
 
-    let createList = (item: object, index: number) => {
+    let createList = (item: TDataSource, index: number) => {
       _array.push(
         <Toolbar flush key={index} className="mr10">
           <Button size="small">{this.props.branchIn ? branchIn(item, this.props.branchIn) : item}</Button>

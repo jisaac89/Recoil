@@ -12,13 +12,11 @@ export interface IFixedState {
 }
 
 export default class Fixed extends React.Component<IFixedProps, IFixedState> {
-  refs: {
-    [key: string]: Element;
-    fixedNode: HTMLElement;
-  };
+  public refFixed: React.RefObject<HTMLElement>;
 
   constructor(props: IFixedProps) {
     super(props);
+    this.refFixed = React.createRef();
     this.state = {
       default: 0,
       node: null,
@@ -27,18 +25,20 @@ export default class Fixed extends React.Component<IFixedProps, IFixedState> {
   }
 
   componentDidMount() {
-    var svg = this.refs.fixedNode;
-    document.body.addEventListener('scroll', this.handleShortcuts.bind(this), true);
-    this.setState({
-      default: svg.getBoundingClientRect().top,
-      node: svg
-    });
+    var svg = this.refFixed.current;
+    if (svg) {
+      document.body.addEventListener('scroll', this.handleShortcuts.bind(this), true);
+      this.setState({
+        default: svg.getBoundingClientRect().top,
+        node: svg
+      });
+    }
   }
 
   handleShortcuts() {
     const self = this;
-    var svg = this.refs.fixedNode;
-    if (svg.getBoundingClientRect().top <= 2) {
+    var svg = this.refFixed.current;
+    if (svg && svg.getBoundingClientRect().top <= 2) {
       self.setState({
         fixed: true
       });
@@ -57,7 +57,7 @@ export default class Fixed extends React.Component<IFixedProps, IFixedState> {
     let fixedClass = classNames('r-Fixed', { 'e-fixed': fixed === true });
 
     return (
-      <div ref="fixedNode" className={fixedClass}>
+      <div ref={() => this.refFixed} className={fixedClass}>
         {props.children}
       </div>
     );

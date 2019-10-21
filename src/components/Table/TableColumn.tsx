@@ -7,7 +7,7 @@ import { TDataSource } from '../DataSource/DataSource';
 export interface ITableDataProps {
   value: TDataSource[];
   column: IColumn;
-  element: string;
+  element: TDataSource;
   hideColumns: string[];
   isArray: boolean;
   tableDataClassName: string;
@@ -80,7 +80,7 @@ export default class TableColumn extends React.Component<ITableDataProps, ITable
 
     if (isArray) {
       return (
-        <td className={tableDataClassName} tabIndex={-1} id={element} style={{ width: column.width }}>
+        <td className={tableDataClassName} tabIndex={-1} id={element.toString()} style={{ width: column.width }}>
           {column.template ? (
             column.template(element)
           ) : (

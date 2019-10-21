@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import Wizard from '../Wizard/Wizard';
+import { Wizard } from '../Wizard/Wizard';
 import Shrink from '../Shrink/Shrink';
 
 import { IRecoil } from '../../index';

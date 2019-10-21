@@ -111,8 +111,9 @@ const DataSource: any = (Component: JSX.Element) =>
         this.sortDataSource(dataSource, sortType, sortKey);
       } else {
         if (this.props.dataSource && !prevProps.page) {
-          dataSource.length > 0 && prevProps.dataSource !== dataSource ? this.loadDataSource(dataSource) : null;
-          dataSource.length === 0 && prevProps.dataSource !== dataSource ? this.loadDataSource([]) : null;
+          // dataSource.length > 0 ? this.loadDataSource(dataSource) : null;
+          // dataSource.length === 0 ? this.loadDataSource([]) : this.loadDataSource([]);
+          // this.loadDataSource([]);
         }
       }
 
@@ -262,7 +263,7 @@ const DataSource: any = (Component: JSX.Element) =>
 
       // columns are defined
       if (dataSource.length > 0) {
-        if (columns) {
+        if (columns.length > 0) {
           columnsArray = columns;
         } else {
           // else automatically create them
@@ -334,7 +335,7 @@ const DataSource: any = (Component: JSX.Element) =>
       let end = begin + numberPerPage;
       let pageList = renderedPage.slice(begin, end);
 
-      pageList.map((item: Array<any>) => {
+      pageList.map((item: TDataSource) => {
         activeRows.push(item);
       });
 

@@ -4,10 +4,11 @@ import ReactDOM from 'react-dom';
 import DropdownContent from './DropdownContent';
 
 export default class DropdownPortal extends React.Component<any, any> {
-  portalElement: HTMLElement;
+  portalElement: HTMLElement | null = null;
   recoilWapperElement = document.getElementById('Recoil');
   constructor(props: any) {
     super(props);
+    this.portalElement = null;
     this.state = {
       position: null
     };
@@ -60,7 +61,7 @@ export default class DropdownPortal extends React.Component<any, any> {
   }
 
   componentWillUnmount() {
-    if (this.recoilWapperElement) {
+    if (this.recoilWapperElement && this.portalElement) {
       this.recoilWapperElement.removeChild(this.portalElement);
     }
   }

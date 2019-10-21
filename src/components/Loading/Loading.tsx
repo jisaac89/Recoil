@@ -14,11 +14,7 @@ export interface ILoadingProps extends IRecoil {
   icon?: string;
 }
 
-export interface ILoadingState {}
-
-export default class Loading extends React.Component<ILoadingProps, ILoadingState> {
-  public state: ILoadingState;
-
+export default class Loading extends React.Component<ILoadingProps> {
   constructor(props: ILoadingProps) {
     super(props);
   }

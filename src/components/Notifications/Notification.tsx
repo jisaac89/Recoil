@@ -25,6 +25,7 @@ export default class Notification extends React.Component<INotificationProps, IN
   timer: any;
   constructor(props: INotificationProps) {
     super(props);
+    this.secondsRemaining = 0;
     this.state = {
       time: 0,
       isOn: false,

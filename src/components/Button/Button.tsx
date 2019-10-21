@@ -28,11 +28,6 @@ export interface IButtonProps extends IRecoil {
 }
 
 export default class Button extends React.Component<IButtonProps> {
-  public refs: {
-    [key: string]: Element;
-    button: HTMLButtonElement;
-  };
-
   public static defaultProps = {
     disabled: false,
     block: false,

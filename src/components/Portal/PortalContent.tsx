@@ -25,6 +25,7 @@ export default class PortalContent extends React.Component<IPortalProps> {
 
   constructor(props: IPortalProps) {
     super(props);
+    this.portalElement = null;
     this.initPortal();
   }
 

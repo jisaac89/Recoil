@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
-
 import Pager from '../Pager/Pager';
 
 export interface IWizardProps {
@@ -29,67 +28,66 @@ const WizardSlide: React.FunctionComponent<IWizardSlideProps> = ({ children, vis
   return <div className={className}>{visible ? children : null}</div>;
 };
 
-export default class Wizard extends React.Component<IWizardProps> {
-  public static defaultProps = {
-    slideIndex: 0
+const Wizard: FunctionComponent<IWizardProps> = ({
+  slideIndex = 0,
+  onSlide,
+  fill,
+  flex,
+  paginate,
+  overflow,
+  vertical,
+  animate,
+  selectedIsRelative,
+  className,
+  children,
+  style
+}) => {
+  const handleOnSlide = (slideIndex: number) => {
+    onSlide ? onSlide(slideIndex) : null;
   };
 
-  onSlide = (slideIndex: number) => {
-    this.props.onSlide ? this.props.onSlide(slideIndex) : null;
-  };
+  let wizardClass = classNames(
+    'r-Wizard',
+    { 'e-fill': fill },
+    { 'e-flex': flex || paginate },
+    { 'e-overflow': overflow }
+  );
 
-  render() {
-    const self = this;
-    const props = self.props;
+  const createSlidesPartial = (item: React.ReactNode, index: number) => {
+    const selected = slideIndex === index;
 
-    let wizardClass = classNames(
-      'r-Wizard',
-      { 'e-fill': props.fill },
-      { 'e-flex': props.flex || props.paginate },
-      { 'e-overflow': props.overflow }
+    const wizardSlideClass = classNames(
+      'r-WizardSlide',
+      { 'e-selected': slideIndex === index },
+      { 'e-backward': slideIndex > index },
+      { 'e-forward': slideIndex < index },
+      { 'e-vertical': vertical },
+      { 'e-dont-animate': animate === false },
+      {
+        'e-selected-relative': selectedIsRelative === true && slideIndex === index
+      },
+      className
     );
 
-    let createSlidesPartial = (item: Array<React.ReactNode>, index: string | number) => {
-      let selected = props.slideIndex === index;
+    return (
+      <WizardSlide visible={selected} className={wizardSlideClass} key={index}>
+        {item}
+      </WizardSlide>
+    );
+  };
 
-      let wizardSlideClass = classNames(
-        'r-WizardSlide',
-        { 'e-selected': props.slideIndex === index },
-        { 'e-backward': props.slideIndex > index },
-        { 'e-forward': props.slideIndex < index },
-        { 'e-vertical': props.vertical },
-        { 'e-dont-animate': props.animate === false },
-        {
-          'e-selected-relative': props.selectedIsRelative === true && props.slideIndex === index
-        },
-        props.className
-      );
-
-      return (
-        <WizardSlide visible={selected} className={wizardSlideClass} key={index}>
-          {item}
-        </WizardSlide>
-      );
-    };
-
-    if (props.children.length > 1) {
-      return (
-        <div ref="r-Wizard" className={wizardClass} style={props.style}>
-          <div ref="r-Wizard__track" className="r-Wizard__track">
-            {props.children.map(createSlidesPartial)}
-          </div>
-          {props.paginate ? (
-            <Pager
-              numberOfPages={props.children.length}
-              currentPage={props.slideIndex}
-              gotoPage={this.onSlide}
-              hidePageSize
-            />
-          ) : null}
-        </div>
-      );
-    } else {
-      return props.children;
-    }
+  if (children.length > 1) {
+    return (
+      <div className={wizardClass} style={style}>
+        <div className="r-Wizard__track">{children.map(createSlidesPartial)}</div>
+        {paginate ? (
+          <Pager numberOfPages={children.length} currentPage={slideIndex} gotoPage={handleOnSlide} hidePageSize />
+        ) : null}
+      </div>
+    );
+  } else {
+    return <>{children}</>;
   }
-}
+};
+
+export { Wizard };

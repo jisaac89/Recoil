@@ -32,7 +32,7 @@ export interface IDropdownProps extends IButtonProps, ITableProps {
   hideRoot?: boolean;
   tagSelected?: boolean;
   tagSelectedKey?: string;
-  tagSelectedElements?: Array<any>;
+  tagSelectedElements?: Array<TDataSource>;
   onChange?: (element: TDataSource, key?: string | number, selectedElements?: Array<TDataSource>, id?: string) => void;
   onOpen?: (boolean: boolean) => void;
   onClose?: (boolean: boolean) => void;
@@ -53,11 +53,6 @@ export interface State {
 }
 
 export default class Dropdown extends React.Component<IDropdownProps, IDropdownState> {
-  refs: {
-    [key: string]: Element;
-    dropdown: HTMLInputElement;
-  };
-
   public static defaultProps = {
     dataSource: [],
     searchableKeys: [],
@@ -82,7 +77,8 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
     sortKey: '',
     sortable: false,
     detailTemplateToggleSelectedElements: [],
-    toggleSelectedElements: []
+    toggleSelectedElements: [],
+    rowIsSelectable: false
   };
 
   constructor(props: IDropdownProps) {
@@ -97,9 +93,8 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
   }
 
   static getDerivedStateFromProps(props: IDropdownProps, state: IDropdownState) {
-    // must get very explicit on state changes
     if (props.open !== null) {
-      if (props.open !== state.dropdownIsOpen) {
+      if (props.open === true && props.open !== state.dropdownIsOpen) {
         return {
           dropdownIsOpen: props.open
         };
@@ -256,7 +251,7 @@ export default class Dropdown extends React.Component<IDropdownProps, IDropdownS
       disabled,
       checkedTheme,
       materialIcon,
-      onClick: props.onClick || this.openDropdown.bind(this)
+      onClick: props.onClick ? props.onClick : this.openDropdown.bind(this)
     };
 
     let dropdownPortalProps = {
